@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BusDK — Business Development Kit</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.55;
+        margin: 0;
+        padding: 0;
+        background: #0f1115;
+        color: #e6e9ef;
+      }
+      a {
+        color: #7ab7ff;
+      }
+      header,
+      main,
+      footer {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 24px;
+      }
+      header {
+        padding-top: 56px;
+      }
+      h1 {
+        margin: 0 0 12px 0;
+        font-size: 2.5rem;
+      }
+      h2 {
+        margin-top: 40px;
+        font-size: 1.5rem;
+      }
+      .logo {
+        width: 96px;
+        height: auto;
+        display: block;
+        margin: 0 0 16px 0;
+      }
+      p {
+        margin: 12px 0;
+      }
+      .tagline {
+        font-size: 1.2rem;
+        color: #c7ccd7;
+      }
+      .card {
+        background: #1a1d24;
+        border: 1px solid #2a2f3a;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 16px 0;
+      }
+      ul {
+        padding-left: 20px;
+      }
+      li {
+        margin: 6px 0;
+      }
+      .meta {
+        color: #9aa2b2;
+        font-size: 0.95rem;
+      }
+      @media (prefers-color-scheme: light) {
+        body {
+          background: #f6f7fb;
+          color: #1b1e27;
+        }
+        .tagline {
+          color: #4b5565;
+        }
+        .card {
+          background: #ffffff;
+          border-color: #e1e5ef;
+        }
+        a {
+          color: #2d6cdf;
+        }
+        .meta {
+          color: #667085;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="busdk-logo.png" alt="BusDK logo" />
+      <p class="meta">busdk.com</p>
+      <h1>Business Development Kit (BusDK)</h1>
+      <p class="tagline">
+        A modular, Git-native, CLI-first toolkit for running a business — built on open,
+        long-lived formats and transparent, auditable workflows, designed for humans and
+        AI agents.
+      </p>
+      <div class="card">
+        <p>
+          BusDK workspaces live in Git repositories. Business data is stored as UTF-8 CSV
+          datasets validated with Frictionless Data Table Schemas (JSON). The system keeps
+          operations transparent and auditable, with deterministic CLI workflows that
+          serve both humans and AI agents.
+        </p>
+        <p class="meta">
+          Status: pre-release, under active development. Interfaces and schemas
+          may still change.
+        </p>
+      </div>
+    </header>
+    <main>
+      <h2>Resources</h2>
+      <div class="card">
+        <p>
+          GitHub organization:
+          <a href="https://github.com/busdk">github.com/busdk</a>
+        </p>
+        <p>
+          Documentation and specifications:
+          <a href="https://github.com/busdk/docs">github.com/busdk/docs</a>
+        </p>
+        <p>
+          Core dispatcher repository:
+          <a href="https://github.com/busdk/bus">github.com/busdk/bus</a>
+        </p>
+      </div>
+      <h2>Modules (subcommands)</h2>
+      <p>BusDK is designed as focused binaries invoked through the core <code>bus</code> dispatcher.</p>
+      <div class="card">
+        <ul>
+          <li>
+            <a href="https://github.com/busdk/bus-accounts"><strong>bus-accounts</strong></a>
+            — chart of accounts / account master data.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-assets"><strong>bus-assets</strong></a>
+            — fixed asset register and depreciation schedules.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-attachments"><strong>bus-attachments</strong></a>
+            — document archive with schema metadata.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-bank"><strong>bus-bank</strong></a>
+            — bank statement import and reconciliation.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-budget"><strong>bus-budget</strong></a>
+            — budgets and variance reporting.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-entities"><strong>bus-entities</strong></a>
+            — durable IDs for customers, vendors, banks, and authorities.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-inventory"><strong>bus-inventory</strong></a>
+            — inventory and stock records with valuation support.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-invoices"><strong>bus-invoices</strong></a>
+            — sales and purchase invoices with validation.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-journal"><strong>bus-journal</strong></a>
+            — double-entry journal and ledger validation.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-payroll"><strong>bus-payroll</strong></a>
+            — payroll runs and journal posting outputs.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-period"><strong>bus-period</strong></a>
+            — close and lock accounting periods.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-reconcile"><strong>bus-reconcile</strong></a>
+            — reconciliation state and payment allocation.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-reports"><strong>bus-reports</strong></a>
+            — trial balance, ledger, and financial statements.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-validate"><strong>bus-validate</strong></a>
+            — workspace validation and invariants.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-vat"><strong>bus-vat</strong></a>
+            — Finnish VAT (ALV) computations and checks.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-filing"><strong>bus-filing</strong></a>
+            — authority-ready filing bundles.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-filing-prh"><strong>bus-filing-prh</strong></a>
+            — PRH filing target exporter.
+          </li>
+          <li>
+            <a href="https://github.com/busdk/bus-filing-vero"><strong>bus-filing-vero</strong></a>
+            — Vero filing target exporter.
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer class="meta">
+      <p>
+        © <a href="https://hg.fi">Heusala Group Ltd</a>. Built for clear, auditable bookkeeping
+        workflows.
+      </p>
+    </footer>
+  </body>
+</html>
