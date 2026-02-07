@@ -32,9 +32,12 @@
     <main>
       <h2>Quick install</h2>
       <div class="card">
-        <p>
-          <code>curl -fsSL https://github.com/busdk/busdk/releases/latest/download/install.sh | bash</code>
-        </p>
+        <div class="install-command">
+          <code id="quick-install-command">curl -fsSL https://github.com/busdk/busdk/releases/latest/download/install.sh | bash</code>
+          <button class="copy-button" type="button" data-copy-target="quick-install">
+            Copy
+          </button>
+        </div>
         <p class="meta">
           Full release notes:
           <a href="https://github.com/busdk/busdk/releases">github.com/busdk/busdk/releases</a>
@@ -161,5 +164,40 @@
         workflows.
       </p>
     </footer>
+    <script>
+      const copyButton = document.querySelector(
+        "[data-copy-target='quick-install']"
+      );
+      const installCommand = document.getElementById("quick-install-command");
+
+      if (copyButton && installCommand) {
+        const originalLabel = copyButton.textContent;
+        let resetTimeout;
+
+        copyButton.addEventListener("click", async () => {
+          const text = installCommand.textContent.trim();
+
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (error) {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.style.position = "fixed";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+          }
+
+          copyButton.textContent = "Copied";
+          clearTimeout(resetTimeout);
+          resetTimeout = window.setTimeout(() => {
+            copyButton.textContent = originalLabel;
+          }, 2000);
+        });
+      }
+    </script>
   </body>
 </html>
