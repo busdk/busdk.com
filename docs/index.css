@@ -60,6 +60,26 @@ li {
   color: #9aa2b2;
   font-size: 0.95rem;
 }
+code,
+pre {
+  font-family: "SFMono-Regular", ui-monospace, "Cascadia Mono", "Segoe UI Mono",
+    "Liberation Mono", "Fira Mono", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+}
+code {
+  background: #10131a;
+  border: 1px solid #2a2f3a;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+pre {
+  background: #10131a;
+  border: 1px solid #2a2f3a;
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+  white-space: pre;
+}
 @media (prefers-color-scheme: light) {
   body {
     background: #f6f7fb;
@@ -77,5 +97,13 @@ li {
   }
   .meta {
     color: #667085;
+  }
+  code {
+    background: #f2f4f8;
+    border-color: #e1e5ef;
+  }
+  pre {
+    background: #f2f4f8;
+    border-color: #e1e5ef;
   }
 }
