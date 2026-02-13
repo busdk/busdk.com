@@ -63,124 +63,119 @@
       <div class="card">
         <ul>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-init"><strong>bus-init</strong></a>
-            — Bootstraps a new workspace by orchestrating module-owned <code>init</code>
-            commands and creating the chosen workspace layout.
+            <a href="https://docs.busdk.com/modules/bus-init"><strong>bus init</strong></a>
+            — Initialize a new workspace by orchestrating module-owned <code>init</code>
+            commands.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-config"><strong>bus-config</strong></a>
-            — workspace configuration tooling (accounting entity settings in
+            <a href="https://docs.busdk.com/modules/bus-config"><strong>bus config</strong></a>
+            — Create and update workspace configuration (accounting entity settings in
             <code>datapackage.json</code>).
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-dev"><strong>bus-dev</strong></a>
-            — developer workflows for module repositories (commit, work, spec, e2e).
+            <a href="https://docs.busdk.com/modules/bus-data"><strong>bus data</strong></a>
+            — Inspect workspace datasets and schemas through a minimal data-layer CLI.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-agent"><strong>bus-agent</strong></a>
-            — diagnostics and development helper for the agent runner (detect, render, run,
-            format).
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-bfl"><strong>bus-bfl</strong></a>
-            — BusDK Formula Language tooling for expressions.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-data"><strong>bus-data</strong></a>
-            — Tabular data layer: schema-validated dataset I/O and validation for BusDK
-            workspaces (CSV + JSON Table Schema), providing a Go library (and a thin
-            <code>bus data …</code> CLI) for deterministic CRUD-style table and schema
-            handling without domain business logic or CLI-to-CLI dependencies.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-api"><strong>bus-api</strong></a>
+            <a href="https://docs.busdk.com/modules/bus-api"><strong>bus api</strong></a>
             — Local REST JSON API gateway for BusDK workspaces.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-sheets"><strong>bus-sheets</strong></a>
+            <a href="https://docs.busdk.com/modules/bus-sheets"><strong>bus sheets</strong></a>
             — Local spreadsheet-like web UI for workspaces (workbook, sheet tabs, optional
             agent chat).
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-accounts"><strong>bus-accounts</strong></a>
-            — chart of accounts / account master data.
+            <a href="https://docs.busdk.com/modules/bus-dev"><strong>bus dev</strong></a>
+            — Developer workflows for module repos (commit, work, spec, e2e); not for end-user bookkeeping.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-assets"><strong>bus-assets</strong></a>
-            — fixed asset register and depreciation schedules.
+            <a href="https://docs.busdk.com/modules/bus-agent"><strong>bus agent</strong></a>
+            — Diagnostics and development helper for the agent runner (detect, render, run, format).
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-attachments"><strong>bus-attachments</strong></a>
-            — document archive with schema metadata.
+            <a href="https://docs.busdk.com/modules/bus-bfl"><strong>bus bfl</strong></a>
+            — Developer CLI for BusDK Formula Language expressions.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-bank"><strong>bus-bank</strong></a>
-            — bank statement import and reconciliation.
+            <a href="https://docs.busdk.com/modules/bus-accounts"><strong>bus accounts</strong></a>
+            — Manage the chart of accounts.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-budget"><strong>bus-budget</strong></a>
-            — budgets and variance reporting.
+            <a href="https://docs.busdk.com/modules/bus-entities"><strong>bus entities</strong></a>
+            — Manage counterparty reference data.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-entities"><strong>bus-entities</strong></a>
-            — durable IDs for customers, vendors, banks, and authorities.
+            <a href="https://docs.busdk.com/modules/bus-period"><strong>bus period</strong></a>
+            — Open, close, and lock accounting periods.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-inventory"><strong>bus-inventory</strong></a>
-            — inventory and stock records with valuation support.
+            <a href="https://docs.busdk.com/modules/bus-attachments"><strong>bus attachments</strong></a>
+            — Register evidence files and attachment metadata.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-invoices"><strong>bus-invoices</strong></a>
-            — sales and purchase invoices with validation.
+            <a href="https://docs.busdk.com/modules/bus-invoices"><strong>bus invoices</strong></a>
+            — Create and manage sales and purchase invoices.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-journal"><strong>bus-journal</strong></a>
-            — double-entry journal and ledger validation.
+            <a href="https://docs.busdk.com/modules/bus-journal"><strong>bus journal</strong></a>
+            — Post and query ledger journal entries.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-loans"><strong>bus-loans</strong></a>
-            — loan register, drawdowns, and amortization schedules.
+            <a href="https://docs.busdk.com/modules/bus-bank"><strong>bus bank</strong></a>
+            — Import and list bank transactions.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-payroll"><strong>bus-payroll</strong></a>
-            — payroll runs and journal posting outputs.
+            <a href="https://docs.busdk.com/modules/bus-reconcile"><strong>bus reconcile</strong></a>
+            — Match bank transactions to invoices or journal entries.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-period"><strong>bus-period</strong></a>
-            — close and lock accounting periods.
+            <a href="https://docs.busdk.com/modules/bus-assets"><strong>bus assets</strong></a>
+            — Manage fixed-asset records and depreciation.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-reconcile"><strong>bus-reconcile</strong></a>
-            — reconciliation state and payment allocation.
+            <a href="https://docs.busdk.com/modules/bus-loans"><strong>bus loans</strong></a>
+            — Manage loans and amortization schedules.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-reports"><strong>bus-reports</strong></a>
-            — trial balance, ledger, and financial statements.
+            <a href="https://docs.busdk.com/modules/bus-inventory"><strong>bus inventory</strong></a>
+            — Manage inventory items and movements.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-validate"><strong>bus-validate</strong></a>
-            — workspace validation and invariants.
+            <a href="https://docs.busdk.com/modules/bus-payroll"><strong>bus payroll</strong></a>
+            — Run payroll and generate postings.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-vat"><strong>bus-vat</strong></a>
-            — Finnish VAT (ALV) computations and checks.
+            <a href="https://docs.busdk.com/modules/bus-budget"><strong>bus budget</strong></a>
+            — Record budgets and run budget vs actual reports.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-pdf"><strong>bus-pdf</strong></a>
-            — Renders deterministic PDFs from prepared JSON render models without modifying
-            any canonical workspace datasets.
+            <a href="https://docs.busdk.com/modules/bus-reports"><strong>bus reports</strong></a>
+            — Generate trial balance, ledger, and statement reports.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-filing"><strong>bus-filing</strong></a>
-            — authority-ready filing bundles.
+            <a href="https://docs.busdk.com/modules/bus-validate"><strong>bus validate</strong></a>
+            — Validate workspace datasets and invariants.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-filing-prh"><strong>bus-filing-prh</strong></a>
-            — PRH filing target exporter.
+            <a href="https://docs.busdk.com/modules/bus-vat"><strong>bus vat</strong></a>
+            — Compute VAT reports and exports.
           </li>
           <li>
-            <a href="https://docs.busdk.com/modules/bus-filing-vero"><strong>bus-filing-vero</strong></a>
-            — Vero filing target exporter.
+            <a href="https://docs.busdk.com/modules/bus-pdf"><strong>bus pdf</strong></a>
+            — Render PDFs from JSON render models.
+          </li>
+          <li>
+            <a href="https://docs.busdk.com/modules/bus-filing"><strong>bus filing</strong></a>
+            — Build deterministic filing bundles.
+          </li>
+          <li>
+            <a href="https://docs.busdk.com/modules/bus-filing-prh"><strong>bus filing prh</strong></a>
+            — Produce PRH export bundles.
+          </li>
+          <li>
+            <a href="https://docs.busdk.com/modules/bus-filing-vero"><strong>bus filing vero</strong></a>
+            — Produce Vero export bundles.
           </li>
         </ul>
       </div>
