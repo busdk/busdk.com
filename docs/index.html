@@ -3,193 +3,549 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusDK — Business Development Kit</title>
+    <title>BusDK | Git-Native Business Operations</title>
+    <meta
+      name="description"
+      content="BusDK is a modular, CLI-first business operations platform with Git-backed datasets, deterministic workflows, and auditable change history for teams and AI agents."
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <header>
-      <img class="logo" src="busdk-logo.png" alt="BusDK logo" />
-      <p class="meta">busdk.com</p>
-      <h1>Business Development Kit (BusDK)</h1>
-      <p class="tagline">
-        A modular, Git-native, CLI-first toolkit for running a business — built on open,
-        long-lived formats and transparent, auditable workflows, designed for humans and
-        AI agents.
-      </p>
-      <div class="card">
-        <p>
-          BusDK workspaces live in Git repositories. Business data is stored as UTF-8 CSV
-          datasets validated with Frictionless Data Table Schemas (JSON). The system keeps
-          operations transparent and auditable, with deterministic CLI workflows that
-          serve both humans and AI agents.
-        </p>
-        <p class="meta">
-          Status: pre-release, under active development. Interfaces and schemas
-          may still change.
-        </p>
-      </div>
-    </header>
-    <main>
-      <h2>Quick install</h2>
-      <div class="card">
-        <div class="install-command">
-          <code id="quick-install-command">curl -fsSL https://github.com/busdk/busdk/releases/latest/download/install.sh | bash</code>
-          <button class="copy-button" type="button" data-copy-target="quick-install">
-            Copy
-          </button>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com" aria-label="BusDK home">
+            <img class="brand-logo" src="busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#workflows">Workflows</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#platform">Platform</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
         </div>
-        <p class="meta">
-          Full release notes:
-          <a href="https://github.com/busdk/busdk/releases">github.com/busdk/busdk/releases</a>
-        </p>
-      </div>
-      <h2>Resources</h2>
-      <div class="card">
-        <p>
-          GitHub organization:
-          <a href="https://github.com/busdk">github.com/busdk</a>
-        </p>
-        <p>
-          Documentation and specifications:
-          <a href="https://docs.busdk.com">docs.busdk.com</a>
-        </p>
-        <p>
-          Main repository (bundles everything):
-          <a href="https://github.com/busdk/busdk">github.com/busdk/busdk</a>
-        </p>
-      </div>
-      <h2>Modules (subcommands)</h2>
-      <p>BusDK is designed as focused binaries invoked through the core <code>bus</code> dispatcher.</p>
-      <div class="card">
-        <ul>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-init"><strong>bus init</strong></a>
-            — Initialize a new workspace by orchestrating module-owned <code>init</code>
-            commands.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-config"><strong>bus config</strong></a>
-            — Create and update workspace configuration (accounting entity settings in
-            <code>datapackage.json</code>).
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-data"><strong>bus data</strong></a>
-            — Inspect workspace datasets and schemas through a minimal data-layer CLI.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-api"><strong>bus api</strong></a>
-            — Local REST JSON API gateway for BusDK workspaces.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-sheets"><strong>bus sheets</strong></a>
-            — Local spreadsheet-like web UI for workspaces (workbook, sheet tabs, optional
-            agent chat).
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-dev"><strong>bus dev</strong></a>
-            — Developer workflows for module repos (commit, work, spec, e2e); not for end-user bookkeeping.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-agent"><strong>bus agent</strong></a>
-            — Diagnostics and development helper for the agent runner (detect, render, run, format).
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-bfl"><strong>bus bfl</strong></a>
-            — Developer CLI for BusDK Formula Language expressions.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-accounts"><strong>bus accounts</strong></a>
-            — Manage the chart of accounts.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-entities"><strong>bus entities</strong></a>
-            — Manage counterparty reference data.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-period"><strong>bus period</strong></a>
-            — Open, close, and lock accounting periods.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-attachments"><strong>bus attachments</strong></a>
-            — Register evidence files and attachment metadata.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-invoices"><strong>bus invoices</strong></a>
-            — Create and manage sales and purchase invoices.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-journal"><strong>bus journal</strong></a>
-            — Post and query ledger journal entries.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-bank"><strong>bus bank</strong></a>
-            — Import and list bank transactions.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-reconcile"><strong>bus reconcile</strong></a>
-            — Match bank transactions to invoices or journal entries.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-assets"><strong>bus assets</strong></a>
-            — Manage fixed-asset records and depreciation.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-loans"><strong>bus loans</strong></a>
-            — Manage loans and amortization schedules.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-inventory"><strong>bus inventory</strong></a>
-            — Manage inventory items and movements.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-payroll"><strong>bus payroll</strong></a>
-            — Run payroll and generate postings.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-budget"><strong>bus budget</strong></a>
-            — Record budgets and run budget vs actual reports.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-reports"><strong>bus reports</strong></a>
-            — Generate trial balance, ledger, and statement reports.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-validate"><strong>bus validate</strong></a>
-            — Validate workspace datasets and invariants.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-vat"><strong>bus vat</strong></a>
-            — Compute VAT reports and exports.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-pdf"><strong>bus pdf</strong></a>
-            — Render PDFs from JSON render models.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-filing"><strong>bus filing</strong></a>
-            — Build deterministic filing bundles.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-filing-prh"><strong>bus filing prh</strong></a>
-            — Produce PRH export bundles.
-          </li>
-          <li>
-            <a href="https://docs.busdk.com/modules/bus-filing-vero"><strong>bus filing vero</strong></a>
-            — Produce Vero export bundles.
-          </li>
-        </ul>
-      </div>
-    </main>
-    <footer class="meta">
-      <p>
-        © <a href="https://hg.fi">Heusala Group Ltd</a>. Built for clear, auditable business
-        workflows.
-      </p>
-    </footer>
+      </header>
+
+      <main>
+        <section class="hero reveal">
+          <div class="section-inner">
+            <div class="hero-grid">
+              <div class="hero-content">
+                <p class="eyebrow">Business Development Kit</p>
+                <h1>Run core business operations in a Git-native, auditable system.</h1>
+                <p class="hero-copy">
+                  BusDK is built for AI agents and humans working together. It gives finance and
+                  operations teams a deterministic CLI and module ecosystem for accounting workflows,
+                  validation, reporting, and filing, with plain workspace datasets and versioned
+                  change history as the shared source of truth.
+                </p>
+                <div class="hero-cta">
+                  <a class="button button-primary" href="https://docs.busdk.com">Start with docs</a>
+                  <a class="button button-secondary" href="https://github.com/busdk/busdk">View on GitHub</a>
+                </div>
+                <div class="quick-install" aria-label="Quick install">
+                  <h2>Quick install</h2>
+                  <div class="install-row">
+                    <code id="quick-install-command">curl -fsSL https://install.busdk.com | bash</code>
+                    <button class="copy-button" type="button" data-copy-target="quick-install">Copy</button>
+                  </div>
+                  <p class="meta">
+                    Other downloads:
+                    <a href="https://github.com/busdk/busdk/releases">github.com/busdk/busdk/releases</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="proof reveal" id="platform" aria-label="Platform highlights">
+          <div class="section-inner">
+            <div class="section-title-wrap">
+              <p class="eyebrow">Platform</p>
+              <h2>How BusDK is designed to operate</h2>
+            </div>
+            <div class="proof-grid">
+              <article class="panel">
+                <h2>AI-ready, not AI-dependent</h2>
+                <p>
+                  BusDK works fully without AI, while still giving agents deterministic interfaces and
+                  reviewable outputs.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>CLI-first control plane</h2>
+                <p>
+                  Commands run controlled read-modify-write workflows with validation at the CLI gate.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Independent modules</h2>
+                <p>
+                  Feature areas stay decoupled as focused tools coordinated through shared datasets and
+                  stable contracts.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Schema-driven datasets</h2>
+                <p>
+                  UTF-8 CSV data with explicit schema contracts keeps operations inspectable for humans
+                  and automation.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Append-only auditability</h2>
+                <p>
+                  Corrections are additive and history remains visible, supporting reliable audit and
+                  post-change review.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Git-friendly history</h2>
+                <p>
+                  BusDK does not run Git itself, but repository history is naturally reviewable when
+                  teams use Git as canonical tracking.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Long-term durability</h2>
+                <p>
+                  Open, plain-text formats prioritize record longevity and tool independence over vendor
+                  lock-in.
+                </p>
+              </article>
+              <article class="panel">
+                <h2>Human + agent workflows</h2>
+                <p>
+                  The same dataset and command surface supports manual operations, automated runs, and
+                  mixed review pipelines.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="workflows reveal" id="workflows">
+          <div class="section-inner">
+            <div class="section-title-wrap">
+              <p class="eyebrow">Workflow coverage</p>
+              <h2>From setup to compliance workflows</h2>
+            </div>
+            <div class="workflow-grid">
+              <article class="workflow-card">
+                <h3>1. Initialize and configure</h3>
+                <p>
+                  Bootstrap a workspace, set business configuration, and establish chart-of-accounts
+                  structure with deterministic module commands.
+                </p>
+                <a href="https://docs.busdk.com/workflow/accounting-workflow-overview">See workflow docs</a>
+              </article>
+              <article class="workflow-card">
+                <h3>2. Record, reconcile, validate</h3>
+                <p>
+                  Process invoices, journals, bank imports, reconciliation, and run schema and
+                  invariant validation before reporting periods close.
+                </p>
+                <a href="https://docs.busdk.com/modules/index">Explore module docs</a>
+              </article>
+              <article class="workflow-card">
+                <h3>3. Report and file</h3>
+                <p>
+                  Produce statements, VAT exports, and deterministic filing bundles with evidence
+                  traceability backed by repository history.
+                </p>
+                <a href="https://docs.busdk.com/compliance/fi-closing-checklist-and-reconciliations"
+                  >Read compliance docs</a
+                >
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="pricing reveal" id="pricing">
+          <div class="section-inner">
+            <div class="section-title-wrap">
+              <p class="eyebrow">Pricing</p>
+              <h2>Subscription plans</h2>
+            </div>
+            <p class="pricing-copy">
+              Subscription plans are designed for teams at different stages. Final feature limits
+              and plan details will be published soon.
+            </p>
+            <div class="subscription-plans" role="region" aria-label="Subscription plans">
+              <article class="panel">
+                <h3>Base</h3>
+                <p><strong>25 EUR/user/month</strong></p>
+                <p class="meta">
+                  For individuals getting started with BusDK. Includes core hosted features and
+                  standard support.
+                </p>
+              </article>
+              <article class="panel">
+                <h3>Pro</h3>
+                <p><strong>100 EUR/user/month</strong></p>
+                <p class="meta">
+                  For teams that need higher usage limits, advanced controls, and faster support.
+                </p>
+              </article>
+              <article class="panel">
+                <h3>Enterprise</h3>
+                <p class="meta">
+                  For larger organizations with custom requirements, onboarding support, and
+                  contract-based terms.
+                </p>
+              </article>
+            </div>
+            <div class="pricing-cta" aria-label="Subscription actions">
+              <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales</a>
+              <a class="button button-secondary" href="#source-packages">See source packages</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="pricing reveal" id="source-packages">
+          <div class="section-inner">
+            <div class="section-title-wrap">
+              <p class="eyebrow">Source package licenses</p>
+              <h2>Source package licenses</h2>
+            </div>
+            <p class="pricing-copy">
+              Source code packages use the source-available Functional Source License (FSL).
+              Alternative commercial licensing is available by contract. After two years, each
+              release converts to Apache 2.0 or MIT. Pricing on this page follows the
+              module-pricing dataset timestamped 2026-02-21 (UTC).
+            </p>
+            <div class="pricing-facts">
+              <article class="panel">
+                <h3>All-inclusive package</h3>
+                <p>
+                  All-inclusive total price is <strong>31,126.66 EUR</strong>. Full package price
+                  with 20% discount is <strong>24,901.33 EUR</strong>.
+                </p>
+                <div class="pricing-facts-cta" aria-label="All-inclusive pricing actions">
+                  <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales</a>
+                  <a class="button button-secondary" href="https://docs.busdk.com/implementation/module-pricing"
+                    >Full pricing</a
+                  >
+                </div>
+              </article>
+              <article class="panel">
+                <h3>Open-source foundations</h3>
+                <p>
+                  <code>bus</code>, <code>docs</code>, and <code>busdk.com</code> are open source and
+                  excluded from source package license pricing.
+                </p>
+                <div class="pricing-facts-cta" aria-label="Open-source foundation links">
+                  <a class="button button-primary" href="https://docs.busdk.com">Open docs</a>
+                  <a class="button button-secondary" href="https://github.com/busdk/busdk">Open GitHub</a>
+                </div>
+              </article>
+              <article class="panel">
+                <h3>Pricing model</h3>
+                <p>
+                  Base price covers only that module's source release; full price includes also its
+                  dependencies.
+                </p>
+                <div class="pricing-facts-cta" aria-label="Pricing model actions">
+                  <a class="button button-primary" href="https://docs.busdk.com/implementation/module-pricing"
+                    >Full pricing</a
+                  >
+                  <a class="button button-secondary" href="mailto:sales@hg.fi">Contact sales</a>
+                </div>
+              </article>
+            </div>
+            <div class="pricing-groups">
+              <article class="pricing-group">
+                <h3>Core commands</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Core commands module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-init">bus init</a></td><td>533.26</td><td>533.26</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-config">bus config</a></td><td>1,619.54</td><td>434.51</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-data">bus data</a></td><td>1,185.03</td><td>1,185.03</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-preferences">bus preferences</a></td><td>316.01</td><td>316.01</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>User interfaces</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="User interfaces module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-sheets">bus sheets</a></td><td>256.76</td><td>256.76</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-books">bus books</a></td><td>10,033.23</td><td>1,362.78</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Automation and integration</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Automation and integration module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-api">bus api</a></td><td>8,670.45</td><td>750.52</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-run">bus run</a></td><td>1,599.78</td><td>553.01</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-agent">bus agent</a></td><td>908.52</td><td>592.51</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-secrets">bus secrets</a></td><td>454.26</td><td>138.25</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-dev">bus dev</a></td><td>2,626.80</td><td>1,580.03</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Ledger foundation</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Ledger foundation module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-bfl">bus bfl</a></td><td>1,757.79</td><td>572.76</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-accounts">bus accounts</a></td><td>2,429.31</td><td>1,244.28</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-entities">bus entities</a></td><td>1,441.78</td><td>1,125.77</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-period">bus period</a></td><td>5,964.64</td><td>1,718.29</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-balances">bus balances</a></td><td>6,438.65</td><td>474.01</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Journal flow</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Journal flow module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-journal">bus journal</a></td><td>5,964.64</td><td>1,817.04</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-invoices">bus invoices</a></td><td>1,481.28</td><td>1,165.27</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-bank">bus bank</a></td><td>1,422.03</td><td>1,422.03</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-reconcile">bus reconcile</a></td><td>10,092.48</td><td>1,224.53</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-attachments">bus attachments</a></td><td>790.02</td><td>790.02</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Assets and resources</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Assets and resources module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-assets">bus assets</a></td><td>1,027.02</td><td>1,027.02</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-loans">bus loans</a></td><td>829.52</td><td>829.52</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-inventory">bus inventory</a></td><td>651.76</td><td>651.76</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-payroll">bus payroll</a></td><td>632.01</td><td>632.01</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-budget">bus budget</a></td><td>711.02</td><td>711.02</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Validation and reports</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Validation and reports module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-reports">bus reports</a></td><td>1,501.03</td><td>1,501.03</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-replay">bus replay</a></td><td>1,678.79</td><td>493.76</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-validate">bus validate</a></td><td>888.77</td><td>888.77</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-vat">bus vat</a></td><td>1,797.29</td><td>1,797.29</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-pdf">bus pdf</a></td><td>671.51</td><td>671.51</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-filing">bus filing</a></td><td>632.01</td><td>632.01</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Filing targets</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Filing targets module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-filing-prh">bus filing prh</a></td><td>691.26</td><td>691.26</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-filing-vero">bus filing vero</a></td><td>928.27</td><td>928.27</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+              <article class="pricing-group">
+                <h3>Other modules</h3>
+                <div class="pricing-table-wrap" role="region" aria-label="Other module prices">
+                  <table class="pricing-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Module</th>
+                        <th scope="col">Full price (EUR)</th>
+                        <th scope="col">Base price (EUR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-shell">bus shell</a></td><td>138.25</td><td>138.25</td></tr>
+                      <tr><td><a href="https://docs.busdk.com/modules/bus-status">bus status</a></td><td>276.51</td><td>276.51</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+            <div class="pricing-cta" aria-label="Pricing actions">
+              <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales</a>
+              <a class="button button-secondary" href="https://docs.busdk.com/implementation/module-pricing"
+                >Full pricing</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="trust reveal">
+          <div class="section-inner">
+            <div class="trust-panel">
+              <h2>Built for long-lived operations</h2>
+              <p>
+                BusDK favors open formats, versioned workflows, and CLI determinism so teams can keep
+                operating safely over decades, not just a release cycle.
+              </p>
+              <p>
+                The platform is intentionally agent-ready while staying human-operable, so automation
+                and manual review can coexist in the same workflow.
+              </p>
+              <p>
+                Learn the architecture in <a href="https://docs.busdk.com/architecture">docs.busdk.com/architecture</a>
+                and the core dispatcher in
+                <a href="https://github.com/busdk/bus">github.com/busdk/bus</a>.
+              </p>
+            </div>
+            <aside class="status-panel" aria-label="Project status">
+              <h3>Project status</h3>
+              <p>Pre-release and under active development.</p>
+              <p class="meta">Interfaces and schemas may change while modules stabilize.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="final-cta reveal">
+          <div class="section-inner">
+            <h2>Evaluate BusDK in your workflow</h2>
+            <p>
+              Start with the documentation quickstart, then run modules on a test repository to
+              validate your accounting and reporting flow end-to-end.
+            </p>
+            <div class="hero-cta">
+              <a class="button button-primary" href="https://docs.busdk.com">Open documentation</a>
+              <a class="button button-secondary" href="https://github.com/busdk">Browse organization</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK provides transparent,
+            auditable, module-driven business operations tooling.
+          </p>
+        </div>
+      </footer>
+    </div>
+
     <script>
-      const copyButton = document.querySelector(
-        "[data-copy-target='quick-install']"
-      );
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+      }
+
+      if (storedTheme === "light" || storedTheme === "dark") {
+        applyTheme(storedTheme);
+      } else {
+        applyTheme(prefersDark.matches ? "dark" : "light");
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+          const next = current === "dark" ? "light" : "dark";
+          applyTheme(next);
+          localStorage.setItem("theme", next);
+        });
+      }
+
+      const onSystemThemeChange = (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      };
+      if (prefersDark.addEventListener) {
+        prefersDark.addEventListener("change", onSystemThemeChange);
+      } else if (prefersDark.addListener) {
+        prefersDark.addListener(onSystemThemeChange);
+      }
+
+      const copyButton = document.querySelector("[data-copy-target='quick-install']");
       const installCommand = document.getElementById("quick-install-command");
 
       if (copyButton && installCommand) {
@@ -220,6 +576,19 @@
           }, 2000);
         });
       }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          }
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
     </script>
   </body>
 </html>
