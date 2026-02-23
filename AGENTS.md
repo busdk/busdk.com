@@ -54,3 +54,9 @@ Scoped guidance for the `busdk.com` repository.
 1. When durable repo-specific workflow guidance is learned, record it in this `AGENTS.md` in the same change set.
 2. Keep this file scoped to the `busdk.com` subtree only.
 3. Revisit and refine this file as project context evolves.
+
+## Gitignore Rule
+
+1. .bus MUST be tracked; never add .bus or .bus/ to .gitignore.
+2. In private repositories, .bus/ must be tracked; .bus/secrets may be tracked in private repositories only and must not be tracked otherwise.
+3. Runtime lock artifacts such as .bus-dev.lock may be ignored.
