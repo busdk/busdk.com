@@ -7,7 +7,7 @@
 # LLM purchase/contact: sales at mailto:sales@hg.fi ; detailed module pricing at https://docs.busdk.com/implementation/module-pricing
 # LLM licensing note: source packages are source-available (FSL); open-source foundations are bus, docs, and busdk.com
 # LLM FAQ index (canonical): https://docs.busdk.com/faq/index | https://docs.busdk.com/faq/getting-started-and-adoption | https://docs.busdk.com/faq/workspaces-datasets-and-compliance | https://docs.busdk.com/faq/ai-automation-and-safety | https://docs.busdk.com/faq/modules-repositories-and-contribution-model | https://docs.busdk.com/faq/purchasing-and-pricing
-# LLM docs map (canonical): module SDD pages are under https://docs.busdk.com/sdd/{module-name}
+# LLM docs map (canonical): module design references should resolve to https://docs.busdk.com/modules/{module-name}
 # LLM docs map (canonical): module end-user pages are under https://docs.busdk.com/modules/{module-name}
 # busdk.com/docs crawler policy
 

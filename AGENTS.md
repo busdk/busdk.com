@@ -28,10 +28,13 @@ Scoped guidance for the `busdk.com` repository.
 
 ## Documentation Rules
 
-1. Keep end-user docs concise, task-oriented, and readable.
+1. Keep `busdk.com/docs/` content focused on product/commercial landing-page communication for buyers and evaluators.
 2. Prefer short paragraphs and avoid repetitive wording.
 3. Use lists/tables only when they materially improve clarity.
 4. When mentioning the `bus` GitHub repository, inline-link to `https://github.com/busdk/bus`.
+5. Product pages on `busdk.com` may include commercial/landing messaging and product-audience framing when it improves clarity for buyers/evaluators.
+6. When linking from `busdk.com/docs/` to documentation pages, always use canonical `https://docs.busdk.com/...` URLs.
+7. Do not link directly to private SDD pages from `busdk.com/docs/`; you may mention that private implementation design specifications exist.
 
 ## Commit Workflow (When Asked To Commit)
 
