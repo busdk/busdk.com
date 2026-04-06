@@ -1,0 +1,9 @@
+user_id,service_id
+u-1,bus-factory
+u-1,bus-inspection
+u-1,bus-ledger
+u-1,bus-portal
+u-admin,bus-factory
+u-admin,bus-inspection
+u-admin,bus-ledger
+u-admin,bus-portal

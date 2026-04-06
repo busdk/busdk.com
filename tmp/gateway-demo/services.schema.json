@@ -1,0 +1,15 @@
+{
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "title", "type": "string"},
+    {"name": "command", "type": "string"},
+    {"name": "root_mode", "type": "string"},
+    {"name": "root_flag", "type": "string"},
+    {"name": "args_json", "type": "string"},
+    {"name": "enabled", "type": "boolean"}
+  ],
+  "primaryKey": "id",
+  "busdk": {
+    "update_policy": "in_place"
+  }
+}

@@ -1,0 +1,3 @@
+id,username,full_name,role,password_salt,password_hash
+u-admin,admin,Gateway Admin,admin,salt-u-admin,b14574e5bdf17b83112819cc3ff38151c5e0dbd7abf452375acbb4742fac47a4
+u-1,demo,Demo User,admin,salt-cc2704b630a4f2d2f43774a4,c58bd7bdce5932215eec8a17b48ea3d2dcf60170c69ad8c80bcd2d9beace6968

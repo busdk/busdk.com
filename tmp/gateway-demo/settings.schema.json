@@ -1,0 +1,11 @@
+{
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "login_title", "type": "string"},
+    {"name": "login_copy", "type": "string"}
+  ],
+  "primaryKey": "id",
+  "busdk": {
+    "update_policy": "in_place"
+  }
+}

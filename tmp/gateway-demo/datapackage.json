@@ -1,0 +1,33 @@
+{
+  "profile": "tabular-data-package",
+  "resources": [
+    {
+      "name": "gateway-services",
+      "path": "services.csv",
+      "schema": {
+        "path": "services.schema.json"
+      }
+    },
+    {
+      "name": "gateway-settings",
+      "path": "settings.csv",
+      "schema": {
+        "path": "settings.schema.json"
+      }
+    },
+    {
+      "name": "gateway-user-services",
+      "path": "user_services.csv",
+      "schema": {
+        "path": "user_services.schema.json"
+      }
+    },
+    {
+      "name": "gateway-users",
+      "path": "users.csv",
+      "schema": {
+        "path": "users.schema.json"
+      }
+    }
+  ]
+}

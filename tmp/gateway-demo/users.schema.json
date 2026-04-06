@@ -1,0 +1,14 @@
+{
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "username", "type": "string"},
+    {"name": "full_name", "type": "string"},
+    {"name": "role", "type": "string"},
+    {"name": "password_salt", "type": "string"},
+    {"name": "password_hash", "type": "string"}
+  ],
+  "primaryKey": "id",
+  "busdk": {
+    "update_policy": "in_place"
+  }
+}

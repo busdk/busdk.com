@@ -1,0 +1,5 @@
+id,title,command,root_mode,root_flag,args_json,enabled
+bus-factory,Factory,bus-factory,root-flag,--root,null,true
+bus-inspection,Inspection,bus-inspection,chdir,,null,true
+bus-ledger,Ledger,bus-ledger,chdir,,null,true
+bus-portal,Portal,bus-portal,chdir,,null,true
