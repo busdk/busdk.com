@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>24.1.-7.2.2026 | Miten BusDK tuli julkiseksi</title>
+    <meta
+      name="description"
+      content="Ensimmäinen historiavaihe näyttää, miten BusDK:n superprojekti ja julkinen sivu muodostuivat tammikuun lopun 2026 commit-sarjasta helmikuun ensimmäisiin tageihin."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-24-02-07-public-launch.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-24-02-07-public-launch.html" />
+    <meta property="og:title" content="24.1.-7.2.2026 | Miten BusDK tuli julkiseksi" />
+    <meta
+      property="og:description"
+      content="Tammikuun lopun ja helmikuun alun commitit näyttävät, miten BusDK rakensi ensin superprojektin rungon ja sitten julkisen sisäänmenopolun."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="24.1.-7.2.2026 | Miten BusDK tuli julkiseksi" />
+    <meta
+      name="twitter:description"
+      content="BusDK:n varhaishistoria: superprojektin synty, Makefile-delegointi, README:n kirkastuminen ja ensimmäiset julkiset verkkosivut."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "24.1.-7.2.2026: Miten BusDK tuli julkiseksi",
+        "description": "Ensimmäinen historiavaihe näyttää, miten BusDK:n superprojekti ja julkinen sivu muodostuivat tammikuun lopun 2026 commit-sarjasta helmikuun ensimmäisiin tageihin.",
+        "datePublished": "2026-04-06",
+        "dateModified": "2026-04-06",
+        "inLanguage": "fi",
+        "author": { "@type": "Organization", "name": "BusDK team" },
+        "publisher": { "@type": "Organization", "name": "BusDK" },
+        "mainEntityOfPage": "https://busdk.com/blog/2026-01-24-02-07-public-launch.html",
+        "image": "https://busdk.com/assets/hero/hero2-light.webp"
+      }
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./">Blog</a>
+            <a href="2026-01-24-02-07-public-launch.html" aria-current="page">Phase 1</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">History Series · Phase 1</p>
+              <h1>24.1.-7.2.2026: miten BusDK tuli julkiseksi</h1>
+              <p class="intro">
+                BusDK:n ensimmäinen näkyvä vaihe ei ala hienosta tuote-esittelystä vaan repo-rungosta:
+                superprojektin ensimmäiset commitit 24.-25. tammikuuta 2026 rakentavat Makefile-vetoisen
+                orkestroinnin, submodule-ajattelun ja dokumentaation minimitason, jonka päälle myöhempi
+                julkinen viesti voidaan ylipäätään rakentaa.
+              </p>
+              <p class="intro">
+                Helmikuun 7. päivään mennessä mukaan ehtivät jo ensimmäiset kymmenen tagia
+                (<code>v0.0.1</code> ... <code>v0.0.10</code>) ja `busdk.com`-sivuston quick install
+                -polku. Se kertoo varhaisesta tavoitteesta tehdä BusDK:sta sekä rakennettava että
+                arvioitava mahdollisimman aikaisin.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">Havaintoikkuna: 2026-01-24 ... 2026-02-07</span>
+                <span class="meta-chip">Ensimmäiset 10 tagia</span>
+                <span class="meta-chip">Superprojekti + public site</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack">
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>SMB:</strong> jo ensimmäinen vaihe painottaa käyttöönottopolun selkeyttä eikä pelkkää sisäistä prototypointia.</li>
+              <li><strong>Dev:</strong> superprojekti määrittyy varhain Makefile-delegoinnin ja submodule-pinnausten ympärille.</li>
+              <li><strong>Saatavuus:</strong> 7.2.2026 mennessä BusDK:lla on jo julkinen sivu, moduulilinkit ja quick install -esittely.</li>
+              <li><strong>Yhteensopivuus:</strong> kyse on perusrungon rakentamisesta, ei rikkovasta käyttöliittymämuutoksesta.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Mitä historiasta näkyy tässä vaiheessa</h2>
+            <div class="timeline">
+              <article class="timeline-item">
+                <time datetime="2026-01-24">24.1.2026</time>
+                <h3>`busdk.com` avataan heti näkyväksi</h3>
+                <p>
+                  `busdk.com`-repon commitit <code>4d76802</code>, <code>4786296</code> ja
+                  <code>6a74000</code> luovat ensin repon, `CNAME`:n ja ensimmäisen sivun. Tämä on
+                  vahva merkki siitä, että julkinen näkyvyys haluttiin avata jo rakentamisen aikana.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-01-25">25.1.2026</time>
+                <h3>Superprojektin orkestrointimalli lukitaan</h3>
+                <p>
+                  Commitit kuten <code>6589073</code> ("orchestrate module builds via Makefile delegation")
+                  ja <code>dc8b922</code> ("Updated references to submodules") näyttävät, että BusDK:n
+                  superprojekti nähtiin alusta asti moduuleja koordinoivana eikä liiketoimintalogiikkaa
+                  sisältävänä monoliittina.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-01-27">27.1.2026</time>
+                <h3>Makefile-käytettävyys korjataan varhain</h3>
+                <p>
+                  Commit <code>a46c8f1</code> "Fixed Makefiles" viittaa siihen, että build- ja
+                  bootstrap-pinta hiottiin nopeasti toimivaksi ennen laajempaa julkaisutahdin
+                  kasvattamista.
+                </p>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-02-07">7.2.2026</time>
+                <h3>Quick install ja modulaarinen esittely tulevat näkyviin</h3>
+                <p>
+                  `busdk.com`-repon commitit <code>497fc01</code>, <code>5ecbce2</code>,
+                  <code>a122643</code> ja <code>302d691</code> lisäävät puuttuvia moduuleja,
+                  quick install -osion ja paremman visuaalisen rungon. Samalle päivälle osuvat myös
+                  tagit <code>v0.0.1</code> ... <code>v0.0.10</code>.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Miksi tämä vaihe oli tärkeä</h2>
+            <div class="detail-grid">
+              <div class="callout">
+                <h3>Arvioitavuus ennen täydellisyyttä</h3>
+                <p>
+                  Julkinen sivu ja quick install ovat liiketoimintamielessä tärkeitä siksi, että ne
+                  laskevat kokeilun kynnystä. BusDK ei odottanut "valmista alustaansa" ennen näkyvää
+                  käyttöpolkua.
+                </p>
+              </div>
+              <div class="callout">
+                <h3>Rajattu superprojekti</h3>
+                <p>
+                  Kehittäjän näkökulmasta jo ensimmäinen vaihe tekee yhden asian selväksi: superprojekti
+                  delegoi moduuleille. Se on hyvä signaali niille, jotka haluavat ymmärtää BusDK:n
+                  arkkitehtuurin ilman yllätyksiä.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Näin tarkistat saman historian</h2>
+            <h3>Superprojektin ensimmäinen vaihe</h3>
+            <pre><code>git log --date=short --pretty=format:'%ad %h %s' --since=2026-01-24 --until=2026-02-07</code></pre>
+            <h3>`busdk.com`-sivuston alku</h3>
+            <pre><code>git -C busdk.com log --reverse --date=short --pretty=format:'%ad %h %s' --max-count=12</code></pre>
+            <h3>Ensimmäiset tagit</h3>
+            <pre><code>git for-each-ref --sort=creatordate --format='%(creatordate:short) %(refname:short)' refs/tags | head -n 10</code></pre>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Muutosloki tästä vaiheesta</h2>
+            <h3>Added</h3>
+            <ul class="tldr-list">
+              <li>Superprojektin ensimmäinen Makefile-vetoinen orkestrointi.</li>
+              <li>`busdk.com`-repon julkinen verkkopinta ja `CNAME`.</li>
+              <li>Ensimmäinen quick install -sisääntulo ja moduuliesittely.</li>
+            </ul>
+            <h3>Changed</h3>
+            <ul class="tldr-list">
+              <li>README- ja bootstrap-viestiä kirkastettiin ennen laajempaa tagivauhtia.</li>
+              <li>Makefile-käytettävyyttä korjattiin ennen näkyvämpää julkaisutahdin kasvua.</li>
+            </ul>
+            <h3>Compatibility</h3>
+            <p>
+              Tämä vaihe rakentaa perustan myöhemmille muutoksille. Historiasta ei näy käyttäjälle
+              suunnattua breaking-migraatiota, vaan ensisijaisesti rungon muodostuminen.
+            </p>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava vaihe</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>Siirry julkaisu- ja moduulisprinttiin</h3>
+                <p>Seuraava artikkeli näyttää, miten helmikuu 2026 kasvattaa tagitahdin ja moduulipinnan nopeasti näkyväksi tuotteeksi.</p>
+                <a href="2026-02-08-02-22-release-sprint.html">Lue vaihe 2: helmikuun release sprint</a>
+              </div>
+              <div class="callout">
+                <h3>Kanoninen docs-polku</h3>
+                <p>Jos haluat hypätä historiasta tämänhetkiseen tuotepintaan, aloita suoraan dokumentaatiosta.</p>
+                <a href="https://docs.busdk.com">Avaa BusDK-dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); });
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

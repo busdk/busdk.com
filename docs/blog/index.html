@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BusDK Blogi | Julkaisut, muutokset ja konkreettiset tuotepäivitykset</title>
+    <meta
+      name="description"
+      content="BusDK-blogi kokoaa julkaisut, muutokset ja konkreettiset tuotepäivitykset BusDK:n komentopinnasta, integraatioista ja raportointityönkuluista."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://busdk.com/blog/" />
+    <meta property="og:title" content="BusDK Blogi | Julkaisut, muutokset ja konkreettiset tuotepäivitykset" />
+    <meta
+      property="og:description"
+      content="Päiväkohtaiset tuotepäivitykset BusDK:n komentopinnasta, integraatioista, release-putkesta ja raportointityöstä."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BusDK Blogi | Julkaisut, muutokset ja konkreettiset tuotepäivitykset"
+    />
+    <meta
+      name="twitter:description"
+      content="BusDK-blogi kertoo mitä muuttui, minä päivänä ja mitä siitä seuraa käyttäjälle tai kehittäjälle."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "BusDK Blogi",
+        "url": "https://busdk.com/blog/",
+        "description": "BusDK:n julkinen blogi julkaisuista, muutoksista ja tuotepäivityksistä.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "BusDK"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="https://busdk.com/#platform">Platform</a>
+            <a href="https://busdk.com/#workflows">Workflows</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <div class="page-shell">
+          <section class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Blog</p>
+              <h1>BusDK:n julkaisut ja tärkeimmät muutokset.</h1>
+              <p class="intro">Julkaisut, korjaukset ja uudet moduulit.</p>
+              <div class="hero-meta" aria-label="Blog focus">
+                <span class="meta-chip">Tuotepäivitykset</span>
+                <span class="meta-chip">Komentopinta</span>
+                <span class="meta-chip">Raportointi</span>
+                <span class="meta-chip">Integraatiot</span>
+              </div>
+              <div class="hero-actions">
+                <a class="button button-primary" href="busdk-history-2026.html">Avaa 6.4.2026 tilannekuva</a>
+                <a class="button button-secondary" href="https://docs.busdk.com">Avaa dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="content-panel">
+            <p class="small-label">Muutokset</p>
+            <h2>BusDK:n tärkeimmät muutokset</h2>
+            <div class="timeline">
+              <article class="timeline-item">
+                <time datetime="2026-04-05">5.4.2026</time>
+                <h3>Replay- ja profit-and-loss-bugeja suljettiin saman päivän aikana</h3>
+                <p>Bugit avattiin, varmistettiin ja suljettiin näkyvästi saman päivän trackerikierrossa.</p>
+                <a href="2026-04-05-replay-and-profit-loss-fixes.html">Lue 5.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-04">4.4.2026</time>
+                <h3><code>changed-scope</code> alkoi huomata dirty submodulet, ja <code>bus-files</code> tuli mukaan</h3>
+                <p>Root-testikohdistuksen tärkeä korjaus ja uusi submodule osuivat samalle päivälle.</p>
+                <a href="2026-04-04-changed-scope-and-bus-files.html">Lue 4.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-01">1.4.2026</time>
+                <h3>Tracker-only helperit ja worktree-agentit lisättiin</h3>
+                <p>Päivä paransi konkreettisesti sekä tracker-committeja että agenttien ajotapaa.</p>
+                <a href="2026-04-01-tracker-helper-and-worktree-agents.html">Lue 1.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-03-30">30.3.2026</time>
+                <h3><code>balance assert</code> ilmestyi samalla kun PDF-regressioita suljettiin</h3>
+                <p>Uusi assert-komento ja pitkä lista PDF-korjauksia osuivat samalle päivälle.</p>
+                <a href="2026-03-30-balance-assert-and-pdf-fixes.html">Lue 30.3.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-03-21">21.3.2026</time>
+                <h3>Gatewayn CLI CRUD -sopimukset alkoivat näkyä superprojektissa</h3>
+                <p>Gatewayn hallintapinta muuttui päivämäärän tarkkuudella näkyväksi superprojektin historiassa.</p>
+                <a href="2026-03-21-gateway-contracts.html">Lue 21.3.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-03-17">17.3.2026</time>
+                <h3><code>bus-inspection</code> ja <code>bus-portal</code> saivat release-scaffoldingin</h3>
+                <p>Uusi submodule, compose-esimerkki ja GHCR-julkaisu tulivat näkyviksi samalla commitilla.</p>
+                <a href="2026-03-17-inspection-and-portal.html">Lue 17.3.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-03-02">2.3.2026</time>
+                <h3>Release-paketointi laajeni kaikkiin moduuleihin ja traceability-säännöt koventuivat</h3>
+                <p>Release-arkistot alkoivat kerätä binäärit kaikista moduulien <code>bin</code>-hakemistoista.</p>
+                <a href="2026-03-02-release-packaging-and-traceability.html">Lue 2.3.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-02-22">22.2.2026</time>
+                <h3>Pricing-snapshot ja landing page ottivat kaupallisen muodon</h3>
+                <p>Hinnoittelu sidottiin datasettiin ja rinnalle tuli synteettinen 2024 fixture-korpus.</p>
+                <a href="2026-02-22-pricing-and-landing-page.html">Lue 22.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-02-20">20.2.2026</time>
+                <h3>Root e2e, FSL-lisenssiviesti ja Windows-paketointi tulivat samana päivänä</h3>
+                <p>Testipinta, lisenssiviesti ja release-dokumentaatio ottivat yhdessä ison askeleen eteenpäin.</p>
+                <a href="2026-02-20-root-e2e-and-licensing.html">Lue 20.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-02-13">13.2.2026</time>
+                <h3>API, agentti, preferences ja sheets tulivat mukaan</h3>
+                <p>BusDK:n moduuliekosysteemi laajeni yhdellä päivällä useaan uuteen suuntaan.</p>
+                <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-02-07">7.2.2026</time>
+                <h3>Release workflow ja install-polku nousivat näkyviin</h3>
+                <p>Release-putki, publish-helper, install-artifaktit ja quick install -julkisivu etenivät yhdessä.</p>
+                <a href="2026-02-07-release-pipeline-and-install.html">Lue 7.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-01-25">25.1.2026</time>
+                <h3>BusDK-superprojekti sai ensimmäisen toteutuksensa</h3>
+                <p>Makefile-delegointi, submodule-skriptit ja README:n ensimmäinen kunnollinen runko tulivat samalle päivälle.</p>
+                <a href="2026-01-25-superproject-launched.html">Lue 25.1.2026 uutinen</a>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-panel">
+            <p class="small-label">Tilannekuva</p>
+            <h2>Missä BusDK oli 6.4.2026</h2>
+            <div class="posts-grid">
+              <article class="post-card">
+                <span class="post-date">2026-04-06</span>
+                <h3>BusDK 6.4.2026: julkaisut, moduulit ja viimeisimmät vakauskorjaukset</h3>
+                <p>
+                  Kooste huhtikuun alun julkaisuista, uusista moduuleista, changed-scope-korjauksesta
+                  ja viimeisimmistä vakausparannuksista.
+                </p>
+                <a href="busdk-history-2026.html">Lue 6.4.2026 tilannekuva</a>
+              </article>
+              <aside class="quote-card">
+                <p class="small-label">Nopea aloitus</p>
+                <p>
+                  Aloita tilannekuvasta, jos haluat yhdellä sivulla tärkeimmät julkaisut,
+                  vakauskorjaukset ja dokumentaatiolinkit.
+                </p>
+              </aside>
+            </div>
+          </section>
+
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") {
+          return storedTheme;
+        }
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

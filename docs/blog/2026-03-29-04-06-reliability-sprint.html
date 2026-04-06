@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>29.3.-6.4.2026 | Luotettavuusspurtti: assertit, PDF-korjaukset ja changed-scope-kuri</title>
+    <meta name="description" content="BusDK:n historian viimeisin vaihe painottaa luotettavuutta: assert-komennot, PDF-regressioiden käsittely, tracker-only-kuri, dirty-submodule changed-scope ja bus-files-laajennus näkyvät kaikki samassa sprintissä." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-03-29-04-06-reliability-sprint.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-03-29-04-06-reliability-sprint.html" />
+    <meta property="og:title" content="29.3.-6.4.2026 | Luotettavuusspurtti: assertit, PDF-korjaukset ja changed-scope-kuri" />
+    <meta property="og:description" content="Maaliskuun lopun ja huhtikuun alun työ näyttää BusDK:n luonteen selkeimmin: projektissa kovennetaan ennen kaikkea raportoinnin, testausscopen ja tracker-hallinnan determinismiä." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="29.3.-6.4.2026 | Luotettavuusspurtti: assertit, PDF-korjaukset ja changed-scope-kuri" />
+    <meta name="twitter:description" content="Assert-komennot, PDF-bugien sulkeminen, tracker-only-commit helperit ja dirty-submodule changed-scope ovat tämän vaiheen ydinsignaaleja." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","headline":"29.3.-6.4.2026: Luotettavuusspurtti: assertit, PDF-korjaukset ja changed-scope-kuri","description":"BusDK:n historian viimeisin vaihe painottaa luotettavuutta: assert-komennot, PDF-regressioiden käsittely, tracker-only-kuri, dirty-submodule changed-scope ja bus-files-laajennus näkyvät kaikki samassa sprintissä.","datePublished":"2026-04-06","dateModified":"2026-04-06","inLanguage":"fi","author":{"@type":"Organization","name":"BusDK team"},"publisher":{"@type":"Organization","name":"BusDK"},"mainEntityOfPage":"https://busdk.com/blog/2026-03-29-04-06-reliability-sprint.html","image":"https://busdk.com/assets/hero/hero2-light.webp"}
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-03-29-04-06-reliability-sprint.html" aria-current="page">Phase 5</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">History Series · Phase 5</p><h1>29.3.-6.4.2026: luotettavuusspurtti näyttää BusDK:n ytimen</h1><p class="intro">Jos haluaa ymmärtää nopeasti, mikä BusDK:ssa on tärkeintä, kannattaa katsoa historian viimeisimpiä committeja. Maaliskuun lopun ja huhtikuun alun työ keskittyy assert-komentoihin, PDF-regressioiden hallintaan, tracker-kuriin, agenttiympäristöön ja changed-scope-luotettavuuteen.</p><p class="intro">Tämä on olennaista, koska juuri tässä vaiheessa BusDK näyttää olevansa enemmän "luotettavuuden käyttöjärjestelmä" kuin pelkkä ominaisuusputki. Muutokset liittyvät siihen, miten virheet havaitaan, miten ne rajataan ja miten oikeat testit valitaan automaattisesti.</p><div class="hero-meta"><span class="meta-chip">Havaintoikkuna: 2026-03-29 ... 2026-04-06</span><span class="meta-chip">Tagit v0.0.49 ... v0.0.50</span><span class="meta-chip">Assert + PDF + changed scope</span></div></div></article>
+
+          <section class="content-panel section-stack">
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>SMB:</strong> tämä vaihe vähentää raportoinnin ja tarkastuksen yllätyksiä, koska regressioita ja poikkeamia käsitellään näkyvästi ja nopeasti.</li>
+              <li><strong>Dev:</strong> assert-komennot, tracker-only commit helperit ja dirty-submodule changed-scope tekevät kehityksestä turvallisempaa ja nopeampaa yhtä aikaa.</li>
+              <li><strong>Saatavuus:</strong> vaihe päättyy tageihin <code>v0.0.49</code> ja <code>v0.0.50</code>.</li>
+              <li><strong>Yhteensopivuus:</strong> muutokset ovat enimmäkseen luotettavuutta parantavia, eivät käyttömallia rikkovia.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Vaiheen tärkeimmät commit-signaalit</h2>
+            <div class="timeline">
+              <article class="timeline-item"><time datetime="2026-03-30">30.3.2026</time><h3>Assert-komennot tulevat näkyviksi</h3><p>Commit <code>524ad40</code> "Implement balance assert command" on yksi vaiheen selvimmistä tuotepinnan signaaleista. Se kytkee verifioinnin suoraan komentopintaan eikä jätä sitä ulkoiseksi tarkistusrituaaliksi.</p></article>
+              <article class="timeline-item"><time datetime="2026-03-30">30.3.2026 ... 1.4.2026</time><h3>PDF-regressioita käsitellään poikkeuksellisen tiheästi</h3><p>Commitit <code>77ab533</code>, <code>e092ec8</code>, <code>f97c220</code>, <code>aae940d</code>, <code>8f4f3e1</code>, <code>7a5a869</code> ja monet muut osoittavat, että raportointi- ja PDF-pinta oli aktiivisen stabiloinnin kohteena. Tämä on raskasta mutta arvokasta työtä, koska se kohdistuu suoraan käyttäjälle näkyvään evidenssiin.</p></article>
+              <article class="timeline-item"><time datetime="2026-04-01">1.4.2026</time><h3>Tracker-only commit helperit kodifioivat työskentelymallin</h3><p>Commit <code>853ecec</code> lisää <code>scripts/commit-tracker-only.sh</code>-helperin ja dokumentoi tracker-only-autonomous-commit-säännön. Tämä on harvinaisen eksplisiittinen tapa vähentää vahinkostagejen riskiä.</p></article>
+              <article class="timeline-item"><time datetime="2026-04-04">4.4.2026</time><h3>Changed-scope oppii havaitsemaan dirty submodulet</h3><p>Commit <code>97d7d04</code> korjaa yhden tärkeän käytännön ongelman: root <code>make test</code> ja <code>make e2e</code> osaavat tämän jälkeen valita muuttuneet moduulit myös silloin, kun superprojektissa ei ole suoraa polkumuutosta. Tämä on nopean mutta turvallisen iteroinnin ydinparannus.</p></article>
+              <article class="timeline-item"><time datetime="2026-04-04">4.4.2026 ... 6.4.2026</time><h3>`bus-files` nousee uutena laajennuspisteenä</h3><p>Commit <code>1acc8d4</code> lisää <code>bus-files</code>-submodulepinnin, ja heti perään feature trackerit käsittelevät parse/find- ja assert-polkuja. Viimeinen tässä työpuussa näkyvä commit <code>459d390</code> sulkee bus-files assert -feature requestin 6.4.2026.</p></article>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Miksi tämä vaihe kertoo eniten BusDK:n luonteesta</h2>
+            <div class="detail-grid">
+              <div class="callout"><h3>Raportoinnin näkyvä laatu on prioriteetti</h3><p>PDF- ja raportointiregressioiden suuri määrä ei ole pelkkä virheluettelo. Se kertoo, että BusDK kohtelee käyttäjälle lähtevää evidenssiä kriittisenä tuotteena, jota hiotaan järjestelmällisesti.</p></div>
+              <div class="callout"><h3>Nopeus ilman scope-sumua</h3><p>Dirty-submodule changed-scope -korjaus on kehittäjälle ehkä koko vaiheen tärkein detalji. Se yhdistää nopean iteroinnin ja oikean testikohdistuksen, mikä on vaikea mutta arvokas yhdistelmä monimoduulisessa repossa.</p></div>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Näin tarkistat tämän sprintin</h2>
+            <pre><code>git log --date=short --pretty=format:'%ad %h %s' --since=2026-03-29 --until=2026-04-06</code></pre>
+            <pre><code>git show --stat --summary --format=medium 97d7d04</code></pre>
+            <pre><code>make -s print-test-modules TEST_SCOPE=changed</code></pre>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Muutosloki tästä vaiheesta</h2>
+            <h3>Added</h3>
+            <ul class="tldr-list">
+              <li><code>balance assert</code> -komento ja uutta assert-ajattelua myös muille pinnoille.</li>
+              <li>Tracker-only commit helperit.</li>
+              <li><code>bus-files</code>-submodule ja siihen liittyvä uusi feature-alue.</li>
+            </ul>
+            <h3>Changed</h3>
+            <ul class="tldr-list">
+              <li>Changed-scope-testikohdistus laajennettiin havaitsemaan likaiset alityöpuut.</li>
+              <li>Agent container -toolchainiä ja self-test-pintaa päivitettiin.</li>
+            </ul>
+            <h3>Fixed</h3>
+            <ul class="tldr-list">
+              <li>Useita PDF-width-, row-gap-, row-text-, TOC-, annotation- ja alignment-regressioita suljettiin.</li>
+              <li>Custom-period <code>bus-reports</code> -bugi suljettiin 2.4.2026.</li>
+              <li>Publish selftest TTY -bugi suljettiin 4.4.2026.</li>
+            </ul>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Continue</p>
+            <h2>Mitä seuraavaksi</h2>
+            <div class="cta-grid two-up">
+              <div class="callout"><h3>Lue sarjan yleiskatsaus</h3><p>Jos haluat nähdä koko kehityskaaren yhdessä tekstissä, palaa sarjan yhteenvetopostaukseen.</p><a href="busdk-history-2026.html">Avaa historiakatsauksen yleisartikkeli</a></div>
+              <div class="callout"><h3>Siirry käytännön docs-polkuun</h3><p>Jos historian sijaan haluat testata nykyisiä komentoja, siirry moduuli- ja workflow-dokumentaatioon.</p><a href="https://docs.busdk.com/workflow/accounting-workflow-overview">Avaa accounting workflow overview</a></div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme){ root.setAttribute("data-theme", theme); if(!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme(){ if(storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme()); if(themeToggle) themeToggle.addEventListener("click", ()=>{ const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); prefersDark.addEventListener("change",(event)=>{ if(localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

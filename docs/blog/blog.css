@@ -1,0 +1,264 @@
+@import url("../index.css");
+
+main {
+  padding: 2.25rem 0 4rem;
+}
+
+.page-shell {
+  width: min(var(--max), calc(100% - 3rem));
+  margin: 0 auto;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.hero-panel,
+.content-panel,
+.post-card,
+.timeline-item,
+.quote-card,
+.cta-panel,
+.callout {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+  border: 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(800px 420px at 0% 0%, var(--accent-soft) 0%, transparent 58%),
+    linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+    var(--hero-bg-image);
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.78;
+  z-index: 0;
+}
+
+.hero-panel-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(2.1rem, 4vw, 3.3rem);
+}
+
+.intro {
+  margin: 1.2rem 0 0;
+  max-width: 70ch;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 1.8vw, 1.08rem);
+  line-height: 1.76;
+}
+
+.hero-meta,
+.hero-actions,
+.tldr-list,
+.detail-grid,
+.timeline,
+.posts-grid,
+.cta-grid,
+.related-links {
+  margin-top: 1.5rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.42rem 0.78rem;
+  background: var(--button-default-bg);
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.content-panel,
+.cta-panel {
+  padding: 1.45rem;
+}
+
+.section-stack > * + * {
+  margin-top: 1rem;
+}
+
+.lead {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+}
+
+.tldr-list {
+  padding-left: 1.3rem;
+}
+
+.tldr-list li + li {
+  margin-top: 0.45rem;
+}
+
+.detail-grid,
+.posts-grid,
+.cta-grid.two-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.timeline {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-item,
+.post-card,
+.quote-card,
+.callout {
+  padding: 1.2rem;
+}
+
+.timeline-item,
+.post-card {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+}
+
+.timeline-item time,
+.post-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.34rem 0.62rem;
+  border-radius: 999px;
+  background: var(--button-secondary-bg);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: max-content;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.timeline-item h3,
+.post-card h3,
+.callout h3,
+.quote-card h3 {
+  margin-top: 0;
+}
+
+.timeline-item p,
+.post-card p {
+  margin-top: 0.1rem;
+}
+
+.timeline-item p,
+.post-card p,
+.quote-card p,
+.content-panel p,
+.content-panel li,
+.cta-panel p {
+  color: var(--text-muted);
+}
+
+pre,
+code,
+kbd {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--code-bg);
+  color: var(--code-text);
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+code {
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 0.1rem 0.32rem;
+  color: var(--code-text);
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.quote-card {
+  border-left: 3px solid var(--accent);
+}
+
+.small-label {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.related-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.2rem;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.hero-meta .meta-chip:first-child {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+  color: #f7fffd;
+  box-shadow: 0 14px 32px rgba(22, 172, 169, 0.22);
+}
+
+:root[data-theme="dark"] .hero-meta .meta-chip:first-child {
+  color: #081013;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-meta .meta-chip:first-child {
+    color: #081013;
+  }
+}
+
+@media (max-width: 860px) {
+  .detail-grid,
+  .posts-grid,
+  .cta-grid.two-up {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  main {
+    padding-top: 1.4rem;
+  }
+
+  .page-shell {
+    width: min(var(--max), calc(100% - 1.5rem));
+  }
+
+  .hero-panel-inner,
+  .content-panel,
+  .cta-panel {
+    padding: 1.2rem;
+  }
+}

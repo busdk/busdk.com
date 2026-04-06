@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>8.2.-22.2.2026 | Helmikuun release sprint teki BusDK:sta tuotteen</title>
+    <meta
+      name="description"
+      content="Helmikuun 2026 puolivälin release sprint lisäsi uusia moduuleja, root e2e -ajon, FSL-lisensointiviestin, Windows-paketoinnin ja busdk.com-sivuston kaupallisen evaluointipinnan."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-08-02-22-release-sprint.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-08-02-22-release-sprint.html" />
+    <meta property="og:title" content="8.2.-22.2.2026 | Helmikuun release sprint teki BusDK:sta tuotteen" />
+    <meta
+      property="og:description"
+      content="BusDK:n tagit nousevat v0.0.11:stä v0.0.35:een samalla kun moduulipinta, root e2e ja kaupallinen landing page tarkentuvat."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="8.2.-22.2.2026 | Helmikuun release sprint teki BusDK:sta tuotteen" />
+    <meta
+      name="twitter:description"
+      content="Helmikuun puoliväli teki BusDK:sta paljon enemmän kuin superprojektin: mukaan tulivat moduulit, lisenssiviesti, e2e-runko ja evaluointiin sopiva landing page."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","headline":"8.2.-22.2.2026: Helmikuun release sprint teki BusDK:sta tuotteen","description":"Helmikuun 2026 puolivälin release sprint lisäsi uusia moduuleja, root e2e -ajon, FSL-lisensointiviestin, Windows-paketoinnin ja busdk.com-sivuston kaupallisen evaluointipinnan.","datePublished":"2026-04-06","dateModified":"2026-04-06","inLanguage":"fi","author":{"@type":"Organization","name":"BusDK team"},"publisher":{"@type":"Organization","name":"BusDK"},"mainEntityOfPage":"https://busdk.com/blog/2026-02-08-02-22-release-sprint.html","image":"https://busdk.com/assets/hero/hero2-light.webp"}
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-02-08-02-22-release-sprint.html" aria-current="page">Phase 2</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">History Series · Phase 2</p><h1>8.2.-22.2.2026: helmikuun release sprint teki BusDK:sta tuotteen</h1><p class="intro">Tässä vaiheessa BusDK:n historia muuttuu selvästi nopeammaksi. Tagit etenevät 8.2.2026 alkavasta <code>v0.0.11</code>:stä 22.2.2026 julkaistuun <code>v0.0.35</code>:een, ja samalla superprojekti saa uusia moduuleja, root-tason e2e-ajon, lisenssiviestin ja julkisen landing pagen, joka puhuu jo ostajalle eikä vain kehittäjälle.</p><p class="intro">Helmikuun sprintti on tärkeä, koska se näyttää BusDK:n ensimmäisen "tuotteistumisen" vaiheen. Samat commitit rakentavat yhtä aikaa sisäistä testattavuutta ja ulkoista ymmärrettävyyttä.</p><div class="hero-meta"><span class="meta-chip">Havaintoikkuna: 2026-02-08 ... 2026-02-22</span><span class="meta-chip">Tagit v0.0.11 ... v0.0.35</span><span class="meta-chip">Root e2e + licensing + pricing</span></div></div></article>
+
+          <section class="content-panel section-stack">
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>SMB:</strong> BusDK alkaa näyttää ostettavalta ja arvioitavalta tuotteelta, ei vain kehityshankkeelta.</li>
+              <li><strong>Dev:</strong> superprojekti saa root-tason <code>make e2e</code> -pinnan, lisää moduuleja ja tarkempaa orchestration-logiikkaa.</li>
+              <li><strong>Saatavuus:</strong> 22.2.2026 mennessä landing page sisältää jo hinnoittelusnapshotin ja kaupallisemman evaluointiviestin.</li>
+              <li><strong>Yhteensopivuus:</strong> vaihe kasvattaa pintaa mutta ei viittaa rikkomaan jo olemassa olevaa superprojektimallia.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Vaiheen tärkeimmät merkit</h2>
+            <div class="timeline">
+              <article class="timeline-item"><time datetime="2026-02-08">8.2.2026</time><h3>Tagivirta kiihtyy</h3><p>Tagit <code>v0.0.11</code> ... <code>v0.0.14</code> syntyvät samana päivänä, ja commitit kuten <code>709dfe2</code> tuovat uusia moduuleja kuten <code>bus-bfl</code>. Tämä näyttää, että BusDK alkaa kasvaa moduuliekosysteeminä eikä vain pienenä rungon kokeiluna.</p></article>
+              <article class="timeline-item"><time datetime="2026-02-13">13.2.2026</time><h3>API-, agentti- ja käyttöliittymäpinta täydentyvät</h3><p>Commit <code>fc491c9</code> lisää <code>bus-api</code>-, <code>bus-agent</code>-, <code>bus-preferences</code>- ja <code>bus-sheets</code>-submodulet. Samalla docs-sivusto päivittää moduuli-indeksiä vastaamaan CLI-nimeämistä.</p></article>
+              <article class="timeline-item"><time datetime="2026-02-15">15.2.2026</time><h3>`busdk.com` liittyy superprojektiin</h3><p>Commit <code>c3e6336</code> lisää `busdk.com`-submodulepinnin superprojektiin. Tämä on tärkeä risteyskohta: julkinen sivu ei ole enää irrallinen reposivujuonne vaan osa hallittua BusDK-kokonaisuutta.</p></article>
+              <article class="timeline-item"><time datetime="2026-02-20">20.2.2026</time><h3>Root e2e, FSL-lisensointi ja Windows-paketointi tulevat samaan vaiheeseen</h3><p>Commit <code>9eaef42</code> lisää root-tason e2e-ajon, <code>cb0daaf</code> siirtää lisenssidokumentaatiota FSL-1.1-MIT-linjaan ja <code>8e2e8ea</code> lisää Windows-paketoinnin release- ja bootstrap-dokumentaatioon.</p></article>
+              <article class="timeline-item"><time datetime="2026-02-22">22.2.2026</time><h3>Landing page muuttuu selvästi evaluointisivuksi</h3><p>`busdk.com`-commitit <code>9bb823f</code> ja <code>4440003</code> päivittävät etusivun, lisäävät AGENTS-ohjeistuksen ja ankkuroivat hinnoittelun 22.2.2026 datasettiin. Superprojektissa samalle päivälle osuvat myös synteettiset fixture-korpukset ja pricing-scriptit commitissa <code>a7ff354</code>.</p></article>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Mitä tämä muutti arjessa</h2>
+            <div class="detail-grid">
+              <div class="callout"><h3>Yrittäjälle ja ostajalle</h3><p>Hinnoittelusivun, lisenssiviestin ja quick install -polun yhdistelmä tekee BusDK:sta helpommin arvioitavan. Projekti alkaa kertoa, mitä se maksaa, miten sitä käytetään ja mitä osia kokonaisuus sisältää.</p></div>
+              <div class="callout"><h3>Kehittäjälle</h3><p>Root-tason e2e-ajon lisääminen on suuri signaali. Se tarkoittaa, että moduulien välinen toimivuus halutaan tarkistaa superprojektin kautta, ei vain moduulikohtaisina irrallisina testeina.</p></div>
+            </div>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Näin todennat helmikuun sprintin</h2>
+            <h3>Katso tämän vaiheen commitit</h3>
+            <pre><code>git log --date=short --pretty=format:'%ad %h %s' --since=2026-02-08 --until=2026-02-22</code></pre>
+            <h3>Katso tagit tämän vaiheen läpi</h3>
+            <pre><code>git for-each-ref --sort=creatordate --format='%(creatordate:short) %(refname:short)' refs/tags | sed -n '11,35p'</code></pre>
+            <h3>Tarkista root e2e -muutoksen ankkuri</h3>
+            <pre><code>git show --stat --summary --format=medium 9eaef42</code></pre>
+          </section>
+
+          <section class="content-panel section-stack">
+            <h2>Muutosloki tästä vaiheesta</h2>
+            <h3>Added</h3>
+            <ul class="tldr-list">
+              <li>Uusia moduuleja, kuten <code>bus-api</code>, <code>bus-agent</code>, <code>bus-sheets</code>, <code>bus-balances</code>, <code>bus-shell</code> ja <code>bus-status</code>.</li>
+              <li>Root-tason <code>make e2e</code> -orchestrator.</li>
+              <li>`busdk.com`-submodule superprojektiin.</li>
+              <li>Synteettinen fixture-korpus ja pricing-scriptit kaupallisen evaluoinnin tueksi.</li>
+            </ul>
+            <h3>Changed</h3>
+            <ul class="tldr-list">
+              <li>Lisenssiviesti päivitettiin FSL-1.1-MIT-suuntaan.</li>
+              <li>Landing page siirtyi moduulilistasta selväksi product/evaluation-pinnaksi.</li>
+            </ul>
+            <h3>Fixed</h3>
+            <ul class="tldr-list">
+              <li>VAT reconcile purchase-side bug suljettiin commitin <code>44cf9e2</code> yhteydessä.</li>
+            </ul>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava vaihe</h2>
+            <div class="cta-grid two-up">
+              <div class="callout"><h3>Governance, trackerit ja evidenssi</h3><p>Seuraava vaihe näyttää, miten BusDK alkoi koventaa muistia, suunnittelua ja todennettavaa synteettistä aineistoa.</p><a href="2026-02-23-03-03-governance-and-evidence.html">Lue vaihe 3: governance ja evidenssi</a></div>
+              <div class="callout"><h3>Release-pinnan nykytila</h3><p>Jos haluat tarkastella nykypäivän asennus- ja docs-polkuja, siirry suoraan kanoniseen moduuli-indeksiin.</p><a href="https://docs.busdk.com/modules/index">Avaa moduuli-indeksi</a></div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme){ root.setAttribute("data-theme", theme); if(!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme(){ if(storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme()); if(themeToggle) themeToggle.addEventListener("click", ()=>{ const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); prefersDark.addEventListener("change",(event)=>{ if(localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>
