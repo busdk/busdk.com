@@ -205,6 +205,12 @@ Scoped guidance for the `busdk.com` repository.
     hidden retrospective wording such as `sai`, `toi`, `alkoi`, `julkaistiin`,
     `siirtyi`, `muuttui`, `kuvattiin`, or similar forms, and rewrite them when
     the article is meant to sound like it was published on that day.
+43. Before creating a new blog article for a date that already has an article,
+    first check whether the new material belongs in the existing same-day
+    article instead. Prefer expanding the existing article into a richer and
+    more complete same-day piece when the topics are meaningfully related,
+    and create a separate article only when the subject is clearly independent
+    enough to deserve its own page.
 
 ## Commit Workflow (When Asked To Commit)
 

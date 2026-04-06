@@ -1,5 +1,22 @@
 # PLAN.md
 
+- [ ] Suorita uusi viikkokierros vuoden 2026 historiasta viikosta 1 alkaen ja lisää vielä mahdolliset puuttuvat blogiaiheet suunnitelmaan.
+- [x] Käy vuoden 2026 historia läpi viikko kerrallaan ja lisää blogin PLANiin kaikki puuttuvat artikkeli-ideat niin pitkälle kuin uusia aiheita löytyy.
+- [ ] 25.1.2026: kirjoita artikkeli ensimmäisestä julkisesti kuvatusta BusDK:n kirjanpidon kokonaistyönkulusta, jossa master data, tositteet, pankkiaineisto, täsmäytys, ALV ja kauden sulku kuvataan ensimmäistä kertaa yhtenä käytännön flow’na.
+- [ ] 25.1.2026: kirjoita artikkeli siitä, miten BusDK:n dokumentaatio siirtyy omaan `docs/`-julkaisurakenteeseensa ja saa ensimmäisen oman landing-sivunsa sekä `docs.busdk.com`-valmiuden.
+- [ ] 25.1.2026: kirjoita artikkeli `bus`-repon ensimmäisistä kehittäjän helper-skripteistä, kun `commit.sh` ja `work.sh` tuovat toistettavan tavan ajaa työnkulkuja repojuuresta ilman käsin rakennettuja komentorivejä.
+- [ ] 26.1.2026: kirjoita artikkeli ensimmäisestä laajasta moduulidokumentaatiosta, kun julkisiin docs-sivuihin lisätään omat sivut keskeisille `bus-*`-moduuleille ja moduuliluettelo alkaa näyttää koko työkaluketjun rakenteen.
+- [ ] 26.1.2026: kirjoita artikkeli `bus-loans`-moduulin tulosta julkiseen BusDK-pintaan, kun lainarekisteri ja lyhennysohjelmat nostetaan mukaan sekä docs-sivuston moduulidokumentaatioon että `busdk.com`-sivun moduulilistaan.
+- [ ] 31.1.2026: kirjoita artikkeli siitä, miten docsit alkavat kuvata moduulien yhteistyötä CLI-pohjaisena koostumuksena, jossa kirjoitukset kulkevat omistavan moduulin komennon kautta eikä moduulirajoja ohiteta suoraan.
+- [ ] 31.1.2026: kirjoita artikkeli siitä, miten julkiset docs-esimerkit siirtyvät `busdk ...` -muodosta `bus ...` -muotoon, jolloin BusDK:n varsinainen CLI-entrypoint vakiintuu näkyvästi myös dokumentaatiossa.
+- [ ] 15.2.2026: kirjoita artikkeli `bus period add` -komennosta ja periodien tilamallista, kun future → open → closed → locked -elinkaari dokumentoidaan näkyvästi ja periodin avaaminen lakkaa olemasta implisiittinen luontitapa.
+- [ ] 25.2.2026: kirjoita artikkeli `bus audit evidence-coverage` -oikopolusta, kun `bus` alkaa välittää audit-evidence-coverage -tarkistuksen suoraan `bus-validate`-pintaan ja nostaa audit-sanan näkyväksi discoverabilityyn.
+- [ ] 10.3.2026: kirjoita artikkeli stickyistä `.bus`-direktiiveistä, kun globaalit dispatcher-liput voi määritellä busfileen pysyviksi riveiksi ja periyttää includeihin ilman komentorivin toistoa.
+- [ ] 14.3.2026: tarkista voiko olemassa olevaa 14.3.2026 artikkelia laajentaa editorituella tai kirjoita erillinen artikkeli VS Code -yhteensopivan `.bus`-kielilaajennuksen paketoinnista `.vsix`-artefaktiksi.
+- [ ] 22.3.2026: kirjoita artikkeli gatewayn kautta avautuvasta tarkastusportaalista, kun `bus-inspection`-käyttö siirtyy yhteisen gateway-kirjautumisen taakse oman login-sivun sijaan.
+- [ ] 25.3.2026: kirjoita artikkeli AIZ-binäärien tulosta julkaistuun asennuspakettiin, kun release-artefaktit ja `install.sh` alkavat kattaa myös `aiz`- ja `unaiz`-komennot.
+- [ ] 29.3.2026: kirjoita artikkeli `bus-memo`-moduulin julkisesta docs-pinnasta ja memovientien näkyvästä numeroinnista sekä lähdeviitteiden välityksestä päiväkirjaan.
+- [ ] 6.4.2026: kirjoita artikkeli `bus files assert expr` -käytöstä, kun docsit avaavat aggregaatit, suodattimet ja yksinkertaiset lausekkeet osaksi `bus-files`-tarkistuspintaa.
 - [x] Käy kaikki blogiartikkelit läpi ja muuta näkyvä leipäteksti, ingressit, TL;DR:t ja indeksikortit saman päivän uutiskielelle niin, että teksti ei puhu menneestä muodossa vaan nykyhetkenä.
 - [x] Korjaa blogiartikkeleiden otsikkopalkin sivustonsisäiset linkit relatiivisiksi niin, että navigaatio toimii myös lokaalissa kehityksessä.
 - [x] Iteroi ja tiivistä 25.1.2026 BusDK-artikkeli niin, että väitteet eivät toista otsikon kaavaa ja sisältö kertoo konkreettisesti mitä silloin muuttui.
