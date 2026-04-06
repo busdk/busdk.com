@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>1.4.2026 | BusDK:n rinnakkaiskehitys sai selkeämmät työkalut</title>
+    <title>1.4.2026 | BusDK:n rinnakkaiskehitys saa selkeämmät työkalut</title>
     <meta
       name="description"
-      content="BusDK:n kehitystyöhön tuli selkeämpi tapa erottaa työjonot ja erilliset työpuut toisistaan."
+      content="BusDK:n kehitystyöhön tulee selkeämpi tapa erottaa työjonot ja erilliset työpuut toisistaan."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" />
-    <meta property="og:title" content="1.4.2026 | BusDK:n rinnakkaiskehitys sai selkeämmät työkalut" />
+    <meta property="og:title" content="1.4.2026 | BusDK:n rinnakkaiskehitys saa selkeämmät työkalut" />
     <meta
       property="og:description"
-      content="Työjonojen päivitys ja erilliset työpuut erotettiin selvemmin omiksi työvaiheikseen."
+      content="Työjonojen päivitys ja erilliset työpuut erotetaan selvemmin omiksi työvaiheikseen."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="1.4.2026 | BusDK:n rinnakkaiskehitys sai selkeämmät työkalut" />
+    <meta name="twitter:title" content="1.4.2026 | BusDK:n rinnakkaiskehitys saa selkeämmät työkalut" />
     <meta
       name="twitter:description"
-      content="BusDK:n kehitystyö sai aiempaa turvallisemmat raamit rinnakkaisiin muutoksiin."
+      content="BusDK:n kehitystyö saa aiempaa turvallisemmat raamit rinnakkaisiin muutoksiin."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -57,9 +57,9 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1>BusDK:n rinnakkaiskehitys sai selkeämmät työkalut</h1>
+              <h1>BusDK:n rinnakkaiskehitys saa selkeämmät työkalut</h1>
               <p class="intro">
-                1.4.2026 ei tuonut uutta loppukäyttäjäkomentoa, mutta se teki BusDK:n kehittämisestä
+                1.4.2026 ei tuo uutta loppukäyttäjäkomentoa, mutta se tekee BusDK:n kehittämisestä
                 hallitumpaa silloin, kun samaan aikaan on auki useita eri muutoksia.
               </p>
               <div class="hero-meta">
@@ -73,14 +73,14 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li>Työjonojen päivitys ja toteutuskoodin muutos erotettiin aiempaa selvemmin.</li>
-              <li>Rinnakkaisille työvaiheille tuli oma käynnistystapa.</li>
-              <li>Muutos vähensi riskiä sekoittaa eri työvaiheita samaan muutokseen.</li>
+              <li>Työjonojen päivitys ja toteutuskoodin muutos erotetaan aiempaa selvemmin.</li>
+              <li>Rinnakkaisille työvaiheille tulee oma käynnistystapa.</li>
+              <li>Muutos vähentää riskiä sekoittaa eri työvaiheita samaan muutokseen.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
             <p>
-              Muutos näkyi uusina apuskripteinä:
+              Muutos näkyy uusina apuskripteinä:
             </p>
             <pre><code>./scripts/commit-tracker-only.sh
 ./scripts/start-agent.sh</code></pre>
@@ -88,7 +88,7 @@
 Usage: ./scripts/start-agent.sh &lt;topic&gt; [codex args...]</code></pre>
             <p>
               Olennaista ei ole skriptien määrä vaan se, että työjonojen päivittäminen ja varsinainen
-              toteutustyö eivät enää näyttäneet samalta työvaiheelta. Tämä on tärkeää projektissa,
+              toteutustyö eivät enää näytä samalta työvaiheelta. Tämä on tärkeää projektissa,
               jossa useita moduuleja ja useita muutoksia liikkuu rinnakkain. Vaikka muutos ei näy suoraan
               raportissa tai käyttöliittymässä, se näkyy lopputuloksessa: BusDK:n kehitystä on helpompi
               viedä eteenpäin ilman että eri työt sotkeutuvat vahingossa samaan muutokseen.

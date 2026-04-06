@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>15.2.2026 | bus-run toi projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon</title>
+    <title>15.2.2026 | bus-run tuo projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon</title>
     <meta
       name="description"
-      content="BusDK sai 15.2.2026 bus-run-moduulin, jolla projektin omat promptit, toiminnot ja pipelinet voi ajaa .bus/run-hakemistosta yhdellä yhtenäisellä komentopinnalla."
+      content="BusDK saa 15.2.2026 bus-run-moduulin, jolla projektin omat promptit, toiminnot ja pipelinet voi ajaa .bus/run-hakemistosta yhdellä yhtenäisellä komentopinnalla."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-02-15-bus-run-actions-and-pipelines.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-02-15-bus-run-actions-and-pipelines.html" />
-    <meta property="og:title" content="15.2.2026 | bus-run toi projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon" />
+    <meta property="og:title" content="15.2.2026 | bus-run tuo projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon" />
     <meta
       property="og:description"
-      content="BusDK sai bus-run-moduulin, jolla projektin omat promptit, toiminnot ja pipelinet voi ajaa .bus/run-hakemistosta yhdellä yhtenäisellä komentopinnalla."
+      content="BusDK saa bus-run-moduulin, jolla projektin omat promptit, toiminnot ja pipelinet voi ajaa .bus/run-hakemistosta yhdellä yhtenäisellä komentopinnalla."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="15.2.2026 | bus-run toi projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon" />
+    <meta name="twitter:title" content="15.2.2026 | bus-run tuo projektin omat toiminnot, skriptit ja pipelinet .bus/run-hakemistoon" />
     <meta
       name="twitter:description"
-      content="BusDK sai bus-run-moduulin, jolla projektin omat promptit, skriptit ja pipelinet voi ajaa .bus/run-hakemistosta."
+      content="BusDK saa bus-run-moduulin, jolla projektin omat promptit, skriptit ja pipelinet voi ajaa .bus/run-hakemistosta."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -51,7 +51,7 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1><code>bus-run</code> toi projektin omat toiminnot, skriptit ja pipelinet <code>.bus/run</code>-hakemistoon</h1>
+              <h1><code>bus-run</code> tuo projektin omat toiminnot, skriptit ja pipelinet <code>.bus/run</code>-hakemistoon</h1>
               <div class="hero-meta">
                 <span class="meta-chip">15.2.2026</span>
                 <span class="meta-chip">bus-run</span>
@@ -59,7 +59,7 @@
                 <span class="meta-chip">Pipelinet</span>
               </div>
               <p class="intro">
-                <code>bus-run</code> toi BusDK:hon oman komentopinnan projekteille, jotka haluavat
+                <code>bus-run</code> tuo BusDK:hon oman komentopinnan projekteille, jotka haluavat
                 ajaa omia promptteja, skriptejä ja pipelineja ilman että ne sidotaan
                 <code>bus-dev</code>-työnkulkuun. Sisältö löytyy projektin omasta
                 <code>.bus/run</code>-hakemistosta ja ajetaan suoraan nimellä.
@@ -71,7 +71,7 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li><code>bus-run</code> toi käyttäjän määrittelemät toiminnot, skriptit ja pipelinet yhden komennon alle.</li>
+              <li><code>bus-run</code> tuo käyttäjän määrittelemät toiminnot, skriptit ja pipelinet yhden komennon alle.</li>
               <li>Projektikohtainen sisältö luetaan <code>.bus/run</code>-hakemistosta eikä sitä tarvitse kovakoodata erillisiin shell-kääreisiin.</li>
               <li><code>bus run list</code> näyttää, mitä projektissa on tarjolla, ja komento voidaan ajaa suoraan nimellä.</li>
               <li>Tämä erottaa yleisen ajopinnan <code>bus-dev</code>-moduulin kehitystyönkuluista.</li>
@@ -80,7 +80,7 @@
 
           <section class="content-panel section-stack">
             <p>
-              Muutoksen ydin on, että projektin oma automaatio tuli näkyväksi Bus-komentona.
+              Muutoksen ydin on, että projektin oma automaatio tulee näkyväksi Bus-komentona.
               Jos projektin juuressa on esimerkiksi yksinkertainen skripti
               <code>.bus/run/check.sh</code>, <code>bus-run</code> osaa sekä näyttää sen että ajaa
               sen ilman erillistä käynnistysskriptiä.
@@ -118,7 +118,7 @@ script ok</code></pre>
             <div class="cta-grid two-up">
               <div class="callout">
                 <h3>11.2.2026</h3>
-                <p><code>bus-dev</code> toi hieman aiemmin vastaavan yhden komentopinnan kehitystyönkuluille.</p>
+                <p><code>bus-dev</code> tuo hieman aiemmin vastaavan yhden komentopinnan kehitystyönkuluille.</p>
                 <a href="2026-02-11-bus-dev-workflows.html">Lue 11.2.2026 uutinen</a>
               </div>
               <div class="callout">

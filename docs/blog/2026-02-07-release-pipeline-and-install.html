@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta</title>
+    <title>7.2.2026 | BusDK saa ensimmäisen suoran asennuspolun julkaistusta versiosta</title>
     <meta
       name="description"
-      content="7.2.2026 BusDK:n julkaisu alkoi sisältää asennusskriptin, tarkistussummat ja kopioitavan asennuskomennon, jolla työkalut sai käyttöön suoraan julkaistusta versiosta."
+      content="7.2.2026 BusDK:n julkaisu alkaa sisältää asennusskriptin, tarkistussummat ja kopioitavan asennuskomennon, jolla työkalut saa käyttöön suoraan julkaistusta versiosta."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" />
-    <meta property="og:title" content="7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta" />
+    <meta property="og:title" content="7.2.2026 | BusDK saa ensimmäisen suoran asennuspolun julkaistusta versiosta" />
     <meta
       property="og:description"
-      content="Julkaisuun tuli asennusskripti, tarkistussummat ja näkyvä nopea asennuspolku, joka vei suoraan Bus-komentojen käyttöön."
+      content="Julkaisuun tulee asennusskripti, tarkistussummat ja näkyvä nopea asennuspolku, joka vie suoraan Bus-komentojen käyttöön."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta" />
+    <meta name="twitter:title" content="7.2.2026 | BusDK saa ensimmäisen suoran asennuspolun julkaistusta versiosta" />
     <meta
       name="twitter:description"
-      content="7.2.2026 BusDK:n pystyi ensi kertaa asentamaan suoraan julkaistusta versiosta yhdellä komennolla."
+      content="7.2.2026 BusDK:n voi ensi kertaa asentaa suoraan julkaistusta versiosta yhdellä komennolla."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -51,13 +51,13 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1>BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta</h1>
+              <h1>BusDK saa ensimmäisen suoran asennuspolun julkaistusta versiosta</h1>
               <p class="intro">
-                7.2.2026 BusDK:n julkaisu alkoi sisältää kaiken olennaisen valmiiseen asennukseen:
+                7.2.2026 BusDK:n julkaisu alkaa sisältää kaiken olennaisen valmiiseen asennukseen:
                 paketoidut binäärit, tarkistussummat ja <code>install.sh</code>-skriptin.
               </p>
               <p class="intro">
-                Samalla nopea asennus nostettiin näkyvästi esiin, joten BusDK:ta ei enää tarvinnut
+                Samalla nopea asennus nostetaan näkyvästi esiin, joten BusDK:ta ei enää tarvitse
                 ottaa käyttöön vain lähdekoodon kautta.
               </p>
               <div class="hero-meta">
@@ -73,17 +73,17 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li>Julkaisu alkoi sisältää asennusskriptin, paketin ja tarkistussumman.</li>
-              <li><code>curl -fsSL .../install.sh | bash</code> nousi näkyväksi asennustavaksi.</li>
-              <li>Asennuksen jälkeen käyttäjä pääsi suoraan <code>bus</code>-komentopintaan.</li>
+              <li>Julkaisu alkaa sisältää asennusskriptin, paketin ja tarkistussumman.</li>
+              <li><code>curl -fsSL .../install.sh | bash</code> nousee näkyväksi asennustavaksi.</li>
+              <li>Asennuksen jälkeen käyttäjä pääsee suoraan <code>bus</code>-komentopintaan.</li>
               <li>Lisätiedot löytyvät <a href="https://docs.busdk.com">BusDK:n dokumentaatiosta</a>.</li>
             </ul>
           </section>
 
           <section class="content-panel section-stack">
             <p>
-              Aiemmin BusDK:n kokeileminen tarkoitti käytännössä lähdekoodin lataamista ja
-              rakennusvaiheiden päättelemistä itse. Tämän muutoksen jälkeen käyttöönottopolku oli
+              Aiemmin BusDK:n kokeileminen tarkoittaa käytännössä lähdekoodin lataamista ja
+              rakennusvaiheiden päättelemistä itse. Tämän muutoksen jälkeen käyttöönottopolku on
               ensimmäistä kertaa suora ja kopioitava:
             </p>
             <pre><code>curl -fsSL \
@@ -98,10 +98,10 @@ Usage:
 Behavior:
   Dispatches bus-&lt;command&gt; from PATH...</code></pre>
             <p>
-              Olennaista oli se, että julkaisu ei enää päättynyt pelkkään tagiin tai lähdekoodopakettiin.
-              Mukaan tuli asennusskripti, julkaistut paketit ja tarkistussummat, joiden ympärille
-              myös README ja nopea asennusohje rakennettiin uudelleen. Käytännössä tämä muutti
-              BusDK:n ensimmäiseksi versioksi, jonka pystyi asentamaan suoraan julkaistusta
+              Olennaista on se, että julkaisu ei enää pääty pelkkään tagiin tai lähdekoodopakettiin.
+              Mukaan tulee asennusskripti, julkaistut paketit ja tarkistussummat, joiden ympärille
+              myös README ja nopea asennusohje rakennetaan uudelleen. Käytännössä tämä muuttaa
+              BusDK:n ensimmäiseksi versioksi, jonka pystyy asentamaan suoraan julkaistusta
               versiosta ja tarkistamaan heti <code>bus --help</code>-komennolla. Jos haluat katsoa
               nykyisen asennus- ja käyttöpolun laajemmin, jatka <a href="https://docs.busdk.com">BusDK:n dokumentaatioon</a>.
             </p>
@@ -113,7 +113,7 @@ Behavior:
             <div class="cta-grid two-up">
               <div class="callout">
                 <h3>13.2.2026</h3>
-                <p>BusDK:n moduulipinta laajeni yhdellä päivällä API-, agentti-, preferences- ja sheets-suuntiin.</p>
+                <p>BusDK:n moduulipinta laajenee yhdellä päivällä API-, agentti-, preferences- ja sheets-suuntiin.</p>
                 <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
               </div>
               <div class="callout">

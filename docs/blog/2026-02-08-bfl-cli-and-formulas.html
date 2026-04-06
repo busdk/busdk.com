@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan</title>
+    <title>8.2.2026 | bus-bfl tuo kaavalausekkeille oman komentopinnan</title>
     <meta
       name="description"
-      content="BusDK sai 8.2.2026 oman bus-bfl-komennon kaavalausekkeiden jäsentämiseen, muotoiluun, validointiin ja evaluointiin, ja samalla sample-dataan tuli datapackage.json."
+      content="BusDK saa 8.2.2026 oman bus-bfl-komennon kaavalausekkeiden jäsentämiseen, muotoiluun, validointiin ja evaluointiin, ja samalla sample-dataan tulee datapackage.json."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-02-08-bfl-cli-and-formulas.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-02-08-bfl-cli-and-formulas.html" />
-    <meta property="og:title" content="8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan" />
+    <meta property="og:title" content="8.2.2026 | bus-bfl tuo kaavalausekkeille oman komentopinnan" />
     <meta
       property="og:description"
-      content="BusDK sai oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää, muotoilla, validoida ja evaluoida ilman omaa ympäröivää sovellusta."
+      content="BusDK saa oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää, muotoilla, validoida ja evaluoida ilman omaa ympäröivää sovellusta."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan" />
+    <meta name="twitter:title" content="8.2.2026 | bus-bfl tuo kaavalausekkeille oman komentopinnan" />
     <meta
       name="twitter:description"
-      content="BusDK sai oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää ja muotoilla suoraan komentoriviltä."
+      content="BusDK saa oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää ja muotoilla suoraan komentoriviltä."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -51,7 +51,7 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1><code>bus-bfl</code> toi kaavalausekkeille oman komentopinnan</h1>
+              <h1><code>bus-bfl</code> tuo kaavalausekkeille oman komentopinnan</h1>
               <div class="hero-meta">
                 <span class="meta-chip">8.2.2026</span>
                 <span class="meta-chip">BFL</span>
@@ -59,10 +59,10 @@
                 <span class="meta-chip">Sample-data</span>
               </div>
               <p class="intro">
-                BusDK sai oman <code>bus-bfl</code>-moduulin, jolla kaavalausekkeita voi jäsentää,
+                BusDK saa oman <code>bus-bfl</code>-moduulin, jolla kaavalausekkeita voi jäsentää,
                 muotoilla, validoida ja evaluoida suoraan komentoriviltä. Samalla sample-aineistoon
-                tuli <code>datapackage.json</code>, joten kaavalausekkeet ja datarakenteen kuvaus
-                alkoivat elää samassa paketissa.
+                tulee <code>datapackage.json</code>, joten kaavalausekkeet ja datarakenteen kuvaus
+                alkavat elää samassa paketissa.
               </p>
             </div>
           </article>
@@ -71,10 +71,10 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li><code>bus-bfl</code> toi BFL-kaavoille oman julkisen CLI-pinnan.</li>
+              <li><code>bus-bfl</code> tuo BFL-kaavoille oman julkisen CLI-pinnan.</li>
               <li>Kaavan voi nyt jäsentää ja muotoilla ilman, että sitä tarvitsee ajaa jonkin muun moduulin sisältä.</li>
               <li>Muotoiltu tulos on deterministinen, joten sama lauseke näyttää aina samalta riippumatta syötteen välilyönneistä.</li>
-              <li>Samalla sample-dataan lisättiin <code>datapackage.json</code>, joka teki aineiston rakenteesta eksplisiittisemmän.</li>
+              <li>Samalla sample-dataan lisätään <code>datapackage.json</code>, joka tekee aineiston rakenteesta eksplisiittisemmän.</li>
             </ul>
           </section>
 
@@ -99,8 +99,8 @@ sum(A1:A3)</code></pre>
               esimerkkejä löytyy <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.
             </p>
             <p>
-              Samanaikainen <code>samples/datapackage.json</code> oli pieni mutta merkityksellinen
-              muutos samalle suunnalle. BFL ei tullut yksin, vaan osana selkeämmin kuvattua
+              Samanaikainen <code>samples/datapackage.json</code> on pieni mutta merkityksellinen
+              muutos samalle suunnalle. BFL ei tule yksin, vaan osana selkeämmin kuvattua
               data-aineistoa. Kun sample-data kertoo itse rakenteestaan ja kaavalausekkeille on oma
               komentopinta, BusDK:n datamalli muuttuu helpommin tutkittavaksi myös ilman omaa
               sovelluskohtaista liimaa ympärillä.
@@ -113,7 +113,7 @@ sum(A1:A3)</code></pre>
             <div class="cta-grid two-up">
               <div class="callout">
                 <h3>13.2.2026</h3>
-                <p>Muutamaa päivää myöhemmin BusDK sai myös paikallisen API:n ja selainpohjaisen taulukkonäkymän.</p>
+                <p>Muutamaa päivää myöhemmin BusDK saa myös paikallisen API:n ja selainpohjaisen taulukkonäkymän.</p>
                 <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
               </div>
               <div class="callout">

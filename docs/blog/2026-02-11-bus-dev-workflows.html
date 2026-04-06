@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan</title>
+    <title>11.2.2026 | bus-dev tuo kehitystyönkuluille yhden yhteisen komentopinnan</title>
     <meta
       name="description"
-      content="BusDK sai 11.2.2026 bus-dev-moduulin, joka kokosi commit-, plan-, work- ja e2e-työvaiheet yhdeksi julkiseksi komentopinnaksi ja alkoi korvata erillisiä orkestrointiskriptejä."
+      content="BusDK saa 11.2.2026 bus-dev-moduulin, joka kokoaa commit-, plan-, work- ja e2e-työvaiheet yhdeksi julkiseksi komentopinnaksi ja alkaa korvata erillisiä orkestrointiskriptejä."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-02-11-bus-dev-workflows.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-02-11-bus-dev-workflows.html" />
-    <meta property="og:title" content="11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan" />
+    <meta property="og:title" content="11.2.2026 | bus-dev tuo kehitystyönkuluille yhden yhteisen komentopinnan" />
     <meta
       property="og:description"
-      content="BusDK sai bus-dev-moduulin, joka toi plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
+      content="BusDK saa bus-dev-moduulin, joka tuo plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan" />
+    <meta name="twitter:title" content="11.2.2026 | bus-dev tuo kehitystyönkuluille yhden yhteisen komentopinnan" />
     <meta
       name="twitter:description"
-      content="BusDK sai bus-dev-moduulin, joka toi plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
+      content="BusDK saa bus-dev-moduulin, joka tuo plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -51,7 +51,7 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1><code>bus-dev</code> toi kehitystyönkuluille yhden yhteisen komentopinnan</h1>
+              <h1><code>bus-dev</code> tuo kehitystyönkuluille yhden yhteisen komentopinnan</h1>
               <div class="hero-meta">
                 <span class="meta-chip">11.2.2026</span>
                 <span class="meta-chip">bus-dev</span>
@@ -59,9 +59,9 @@
                 <span class="meta-chip">Orkestrointi</span>
               </div>
               <p class="intro">
-                BusDK sai oman <code>bus-dev</code>-moduulin, joka kokosi kehitystyönkulun vaiheet
-                yhden julkisen komentopinnan alle. Muutos ei jäänyt teoriaksi, vaan rootin
-                orkestrointiskriptit alkoivat heti käyttää samoja <code>bus dev</code> -komentoja
+                BusDK saa oman <code>bus-dev</code>-moduulin, joka kokoaa kehitystyönkulun vaiheet
+                yhden julkisen komentopinnan alle. Muutos ei jää teoriaksi, vaan rootin
+                orkestrointiskriptit alkavat heti käyttää samoja <code>bus dev</code> -komentoja
                 modulikohtaisten omien skriptien sijaan.
               </p>
             </div>
@@ -71,10 +71,10 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li><code>bus-dev</code> toi työvaiheet kuten <code>plan</code>, <code>work</code>, <code>e2e</code>, <code>stage</code> ja <code>commit</code> yhden komennon alle.</li>
-              <li>Rootin orkestrointi alkoi kutsua <code>bus dev work</code>- ja <code>bus dev commit</code> -komentoja erillisten modulikohtaisten skriptien sijaan.</li>
-              <li>Pipelinet tekivät toistuvista askelketjuista näkyviä ja ennustettavia.</li>
-              <li>Tämä muutti kehitystyönkulun julkiseksi Bus-pinnaksi samalla tavalla kuin muutkin moduulikomennot.</li>
+              <li><code>bus-dev</code> tuo työvaiheet kuten <code>plan</code>, <code>work</code>, <code>e2e</code>, <code>stage</code> ja <code>commit</code> yhden komennon alle.</li>
+              <li>Rootin orkestrointi alkaa kutsua <code>bus dev work</code>- ja <code>bus dev commit</code> -komentoja erillisten modulikohtaisten skriptien sijaan.</li>
+              <li>Pipelinet tekevät toistuvista askelketjuista näkyviä ja ennustettavia.</li>
+              <li>Tämä muuttaa kehitystyönkulun julkiseksi Bus-pinnaksi samalla tavalla kuin muutkin moduulikomennot.</li>
             </ul>
           </section>
 
@@ -98,9 +98,9 @@
   retry
   each</code></pre>
             <p>
-              Oleellinen muutos ei ollut pelkkä uusi binääri, vaan se että työvaiheille tuli yhteinen
+              Oleellinen muutos ei ole pelkkä uusi binääri, vaan se että työvaiheille tulee yhteinen
               sanasto. Kun rootin skriptit siirtyivät kutsumaan <code>bus dev commit</code> ja
-              <code>bus dev work</code> -komentoja, sama pinta alkoi ohjata sekä moduulissa
+              <code>bus dev work</code> -komentoja, sama pinta alkaa ohjata sekä moduulissa
               käsin tehtävää työtä että superprojektin orkestrointia. Silloin käyttäjän ei enää
               tarvitse tietää, onko jokin vaihe piilotettu <code>scripts/</code>-hakemistoon vai
               toteutettu komentopinnan osana.
@@ -129,7 +129,7 @@ commit</code></pre>
             <div class="cta-grid two-up">
               <div class="callout">
                 <h3>15.2.2026</h3>
-                <p>Muutamaa päivää myöhemmin <code>bus-run</code> toi saman ajatuksen myös käyttäjän omille actioneille, pipelineille ja skripteille.</p>
+                <p>Muutamaa päivää myöhemmin <code>bus-run</code> tuo saman ajatuksen myös käyttäjän omille actioneille, pipelineille ja skripteille.</p>
                 <a href="2026-02-15-bus-run-actions-and-pipelines.html">Lue 15.2.2026 uutinen</a>
               </div>
               <div class="callout">
