@@ -1,6 +1,6 @@
 # PLAN.md
 
-- [ ] Käy kaikki blogiartikkelit läpi ja muuta näkyvä leipäteksti, ingressit, TL;DR:t ja indeksikortit saman päivän uutiskielelle niin, että teksti ei puhu menneestä muodossa vaan nykyhetkenä.
+- [x] Käy kaikki blogiartikkelit läpi ja muuta näkyvä leipäteksti, ingressit, TL;DR:t ja indeksikortit saman päivän uutiskielelle niin, että teksti ei puhu menneestä muodossa vaan nykyhetkenä.
 - [x] Korjaa blogiartikkeleiden otsikkopalkin sivustonsisäiset linkit relatiivisiksi niin, että navigaatio toimii myös lokaalissa kehityksessä.
 - [x] Iteroi ja tiivistä 25.1.2026 BusDK-artikkeli niin, että väitteet eivät toista otsikon kaavaa ja sisältö kertoo konkreettisesti mitä silloin muuttui.
 - [x] Iteroi ja tiivistä 7.2.2026 release- ja asennusartikkeli niin, että pääpaino on käyttäjälle näkyvässä asennuspolussa eikä release-jargonissa.

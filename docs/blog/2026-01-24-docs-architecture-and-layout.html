@@ -3,31 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</title>
+    <title>24.1.2026 | Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</title>
     <meta
       name="description"
-      content="24.1.2026 BusDK:n dokumentaatio hajotettiin omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa. Samalla mukaan tuli ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle."
+      content="24.1.2026 BusDK:n dokumentaatio hajotetaan omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa. Samalla mukaan tulee ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-01-24-docs-architecture-and-layout.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-01-24-docs-architecture-and-layout.html" />
     <meta
       property="og:title"
-      content="24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
+      content="24.1.2026 | Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
     />
     <meta
       property="og:description"
-      content="Yhden pitkän design-tekstin sijaan BusDK:lle syntyi dokumentaatio, josta näki erikseen arkkitehtuurin, komentojen roolin, tietorakenteen ja esimerkkihakemiston."
+      content="Yhden pitkän design-tekstin sijaan BusDK:lle syntyy dokumentaatio, josta näkee erikseen arkkitehtuurin, komentojen roolin, tietorakenteen ja esimerkkihakemiston."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
+      content="24.1.2026 | Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
     />
     <meta
       name="twitter:description"
-      content="BusDK:n julkinen dokumentaatio muuttui yhdessä aamussa selattavaksi kokonaisuudeksi, jossa näkyivät arkkitehtuuri, työnkulut ja ensimmäinen konkreettinen esimerkkihakemisto."
+      content="BusDK:n julkinen dokumentaatio muuttuu yhdessä aamussa selattavaksi kokonaisuudeksi, jossa näkyvät arkkitehtuuri, työnkulut ja ensimmäinen konkreettinen esimerkkihakemisto."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -63,10 +63,10 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1>Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</h1>
+              <h1>Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</h1>
               <p class="intro">
-                24.1.2026 BusDK:n julkinen dokumentaatio muuttui yhdestä pitkästä suunnitelmasta
-                selattavaksi kokonaisuudeksi. Samalla mukaan tuli ensimmäinen konkreettinen
+                24.1.2026 BusDK:n julkinen dokumentaatio muuttuu yhdestä pitkästä suunnitelmasta
+                selattavaksi kokonaisuudeksi. Samalla mukaan tulee ensimmäinen konkreettinen
                 esimerkkirakenne siitä, miltä valmis kirjanpitoaineisto voisi näyttää hakemistoina
                 ja tiedostoina.
               </p>
@@ -84,7 +84,7 @@
             <h2>TL;DR</h2>
             <ul class="tldr-list">
               <li>Dokumentaatio jaettiin omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa.</li>
-              <li>BusDK:n komentorivi kuvattiin tietoisesti aineiston vartijaksi, ei vain tiedostojen muokkaajaksi.</li>
+              <li>BusDK:n komentorivi kuvataan tietoisesti aineiston vartijaksi, ei vain tiedostojen muokkaajaksi.</li>
               <li>Ensimmäinen konkreettinen hakemistorakenne teki näkyväksi tilit, päiväkirjan, laskut, ALV-aineiston ja skeemat.</li>
               <li>Nykyinen jatkoversio löytyy osoitteesta <a href="https://docs.busdk.com">docs.busdk.com</a>.</li>
             </ul>
@@ -92,9 +92,9 @@
 
           <section class="content-panel section-stack">
             <p>
-              Tämä muutos teki BusDK:sta helpomman ymmärtää, koska eri asiat erotettiin omille
-              sivuilleen. Arkkitehtuurissa avattiin, miksi järjestelmä rakentuu löyhästi toisiinsa
-              kytkeytyvien moduulien ympärille. Komentoriviä käsittelevä osio puolestaan sanoi
+              Tämä muutos tekee BusDK:sta helpomman ymmärtää, koska eri asiat erotetaan omille
+              sivuilleen. Arkkitehtuurissa avataan, miksi järjestelmä rakentuu löyhästi toisiinsa
+              kytkeytyvien moduulien ympärille. Komentoriviä käsittelevä osio puolestaan sanoo
               suoraan, että komennon tehtävä ei ole vain kirjoittaa rivejä tiedostoon, vaan lukea,
               tarkistaa, päivittää ja tallentaa muutos hallitusti.
             </p>
@@ -108,10 +108,10 @@ validate requested changes
 write the updated files
 then commit the change</code></pre>
             <p>
-              Vielä näkyvämpi muutos oli ensimmäinen konkreettinen esimerkkirakenne. Sen myötä
-              BusDK ei ollut enää vain abstrakti ajatus CSV-tiedostoista, vaan dokumentaatio näytti
+              Vielä näkyvämpi muutos on ensimmäinen konkreettinen esimerkkirakenne. Sen myötä
+              BusDK ei ole enää vain abstrakti ajatus CSV-tiedostoista, vaan dokumentaatio näyttää
               suoraan, että aineisto voisi jakautua esimerkiksi tileihin, päiväkirjaan, laskuihin,
-              ALV-aineistoon, budjetteihin ja skeemoihin. Tällainen rakenne teki heti ymmärrettäväksi,
+              ALV-aineistoon, budjetteihin ja skeemoihin. Tällainen rakenne tekee heti ymmärrettäväksi,
               mitä tiedostoja käyttäjä oikeasti ylläpitää ja mitä moduulit lukevat.
             </p>
             <pre><code>my-business-books/
@@ -127,8 +127,8 @@ then commit the change</code></pre>
   schemas/
     journal.schema.json</code></pre>
             <p>
-              Käytännössä tämä oli hetki, jolloin BusDK:n julkinen dokumentaatio alkoi palvella
-              sekä käyttöönottoa että arviointia. Lukija näki yhdestä paikasta sekä toimintamallin
+              Käytännössä tämä on hetki, jolloin BusDK:n julkinen dokumentaatio alkaa palvella
+              sekä käyttöönottoa että arviointia. Yhdestä paikasta näkee sekä toimintamallin
               että aineiston rakenteen. Jos haluat verrata tätä varhaista rakennetta nykyiseen
               kokonaisuuteen, jatkopolku löytyy <a href="https://docs.busdk.com">julkisesta
               dokumentaatiosta</a>.

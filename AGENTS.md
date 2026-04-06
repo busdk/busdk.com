@@ -197,6 +197,14 @@ Scoped guidance for the `busdk.com` repository.
     are not automatically product milestones. Treat them as blog-worthy only
     after verifying what concrete reader-visible capability, command, docs
     surface, or workflow changed.
+41. Retrospective blog posts must read like same-day news. Titles, ingresses,
+    TL;DR blocks, body text, metadata descriptions, and blog-index cards should
+    default to present-tense or immediate-news phrasing instead of later
+    summary language.
+42. Before considering a blog article finished, reread it once specifically for
+    hidden retrospective wording such as `sai`, `toi`, `alkoi`, `julkaistiin`,
+    `siirtyi`, `muuttui`, `kuvattiin`, or similar forms, and rewrite them when
+    the article is meant to sound like it was published on that day.
 
 ## Commit Workflow (When Asked To Commit)
 
