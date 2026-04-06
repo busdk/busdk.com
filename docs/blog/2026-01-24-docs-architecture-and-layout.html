@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</title>
+    <meta
+      name="description"
+      content="24.1.2026 BusDK:n dokumentaatio hajotettiin omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa. Samalla mukaan tuli ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-24-docs-architecture-and-layout.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-24-docs-architecture-and-layout.html" />
+    <meta
+      property="og:title"
+      content="24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
+    />
+    <meta
+      property="og:description"
+      content="Yhden pitkän design-tekstin sijaan BusDK:lle syntyi dokumentaatio, josta näki erikseen arkkitehtuurin, komentojen roolin, tietorakenteen ja esimerkkihakemiston."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="24.1.2026 | Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi"
+    />
+    <meta
+      name="twitter:description"
+      content="BusDK:n julkinen dokumentaatio muuttui yhdessä aamussa selattavaksi kokonaisuudeksi, jossa näkyivät arkkitehtuuri, työnkulut ja ensimmäinen konkreettinen esimerkkihakemisto."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</h1>
+              <p class="intro">
+                24.1.2026 BusDK:n julkinen dokumentaatio muuttui yhdestä pitkästä suunnitelmasta
+                selattavaksi kokonaisuudeksi. Samalla mukaan tuli ensimmäinen konkreettinen
+                esimerkkirakenne siitä, miltä valmis kirjanpitoaineisto voisi näyttää hakemistoina
+                ja tiedostoina.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">24.1.2026</span>
+                <span class="meta-chip">Dokumentaatio</span>
+                <span class="meta-chip">Arkkitehtuuri</span>
+                <span class="meta-chip">Esimerkkirakenne</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Dokumentaatio jaettiin omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa.</li>
+              <li>BusDK:n komentorivi kuvattiin tietoisesti aineiston vartijaksi, ei vain tiedostojen muokkaajaksi.</li>
+              <li>Ensimmäinen konkreettinen hakemistorakenne teki näkyväksi tilit, päiväkirjan, laskut, ALV-aineiston ja skeemat.</li>
+              <li>Nykyinen jatkoversio löytyy osoitteesta <a href="https://docs.busdk.com">docs.busdk.com</a>.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Tämä muutos teki BusDK:sta helpomman ymmärtää, koska eri asiat erotettiin omille
+              sivuilleen. Arkkitehtuurissa avattiin, miksi järjestelmä rakentuu löyhästi toisiinsa
+              kytkeytyvien moduulien ympärille. Komentoriviä käsittelevä osio puolestaan sanoi
+              suoraan, että komennon tehtävä ei ole vain kirjoittaa rivejä tiedostoon, vaan lukea,
+              tarkistaa, päivittää ja tallentaa muutos hallitusti.
+            </p>
+            <pre><code>busdk journal add --date 2026-01-15 \
+  --debit Cash \
+  --credit Sales \
+  --amount 500 \
+  --desc "Invoice 1001 payment"</code></pre>
+            <pre><code>load the necessary resources from the repository
+validate requested changes
+write the updated files
+then commit the change</code></pre>
+            <p>
+              Vielä näkyvämpi muutos oli ensimmäinen konkreettinen esimerkkirakenne. Sen myötä
+              BusDK ei ollut enää vain abstrakti ajatus CSV-tiedostoista, vaan dokumentaatio näytti
+              suoraan, että aineisto voisi jakautua esimerkiksi tileihin, päiväkirjaan, laskuihin,
+              ALV-aineistoon, budjetteihin ja skeemoihin. Tällainen rakenne teki heti ymmärrettäväksi,
+              mitä tiedostoja käyttäjä oikeasti ylläpitää ja mitä moduulit lukevat.
+            </p>
+            <pre><code>my-business-books/
+  accounts/
+    accounts.csv
+  journal/
+    journal_2026.csv
+  invoices/
+    sales_invoices.csv
+    sales_invoice_lines.csv
+  vat/
+    vat_return_2026Q1.csv
+  schemas/
+    journal.schema.json</code></pre>
+            <p>
+              Käytännössä tämä oli hetki, jolloin BusDK:n julkinen dokumentaatio alkoi palvella
+              sekä käyttöönottoa että arviointia. Lukija näki yhdestä paikasta sekä toimintamallin
+              että aineiston rakenteen. Jos haluat verrata tätä varhaista rakennetta nykyiseen
+              kokonaisuuteen, jatkopolku löytyy <a href="https://docs.busdk.com">julkisesta
+              dokumentaatiosta</a>.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin
+            historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Toggle light theme" : "Toggle dark theme"
+        );
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

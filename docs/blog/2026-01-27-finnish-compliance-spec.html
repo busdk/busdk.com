@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>27.1.2026 | Julkinen dokumentaatio sai ensimmäisen suomalaisen kirjanpidon compliance-pohjan</title>
+    <meta name="description" content="27.1.2026 BusDK:n julkiseen dokumentaatioon lisättiin ensimmäinen suomalaisen kirjanpidon ja veroauditoinnin vaatimuspohja, joka teki tuotteen audit trail -lupauksesta täsmällisemmän." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-27-finnish-compliance-spec.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-27-finnish-compliance-spec.html" />
+    <meta property="og:title" content="27.1.2026 | Julkinen dokumentaatio sai ensimmäisen suomalaisen kirjanpidon compliance-pohjan" />
+    <meta property="og:description" content="Kirjanpidon audit trail, tositteet, säilytys ja verotarkastusvalmius kuvattiin ensimmäistä kertaa julkisesti BusDK:n omassa dokumentaatiossa." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="27.1.2026 | Julkinen dokumentaatio sai ensimmäisen suomalaisen kirjanpidon compliance-pohjan" />
+    <meta name="twitter:description" content="27.1.2026 BusDK:n dokumentaatio alkoi määritellä suomalaisen kirjanpidon ja veroauditoinnin vaatimuksia omalla nimellään." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header"><div class="site-header-inner"><a class="brand" href="../" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+      <main><div class="page-shell">
+        <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Julkinen dokumentaatio sai ensimmäisen suomalaisen kirjanpidon compliance-pohjan</h1><p class="intro">27.1.2026 BusDK:n dokumentaatioon lisättiin ensimmäinen laaja kuvaus siitä, mitä suomalainen kirjanpito, tositteet, säilytys ja verotarkastusvalmius tuotteelta vaativat.</p><p class="intro">Tämä teki aiemmasta auditointi- ja jäljitettävyyslupauksesta huomattavasti täsmällisemmän.</p><div class="hero-meta"><span class="meta-chip">27.1.2026</span><span class="meta-chip">Dokumentaatio</span><span class="meta-chip">Suomalainen kirjanpito</span><span class="meta-chip">Audit trail</span></div></div></article>
+        <section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li>Kirjanpitoketju, tositteet, säilytys ja verotarkastusvalmius määriteltiin ensimmäistä kertaa omana vaatimussivunaan.</li><li>Dokumentaatio alkoi viitata suoraan suomalaisiin lakilähteisiin ja viranomaisohjeisiin.</li><li>BusDK:n audit trail -lupaus muuttui tämän myötä paljon tarkemmaksi.</li></ul></section>
+        <section class="content-panel section-stack"><p>Sivun näkyvä ydin oli jo alussa selvä:</p><pre><code>Finnish Bookkeeping and Tax-Audit Compliance (BusDK)
+
+Last verified: 2026-01-27</code></pre><p>Tämä ei ollut pelkkä taustamuistio. Dokumentaatio määritteli konkreettisesti, että BusDK:n pitää pystyä näyttämään katkeamaton kirjausketju raportista pääkirjaan, tositteeseen ja alkuperäiseen aineistoon asti, säilyttää aineisto luettavana ja tuottaa tarkastettava aineistopaketti verotarkastusta varten. Samalla mukaan tulivat myös lähdeviittaukset suoraan lakeihin ja ohjeisiin.</p><p>Tuotteen kannalta tämä oli merkittävä askel siksi, että BusDK ei enää puhunut auditoinnista vain yleisenä periaatteena. Dokumentaatio alkoi kertoa täsmällisesti, mitä suomalaisessa kirjanpidossa pitää pystyä näyttämään ja säilyttämään.</p></section>
+      </div></main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme()); if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); } prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

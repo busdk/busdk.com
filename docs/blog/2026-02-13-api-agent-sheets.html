@@ -1,20 +1,169 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>13.2.2026 | API, agentti, preferences ja sheets tulivat mukaan</title><meta name="description" content="13.2.2026 BusDK lisäsi yhdessä päivässä bus-api-, bus-agent-, bus-preferences-, bus-sheets- ja bus-config-submodulet sekä siivosi submodule-skriptit bus dev -vetoisiksi." /><link rel="canonical" href="https://busdk.com/blog/2026-02-13-api-agent-sheets.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-02-13-api-agent-sheets.html" /><meta property="og:title" content="13.2.2026 | API, agentti, preferences ja sheets tulivat mukaan" /><meta property="og:description" content="13.2.2026 oli päivä, jolloin BusDK:n moduuliekosysteemi laajeni selvästi: mukaan tulivat API, agentti, preferences, sheets ja config." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="13.2.2026 | API, agentti, preferences ja sheets tulivat mukaan" /><meta name="twitter:description" content="Yksi päivä, viisi uutta suuntaa BusDK:n moduulipintaan." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>API, agentti, preferences ja sheets tulivat mukaan</h1><p class="intro">Paikallinen API, agentti-integraatio ja taulukkomuotoinen käyttöliittymä tulivat näkyviin oikeina moduuleina ja komentoina.</p><p class="intro">BusDK ei ollut enää vain taustalla ajettava CLI-runko, vaan myös rajapinta ja selainkäyttöliittymä alkoivat näkyä samassa kokonaisuudessa.</p><div class="hero-meta"><span class="meta-chip">13.2.2026</span><span class="meta-chip">bus-api</span><span class="meta-chip">bus-agent</span><span class="meta-chip">bus-sheets</span></div></div></article>
-<section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> BusDK ei ollut enää vain taustarunko, vaan alkoi saada myös käyttöliittymä- ja integraatiopintoja.</li><li><strong>Toteutus:</strong> moduulien määrä ja suunta kasvoivat kerralla merkittävästi, samalla kun submodule-skriptit yhtenäistettiin <code>bus dev</code> -vetoisiksi.</li><li><strong>Saatavuus:</strong> samalle päivälle osuvat tagit <code>v0.0.16</code> ... <code>v0.0.18</code>.</li></ul></section>
-<section class="content-panel section-stack"><p>Muutos näkyi heti oikeina komentoina eikä vain uusina moduuliniminä:</p><pre><code>bus api serve \
-  --port 8080 \
-  --token-bytes 32
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>13.2.2026 | Paikallinen API ja taulukkonäkymä tulivat mukaan BusDK:hon</title>
+    <meta
+      name="description"
+      content="BusDK sai paikallisen API:n ja selainpohjaisen taulukkonäkymän, joiden ympärille myös agentti- ja asetuspinta alkoivat rakentua."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-13-api-agent-sheets.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-13-api-agent-sheets.html" />
+    <meta property="og:title" content="13.2.2026 | Paikallinen API ja taulukkonäkymä tulivat mukaan BusDK:hon" />
+    <meta
+      property="og:description"
+      content="bus-api ja bus-sheets toivat BusDK:hon ohjelmallisen rajapinnan ja paikallisen selainnäkymän."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="13.2.2026 | Paikallinen API ja taulukkonäkymä tulivat mukaan BusDK:hon"
+    />
+    <meta
+      name="twitter:description"
+      content="bus-api ja bus-sheets tekivät BusDK:sta aiempaa helpommin integroitavan ja selattavan."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Paikallinen API ja taulukkonäkymä tulivat mukaan BusDK:hon</h1>
+              <p class="intro">
+                13.2.2026 BusDK sai kaksi näkyvää uutta käyttöpintaa: paikallisen REST-rajapinnan ja
+                selainpohjaisen taulukkonäkymän.
+              </p>
+              <p class="intro">
+                Samassa muutoksessa mukaan tulivat myös agentti- ja asetuspinnat, mutta päivän selvin
+                käyttäjälle näkyvä muutos oli se, että workspacea pystyi nyt käyttämään muutakin kautta
+                kuin suoraan komentoriviltä.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">13.2.2026</span>
+                <span class="meta-chip">bus-api</span>
+                <span class="meta-chip">bus-sheets</span>
+                <span class="meta-chip">Selainpinta</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>BusDK sai paikallisen API:n workspace-datalle.</li>
+              <li>BusDK sai taulukkomuotoisen web-käyttöliittymän saman datan selaamiseen.</li>
+              <li>Agentti- ja asetuspinnat tulivat mukaan samaan kokonaisuuteen.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Tämä näkyi heti uusina komentoina. <code>bus api --help</code> kertoi nyt paikallisesta
+              JSON-rajapinnasta, ja <code>bus sheets --help</code> omasta spreadsheet-tyylisestä
+              web-käyttöliittymästä:
+            </p>
+            <pre><code>bus api --help
+bus sheets --help</code></pre>
+            <pre><code>bus-api — local REST JSON API gateway for BusDK workspaces.
+Commands:
+  serve
+  openapi
 
-bus sheets \
-  -C ./workspace \
-  serve \
-  --enable-agent \
-  --port 8092</code></pre><pre><code>bus api serve
-  -&gt; http://127.0.0.1:8080
+bus-sheets — local spreadsheet-style web UI for BusDK workspaces.
+Subcommands:
+  serve (default)
+  version</code></pre>
+            <p>
+              Tämä oli käytännössä iso askel, koska sama workspace alkoi avautua sekä ohjelmalliseen
+              käyttöön että selaimessa tehtävään tarkasteluun. Jos halusi rakentaa integraation,
+              <code>bus-api</code> tarjosi siihen lähtöpinnan. Jos taas halusi nähdä samat tiedot
+              taulukkona, <code>bus-sheets</code> avasi siihen oman paikallisen näkymän. Tarkemmat
+              komennot löytyvät <a href="https://docs.busdk.com/modules/bus-api"><code>bus-api</code>-dokumentaatiosta</a>
+              ja <a href="https://docs.busdk.com/modules/bus-sheets"><code>bus-sheets</code>-dokumentaatiosta</a>.
+            </p>
+            <p>
+              Samalle päivälle osui myös agentti-, preferences- ja config-moduulien lisääminen. Ne eivät
+              olleet yhtä näyttäviä kuin uusi API tai selainnäkymä, mutta ne tekivät samasta suunnasta
+              pysyvämmän: BusDK ei ollut enää vain joukko komentoja, vaan kokonaisuus, jonka ympärille
+              pystyi rakentamaan asetuksia, automaatiota ja käyttöliittymiä.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
 
-bus sheets serve
-  -&gt; http://127.0.0.1:8092</code></pre><p>Ensimmäinen komento avaa paikallisen rajapinnan workspaceen. Toinen avaa saman workspaceen taulukkomuotoisen käyttöliittymän ja agenttipaneelin. Käytännössä BusDK sai samalla kertaa sekä ohjelmallisen että selainpohjaisen käyttöpinnan. Jos haluat tarkemman sopimuksen komentojen käytöstä, jatka <a href="https://docs.busdk.com/modules/bus-api"><code>bus api</code> -dokumentaatioon</a> tai <a href="https://docs.busdk.com/modules/bus-sheets"><code>bus sheets</code> -dokumentaatioon</a>.</p><p>Samalla superprojekti sai uudet moduulit ja submodule-skriptit siivottiin dynaamiseksi <code>bus-*</code>-löydöksi sekä yhtenäisemmäksi <code>bus dev</code>-pinnaksi. Pelkkä moduulien lisääminen ei olisi ollut yhtä hyödyllistä ilman, että niitä pystyy hallitsemaan yhdenmukaisesti. Julkisessa moduuli-indeksissä tämä näkyi heti uusina agentti-, API- ja sheets-merkintöinä.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>20.2.2026</h3><p>Root e2e, FSL-dokumentaatio ja Windows-paketointi osuivat samalle päivälle.</p><a href="2026-02-20-root-e2e-and-licensing.html">Lue 20.2.2026 uutinen</a></div><div class="callout"><h3>Moduulidokumentaatio</h3><p>Nykyinen moduuli-indeksi näyttää, mihin näistä suunnista on sittemmin tultu.</p><a href="https://docs.busdk.com/modules/index">Avaa moduuli-indeksi</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

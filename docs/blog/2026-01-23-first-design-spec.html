@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>23.1.2026 | BusDK:n ensimmäinen julkinen suunnitelma julkaistiin</title>
+    <meta
+      name="description"
+      content="23.1.2026 BusDK:n julkinen dokumentaatio kuvasi ensimmäistä kertaa, mihin tuotetta rakennetaan: komentorivivetoinen kirjanpito, avoimet tiedostot, Git-historia ja modulaarinen työkalumalli."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-23-first-design-spec.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-23-first-design-spec.html" />
+    <meta property="og:title" content="23.1.2026 | BusDK:n ensimmäinen julkinen suunnitelma julkaistiin" />
+    <meta
+      property="og:description"
+      content="Ensimmäinen julkinen design-spec kertoi, että BusDK:tä rakennetaan pienyrittäjän kirjanpitoon, avoimille tiedostoille ja komentoriviltä hallittavaksi kokonaisuudeksi."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="23.1.2026 | BusDK:n ensimmäinen julkinen suunnitelma julkaistiin"
+    />
+    <meta
+      name="twitter:description"
+      content="BusDK:n ensimmäinen julkinen design-spec teki näkyväksi tuotteen tarkoituksen, kohdekäytön ja tiedostopohjaisen kirjanpitomallin."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>BusDK:n ensimmäinen julkinen suunnitelma julkaistiin</h1>
+              <p class="intro">
+                23.1.2026 BusDK:lla oli ensi kertaa julkinen teksti, joka kertoi selvästi mitä
+                ollaan rakentamassa. Samalle sivulle koottiin pienyrittäjän kirjanpito, avoimet
+                tiedostot, Git-pohjainen historia ja komentoriviltä hallittava työkalumalli.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">23.1.2026</span>
+                <span class="meta-chip">Dokumentaatio</span>
+                <span class="meta-chip">Suunnitteludokumentti</span>
+                <span class="meta-chip">Kirjanpitomalli</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>BusDK:n tarkoitus kirjoitettiin ensi kertaa julkisesti auki.</li>
+              <li>Keskiöön nostettiin pienyrittäjän kirjanpito, laskutus, ALV, budjetointi ja pankkiaineistot.</li>
+              <li>Aineiston perustaksi määriteltiin avoimet tekstitiedostot, skeemat ja Git-historia.</li>
+              <li>Nykyinen dokumentaatio löytyy jatkona osoitteesta <a href="https://docs.busdk.com">docs.busdk.com</a>.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Ensimmäinen julkinen suunnitelma oli tärkeä siksi, että siinä BusDK määriteltiin jo
+              varsin tunnistettavasti. Tekstissä puhuttiin pienyrityksen kirjanpidosta,
+              tositteista, laskuista, ALV-käsittelystä, pankkiaineistojen tuonnista ja budjeteista
+              samana yhtenäisenä kokonaisuutena. Samalla tehtiin näkyväksi ajatus siitä, että
+              aineisto ei jää yhden sovelluksen sisäiseksi tilaksi, vaan pysyy luettavana
+              tiedostoina myös vuosien päästä.
+            </p>
+            <pre><code>Modular CLI-First Accounting Toolkit
+
+all financial data is stored in transparent,
+human-readable text files and tracked in a Git repository</code></pre>
+            <p>
+              Juuri tämä yhdistelmä erotti BusDK:n tavallisesta kirjanpitosovelluksen kuvauksesta.
+              Julkinen suunnitelma ei luvannut pelkkää käyttöliittymää, vaan mallin jossa
+              kirjanpitoaineisto säilyy avoimena, audit trail on sisäänrakennettu ja moduuleja voi
+              rakentaa saman tiedostopohjan ympärille vaiheittain. Myös tekoäly näkyi jo tässä
+              vaiheessa, mutta vain valmiutena: aineisto haluttiin pitää niin rakenteisena, että
+              sitä voi myöhemmin käyttää avustettuun automaatioon ilman että koko järjestelmä
+              riippuu siitä.
+            </p>
+            <p>
+              Tämä oli ensimmäinen julkinen kokonaisesitys siitä, mitä BusDK:lla tavoiteltiin ja
+              millaiselle aineistolle se rakennetaan. Jos haluat nähdä, mihin tämä dokumentaatio
+              myöhemmin kasvoi, jatkopolku löytyy nykyisestä <a href="https://docs.busdk.com"
+                >julkisesta dokumentaatiosta</a
+              >.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin
+            historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute(
+          "aria-label",
+          isDark ? "Toggle light theme" : "Toggle dark theme"
+        );
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

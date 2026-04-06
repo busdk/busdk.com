@@ -6,7 +6,7 @@
     <title>21.3.2026 | Gateway sai palvelu- ja käyttäjähallinnan komentopinnan</title>
     <meta
       name="description"
-      content="bus-gateway sai näkyvän palvelu- ja käyttäjähallinnan komentopinnan, jolla paikallinen selainympäristö voidaan ottaa käyttöön hallitusti."
+      content="bus-gateway toi palveluluettelon ja käyttäjähallinnan BusDK:n paikalliseen selainympäristöön."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-03-21-gateway-contracts.html" />
     <meta property="og:type" content="article" />
@@ -14,17 +14,14 @@
     <meta property="og:title" content="21.3.2026 | Gateway sai palvelu- ja käyttäjähallinnan komentopinnan" />
     <meta
       property="og:description"
-      content="Gatewayn hallinta siirtyi konkreettisiksi komennoiksi: palvelut, käyttäjät ja workspace-kohtainen selainpinta hallitaan nyt suoraan CLI:stä."
+      content="Selainympäristön näkyvät palvelut ja käyttäjät pystyi nyt hallitsemaan suoraan bus-gatewaylla."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="21.3.2026 | Gateway sai palvelu- ja käyttäjähallinnan komentopinnan"
-    />
+    <meta name="twitter:title" content="21.3.2026 | Gateway sai palvelu- ja käyttäjähallinnan komentopinnan" />
     <meta
       name="twitter:description"
-      content="bus-gateway toi palvelu- ja käyttäjähallinnan BusDK:n paikalliseen selainympäristöön."
+      content="bus-gateway teki palveluluettelosta ja käyttäjistä näkyvän osan komentopintaa."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -33,7 +30,7 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+          <a class="brand" href="../" aria-label="BusDK home">
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
@@ -62,15 +59,14 @@
               <p class="eyebrow">BusDK Update</p>
               <h1>Gateway sai palvelu- ja käyttäjähallinnan komentopinnan</h1>
               <p class="intro">
-                Paikallinen selainympäristö ei enää jäänyt epämääräiseksi taustapalveluksi.
-                <code>bus-gateway</code> sai komennot palvelulistojen, käyttäjien ja näkyvien työkalujen
-                hallintaan.
+                21.3.2026 teki paikallisen selainympäristön näkyväksi hallintakerrokseksi. Samalla
+                workspaceen näkyvät palvelut ja käyttäjät tulivat omiksi komennoikseen.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">21.3.2026</span>
                 <span class="meta-chip">bus-gateway</span>
-                <span class="meta-chip">Service catalog</span>
-                <span class="meta-chip">Users</span>
+                <span class="meta-chip">Palveluluettelo</span>
+                <span class="meta-chip">Käyttäjät</span>
               </div>
             </div>
           </article>
@@ -78,56 +74,31 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li>
-                <strong>Merkitys:</strong> selainmoduulit kuten portal ja inspection saivat hallitun
-                sisäänkäynnin.
-              </li>
-              <li>
-                <strong>Käyttö:</strong>
-                <a href="https://docs.busdk.com/modules/bus-gateway">bus-gateway</a>
-                hallitsee palveluluetteloa ja käyttäjien näkyviä työkaluja.
-              </li>
-              <li><strong>Rakenne:</strong> asetukset pysyvät workspace-kohtaisina eikä erillistä keskitettyä identiteettipalvelua tarvita.</li>
+              <li>Selainmoduulien sisäänkäynti tuli näkyväksi komentopinnaksi.</li>
+              <li>Palvelut ja käyttäjät pystyi listaamaan ja muuttamaan suoraan.</li>
+              <li>Gateway sitoi portalin, inspectionin ja muut selainpinnat yhteen.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
             <p>
-              Konkreettisin muutos on se, että gatewayn selaimessa näkyvä palveluluettelo ja käyttäjät
-              ovat nyt hallittavissa suoraan komentoriviltä. Kun workspaceen lisätään palvelu ja käyttäjä,
-              niiden tulos näkyy heti taulukkotulosteessa:
+              Uusi komentopinta näkyy jo helpissä:
             </p>
-            <pre><code>bus-gateway service list
-bus-gateway user get demo</code></pre>
-            <pre><code>id             title       enabled  command         root_mode
-bus-factory    Factory     true     bus-factory     root-flag
-bus-inspection Inspection  true     bus-inspection  chdir
-bus-ledger     Ledger      true     bus-ledger      chdir
-bus-portal     Portal      true     bus-portal      chdir
-
-username  full_name  role   available_services
-demo      Demo User  admin  bus-factory,bus-inspection,bus-ledger,bus-portal</code></pre>
+            <pre><code>bus-gateway --help</code></pre>
+            <pre><code>Commands:
+  serve
+  service
+  settings
+  user</code></pre>
             <p>
-              Tämä tekee gatewaysta enemmän kuin pelkän välityspalvelimen. Se on paikallinen hallintakerros,
-              joka määrää mitä selaintyökaluja workspace tarjoaa ja kenelle ne näkyvät. Samalla siitä tuli
-              selkeä jatkumo <code>bus-portal</code>- ja <code>bus-inspection</code>-moduuleille, joille
-              tarvittiin yhteinen kirjautumis- ja käynnistysmalli.
+              Tällä on käytännön merkitys vasta silloin, kun palveluluettelo ja käyttäjät tulevat näkyväksi
+              osaksi päivittäistä käyttöä. Se tarkoittaa, että workspace voi kertoa yhdellä katsauksella
+              mitä selaintyökaluja se tarjoaa ja kenelle ne näkyvät. Tämä on tärkeä jatkumo
+              <a href="https://docs.busdk.com/modules/bus-portal"><code>bus-portal</code></a>- ja
+              <a href="https://docs.busdk.com/modules/bus-inspection"><code>bus-inspection</code></a>-moduuleille:
+              niiden ympärille tuli yhteinen sisäänkäynti sen sijaan, että jokainen näkymä eläisi omana
+              irrallisena saarekkeenaan. Tarkemmat komennot löytyvät
+              <a href="https://docs.busdk.com/modules/bus-gateway"><code>bus-gateway</code>-dokumentaatiosta</a>.
             </p>
-          </section>
-          <section class="cta-panel section-stack">
-            <p class="small-label">Next</p>
-            <h2>Seuraava merkittävä päivä</h2>
-            <div class="cta-grid two-up">
-              <div class="callout">
-                <h3>30.3.2026</h3>
-                <p><code>balance assert</code> tuli komentopintaan ja PDF-korjaukset etenivät.</p>
-                <a href="2026-03-30-balance-assert-and-pdf-fixes.html">Lue 30.3.2026 uutinen</a>
-              </div>
-              <div class="callout">
-                <h3>Nykyinen gateway-dokumentaatio</h3>
-                <p>Lisätiedot komennoista ja workspace-mallista löytyvät docsista.</p>
-                <a href="https://docs.busdk.com/modules/bus-gateway">Avaa bus-gateway-dokumentaatio</a>
-              </div>
-            </div>
           </section>
         </div>
       </main>

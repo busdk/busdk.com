@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>31.1.2026 | docs.busdk.com alkoi näyttää oikealta dokumentaatiosivustolta</title>
+    <meta name="description" content="31.1.2026 docs.busdk.com sai moduuli-indeksin, osioihin jaetun rakenteen, navigaation, 404-sivun sekä koodiblokkien ja tumman teeman tyylit." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-31-docs-site-expanded.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-31-docs-site-expanded.html" />
+    <meta property="og:title" content="31.1.2026 | docs.busdk.com alkoi näyttää oikealta dokumentaatiosivustolta" />
+    <meta property="og:description" content="Moduuli-indeksi, navigaatio, GitHub Pages -rakenne, 404-sivu ja koodiblokkien tyylit muuttivat docsit yhtenäiseksi sivustoksi." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="31.1.2026 | docs.busdk.com alkoi näyttää oikealta dokumentaatiosivustolta" />
+    <meta name="twitter:description" content="31.1.2026 docsit saivat moduuli-indeksin, navigaation, tumman teeman tyylit ja GitHub Pages -rakenteen." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header"><div class="site-header-inner"><a class="brand" href="../" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+      <main><div class="page-shell">
+        <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1><code>docs.busdk.com</code> alkoi näyttää oikealta dokumentaatiosivustolta</h1><p class="intro">31.1.2026 oli docs-sivuston iso järjestelypäivä. Moduulit saivat yhteisen indeksin, sisältö jaettiin osioihin ja sivustolle tuli oma navigaatio sekä 404-sivu.</p><p class="intro">Samana päivänä myös koodiblokit, tumman teeman värit ja GitHub Pages -rakenne tarkentuivat näkyväksi kokonaisuudeksi.</p><div class="hero-meta"><span class="meta-chip">31.1.2026</span><span class="meta-chip">docs.busdk.com</span><span class="meta-chip">Moduuli-indeksi</span><span class="meta-chip">Navigaatio</span></div></div></article>
+        <section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li>Docsit jaettiin selkeisiin osioihin ja niille tuli omat indeksisivut.</li><li>Moduuleille tuli yhteinen hakemisto ja sivustolle oma navigaatio.</li><li>Koodiblokit ja tumma teema saivat ensimmäiset yhtenäiset tyylinsä.</li></ul></section>
+        <section class="content-panel section-stack"><p>Yksi näkyvä muutos oli uusi moduuli-indeksi:</p><pre><code>Modules
+
+BusDK is organized as a set of independent modules...</code></pre><p>Tämä teki docs-sivustosta selvästi helpommin käytettävän. Aiemmin sisältö oli vielä lähempänä yksittäisten Markdown-tiedostojen kokoelmaa. Tämän päivän jälkeen käyttäjä pystyi siirtymään moduulista toiseen, löytämään oikean osion navigaatiosta ja lukemaan koodiesimerkkejä myös tummalla teemalla ilman että sivu hajosi.</p><p>Tuotteen kannalta tämä oli tärkeä muutos siksi, että dokumentaatio alkoi palvella oikeaa käyttöä eikä vain taustasuunnittelua. Myöhempi docs-sivusto rakentui suoraan tämän päivän rakenteiden päälle.</p></section>
+      </div></main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme()); if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); } prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

@@ -1,26 +1,30 @@
 # PLAN.md
 
+- [ ] Käy kaikki blogiartikkelit läpi ja muuta näkyvä leipäteksti, ingressit, TL;DR:t ja indeksikortit saman päivän uutiskielelle niin, että teksti ei puhu menneestä muodossa vaan nykyhetkenä.
+- [x] Korjaa blogiartikkeleiden otsikkopalkin sivustonsisäiset linkit relatiivisiksi niin, että navigaatio toimii myös lokaalissa kehityksessä.
 - [x] Iteroi ja tiivistä 25.1.2026 BusDK-artikkeli niin, että väitteet eivät toista otsikon kaavaa ja sisältö kertoo konkreettisesti mitä silloin muuttui.
 - [x] Iteroi ja tiivistä 7.2.2026 release- ja asennusartikkeli niin, että pääpaino on käyttäjälle näkyvässä asennuspolussa eikä release-jargonissa.
 - [x] Kartoita 25.12.2025-7.2.2026 välin puuttuvat blogiaiheet rootin, `bus`-moduulin, `docs`-, `sdd`- ja `busdk.com`-historian perusteella ja lisää jokainen merkityksellinen aihe päivämäärineen tähän suunnitelmaan.
-- [ ] 24.1.2026: kirjoita artikkeli `bus`-ytimen ensimmäisestä oikeasta dispatcher-versiosta, jossa `bus <command>` -malli, PATH-haku, exit-koodit ja perusdokumentaatio syntyivät.
-- [ ] 24.1.2026: kirjoita artikkeli `bus`-komennon ensimmäisestä käyttökelpoisesta muodosta, kun alikomentojen listaus, asennustavat ja julkinen CLI-kuvaus tarkentuivat saman päivän myöhemmissä muutoksissa.
-- [ ] 24.1.2026: kirjoita artikkeli BusDK:n ensimmäisestä julkisesta sivusta, kun `busdk.com` avattiin ja tuotteen perusviesti tuli näkyville.
-- [ ] 27.1.2026: kirjoita artikkeli julkiseen dokumentaatioon lisätystä suomalaisen kirjanpidon ja veroauditoinnin vaatimuspohjasta.
-- [ ] 31.1.2026: kirjoita artikkeli docs-sivuston suuresta laajennuksesta, jossa moduuli-indeksi, navigaatio, GitHub Pages -rakenne ja koodiblokkien tyylit tulivat mukaan.
-- [ ] 1.2.2026: kirjoita artikkeli loppukäyttäjädokumentaation siirtymisestä komentosarjoista konkreettisiin `bus`-komentoketjuihin ja periodipohjaisiin dataset-polkuihin.
-- [ ] Iteroi 13.2.2026 API-, agentti- ja sheets-artikkeli lukijakeskeisemmäksi: poista mallipohjainen TL;DR-kieli, vähennä liian monen aiheen ahtamista samaan juttuun ja tarkenna mikä näkyvä käyttöpinta oikeasti muuttui.
-- [ ] Iteroi 20.2.2026 root-e2e- ja lisenssiartikkeli pois kehittäjäjargonista: poista `root`- ja tagi-/saatavuusmuotoilu, täsmennä mikä oli käyttäjälle näkyvä muutos testauksessa, lisenssissä ja Windows-paketoinnissa.
-- [ ] Iteroi 22.2.2026 pricing- ja landing page -artikkeli: korvaa englanninkieliset termit suomenkielisillä vastineilla siellä missä mahdollista ja varmista että hinnoittelu, synteettinen 2024-aineisto ja sivustouudistus liittyvät samaan selkeään lukijatarpeeseen.
-- [ ] Iteroi 2.3.2026 release-paketointiartikkeli: poista release-jargonia, tarkenna mitä käyttäjä sai enemmän mukaan asennettuun työkalukokoelmaan ja varmista että `bus-factory`-nosto on aidosti päivän keskeinen muutos eikä sivujuonne.
-- [ ] Iteroi 17.3.2026 portal- ja inspection-artikkeli: poista vastakkainasettelu kuten `ei jäänyt vain`, täsmennä mitä nämä pinnat tekevät käytännössä ja varmista että konttijulkaisu on tekstissä toissijainen eikä otsikon varsinainen uutinen.
-- [ ] Iteroi 21.3.2026 gateway-artikkeli: käännä metachipit ja leipäteksti suomenkielisemmiksi, selitä palveluluettelo ja käyttäjähallinta konkreettisina käyttötilanteina ja varmista että CTA-linkit osoittavat semanttisesti oikeaan jatkopolkuun.
-- [ ] Iteroi 30.3.2026 balance assert -artikkeli: poista vielä jäljellä oleva bugilistamainen tiivistys, suomenna näkyvät termit kuten `PDF regressions`, ja rakenna assert-esimerkki sekä PDF-korjausten merkitys yhtenäisemmäksi artikkeliksi.
-- [ ] Iteroi 1.4.2026 tracker- ja worktree-artikkeli: arvioi onko aihe liian sisäinen julkiseen blogiin, ja jos artikkeli säilyy, kirjoita se uudelleen ilman sisätyökalujen prosessikeskeistä painotusta.
-- [ ] Iteroi 4.4.2026 changed-scope- ja bus-files-artikkeli: selitä `changed-scope` ymmärrettävämmin ilman sisäistä testijargonia ja varmista että `bus files` pysyy jutun konkreettisena pääasiana.
-- [ ] Iteroi 5.4.2026 riviselite- ja tuloslaskelma-artikkeli: suomenna näkyviä esimerkkejä kuten `Office supplies` ja `Card payment`, vähennä toisteista selittämistä ja tarkenna source-id-ryhmätarkistuksen merkitys vielä helpommin hahmotettavaksi.
-- [ ] Iteroi blogi-indeksin otsikko-, kuvaus- ja korttitekstit: poista jäljellä oleva metakieli kuten `päiväkohtaiset tuotepäivitykset`, varmista että jokainen kortti vastaa nykyistä artikkelia eikä vanhaa versiota, ja tiivistä kortit lukijalle merkityksellisiksi.
-- [ ] Yhdenmukaista `busdk.com/docs/`-sivuston otsikkopalkki ja päivitä `Blog`-linkki kaikille alisivuille samaan navigaatiolinjaan.
-- [ ] Kirjoita puuttuva `bus-secrets`-blogiartikkeli varmennetuilla esimerkeillä ja docs-linkeillä.
-- [ ] Kirjoita synteettisen 2024-aineiston raporttihandoffia käsittelevä blogiartikkeli varmennetuilla tiedosto- ja raporttiesimerkeillä.
-- [ ] Kirjoita current-workspace-comparatives-muutosta käsittelevä blogiartikkeli varmennetuilla komentoesimerkeillä ja ilman vanhentuneita sopimusväitteitä.
+- [x] 24.1.2026: kirjoita artikkeli `bus`-ytimen ensimmäisestä oikeasta dispatcher-versiosta, jossa `bus <command>` -malli, PATH-haku, exit-koodit ja perusdokumentaatio syntyivät.
+- [x] 24.1.2026: kirjoita artikkeli `bus`-komennon ensimmäisestä käyttökelpoisesta muodosta, kun alikomentojen listaus, asennustavat ja julkinen CLI-kuvaus tarkentuivat saman päivän myöhemmissä muutoksissa.
+- [x] 24.1.2026: kirjoita artikkeli BusDK:n ensimmäisestä julkisesta sivusta, kun `busdk.com` avattiin ja tuotteen perusviesti tuli näkyville.
+- [x] 27.1.2026: kirjoita artikkeli julkiseen dokumentaatioon lisätystä suomalaisen kirjanpidon ja veroauditoinnin vaatimuspohjasta.
+- [x] 31.1.2026: kirjoita artikkeli docs-sivuston suuresta laajennuksesta, jossa moduuli-indeksi, navigaatio, GitHub Pages -rakenne ja koodiblokkien tyylit tulivat mukaan.
+- [x] 1.2.2026: kirjoita artikkeli loppukäyttäjädokumentaation siirtymisestä komentosarjoista konkreettisiin `bus`-komentoketjuihin ja periodipohjaisiin dataset-polkuihin.
+- [x] Iteroi 13.2.2026 API-, agentti- ja sheets-artikkeli lukijakeskeisemmäksi: poista mallipohjainen TL;DR-kieli, vähennä liian monen aiheen ahtamista samaan juttuun ja tarkenna mikä näkyvä käyttöpinta oikeasti muuttui.
+- [x] Iteroi 20.2.2026 root-e2e- ja lisenssiartikkeli pois kehittäjäjargonista: poista `root`- ja tagi-/saatavuusmuotoilu, täsmennä mikä oli käyttäjälle näkyvä muutos testauksessa, lisenssissä ja Windows-paketoinnissa.
+- [x] Iteroi 22.2.2026 pricing- ja landing page -artikkeli: korvaa englanninkieliset termit suomenkielisillä vastineilla siellä missä mahdollista ja varmista että hinnoittelu, synteettinen 2024-aineisto ja sivustouudistus liittyvät samaan selkeään lukijatarpeeseen.
+- [x] Iteroi 2.3.2026 release-paketointiartikkeli: poista release-jargonia, tarkenna mitä käyttäjä sai enemmän mukaan asennettuun työkalukokoelmaan ja varmista että `bus-factory`-nosto on aidosti päivän keskeinen muutos eikä sivujuonne.
+- [x] Iteroi 17.3.2026 portal- ja inspection-artikkeli: poista vastakkainasettelu kuten `ei jäänyt vain`, täsmennä mitä nämä pinnat tekevät käytännössä ja varmista että konttijulkaisu on tekstissä toissijainen eikä otsikon varsinainen uutinen.
+- [x] Iteroi 21.3.2026 gateway-artikkeli: käännä metachipit ja leipäteksti suomenkielisemmiksi, selitä palveluluettelo ja käyttäjähallinta konkreettisina käyttötilanteina ja varmista että CTA-linkit osoittavat semanttisesti oikeaan jatkopolkuun.
+- [x] Iteroi 30.3.2026 balance assert -artikkeli: poista vielä jäljellä oleva bugilistamainen tiivistys, suomenna näkyvät termit kuten `PDF regressions`, ja rakenna assert-esimerkki sekä PDF-korjausten merkitys yhtenäisemmäksi artikkeliksi.
+- [x] Iteroi 1.4.2026 tracker- ja worktree-artikkeli: arvioi onko aihe liian sisäinen julkiseen blogiin, ja jos artikkeli säilyy, kirjoita se uudelleen ilman sisätyökalujen prosessikeskeistä painotusta.
+- [x] Iteroi 4.4.2026 changed-scope- ja bus-files-artikkeli: selitä `changed-scope` ymmärrettävämmin ilman sisäistä testijargonia ja varmista että `bus files` pysyy jutun konkreettisena pääasiana.
+- [x] Iteroi 5.4.2026 riviselite- ja tuloslaskelma-artikkeli: suomenna näkyviä esimerkkejä kuten `Office supplies` ja `Card payment`, vähennä toisteista selittämistä ja tarkenna source-id-ryhmätarkistuksen merkitys vielä helpommin hahmotettavaksi.
+- [x] Iteroi blogi-indeksin otsikko-, kuvaus- ja korttitekstit: poista jäljellä oleva metakieli kuten `päiväkohtaiset tuotepäivitykset`, varmista että jokainen kortti vastaa nykyistä artikkelia eikä vanhaa versiota, ja tiivistä kortit lukijalle merkityksellisiksi.
+- [x] Yhdenmukaista `busdk.com/docs/`-sivuston otsikkopalkki ja päivitä `Blog`-linkki kaikille alisivuille samaan navigaatiolinjaan.
+- [x] Kirjoita puuttuva `bus-secrets`-blogiartikkeli varmennetuilla esimerkeillä ja docs-linkeillä.
+- [x] Kirjoita synteettisen 2024-aineiston raporttihandoffia käsittelevä blogiartikkeli varmennetuilla tiedosto- ja raporttiesimerkeillä.
+- [x] Kirjoita current-workspace-comparatives-muutosta käsittelevä blogiartikkeli varmennetuilla komentoesimerkeillä ja ilman vanhentuneita sopimusväitteitä.
+- [x] 23.1.2026: kirjoita artikkeli ensimmäisestä julkisesta BusDK-design-specistä, jossa tuotteen tarkoitus, kohdekäyttö ja tiedostopohjainen kirjanpitomalli kuvattiin ensimmäisen kerran docs-repossa.
+- [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.

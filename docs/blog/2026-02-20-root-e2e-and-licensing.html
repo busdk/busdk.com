@@ -1,10 +1,153 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>20.2.2026 | Root make e2e, FSL-lisenssiviesti ja Windows-paketointi tulivat mukaan</title><meta name="description" content="20.2.2026 BusDK:n root-Makefile sai e2e-ajon, lisenssidokumentaatio vaihtui FSL-1.1-MIT-linjaan ja release/bootstrap-dokumentaatioon lisättiin Windows-paketointi." /><link rel="canonical" href="https://busdk.com/blog/2026-02-20-root-e2e-and-licensing.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-02-20-root-e2e-and-licensing.html" /><meta property="og:title" content="20.2.2026 | Root make e2e, FSL-lisenssiviesti ja Windows-paketointi tulivat mukaan" /><meta property="og:description" content="Root-tason e2e-ajot, FSL-lisenssiviesti ja Windows-paketointi nostivat BusDK:n käyttöönoton uudelle tasolle." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="20.2.2026 | Root make e2e, FSL-lisenssiviesti ja Windows-paketointi tulivat mukaan" /><meta name="twitter:description" content="BusDK:n release- ja testauspinta muuttui selvästi kypsempään suuntaan." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Root <code>make e2e</code>, FSL-lisenssiviesti ja Windows-paketointi tulivat mukaan</h1><p class="intro">Superprojekti sai root-tason <code>make e2e</code> -ajon, lisenssiviesti tarkentui FSL-1.1-MIT-linjaan ja release-ohjeet alkoivat huomioida myös Windows-paketoinnin.</p><p class="intro">Testaus, lisensointi ja käyttöönotto ottivat samalla kertaa askeleen hallitumpaan suuntaan.</p><div class="hero-meta"><span class="meta-chip">20.2.2026</span><span class="meta-chip">make e2e</span><span class="meta-chip">FSL-1.1-MIT</span><span class="meta-chip">Windows packaging</span></div></div></article>
-<section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> BusDK:n julkaisumalli ja lisenssiviesti alkoivat näyttää selvästi kaupallisesti hallitulta tuotteelta.</li><li><strong>Toteutus:</strong> root <code>make e2e</code> teki moduulien välisestä testiajosta standardoidumman.</li><li><strong>Saatavuus:</strong> tälle päivälle osuvat tagit <code>v0.0.30</code> ... <code>v0.0.34</code>.</li></ul></section>
-<section class="content-panel section-stack"><p>Muutos näkyi heti siinä, että superprojektin testaus ei ollut enää vain moduulikohtaista:</p><pre><code>make test
-make e2e</code></pre><pre><code>test OK
-e2e OK</code></pre><p>Root-Makefile osasi nyt ajaa e2e-testit yhtä standardoidusti kuin build- ja unit-testipolut. Se on monimoduulisessa repossa olennaista, koska juuri root-tasolla nähdään moduulirajojen todellinen toimivuus. Lisäksi lisenssiviesti tarkentui FSL-1.1-MIT-linjalle ja release/bootstrap-dokumentaatio alkoi huomioida myös Windows-paketoinnin. Release- ja käyttöönottoaiheita voit lukea lisää <a href="https://docs.busdk.com">BusDK:n dokumentaatiosta</a>.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>22.2.2026</h3><p>Landing page ja pricing-snapshot saivat ensimmäisen selvästi kaupallisen muotonsa.</p><a href="2026-02-22-pricing-and-landing-page.html">Lue 22.2.2026 uutinen</a></div><div class="callout"><h3>Nykyinen workflow overview</h3><p>Nykyinen julkinen käyttöpolku näkyy parhaiten workflow-dokumentaatiossa.</p><a href="https://docs.busdk.com/workflow/accounting-workflow-overview">Avaa workflow overview</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>20.2.2026 | Koko BusDK:n testiajo, lisenssiviesti ja Windows-polku tarkentuivat</title>
+    <meta
+      name="description"
+      content="BusDK sai koko työkaluketjun yhteisen e2e-ajon, selkeämmän lisenssiviestin ja näkyvämmän Windows-käyttöpolun."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-20-root-e2e-and-licensing.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-20-root-e2e-and-licensing.html" />
+    <meta
+      property="og:title"
+      content="20.2.2026 | Koko BusDK:n testiajo, lisenssiviesti ja Windows-polku tarkentuivat"
+    />
+    <meta
+      property="og:description"
+      content="BusDK:n kokonaisuuden testaaminen, lisenssin ymmärtäminen ja Windows-asennus tulivat samalla kertaa näkyvämmiksi."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="20.2.2026 | Koko BusDK:n testiajo, lisenssiviesti ja Windows-polku tarkentuivat"
+    />
+    <meta
+      name="twitter:description"
+      content="Yhteinen e2e-ajo, lisenssiviesti ja Windows-polku tekivät BusDK:sta helpommin arvioitavan kokonaisuuden."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Koko BusDK:n testiajo, lisenssiviesti ja Windows-polku tarkentuivat</h1>
+              <p class="intro">
+                20.2.2026 teki BusDK:n arvioinnista aiempaa suoraviivaisempaa kolmella eri tavalla:
+                koko työkaluketjulle tuli yhteinen e2e-ajo, lisenssiviesti täsmentyi ja myös
+                Windows-käyttöpolku tuli näkyviin.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">20.2.2026</span>
+                <span class="meta-chip">Testaus</span>
+                <span class="meta-chip">Lisenssi</span>
+                <span class="meta-chip">Windows</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Koko BusDK:lle tuli yksi yhteinen e2e-ajokomento.</li>
+              <li>Lisenssiviesti muuttui näkyvämmäksi ja täsmällisemmäksi.</li>
+              <li>Windows-asennus ei enää jäänyt sivuhuomioksi.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Yhteinen testiajo näkyi heti BusDK:n yhteisessä työpinnan käytössä. <code>make</code>
+              listasi nyt sekä koko työkaluketjun testit että e2e-ajon samaan paikkaan:
+            </p>
+            <pre><code>make</code></pre>
+            <pre><code>Targets:
+  test        Run module test suites
+  e2e         Run module end-to-end suites (when target exists)</code></pre>
+            <p>
+              Tämä on tärkeä muutos erityisesti silloin, kun BusDK:ta ei arvioida vain yksittäisen
+              moduulin vaan kokonaisuuden kautta. Samalla lisenssidokumentaatio ja julkaisuohjeet
+              alkoivat kertoa selvemmin, millä ehdoilla binäärit ovat käytettävissä ja miten sama
+              polku toimii myös Windowsissa. Lukijan kannalta olennainen lopputulos oli yksinkertainen:
+              BusDK:n sai helpommin kokeiltavaksi ja sen rajoista sai aiempaa vähemmän epäselvän kuvan.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

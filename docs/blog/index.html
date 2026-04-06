@@ -3,28 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusDK Blogi | Julkaisut ja tärkeimmät muutokset</title>
+    <title>BusDK Blogi | Julkaisut ja muutokset</title>
     <meta
       name="description"
-      content="BusDK-blogi kokoaa tärkeimmät julkaisut, korjaukset ja uudet komentopinnat yhteen aikajärjestettyyn syötteeseen."
+      content="BusDK:n julkaisut, korjaukset ja uudet komentopinnat yhdessä aikajärjestyksessä."
     />
     <link rel="canonical" href="https://busdk.com/blog/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://busdk.com/blog/" />
-    <meta property="og:title" content="BusDK Blogi | Julkaisut ja tärkeimmät muutokset" />
+    <meta property="og:title" content="BusDK Blogi | Julkaisut ja muutokset" />
     <meta
       property="og:description"
-      content="BusDK:n tärkeimmät julkaisut, korjaukset ja uudet komentopinnat yhdessä aikajärjestyksessä."
+      content="BusDK:n julkaisut, korjaukset ja uudet komentopinnat yhdessä aikajärjestyksessä."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="BusDK Blogi | Julkaisut ja tärkeimmät muutokset"
+      content="BusDK Blogi | Julkaisut ja muutokset"
     />
     <meta
       name="twitter:description"
-      content="BusDK-blogi kertoo mitä muuttui ja miten muutos näkyy käytännössä."
+      content="BusDK:n julkaisut, korjaukset ja uudet komentopinnat yhdessä aikajärjestyksessä."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -46,7 +46,7 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+          <a class="brand" href="../" aria-label="BusDK home">
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
@@ -73,8 +73,8 @@
         <div class="page-shell">
           <section class="hero-panel">
             <div class="hero-panel-inner">
-              <p class="eyebrow">BusDK Blog</p>
-              <h1>BusDK:n julkaisut ja tärkeimmät muutokset.</h1>
+              <p class="eyebrow">BusDK Blogi</p>
+              <h1>BusDK:n julkaisut ja muutokset</h1>
               <p class="intro">Korjaukset, uudet komennot ja laajentuva moduulipinta.</p>
               <div class="hero-meta" aria-label="Blog focus">
                 <span class="meta-chip">Tuotepäivitykset</span>
@@ -95,55 +95,73 @@
               <article class="timeline-item">
                 <time datetime="2026-04-05">5.4.2026</time>
                 <h3>Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein</h3>
-                <p>Rivikohtaiset selitteet eivät enää huku toistossa, korjausrivit näkyvät raportilla oikein ja <code>bus journal assert match</code> sai source-id-ryhmätarkistukset.</p>
+                <p>Rivikohtaiset selitteet eivät enää huku, korjausrivit näkyvät tuloslaskelmalla oikein ja <code>bus journal assert match</code> osaa tarkistaa source-id-ryhmien määrän.</p>
                 <a href="2026-04-05-replay-and-profit-loss-fixes.html">Lue 5.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-04">4.4.2026</time>
-                <h3><code>changed-scope</code> huomaa muuttuneet submoduulit ja <code>bus-files</code> tuo tiedostotarkistukset</h3>
-                <p>Root-tason testikohdistus huomaa nyt myös muuttuneet submoduulit, ja <code>bus-files</code> toi uuden tiedostotarkistusten komentopinnan.</p>
+                <h3><code>bus-files</code> toi tiedostotarkistukset BusDK:hon</h3>
+                <p>Tiedostoartefaktien olemassaolo ja CSV-rivien tarkistus siirtyivät omaksi Bus-komennokseen.</p>
                 <a href="2026-04-04-changed-scope-and-bus-files.html">Lue 4.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-01">1.4.2026</time>
-                <h3>Tracker-commitit ja worktree-ajot saivat omat helperinsä</h3>
-                <p>Tracker-tiedostot sai commitoitua omalla helperillään, ja worktree-ajolle tuli oma selkeä käynnistystapa.</p>
+                <h3>BusDK:n rinnakkaiskehitys sai selkeämmät työkalut</h3>
+                <p>Työjonojen päivitys ja erilliset työpuut erotettiin aiempaa selvemmin omiksi työvaiheikseen.</p>
                 <a href="2026-04-01-tracker-helper-and-worktree-agents.html">Lue 1.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-03-30">30.3.2026</time>
-                <h3><code>balance assert</code> ilmestyi samalla kun PDF-regressioita suljettiin</h3>
-                <p><code>bus journal balance assert</code> toi saldojen tarkistuksen komentopintaan, ja samalla PDF-raportoinnin regressioita korjattiin näkyvästi.</p>
+                <h3>Tilisaldojen tarkistus tuli suoraan komentopintaan</h3>
+                <p><code>bus journal balance assert</code> toi tilisaldojen täsmäytyksen komentoriville, ja raporttien PDF-tulosteet vakautuivat samalla.</p>
                 <a href="2026-03-30-balance-assert-and-pdf-fixes.html">Lue 30.3.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-03-21">21.3.2026</time>
                 <h3>Gateway sai palvelu- ja käyttäjähallinnan komentopinnan</h3>
-                <p>Selainmoduulien palveluluettelo ja käyttäjät tulivat hallittaviksi suoraan <code>bus-gateway</code>-komennolla.</p>
+                <p>Selainympäristön näkyvät palvelut ja käyttäjät pystyi nyt hallitsemaan suoraan <code>bus-gateway</code>-komennolla.</p>
                 <a href="2026-03-21-gateway-contracts.html">Lue 21.3.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-03-17">17.3.2026</time>
-                <h3><code>bus-portal</code> ja <code>bus-inspection</code> tulivat mukaan julkaistavina pintoina</h3>
-                <p>Asiakasportaali ja tarkastusportaali tulivat mukaan omiksi moduuleikseen, ja <code>bus-portal</code> sai myös konttijulkaisun.</p>
+                <h3>BusDK sai asiakas- ja tarkastusportaalin</h3>
+                <p><code>bus-portal</code> ja <code>bus-inspection</code> toivat omat web-käyttöliittymänsä aineiston toimitukseen ja tarkastuskierroksiin.</p>
                 <a href="2026-03-17-inspection-and-portal.html">Lue 17.3.2026 uutinen</a>
               </article>
               <article class="timeline-item">
+                <time datetime="2026-03-14">14.3.2026</time>
+                <h3>Vertailuluvut sidottiin nykyiseen workspaceen</h3>
+                <p>Vertailusarakkeet alettiin hakea saman workspacen datasta erillisen pysyvän prior-year-viittauksen sijaan.</p>
+                <a href="2026-03-14-comparatives-current-workspace.html">Lue 14.3.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
                 <time datetime="2026-03-02">2.3.2026</time>
-                <h3>Release-paketointi alkoi kerätä moduulien omat binäärit</h3>
-                <p>Julkaisupaketti alkoi ottaa mukaan myös moduulien omat <code>bin</code>-hakemistot, joten asennettu pinta vastasi paremmin oikeaa kokonaisuutta.</p>
+                <h3>Julkaisut alkoivat sisältää myös moduulien omat binäärit</h3>
+                <p>Myös moduulin omaan <code>bin</code>-hakemistoon rakennettu työkalu päätyi nyt osaksi julkaistua BusDK:ta.</p>
                 <a href="2026-03-02-release-packaging-and-traceability.html">Lue 2.3.2026 uutinen</a>
               </article>
               <article class="timeline-item">
+                <time datetime="2026-02-27">27.2.2026</time>
+                <h3>Synteettinen 2024-aineisto sai valmiin raporttipaketin</h3>
+                <p>Valmiit PDF- ja CSV-artefaktit tekivät synteettisestä 2024-aineistosta aiempaa hyödyllisemmän arviointipaketin.</p>
+                <a href="2026-02-27-synthetic-2024-report-handoff.html">Lue 27.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
                 <time datetime="2026-02-22">22.2.2026</time>
-                <h3>Pricing-snapshot, synteettinen 2024-aineisto ja uusi landing page</h3>
-                <p>Hinnoittelu sai ensimmäisen konkreettisen snapshotin, ja arviointia varten tuli synteettinen 2024-aineisto ilman asiakasdataa.</p>
+                <h3>BusDK:ta pystyi ensi kertaa arvioimaan valmiilla esimerkkiaineistolla</h3>
+                <p>Hinnoittelu, julkinen sivu ja synteettinen 2024-aineisto tekivät arvioinnista konkreettisempaa ilman asiakasdataa.</p>
                 <a href="2026-02-22-pricing-and-landing-page.html">Lue 22.2.2026 uutinen</a>
               </article>
               <article class="timeline-item">
+                <time datetime="2026-02-21">21.2.2026</time>
+                <h3><code>bus-secrets</code> toi salaisuuksille oman Bus-komennon</h3>
+                <p>Repositoryn salaisuuksien alustus, nimeäminen ja listaus siirtyivät omaan komentopintaansa.</p>
+                <a href="2026-02-21-bus-secrets.html">Lue 21.2.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
                 <time datetime="2026-02-20">20.2.2026</time>
-                <h3>Root make e2e, FSL-lisenssiviesti ja Windows-paketointi tulivat mukaan</h3>
-                <p>Root-tason <code>make e2e</code>, selkeämpi lisenssiviesti ja Windows-paketointi veivät testauksen ja käyttöönoton samaan suuntaan.</p>
+                <h3>Koko BusDK:n testiajo, lisenssiviesti ja Windows-polku tarkentuivat</h3>
+                <p>Yhteinen e2e-ajo, näkyvämpi lisenssiviesti ja Windows-polku tekivät BusDK:sta helpommin arvioitavan kokonaisuuden.</p>
                 <a href="2026-02-20-root-e2e-and-licensing.html">Lue 20.2.2026 uutinen</a>
               </article>
               <article class="timeline-item">
@@ -154,8 +172,8 @@
               </article>
               <article class="timeline-item">
                 <time datetime="2026-02-13">13.2.2026</time>
-                <h3>API, agentti, preferences ja sheets tulivat mukaan</h3>
-                <p>Paikallinen API, agentti-integraatio ja taulukkomuotoinen käyttöliittymä tulivat näkyviin oikeina moduuleina ja komentoina.</p>
+                <h3>Paikallinen API ja taulukkonäkymä tulivat mukaan BusDK:hon</h3>
+                <p><code>bus-api</code> ja <code>bus-sheets</code> toivat ohjelmallisen rajapinnan ja selainpohjaisen näkymän saman workspacen ympärille.</p>
                 <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
               </article>
               <article class="timeline-item">
@@ -202,6 +220,12 @@
               </article>
               <article class="timeline-item">
                 <time datetime="2026-01-24">24.1.2026</time>
+                <h3>Dokumentaatio jäsentyi arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</h3>
+                <p>Julkinen dokumentaatio hajosi selattaviin osa-alueisiin, ja mukaan tuli ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle.</p>
+                <a href="2026-01-24-docs-architecture-and-layout.html">Lue 24.1.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-01-24">24.1.2026</time>
                 <h3>BusDK sai ensimmäisen julkisen sivunsa</h3>
                 <p>Ensimmäinen <code>busdk.com</code>-sivu teki tuotteen perusviestin, resurssit ja moduulit näkyviksi yhdellä julkisella sivulla.</p>
                 <a href="2026-01-24-first-public-site.html">Lue 24.1.2026 uutinen</a>
@@ -217,6 +241,12 @@
                 <h3><code>bus</code>-komento alkoi välittää alikomennot oikeille Bus-työkaluille</h3>
                 <p>Ensimmäinen oikea dispatcher osasi etsiä <code>bus-...</code>-alikomennot PATH:sta ja palauttaa käyttövirheet sekä exit-koodit oikein.</p>
                 <a href="2026-01-24-bus-dispatcher.html">Lue 24.1.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-01-23">23.1.2026</time>
+                <h3>BusDK:n ensimmäinen julkinen suunnitelma julkaistiin</h3>
+                <p>Julkinen design-spec kuvasi ensimmäistä kertaa tuotteen tarkoituksen, kohdekäytön ja avoimiin tiedostoihin perustuvan kirjanpitomallin.</p>
+                <a href="2026-01-23-first-design-spec.html">Lue 23.1.2026 uutinen</a>
               </article>
             </div>
           </section>

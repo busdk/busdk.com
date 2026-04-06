@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>24.1.2026 | bus sai asennustavan ja alkoi listata löydetyt alikomennot</title>
+    <meta name="description" content="24.1.2026 bus sai Makefile-pohjaisen asennustavan, dokumentoidut install-komennot ja helpin, joka osasi näyttää PATH:sta löytyvät bus-alkuiset alikomennot." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-24-bus-help-and-install.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-24-bus-help-and-install.html" />
+    <meta property="og:title" content="24.1.2026 | bus sai asennustavan ja alkoi listata löydetyt alikomennot" />
+    <meta property="og:description" content="Saman päivän myöhemmät muutokset toivat busille install-targetit, README-asennusohjeet ja helpin, joka listasi PATH:sta löytyvät alikomennot." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="24.1.2026 | bus sai asennustavan ja alkoi listata löydetyt alikomennot" />
+    <meta name="twitter:description" content="24.1.2026 bus sai asennustavat ja helpin, joka näytti löydetyt alikomennot suoraan käyttäjälle." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header"><div class="site-header-inner"><a class="brand" href="../" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+      <main><div class="page-shell">
+        <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1><code>bus</code> sai asennustavan ja alkoi listata löydetyt alikomennot</h1><p class="intro">Myöhemmin samana päivänä <code>bus</code> lakkasi olemasta vain ydinkoodi ja sai ensimmäisen oikean käyttöönotto- ja help-pinnan.</p><p class="intro">Makefile toi rakentamisen ja asennuksen yhteen paikkaan, ja help alkoi näyttää mitä <code>bus-...</code>-työkaluja ympäristöstä löytyi.</p><div class="hero-meta"><span class="meta-chip">24.1.2026</span><span class="meta-chip">bus</span><span class="meta-chip">Asennus</span><span class="meta-chip">Help</span></div></div></article>
+        <section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li><code>make install</code> tuli viralliseksi tavaksi asentaa <code>bus</code>.</li><li>README sai ensimmäiset varsinaiset asennus- ja käyttöohjeet.</li><li>Help alkoi näyttää löydetyt alikomennot pelkän käyttövirheen sijaan.</li></ul></section>
+        <section class="content-panel section-stack"><p>Saman päivän näkyvä muutos oli se, että <code>bus</code> sai ensi kertaa dokumentoidun asennustavan:</p><pre><code>make install PREFIX="$HOME/.local"</code></pre><pre><code>installed .../bin/bus
+ensure .../bin is on your PATH</code></pre><p>Tämä teki komentopinnasta heti käytännöllisemmän. Samalla help alkoi listata ympäristöstä löytyvät <code>bus-...</code>-alikomennot, mikä teki moduulikokonaisuuden ideasta näkyvän myös ilman lähdekoodin lukemista. Päivän aikana syntyivät siis sekä yhteinen ajomalli että ensimmäinen tapa asentaa ja käyttää sitä.</p><p>Jos haluat nähdä nykyisen <code>bus</code>-komennon dokumentaation laajempana, jatka <a href="https://github.com/busdk/bus">julkiseen <code>bus</code>-repositorioon</a>.</p></section>
+      </div></main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme()); if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); } prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

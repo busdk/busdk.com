@@ -3,31 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>17.3.2026 | bus-portal ja bus-inspection tulivat mukaan julkaistavina pintoina</title>
+    <title>17.3.2026 | BusDK sai asiakas- ja tarkastusportaalin</title>
     <meta
       name="description"
-      content="BusDK laajeni asiakasportaalin ja tarkastusportaalin suuntaan, ja julkaisuputki oppi rakentamaan niihin liittyvän konttipinnan."
+      content="bus-portal ja bus-inspection toivat BusDK:hon omat näkymät aineiston toimitukseen ja tarkastuskierroksiin."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-03-17-inspection-and-portal.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-03-17-inspection-and-portal.html" />
-    <meta
-      property="og:title"
-      content="17.3.2026 | bus-portal ja bus-inspection tulivat mukaan julkaistavina pintoina"
-    />
+    <meta property="og:title" content="17.3.2026 | BusDK sai asiakas- ja tarkastusportaalin" />
     <meta
       property="og:description"
-      content="Asiakasportaali ja tarkastusportaali tulivat mukaan omiksi moduuleikseen, ja bus-portal sai myös konttijulkaisun."
+      content="bus-portal ja bus-inspection toivat kaksi uutta selaimessa käytettävää näkymää BusDK:hon."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="17.3.2026 | bus-portal ja bus-inspection tulivat mukaan julkaistavina pintoina"
-    />
+    <meta name="twitter:title" content="17.3.2026 | BusDK sai asiakas- ja tarkastusportaalin" />
     <meta
       name="twitter:description"
-      content="BusDK laajeni asiakasnäkymään ja tarkastusnäkymään, eikä muutos jäänyt vain suunnitelmaksi tai dokumentiksi."
+      content="Aineiston toimitus ja tarkastuskierrokset saivat omat web-käyttöliittymänsä."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -36,7 +30,7 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+          <a class="brand" href="../" aria-label="BusDK home">
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
@@ -63,17 +57,15 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1><code>bus-portal</code> ja <code>bus-inspection</code> tulivat mukaan julkaistavina pintoina</h1>
+              <h1>BusDK sai asiakas- ja tarkastusportaalin</h1>
               <p class="intro">
-                BusDK laajeni kahteen uuteen web-käyttöpintaan. Asiakasportaali toi aineiston toimituksen
-                ja evidence pack -ajon omaan näkymäänsä, ja tarkastusportaali toi mukaan kohde- ja
-                havaintotyönkulun.
+                17.3.2026 toi BusDK:hon kaksi uutta selaimessa käytettävää näkymää. Toinen keskittyi
+                aineiston toimittamiseen, toinen tarkastuskierroksiin ja havaintoihin.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">17.3.2026</span>
                 <span class="meta-chip">bus-portal</span>
                 <span class="meta-chip">bus-inspection</span>
-                <span class="meta-chip">GHCR</span>
               </div>
             </div>
           </article>
@@ -81,49 +73,27 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li><strong>Merkitys:</strong> BusDK ei jäänyt vain taustajärjestelmäksi ja CLI:ksi.</li>
-              <li>
-                <strong>Uutta:</strong>
-                <a href="https://docs.busdk.com/modules/bus-portal">bus-portal</a> ja
-                <a href="https://docs.busdk.com/modules/bus-inspection">bus-inspection</a>
-                tulivat mukaan omiksi moduuleikseen.
-              </li>
-              <li><strong>Jakelu:</strong> <code>bus-portal</code> sai samalla konttijulkaisun ja compose-esimerkin.</li>
+              <li>BusDK sai kaksi uutta selainmoduulia.</li>
+              <li><code>bus-portal</code> keskittyy aineiston toimitukseen.</li>
+              <li><code>bus-inspection</code> keskittyy tarkastuksiin ja havaintoihin.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
             <p>
-              Muutos näkyi jo komentopinnan tasolla. Uusilla moduuleilla oli omat binäärinsä ja omat
-              selvästi nimetyt roolinsa:
+              Uudet pinnat näkyivät heti uusina apuohjelmina:
             </p>
             <pre><code>bus-portal --help
 bus-inspection --help</code></pre>
             <pre><code>bus-portal — customer upload portal UI
 bus-inspection — site inspection portal</code></pre>
             <p>
-              Tämä on olennainen askel, koska se siirsi BusDK:n ulospäin näkyviä työnkulkuja lähemmäs
-              loppukäyttäjää. <code>bus-portal</code> keskittyy aineiston toimitukseen ja evidence
-              pack -ajoon, kun taas <code>bus-inspection</code> tuo tarkastuskierrokset, havainnot ja
-              seurannan omaan käyttöliittymäänsä. Samassa muutoksessa <code>bus-portal</code> sai
-              myös konttijulkaisun, joten kyse ei ollut vain uudesta binääristä vaan aidosti
-              julkaistavasta pinnasta.
+              Tässä muutos ei ollut vain uuden moduulin nimi vaan uusi käyttötapa. Asiakasportaali antaa
+              oman sisäänkäynnin aineiston toimittamiseen ja tarkastusportaali oman näkymän havaintojen
+              seuraamiseen. Näin BusDK:n työvirrat eivät jää vain taustalla ajettaviksi komennoiksi, vaan
+              niille tulee myös käyttäjälle näkyvä käyttöliittymä. Lisätiedot löytyvät
+              <a href="https://docs.busdk.com/modules/bus-portal"><code>bus-portal</code>-dokumentaatiosta</a>
+              ja <a href="https://docs.busdk.com/modules/bus-inspection"><code>bus-inspection</code>-dokumentaatiosta</a>.
             </p>
-          </section>
-          <section class="cta-panel section-stack">
-            <p class="small-label">Next</p>
-            <h2>Seuraava merkittävä päivä</h2>
-            <div class="cta-grid two-up">
-              <div class="callout">
-                <h3>21.3.2026</h3>
-                <p>Gateway sai palvelu- ja käyttäjähallinnan komentopinnan.</p>
-                <a href="2026-03-21-gateway-contracts.html">Lue 21.3.2026 uutinen</a>
-              </div>
-              <div class="callout">
-                <h3>Nykyinen gateway-dokumentaatio</h3>
-                <p>Näissä moduuleissa kirjautuminen ja julkaisu kytkeytyvät gatewayhin.</p>
-                <a href="https://docs.busdk.com/modules/bus-gateway">Avaa bus-gateway-dokumentaatio</a>
-              </div>
-            </div>
           </section>
         </div>
       </main>

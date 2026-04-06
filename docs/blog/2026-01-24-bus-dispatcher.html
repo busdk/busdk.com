@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>24.1.2026 | bus-komento alkoi välittää alikomennot oikeille Bus-työkaluille</title>
+    <meta name="description" content="24.1.2026 bus sai ensimmäisen oikean dispatcher-koodinsa: bus-komento osasi etsiä bus-alkuiset alikomennot PATH:sta, palauttaa käyttövirheet oikein ja välittää alikomennon exit-statuksen läpi." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-24-bus-dispatcher.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-24-bus-dispatcher.html" />
+    <meta property="og:title" content="24.1.2026 | bus-komento alkoi välittää alikomennot oikeille Bus-työkaluille" />
+    <meta property="og:description" content="Ensimmäinen varsinainen bus-ydin osasi etsiä bus-alkuiset alikomennot PATH:sta ja palauttaa virheet sekä exit-koodit oikein." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="24.1.2026 | bus-komento alkoi välittää alikomennot oikeille Bus-työkaluille" />
+    <meta name="twitter:description" content="24.1.2026 syntyi ensimmäinen oikea bus-dispatcher, joka välitti alikomennot bus-työkaluille ja palautti virhekoodit oikein." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1><code>bus</code>-komento alkoi välittää alikomennot oikeille Bus-työkaluille</h1>
+              <p class="intro">24.1.2026 syntyi ensimmäinen varsinainen <code>bus</code>-ytimen koodi. Sen myötä <code>bus accounts</code> ja muut saman mallin komennot eivät enää olleet pelkkä idea, vaan oikea komentotapa.</p>
+              <p class="intro">Ydin pysyi tarkoituksella pienenä: se ei tehnyt liiketoimintalogiikkaa itse, vaan etsi oikean <code>bus-...</code>-työkalun ja välitti ajon sille.</p>
+              <div class="hero-meta">
+                <span class="meta-chip">24.1.2026</span>
+                <span class="meta-chip">bus</span>
+                <span class="meta-chip">Dispatcher</span>
+                <span class="meta-chip">Exit-koodit</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus</code> sai ensimmäisen oikean dispatcherin.</li>
+              <li>Komento etsi <code>bus-alkuisen</code> alikomennon PATH:sta ja ajoi sen.</li>
+              <li>Käyttövirhe palautti koodin <code>2</code>, puuttuva alikomento <code>127</code>.</li>
+              <li>Alikomennon oma exit-status välittyi läpi sellaisenaan.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>Ensimmäinen toimiva ydin näytti käyttäjälle tältä:</p>
+            <pre><code>bus</code></pre>
+            <pre><code>usage: bus &lt;command&gt; [args...]</code></pre>
+            <p>Tämä vaikuttaa pieneltä, mutta muutos oli perustavanlaatuinen. Samassa commitissa <code>bus</code> oppi muodostamaan alikomennon nimen muodossa <code>bus-&lt;command&gt;</code>, etsimään sen PATH:sta, käynnistämään sen ja palauttamaan myös virhetilanteet oikein. Näin yhteinen komentopinta saatiin erotettua itse moduuleista: <code>bus</code> jäi ohueksi välittäjäksi, ja kaikki varsinainen toiminnallisuus voitiin rakentaa erillisiin binääreihin.</p>
+            <p>Juuri tästä alkoi BusDK:n tuttu komentomalli. Jos haluat nähdä nykyisen <code>bus</code>-komennon laajemman helpin ja nykyiset globaalit liput, jatka <a href="https://github.com/busdk/bus">julkiseen <code>bus</code>-repositorioon</a>.</p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); }
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

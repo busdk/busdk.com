@@ -1,20 +1,186 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein</title><meta name="description" content="5.4.2026 BusDK säilyttää toistetun viennin riviselitteet oikein, näyttää edellisen tilikauden korjausrivit tuloslaskelmalla oikein ja laajentaa <code>bus journal assert match</code> -tarkistuksia source-id-ryhmiin." /><link rel="canonical" href="https://busdk.com/blog/2026-04-05-replay-and-profit-loss-fixes.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-04-05-replay-and-profit-loss-fixes.html" /><meta property="og:title" content="5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein" /><meta property="og:description" content="Toistossa jokaisen debit- ja credit-rivin oma selite säilyy oikein, tuloslaskelma näyttää korjausrivit oikein ja <code>bus journal assert match</code> sai source-id-ryhmäkohtaiset tarkistukset." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein" /><meta name="twitter:description" content="Toistossa riviselitteet eivät enää huku, tuloslaskelma näyttää korjausrivit oikein ja <code>bus journal assert match</code> sai source-id-ryhmäkohtaiset tarkistukset." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein</h1><div class="hero-meta"><span class="meta-chip">5.4.2026</span><span class="meta-chip">Toisto</span><span class="meta-chip">Tuloslaskelma</span><span class="meta-chip"><code>bus journal assert match</code></span></div><p class="intro">Jokaisen debit- ja credit-rivin oma selite säilyy nyt toistossa oikein, ja tuloslaskelma näyttää edellisen tilikauden korjausrivit siinä merkityksessä missä ne on kirjattu.</p><p class="intro">Samassa päivityksessä <code>bus journal assert match</code> sai source-id-ryhmäkohtaiset tarkistukset, joilla saman aineiston voi myös valvoa ilman erillistä jatkokäsittelyä.</p></div></article>
-<section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li>Toistettu vienti ei enää kadota rivikohtaista selitettä yleisen tositteen kuvauksen alle.</li><li>Esimerkiksi <code>Office supplies</code> ja <code>Card payment</code> säilyvät nyt omina riviselitteinään myös listauksessa ja jatkokäsittelyssä.</li><li>Tuloslaskelma näyttää vuoden alun <code>prior-year-correction</code>- ja <code>opening-adjustment</code>-korjausrivit oikein sen sijaan, että ne jäisivät pois tai tulkittaisiin väärin.</li><li><code>bus journal assert match</code> osaa nyt tarkistaa myös source-id-ryhmien lukumääriä ja nettosummia.</li></ul></section>
-<section class="content-panel section-stack"><p>Aiemmin toistossa oli hankala huomata, jos yksittäisen viennin rivikohtainen selite oli kadonnut matkan varrella. Tämä koskee kenttää, joka erottaa toisistaan esimerkiksi saman tositteen kaksi eri merkitystä: debet-rivillä voi lukea <code>Office supplies</code> ja kredit-rivillä <code>Card payment</code>, vaikka koko viennin yhteinen kuvaus olisi vain <code>Imported receipt</code>. Nyt tämä ero säilyy oikein myös silloin, kun vienti rakennetaan uudelleen aiemmasta aineistosta.</p><pre><code>bus journal add \
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein</title>
+    <meta
+      name="description"
+      content="Toisto säilyttää nyt riviselitteet oikein, tuloslaskelma näyttää vuoden alun korjausrivit oikein ja bus journal assert match osaa tarkistaa source-id-ryhmiä."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-04-05-replay-and-profit-loss-fixes.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-04-05-replay-and-profit-loss-fixes.html" />
+    <meta
+      property="og:title"
+      content="5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein"
+    />
+    <meta
+      property="og:description"
+      content="Rivikohtaiset selitteet eivät enää huku, korjausrivit näkyvät raportilla oikein ja source-id-ryhmille tuli oma assert-tarkistus."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="5.4.2026 | Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein"
+    />
+    <meta
+      name="twitter:description"
+      content="Toiston riviselitteet, tuloslaskelman korjausrivit ja source-id-ryhmien assert-tarkistus korjaantuivat samalla."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Riviselitteet säilyvät toistossa ja korjausrivit näkyvät tuloslaskelmalla oikein</h1>
+              <div class="hero-meta">
+                <span class="meta-chip">5.4.2026</span>
+                <span class="meta-chip">Toisto</span>
+                <span class="meta-chip">Tuloslaskelma</span>
+                <span class="meta-chip"><code>bus journal assert match</code></span>
+              </div>
+              <p class="intro">
+                Tämä korjaus osui kohtaan, joka näkyy heti silloin kun samaa vientiä vertaillaan lähdeaineistoon
+                tai raporttiin: yhteinen tositteen kuvaus ja rivikohtainen selite eivät enää mene sekaisin.
+              </p>
+              <p class="intro">
+                Samalla vuoden alun korjausrivit alkoivat näkyä tuloslaskelmalla oikeassa roolissaan, ja
+                <code>bus journal assert match</code> sai oman tarkistuksen source-id-ryhmien lukumäärälle.
+              </p>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Riviselite säilyy nyt omana tietonaan myös toistossa.</li>
+              <li>Vuoden alun korjausrivit eivät enää katoa tuloslaskelmalta.</li>
+              <li><code>bus journal assert match</code> osaa tarkistaa source-id-ryhmien määrän.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Riviselitteen korjaus kannattaa hahmottaa konkreettisen viennin kautta. Yksi ja sama tosite
+              voi sisältää yhteisen kuvauksen, mutta riveillä on silti oma eri merkityksensä:
+            </p>
+            <pre><code>bus journal add \
   --date 2025-01-04 \
-  --desc "Imported receipt" \
-  --debit '1000=24.00=Office supplies' \
-  --credit '3000=24.00=Card payment'
+  --desc "Tuotu kuitti" \
+  --debit '1000=24.00=Toimistotarvikkeet' \
+  --credit '3000=24.00=Korttimaksu'
 
 bus journal list \
   --format csv \
-  --fields posting_date,account_id,debit,credit,voucher_description,row_description</code></pre><pre><code>posting_date,account_id,debit,credit,voucher_description,row_description
-2025-01-04,1000,24.00,0.00,Imported receipt,Office supplies
-2025-01-04,3000,0.00,24.00,Imported receipt,Card payment</code></pre><p>Kun komennon ajaa tämänmuotoisella viennillä, listauksessa näkyy edelleen yhteinen <code>voucher_description</code> <code>Imported receipt</code>, mutta <code>row_description</code>-sarakkeessa säilyvät erikseen arvot <code>Office supplies</code> ja <code>Card payment</code>. Juuri tämä oli se kohta, joka ei saanut enää hukkua toistossa. Korjaus on pieni, mutta käytännössä tärkeä silloin kun samoja vientejä verrataan lähdeaineistoon rivi riviltä. Voit lukea tarkemmin <a href="https://docs.busdk.com/modules/bus-journal"><code>bus journal</code> -komennon dokumentaatiosta</a>.</p><p>Tuloslaskelman puolella korjaus koskee vuoden alun oikaisuja. Jos työtilassa on kirjauksia, jotka on merkitty lähdelajilla <code>prior-year-correction</code> tai <code>opening-adjustment</code>, niiden pitää näkyä tuloslaskelmalla korjausriveinä siinä roolissa missä ne on tarkoitettu näytettäväksi. Nyt ne eivät enää katoa raportilta tai näytä tavalliselta kuluvan kauden liiketapahtumalta. Tämä on olennaista erityisesti silloin, kun vuoden alussa korjataan edellisen tilikauden saldoja tai kirjataan avaukseen liittyviä muistioita, mutta itse juoksevan kauden tulosta ei haluta vääristää. Raporttipinnan taustaa löytyy myös <a href="https://docs.busdk.com/modules/bus-reports"><code>bus reports</code> -dokumentaatiosta</a>.</p><p>Samalla <code>bus journal assert match</code> laajeni source-id-ryhmien tarkistamiseen. Käytännössä tämä tarkoittaa, että saman selector-kielen päälle voi nyt rakentaa tarkistuksen siitä, montako erillistä lähderyhmää valittu joukko sisältää. Esimerkiksi seuraava komento tarkistaa, että tilillä <code>1000</code> on täsmälleen kaksi <code>receipt-split:demo:</code>-alkuista source-id-ryhmää:</p><pre><code>bus journal assert match \
-  distinct source-id count 1000 "receipt-split:demo:" 2</code></pre><pre><code>measure	scope	expected	observed	status
-match-distinct-count	match=1000 receipt-split:demo: group_by=source-id distinct_count	2	2	pass</code></pre><p>Tässä muodossa <code>1000</code> rajaa tarkastuksen tiliin, <code>"receipt-split:demo:"</code> rajaa mukaan vain kyseiset source-id:t, ja lopun <code>2</code> kertoo odotetun ryhmämäärän. Tulosteesta tärkeimmät kohdat ovat <code>observed 2</code> ja <code>status pass</code>, eli tarkistus löysi juuri kaksi ryhmää ja meni läpi. Koska kyse on assert-komennosta, onnistunut tarkistus palauttaa exit-statuksen <code>0</code> ja poikkeava tulos virheen. Voit lukea tarkemmin <a href="https://docs.busdk.com/modules/bus-journal"><code>bus journal</code> -komennon dokumentaatiosta</a>.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Related</p><h2>Liittyvät jutut</h2><div class="cta-grid two-up"><div class="callout"><h3>4.4.2026</h3><p>Edellisen päivän changed-scope-korjaus ja bus-files-pinni valmistelivat seuraavia nopeita iterointeja.</p><a href="2026-04-04-changed-scope-and-bus-files.html">Lue 4.4.2026 uutinen</a></div><div class="callout"><h3>Journal-dokumentaatio</h3><p>Jos haluat nähdä nykyisen komentopinnan, jatka suoraan moduulin dokumentaatioon.</p><a href="https://docs.busdk.com/modules/bus-journal">Avaa <code>bus-journal</code>-dokumentaatio</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+  --fields posting_date,account_id,debit,credit,voucher_description,row_description</code></pre>
+            <pre><code>posting_date,account_id,debit,credit,voucher_description,row_description
+2025-01-04,1000,24.00,0.00,Tuotu kuitti,Toimistotarvikkeet
+2025-01-04,3000,0.00,24.00,Tuotu kuitti,Korttimaksu</code></pre>
+            <p>
+              Olennaista on juuri se, että <code>voucher_description</code> ja <code>row_description</code>
+              pysyvät erillään. Kun samaa aineistoa toistetaan tai listataan myöhemmin, rivit eivät enää
+              palaa yhdeksi yleiseksi kuvaukseksi. Tämä helpottaa sekä tarkastusta että myöhempää
+              jatkokäsittelyä. Lisää taustaa löytyy
+              <a href="https://docs.busdk.com/modules/bus-journal"><code>bus-journal</code>-dokumentaatiosta</a>.
+            </p>
+            <p>
+              Raporttipuolella muutos koski vuoden alun oikaisuja. Jos kirjauksissa käytetään
+              lähdelajeja <code>prior-year-correction</code> tai <code>opening-adjustment</code>,
+              niiden pitää näkyä tuloslaskelmalla korjausriveinä eikä tavallisena kuluvan kauden
+              toimintana. Juuri tämä parani. Se on käytännössä tärkeää silloin, kun vuoden alussa
+              korjataan edellisen tilikauden saldoja mutta ei haluta sotkea juoksevan kauden tulosta.
+            </p>
+            <p>
+              Uusi source-id-ryhmien tarkistus täydentää samaa ajatusta toisesta suunnasta. Jos halutaan
+              varmistaa, että tietylle tilille on syntynyt täsmälleen kaksi tietyn lähdetyypin ryhmää,
+              sen voi nyt tarkistaa suoraan yhdellä komennolla:
+            </p>
+            <pre><code>bus journal assert match \
+  distinct source-id count 1000 "receipt-split:demo:" 2</code></pre>
+            <pre><code>measure	scope	expected	observed	status
+match-distinct-count	match=1000 receipt-split:demo: group_by=source-id distinct_count	2	2	pass</code></pre>
+            <p>
+              Tässä odotusarvo on lopun <code>2</code>, ja <code>observed 2</code> kertoo, että havaittu
+              ryhmämäärä oli sama. Koska kyse on assert-komennosta, onnistunut tarkistus palauttaa
+              exit-statuksen <code>0</code>. Tarkempi syntaksi löytyy
+              <a href="https://docs.busdk.com/modules/bus-journal"><code>bus-journal</code>-dokumentaatiosta</a>.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

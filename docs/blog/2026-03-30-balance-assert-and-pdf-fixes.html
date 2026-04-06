@@ -1,20 +1,155 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>30.3.2026 | balance assert ilmestyi samalla kun PDF-regressioita suljettiin</title><meta name="description" content="30.3.2026 BusDK sai balance assert -komennon ja käsitteli samalla useita PDF- ja raportointiregressioita samassa tiheässä työpäivässä." /><link rel="canonical" href="https://busdk.com/blog/2026-03-30-balance-assert-and-pdf-fixes.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-03-30-balance-assert-and-pdf-fixes.html" /><meta property="og:title" content="30.3.2026 | balance assert ilmestyi samalla kun PDF-regressioita suljettiin" /><meta property="og:description" content="30.3.2026 on yksi historian tiiveimmistä päivistä: uusi assert-komento ja pitkä lista PDF- sekä raportointibugeja." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="30.3.2026 | balance assert ilmestyi samalla kun PDF-regressioita suljettiin" /><meta name="twitter:description" content="Uusi assert-komento ja näkyvä PDF-stabilointi osuivat samalle päivälle." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1><code>balance assert</code> tuli komentopintaan ja PDF-raportteja korjattiin</h1><p class="intro"><code>bus journal balance assert</code> toi tilisaldojen tarkistuksen suoraan komentopintaan, ja samalla PDF-raportoinnin regressioita korjattiin näkyvästi.</p><p class="intro">BusDK lisäsi uuden tarkistuspinnan ja stabiloi samalla evidenssi- ja raportointitulosteita.</p><div class="hero-meta"><span class="meta-chip">30.3.2026</span><span class="meta-chip">balance assert</span><span class="meta-chip">PDF regressions</span></div></div></article>
-<section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> raportoinnin luotettavuus parani, kun PDF-bugeja käsiteltiin näkyvästi ja assert-ajattelua tuotiin komentopintaan.</li><li><strong>Toteutus:</strong> <code>balance assert</code> ankkuroi verifioinnin CLI:hin sen sijaan, että tarkistus jäisi ulkoiseksi rutiiniksi.</li><li><strong>Yhteensopivuus:</strong> uusi assert-pinta täydensi olemassa olevaa mallia eikä korvannut sitä.</li></ul></section>
-<section class="content-panel section-stack"><p>Muutos näkyi yhtä aikaa komentorivillä ja raporteissa. Uusi tarkistuskomento oli esimerkiksi tällainen:</p><pre><code>bus journal balance assert \
-  1910 \
-  2026-03-31 \
-  1240.55
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>30.3.2026 | Tilisaldojen tarkistus tuli suoraan komentopintaan</title>
+    <meta
+      name="description"
+      content="BusDK sai tilisaldojen tarkistukseen oman assert-komennon, ja samalla raporttien PDF-vakaus parani."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-03-30-balance-assert-and-pdf-fixes.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-03-30-balance-assert-and-pdf-fixes.html" />
+    <meta property="og:title" content="30.3.2026 | Tilisaldojen tarkistus tuli suoraan komentopintaan" />
+    <meta
+      property="og:description"
+      content="bus journal balance assert toi tilisaldojen täsmäytyksen komentoriville, ja raporttien PDF-tulosteet vakautuivat samalla."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="30.3.2026 | Tilisaldojen tarkistus tuli suoraan komentopintaan" />
+    <meta
+      name="twitter:description"
+      content="Tilisaldon pystyi nyt tarkistamaan yhdellä assert-komennolla samalla kun PDF-raportit rauhoittuivat."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Tilisaldojen tarkistus tuli suoraan komentopintaan</h1>
+              <p class="intro">
+                30.3.2026 toi BusDK:hon uuden tavan tarkistaa, että tietyn tilin saldo on juuri se mitä
+                sen pitääkin olla tiettynä päivänä.
+              </p>
+              <p class="intro">
+                Samalla raporttien PDF-tulosteita korjattiin niin, että päiväkirjat, pääkirjat ja muut
+                review-artefaktit käyttäytyvät aiempaa vakaammin.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">30.3.2026</span>
+                <span class="meta-chip"><code>bus journal balance assert</code></span>
+                <span class="meta-chip">PDF-raportit</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Tilisaldon tarkistus sai oman assert-komennon.</li>
+              <li>Onnistunut assert palauttaa exit-statuksen <code>0</code>.</li>
+              <li>Raporttien PDF-tulosteet käyttäytyvät aiempaa vakaammin.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Uusi komento on suora silloin, kun halutaan varmistaa yhden tilin saldo tiettynä päivänä:
+            </p>
+            <pre><code>bus journal balance assert 1910 2026-03-31 1240.55</code></pre>
+            <pre><code>account_id	as_of	expected	observed	status
+1910	2026-03-31	1240.55	1240.55	pass</code></pre>
+            <p>
+              Tässä <code>1910</code> on tarkistettava tili, päivämäärä kertoo katkaisukohdan ja viimeinen
+              arvo on odotettu saldo. Jos havaittu saldo täsmää, komento päättyy onnistuneesti ja
+              palauttaa exit-statuksen <code>0</code>. Jos ei täsmää, komento palauttaa virheen. Tämä on
+              juuri se ero, jonka vuoksi assert-komento on hyödyllinen automaatiossa: tarkistus ei jää
+              silmämääräiseksi raportin lukemiseksi vaan muuttuu suoraan koneen arvioitavaksi ehdoksi.
+              Lisätiedot löytyvät <a href="https://docs.busdk.com/modules/bus-journal"><code>bus-journal</code>-dokumentaatiosta</a>.
+            </p>
+            <p>
+              Samalle päivälle osui myös joukko PDF-korjauksia. Lukijan kannalta oleellinen lopputulos ei
+              ole yksittäisten bugien lista vaan se, että päiväkirjan, pääkirjan ja muiden review-raporttien
+              tekstikerrokset, rivijako ja sivutus käyttäytyvät aiempaa tasaisemmin. Uusi assert-komento ja
+              vakaammat raportit tukivat samaa tavoitetta: tarkastuskelpoisuus ei saa riippua siitä, onko
+              käyttäjä juuri oikeassa käyttöliittymässä tai juuri oikealla sivulla.
+            </p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
 
-bus journal assert \
-  match count 1999 \
-  --unsettled \
-  --older-than 7d \
-  --as-of 2026-01-31 \
-  0</code></pre><pre><code>measure	scope	expected	observed	status
-balance	account=1910 as_of=2026-03-31	1240.55	1240.55	pass
-match-count	match=1999 unsettled older-than=7d as-of=2026-01-31	0	0	pass</code></pre><p>Ensimmäinen tarkistaa tilin saldon suoraan. Toisessa <code>match count</code> on varsinainen tarkistusmuoto, <code>1999</code> on valittava kohde, liput rajaavat tarkastuksen ja viimeinen <code>0</code> on odotettu rivimäärä. Koska kyse on assert-komennosta, onnistunut tarkistus palauttaa exit-statuksen <code>0</code> ja poikkeava tulos virheen. Tarkemmat muodot löytyvät <a href="https://docs.busdk.com/modules/bus-journal"><code>bus journal</code> -dokumentaatiosta</a>.</p><p>Samaan aikaan PDF-raportoinnista korjattiin muun muassa comparative source-, later-page annotation-, ledger pagination- ja row text -ongelmia. Lukijalle näkyvä lopputulos oli yksinkertainen: tarkistuksia pystyi ajamaan komentoriviltä, ja raportit näyttivät aiempaa vakaammilta.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>1.4.2026</h3><p>Tracker-commitit ja worktree-ajot saivat omat helperinsä.</p><a href="2026-04-01-tracker-helper-and-worktree-agents.html">Lue 1.4.2026 uutinen</a></div><div class="callout"><h3>Nykyinen compliance-polku</h3><p>Nykyinen docs-pinta näyttää, miten tällaiset raportointikorjaukset istuvat laajempaan workflow'hun.</p><a href="https://docs.busdk.com/compliance/fi-closing-checklist-and-reconciliations">Avaa compliance-dokumentaatio</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

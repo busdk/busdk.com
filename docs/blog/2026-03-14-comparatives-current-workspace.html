@@ -3,31 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>2.3.2026 | Julkaisut alkoivat sisältää myös moduulien omat binäärit</title>
+    <title>14.3.2026 | Vertailuluvut sidottiin nykyiseen workspaceen</title>
     <meta
       name="description"
-      content="BusDK:n julkaisut alkoivat kerätä mukaan myös moduulien omat binäärit, jolloin asennettu työkalukokoelma vastasi paremmin todellista kokonaisuutta."
+      content="Vertailuluvut alettiin hakea nykyisessä workspacessa olevasta datasta sen sijaan, että niille pidettäisiin erillistä pysyvää prior-year-asetusta."
     />
-    <link rel="canonical" href="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" />
+    <link rel="canonical" href="https://busdk.com/blog/2026-03-14-comparatives-current-workspace.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" />
-    <meta
-      property="og:title"
-      content="2.3.2026 | Julkaisut alkoivat sisältää myös moduulien omat binäärit"
-    />
+    <meta property="og:url" content="https://busdk.com/blog/2026-03-14-comparatives-current-workspace.html" />
+    <meta property="og:title" content="14.3.2026 | Vertailuluvut sidottiin nykyiseen workspaceen" />
     <meta
       property="og:description"
-      content="BusDK:n asennettu pinta vastasi aiempaa paremmin moduulien todellista kirjoa."
+      content="Vertailuluvut eivät enää nojanneet erilliseen pysyvään prior-year-workspace-asetukseen."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="2.3.2026 | Julkaisut alkoivat sisältää myös moduulien omat binäärit"
-    />
+    <meta name="twitter:title" content="14.3.2026 | Vertailuluvut sidottiin nykyiseen workspaceen" />
     <meta
       name="twitter:description"
-      content="Uudet moduulit, kuten bus-factory, alkoivat näkyä myös julkaistussa työkalukokoelmassa."
+      content="Vertailusarakkeet alkoivat lukea saman workspacen datasta eikä erillisestä pysyvästä viittauksesta."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -63,16 +57,17 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1>Julkaisut alkoivat sisältää myös moduulien omat binäärit</h1>
+              <h1>Vertailuluvut sidottiin nykyiseen workspaceen</h1>
               <p class="intro">
-                2.3.2026 ratkaisi käytännön ongelman, joka näkyy vasta asennetussa ympäristössä:
-                jos moduuli rakensi oman binäärinsä omaan hakemistoonsa, sen piti silti päätyä mukaan
-                julkaisuun.
+                14.3.2026 selkeytti tärkeää raporttisopimusta: vertailuluvut eivät enää kuulu piilotettuun
+                pysyvään viittaukseen toiseen workspaceen, vaan sama workspace kantaa myös vertailun
+                tarvitsemat tiedot.
               </p>
               <div class="hero-meta">
-                <span class="meta-chip">2.3.2026</span>
-                <span class="meta-chip">Julkaisut</span>
-                <span class="meta-chip">bus-factory</span>
+                <span class="meta-chip">14.3.2026</span>
+                <span class="meta-chip">Vertailuluvut</span>
+                <span class="meta-chip">Workspace</span>
+                <span class="meta-chip">bus-reports</span>
               </div>
             </div>
           </article>
@@ -80,29 +75,27 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li>Julkaisut alkoivat vastata paremmin oikeaa moduulijoukkoa.</li>
-              <li>Myös moduulin omaan <code>bin</code>-hakemistoon rakennettu työkalu päätyi mukaan.</li>
-              <li>Uudet työkalut, kuten <code>bus-factory</code>, näkyivät tämän myötä paremmin.</li>
+              <li>Vertailuluvut alettiin hakea samasta workspacesta.</li>
+              <li>Piilotettu pysyvä prior-year-viittaus poistui sopimuksesta.</li>
+              <li>Vuosiraportit voivat käyttää nykyisen workspacen avausrivejä, jos aiempaa vuotta ei ole mukana.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
             <p>
-              Muutos näkyy hyvin siinä, että myös erillinen moduulibinäri oli nyt osa samaa näkyvää
-              kokonaisuutta. Esimerkiksi <code>bus factory --help</code> kertoi nyt omasta kehitysapurin
-              pinnastaan:
+              Käytännössä muutos näkyy siinä, että vertailusarakkeen saa edelleen käyttöön samalla
+              raporttikomennolla:
             </p>
-            <pre><code>bus factory --help</code></pre>
-            <pre><code>bus-factory — BusDK module development assistant
-
-Commands:
-  serve
-  version</code></pre>
+            <pre><code>bus reports profit-and-loss \
+  --period 2026 \
+  --comparatives</code></pre>
             <p>
-              Tällainen muutos voi näyttää pieneltä, mutta se ratkaisee julkaisuissa tärkeän asian:
-              luvatut työkalut eivät saa jäädä vain lähdekooditasolle tai yhden moduulin paikalliseksi
-              erityistapaukseksi. Kun moduulin oma binääri on mukana samalla tavalla kuin muutkin,
-              asennettu BusDK näyttää samalta kuin dokumentaatio ja julkinen sivu kertovat. Lisätiedot
-              löytyvät <a href="https://docs.busdk.com/modules/bus-factory"><code>bus-factory</code>-dokumentaatiosta</a>.
+              Muutos ei ollut komennon nimen vaihto vaan datasopimuksen muutos. Vertailuluvut eivät enää
+              perustu ajatukseen, että workspace muistaisi pysyvästi jonkin erillisen edellisen vuoden
+              polun. Sen sijaan vertailu tulee siitä datasta, joka on jo nykyisessä workspacessa. Tämä
+              tekee raportoinnista ennustettavamman ja helpommin siirrettävän, koska kokonaisuus ei riipu
+              piilotetusta sivupolusta toiseen hakemistoon. Taustaa löytyy
+              <a href="https://docs.busdk.com/modules/bus-reports"><code>bus-reports</code>-dokumentaatiosta</a>
+              ja <a href="https://docs.busdk.com/modules/bus-config"><code>bus-config</code>-dokumentaatiosta</a>.
             </p>
           </section>
         </div>

@@ -42,6 +42,7 @@ Scoped guidance for the `busdk.com` repository.
 5. Product pages on `busdk.com` may include commercial/landing messaging and product-audience framing when it improves clarity for buyers/evaluators.
 6. When linking from `busdk.com/docs/` to documentation pages, always use canonical `https://docs.busdk.com/...` URLs.
 7. Do not link directly to private SDD pages from `busdk.com/docs/`; you may mention that private implementation design specifications exist.
+8. Within published `busdk.com/docs/` pages, keep same-site navigation links relative so they work in local file or local server development as well as on the public site. Do not use absolute `https://busdk.com/...` URLs for header/home links inside subtree pages when a correct relative link exists.
 
 ## Publication Boundary
 
@@ -171,24 +172,28 @@ Scoped guidance for the `busdk.com` repository.
     source-oriented wording unless the source itself is the public-facing
     subject. Write from the reader's point of view and keep only the product-
     level fact that matters.
-35. When writing for a broad public audience, do not center the sentence on
+35. Do not narrate the reader from the outside with phrases like "lukijan
+    kannalta", "lukija huomaa", or similar editorial meta-commentary unless
+    the sentence is truly about a concrete user action or outcome. State the
+    product meaning directly instead.
+36. When writing for a broad public audience, do not center the sentence on
     developer jargon such as "root", "Makefile", repository structure, or
     similar implementation-facing terms. Prefer general language like shared
     development environment, common tooling, or shared structure, and mention
     exact technical names only as secondary clarifications when they help.
-36. When an article title or ingress changes, update the blog index card in
+37. When an article title or ingress changes, update the blog index card in
     `busdk.com/docs/blog/index.html` in the same change set so the listing,
     article page, and reader expectation stay in sync.
-37. Before making any historical claim in a blog post, verify the actual change
+38. Before making any historical claim in a blog post, verify the actual change
     from Git history first. Do not infer behavior from commit titles, repo
     creation dates, or high-level assumptions alone.
-38. Historical-article verification process:
+39. Historical-article verification process:
     1. identify the exact date and candidate commit(s) with `git log --since=... --until=...`
     2. inspect the real file-level change with `git log --stat`, `git show`, or both
     3. if the claim is about code behavior, open the changed source/help/docs files and verify what actually appeared in that commit
     4. only then write the article claim, using the verified behavior and date
     5. if the code did not yet exist, do not describe the feature as existing; write instead about the actual state that was introduced
-39. Repository creation, initial commits, pin bumps, and documentation commits
+40. Repository creation, initial commits, pin bumps, and documentation commits
     are not automatically product milestones. Treat them as blog-worthy only
     after verifying what concrete reader-visible capability, command, docs
     surface, or workflow changed.

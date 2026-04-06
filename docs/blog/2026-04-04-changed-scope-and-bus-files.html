@@ -3,31 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>4.4.2026 | changed-scope huomaa muuttuneet submoduulit ja bus files tuo tiedostotarkistukset</title>
+    <title>4.4.2026 | bus-files toi tiedostotarkistukset BusDK:hon</title>
     <meta
       name="description"
-      content="changed-scope alkoi huomioida muuttuneet submoduulit, ja bus files toi BusDK:hon oman tiedostojen ja CSV-raporttien tarkistuspinnan."
+      content="bus-files toi BusDK:hon oman tiedostojen ja CSV-artefaktien tarkistuspinnan, ja samalla muutosten testikohdistus parani."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-04-04-changed-scope-and-bus-files.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-04-04-changed-scope-and-bus-files.html" />
-    <meta
-      property="og:title"
-      content="4.4.2026 | changed-scope huomaa muuttuneet submoduulit ja bus files tuo tiedostotarkistukset"
-    />
+    <meta property="og:title" content="4.4.2026 | bus-files toi tiedostotarkistukset BusDK:hon" />
     <meta
       property="og:description"
-      content="Root-tason testikohdistus tuli luotettavammaksi, ja bus files toi ensimmäiset tiedostotarkistukset komentopintaan."
+      content="Raporttiartefaktien olemassaolo ja CSV-rivien tarkistus siirtyivät omaksi komentopinnakseen."
     />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="4.4.2026 | changed-scope huomaa muuttuneet submoduulit ja bus files tuo tiedostotarkistukset"
-    />
+    <meta name="twitter:title" content="4.4.2026 | bus-files toi tiedostotarkistukset BusDK:hon" />
     <meta
       name="twitter:description"
-      content="BusDK korjasi testikohdistuksen submoduleille ja toi tiedostotarkistukset bus files -komentoon."
+      content="bus-files teki raporttien ja muiden tiedostojen tarkistamisesta oman Bus-komennon."
     />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
@@ -36,7 +30,7 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+          <a class="brand" href="../" aria-label="BusDK home">
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
@@ -63,16 +57,19 @@
           <article class="hero-panel">
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
-              <h1><code>changed-scope</code> huomaa muuttuneet submoduulit ja <code>bus files</code> tuo tiedostotarkistukset</h1>
+              <h1><code>bus-files</code> toi tiedostotarkistukset BusDK:hon</h1>
               <p class="intro">
-                Root-tason changed-scope-korjaus paransi sitä, mihin testeihin muutokset kohdistuvat.
-                Samalla <code>bus files</code> toi uuden komentopinnan paikallisten tiedostojen ja
-                raporttiartefaktien tarkistamiseen.
+                4.4.2026 toi BusDK:hon komennon, jolla pystyy tarkistamaan tiedostojen olemassaolon ja
+                CSV-artefaktien rivejä ilman erillisiä shell-putkia.
+              </p>
+              <p class="intro">
+                Samalla muutosten testikohdistus parani silloin, kun muutos on submodulessa eikä vain
+                BusDK:n yhteisessä pinnassa.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">4.4.2026</span>
-                <span class="meta-chip">changed-scope</span>
                 <span class="meta-chip">bus-files</span>
+                <span class="meta-chip">Tiedostotarkistukset</span>
               </div>
             </div>
           </article>
@@ -80,55 +77,44 @@
             <p class="small-label">Tiiviisti</p>
             <h2>TL;DR</h2>
             <ul class="tldr-list">
-              <li><strong>Merkitys:</strong> testit kohdistuvat luotettavammin silloin, kun muutos on submodulessa.</li>
-              <li>
-                <strong>Uusi pinta:</strong>
-                <a href="https://docs.busdk.com/modules/bus-files">bus files</a>
-                osaa tarkistaa tiedostojen olemassaolon ja raporttirivejä ilman shell-putkia.
-              </li>
-              <li><strong>Vaikutus:</strong> sekä sisäinen iterointi että raporttiartefaktien tarkistus selkiytyivät.</li>
+              <li>Tiedostoartefaktien tarkistus sai oman Bus-komennon.</li>
+              <li>CSV-rivejä pystyy tarkistamaan samoilla periaatteilla kuin muita assert-pintoja.</li>
+              <li>Muutosten testikohdistus huomaa paremmin myös moduulimuutokset.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
             <p>
-              Uusi tiedostopinta tekee muutoksen näkyväksi myös loppukäyttäjälle. Sen sijaan että raportin
-              olemassaoloa tai CSV-riviä tarkistetaan erillisillä shell-työkaluilla, saman voi tehdä
-              suoraan Bus-komennolla:
+              Uusi pinta näkyy heti helpissä:
             </p>
-            <pre><code>bus files assert \
-  exists \
-  examples/synthetic-full-fictional-2024/data-monthly-transfer/tuloslaskelma-2024.pdf
-
-bus files assert row \
-  examples/synthetic-full-fictional-2024/data-monthly-transfer/trial-balance-2024.csv \
-  --filter code=3000</code></pre>
-            <pre><code>assertion  target  expected  observed  status
-exists     .../tuloslaskelma-2024.pdf  exists  exists  ok
-
-assertion  target  expected  observed  status
-row        .../trial-balance-2024.csv  filters=code=3000; rows=&gt;=1  matched_rows=1  ok</code></pre>
+            <pre><code>bus-files --help</code></pre>
+            <pre><code>Commands:
+  parse
+  find
+  assert</code></pre>
             <p>
-              Samaan aikaan changed-scope-korjaus varmisti, että root-tason testiajo huomaa myös muuttuneet
-              submodulet eikä oleta kaiken näkyvän vain gitlink-muutoksina superprojektissa. Yhdessä nämä
-              muutokset kiristivät sekä kehittäjän että käyttäjän näkökulmasta samaa asiaa: jos työtilassa
-              tai raporttiartefaktissa tapahtuu olennainen muutos, se pitää havaita oikein.
+              Käytännössä tärkein uusi osa on <code>assert</code>. Esimerkiksi synteettisen 2024-aineiston
+              mukana tullut tuloslaskelma ja sen CSV-rivi voi tarkistaa näin:
             </p>
-          </section>
-          <section class="cta-panel section-stack">
-            <p class="small-label">Next</p>
-            <h2>Seuraava merkittävä päivä</h2>
-            <div class="cta-grid two-up">
-              <div class="callout">
-                <h3>5.4.2026</h3>
-                <p>Riviselitteet säilyivät toistossa, korjausrivit näkyivät raportilla ja assert-pinta laajeni.</p>
-                <a href="2026-04-05-replay-and-profit-loss-fixes.html">Lue 5.4.2026 uutinen</a>
-              </div>
-              <div class="callout">
-                <h3>bus files -dokumentaatio</h3>
-                <p>Lisätiedot assert-pinnoista ja suunnitelluista parse/find-komennoista löytyvät docsista.</p>
-                <a href="https://docs.busdk.com/modules/bus-files">Avaa bus-files-dokumentaatio</a>
-              </div>
-            </div>
+            <pre><code>bus files assert exists \
+  examples/synthetic-full-fictional-2024/data-monthly-transfer-v2/tuloslaskelma-2024.pdf
+
+bus files assert cell \
+  examples/synthetic-full-fictional-2024/data-monthly-transfer-v2/profit-loss-2024.csv \
+  --row-filter 'section=LIIKEVAIHTO' \
+  --column amount \
+  --equals 3774.02</code></pre>
+            <pre><code>assertion	target	expected	observed	status
+exists	.../tuloslaskelma-2024.pdf	exists	exists	ok
+
+assertion	target	expected	observed	status
+cell	.../profit-loss-2024.csv	filters=section=LIIKEVAIHTO; column=amount; equals=3774.02	amount=3774.02	ok</code></pre>
+            <p>
+              Tällainen tarkistus on hyödyllinen juuri siksi, että raportin olemassaolo tai yhden rivin
+              arvo ei enää jää satunnaisten shell-työkalujen varaan. Samaan aikaan taustalla parani myös
+              se, miten muutokset kohdistetaan oikeisiin testiajoihin, jos varsinainen muutos osuu
+              submoduuliin. Lisää käyttötapoja löytyy
+              <a href="https://docs.busdk.com/modules/bus-files"><code>bus-files</code>-dokumentaatiosta</a>.
+            </p>
           </section>
         </div>
       </main>
