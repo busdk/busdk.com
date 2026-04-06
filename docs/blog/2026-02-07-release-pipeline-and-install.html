@@ -1,8 +1,165 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>7.2.2026 | Release workflow ja install-polku nousivat näkyviin</title><meta name="description" content="7.2.2026 BusDK sai release workflow'n, publish-helperin, install.sh:n release-artifakteihin ja quick install -painotteisen julkisen viestin." /><link rel="canonical" href="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" /><meta property="og:title" content="7.2.2026 | Release workflow ja install-polku nousivat näkyviin" /><meta property="og:description" content="Yhdelle päivälle osui poikkeuksellisen paljon julkaisuputken työtä: release workflow, publish-helper, install-skriptin paketointi ja julkiset install-ohjeet." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="7.2.2026 | Release workflow ja install-polku nousivat näkyviin" /><meta name="twitter:description" content="7.2.2026 oli BusDK:n release-putken ensimmäinen iso päivä." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-02-07-release-pipeline-and-install.html" aria-current="page">2026-02-07</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-    <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Release workflow ja install-polku nousivat näkyviin</h1><p class="intro">BusDK:n release-puolella tapahtui paljon kerralla: julkaisuputki, publish-helper, tagien käsittely ja docs-linkitys etenivät samaan suuntaan.</p><p class="intro">`busdk.com`-sivusto sai quick install -osion ja näkyvämmän moduulipinnan. Tämä oli yksi ensimmäisistä hetkistä, jolloin BusDK:ta pystyi sekä julkaisemaan että kokeilemaan ilman sisäpiiritietoa.</p><div class="hero-meta"><span class="meta-chip">7.2.2026</span><span class="meta-chip">Release workflow</span><span class="meta-chip">Quick install</span></div></div></article>
-    <section class="content-panel section-stack"><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> BusDK:n kokeilu ja jakelu tulivat paljon helpommiksi samana päivänä.</li><li><strong>Toteutus:</strong> GitHub-release-putki ja publish-helper alkoivat hoitaa tageja, artefakteja ja docs-linkitystä järjestelmällisesti.</li><li><strong>Saatavuus:</strong> tälle päivälle osuvat myös tagit <code>v0.0.1</code> ... <code>v0.0.10</code>.</li></ul></section>
-    <section class="content-panel section-stack"><h2>Mitä juuri tänään muuttui</h2><p>Root-repoon tuli release workflow, joka alkoi paketoida julkaisuja. Install-skripti lisättiin release-artifakteihin, julkaisutekstejä kirjoitettiin uusiksi ja publish-helper opetti putkea pushaamaan tageja myös moduleille. Samalla README ja install-snippetit siirrettiin korostamaan quick install -polkua.</p><p>`busdk.com`-repolla tämä näkyi heti: samalle päivälle osuvat quick install -osion lisäys, moduulilistauksen täydentäminen ja tyylien erottaminen omaan CSS-tiedostoon. Julkinen sivu alkoi vastata samaa viestiä kuin release-putki.</p></section>
-    <section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>13.2.2026</h3><p>BusDK:n moduulipinta laajeni yhdellä päivällä API-, agentti-, preferences- ja sheets-suuntiin.</p><a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a></div><div class="callout"><h3>Release- ja install-dokumentaatio</h3><p>Nykyinen julkinen docs-pinta jatkaa tästä kohdasta paljon pidemmälle.</p><a href="https://docs.busdk.com">Avaa dokumentaatio</a></div></div></section>
-  </div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta</title>
+    <meta
+      name="description"
+      content="7.2.2026 BusDK:n julkaisu alkoi sisältää asennusskriptin, tarkistussummat ja kopioitavan asennuskomennon, jolla työkalut sai käyttöön suoraan julkaistusta versiosta."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-07-release-pipeline-and-install.html" />
+    <meta property="og:title" content="7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta" />
+    <meta
+      property="og:description"
+      content="Julkaisuun tuli asennusskripti, tarkistussummat ja näkyvä nopea asennuspolku, joka vei suoraan Bus-komentojen käyttöön."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="7.2.2026 | BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta" />
+    <meta
+      name="twitter:description"
+      content="7.2.2026 BusDK:n pystyi ensi kertaa asentamaan suoraan julkaistusta versiosta yhdellä komennolla."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>BusDK sai ensimmäisen suoran asennuspolun julkaistusta versiosta</h1>
+              <p class="intro">
+                7.2.2026 BusDK:n julkaisu alkoi sisältää kaiken olennaisen valmiiseen asennukseen:
+                paketoidut binäärit, tarkistussummat ja <code>install.sh</code>-skriptin.
+              </p>
+              <p class="intro">
+                Samalla nopea asennus nostettiin näkyvästi esiin, joten BusDK:ta ei enää tarvinnut
+                ottaa käyttöön vain lähdekoodon kautta.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">7.2.2026</span>
+                <span class="meta-chip">Suora asennus</span>
+                <span class="meta-chip">Julkaistu versio</span>
+                <span class="meta-chip">Nopea asennus</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Julkaisu alkoi sisältää asennusskriptin, paketin ja tarkistussumman.</li>
+              <li><code>curl -fsSL .../install.sh | bash</code> nousi näkyväksi asennustavaksi.</li>
+              <li>Asennuksen jälkeen käyttäjä pääsi suoraan <code>bus</code>-komentopintaan.</li>
+              <li>Lisätiedot löytyvät <a href="https://docs.busdk.com">BusDK:n dokumentaatiosta</a>.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Aiemmin BusDK:n kokeileminen tarkoitti käytännössä lähdekoodin lataamista ja
+              rakennusvaiheiden päättelemistä itse. Tämän muutoksen jälkeen käyttöönottopolku oli
+              ensimmäistä kertaa suora ja kopioitava:
+            </p>
+            <pre><code>curl -fsSL \
+  https://github.com/busdk/busdk/releases/latest/download/install.sh | bash
+
+bus --help</code></pre>
+            <pre><code>bus: dispatch BusDK subcommands from PATH
+
+Usage:
+  bus [global flags] &lt;command&gt; [args...]
+
+Behavior:
+  Dispatches bus-&lt;command&gt; from PATH...</code></pre>
+            <p>
+              Olennaista oli se, että julkaisu ei enää päättynyt pelkkään tagiin tai lähdekoodopakettiin.
+              Mukaan tuli asennusskripti, julkaistut paketit ja tarkistussummat, joiden ympärille
+              myös README ja nopea asennusohje rakennettiin uudelleen. Käytännössä tämä muutti
+              BusDK:n ensimmäiseksi versioksi, jonka pystyi asentamaan suoraan julkaistusta
+              versiosta ja tarkistamaan heti <code>bus --help</code>-komennolla. Jos haluat katsoa
+              nykyisen asennus- ja käyttöpolun laajemmin, jatka <a href="https://docs.busdk.com">BusDK:n dokumentaatioon</a>.
+            </p>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava merkittävä päivä</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>13.2.2026</h3>
+                <p>BusDK:n moduulipinta laajeni yhdellä päivällä API-, agentti-, preferences- ja sheets-suuntiin.</p>
+                <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>Asennus ja käyttö</h3>
+                <p>Nykyinen dokumentaatio jatkaa tästä suoraan päivittäiseen käyttöön.</p>
+                <a href="https://docs.busdk.com">Avaa dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

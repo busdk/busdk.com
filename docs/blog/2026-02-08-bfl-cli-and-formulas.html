@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan</title>
+    <meta
+      name="description"
+      content="BusDK sai 8.2.2026 oman bus-bfl-komennon kaavalausekkeiden jäsentämiseen, muotoiluun, validointiin ja evaluointiin, ja samalla sample-dataan tuli datapackage.json."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-08-bfl-cli-and-formulas.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-08-bfl-cli-and-formulas.html" />
+    <meta property="og:title" content="8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan" />
+    <meta
+      property="og:description"
+      content="BusDK sai oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää, muotoilla, validoida ja evaluoida ilman omaa ympäröivää sovellusta."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="8.2.2026 | bus-bfl toi kaavalausekkeille oman komentopinnan" />
+    <meta
+      name="twitter:description"
+      content="BusDK sai oman bus-bfl-komennon, jolla kaavalausekkeita voi jäsentää ja muotoilla suoraan komentoriviltä."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1><code>bus-bfl</code> toi kaavalausekkeille oman komentopinnan</h1>
+              <div class="hero-meta">
+                <span class="meta-chip">8.2.2026</span>
+                <span class="meta-chip">BFL</span>
+                <span class="meta-chip">Komentopinta</span>
+                <span class="meta-chip">Sample-data</span>
+              </div>
+              <p class="intro">
+                BusDK sai oman <code>bus-bfl</code>-moduulin, jolla kaavalausekkeita voi jäsentää,
+                muotoilla, validoida ja evaluoida suoraan komentoriviltä. Samalla sample-aineistoon
+                tuli <code>datapackage.json</code>, joten kaavalausekkeet ja datarakenteen kuvaus
+                alkoivat elää samassa paketissa.
+              </p>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus-bfl</code> toi BFL-kaavoille oman julkisen CLI-pinnan.</li>
+              <li>Kaavan voi nyt jäsentää ja muotoilla ilman, että sitä tarvitsee ajaa jonkin muun moduulin sisältä.</li>
+              <li>Muotoiltu tulos on deterministinen, joten sama lauseke näyttää aina samalta riippumatta syötteen välilyönneistä.</li>
+              <li>Samalla sample-dataan lisättiin <code>datapackage.json</code>, joka teki aineiston rakenteesta eksplisiittisemmän.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Tämän muutoksen käytännön arvo on siinä, että BFL-kaavat eivät enää ole vain jonkin
+              toisen työkalun sisäinen ominaisuus. Kun kaava voidaan jäsentää ja muotoilla omalla
+              komennollaan, sen rakennetta voi tarkistaa suoraan komentoriviltä jo ennen kuin sitä
+              käytetään taulukossa, skeemassa tai muun datan yhteydessä.
+            </p>
+            <pre><code>bus-bfl parse --expr '1 + 2'
+
+bus-bfl format --expr 'sum( A1:A3 )'</code></pre>
+            <pre><code>(binary + (literal 1) (literal 2))
+sum(A1:A3)</code></pre>
+            <p>
+              Ensimmäinen komento näyttää, miten lauseke on jäsentynyt: kyse ei ole enää
+              vapaamuotoisesta merkkijonosta vaan eksplisiittisestä binäärisestä operaatiosta.
+              Toinen komento näyttää, mitä deterministinen muotoilu tarkoittaa käytännössä.
+              Syötteessä voi olla ylimääräisiä välilyöntejä, mutta ulostulo palautuu aina samaan
+              kanoniseen muotoon. Tämä helpottaa sekä tarkistamista että versionhallintaa. Lisää
+              esimerkkejä löytyy <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.
+            </p>
+            <p>
+              Samanaikainen <code>samples/datapackage.json</code> oli pieni mutta merkityksellinen
+              muutos samalle suunnalle. BFL ei tullut yksin, vaan osana selkeämmin kuvattua
+              data-aineistoa. Kun sample-data kertoo itse rakenteestaan ja kaavalausekkeille on oma
+              komentopinta, BusDK:n datamalli muuttuu helpommin tutkittavaksi myös ilman omaa
+              sovelluskohtaista liimaa ympärillä.
+            </p>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Related</p>
+            <h2>Liittyvät jutut</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>13.2.2026</h3>
+                <p>API, agentti, preferences ja sheets laajensivat BusDK:n julkista moduulipintaa muutamaa päivää myöhemmin.</p>
+                <a href="2026-02-13-api-agent-sheets.html">Lue 13.2.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>BFL-dokumentaatio</h3>
+                <p>Jos haluat nähdä kaikki komennot ja kontekstiesimerkit, jatka moduulin dokumentaatioon.</p>
+                <a href="https://docs.busdk.com/modules/bus-bfl">Avaa <code>bus-bfl</code>-dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

@@ -3,28 +3,164 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>25.1.2026 | BusDK-superprojekti sai ensimmäisen toteutuksensa</title>
-    <meta name="description" content="25.1.2026 BusDK-superprojektiin tuli ensimmäinen toteutus: Makefile-delegointi, submodule-skriptit, README-parannukset ja perusrakenne, jolle myöhempi kehitys rakentui." />
+    <title>25.1.2026 | BusDK sai ensimmäisen yhteisen työympäristönsä</title>
+    <meta
+      name="description"
+      content="25.1.2026 BusDK sai ensimmäisen yhteisen työympäristönsä, jossa juuri aloitetut moduulit, yhteinen asennustapa ja koko työkaluketjun hallinta tulivat samaan paikkaan."
+    />
     <link rel="canonical" href="https://busdk.com/blog/2026-01-25-superproject-launched.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-01-25-superproject-launched.html" />
-    <meta property="og:title" content="25.1.2026 | BusDK-superprojekti sai ensimmäisen toteutuksensa" />
-    <meta property="og:description" content="Ensimmäinen toteutuspäivä sisälsi Makefile-delegoinnin, submodule-skriptit ja README:n, joka alkoi kuvata BusDK:ta hallittuna superprojektina." />
+    <meta property="og:title" content="25.1.2026 | BusDK sai ensimmäisen yhteisen työympäristönsä" />
+    <meta
+      property="og:description"
+      content="Ensimmäinen moduuliaalto koottiin 25.1.2026 yhteisen työympäristön, asennuksen ja hallinnan alle."
+    />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="25.1.2026 | BusDK-superprojekti sai ensimmäisen toteutuksensa" />
-    <meta name="twitter:description" content="25.1.2026 oli päivä, jolloin BusDK-superprojekti muuttui ideasta toteutukseksi." />
+    <meta name="twitter:title" content="25.1.2026 | BusDK sai ensimmäisen yhteisen työympäristönsä" />
+    <meta
+      name="twitter:description"
+      content="25.1.2026 BusDK sai ensimmäisen yhteisen työympäristönsä juuri aloitettujen moduulien ympärille."
+    />
     <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <link rel="stylesheet" href="blog.css" />
   </head>
   <body>
-    <div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-01-25-superproject-launched.html" aria-current="page">2026-01-25</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
-      <main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>BusDK-superprojekti sai ensimmäisen toteutuksensa</h1><p class="intro">BusDK-superprojektiin tuli პირველი varsinainen toteutusrunko: Makefile-delegointi, submodule-helperit ja aiempaa käyttökelpoisempi README rakensivat yhteisen käynnistyspinnan koko kokonaisuudelle.</p><p class="intro">Konkreettisesti tämä tarkoitti, että BusDK määriteltiin jo alussa moduuleja orkestroivaksi superprojektiksi eikä yhdeksi massiiviseksi sovellukseksi. Se on edelleen koko repon tärkeimpiä rakenteellisia päätöksiä.</p><div class="hero-meta"><span class="meta-chip">25.1.2026</span><span class="meta-chip">Makefile delegation</span><span class="meta-chip">README + submodule scripts</span></div></div></article>
-        <section class="content-panel section-stack"><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> BusDK:n käyttömallin perusta rakennettiin niin, että kokonaisuus pysyy hajautettuna ja hallittavana.</li><li><strong>Toteutus:</strong> moduulien build- ja ylläpitopolku sidottiin varhain root-Makefileen ja submodule-skripteihin.</li><li><strong>Yhteensopivuus:</strong> kyse oli perustan synnystä, ei myöhemmän mallin rikkomisesta.</li></ul></section>
-        <section class="content-panel section-stack"><h2>Mitä juuri tänään muuttui</h2><p>BusDK sai ensimmäisen toteutuksen root-repoon. Buildit alettiin delegoida moduuleille Makefilen kautta, submodulejen päivittämiseen lisättiin omat helper-skriptit ja README:ta parannettiin niin, että repoa pystyi lukemaan tarkoituksellisena kokonaisuutena. Samalla siivottiin myös bootstrap-kuvausta ja submoduleviittauksia.</p><p>Käytännössä tämä teki BusDK:sta repo-tasolla automaatiokelpoisen. Ilman tätä päivää myöhemmät release-, test- ja module-growth-muutokset olisivat rakentuneet paljon epäselvemmälle pohjalle.</p></section>
-        <section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>7.2.2026</h3><p>Release workflow, publish helper ja install-polku nousivat yhdessä näkyviin.</p><a href="2026-02-07-release-pipeline-and-install.html">Lue 7.2.2026 uutinen</a></div><div class="callout"><h3>Nykyinen dokumentaatio</h3><p>Jos haluat verrata nykytilaa alkuun, siirry suoraan docs-sivustoon.</p><a href="https://docs.busdk.com">Avaa dokumentaatio</a></div></div></section>
-      </div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div>
-    <script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>BusDK sai ensimmäisen yhteisen työympäristönsä</h1>
+              <p class="intro">
+                Ensimmäinen aalto <code>bus-accounts</code>-, <code>bus-journal</code>,
+                <code>bus-reports</code>, <code>bus-vat</code> ja muita moduuleja oli juuri
+                aloitettu, kun BusDK sai 25.1.2026 yhteisen tavan rakentaa, asentaa ja hallita koko
+                työkaluketjua.
+              </p>
+              <p class="intro">
+                Tässä vaiheessa BusDK oli vielä varhainen, mutta käyttöön tuli yksi yhteinen tapa
+                hoitaa asennus, päivitys, moduulilistat ja ensimmäiset ylläpitotyökalut.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">25.1.2026</span>
+                <span class="meta-chip">Yhteinen työympäristö</span>
+                <span class="meta-chip">Asennus ja hallinta</span>
+                <span class="meta-chip">Ensimmäinen moduulijoukko</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Useimmat ensimmäiset <code>bus-*</code>-moduulit aloitettiin 24.1.2026.</li>
+              <li>25.1.2026 niiden ympärille tuli yhteinen rakennus-, asennus- ja päivitystapa.</li>
+              <li>Samana päivänä mukaan tulivat moduulien yhteinen hallinta, ensimmäiset helper-skriptit ja selvästi laajentunut README.</li>
+              <li>Tästä eteenpäin koko työkaluketjua pystyi ottamaan käyttöön yhdellä mallilla.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Ensimmäiset osat olivat jo olemassa. Ydin <code>bus</code> oli alkanut jo joulukuussa
+              2025, ja 24.1.2026 syntyi nopeasti laaja ensimmäinen moduulijoukko: mukana olivat jo
+              esimerkiksi <code>bus-accounts</code>, <code>bus-assets</code>, <code>bus-bank</code>,
+              <code>bus-journal</code>, <code>bus-reports</code>, <code>bus-validate</code> ja
+              <code>bus-vat</code>. Se, mitä 25.1.2026 toi uutta, oli tapa käyttää ja ylläpitää
+              näitä yhdessä.
+            </p>
+            <p>
+              Ensimmäinen yhteinen käyttöönotto näytti tältä:
+            </p>
+            <pre><code>make bootstrap
+
+# rakentaa kaikki työkalut ./bin-hakemistoon
+# asentaa ne oletuksena ~/.local/bin-hakemistoon</code></pre>
+            <p>
+              Tämä oli olennainen muutos, koska sen jälkeen BusDK:n käyttöönotolle oli yksi selkeä
+              malli. Sama kokonaisuus toi yhteen moduulien kiinnitykset, ensimmäiset
+              hallintaskriptit ja README:n, joka kertoi miten koko työkaluketju rakennetaan,
+              päivitetään ja asennetaan. Se loi perustan, jonka päälle seuraavien
+              viikkojen julkaisut, testaus ja dokumentaatio voitiin rakentaa. Nykyistä kokonaisuutta
+              voit verrata tähän alkuun <a href="https://docs.busdk.com">BusDK:n dokumentaatiossa</a>.
+            </p>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava merkittävä päivä</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>7.2.2026</h3>
+                <p>Release workflow, publish helper ja install-polku nousivat yhdessä näkyviin.</p>
+                <a href="2026-02-07-release-pipeline-and-install.html">Lue 7.2.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>Nykyinen dokumentaatio</h3>
+                <p>Jos haluat verrata nykytilaa alkuun, siirry suoraan docs-sivustoon.</p>
+                <a href="https://docs.busdk.com">Avaa dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
   </body>
 </html>

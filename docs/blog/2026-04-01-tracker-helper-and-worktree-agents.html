@@ -1,8 +1,167 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>1.4.2026 | Tracker-only helperit ja worktree-agentit lisättiin</title><meta name="description" content="1.4.2026 BusDK lisäsi tracker-only commit -helperit, containerized worktree agent -työkalut ja sulki samalla useita PDF-raportoinnin trackereita." /><link rel="canonical" href="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" /><meta property="og:title" content="1.4.2026 | Tracker-only helperit ja worktree-agentit lisättiin" /><meta property="og:description" content="1.4.2026 näkyy BusDK:n historiassa ennen kaikkea työskentelymallin koventumisena: tracker-only helperit, containerized worktree agentit ja PDF-trackereiden sulku samassa päivässä." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="1.4.2026 | Tracker-only helperit ja worktree-agentit lisättiin" /><meta name="twitter:description" content="1.4.2026 teki tracker-commiteista turvallisempia ja agenttityöstä toistettavampaa." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-04-01-tracker-helper-and-worktree-agents.html" aria-current="page">2026-04-01</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Tracker-only helperit ja worktree-agentit lisättiin</h1><p class="intro">BusDK lisäsi tracker-only commit -helperin ja containerized worktree agent -työkalut. Samalle muutokselle osui myös pitkä sarja PDF-trackereiden avaamisia ja sulkuja.</p><p class="intro">Muutos paransi suoraan kahta arjen ongelmaa: miten trackerimuutokset commitoidaan ilman vahinkoa ja miten agentteja ajetaan eristetyissä worktreeissä.</p><div class="hero-meta"><span class="meta-chip">1.4.2026</span><span class="meta-chip">Tracker-only commits</span><span class="meta-chip">Worktree agents</span></div></div></article>
-<section class="content-panel section-stack"><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> epäsuora hyöty on pienempi virheriski, kun tracker- ja agenttityönkulut ovat kontrolloidumpia.</li><li><strong>Toteutus:</strong> tracker-only-commit helper ja containerized worktree -malli ovat hyvin konkreettisia prosessiparannuksia.</li><li><strong>Yhteensopivuus:</strong> kyse oli työskentelymallin lisätyökaluista, ei käyttörajapinnan rikkomisesta.</li></ul></section>
-<section class="content-panel section-stack"><h2>Mitä juuri tänään muuttui</h2><p>Tracker-only helper tehtiin siksi, että trackerit voidaan commitoida vahingossa sotkematta muita staged-muutoksia samaan commit-tasoon. Se on pieni mutta todella käytännöllinen työkalu superprojektissa, jossa trackerit muuttuvat usein eri rytmissä kuin toteutuskoodi.</p><p>Containerized worktree agent -helperit puolestaan osoittavat, että agenttityö haluttiin tehdä toistettavaksi myös ympäristöä eristämällä. Samana päivänä suljettiin myös useita PDF-raportoinnin trackereita, joten prosessityö ja käyttäjälle näkyvät korjaukset etenivät rinnakkain.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>4.4.2026</h3><p>Changed-scope alkoi huomata dirty submodulet, ja bus-files lisättiin superprojektiin.</p><a href="2026-04-04-changed-scope-and-bus-files.html">Lue 4.4.2026 uutinen</a></div><div class="callout"><h3>Nykyinen superprojektin logiikka</h3><p>Jos haluat nähdä nykyisen changed-scope-ajattelun käytännössä, katso juuri tämän repon Makefile ja testipolut.</p><a href="https://github.com/busdk/busdk">Avaa superprojekti GitHubissa</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>1.4.2026 | Tracker-commitit ja worktree-ajot saivat omat helperinsä</title>
+    <meta
+      name="description"
+      content="BusDK lisäsi helperit tracker-tiedostojen turvalliseen commitointiin ja erillisiin worktree-ajoympäristöihin."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-04-01-tracker-helper-and-worktree-agents.html" />
+    <meta property="og:title" content="1.4.2026 | Tracker-commitit ja worktree-ajot saivat omat helperinsä" />
+    <meta
+      property="og:description"
+      content="Tracker-merkinnät erotettiin omaksi commit-virrakseen ja worktree-ajolle tuli omat helperit."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="1.4.2026 | Tracker-commitit ja worktree-ajot saivat omat helperinsä"
+    />
+    <meta
+      name="twitter:description"
+      content="BusDK teki tracker-commitoinnista ja erillisistä worktree-ajoista hallitumpia."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Tracker-commitit ja worktree-ajot saivat omat helperinsä</h1>
+              <p class="intro">
+                Työnkulkuun tuli kaksi uutta apuvälinettä: tracker-tiedostoille oma commit-helper ja
+                erillisille worktree-ajoympäristöille omat käynnistyskomennot. Tavoite oli yksinkertainen:
+                vähemmän vahinkoja silloin, kun suunnitelma, bugiseuranta ja toteutuskoodi elävät rinnakkain.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">1.4.2026</span>
+                <span class="meta-chip">Tracker commits</span>
+                <span class="meta-chip">Worktrees</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>Merkitys:</strong> tracker- ja toteutusmuutokset on helpompi pitää erillään.</li>
+              <li><strong>Uutta:</strong> tracker-commiteille ja worktree-ajolle tuli omat helper-komennot.</li>
+              <li><strong>Vaikutus:</strong> vähemmän riskiä sille, että väärät tiedostot päätyvät samaan työvaiheeseen.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Muutos näkyy heti työkalujen käyttöpinnoissa. Tracker-helper kertoo suoraan, mitä tiedostoja
+              sillä saa commitoida, ja agentin käynnistyshelper tekee worktree-topicista pakollisen:
+            </p>
+            <pre><code>./scripts/commit-tracker-only.sh
+./scripts/start-agent.sh</code></pre>
+            <pre><code>usage: scripts/commit-tracker-only.sh &lt;repo-path&gt; &lt;commit-message&gt; &lt;tracker-file&gt; [&lt;tracker-file&gt; ...]
+allowed tracker files: PLAN.md BUGS.md FEATURE_REQUESTS.md
+
+Usage: ./scripts/start-agent.sh &lt;topic&gt; [codex args...]</code></pre>
+            <p>
+              Olennaista tässä ei ole itse scriptien määrä vaan se, että virhealtis työvaihe pakotettiin
+              näkyväksi. Tracker-commitointi ei enää muistuta tavallista "git commit kaikkea mitä sattuu
+              olemaan stagedissä" -tilannetta, ja worktree-ajolle on oma rajattu sisäänkäyntinsä. Muutos
+              ei näy loppukäyttäjän raportissa tai käyttöliittymässä, mutta se näkyy suoraan siinä, miten
+              nopeasti ja turvallisesti BusDK:ta voidaan kehittää eteenpäin.
+            </p>
+          </section>
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava merkittävä päivä</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>4.4.2026</h3>
+                <p><code>changed-scope</code> oppi huomioimaan muuttuneet submoduulit ja <code>bus-files</code> tuli mukaan.</p>
+                <a href="2026-04-04-changed-scope-and-bus-files.html">Lue 4.4.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>Superprojekti GitHubissa</h3>
+                <p>Julkinen superprojekti näyttää, miten trackerit ja modulit on sidottu yhteen.</p>
+                <a href="https://github.com/busdk/busdk">Avaa superprojekti GitHubissa</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

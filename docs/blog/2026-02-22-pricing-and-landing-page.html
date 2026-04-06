@@ -1,8 +1,187 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>22.2.2026 | Pricing-snapshot ja landing page ottivat kaupallisen muodon</title><meta name="description" content="22.2.2026 BusDK päivitti julkisen landing pagen, sitoi hinnoittelun 2026-02-22 datasettiin ja lisäsi synteettisen 2024 fixture-korpuksen sekä pricing-scriptit superprojektiin." /><link rel="canonical" href="https://busdk.com/blog/2026-02-22-pricing-and-landing-page.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-02-22-pricing-and-landing-page.html" /><meta property="og:title" content="22.2.2026 | Pricing-snapshot ja landing page ottivat kaupallisen muodon" /><meta property="og:description" content="22.2.2026 BusDK:n julkinen sivu muuttui selvästi evaluointisivuksi ja superprojekti sai synteettisen hinnoittelu- ja fixture-rungon." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="22.2.2026 | Pricing-snapshot ja landing page ottivat kaupallisen muodon" /><meta name="twitter:description" content="22.2.2026 BusDK:n julkinen viesti muuttui paljon konkreettisemmaksi." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-02-22-pricing-and-landing-page.html" aria-current="page">2026-02-22</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Pricing-snapshot ja landing page ottivat kaupallisen muodon</h1><p class="intro">`busdk.com` sai uuden landing pagen ja hinnoittelun datasettiin sidotun snapshotin. Superprojektiin tuli samalla synteettinen 2024 fixture-korpus ja pricing-scriptit.</p><p class="intro">Tämä ei ollut pelkkä kosmeettinen muutos. BusDK alkoi kertoa julkisesti, mitä kokonaisuus sisältää, mitä se maksaa ja millä synteettisellä aineistolla sitä voi arvioida ilman oikeaa asiakasdataa.</p><div class="hero-meta"><span class="meta-chip">22.2.2026</span><span class="meta-chip">Pricing snapshot</span><span class="meta-chip">Synthetic 2024 fixtures</span></div></div></article>
-<section class="content-panel section-stack"><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> päivä teki BusDK:sta paljon helpommin arvioitavan ja pilotoitavan.</li><li><strong>Toteutus:</strong> pricing-scriptit ja synthetic fixtures antoivat konkreettisemman pohjan demoille, dokumentaatiolle ja testaukselle.</li><li><strong>Saatavuus:</strong> päivään osuu myös tagi <code>v0.0.35</code>.</li></ul></section>
-<section class="content-panel section-stack"><h2>Mitä juuri tänään muuttui</h2><p>Julkinen landing page päivittyi kuvaamaan BusDK:ta modulaarisena, Git-natiivina ja arvioitavana tuotteena. Hinnoittelu ei ollut enää yleisluontoinen puhe vaan eksplisiittisesti datasettiin sidottu snapshot.</p><p>Root-repossa sama päivä toi synteettisiä fixturejä, pricing-skriptejä ja synthetic workspace -ohjeistusta. Se on tärkeä yhdistelmä: myyntiviesti ja todennettava demoaineisto etenivät käsi kädessä.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>2.3.2026</h3><p>Release-paketointi alkoi kerätä binäärit kaikista moduulien <code>bin</code>-hakemistoista.</p><a href="2026-03-02-release-packaging-and-traceability.html">Lue 2.3.2026 uutinen</a></div><div class="callout"><h3>Nykyinen pricing-sivu</h3><p>Julkinen sivu näyttää, miten tämä päivä näkyy edelleen nykytilassa.</p><a href="https://busdk.com">Avaa busdk.com</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>22.2.2026 | Pricing-snapshot, synteettinen 2024-aineisto ja uusi landing page</title>
+    <meta
+      name="description"
+      content="BusDK:n julkinen sivu alkoi kertoa hinnoittelusta konkreettisesti, ja arviointia varten tuli synteettinen 2024-aineisto ilman asiakasdataa."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-22-pricing-and-landing-page.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-22-pricing-and-landing-page.html" />
+    <meta
+      property="og:title"
+      content="22.2.2026 | Pricing-snapshot, synteettinen 2024-aineisto ja uusi landing page"
+    />
+    <meta
+      property="og:description"
+      content="Hinnoittelu sidottiin konkreettiseen snapshotiin, ja synteettinen 2024-aineisto teki BusDK:n arvioinnista helpompaa ilman oikeaa asiakasdataa."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="22.2.2026 | Pricing-snapshot, synteettinen 2024-aineisto ja uusi landing page"
+    />
+    <meta
+      name="twitter:description"
+      content="BusDK sai hinnoittelusnapshotin, uuden landing pagen ja synteettisen 2024-aineiston tuotteen arviointiin."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Pricing-snapshot, synteettinen 2024-aineisto ja uusi landing page</h1>
+              <p class="intro">
+                BusDK alkoi kertoa julkisesti, mitä kokonaisuus sisältää ja millä aineistolla sitä voi
+                arvioida. Samalla mukaan tuli synteettinen 2024-workspace, jota voi käyttää ilman
+                asiakasdataa.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">22.2.2026</span>
+                <span class="meta-chip">Pricing snapshot</span>
+                <span class="meta-chip">Synthetic 2024</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>Merkitys:</strong> BusDK:ta pystyi arvioimaan ilman oikeaa asiakasworkspacea.</li>
+              <li>
+                <strong>Konkreettinen muutos:</strong> landing page sai hinnoittelusnapshotin ja repo sai
+                synteettisen 2024-aineiston.
+              </li>
+              <li>
+                <strong>Jatkopolku:</strong> samaa aineistoa voi käyttää
+                <a href="https://docs.busdk.com/modules/bus-api">Bus API:ssa</a> ja
+                <a href="https://docs.busdk.com/modules/bus-sheets">Bus Sheetsissä</a>.
+              </li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Muutos näkyi heti siinä, ettei BusDK:n arviointi enää jäänyt markkinointilauseiden varaan.
+              Synteettinen 2024-aineisto sisälsi valmiita raportteja ja siirtotiedostoja, joista näki
+              mitä järjestelmä oikeasti tuottaa. Esimerkiksi aineistossa on valmiiksi tuloslaskelman PDF
+              ja koetaseen rivit, joita voi tarkistaa
+              <a href="https://docs.busdk.com/modules/bus-files">bus files</a> -komennolla:
+            </p>
+            <pre><code>bus files assert \
+  exists \
+  examples/synthetic-full-fictional-2024/data-monthly-transfer/tuloslaskelma-2024.pdf
+
+bus files assert cell \
+  examples/synthetic-full-fictional-2024/data-monthly-transfer/trial-balance-2024.csv \
+  --row-filter code=3000 \
+  --column credit \
+  --equals 1274.02</code></pre>
+            <pre><code>assertion  target  expected  observed  status
+exists     .../tuloslaskelma-2024.pdf  exists  exists  ok
+
+assertion  target  expected  observed  status
+cell       .../trial-balance-2024.csv  ...credit=1274.02  credit=1274.02  ok</code></pre>
+            <p>
+              Tämä on olennainen ero verrattuna pelkkään esittelysivuun. Sama workspace toimii myös
+              paikallisen API:n ja taulukkomuotoisen käyttöliittymän tausta-aineistona, joten arviointi
+              voi jatkua samasta datasta eri pinnoissa ilman erillistä demo-setupia. Hinnoittelusnapshot
+              puolestaan antoi tälle arvioinnille ensimmäisen selvästi nimetyn kaupallisen kehyksen.
+            </p>
+          </section>
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava merkittävä päivä</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>2.3.2026</h3>
+                <p>Release-paketointi alkoi kerätä myös moduulien omat binäärit.</p>
+                <a href="2026-03-02-release-packaging-and-traceability.html">Lue 2.3.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>Nykyinen dokumentaatio</h3>
+                <p>Julkinen docs-sivusto näyttää, mihin pintoihin tätä aineistoa käytetään.</p>
+                <a href="https://docs.busdk.com">Avaa docs.busdk.com</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

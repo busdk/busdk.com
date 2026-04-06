@@ -1,8 +1,176 @@
 <!doctype html>
-<html lang="fi"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>2.3.2026 | Release-paketointi laajeni kaikkiin moduuleihin ja traceability-säännöt koventuivat</title><meta name="description" content="2.3.2026 BusDK alkoi paketoida release-arkistot kaikkien moduulien bin-hakemistoista, lisäsi bus-factoryn ja kiristi traceability- ja refactor-planning-sääntöjä." /><link rel="canonical" href="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" /><meta property="og:title" content="2.3.2026 | Release-paketointi laajeni kaikkiin moduuleihin ja traceability-säännöt koventuivat" /><meta property="og:description" content="2.3.2026 oli päivä, jolloin release-arkistojen koostaminen ja top-level traceability-säännöt nousivat uudelle tasolle." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="2.3.2026 | Release-paketointi laajeni kaikkiin moduuleihin ja traceability-säännöt koventuivat" /><meta name="twitter:description" content="Release-artifactit, bus-factory ja traceability-säännöt osuivat samalle päivälle." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
-<body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="https://busdk.com/" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="https://docs.busdk.com">Documentation</a><a href="./">Blog</a><a href="2026-03-02-release-packaging-and-traceability.html" aria-current="page">2026-03-02</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
-<article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Release-paketointi laajeni kaikkiin moduuleihin ja traceability-säännöt koventuivat</h1><p class="intro">Release-putki alkoi kerätä binäärit rootin lisäksi kaikkien moduulien <code>bin</code>-hakemistoista. Samalla mukaan tuli <code>bus-factory</code> ja top-level traceability- sekä refactor planning -sääntöjä kiristettiin.</p><p class="intro">Tässä näkyy BusDK:n tyyli hyvin: release-tekniikka, dokumentaatiokuri ja uusi moduuli tulevat samaan muutospakettiin.</p><div class="hero-meta"><span class="meta-chip">2.3.2026</span><span class="meta-chip">dist-bin packaging</span><span class="meta-chip">traceability rules</span><span class="meta-chip">bus-factory</span></div></div></article>
-<section class="content-panel section-stack"><h2>TL;DR</h2><ul class="tldr-list"><li><strong>Merkitys:</strong> releasejen sisältö muuttui luotettavammaksi, koska binäärien keräys ei enää nojannut vain root-hakemistoon.</li><li><strong>Toteutus:</strong> kaikki moduulit alkoivat näkyä release-putkessa tasaisemmin, ja dokumentaatiokuri tiukkeni top-level-säännöillä.</li><li><strong>Saatavuus:</strong> tälle päivälle osuvat tagit <code>v0.0.36</code> ... <code>v0.0.38</code>.</li></ul></section>
-<section class="content-panel section-stack"><h2>Mitä juuri tänään muuttui</h2><p>Release-arkistoihin alettiin etsiä artefakteja myös moduulikohtaisista <code>bin</code>-hakemistoista. Se on konkreettinen korjaus releasejen kattavuuteen: monimoduulinen järjestelmä ei voi olettaa, että kaikki binäärit syntyvät rootiin.</p><p>Samaan aikaan dokumentaation traceability-sääntöihin lisättiin vaatimus top-level-tuotantoyksiköiden inline-kommenteista ja "Used by" -viitteistä. BusDK siis kiristi sekä koneellista julkaisuputkea että ihmisten luettavuutta samana päivänä.</p></section>
-<section class="cta-panel section-stack"><p class="small-label">Next</p><h2>Seuraava merkittävä päivä</h2><div class="cta-grid two-up"><div class="callout"><h3>17.3.2026</h3><p>Inspection ja bus-portal saivat release scaffoldingin.</p><a href="2026-03-17-inspection-and-portal.html">Lue 17.3.2026 uutinen</a></div><div class="callout"><h3>Nykyinen arkkitehtuurikuva</h3><p>Arkkitehtuuridokumentaatiosta näet, miten tämä release-ajattelu näkyy kokonaisuudessa.</p><a href="https://docs.busdk.com/architecture">Avaa architecture-sivu</a></div></div></section>
-</div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle)themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});prefersDark.addEventListener("change",event=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body></html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2.3.2026 | Release-paketointi alkoi kerätä moduulien omat binäärit</title>
+    <meta
+      name="description"
+      content="Release-putki alkoi ottaa mukaan myös moduulien omat binäärit, jolloin julkaisut vastasivat paremmin BusDK:n todellista monimoduulista rakennetta."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-03-02-release-packaging-and-traceability.html" />
+    <meta property="og:title" content="2.3.2026 | Release-paketointi alkoi kerätä moduulien omat binäärit" />
+    <meta
+      property="og:description"
+      content="Moduulien omat bin-hakemistot otettiin mukaan release-paketointiin, ja esimerkiksi bus-factory tuli näkyväksi osaksi julkaistavaa työkalupintaa."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="2.3.2026 | Release-paketointi alkoi kerätä moduulien omat binäärit"
+    />
+    <meta
+      name="twitter:description"
+      content="Release-arkistot alkoivat sisältää myös moduulien omat binäärit, joten asennettu pinta vastasi paremmin oikeaa BusDK-kokonaisuutta."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button
+              id="theme-toggle"
+              class="theme-toggle"
+              type="button"
+              aria-label="Toggle dark theme"
+              aria-pressed="false"
+            >
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Release-paketointi alkoi kerätä moduulien omat binäärit</h1>
+              <p class="intro">
+                Julkaisut eivät enää nojanneet vain root-hakemiston binääreihin. Release-putki alkoi
+                kerätä mukaan myös moduulien omat <code>bin</code>-hakemistot, jolloin asennettu pinta
+                vastasi paremmin BusDK:n todellista rakennetta.
+              </p>
+              <div class="hero-meta">
+                <span class="meta-chip">2.3.2026</span>
+                <span class="meta-chip">Release packaging</span>
+                <span class="meta-chip">bus-factory</span>
+              </div>
+            </div>
+          </article>
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><strong>Merkitys:</strong> julkaistu työkalukokoelma vastasi paremmin oikeaa moduulirakennetta.</li>
+              <li>
+                <strong>Näkyvä seuraus:</strong> moduulit kuten
+                <a href="https://docs.busdk.com/modules/bus-factory">bus-factory</a>
+                olivat mukana samalla tavalla kuin muutkin binäärit.
+              </li>
+              <li><strong>Lisäksi:</strong> dokumentaation jäljitettävyyttä kiristettiin samaan aikaan.</li>
+            </ul>
+          </section>
+          <section class="content-panel section-stack">
+            <p>
+              Käytännössä muutos tarkoitti sitä, ettei uusi moduuli jäänyt pois julkaisusta vain siksi,
+              että se rakensi binäärinsä omaan hakemistoonsa. Kun moduuli oli mukana paketoinnissa, sen
+              näki myös asennetun dispatcher-pinnan kautta. Esimerkiksi
+              <a href="https://docs.busdk.com/modules/bus-factory">bus factory</a> näkyi näin:
+            </p>
+            <pre><code>bus factory --help</code></pre>
+            <pre><code>bus-factory — BusDK module development assistant
+
+Usage:
+  bus-factory [global flags] [serve | version]
+
+Commands:
+  serve
+  version</code></pre>
+            <p>
+              Muutos on pieni vain paperilla. Monimoduulisessa työkaluketjussa julkaisu on uskottava
+              vasta silloin, kun jokainen luvattu komento todella päätyy artefaktiin ja löytyy
+              asennetusta ympäristöstä. Samalla kiristetyt jäljitettävyysvaatimukset täydensivät samaa
+              ajatusta: sekä binaarien että dokumentaation piti kertoa täsmälleen, mitä kokonaisuuteen
+              kuuluu.
+            </p>
+          </section>
+          <section class="cta-panel section-stack">
+            <p class="small-label">Next</p>
+            <h2>Seuraava merkittävä päivä</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>17.3.2026</h3>
+                <p><code>bus-portal</code> ja <code>bus-inspection</code> tulivat mukaan julkaistavina pintoina.</p>
+                <a href="2026-03-17-inspection-and-portal.html">Lue 17.3.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>Nykyinen moduulilista</h3>
+                <p>Julkinen docs-sivu näyttää, miten moduulit näkyvät nykyisessä kokonaisuudessa.</p>
+                <a href="https://docs.busdk.com/modules/features">Avaa moduulilista</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>
+            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian,
+            deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+
+      applyTheme(resolveInitialTheme());
+
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

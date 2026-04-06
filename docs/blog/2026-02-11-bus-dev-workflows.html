@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan</title>
+    <meta
+      name="description"
+      content="BusDK sai 11.2.2026 bus-dev-moduulin, joka kokosi commit-, plan-, work- ja e2e-työvaiheet yhdeksi julkiseksi komentopinnaksi ja alkoi korvata erillisiä orkestrointiskriptejä."
+    />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-11-bus-dev-workflows.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-11-bus-dev-workflows.html" />
+    <meta property="og:title" content="11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan" />
+    <meta
+      property="og:description"
+      content="BusDK sai bus-dev-moduulin, joka toi plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
+    />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="11.2.2026 | bus-dev toi kehitystyönkuluille yhden yhteisen komentopinnan" />
+    <meta
+      name="twitter:description"
+      content="BusDK sai bus-dev-moduulin, joka toi plan-, work-, e2e-, stage- ja commit-vaiheet saman komentopinnan alle."
+    />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="https://busdk.com/" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">
+              Dark
+            </button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1><code>bus-dev</code> toi kehitystyönkuluille yhden yhteisen komentopinnan</h1>
+              <div class="hero-meta">
+                <span class="meta-chip">11.2.2026</span>
+                <span class="meta-chip">bus-dev</span>
+                <span class="meta-chip">Työnkulut</span>
+                <span class="meta-chip">Orkestrointi</span>
+              </div>
+              <p class="intro">
+                BusDK sai oman <code>bus-dev</code>-moduulin, joka kokosi kehitystyönkulun vaiheet
+                yhden julkisen komentopinnan alle. Muutos ei jäänyt teoriaksi, vaan rootin
+                orkestrointiskriptit alkoivat heti käyttää samoja <code>bus dev</code> -komentoja
+                modulikohtaisten omien skriptien sijaan.
+              </p>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus-dev</code> toi työvaiheet kuten <code>plan</code>, <code>work</code>, <code>e2e</code>, <code>stage</code> ja <code>commit</code> yhden komennon alle.</li>
+              <li>Rootin orkestrointi alkoi kutsua <code>bus dev work</code>- ja <code>bus dev commit</code> -komentoja erillisten modulikohtaisten skriptien sijaan.</li>
+              <li>Pipelinet tekivät toistuvista askelketjuista näkyviä ja ennustettavia.</li>
+              <li>Tämä muutti kehitystyönkulun julkiseksi Bus-pinnaksi samalla tavalla kuin muutkin moduulikomennot.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>
+              Ennen tätä muutosta sama työ saattoi olla ripoteltuna useisiin repo- tai
+              modulikohtaisiin skripteihin. <code>bus-dev</code> muutti tilanteen tuomalla
+              kehittäjälle näkyvän komentopinnan, jossa tärkeimmät vaiheet löytyvät yhdestä paikasta.
+              Se näkyy heti myös helpissä:
+            </p>
+            <pre><code>bus-dev --help</code></pre>
+            <pre><code>Operations:
+  init
+  commit
+  plan
+  work
+  spec
+  e2e
+  triage
+  stage
+  retry
+  each</code></pre>
+            <p>
+              Oleellinen muutos ei ollut pelkkä uusi binääri, vaan se että työvaiheille tuli yhteinen
+              sanasto. Kun rootin skriptit siirtyivät kutsumaan <code>bus dev commit</code> ja
+              <code>bus dev work</code> -komentoja, sama pinta alkoi ohjata sekä moduulissa
+              käsin tehtävää työtä että superprojektin orkestrointia. Silloin käyttäjän ei enää
+              tarvitse tietää, onko jokin vaihe piilotettu <code>scripts/</code>-hakemistoon vai
+              toteutettu komentopinnan osana.
+            </p>
+            <p>
+              Pipelinet tekevät tästä vielä konkreettisempaa. Esimerkiksi sisäänrakennettu
+              <code>round</code>-ketju kertoo yhdellä komennolla, mitä seuraavaksi oikeasti tapahtuu:
+            </p>
+            <pre><code>bus-dev pipeline preview round</code></pre>
+            <pre><code>work
+e2e
+stage
+commit</code></pre>
+            <p>
+              Tuo on merkittävä parannus verrattuna tilanteeseen, jossa sama työnkulku olisi pitänyt
+              päätellä useasta erillisestä shell-skriptistä. Nyt ketju näkyy eksplisiittisesti:
+              ensin tehdään työ, sitten ajetaan e2e, sen jälkeen valmistellaan staging ja lopuksi
+              commitoidaan. Jos haluat nähdä koko komentopinnan ja pipelinejen nykyisen sopimuksen,
+              jatka <a href="https://docs.busdk.com/modules/bus-dev"><code>bus-dev</code>-dokumentaatioon</a>.
+            </p>
+          </section>
+
+          <section class="cta-panel section-stack">
+            <p class="small-label">Related</p>
+            <h2>Liittyvät jutut</h2>
+            <div class="cta-grid two-up">
+              <div class="callout">
+                <h3>15.2.2026</h3>
+                <p>Muutamaa päivää myöhemmin <code>bus-run</code> toi saman ajatuksen myös käyttäjän omille actioneille, pipelineille ja skripteille.</p>
+                <a href="2026-02-15-bus-run-actions-and-pipelines.html">Lue 15.2.2026 uutinen</a>
+              </div>
+              <div class="callout">
+                <h3>bus-dev-dokumentaatio</h3>
+                <p>Dokumentaatiossa näkyvät myös pipelinejen, actionien ja skriptien tarkemmat säännöt.</p>
+                <a href="https://docs.busdk.com/modules/bus-dev">Avaa <code>bus-dev</code>-dokumentaatio</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        if (!themeToggle) return;
+        const isDark = theme === "dark";
+        themeToggle.textContent = isDark ? "Light" : "Dark";
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme");
+      }
+      function resolveInitialTheme() {
+        if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+        return prefersDark.matches ? "dark" : "light";
+      }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", nextTheme);
+          applyTheme(nextTheme);
+        });
+      }
+      prefersDark.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) return;
+        applyTheme(event.matches ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>

@@ -11,6 +11,10 @@ main {
   gap: 1.4rem;
 }
 
+.page-shell > * {
+  min-width: 0;
+}
+
 .hero-panel,
 .content-panel,
 .post-card,
@@ -47,14 +51,25 @@ main {
   position: relative;
   z-index: 1;
   padding: clamp(2.1rem, 4vw, 3.3rem);
+  display: flex;
+  flex-direction: column;
 }
 
 .intro {
-  margin: 1.2rem 0 0;
+  order: 4;
+  margin: 0;
   max-width: 70ch;
   color: var(--text-muted);
   font-size: clamp(1rem, 1.8vw, 1.08rem);
   line-height: 1.76;
+}
+
+.hero-panel-inner .intro:first-of-type {
+  margin-top: 3.1rem;
+}
+
+.hero-panel-inner .intro + .intro {
+  margin-top: 1rem;
 }
 
 .hero-meta,
@@ -69,9 +84,13 @@ main {
 }
 
 .hero-meta {
+  order: 3;
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  padding-top: 1rem;
+  padding-bottom: 1.35rem;
+  border-top: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
 }
 
 .meta-chip {
@@ -88,6 +107,21 @@ main {
 .content-panel,
 .cta-panel {
   padding: 1.45rem;
+}
+
+.tldr-panel {
+  border-left: 4px solid var(--accent);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent-soft) 52%, var(--surface) 48%) 0%, var(--surface) 100%);
+}
+
+.tldr-panel .small-label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.tldr-panel h2 {
+  margin-top: 0;
 }
 
 .section-stack > * + * {
@@ -125,6 +159,7 @@ main {
 .quote-card,
 .callout {
   padding: 1.2rem;
+  min-width: 0;
 }
 
 .timeline-item,
@@ -181,6 +216,7 @@ kbd {
 
 pre {
   overflow-x: auto;
+  max-width: 100%;
   padding: 1rem 1.1rem;
   border-radius: var(--radius-md);
   background: var(--code-bg);
@@ -229,6 +265,35 @@ pre code {
   box-shadow: 0 14px 32px rgba(22, 172, 169, 0.22);
 }
 
+@media (max-width: 760px) {
+  .page-shell {
+    width: min(var(--max), calc(100% - 1.4rem));
+  }
+
+  .detail-grid,
+  .posts-grid,
+  .cta-grid.two-up {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel-inner,
+  .content-panel,
+  .cta-panel,
+  .timeline-item,
+  .post-card,
+  .quote-card,
+  .callout {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
 :root[data-theme="dark"] .hero-meta .meta-chip:first-child {
   color: #081013;
 }
@@ -236,6 +301,10 @@ pre code {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .hero-meta .meta-chip:first-child {
     color: #081013;
+  }
+
+  :root:not([data-theme="light"]) .hero-meta {
+    border-top-color: color-mix(in srgb, var(--text-muted) 24%, transparent);
   }
 }
 
