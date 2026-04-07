@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>30.1.2026 | Työtilan alustus saa oman bus-init-komennon</title>
+    <meta name="description" content="bus-init tuo 30.1.2026 BusDK:hon oman työtilan alustuskomennon, joka ajaa moduulien init-vaiheet oikeassa järjestyksessä ja tarkistaa tuloksen." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-30-bus-init-workspace-bootstrap.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-30-bus-init-workspace-bootstrap.html" />
+    <meta property="og:title" content="30.1.2026 | Työtilan alustus saa oman bus-init-komennon" />
+    <meta property="og:description" content="BusDK saa ensimmäisen oman työtilan alustuskomennon ja selkeän delegointijärjestyksen moduuleille." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="30.1.2026 | Työtilan alustus saa oman bus-init-komennon" />
+    <meta name="twitter:description" content="Työtilan perustaminen ei enää vaadi käsin koottua komentojonoa, vaan oman bus-init-komennon." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Työtilan alustus saa oman <code>bus-init</code>-komennon</h1>
+              <p class="intro">BusDK saa 30.1.2026 ensimmäisen oman alustuskomentonsa. <code>bus init</code> kokoaa työtilan perustamisen yhden komennon alle sen sijaan, että käyttäjän pitäisi ajaa moduulien init-vaiheet käsin oikeassa järjestyksessä.</p>
+              <p class="intro">Samalla aloitus muuttuu turvallisemmaksi: komento ei vain kirjoita tiedostoja, vaan tarkistaa että odotettu rakenne on oikeasti syntynyt.</p>
+              <div class="hero-meta">
+                <span class="meta-chip">30.1.2026</span>
+                <span class="meta-chip">bus-init</span>
+                <span class="meta-chip">Työtila</span>
+                <span class="meta-chip">Bootstrap</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus init</code> ajaa työtilan perustamisen yhdellä komennolla.</li>
+              <li>Alustus delegoidaan moduuleille ennalta määrätyssä järjestyksessä.</li>
+              <li><code>--dry-run</code> näyttää mitä tapahtuisi ennen kirjoituksia.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>Uusi pinta näyttää jo ensimmäisessä versiossaan tältä:</p>
+            <pre><code>bus init --year 2025 --layout fi --currency EUR
+bus-init --dry-run --year 2025 --layout fi --currency EUR</code></pre>
+            <p>Oleellinen muutos on järjestys ja vastuunjako. <code>bus-init</code> ei yritä omistaa kaikkia työtilan tiedostomuotoja itse, vaan kutsuu oikeita omistajamoduuleja oikeassa järjestyksessä: tilikartta, päiväkirja, laskut, ALV, liitteet, pankkiaineisto ja raportit perustetaan kukin oman moduulinsa kautta. Näin myöhempi kehitys voi muuttaa yksittäistä aluetta rikkomatta koko alustuspolkua.</p>
+            <pre><code>bus accounts init --layout fi
+bus journal init --layout fi --year 2025 --currency EUR
+bus invoices init --layout fi --currency EUR
+bus vat init --layout fi --year 2025
+bus attachments init --layout fi
+bus bank init --layout fi --year 2025
+bus reports init --layout fi</code></pre>
+            <p>Muutos näkyy myös lopputuloksessa. Alustuksen jälkeen työtilasta löytyy jo heti tunnistettava runko: <code>datapackage.json</code>, tilit, päiväkirja, laskut, ALV, pankki, liitteet ja raportit. Se tekee BusDK:n käyttöönotosta paljon helpommin toistettavan kuin käsin kirjoitettu komentolista. Nykyinen moduulisivu löytyy <a href="https://docs.busdk.com/modules/bus-init">bus-initin dokumentaatiosta</a>.</p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); }
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

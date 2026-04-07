@@ -59,8 +59,9 @@
                 työkaluketjua.
               </p>
               <p class="intro">
-                Tässä vaiheessa BusDK on vielä varhainen, mutta käyttöön tulee yksi yhteinen tapa
-                hoitaa asennus, päivitys, moduulilistat ja ensimmäiset ylläpitotyökalut.
+                Samalla myös dokumentaatio siirtyy omaan julkaistavaan rakenteeseensa, ensimmäinen
+                kirjanpidon kokonaistyönkulku kirjoitetaan näkyviin ja ydinrepo saa ensimmäiset
+                toistettavat helper-skriptinsä.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">25.1.2026</span>
@@ -77,8 +78,8 @@
             <ul class="tldr-list">
               <li>Useimmat ensimmäiset <code>bus-*</code>-moduulit aloitetaan 24.1.2026.</li>
               <li>25.1.2026 niiden ympärille tulee yhteinen rakennus-, asennus- ja päivitystapa.</li>
-              <li>Samana päivänä mukaan tulevat moduulien yhteinen hallinta, ensimmäiset helper-skriptit ja selvästi laajentunut README.</li>
-              <li>Tästä eteenpäin koko työkaluketjua pystyy ottamaan käyttöön yhdellä mallilla.</li>
+              <li>Dokumentaatio saa oman julkaisurakenteensa ja ensimmäisen kokonaisen kirjanpidon työnkulun.</li>
+              <li>Ydinrepo saa ensimmäiset <code>commit.sh</code>- ja <code>work.sh</code>-helperit toistuviin kehitystehtäviin.</li>
             </ul>
           </section>
 
@@ -99,12 +100,27 @@
 # rakentaa kaikki työkalut ./bin-hakemistoon
 # asentaa ne oletuksena ~/.local/bin-hakemistoon</code></pre>
             <p>
-              Tämä on olennainen muutos, koska sen jälkeen BusDK:n käyttöönotolle on yksi selkeä
-              malli. Sama kokonaisuus tuo yhteen moduulien kiinnitykset, ensimmäiset
-              hallintaskriptit ja README:n, joka kertoo miten koko työkaluketju rakennetaan,
-              päivitetään ja asennetaan. Se luo perustan, jonka päälle seuraavien
-              viikkojen julkaisut, testaus ja dokumentaatio voidaan rakentaa. Nykyistä kokonaisuutta
-              voit verrata tähän alkuun <a href="https://docs.busdk.com">BusDK:n dokumentaatiossa</a>.
+              Samana päivänä julkinen dokumentaatio myös järjestetään omaan
+              <code>docs/</code>-rakenteeseensa ja saa ensimmäisen selkeän landing-sivun. Siellä
+              avataan ensimmäistä kertaa yksi kokonainen kirjanpidon työnkulku tilikartasta,
+              tositteista, pankkiaineistosta ja täsmäytyksestä kauden sulkuun asti. Näin BusDK:sta
+              saa heti kaksi asiaa yhdellä kertaa: yhteisen teknisen käyttöönoton ja ensimmäisen
+              näkyvän kuvan siitä, miten koko työkaluketjua on tarkoitus käyttää arjessa.
+            </p>
+            <pre><code>bus accounts
+bus entities
+bus period
+bus journal
+bus validate
+bus vat
+bus reports</code></pre>
+            <p>
+              Kehitystyökin muuttuu samalla vähemmän käsityöksi. Ydinrepoon tulevat ensimmäiset
+              <code>scripts/commit.sh</code>- ja <code>scripts/work.sh</code>-helperit, joilla
+              toistuvia agentti- ja commit-ajotapoja voi ajaa yhdestä paikasta. Tämä kokonaisuus
+              tekee 25.1.2026 päivästä enemmän kuin pelkän submodule-listan päivityksen: BusDK
+              saa ensimmäisen yhteisen tavan sekä käyttää että kehittää koko työkaluketjua.
+              Nykyistä kokonaisuutta voi verrata tähän alkuun <a href="https://docs.busdk.com">BusDK:n dokumentaatiossa</a>.
             </p>
           </section>
 

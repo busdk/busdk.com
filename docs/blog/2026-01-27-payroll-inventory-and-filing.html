@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>27.1.2026 | Palkat, varasto ja viranomaisilmoitukset saavat omat komentonsa</title>
+    <meta name="description" content="BusDK laajenee 27.1.2026 palkanlaskennan, varastonhallinnan ja filing-kohteiden suuntaan, kun bus-payroll, bus-inventory ja filing-komennot saavat ensimmäiset käytännön CLI-pintansa." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-27-payroll-inventory-and-filing.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-27-payroll-inventory-and-filing.html" />
+    <meta property="og:title" content="27.1.2026 | Palkat, varasto ja viranomaisilmoitukset saavat omat komentonsa" />
+    <meta property="og:description" content="BusDK laajenee kirjanpidon ytimestä palkkoihin, varastoon ja filing-kohteisiin." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="27.1.2026 | Palkat, varasto ja viranomaisilmoitukset saavat omat komentonsa" />
+    <meta name="twitter:description" content="BusDK alkaa kattaa samalla kertaa palkanlaskennan, varaston ja filing-targetit." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Palkat, varasto ja viranomaisilmoitukset saavat omat komentonsa</h1>
+              <p class="intro">BusDK:n moduulipinta laajenee 27.1.2026 selvästi kirjanpidon ydintä pidemmälle. Mukaan tulevat ensimmäiset käytännön komentopinnat palkanlaskennalle, varastolle ja filing-kohteille.</p>
+              <p class="intro">Tämä on tärkeä askel siksi, että BusDK alkaa näyttää kokonaiselta liiketoiminnan työkaluketjulta eikä vain pääkirjan ja raportoinnin rungolta.</p>
+              <div class="hero-meta">
+                <span class="meta-chip">27.1.2026</span>
+                <span class="meta-chip">bus-payroll</span>
+                <span class="meta-chip">bus-inventory</span>
+                <span class="meta-chip">bus-filing</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus-payroll</code> validoi palkka-aineiston ja vie journal-rivit valitulle payrunille.</li>
+              <li><code>bus-inventory</code> osaa jo validoida varaston, näyttää saldon ja kirjata liikkeen.</li>
+              <li><code>bus-filing</code> saa dispatcher-roolin PRH- ja Vero-kohteille.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>Palkanlaskennan puolella tärkein uutuus on se, että payrun ei jää enää omaksi umpikujakseen. <code>bus-payroll</code> osaa validoida payroll-aineiston ja tuottaa siitä deterministisen journal-viennin, joka voidaan ohjata seuraavaan vaiheeseen CSV:nä.</p>
+            <pre><code>bus-payroll validate
+bus-payroll export pr-001 &gt; journal.csv</code></pre>
+            <pre><code>line_id,date,description,debit_account,credit_account,amount,currency,payrun_id,employee_id,component
+payroll:pr-001:e1:net_pay,2024-04-05,Payroll pr-001 e1,5000,1000,750.00,EUR,pr-001,e1,net_pay</code></pre>
+            <p>Varaston puolella muutos näkyy yhtä konkreettisesti. <code>bus-inventory</code> pystyy jo sekä näyttämään nykytilan että lisäämään varastoliikkeen, jolloin saldo ja arvostus eivät jää irrallisen taulukon vastuulle.</p>
+            <pre><code>bus-inventory move --sku A-1 --type in --qty 4 --note "restock"
+bus-inventory status</code></pre>
+            <pre><code>A-1	Apple	3	each	7.50
+B-2	Banana	10	kg	12.00</code></pre>
+            <p>Kolmas laajennus tulee filing-pintaan. <code>bus-filing</code> ei vielä sisällä viranomaislogiikkaa itse, vaan toimii dispatcherina filing-kohteille kuten PRH ja Vero. Se on silti tärkeä rajapinta, koska näin authority-kohtaiset viennit saavat jo yhteisen kutsutavan BusDK:n sisältä.</p>
+            <pre><code>bus-filing list
+bus-filing prh -- --dry-run --input filing.csv</code></pre>
+            <p>Samalla sekä <code>bus-filing-prh</code> että <code>bus-filing-vero</code> saavat ensimmäiset omat kohdebinäärinsä. Se tekee 27.1.2026 päivästä selvästi laajemman kuin pelkän moduulimäärän kasvun: BusDK alkaa kattaa nyt myös sellaisia liiketoiminnan osa-alueita, jotka pitää lopulta saada ulos kirjanpidosta viranomaisiin, palkanmaksuun ja tavaravirtoihin asti. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-payroll">bus-payrollin</a>, <a href="https://docs.busdk.com/modules/bus-inventory">bus-inventoryn</a> ja <a href="https://docs.busdk.com/modules/bus-filing">bus-filingin dokumentaatiosta</a>.</p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); }
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

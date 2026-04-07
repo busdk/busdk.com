@@ -1,22 +1,124 @@
 # PLAN.md
 
-- [ ] Suorita uusi viikkokierros vuoden 2026 historiasta viikosta 1 alkaen ja lisää vielä mahdolliset puuttuvat blogiaiheet suunnitelmaan.
+- [x] 2026-01-01: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-02: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-03: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-04: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-05: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-06: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-07: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-08: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-09: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-10: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-11: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-12: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-13: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-14: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-15: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-16: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-17: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-18: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-19: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-20: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-21: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-22: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-23: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-24: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-25: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-26: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-27: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-28: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-29: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-30: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-01-31: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-01: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-02: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-03: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-04: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-05: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-06: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-07: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-08: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-09: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-10: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-11: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-12: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-13: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-14: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-15: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-16: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-17: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-18: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-19: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-20: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-21: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-22: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-23: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-24: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-25: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-26: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-27: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-02-28: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-01: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-02: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-03: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-04: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-05: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-06: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-07: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-08: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-09: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-10: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-11: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-12: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-13: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-14: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-15: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-16: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-17: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-18: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-19: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-20: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-21: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-22: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-23: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-24: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-25: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-26: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-27: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-28: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-29: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-30: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-03-31: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-01: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-02: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-03: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-04: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-05: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] 2026-04-06: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
+- [x] Suorita uusi viikkokierros vuoden 2026 historiasta viikosta 1 alkaen ja lisää vielä mahdolliset puuttuvat blogiaiheet suunnitelmaan.
 - [x] Käy vuoden 2026 historia läpi viikko kerrallaan ja lisää blogin PLANiin kaikki puuttuvat artikkeli-ideat niin pitkälle kuin uusia aiheita löytyy.
-- [ ] 25.1.2026: kirjoita artikkeli ensimmäisestä julkisesti kuvatusta BusDK:n kirjanpidon kokonaistyönkulusta, jossa master data, tositteet, pankkiaineisto, täsmäytys, ALV ja kauden sulku kuvataan ensimmäistä kertaa yhtenä käytännön flow’na.
-- [ ] 25.1.2026: kirjoita artikkeli siitä, miten BusDK:n dokumentaatio siirtyy omaan `docs/`-julkaisurakenteeseensa ja saa ensimmäisen oman landing-sivunsa sekä `docs.busdk.com`-valmiuden.
-- [ ] 25.1.2026: kirjoita artikkeli `bus`-repon ensimmäisistä kehittäjän helper-skripteistä, kun `commit.sh` ja `work.sh` tuovat toistettavan tavan ajaa työnkulkuja repojuuresta ilman käsin rakennettuja komentorivejä.
-- [ ] 26.1.2026: kirjoita artikkeli ensimmäisestä laajasta moduulidokumentaatiosta, kun julkisiin docs-sivuihin lisätään omat sivut keskeisille `bus-*`-moduuleille ja moduuliluettelo alkaa näyttää koko työkaluketjun rakenteen.
-- [ ] 26.1.2026: kirjoita artikkeli `bus-loans`-moduulin tulosta julkiseen BusDK-pintaan, kun lainarekisteri ja lyhennysohjelmat nostetaan mukaan sekä docs-sivuston moduulidokumentaatioon että `busdk.com`-sivun moduulilistaan.
-- [ ] 31.1.2026: kirjoita artikkeli siitä, miten docsit alkavat kuvata moduulien yhteistyötä CLI-pohjaisena koostumuksena, jossa kirjoitukset kulkevat omistavan moduulin komennon kautta eikä moduulirajoja ohiteta suoraan.
-- [ ] 31.1.2026: kirjoita artikkeli siitä, miten julkiset docs-esimerkit siirtyvät `busdk ...` -muodosta `bus ...` -muotoon, jolloin BusDK:n varsinainen CLI-entrypoint vakiintuu näkyvästi myös dokumentaatiossa.
-- [ ] 15.2.2026: kirjoita artikkeli `bus period add` -komennosta ja periodien tilamallista, kun future → open → closed → locked -elinkaari dokumentoidaan näkyvästi ja periodin avaaminen lakkaa olemasta implisiittinen luontitapa.
-- [ ] 25.2.2026: kirjoita artikkeli `bus audit evidence-coverage` -oikopolusta, kun `bus` alkaa välittää audit-evidence-coverage -tarkistuksen suoraan `bus-validate`-pintaan ja nostaa audit-sanan näkyväksi discoverabilityyn.
-- [ ] 10.3.2026: kirjoita artikkeli stickyistä `.bus`-direktiiveistä, kun globaalit dispatcher-liput voi määritellä busfileen pysyviksi riveiksi ja periyttää includeihin ilman komentorivin toistoa.
-- [ ] 14.3.2026: tarkista voiko olemassa olevaa 14.3.2026 artikkelia laajentaa editorituella tai kirjoita erillinen artikkeli VS Code -yhteensopivan `.bus`-kielilaajennuksen paketoinnista `.vsix`-artefaktiksi.
-- [ ] 22.3.2026: kirjoita artikkeli gatewayn kautta avautuvasta tarkastusportaalista, kun `bus-inspection`-käyttö siirtyy yhteisen gateway-kirjautumisen taakse oman login-sivun sijaan.
-- [ ] 25.3.2026: kirjoita artikkeli AIZ-binäärien tulosta julkaistuun asennuspakettiin, kun release-artefaktit ja `install.sh` alkavat kattaa myös `aiz`- ja `unaiz`-komennot.
-- [ ] 29.3.2026: kirjoita artikkeli `bus-memo`-moduulin julkisesta docs-pinnasta ja memovientien näkyvästä numeroinnista sekä lähdeviitteiden välityksestä päiväkirjaan.
-- [ ] 6.4.2026: kirjoita artikkeli `bus files assert expr` -käytöstä, kun docsit avaavat aggregaatit, suodattimet ja yksinkertaiset lausekkeet osaksi `bus-files`-tarkistuspintaa.
+- [x] 25.1.2026: kirjoita artikkeli ensimmäisestä julkisesti kuvatusta BusDK:n kirjanpidon kokonaistyönkulusta, jossa master data, tositteet, pankkiaineisto, täsmäytys, ALV ja kauden sulku kuvataan ensimmäistä kertaa yhtenä käytännön flow’na.
+- [x] 25.1.2026: kirjoita artikkeli siitä, miten BusDK:n dokumentaatio siirtyy omaan `docs/`-julkaisurakenteeseensa ja saa ensimmäisen oman landing-sivunsa sekä `docs.busdk.com`-valmiuden.
+- [x] 25.1.2026: kirjoita artikkeli `bus`-repon ensimmäisistä kehittäjän helper-skripteistä, kun `commit.sh` ja `work.sh` tuovat toistettavan tavan ajaa työnkulkuja repojuuresta ilman käsin rakennettuja komentorivejä.
+- [x] 24.1.2026: tarkista voiko olemassa olevaa 24.1.2026 artikkelia laajentaa tai kirjoita erillinen artikkeli ensimmäisestä moduuliaallosta, kun `bus-accounts`, `bus-journal`, `bus-reports`, `bus-vat`, `bus-bank` ja muut ensimmäiset kirjanpidon ydinmoduulit saavat omat CLI-pintansa, testinsä ja esimerkkiaineistonsa.
+- [x] 25.1.2026: kirjoita artikkeli pankkiaineiston ensimmäisestä tuontipolusta, kun `bus-bank` saa `import`-komennon ja OP-esimerkkiaineiston kanonisointipolun.
+- [x] 26.1.2026: kirjoita artikkeli ensimmäisestä laajasta moduulidokumentaatiosta, kun julkisiin docs-sivuihin lisätään omat sivut keskeisille `bus-*`-moduuleille ja moduuliluettelo alkaa näyttää koko työkaluketjun rakenteen.
+- [x] 26.1.2026: kirjoita artikkeli `bus-loans`-moduulin tulosta julkiseen BusDK-pintaan, kun lainarekisteri ja lyhennysohjelmat nostetaan mukaan sekä docs-sivuston moduulidokumentaatioon että `busdk.com`-sivun moduulilistaan.
+- [x] 26.1.2026: tarkista voiko 26.1.2026 laina-artikkelia laajentaa tai kirjoita erillinen artikkeli siitä, miten työtila saa ensimmäiset muokattavat rekisterit, kun `bus-entities` ja `bus-loans` saavat `add`- ja `update`-komennot sekä init-oletukset.
+- [x] 27.1.2026: kirjoita artikkeli siitä, miten ensimmäiset palkka-, varasto- ja viranomaisilmoitusmoduulit tulevat käyttökelpoiseen komentorivimuotoon, kun `bus-payroll`, `bus-inventory`, `bus-filing`, `bus-filing-prh` ja `bus-filing-vero` saavat ensimmäiset CLI-pintansa.
+- [x] 30.1.2026: kirjoita artikkeli `bus-init`-moduulista, kun työtilan alustus, delegointijärjestys ja tarkistuspolut tulevat ensimmäistä kertaa omaan komentopintaansa.
+- [x] 30.1.2026: kirjoita artikkeli deterministisestä `bus-pdf`-renderöinnistä, kun BusDK saa oman PDF-komentorivinsä ja vakaat UTF-8-pohjaiset mallipohjat.
+- [x] 31.1.2026: kirjoita artikkeli siitä, miten docsit alkavat kuvata moduulien yhteistyötä CLI-pohjaisena koostumuksena, jossa kirjoitukset kulkevat omistavan moduulin komennon kautta eikä moduulirajoja ohiteta suoraan.
+- [x] 31.1.2026: kirjoita artikkeli siitä, miten julkiset docs-esimerkit siirtyvät `busdk ...` -muodosta `bus ...` -muotoon, jolloin BusDK:n varsinainen CLI-entrypoint vakiintuu näkyvästi myös dokumentaatiossa.
+- [x] 15.2.2026: kirjoita artikkeli `bus period add` -komennosta ja periodien tilamallista, kun future → open → closed → locked -elinkaari dokumentoidaan näkyvästi ja periodin avaaminen lakkaa olemasta implisiittinen luontitapa.
+- [x] 25.2.2026: kirjoita artikkeli `bus audit evidence-coverage` -oikopolusta, kun `bus` alkaa välittää audit-evidence-coverage -tarkistuksen suoraan `bus-validate`-pintaan ja nostaa audit-sanan näkyväksi discoverabilityyn.
+- [x] 10.3.2026: kirjoita artikkeli stickyistä `.bus`-direktiiveistä, kun globaalit dispatcher-liput voi määritellä busfileen pysyviksi riveiksi ja periyttää includeihin ilman komentorivin toistoa.
+- [x] 14.3.2026: tarkista voiko olemassa olevaa 14.3.2026 artikkelia laajentaa editorituella tai kirjoita erillinen artikkeli VS Code -yhteensopivan `.bus`-kielilaajennuksen paketoinnista `.vsix`-artefaktiksi.
+- [x] 22.3.2026: kirjoita artikkeli gatewayn kautta avautuvasta tarkastusportaalista, kun `bus-inspection`-käyttö siirtyy yhteisen gateway-kirjautumisen taakse oman login-sivun sijaan.
+- [x] 25.3.2026: kirjoita artikkeli AIZ-binäärien tulosta julkaistuun asennuspakettiin, kun release-artefaktit ja `install.sh` alkavat kattaa myös `aiz`- ja `unaiz`-komennot.
+- [x] 29.3.2026: kirjoita artikkeli `bus-memo`-moduulin julkisesta docs-pinnasta ja memovientien näkyvästä numeroinnista sekä lähdeviitteiden välityksestä päiväkirjaan.
+- [x] 6.4.2026: kirjoita artikkeli `bus files assert expr` -käytöstä, kun docsit avaavat aggregaatit, suodattimet ja yksinkertaiset lausekkeet osaksi `bus-files`-tarkistuspintaa.
 - [x] Käy kaikki blogiartikkelit läpi ja muuta näkyvä leipäteksti, ingressit, TL;DR:t ja indeksikortit saman päivän uutiskielelle niin, että teksti ei puhu menneestä muodossa vaan nykyhetkenä.
 - [x] Korjaa blogiartikkeleiden otsikkopalkin sivustonsisäiset linkit relatiivisiksi niin, että navigaatio toimii myös lokaalissa kehityksessä.
 - [x] Iteroi ja tiivistä 25.1.2026 BusDK-artikkeli niin, että väitteet eivät toista otsikon kaavaa ja sisältö kertoo konkreettisesti mitä silloin muuttui.

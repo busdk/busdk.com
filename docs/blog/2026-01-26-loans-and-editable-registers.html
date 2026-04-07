@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>26.1.2026 | Lainat ja muokattavat rekisterit tulevat BusDK:hon</title>
+    <meta name="description" content="BusDK:n moduulidokumentaatio laajenee 26.1.2026, ja samalla bus-loans sekä bus-entities tuovat ensimmäiset muokattavat rekisterit komentoriville." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-26-loans-and-editable-registers.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-26-loans-and-editable-registers.html" />
+    <meta property="og:title" content="26.1.2026 | Lainat ja muokattavat rekisterit tulevat BusDK:hon" />
+    <meta property="og:description" content="BusDK saa ensimmäiset aidosti muokattavat master data -rekisterit sekä oman lainamoduulin." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="26.1.2026 | Lainat ja muokattavat rekisterit tulevat BusDK:hon" />
+    <meta name="twitter:description" content="Julkinen moduulidokumentaatio laajenee ja laina- sekä entity-rekisterit muuttuvat muokattaviksi komentoriviltä." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Lainat ja muokattavat rekisterit tulevat BusDK:hon</h1>
+              <p class="intro">BusDK:n julkinen moduulidokumentaatio laajenee 26.1.2026 nopeasti, mutta päivän käytännön ydin on vielä tärkeämpi: työtilaan syntyy ensimmäiset rekisterit, joita voi oikeasti alustaa, lisätä ja päivittää komentoriviltä.</p>
+              <p class="intro"><code>bus-loans</code> nostaa lainarekisterin mukaan BusDK:n näkyvään pintaan, ja samalla <code>bus-entities</code> ja <code>bus-loans</code> saavat <code>init</code>-, <code>add</code>- ja <code>update</code>-komennot.</p>
+              <div class="hero-meta">
+                <span class="meta-chip">26.1.2026</span>
+                <span class="meta-chip">bus-loans</span>
+                <span class="meta-chip">bus-entities</span>
+                <span class="meta-chip">Muokattavat rekisterit</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li>Julkisiin docs-sivuihin tulee ensimmäinen laaja moduulisivuvalikoima.</li>
+              <li><code>bus-loans</code> tulee mukaan julkiseen BusDK-pintaan sekä docs-sivustolle että <code>busdk.com</code>-moduulilistaan.</li>
+              <li><code>bus-entities</code> ja <code>bus-loans</code> tekevät master data -rekistereistä ensimmäistä kertaa aidosti muokattavia.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>Yksi tämän päivän isoista käytännön muutoksista on se, että rekisteriä ei tarvitse enää ajatella vain valmiina CSV:nä. <code>bus-entities</code> osaa jo alustaa entity-aineiston, lisätä uuden vastapuolen ja päivittää olemassa olevan rivin ilman käsin tehtyä CSV-muokkausta.</p>
+            <pre><code>bus-entities init
+bus-entities add \
+  --entity-id cust-001 \
+  --entity-type customer \
+  --display-name "Aurora Oy"
+bus-entities update \
+  --entity-id cust-001 \
+  --set display_name="Aurora Oy Updated"</code></pre>
+            <pre><code>cust-001	customer	Aurora Oy Updated</code></pre>
+            <p>Sama muutos näkyy lainoissa vielä selvemmin. <code>bus-loans</code> tulee mukaan omana moduulina, joka ei jää vain tulevaksi laskentamoottoriksi vaan saa heti oman rekisterin, aikataulut, saldot ja kirjaussuositukset. Lainan lisääminen näyttää jo tältä:</p>
+            <pre><code>bus-loans init
+bus-loans add \
+  --loan_id L-150 \
+  --role borrower \
+  --counterparty "Bank B" \
+  --currency EUR \
+  --start_date 2024-06-01 \
+  --maturity_date 2024-12-01 \
+  --principal_amount 2000 \
+  --interest_rate_pct 8 \
+  --payment_cadence monthly \
+  --payment_day 1 \
+  --amortization_type annuity</code></pre>
+            <pre><code>added loan L-150</code></pre>
+            <p>Nämä komennot eivät jää irrallisiksi. Samana päivänä julkisiin docs-sivuihin lisätään ensimmäinen laaja joukko moduulisivuja, ja <code>bus-loans</code> nousee myös julkisen sivuston moduulilistaan. Siksi 26.1.2026 on tärkeä päivä sekä dokumentaatiolle että itse tuotteelle: BusDK:n moduulirakenne ei ole enää vain kuvattu arkkitehtuuri, vaan näkyy konkreettisesti muokattavina rekistereinä ja uusina käyttöalueina. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-loans">bus-loansin dokumentaatiosta</a> ja <a href="https://docs.busdk.com/modules/bus-entities">bus-entitiesin dokumentaatiosta</a>.</p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); }
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>

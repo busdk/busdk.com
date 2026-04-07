@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>15.2.2026 | Tilikaudet saavat oman elinkaarensa</title>
+    <meta name="description" content="bus period add tekee 15.2.2026 tilikauden avaamisesta eksplisiittisen vaiheen ja nostaa future → open → closed → locked -elinkaaren näkyväksi osaksi BusDK:ta." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-02-15-period-add-and-states.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-02-15-period-add-and-states.html" />
+    <meta property="og:title" content="15.2.2026 | Tilikaudet saavat oman elinkaarensa" />
+    <meta property="og:description" content="Tilikausi ei avaudu enää implisiittisesti, vaan sille tulee oma lisäämis-, avaamis-, sulkemis- ja lukituspolku." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="15.2.2026 | Tilikaudet saavat oman elinkaarensa" />
+    <meta name="twitter:description" content="BusDK tekee tilikauden tilasta näkyvän ja tarkistettavan osan kirjanpitoworkflow’ta." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../#platform">Platform</a><a href="../#workflows">Workflows</a><a href="../#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header><main><div class="page-shell">
+    <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>Tilikaudet saavat oman elinkaarensa</h1><p class="intro"><code>bus period add</code> tekee 15.2.2026 tilikauden perustamisesta eksplisiittisen vaiheen. Tilikausi ei enää ilmesty vain muun työn sivutuotteena, vaan sille tulee oma hallittava tila.</p><p class="intro">Samalla BusDK alkaa puhua tilikauden elinkaaresta suoraan: <code>future → open → closed → locked</code>.</p><div class="hero-meta"><span class="meta-chip">15.2.2026</span><span class="meta-chip">bus-period</span><span class="meta-chip">Tilikaudet</span><span class="meta-chip">Elinkaari</span></div></div></article>
+    <section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li>Tilikausi lisätään nyt ensin <code>add</code>-komennolla.</li><li>Avaus, sulku, lukitus ja uudelleenavaus erotetaan omiksi vaiheikseen.</li><li>Tilikauden tila muuttuu näkyväksi ja auditointikelpoiseksi osaksi workflow’ta.</li></ul></section>
+    <section class="content-panel section-stack"><p>Ensimmäinen näkyvä muutos on yksinkertainen mutta tärkeä. Uusi kuukausi tai tilikausi perustetaan ensin omalla komennollaan, ja vasta sen jälkeen se avataan kirjauksille.</p><pre><code>bus period add --period 2026-01 --retained-earnings-account 3200
+bus period open --period 2026-01
+bus period close --period 2026-01
+bus period lock --period 2026-01</code></pre><p>Tällä on suora vaikutus siihen, miten BusDK:n kirjanpitoworkflow hahmotetaan. Tilikauden tila ei ole enää hiljainen oletus, vaan selkeä kontrollipiste, jonka voi listata, validoida ja myöhemmin myös avata uudelleen hallitusti korjausta varten. Se tekee sulusta ja lukituksesta paljon vähemmän tulkinnanvaraisia. Nykyinen komentopinta löytyy <a href="https://docs.busdk.com/modules/bus-period">bus-periodin dokumentaatiosta</a>.</p></section>
+  </div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle){themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});}prefersDark.addEventListener("change",(event)=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body>
+</html>

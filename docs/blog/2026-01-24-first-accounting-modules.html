@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>24.1.2026 | Ensimmäiset kirjanpidon ydinmoduulit tulevat BusDK:hon</title>
+    <meta name="description" content="BusDK saa 24.1.2026 ensimmäisen varsinaisen moduuliaallon: tilikartta, päiväkirja, raportit, ALV, pankkiaineisto ja liitteet nousevat omiksi Bus-komennoikseen." />
+    <link rel="canonical" href="https://busdk.com/blog/2026-01-24-first-accounting-modules.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://busdk.com/blog/2026-01-24-first-accounting-modules.html" />
+    <meta property="og:title" content="24.1.2026 | Ensimmäiset kirjanpidon ydinmoduulit tulevat BusDK:hon" />
+    <meta property="og:description" content="Tilikartta, päiväkirja, raportit, ALV, pankkiaineisto ja liitteet saavat ensimmäiset omat komentopintansa." />
+    <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="24.1.2026 | Ensimmäiset kirjanpidon ydinmoduulit tulevat BusDK:hon" />
+    <meta name="twitter:description" content="BusDK ei jää enää pelkäksi dispatcheriksi ja suunnitelmaksi, vaan saa ensimmäiset oikeat kirjanpidon moduulinsa." />
+    <meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
+    <link rel="stylesheet" href="blog.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../" aria-label="BusDK home">
+            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../#platform">Platform</a>
+            <a href="../#workflows">Workflows</a>
+            <a href="../#pricing">Pricing</a>
+            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="./" aria-current="page">Blog</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div class="page-shell">
+          <article class="hero-panel">
+            <div class="hero-panel-inner">
+              <p class="eyebrow">BusDK Update</p>
+              <h1>Ensimmäiset kirjanpidon ydinmoduulit tulevat BusDK:hon</h1>
+              <p class="intro">BusDK saa 24.1.2026 ensimmäisen varsinaisen moduuliaallon. Samana päivänä syntyvät omat komentopinnat tilikartalle, päiväkirjalle, raporteille, ALV-laskennalle, pankkiaineistolle, liitteille ja useille muille kirjanpidon perusosille.</p>
+              <p class="intro">Tämän jälkeen BusDK ei ole enää vain <code>bus</code>-komento ja suunnitelmadokumentti, vaan joukko oikeita työkaluja, joilla workspacen sisältöä voi alkaa käsitellä moduuli kerrallaan.</p>
+              <div class="hero-meta">
+                <span class="meta-chip">24.1.2026</span>
+                <span class="meta-chip">Moduulit</span>
+                <span class="meta-chip">Kirjanpidon peruspinta</span>
+                <span class="meta-chip">CLI</span>
+              </div>
+            </div>
+          </article>
+
+          <section class="content-panel section-stack tldr-panel">
+            <p class="small-label">Tiiviisti</p>
+            <h2>TL;DR</h2>
+            <ul class="tldr-list">
+              <li><code>bus-accounts</code>, <code>bus-journal</code>, <code>bus-reports</code>, <code>bus-vat</code>, <code>bus-bank</code> ja useat muut moduulit saavat ensimmäiset toimivat CLI-pintansa.</li>
+              <li>BusDK saa samalla ensimmäiset esimerkkiaineistot, skeemat ja testit, joihin myöhempi dokumentaatio alkaa nojata.</li>
+              <li>Käyttöön tulee ensimmäinen käytännön malli: yksi moduuli hallitsee yhtä selkeää aineistoaluetta.</li>
+            </ul>
+          </section>
+
+          <section class="content-panel section-stack">
+            <p>Yksi näkyvimmistä ensi askelista on tilikartan ja päiväkirjan erottaminen omiksi komennoikseen. <code>bus-accounts</code> osaa jo validoida ja listata tilikartan, ja <code>bus-journal</code> osaa validoida päiväkirjan, lisätä viennin ja laskea koesaldon. Se tekee BusDK:n perusmallista heti ymmärrettävän: tilikartta pysyy omassa aineistossaan, päiväkirja omassaan, ja kumpaakin käsitellään niiden omilla komennoilla.</p>
+            <pre><code>bus-accounts validate
+bus-accounts list</code></pre>
+            <pre><code>1000	asset	Cash
+3000	revenue	Sales</code></pre>
+            <p>Toinen tärkeä merkki samasta muutoksesta näkyy päiväkirjassa. <code>bus-journal</code> saa jo ensimmäisessä versiossaan <code>post</code>- ja <code>trial-balance</code>-komennot, joten uusi tapahtuma voidaan kirjata ja sen vaikutus saldoihin lukea saman komentopinnan kautta. Jos haluat nähdä nykyisen komentopinnan tarkemmin, jatka <a href="https://docs.busdk.com/modules/bus-journal">bus-journalin dokumentaatioon</a>.</p>
+            <pre><code>bus-journal post \
+  --date 2025-01-03 \
+  --description "Subscription" \
+  --line 1000:12.00:0.00 \
+  --line 3000:0.00:12.00
+
+bus-journal trial-balance</code></pre>
+            <pre><code>1000	12.00
+3000	-12.00</code></pre>
+            <p>Saman päivän aalto ei jää näihin kahteen. Mukaan tulevat myös raportointi, ALV, pankkiaineisto, liitteet, budjetointi, varat, täsmäytys ja useat muut moduulit, joille rakentuu heti oma testattu perusrunko. Näin BusDK:n arkkitehtuurin tärkein käytännön lupaus alkaa näkyä myös ulospäin: workspacen eri osat eivät mene yhteen suureen komentoon, vaan ne jakautuvat omistajamoduuleihin, joilla on omat datansa, omat tarkistuksensa ja oma vastuunsa. Nykyistä moduulihakemistoa voi selailla <a href="https://docs.busdk.com/modules/">BusDK:n moduulidokumentaatiosta</a>.</p>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+    </div>
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById("theme-toggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+      const storedTheme = localStorage.getItem("theme");
+      function applyTheme(theme) { root.setAttribute("data-theme", theme); if (!themeToggle) return; const isDark = theme === "dark"; themeToggle.textContent = isDark ? "Light" : "Dark"; themeToggle.setAttribute("aria-pressed", String(isDark)); themeToggle.setAttribute("aria-label", isDark ? "Toggle light theme" : "Toggle dark theme"); }
+      function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
+      applyTheme(resolveInitialTheme());
+      if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); }
+      prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
+    </script>
+  </body>
+</html>
