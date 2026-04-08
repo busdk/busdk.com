@@ -1,5 +1,9 @@
 # PLAN.md
 
+- [ ] Korjaa blogifeedistä auditoinnissa havaitut toistuvat lausekaavat: harvenna tai kirjoita uusiksi kaavat kuten "Tämä tekee ...", "Samalla ...", "Jos haluat ...", "Ensimmäinen ..." leipätekstissä, "Yksi ..." kappaleenavauksissa ja "Käytännössä ..." hyötylauseissa silloin kun ne tekevät tekstistä kaavamaista. Tallenna samalla pysyvät tyylisäännöt `busdk.com/AGENTS.md`:ään.
+- [x] Korjaa blogiartikkeleista keskeneräisyyttä kuvaavat kohdat niin, että ne kertovat lukijalle mikä osa työkalusta on jo hyödyllinen nyt ja mikä laajempi käyttötarkoitus ei vielä ole valmis, ilman backlog- tai prosessikieltä.
+- [x] Täsmennä blogiohjeisiin keskeneräisten työkalujen ja puuttuvien pintojen sanamuoto: kuvaa tuotteen tämänhetkinen valmis ydin ja keskeneräinen pääkäyttötarkoitus lukijalle ymmärrettävästi, ilman backlog- tai prosessikieltä. Älä muuta tämän yhteydessä TL;DR-listojen käyttöä.
+- [x] Auditoi koko blogifeed toistuvien tekoälymäisten lausekaavojen, metarakenteiden ja tyylitoistojen varalta ja laadi ehdotus siitä, mitkä kaavat kannattaa korjata. Älä tee vielä tekstimuutoksia artikkeleihin.
 - [x] Iteroi koko blogifeed uudelleen ja poista jäljellä oleva meta-, vastakkainasettelu- ja muu tekoälymäinen tyylikieli artikkeleista. Tiivistä hyötyväitteet, täsmennä mitä työkalu tai ominaisuus tekee käytännössä ja pidä keskeneräisyyskuvaukset rehellisinä mutta niukkasanaisia.
 - [x] Selkeytä blogin komentoesimerkkien esitystapa niin, että komento ja sen tekstipalaute erotetaan näkyvästi toisistaan. Käytä tarvittaessa `$`-alkuista komentoriviä ja erillistä tulosteblokkia.
 - [x] Tee uusintatarkistus työkalujuttuihin niin, että ne kertovat kiinnostavammin mitä uusi työkalu tai ominaisuus oikeasti tekee, mitä hyötyä siitä on käytössä, millä esimerkillä sen ymmärtää nopeasti ja onko pinta vielä kapea, keskeneräinen tai kokeellinen.

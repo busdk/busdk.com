@@ -63,9 +63,9 @@
                 CSV-artefaktien rivejä ilman erillisiä shell-putkia.
               </p>
               <p class="intro">
-                <code>bus-files</code> ei vielä ole valmis yleinen tiedostoparsija. Tässä vaiheessa
-                varsinainen hyödyllinen pinta on <code>assert</code>, kun taas <code>parse</code> ja
-                <code>find</code> näkyvät vasta tulevan työn varauksina.
+                <code>bus-files</code>-moduulin käyttökelpoinen osa on tässä vaiheessa
+                <code>assert</code>. Sillä voi tarkistaa tiedostoja ja CSV-rivejä, mutta moduulin
+                laajempi tarkoitus tiedostojen jäsentämiseen ja hakemiseen ei vielä ole valmis normaaliin käyttöön.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">4.4.2026</span>
@@ -80,7 +80,7 @@
             <ul class="tldr-list">
               <li>Tiedostoartefaktien tarkistus saa oman Bus-komennon.</li>
               <li>CSV-rivejä pystyy tarkistamaan samoilla periaatteilla kuin muita assert-pintoja.</li>
-              <li>Moduulin hyödyllinen ensimmäinen julkaisu on <code>assert</code>; parseri- ja hakupinta tulevat myöhemmin.</li>
+              <li>Moduulin käyttökelpoinen ensimmäinen pinta on <code>assert</code>; tiedostojen jäsentäminen ja haku eivät vielä ole valmiita normaaliin käyttöön.</li>
             </ul>
           </section>
           <section class="content-panel section-stack">
@@ -113,10 +113,9 @@ assertion	target	expected	observed	status
 cell	.../profit-loss-2024.csv	filters=section=LIIKEVAIHTO; column=amount; equals=3774.02	amount=3774.02	ok</code></pre>
             <p>
               Tällainen tarkistus on hyödyllinen juuri siksi, että raportin olemassaolo tai yhden rivin
-              arvo ei enää jää satunnaisten shell-työkalujen varaan. Samalla on hyvä sanoa suoraan,
-              mitä tästä ei vielä saa: <code>parse</code> ja <code>find</code> eivät ole vielä oikeaa
-              käyttövalmista parseri- ja hakupintaa. Juuri nyt <code>bus-files</code> on ennen kaikkea
-              tiedostoassertien työkalu. Lisää käyttötapoja löytyy
+              arvo ei enää jää satunnaisten shell-työkalujen varaan. <code>bus-files</code> on juuri nyt
+              ennen kaikkea tiedostoassertien työkalu. Moduulin laajempi rooli tiedostojen jäsentämisessä
+              ja hakemisessa ei vielä ole valmis normaaliin käyttöön. Lisää käyttötapoja löytyy
               <a href="https://docs.busdk.com/modules/bus-files"><code>bus-files</code>-dokumentaatiosta</a>.
             </p>
           </section>

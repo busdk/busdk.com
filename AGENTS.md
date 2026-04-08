@@ -241,6 +241,20 @@ Scoped guidance for the `busdk.com` repository.
 49. Do not use empty contrast phrases such as "this is not X but Y" unless the
     contrast adds concrete meaning for the reader. If a sentence can be removed
     without losing information, remove it.
+50. When a tool is unfinished, describe that in product terms rather than
+    backlog or process terms. Do not write that some capability is "later
+    work" or similar. Instead explain what the tool already does usefully
+    today, what broader purpose the module exists for, and which part of that
+    broader purpose is not yet ready for normal use.
+51. When telling the reader that a capability is still missing or incomplete,
+    prefer suitability language over internal planning language. Help the
+    reader decide whether the current tool is already useful for assertions,
+    inspection, packaging, or another narrow task, instead of describing the
+    missing part as an implementation to-do.
+52. TL;DR lists are acceptable when a list is the clearest way to present the
+    condensed facts. Do not flatten a good list into prose only to avoid an
+    "AI-written" feel; judge the structure by clarity, not by whether it looks
+    like a list.
 
 ## Commit Workflow (When Asked To Commit)
 
