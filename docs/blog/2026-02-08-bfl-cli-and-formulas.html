@@ -80,9 +80,9 @@
 
           <section class="content-panel section-stack">
             <p>
-              Käytännössä tämä auttaa heti silloin, kun kaava ei toimi odotetusti tai haluat nähdä
-              nopeasti mitä merkkijono oikeastaan tarkoittaa. BFL:ää voi nyt kokeilla sellaisenaan
-              ennen kuin samaa lauseketta käytetään taulukossa, skeemassa tai raportin laskennassa.
+              BFL:ää voi nyt kokeilla sellaisenaan silloin, kun kaava ei toimi odotetusti tai kun
+              haluat nähdä nopeasti mitä merkkijono oikeastaan tarkoittaa, ennen kuin samaa
+              lauseketta käytetään taulukossa, skeemassa tai raportin laskennassa.
             </p>
             <pre><code>bus-bfl parse --expr '1 + 2'
 
@@ -90,18 +90,17 @@ bus-bfl format --expr 'sum( A1:A3 )'</code></pre>
             <pre><code>(binary + (literal 1) (literal 2))
 sum(A1:A3)</code></pre>
             <p>
-              Ensimmäinen komento näyttää, onko kaava ymmärretty oikein: <code>1 + 2</code>
-              jäsentyy näkyvästi binääriseksi operaatioksi. Toinen komento näyttää mitä työkalu
-              tekee tällä hetkellä ehkä hyödyllisimmin: se palauttaa epäsiististi kirjoitetun
-              lausekkeen yhteen vakioituun muotoon. Tämä tekee kaavoista helpompia lukea, vertailla
-              ja tallentaa versionhallintaan. Tarkempi pinta löytyy
+              <code>1 + 2</code> jäsentyy näkyvästi binääriseksi operaatioksi, joten komennosta näkee
+              heti onko kaava ymmärretty oikein. <code>format</code>-komento taas palauttaa
+              epäsiististi kirjoitetun lausekkeen yhteen vakioituun muotoon. Kaavoja on silloin
+              helpompi lukea, vertailla ja tallentaa versionhallintaan. Tarkempi pinta löytyy
               <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.
             </p>
             <p>
-              Samanaikainen <code>samples/datapackage.json</code> vie samaa suuntaa eteenpäin.
-              Lausekkeille tulee oma näkyvä komentopinta, ja sample-aineisto alkaa samalla kertoa
-              itse rakenteestaan. Työkalu on vielä kapea, mutta juuri siksi sen tarkoitus on helppo
-              ymmärtää: yksi komento kaavojen tarkistamiseen, siistimiseen ja kokeilemiseen.
+              <code>samples/datapackage.json</code> vie samaa suuntaa eteenpäin. Lausekkeille tulee
+              oma näkyvä komentopinta, ja sample-aineisto kertoo nyt myös itse rakenteestaan.
+              Työkalun tarkoitus pysyy samalla helposti ymmärrettävänä: yksi komento kaavojen
+              tarkistamiseen, siistimiseen ja kokeilemiseen.
             </p>
           </section>
 
@@ -116,7 +115,7 @@ sum(A1:A3)</code></pre>
               </div>
               <div class="callout">
                 <h3>BFL-dokumentaatio</h3>
-                <p>Jos haluat nähdä kaikki komennot ja kontekstiesimerkit, jatka moduulin dokumentaatioon.</p>
+                <p>Kaikki komennot ja kontekstiesimerkit löytyvät moduulin dokumentaatiosta.</p>
                 <a href="https://docs.busdk.com/modules/bus-bfl">Avaa <code>bus-bfl</code>-dokumentaatio</a>
               </div>
             </div>

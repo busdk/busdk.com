@@ -63,12 +63,12 @@
           </section>
 
           <section class="content-panel section-stack">
-            <p>Yksi näkyvimmistä ensi askelista on tilikartan ja päiväkirjan erottaminen omiksi komennoikseen. <code>bus-accounts</code> osaa jo validoida ja listata tilikartan, ja <code>bus-journal</code> osaa validoida päiväkirjan, lisätä viennin ja laskea koesaldon. Se tekee BusDK:n perusmallista heti ymmärrettävän: tilikartta pysyy omassa aineistossaan, päiväkirja omassaan, ja kumpaakin käsitellään niiden omilla komennoilla.</p>
+            <p>Tilikartan ja päiväkirjan erottaminen omiksi komennoikseen on näkyvimpiä ensi askeleita. <code>bus-accounts</code> osaa jo validoida ja listata tilikartan, ja <code>bus-journal</code> osaa validoida päiväkirjan, lisätä viennin ja laskea koesaldon. BusDK:n perusmalli tulee heti ymmärrettäväksi: tilikartta pysyy omassa aineistossaan, päiväkirja omassaan, ja kumpaakin käsitellään niiden omilla komennoilla.</p>
             <pre><code>bus-accounts validate
 bus-accounts list</code></pre>
             <pre><code>1000	asset	Cash
 3000	revenue	Sales</code></pre>
-            <p>Toinen tärkeä merkki samasta muutoksesta näkyy päiväkirjassa. <code>bus-journal</code> saa jo ensimmäisessä versiossaan <code>post</code>- ja <code>trial-balance</code>-komennot, joten uusi tapahtuma voidaan kirjata ja sen vaikutus saldoihin lukea saman komentopinnan kautta. Jos haluat nähdä nykyisen komentopinnan tarkemmin, jatka <a href="https://docs.busdk.com/modules/bus-journal">bus-journalin dokumentaatioon</a>.</p>
+            <p>Päiväkirjassa sama muutos näkyy <code>post</code>- ja <code>trial-balance</code>-komentoina, joten uusi tapahtuma voidaan kirjata ja sen vaikutus saldoihin lukea saman komentopinnan kautta. Nykyinen komentopinta löytyy <a href="https://docs.busdk.com/modules/bus-journal">bus-journalin dokumentaatiosta</a>.</p>
             <pre><code>bus-journal post \
   --date 2025-01-03 \
   --description "Subscription" \

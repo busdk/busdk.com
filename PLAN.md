@@ -1,6 +1,6 @@
 # PLAN.md
 
-- [ ] Korjaa blogifeedistä auditoinnissa havaitut toistuvat lausekaavat: harvenna tai kirjoita uusiksi kaavat kuten "Tämä tekee ...", "Samalla ...", "Jos haluat ...", "Ensimmäinen ..." leipätekstissä, "Yksi ..." kappaleenavauksissa ja "Käytännössä ..." hyötylauseissa silloin kun ne tekevät tekstistä kaavamaista. Tallenna samalla pysyvät tyylisäännöt `busdk.com/AGENTS.md`:ään.
+- [x] Korjaa blogifeedistä auditoinnissa havaitut toistuvat lausekaavat: harvenna tai kirjoita uusiksi kaavat kuten "Tämä tekee ...", "Samalla ...", "Jos haluat ...", "Ensimmäinen ..." leipätekstissä, "Yksi ..." kappaleenavauksissa ja "Käytännössä ..." hyötylauseissa silloin kun ne tekevät tekstistä kaavamaista. Tallenna samalla pysyvät tyylisäännöt `busdk.com/AGENTS.md`:ään.
 - [x] Korjaa blogiartikkeleista keskeneräisyyttä kuvaavat kohdat niin, että ne kertovat lukijalle mikä osa työkalusta on jo hyödyllinen nyt ja mikä laajempi käyttötarkoitus ei vielä ole valmis, ilman backlog- tai prosessikieltä.
 - [x] Täsmennä blogiohjeisiin keskeneräisten työkalujen ja puuttuvien pintojen sanamuoto: kuvaa tuotteen tämänhetkinen valmis ydin ja keskeneräinen pääkäyttötarkoitus lukijalle ymmärrettävästi, ilman backlog- tai prosessikieltä. Älä muuta tämän yhteydessä TL;DR-listojen käyttöä.
 - [x] Auditoi koko blogifeed toistuvien tekoälymäisten lausekaavojen, metarakenteiden ja tyylitoistojen varalta ja laadi ehdotus siitä, mitkä kaavat kannattaa korjata. Älä tee vielä tekstimuutoksia artikkeleihin.

@@ -255,6 +255,19 @@ Scoped guidance for the `busdk.com` repository.
     condensed facts. Do not flatten a good list into prose only to avoid an
     "AI-written" feel; judge the structure by clarity, not by whether it looks
     like a list.
+53. During the final editorial pass, scan explicitly for repeated sentence
+    starters and cadence patterns across the feed. In particular, avoid
+    overusing formulas such as "Tämä tekee ...", "Tämä auttaa ...",
+    "Tämä on tärkeä ...", "Samalla ...", "Jos haluat ...", "Ensimmäinen ..."
+    in body prose, "Yksi ..." as paragraph openers, and "Käytännössä ..."
+    as a default benefit-intro phrase.
+54. These patterns are not forbidden absolutely, but they must not become the
+    default rhythm of the blog. When they repeat across nearby articles, rewrite
+    the sentence into a more direct statement of effect, capability, meaning,
+    or next step.
+55. Prefer varying how docs links are introduced. Do not end many articles with
+    the same "Jos haluat ..." formula when a simpler direct sentence such as
+    "Nykyinen komentopinta löytyy ..." or an inline semantic link is clearer.
 
 ## Commit Workflow (When Asked To Commit)
 
