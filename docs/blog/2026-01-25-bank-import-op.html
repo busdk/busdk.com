@@ -41,8 +41,8 @@
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
               <h1>Pankkiaineiston tuonti saa ensimmäisen oikean polun</h1>
-              <p class="intro">BusDK ottaa 25.1.2026 ison käytännön askeleen täsmäytyksessä. <code>bus-bank</code> saa <code>import</code>-komennon, joka muuntaa pankin raaka-CSV:n kanoniseen Bus-muotoon.</p>
-              <p class="intro">Ensimmäinen valmis esimerkki tulee OP:n viennille, joten tuontia ei kuvata enää vain yleisellä tasolla, vaan oikealla aineistolla ja oikealla tuloksella.</p>
+              <p class="intro">BusDK ottaa ison käytännön askeleen täsmäytyksessä. <code>bus-bank</code> saa <code>import</code>-komennon, joka muuntaa pankin raaka-CSV:n kanoniseen Bus-muotoon.</p>
+              <p class="intro">Työkalu on tässä vaiheessa vielä kokeellinen ja kehityksen alla. Ensimmäinen valmis esimerkki tulee OP:n viennille, joten tuonnista voidaan näyttää oikea aineisto ja oikea tulos.</p>
               <div class="hero-meta">
                 <span class="meta-chip">25.1.2026</span>
                 <span class="meta-chip">bus-bank</span>
@@ -59,6 +59,7 @@
               <li><code>bus-bank import</code> muuntaa pankin raakaviennin BusDK:n omaan sarakerakenteeseen.</li>
               <li>OP saa ensimmäisen valmiin esimerkkiaineiston ja skeeman.</li>
               <li><code>--output</code> ei kirjoita vain CSV:tä, vaan tuottaa samalla puhdistetun validointiskeeman jatkokäyttöön.</li>
+              <li><code>bus-bank</code> on tässä vaiheessa vielä kokeellinen pinta, vaikka ensimmäinen oikea tuontipolku jo toimii.</li>
             </ul>
           </section>
 
@@ -73,7 +74,7 @@ bus-bank import \
             <pre><code>id,booked_date,value_date,amount,currency,counterparty_name,...
 2502035ZZ0011223344,2025-02-03,2025-02-03,-12.50,EUR,FIKTIOPANKKI OY,...
 2502055936192A1001,2025-02-05,2025-02-05,520.00,EUR,KUMPPANI KONSULTIT OY,...</code></pre>
-            <p>Tämä on tärkeä muutos, koska pankkiaineiston tuonti muuttuu samalla yleisestä integraatioajatuksesta konkreettiseksi osaksi BusDK:n perusworkflow’ta. Kun statement saadaan ensin kanoniseen muotoon, seuraavat vaiheet kuten listaus, täsmäytyssuunnitelma ja myöhempi kirjaus voidaan rakentaa saman rakenteen varaan. Nykyisen komentopinnan jatko-osat löytyvät <a href="https://docs.busdk.com/modules/bus-bank">bus-bankin dokumentaatiosta</a>.</p>
+            <p>Tämä on tärkeä muutos, koska pankkiaineiston tuonti muuttuu konkreettiseksi osaksi BusDK:n perusworkflow’ta. Kun statement saadaan ensin kanoniseen muotoon, seuraavat vaiheet kuten listaus, täsmäytyssuunnitelma ja myöhempi kirjaus voidaan rakentaa saman rakenteen varaan. <code>bus-bank</code> on silti vielä varhainen moduuli: ensimmäinen oikea tuontipolku toimii, mutta pinta laajenee tästä vielä eteenpäin. Nykyisen komentopinnan jatko-osat löytyvät <a href="https://docs.busdk.com/modules/bus-bank">bus-bankin dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>

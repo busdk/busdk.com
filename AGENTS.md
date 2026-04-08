@@ -96,6 +96,10 @@ Scoped guidance for the `busdk.com` repository.
     check failed.
 14. Use command wrapping with `\` only at semantically sensible boundaries, and
     keep `\` as the final character on the line with no trailing spaces.
+15. In blog code examples, distinguish the command clearly from its textual
+    output. Prefer showing the command with a shell prompt marker such as `$`
+    and then show the resulting output in a separate output block when that is
+    clearer than mixing them together.
 15. Research may use Git history, `git worktree`, module source trees under
     `./bus` and `./bus-*`, end-user docs under `./docs/docs/`, private SDD docs
     under `./sdd/docs/`, help text, and tested CLI behavior.
@@ -211,6 +215,27 @@ Scoped guidance for the `busdk.com` repository.
     more complete same-day piece when the topics are meaningfully related,
     and create a separate article only when the subject is clearly independent
     enough to deserve its own page.
+44. When a post introduces a new tool or module, use the module README,
+    public docs, visible source surface, and tests as research material so the
+    post explains what the tool actually does, how it is used, and what kind of
+    output or behavior the reader should expect.
+45. Tool-introduction posts must say plainly when the tool is experimental,
+    unfinished, or not yet meant for production use. Do not present an early
+    or exploratory tool as mature just because it ships in a package.
+46. Honest product communication matters more than launch hype. Prefer
+    accurate descriptions such as experimental, early, narrow, or still
+    evolving whenever the docs, README, tests, or observed behavior support
+    that characterization.
+47. When a new tool surface is intentionally narrow, say that plainly and then
+    explain the narrow scope with one concrete example. Do not describe a thin
+    first release as if it were already a broad platform.
+48. Avoid overstating development status with words like "active" unless the
+    pace itself is the verified point. Prefer neutral wording such as "under
+    development" when the tool is unfinished but current momentum is not the
+    reader-relevant fact.
+49. Do not use empty contrast phrases such as "this is not X but Y" unless the
+    contrast adds concrete meaning for the reader. If a sentence can be removed
+    without losing information, remove it.
 
 ## Commit Workflow (When Asked To Commit)
 

@@ -60,9 +60,9 @@
               </div>
               <p class="intro">
                 BusDK saa oman <code>bus-dev</code>-moduulin, joka kokoaa kehitystyönkulun vaiheet
-                yhden julkisen komentopinnan alle. Muutos ei jää teoriaksi, vaan rootin
-                orkestrointiskriptit alkavat heti käyttää samoja <code>bus dev</code> -komentoja
-                modulikohtaisten omien skriptien sijaan.
+                yhden julkisen komentopinnan alle. Sen hyöty on yksinkertainen: kehittäjän ei
+                tarvitse enää muistaa eri skriptien nimiä tai sijainteja, kun plan, work, e2e,
+                stage ja commit löytyvät samasta paikasta.
               </p>
             </div>
           </article>
@@ -74,16 +74,15 @@
               <li><code>bus-dev</code> tuo työvaiheet kuten <code>plan</code>, <code>work</code>, <code>e2e</code>, <code>stage</code> ja <code>commit</code> yhden komennon alle.</li>
               <li>Rootin orkestrointi alkaa kutsua <code>bus dev work</code>- ja <code>bus dev commit</code> -komentoja erillisten modulikohtaisten skriptien sijaan.</li>
               <li>Pipelinet tekevät toistuvista askelketjuista näkyviä ja ennustettavia.</li>
-              <li>Tämä muuttaa kehitystyönkulun julkiseksi Bus-pinnaksi samalla tavalla kuin muutkin moduulikomennot.</li>
+              <li>Tämä ei ole kokeellinen sivutyökalu vaan näkyvä käyttöliittymä BusDK:n omaan kehitystyöhön.</li>
             </ul>
           </section>
 
           <section class="content-panel section-stack">
             <p>
-              Ennen tätä muutosta sama työ saattoi olla ripoteltuna useisiin repo- tai
-              modulikohtaisiin skripteihin. <code>bus-dev</code> muutti tilanteen tuomalla
-              kehittäjälle näkyvän komentopinnan, jossa tärkeimmät vaiheet löytyvät yhdestä paikasta.
-              Se näkyy heti myös helpissä:
+              Jos haluat vain nähdä mitä kehitystyönkulku osaa tehdä, yksi komento riittää.
+              Help avaa heti sen, että kyse ei ole yhdestä kapeasta alikomennosta vaan koko
+              työnkulun sanastosta:
             </p>
             <pre><code>bus-dev --help</code></pre>
             <pre><code>Operations:
@@ -98,12 +97,10 @@
   retry
   each</code></pre>
             <p>
-              Oleellinen muutos ei ole pelkkä uusi binääri, vaan se että työvaiheille tulee yhteinen
-              sanasto. Kun rootin skriptit siirtyivät kutsumaan <code>bus dev commit</code> ja
-              <code>bus dev work</code> -komentoja, sama pinta alkaa ohjata sekä moduulissa
-              käsin tehtävää työtä että superprojektin orkestrointia. Silloin käyttäjän ei enää
-              tarvitse tietää, onko jokin vaihe piilotettu <code>scripts/</code>-hakemistoon vai
-              toteutettu komentopinnan osana.
+              Oleellinen muutos ei ole pelkkä uusi binääri, vaan yksi yhteinen tapa sanoa mitä
+              seuraavaksi tehdään. Kun sama pinta ohjaa sekä käsin tehtävää työtä että yhteisiä
+              orkestrointisääntöjä, kehitystyönkulku muuttuu helpommin opittavaksi ja vähemmän
+              riippuvaiseksi repokohtaisista apuskripteistä.
             </p>
             <p>
               Pipelinet tekevät tästä vielä konkreettisempaa. Esimerkiksi sisäänrakennettu

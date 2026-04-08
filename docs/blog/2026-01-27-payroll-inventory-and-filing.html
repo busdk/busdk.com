@@ -41,8 +41,8 @@
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
               <h1>Palkat, varasto ja viranomaisilmoitukset saavat omat komentonsa</h1>
-              <p class="intro">BusDK:n moduulipinta laajenee 27.1.2026 selvästi kirjanpidon ydintä pidemmälle. Mukaan tulevat ensimmäiset käytännön komentopinnat palkanlaskennalle, varastolle ja filing-kohteille.</p>
-              <p class="intro">Tämä on tärkeä askel siksi, että BusDK alkaa näyttää kokonaiselta liiketoiminnan työkaluketjulta eikä vain pääkirjan ja raportoinnin rungolta.</p>
+              <p class="intro">BusDK:n moduulipinta laajenee selvästi kirjanpidon ydintä pidemmälle. Mukaan tulevat ensimmäiset käytännön komentopinnat palkanlaskennalle, varastolle ja filing-kohteille.</p>
+              <p class="intro">Kirjanpidon rinnalle tulee nyt työkaluja, joilla palkkoja, tavaravirtoja ja viranomaisiin lähteviä aineistoja voidaan käsitellä saman komentopinnan periaatteilla.</p>
               <div class="hero-meta">
                 <span class="meta-chip">27.1.2026</span>
                 <span class="meta-chip">bus-payroll</span>
@@ -63,7 +63,7 @@
           </section>
 
           <section class="content-panel section-stack">
-            <p>Palkanlaskennan puolella tärkein uutuus on se, että payrun ei jää enää omaksi umpikujakseen. <code>bus-payroll</code> osaa validoida payroll-aineiston ja tuottaa siitä deterministisen journal-viennin, joka voidaan ohjata seuraavaan vaiheeseen CSV:nä.</p>
+            <p>Palkanlaskennan puolella tärkein uutuus on se, että payrun voidaan viedä eteenpäin päiväkirjaan asti. <code>bus-payroll</code> osaa validoida payroll-aineiston ja tuottaa siitä deterministisen journal-viennin, joka voidaan ohjata seuraavaan vaiheeseen CSV:nä.</p>
             <pre><code>bus-payroll validate
 bus-payroll export pr-001 &gt; journal.csv</code></pre>
             <pre><code>line_id,date,description,debit_account,credit_account,amount,currency,payrun_id,employee_id,component
@@ -73,10 +73,10 @@ payroll:pr-001:e1:net_pay,2024-04-05,Payroll pr-001 e1,5000,1000,750.00,EUR,pr-0
 bus-inventory status</code></pre>
             <pre><code>A-1	Apple	3	each	7.50
 B-2	Banana	10	kg	12.00</code></pre>
-            <p>Kolmas laajennus tulee filing-pintaan. <code>bus-filing</code> ei vielä sisällä viranomaislogiikkaa itse, vaan toimii dispatcherina filing-kohteille kuten PRH ja Vero. Se on silti tärkeä rajapinta, koska näin authority-kohtaiset viennit saavat jo yhteisen kutsutavan BusDK:n sisältä.</p>
+            <p>Kolmas laajennus tulee filing-pintaan. <code>bus-filing</code> ei sisällä viranomaislogiikkaa itse, vaan toimii dispatcherina filing-kohteille kuten PRH ja Vero. Se on silti tärkeä rajapinta, koska authority-kohtaiset viennit saavat jo yhteisen kutsutavan BusDK:n sisältä.</p>
             <pre><code>bus-filing list
 bus-filing prh -- --dry-run --input filing.csv</code></pre>
-            <p>Samalla sekä <code>bus-filing-prh</code> että <code>bus-filing-vero</code> saavat ensimmäiset omat kohdebinäärinsä. Se tekee 27.1.2026 päivästä selvästi laajemman kuin pelkän moduulimäärän kasvun: BusDK alkaa kattaa nyt myös sellaisia liiketoiminnan osa-alueita, jotka pitää lopulta saada ulos kirjanpidosta viranomaisiin, palkanmaksuun ja tavaravirtoihin asti. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-payroll">bus-payrollin</a>, <a href="https://docs.busdk.com/modules/bus-inventory">bus-inventoryn</a> ja <a href="https://docs.busdk.com/modules/bus-filing">bus-filingin dokumentaatiosta</a>.</p>
+            <p>Sekä <code>bus-filing-prh</code> että <code>bus-filing-vero</code> saavat myös ensimmäiset omat kohdebinäärinsä. Siksi päivä ei ole vain moduulilistan kasvua, vaan laajennus kohti palkkoja, varastoa ja viranomaisaineistoja. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-payroll">bus-payrollin</a>, <a href="https://docs.busdk.com/modules/bus-inventory">bus-inventoryn</a> ja <a href="https://docs.busdk.com/modules/bus-filing">bus-filingin dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>

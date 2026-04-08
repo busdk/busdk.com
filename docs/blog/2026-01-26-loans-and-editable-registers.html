@@ -41,7 +41,7 @@
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
               <h1>Lainat ja muokattavat rekisterit tulevat BusDK:hon</h1>
-              <p class="intro">BusDK:n julkinen moduulidokumentaatio laajenee 26.1.2026 nopeasti, mutta päivän käytännön ydin on vielä tärkeämpi: työtilaan syntyy ensimmäiset rekisterit, joita voi oikeasti alustaa, lisätä ja päivittää komentoriviltä.</p>
+              <p class="intro">BusDK:n julkinen moduulidokumentaatio laajenee nopeasti, mutta päivän käytännön ydin on tärkeämpi: työtilaan syntyy ensimmäiset rekisterit, joita voi oikeasti alustaa, lisätä ja päivittää komentoriviltä.</p>
               <p class="intro"><code>bus-loans</code> nostaa lainarekisterin mukaan BusDK:n näkyvään pintaan, ja samalla <code>bus-entities</code> ja <code>bus-loans</code> saavat <code>init</code>-, <code>add</code>- ja <code>update</code>-komennot.</p>
               <div class="hero-meta">
                 <span class="meta-chip">26.1.2026</span>
@@ -63,7 +63,7 @@
           </section>
 
           <section class="content-panel section-stack">
-            <p>Yksi tämän päivän isoista käytännön muutoksista on se, että rekisteriä ei tarvitse enää ajatella vain valmiina CSV:nä. <code>bus-entities</code> osaa jo alustaa entity-aineiston, lisätä uuden vastapuolen ja päivittää olemassa olevan rivin ilman käsin tehtyä CSV-muokkausta.</p>
+            <p><code>bus-entities</code> tekee rekisteristä muokattavan komentoriviltä. Entity-aineiston voi alustaa, lisätä uuden vastapuolen ja päivittää olemassa olevan rivin ilman käsin tehtyä CSV-muokkausta.</p>
             <pre><code>bus-entities init
 bus-entities add \
   --entity-id cust-001 \
@@ -73,7 +73,7 @@ bus-entities update \
   --entity-id cust-001 \
   --set display_name="Aurora Oy Updated"</code></pre>
             <pre><code>cust-001	customer	Aurora Oy Updated</code></pre>
-            <p>Sama muutos näkyy lainoissa vielä selvemmin. <code>bus-loans</code> tulee mukaan omana moduulina, joka ei jää vain tulevaksi laskentamoottoriksi vaan saa heti oman rekisterin, aikataulut, saldot ja kirjaussuositukset. Lainan lisääminen näyttää jo tältä:</p>
+            <p>Lainoissa muutos näkyy vielä selvemmin. <code>bus-loans</code> tulee mukaan omana moduulina ja saa heti oman rekisterin, aikataulut, saldot ja kirjaussuositukset. Lainan lisääminen näyttää tältä:</p>
             <pre><code>bus-loans init
 bus-loans add \
   --loan_id L-150 \
@@ -88,7 +88,7 @@ bus-loans add \
   --payment_day 1 \
   --amortization_type annuity</code></pre>
             <pre><code>added loan L-150</code></pre>
-            <p>Nämä komennot eivät jää irrallisiksi. Samana päivänä julkisiin docs-sivuihin lisätään ensimmäinen laaja joukko moduulisivuja, ja <code>bus-loans</code> nousee myös julkisen sivuston moduulilistaan. Siksi 26.1.2026 on tärkeä päivä sekä dokumentaatiolle että itse tuotteelle: BusDK:n moduulirakenne ei ole enää vain kuvattu arkkitehtuuri, vaan näkyy konkreettisesti muokattavina rekistereinä ja uusina käyttöalueina. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-loans">bus-loansin dokumentaatiosta</a> ja <a href="https://docs.busdk.com/modules/bus-entities">bus-entitiesin dokumentaatiosta</a>.</p>
+            <p>Samana päivänä julkisiin docs-sivuihin lisätään ensimmäinen laaja joukko moduulisivuja, ja <code>bus-loans</code> nousee myös julkisen sivuston moduulilistaan. Näin sama muutos näkyy sekä käyttöliittymässä että dokumentaatiossa: rekistereitä voi oikeasti muokata, ja niille on myös julkinen käyttökuvaus. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-loans">bus-loansin dokumentaatiosta</a> ja <a href="https://docs.busdk.com/modules/bus-entities">bus-entitiesin dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>

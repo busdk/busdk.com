@@ -1,5 +1,9 @@
 # PLAN.md
 
+- [x] Iteroi koko blogifeed uudelleen ja poista jäljellä oleva meta-, vastakkainasettelu- ja muu tekoälymäinen tyylikieli artikkeleista. Tiivistä hyötyväitteet, täsmennä mitä työkalu tai ominaisuus tekee käytännössä ja pidä keskeneräisyyskuvaukset rehellisinä mutta niukkasanaisia.
+- [x] Selkeytä blogin komentoesimerkkien esitystapa niin, että komento ja sen tekstipalaute erotetaan näkyvästi toisistaan. Käytä tarvittaessa `$`-alkuista komentoriviä ja erillistä tulosteblokkia.
+- [x] Tee uusintatarkistus työkalujuttuihin niin, että ne kertovat kiinnostavammin mitä uusi työkalu tai ominaisuus oikeasti tekee, mitä hyötyä siitä on käytössä, millä esimerkillä sen ymmärtää nopeasti ja onko pinta vielä kapea, keskeneräinen tai kokeellinen.
+- [x] Iteroi uusien työkalujen blogikirjoituksia niin, että ne avaavat työkalun käyttöä tarkemmin README:n, julkisen dokumentaation, testien ja näkyvän komentopinnan pohjalta, ja kertovat suoraan jos työkalu on keskeneräinen tai kokeellinen. Korjaa ainakin AIZ-artikkeli tähän linjaan.
 - [x] 2026-01-01: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
 - [x] 2026-01-02: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.
 - [x] 2026-01-03: käy läpi kyseisen päivän git-historia superprojektista ja submoduuleista ja lisää mahdolliset uudet blogiaiheet suunnitelmaan.

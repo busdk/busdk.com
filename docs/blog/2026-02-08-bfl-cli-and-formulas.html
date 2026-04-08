@@ -59,10 +59,10 @@
                 <span class="meta-chip">Sample-data</span>
               </div>
               <p class="intro">
-                BusDK saa oman <code>bus-bfl</code>-moduulin, jolla kaavalausekkeita voi jäsentää,
-                muotoilla, validoida ja evaluoida suoraan komentoriviltä. Samalla sample-aineistoon
-                tulee <code>datapackage.json</code>, joten kaavalausekkeet ja datarakenteen kuvaus
-                alkavat elää samassa paketissa.
+                BusDK saa oman <code>bus-bfl</code>-moduulin, jolla kaavalauseketta voi lukea,
+                siistiä ja kokeilla suoraan komentoriviltä. Tämä on tarkoituksella kapea työkalu:
+                se toimii lausekkeilla ja niihin annetulla kontekstilla, ei vielä kokonaisena
+                taulukko- tai raporttimoottorina.
               </p>
             </div>
           </article>
@@ -72,18 +72,17 @@
             <h2>TL;DR</h2>
             <ul class="tldr-list">
               <li><code>bus-bfl</code> tuo BFL-kaavoille oman julkisen CLI-pinnan.</li>
+              <li>Työkalu on tarkoituksella kapea: se käsittelee lausekkeita, ei vielä kokonaisia raportti- tai taulukkotyönkulkuja.</li>
               <li>Kaavan voi nyt jäsentää ja muotoilla ilman, että sitä tarvitsee ajaa jonkin muun moduulin sisältä.</li>
-              <li>Muotoiltu tulos on deterministinen, joten sama lauseke näyttää aina samalta riippumatta syötteen välilyönneistä.</li>
               <li>Samalla sample-dataan lisätään <code>datapackage.json</code>, joka tekee aineiston rakenteesta eksplisiittisemmän.</li>
             </ul>
           </section>
 
           <section class="content-panel section-stack">
             <p>
-              Tämän muutoksen käytännön arvo on siinä, että BFL-kaavat eivät enää ole vain jonkin
-              toisen työkalun sisäinen ominaisuus. Kun kaava voidaan jäsentää ja muotoilla omalla
-              komennollaan, sen rakennetta voi tarkistaa suoraan komentoriviltä jo ennen kuin sitä
-              käytetään taulukossa, skeemassa tai muun datan yhteydessä.
+              Käytännössä tämä auttaa heti silloin, kun kaava ei toimi odotetusti tai haluat nähdä
+              nopeasti mitä merkkijono oikeastaan tarkoittaa. BFL:ää voi nyt kokeilla sellaisenaan
+              ennen kuin samaa lauseketta käytetään taulukossa, skeemassa tai raportin laskennassa.
             </p>
             <pre><code>bus-bfl parse --expr '1 + 2'
 
@@ -91,19 +90,18 @@ bus-bfl format --expr 'sum( A1:A3 )'</code></pre>
             <pre><code>(binary + (literal 1) (literal 2))
 sum(A1:A3)</code></pre>
             <p>
-              Ensimmäinen komento näyttää, miten lauseke on jäsentynyt: kyse ei ole enää
-              vapaamuotoisesta merkkijonosta vaan eksplisiittisestä binäärisestä operaatiosta.
-              Toinen komento näyttää, mitä deterministinen muotoilu tarkoittaa käytännössä.
-              Syötteessä voi olla ylimääräisiä välilyöntejä, mutta ulostulo palautuu aina samaan
-              kanoniseen muotoon. Tämä helpottaa sekä tarkistamista että versionhallintaa. Lisää
-              esimerkkejä löytyy <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.
+              Ensimmäinen komento näyttää, onko kaava ymmärretty oikein: <code>1 + 2</code>
+              jäsentyy näkyvästi binääriseksi operaatioksi. Toinen komento näyttää mitä työkalu
+              tekee tällä hetkellä ehkä hyödyllisimmin: se palauttaa epäsiististi kirjoitetun
+              lausekkeen yhteen vakioituun muotoon. Tämä tekee kaavoista helpompia lukea, vertailla
+              ja tallentaa versionhallintaan. Tarkempi pinta löytyy
+              <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.
             </p>
             <p>
-              Samanaikainen <code>samples/datapackage.json</code> on pieni mutta merkityksellinen
-              muutos samalle suunnalle. BFL ei tule yksin, vaan osana selkeämmin kuvattua
-              data-aineistoa. Kun sample-data kertoo itse rakenteestaan ja kaavalausekkeille on oma
-              komentopinta, BusDK:n datamalli muuttuu helpommin tutkittavaksi myös ilman omaa
-              sovelluskohtaista liimaa ympärillä.
+              Samanaikainen <code>samples/datapackage.json</code> vie samaa suuntaa eteenpäin.
+              Lausekkeille tulee oma näkyvä komentopinta, ja sample-aineisto alkaa samalla kertoa
+              itse rakenteestaan. Työkalu on vielä kapea, mutta juuri siksi sen tarkoitus on helppo
+              ymmärtää: yksi komento kaavojen tarkistamiseen, siistimiseen ja kokeilemiseen.
             </p>
           </section>
 
