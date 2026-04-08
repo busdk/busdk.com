@@ -144,78 +144,83 @@ Scoped guidance for the `busdk.com` repository.
 26. Be aggressive about removing repeated information. Prefer one precise,
     meaningful sentence over several sentences that restate the same point
     with slightly different wording.
-27. Prefer reader-facing terminology over Git-internal jargon in published
+27. Do not rely on the sentence pattern "ei vain ..., vaan ..." or similar
+    empty contrast formulas as a default writing move. If there is a real
+    product meaning behind the contrast, spell that meaning out directly:
+    tell the reader what becomes easier, more portable, more standard, more
+    deterministic, or otherwise more useful in practice.
+28. Prefer reader-facing terminology over Git-internal jargon in published
     prose. Replace terms such as "dirty submodule" with clearer user-facing
     wording like "muuttunut submoduuli" unless the Git term itself is the
     point being documented.
-28. Treat developer-facing BusDK tools such as `bus-dev` and `bus-run` as real
+29. Treat developer-facing BusDK tools such as `bus-dev` and `bus-run` as real
     product surfaces, not as background-only implementation details. They are
     valid blog topics when the change affects actual commands, workflows,
     tooling contracts, or bug fixes in a concrete way.
-29. When reviewing history for missing articles, assume most meaningful work
+30. When reviewing history for missing articles, assume most meaningful work
     should map to some concrete changed behavior, command, workflow, or bug fix.
     Do not discard a topic merely because it is developer-facing or happened
     "in the background"; inspect what actually changed first.
-30. All Bus modules that are published as binaries are valid public product
+31. All Bus modules that are published as binaries are valid public product
     surfaces for the blog, even when their source code is not publicly
     distributed. It is acceptable to present their commands, workflows, and
     user-visible behavior in blog posts.
-31. Do not imply that a module is non-public merely because its source is not
+32. Do not imply that a module is non-public merely because its source is not
     open. The publication boundary for blog writing is the shipped binary
     interface and public documentation, not source-code availability.
-32. Do not publish local scratch or verification paths such as `busdk.com/tmp`
+33. Do not publish local scratch or verification paths such as `busdk.com/tmp`
     in reader-facing command examples. Verify examples however needed, then
     rewrite them to reader-facing project-root paths, documented file paths,
     or other generic locations that make sense outside the writer's machine.
-33. Avoid abstract, teleological prose such as "the project started to appear
+34. Avoid abstract, teleological prose such as "the project started to appear
     as a deliberate whole" or similar AI-sounding summary language. State the
     concrete significance of the day instead: what was created, what became
     possible, and why that moment mattered even if the product was still early.
-34. Do not leak research provenance or writing workflow into public prose.
+35. Do not leak research provenance or writing workflow into public prose.
     Avoid phrases like "tässä root-repossa", "git-historian kautta", or other
     source-oriented wording unless the source itself is the public-facing
     subject. Write from the reader's point of view and keep only the product-
     level fact that matters.
-35. Do not narrate the reader from the outside with phrases like "lukijan
+36. Do not narrate the reader from the outside with phrases like "lukijan
     kannalta", "lukija huomaa", or similar editorial meta-commentary unless
     the sentence is truly about a concrete user action or outcome. State the
     product meaning directly instead.
-36. When writing for a broad public audience, do not center the sentence on
+37. When writing for a broad public audience, do not center the sentence on
     developer jargon such as "root", "Makefile", repository structure, or
     similar implementation-facing terms. Prefer general language like shared
     development environment, common tooling, or shared structure, and mention
     exact technical names only as secondary clarifications when they help.
-37. When an article title or ingress changes, update the blog index card in
+38. When an article title or ingress changes, update the blog index card in
     `busdk.com/docs/blog/index.html` in the same change set so the listing,
     article page, and reader expectation stay in sync.
-38. Before making any historical claim in a blog post, verify the actual change
+39. Before making any historical claim in a blog post, verify the actual change
     from Git history first. Do not infer behavior from commit titles, repo
     creation dates, or high-level assumptions alone.
-39. Historical-article verification process:
+40. Historical-article verification process:
     1. identify the exact date and candidate commit(s) with `git log --since=... --until=...`
     2. inspect the real file-level change with `git log --stat`, `git show`, or both
     3. if the claim is about code behavior, open the changed source/help/docs files and verify what actually appeared in that commit
     4. only then write the article claim, using the verified behavior and date
     5. if the code did not yet exist, do not describe the feature as existing; write instead about the actual state that was introduced
-40. Repository creation, initial commits, pin bumps, and documentation commits
+41. Repository creation, initial commits, pin bumps, and documentation commits
     are not automatically product milestones. Treat them as blog-worthy only
     after verifying what concrete reader-visible capability, command, docs
     surface, or workflow changed.
-41. Retrospective blog posts must read like same-day news. Titles, ingresses,
+42. Retrospective blog posts must read like same-day news. Titles, ingresses,
     TL;DR blocks, body text, metadata descriptions, and blog-index cards should
     default to present-tense or immediate-news phrasing instead of later
     summary language.
-42. Before considering a blog article finished, reread it once specifically for
+43. Before considering a blog article finished, reread it once specifically for
     hidden retrospective wording such as `sai`, `toi`, `alkoi`, `julkaistiin`,
     `siirtyi`, `muuttui`, `kuvattiin`, or similar forms, and rewrite them when
     the article is meant to sound like it was published on that day.
-43. Before creating a new blog article for a date that already has an article,
+44. Before creating a new blog article for a date that already has an article,
     first check whether the new material belongs in the existing same-day
     article instead. Prefer expanding the existing article into a richer and
     more complete same-day piece when the topics are meaningfully related,
     and create a separate article only when the subject is clearly independent
     enough to deserve its own page.
-44. When a post introduces a new tool or module, use the module README,
+45. When a post introduces a new tool or module, use the module README,
     public docs, visible source surface, and tests as research material so the
     post explains what the tool actually does, how it is used, and what kind of
     output or behavior the reader should expect.
