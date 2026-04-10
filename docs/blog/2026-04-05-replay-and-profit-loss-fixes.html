@@ -71,12 +71,12 @@
                 <span class="meta-chip"><code>bus journal assert match</code></span>
               </div>
               <p class="intro">
-                Tämä korjaus osuu kohtaan, joka näkyy heti silloin kun samaa vientiä vertaillaan lähdeaineistoon
-                tai raporttiin: yhteinen tositteen kuvaus ja rivikohtainen selite eivät enää mene sekaisin.
+                Sama vienti säilyttää nyt erillään tositteen yhteisen kuvauksen ja rivikohtaisen
+                selitteen. Ero näkyy heti silloin, kun aineistoa verrataan lähteeseen tai raporttiin.
               </p>
               <p class="intro">
-                Samalla vuoden alun korjausrivit näkyvät tuloslaskelmalla oikeassa roolissaan, ja
-                <code>bus journal assert match</code> saa oman tarkistuksen source-id-ryhmien lukumäärälle.
+                Vuoden alun korjausrivit näkyvät myös tuloslaskelmalla oikeassa roolissaan, ja
+                <code>bus journal assert match</code> saa tarkistuksen source-id-ryhmien lukumäärälle.
               </p>
             </div>
           </article>
@@ -91,7 +91,7 @@
           </section>
           <section class="content-panel section-stack">
             <p>
-              Riviselitteen korjaus kannattaa hahmottaa konkreettisen viennin kautta. Yksi ja sama tosite
+              Riviselitteen korjaus kannattaa hahmottaa konkreettisen viennin kautta. Sama tosite
               voi sisältää yhteisen kuvauksen, mutta riveillä on silti oma eri merkityksensä:
             </p>
             <pre><code>bus journal add \
@@ -109,7 +109,7 @@ bus journal list \
             <p>
               Olennaista on juuri se, että <code>voucher_description</code> ja <code>row_description</code>
               pysyvät erillään. Kun samaa aineistoa toistetaan tai listataan myöhemmin, rivit eivät enää
-              palaa yhdeksi yleiseksi kuvaukseksi. Tämä helpottaa sekä tarkastusta että myöhempää
+              palaa yhdeksi yleiseksi kuvaukseksi. Erottelu helpottaa sekä tarkastusta että myöhempää
               jatkokäsittelyä. Lisää taustaa löytyy
               <a href="https://docs.busdk.com/modules/bus-journal"><code>bus-journal</code>-dokumentaatiosta</a>.
             </p>
@@ -117,7 +117,7 @@ bus journal list \
               Raporttipuolella muutos koski vuoden alun oikaisuja. Jos kirjauksissa käytetään
               lähdelajeja <code>prior-year-correction</code> tai <code>opening-adjustment</code>,
               niiden pitää näkyä tuloslaskelmalla korjausriveinä eikä tavallisena kuluvan kauden
-              toimintana. Tämä näkyy erityisen hyvin silloin, kun vuoden alussa korjataan edellisen
+              toimintana. Muutos näkyy erityisen hyvin silloin, kun vuoden alussa korjataan edellisen
               tilikauden saldoja mutta ei haluta sotkea juoksevan kauden tulosta.
             </p>
             <p>

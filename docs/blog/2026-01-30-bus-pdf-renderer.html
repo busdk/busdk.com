@@ -42,7 +42,7 @@
               <p class="eyebrow">BusDK Update</p>
               <h1>BusDK saa deterministisen PDF-renderöinnin</h1>
               <p class="intro"><code>bus-pdf</code> tuo BusDK:hon oman PDF-komentopinnan. Sille tulee oma binääri, omat mallipohjat ja oma vakioitu syötemuoto.</p>
-              <p class="intro">Ensimmäinen versio keskittyy yhteen asiaan: sama JSON tuottaa saman PDF:n ilman vaihtelevia aikaleimoja tai konekohtaisia fonttieroja.</p>
+              <p class="intro">Tämän vaiheen ydin on selvä: sama JSON tuottaa saman PDF:n ilman vaihtelevia aikaleimoja tai konekohtaisia fonttieroja.</p>
               <div class="hero-meta">
                 <span class="meta-chip">30.1.2026</span>
                 <span class="meta-chip">bus-pdf</span>
@@ -63,7 +63,7 @@
           </section>
 
           <section class="content-panel section-stack">
-            <p>Ensimmäinen näkyvä käyttö alkaa mallipohjien listauksesta ja yhdestä renderöintikomennosta:</p>
+            <p>Näkyvä käyttö alkaa mallipohjien listauksesta ja yhdestä renderöintikomennosta:</p>
             <pre><code>bus-pdf list-templates
 
 bus-pdf render \
@@ -72,7 +72,7 @@ bus-pdf render \
   --out out.pdf</code></pre>
             <pre><code>fi-invoice-a4
 plain-a4</code></pre>
-            <p>Tässä vaiheessa <code>bus-pdf</code> ei vielä tee kirjanpidon liiketoimintalogiikkaa itse. Se ei lue BusDK:n CSV-aineistoja eikä päättele laskun tai raportin sisältöä niiden puolesta, vaan ottaa vastaan UTF-8 JSON-syötteen ja renderöi sen valittuun mallipohjaan. Se on tärkeä rajanveto, koska PDF-pinnan voi nyt ottaa käyttöön ilman että raportointi, laskutus tai päiväkirja lukitaan samaan toteutukseen.</p>
+            <p><code>bus-pdf</code> ottaa tässä vaiheessa vastaan UTF-8 JSON-syötteen ja renderöi sen valittuun mallipohjaan. Se ei vielä lue BusDK:n CSV-aineistoja eikä päättele laskun tai raportin sisältöä niiden puolesta. Rajaus on hyödyllinen, koska PDF-pinnan voi ottaa käyttöön ilman että raportointi, laskutus tai päiväkirja lukitaan samaan toteutukseen.</p>
             <p>Determinismi näkyy siinä, että tulosteeseen ei tule konekohtaisia fonttieroja tai vaihtelevia metatietoja, jotka vaikeuttaisivat vertailua, testausta tai auditointia. Siksi PDF sopii heti paremmin osaksi muuta BusDK-työkaluketjua. Nykyinen komentopinta ja mallipohjat löytyvät <a href="https://docs.busdk.com/modules/bus-pdf">bus-pdf:n dokumentaatiosta</a>.</p>
           </section>
         </div>

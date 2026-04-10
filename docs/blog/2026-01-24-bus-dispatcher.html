@@ -9,7 +9,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://busdk.com/blog/2026-01-24-bus-dispatcher.html" />
     <meta property="og:title" content="24.1.2026 | bus-komento alkaa välittää alikomennot oikeille Bus-työkaluille" />
-    <meta property="og:description" content="Ensimmäinen varsinainen bus-ydin osaa etsiä bus-alkuiset alikomennot PATH:sta ja palauttaa virheet sekä exit-koodit oikein." />
+    <meta property="og:description" content="bus-ydin osaa nyt etsiä bus-alkuiset alikomennot PATH:sta ja palauttaa virheet sekä exit-koodit oikein." />
     <meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="24.1.2026 | bus-komento alkaa välittää alikomennot oikeille Bus-työkaluille" />
@@ -41,8 +41,8 @@
             <div class="hero-panel-inner">
               <p class="eyebrow">BusDK Update</p>
               <h1><code>bus</code>-komento alkaa välittää alikomennot oikeille Bus-työkaluille</h1>
-              <p class="intro">Ensimmäinen varsinainen <code>bus</code>-ytimen koodi tekee <code>bus accounts</code>- ja muut saman mallin komennot oikeaksi komentotavaksi.</p>
-              <p class="intro">Ydin pysyy tarkoituksella pienenä: se ei tee liiketoimintalogiikkaa itse, vaan etsii oikean <code>bus-...</code>-työkalun ja välittää ajon sille.</p>
+              <p class="intro">24.1.2026 <code>bus accounts</code>- ja muut saman mallin komennot alkavat toimia yhteisen <code>bus</code>-etukomennon kautta.</p>
+              <p class="intro"><code>bus</code> hoitaa vain alikomennon etsimisen ja käynnistämisen. Varsinainen kirjanpitologiikka jää edelleen erillisille Bus-työkaluille.</p>
               <div class="hero-meta">
                 <span class="meta-chip">24.1.2026</span>
                 <span class="meta-chip">bus</span>
@@ -65,7 +65,7 @@
             <p>Toimiva ydin näyttää käyttäjälle tältä:</p>
             <pre><code>bus</code></pre>
             <pre><code>usage: bus &lt;command&gt; [args...]</code></pre>
-            <p>Muutos on perustavanlaatuinen. Samassa commitissa <code>bus</code> oppii muodostamaan alikomennon nimen muodossa <code>bus-&lt;command&gt;</code>, etsimään sen PATH:sta, käynnistämään sen ja palauttamaan myös virhetilanteet oikein. Näin yhteinen komentopinta pysyy ohuena välittäjänä, ja varsinainen toiminnallisuus voidaan rakentaa erillisiin binääreihin.</p>
+            <p>Samassa muutoksessa <code>bus</code> oppii muodostamaan alikomennon nimen muodossa <code>bus-&lt;command&gt;</code>, etsimään sen PATH:sta, käynnistämään sen ja palauttamaan myös virhetilanteet oikein. Yhteinen komentopinta pysyy näin ohuena välittäjänä, ja varsinainen toiminnallisuus voidaan rakentaa erillisiin binääreihin.</p>
             <p>Nykyinen <code>bus</code>-komennon laajempi help ja globaalit liput löytyvät <a href="https://github.com/busdk/bus">julkisesta <code>bus</code>-repositoriosta</a>.</p>
           </section>
         </div>

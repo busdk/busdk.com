@@ -6,7 +6,7 @@
     <title>24.1.2026 | Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</title>
     <meta
       name="description"
-      content="24.1.2026 BusDK:n dokumentaatio hajotetaan omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa. Samalla mukaan tulee ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle."
+      content="24.1.2026 BusDK:n dokumentaatio hajotetaan omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa. Mukaan tulee myös ensimmäinen konkreettinen esimerkkirakenne kirjanpitoaineistolle."
     />
     <link rel="canonical" href="https://busdk.com/blog/2026-01-24-docs-architecture-and-layout.html" />
     <meta property="og:type" content="article" />
@@ -66,7 +66,7 @@
               <h1>Dokumentaatio jäsentyy arkkitehtuuriksi, työnkuluiksi ja tiedostorakenteeksi</h1>
               <p class="intro">
                 24.1.2026 BusDK:n julkinen dokumentaatio muuttuu yhdestä pitkästä suunnitelmasta
-                selattavaksi kokonaisuudeksi. Samalla mukaan tulee ensimmäinen konkreettinen
+                selattavaksi kokonaisuudeksi. Mukaan tulee myös ensimmäinen konkreettinen
                 esimerkkirakenne siitä, miltä valmis kirjanpitoaineisto voisi näyttää hakemistoina
                 ja tiedostoina.
               </p>
@@ -84,7 +84,7 @@
             <h2>TL;DR</h2>
             <ul class="tldr-list">
               <li>Dokumentaatio jaettiin omiin arkkitehtuuri-, komentorivi-, data- ja työnkulkusivuihinsa.</li>
-              <li>BusDK:n komentorivi kuvataan tietoisesti aineiston vartijaksi, ei vain tiedostojen muokkaajaksi.</li>
+              <li>BusDK:n komentorivi kuvataan aineiston hallituksi käsittelypinnaksi, ei pelkäksi tiedostojen muokkaajaksi.</li>
               <li>Ensimmäinen konkreettinen hakemistorakenne teki näkyväksi tilit, päiväkirjan, laskut, ALV-aineiston ja skeemat.</li>
               <li>Nykyinen jatkoversio löytyy osoitteesta <a href="https://docs.busdk.com">docs.busdk.com</a>.</li>
             </ul>
@@ -92,11 +92,10 @@
 
           <section class="content-panel section-stack">
             <p>
-              Tämä muutos tekee BusDK:sta helpomman ymmärtää, koska eri asiat erotetaan omille
-              sivuilleen. Arkkitehtuurissa avataan, miksi järjestelmä rakentuu löyhästi toisiinsa
-              kytkeytyvien moduulien ympärille. Komentoriviä käsittelevä osio puolestaan sanoo
-              suoraan, että komennon tehtävä ei ole vain kirjoittaa rivejä tiedostoon, vaan lukea,
-              tarkistaa, päivittää ja tallentaa muutos hallitusti.
+              Dokumentaatiota on nyt helpompi lukea, koska eri asiat erotetaan omille sivuilleen.
+              Arkkitehtuurissa avataan, miksi järjestelmä rakentuu löyhästi toisiinsa kytkeytyvien
+              moduulien ympärille. Komentoriviä käsittelevä osio sanoo suoraan, että komento
+              lukee, tarkistaa, päivittää ja tallentaa muutoksen hallitusti.
             </p>
             <pre><code>busdk journal add --date 2026-01-15 \
   --debit Cash \

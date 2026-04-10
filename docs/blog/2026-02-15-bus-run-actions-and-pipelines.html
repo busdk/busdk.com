@@ -83,10 +83,10 @@
             <pre><code>$ bus-run -C bus-run-demo list</code></pre>
             <pre><code>check	action script	.bus/run/check.sh	
 daily-check	pipeline	.bus/run/daily-check.yml	check</code></pre>
-            <p>Ensimmäinen rivi kertoo suoraan, että projektissa on yksi ajettava skripti. Toinen kertoo, että projektissa on myös nimetty ajosarja, joka laajenee samaan <code>check</code>-vaiheeseen. Esikatselu näyttää lopullisen askeljärjestyksen ilman ajoa:</p>
+            <p>Ensimmäinen rivi kertoo, että projektissa on yksi ajettava skripti. Toinen kertoo, että projektissa on myös nimetty ajosarja, joka laajenee samaan <code>check</code>-vaiheeseen. Esikatselu näyttää lopullisen askeljärjestyksen ilman ajoa:</p>
             <pre><code>$ bus-run -C bus-run-demo pipeline preview daily-check</code></pre>
             <pre><code>check</code></pre>
-            <p>Näin projektin omat promptit, skriptit ja ajosarjat muuttuvat löydettäväksi ja toistettavaksi komentopinnaksi. <code>bus-run</code> ei sido niitä valmiiseen kehittäjätyönkulkuun, vaan ajaa juuri sen mitä projekti määrittelee hakemistoon <code>.bus/run</code>. Nykyinen sopimus löytyy <a href="https://docs.busdk.com/modules/bus-run"><code>bus-run</code>-dokumentaatiosta</a>.</p>
+            <p>Projektin omat promptit, skriptit ja ajosarjat tulevat näin löydettäviksi ja toistettaviksi yhdestä komentopinnasta. <code>bus-run</code> ajaa juuri sen, mitä projekti määrittelee hakemistoon <code>.bus/run</code>, eikä pakota niitä valmiiseen kehittäjätyönkulkuun. Nykyinen sopimus löytyy <a href="https://docs.busdk.com/modules/bus-run"><code>bus-run</code>-dokumentaatiosta</a>.</p>
           </section>
 
           <section class="cta-panel section-stack">

@@ -60,7 +60,7 @@
               </div>
               <p class="intro">
                 BusDK saa oman <code>bus-bfl</code>-moduulin, jolla kaavalauseketta voi lukea,
-                siistiä ja kokeilla suoraan komentoriviltä. Tämä on tarkoituksella kapea työkalu:
+                siistiä ja kokeilla suoraan komentoriviltä. Työkalu on tarkoituksella kapea:
                 se toimii lausekkeilla ja niihin annetulla kontekstilla, ei vielä kokonaisena
                 taulukko- tai raporttimoottorina.
               </p>
@@ -74,7 +74,7 @@
               <li><code>bus-bfl</code> tuo BFL-kaavoille oman julkisen CLI-pinnan.</li>
               <li>Työkalu on tarkoituksella kapea: se käsittelee lausekkeita, ei vielä kokonaisia raportti- tai taulukkotyönkulkuja.</li>
               <li>Kaavan voi nyt jäsentää ja muotoilla ilman, että sitä tarvitsee ajaa jonkin muun moduulin sisältä.</li>
-              <li>Samalla sample-dataan lisätään <code>datapackage.json</code>, joka tekee aineiston rakenteesta eksplisiittisemmän.</li>
+              <li>Sample-dataan lisätään myös <code>datapackage.json</code>, joka tekee aineiston rakenteesta eksplisiittisemmän.</li>
             </ul>
           </section>
 
@@ -90,8 +90,8 @@ bus-bfl format --expr 'sum( A1:A3 )'</code></pre>
             <pre><code>(binary + (literal 1) (literal 2))
 sum(A1:A3)</code></pre>
             <p>
-              <code>1 + 2</code> jäsentyy näkyvästi binääriseksi operaatioksi, joten komennosta näkee
-              heti onko kaava ymmärretty oikein. <code>format</code>-komento taas palauttaa
+              <code>1 + 2</code> jäsentyy näkyvästi binääriseksi operaatioksi, joten komennosta
+              näkee heti, onko kaava ymmärretty oikein. <code>format</code>-komento taas palauttaa
               epäsiististi kirjoitetun lausekkeen yhteen vakioituun muotoon. Kaavoja on silloin
               helpompi lukea, vertailla ja tallentaa versionhallintaan. Tarkempi pinta löytyy
               <a href="https://docs.busdk.com/modules/bus-bfl"><code>bus-bfl</code>-dokumentaatiosta</a>.

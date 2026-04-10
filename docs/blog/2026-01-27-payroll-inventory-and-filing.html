@@ -73,10 +73,10 @@ payroll:pr-001:e1:net_pay,2024-04-05,Payroll pr-001 e1,5000,1000,750.00,EUR,pr-0
 bus-inventory status</code></pre>
             <pre><code>A-1	Apple	3	each	7.50
 B-2	Banana	10	kg	12.00</code></pre>
-            <p>Kolmas laajennus tulee filing-pintaan. <code>bus-filing</code> ei sisällä viranomaislogiikkaa itse, vaan toimii dispatcherina filing-kohteille kuten PRH ja Vero. Se on silti tärkeä rajapinta, koska authority-kohtaiset viennit saavat jo yhteisen kutsutavan BusDK:n sisältä.</p>
+            <p>Kolmas laajennus tulee filing-pintaan. <code>bus-filing</code> ei sisällä viranomaislogiikkaa itse, vaan toimii dispatcherina filing-kohteille kuten PRH ja Vero. Rajapinta on silti tärkeä, koska authority-kohtaiset viennit saavat jo yhteisen kutsutavan BusDK:n sisältä.</p>
             <pre><code>bus-filing list
 bus-filing prh -- --dry-run --input filing.csv</code></pre>
-            <p>Sekä <code>bus-filing-prh</code> että <code>bus-filing-vero</code> saavat myös ensimmäiset omat kohdebinäärinsä. Siksi päivä ei ole vain moduulilistan kasvua, vaan laajennus kohti palkkoja, varastoa ja viranomaisaineistoja. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-payroll">bus-payrollin</a>, <a href="https://docs.busdk.com/modules/bus-inventory">bus-inventoryn</a> ja <a href="https://docs.busdk.com/modules/bus-filing">bus-filingin dokumentaatiosta</a>.</p>
+            <p>Sekä <code>bus-filing-prh</code> että <code>bus-filing-vero</code> saavat myös omat kohdebinäärinsä. Päivä laajentaa BusDK:ta siksi selvästi kohti palkkoja, varastoa ja viranomaisaineistoja. Nykyiset moduulisivut löytyvät <a href="https://docs.busdk.com/modules/bus-payroll">bus-payrollin</a>, <a href="https://docs.busdk.com/modules/bus-inventory">bus-inventoryn</a> ja <a href="https://docs.busdk.com/modules/bus-filing">bus-filingin dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>

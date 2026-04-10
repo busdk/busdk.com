@@ -258,6 +258,41 @@ Scoped guidance for the `busdk.com` repository.
 54. TL;DR lists are acceptable when a list is the clearest way to present the
     condensed facts. Do not flatten a good list into prose only to avoid an
     "AI-written" feel; judge the structure by clarity, not by whether it looks
+55. When iterating Finnish blog prose, prioritize corrections in this order:
+    1. meaning, factual accuracy, dates, amounts, obligations, and anything
+       that could change the reader's understanding
+    2. clear general-language norm issues such as punctuation, compounds,
+       capitalization, hyphenation, and obvious inflection errors
+    3. clarity, rhythm, structure, paragraphing, and information order
+    4. optional polish such as wording alternatives, SEO refinements, or other
+       stylistic tuning
+56. Meaning and factual precision outrank style. If a stylistic rewrite risks
+    changing emphasis, certainty, legal meaning, accounting meaning, or scope,
+    keep the original claim narrower and mark the uncertainty in the writing
+    process instead of forcing a smoother sentence.
+57. Preserve the writer's voice when correcting Finnish. Do not flatten the
+    prose into generic polished AI copy. Intentional warmth, directness, or
+    light colloquial tone may stay when they do not reduce clarity or trust.
+58. In legal, tax, accounting, money, deadline, and responsibility language,
+    apply the strictest clarity standard. If wording could change who must do
+    what, by when, for how much, or under which condition, fix that before any
+    stylistic editing.
+59. Do not force uncertain language corrections into published copy. If a term,
+    inflection, brand spelling, or interpretation cannot be verified from the
+    relevant source, keep the safe wording or verify first; do not guess.
+60. When editing for clarity, prefer self-contained paragraphs and sections.
+    Readers may land directly on a section from search, so the surrounding
+    wording should not depend on hidden context or previous paragraphs.
+61. Prefer descriptive anchor text and keep the page title, visible H1, and
+    article promise semantically aligned. Do not use vague link text when a
+    more informative phrase helps both the reader and discoverability.
+62. When revising sentence flow in Finnish, watch especially for accidental
+    repetition, compound-word errors, misleading word order, uneven lists,
+    and wrong dash or hyphen usage. Fix these as language-quality issues, not
+    as cosmetic polishing.
+63. Internal editing aids such as tracked-change notation, priority labels, or
+    uncertainty markers may be useful during drafting, but they must never leak
+    into the published article text.
     like a list.
 55. During the final editorial pass, scan explicitly for repeated sentence
     starters and cadence patterns across the feed. In particular, avoid

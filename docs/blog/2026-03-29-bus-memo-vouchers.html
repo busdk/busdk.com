@@ -15,13 +15,6 @@
   --credit 3000=24.00 \
   --source-object s6203 \
   --source-entry 1 \
-  --source-link b24889</code></pre><p>Tällöin muistiotosite ei jää irralliseksi erikoistapaukseksi, vaan sama kirjaus säilyttää yhteyden alkuperäiseen aineistoon. Nykyinen workflow löytyy <a href="https://docs.busdk.com/modules/bus-memo">bus-memon dokumentaatiosta</a>.</p></section>
-  --date 2025-01-10 \
-  --desc "Invoice correction" \
-  --debit 1700=24.00 \
-  --credit 3000=24.00 \
-  --source-object s6203 \
-  --source-entry 1 \
-  --source-link b24889</code></pre><p>Tällöin muistiotosite ei jää irralliseksi erikoistapaukseksi, vaan sama kirjaus säilyttää yhteyden alkuperäiseen aineistoon. Nykyinen workflow löytyy <a href="https://docs.busdk.com/modules/bus-memo">bus-memon dokumentaatiosta</a>.</p></section>
+  --source-link b24889</code></pre><p>Tällöin muistiotosite säilyttää yhteyden alkuperäiseen aineistoon eikä jää irralliseksi kirjaukseksi. Nykyinen workflow löytyy <a href="https://docs.busdk.com/modules/bus-memo">bus-memon dokumentaatiosta</a>.</p></section>
   </div></main><footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle){themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});}prefersDark.addEventListener("change",(event)=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script></body>
 </html>

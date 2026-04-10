@@ -1,5 +1,7 @@
 # PLAN.md
 
+- [x] Iteroi koko blogifeed uuden suomenkielisen korjausohjeen mukaan: korjaa merkitystä hämärtävät kohdat, yleiskielen normivirheitä, sanajärjestystä, toistoa, epäluontevaa AI-proosaa ja liian geneeristä hiottua kieltä kaikista julkaistuista blogiartikkeleista sekä tarvittaessa blogi-indeksin korteista.
+- [x] Tallenna käyttäjän uusi suomenkielisten blogitekstien korjausohjeistus `busdk.com/AGENTS.md`:ään siltä osin kuin se tuo uutta ja hyödyllistä pysyvää sääntöä blogin kirjoittamiseen, editointiin ja viimeistelyyn.
 - [x] Auditoi blogifeed uudelleen työkalujen README:iden, julkisten docsien, näkyvän komentopinnan, testien ja git-historian avulla. Kirjaa tästä kierroksesta puuttuvat artikkelit ja kirjoitusasun parannukset tähän PLANiin, päivitä `busdk.com/AGENTS.md`:ään selkeä iterointimalli ja tee ainakin yksi ensimmäinen korjauskierros ilmeisimpiin teksteihin.
 - [x] 6.4.2026: tarkista voiko saman päivän `bus-files`-artikkelia laajentaa; jos `bus-memo`-riviselitteet ja `bus memo add --help` eivät kuulu siihen luontevasti, kirjoita oma artikkeli siitä miten muistiotositerivit saavat omat riviselitteensä ja näkyvä help-teksti tarkentuu.
 - [x] 6.4.2026: tarkista voiko saman päivän olemassa olevia artikkeleita laajentaa; jos ei, kirjoita oma artikkeli siitä miten `bus-reports` jättää avauskorjaukset ja vanhat tilinpäätösrivit pois tuloslaskelman aktiviteetista mutta pitää ne edelleen näkyvissä muissa tulosteissa.

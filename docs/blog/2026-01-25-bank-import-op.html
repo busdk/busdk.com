@@ -58,13 +58,13 @@
             <ul class="tldr-list">
               <li><code>bus-bank import</code> muuntaa pankin raakaviennin BusDK:n omaan sarakerakenteeseen.</li>
               <li>OP saa ensimmäisen valmiin esimerkkiaineiston ja skeeman.</li>
-              <li><code>--output</code> ei kirjoita vain CSV:tä, vaan tuottaa samalla puhdistetun validointiskeeman jatkokäyttöön.</li>
+              <li><code>--output</code> kirjoittaa CSV:n rinnalle myös puhdistetun validointiskeeman jatkokäyttöön.</li>
               <li><code>bus-bank</code> on tässä vaiheessa vielä kokeellinen moduuli, mutta OP-aineiston tuonti toimii jo käytännössä.</li>
             </ul>
           </section>
 
           <section class="content-panel section-stack">
-            <p>Uusi komentopolku on suora: yksi raakavienti sisään, yksi kanoninen statement-CSV ulos. Samalla alkuperäisen CSV:n vieressä oleva skeema kertoo, miten sarakkeet nimetään, miten päivämäärät luetaan, miten desimaalit muunnetaan ja mitä pankin omia lisäkenttiä säilytetään mukana.</p>
+            <p>Uusi komentopolku on suora: yksi raakavienti sisään, yksi kanoninen statement-CSV ulos. Alkuperäisen CSV:n viereen syntyvä skeema kertoo samalla, miten sarakkeet nimetään, miten päivämäärät luetaan, miten desimaalit muunnetaan ja mitä pankin omia lisäkenttiä säilytetään mukana.</p>
             <pre><code>bus-bank import examples/2025-02-op.csv
 
 bus-bank import \
