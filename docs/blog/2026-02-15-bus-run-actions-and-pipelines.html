@@ -61,8 +61,8 @@
               <p class="intro">
                 <code>bus-run</code> tuo BusDK:hon oman komentopinnan projekteille, jotka haluavat
                 ajaa omia promptteja, skriptejä ja pipelineja ilman että ne sidotaan
-                <code>bus-dev</code>-työnkulkuun. Työkalun nykyinen idea on tarkoituksella selkeä ja
-                rajattu: aja sitä mitä projekti itse määrittelee hakemistoon <code>.bus/run</code>.
+                <code>bus-dev</code>-työnkulkuun. Työkalun tämänhetkinen tehtävä on yksinkertainen:
+                aja se mitä projekti itse määrittelee hakemistoon <code>.bus/run</code>.
               </p>
             </div>
           </article>
@@ -73,42 +73,20 @@
             <ul class="tldr-list">
               <li><code>bus-run</code> tuo käyttäjän määrittelemät toiminnot, skriptit ja pipelinet yhden komennon alle.</li>
               <li>Projektikohtainen sisältö luetaan <code>.bus/run</code>-hakemistosta eikä sitä tarvitse kovakoodata erillisiin shell-kääreisiin.</li>
-              <li><code>bus run list</code> näyttää, mitä projektissa on tarjolla, ja komento voidaan ajaa suoraan nimellä.</li>
-              <li>Työkalu ei yritä tehdä kaikkea itse, vaan ajaa vain sen mitä projekti määrittelee.</li>
+              <li><code>bus run list</code> näyttää, mitä projektissa on tarjolla, ja <code>pipeline preview</code> näyttää missä järjestyksessä ajosarja laukeaa.</li>
+              <li>Työkalu ajaa projektin itse määrittelemää sisältöä eikä tuo siihen valmiita liiketoimintavaiheita.</li>
             </ul>
           </section>
 
           <section class="content-panel section-stack">
-            <p>
-              Muutoksen ydin on, että projektin oma automaatio tulee näkyväksi Bus-komentona.
-              Jos projektissa on pieni tarkistus, siihen ei enää tarvita erillistä muistettavaa
-              käynnistysskriptiä. Esimerkiksi tällainen `check` riittää:
-            </p>
-            <pre><code>.bus/run/check.sh
-#!/usr/bin/env sh
-printf 'script ok\n'
-
-bus-run list
-bus-run check</code></pre>
-            <pre><code>check	action script	.bus/run/check.sh
-script ok</code></pre>
-            <p>
-              Ensimmäinen komento kertoo, mitä projektissa on ajettavana. Toinen näyttää, että se
-              voidaan käynnistää suoraan nimellä. Tämä on pieni mutta käytännössä hyödyllinen muutos:
-              projektin oma automaatio muuttuu löydettäväksi, nimetyksi ja toistettavaksi sen
-              sijaan että se olisi vain joukko irrallisia tiedostoja.
-            </p>
-            <p>
-              Raja <code>bus-dev</code>:n ja <code>bus-run</code>:in välillä selkeytyi samalla.
-              <code>bus-dev</code> jäi kehitystyönkuluille kuten <code>plan</code>,
-              <code>work</code> ja <code>e2e</code>, kun taas <code>bus-run</code> keskittyy
-              projektin omaan suoritettavaan sisältöön: promptteihin, pipelineihin ja skripteihin.
-              Ero on tärkeä, koska kaikki ajettava ei ole kehitystyökalua eikä kaiken tarvitse
-              kulkea saman workflow-sopimuksen läpi. Komentopinta on tässä vaiheessa tarkoituksella
-              kapea: sillä ei ole omia sisäänrakennettuja liiketoimintavaiheita, vaan sen arvo tulee
-              siitä mitä projekti itse määrittelee. Nykyinen sopimus löytyy
-              <a href="https://docs.busdk.com/modules/bus-run"><code>bus-run</code>-dokumentaatiosta</a>.
-            </p>
+            <p>Projektin oma automaatio tulee näkyväksi Bus-komentona vasta silloin, kun sen voi myös listata ja esikatsella. Pieni työtila näyttää tältä:</p>
+            <pre><code>$ bus-run -C bus-run-demo list</code></pre>
+            <pre><code>check	action script	.bus/run/check.sh	
+daily-check	pipeline	.bus/run/daily-check.yml	check</code></pre>
+            <p>Ensimmäinen rivi kertoo suoraan, että projektissa on yksi ajettava skripti. Toinen kertoo, että projektissa on myös nimetty ajosarja, joka laajenee samaan <code>check</code>-vaiheeseen. Esikatselu näyttää lopullisen askeljärjestyksen ilman ajoa:</p>
+            <pre><code>$ bus-run -C bus-run-demo pipeline preview daily-check</code></pre>
+            <pre><code>check</code></pre>
+            <p>Näin projektin omat promptit, skriptit ja ajosarjat muuttuvat löydettäväksi ja toistettavaksi komentopinnaksi. <code>bus-run</code> ei sido niitä valmiiseen kehittäjätyönkulkuun, vaan ajaa juuri sen mitä projekti määrittelee hakemistoon <code>.bus/run</code>. Nykyinen sopimus löytyy <a href="https://docs.busdk.com/modules/bus-run"><code>bus-run</code>-dokumentaatiosta</a>.</p>
           </section>
 
           <section class="cta-panel section-stack">

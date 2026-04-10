@@ -221,53 +221,73 @@ Scoped guidance for the `busdk.com` repository.
     and create a separate article only when the subject is clearly independent
     enough to deserve its own page.
 45. When a post introduces a new tool or module, use the module README,
-    public docs, visible source surface, and tests as research material so the
-    post explains what the tool actually does, how it is used, and what kind of
-    output or behavior the reader should expect.
-45. Tool-introduction posts must say plainly when the tool is experimental,
+    public docs, help text, visible source surface, tests, and any safely
+    runnable command surface as research material so the post explains what the
+    tool actually does, how it is used, and what kind of output or behavior the
+    reader should expect.
+46. When a command can safely create visible workspace state under
+    `busdk.com/tmp/`, prefer running it there and quoting the real resulting
+    output or files instead of relying only on README wording.
+47. Tool-introduction posts must say plainly when the tool is experimental,
     unfinished, or not yet meant for production use. Do not present an early
     or exploratory tool as mature just because it ships in a package.
-46. Honest product communication matters more than launch hype. Prefer
+48. Honest product communication matters more than launch hype. Prefer
     accurate descriptions such as experimental, early, narrow, or still
     evolving whenever the docs, README, tests, or observed behavior support
     that characterization.
-47. When a new tool surface is intentionally narrow, say that plainly and then
+49. When a new tool surface is intentionally narrow, say that plainly and then
     explain the narrow scope with one concrete example. Do not describe a thin
     first release as if it were already a broad platform.
-48. Avoid overstating development status with words like "active" unless the
+50. Avoid overstating development status with words like "active" unless the
     pace itself is the verified point. Prefer neutral wording such as "under
     development" when the tool is unfinished but current momentum is not the
     reader-relevant fact.
-49. Do not use empty contrast phrases such as "this is not X but Y" unless the
+51. Do not use empty contrast phrases such as "this is not X but Y" unless the
     contrast adds concrete meaning for the reader. If a sentence can be removed
     without losing information, remove it.
-50. When a tool is unfinished, describe that in product terms rather than
+52. When a tool is unfinished, describe that in product terms rather than
     backlog or process terms. Do not write that some capability is "later
     work" or similar. Instead explain what the tool already does usefully
     today, what broader purpose the module exists for, and which part of that
     broader purpose is not yet ready for normal use.
-51. When telling the reader that a capability is still missing or incomplete,
+53. When telling the reader that a capability is still missing or incomplete,
     prefer suitability language over internal planning language. Help the
     reader decide whether the current tool is already useful for assertions,
     inspection, packaging, or another narrow task, instead of describing the
     missing part as an implementation to-do.
-52. TL;DR lists are acceptable when a list is the clearest way to present the
+54. TL;DR lists are acceptable when a list is the clearest way to present the
     condensed facts. Do not flatten a good list into prose only to avoid an
     "AI-written" feel; judge the structure by clarity, not by whether it looks
     like a list.
-53. During the final editorial pass, scan explicitly for repeated sentence
+55. During the final editorial pass, scan explicitly for repeated sentence
     starters and cadence patterns across the feed. In particular, avoid
     overusing formulas such as "Tämä tekee ...", "Tämä auttaa ...",
-    "Tämä on tärkeä ...", "Samalla ...", "Jos haluat ...", "Ensimmäinen ..."
-    in body prose, "Yksi ..." as paragraph openers, and "Käytännössä ..."
-    as a default benefit-intro phrase.
-54. These patterns are not forbidden absolutely, but they must not become the
-    default rhythm of the blog. When they repeat across nearby articles, rewrite
-    the sentence into a more direct statement of effect, capability, meaning,
-    or next step.
-55. Prefer varying how docs links are introduced. Do not end many articles with
+    "Tämä on tärkeä ...", "Samalla ...", "Jos haluat ...",
+    "Ensimmäinen ...", "Yksi ...", and "Käytännössä ..." when they function
+    only as reusable rhythm instead of carrying new meaning.
+56. These patterns are not forbidden absolutely, but they must not become the
+    default rhythm of the blog. When they repeat across nearby articles,
+    rewrite the sentence into a more direct statement of effect, capability,
+    meaning, or next step.
+57. Prefer varying how docs links are introduced. Do not end many articles with
     the same "Jos haluat ..." formula when a simpler direct sentence such as
     "Nykyinen komentopinta löytyy ..." or an inline semantic link is clearer.
+58. Use an explicit blog-iteration workflow for every substantial blog pass:
+    1. update `busdk.com/PLAN.md` first with the current pass and any newly found article ideas
+    2. inspect the relevant day or tool from Git history before making claims
+    3. read the related README, public docs, help text, visible source surface, tests, and safe runnable examples so the article describes the tool honestly
+    4. before creating a new same-day article, check whether the content belongs in an existing same-day article and expand that first when it fits naturally
+    5. update the article body and then the blog index card in the same pass
+    6. do a separate editorial reread for repetition, meta language, vague claims, and stale same-day-news tense
+    7. if the review uncovers more promising topics or more writing fixes than can be completed immediately, add them back to `busdk.com/PLAN.md` as open items instead of leaving them implicit
+59. When re-iterating existing articles, do not rely only on prior blog text.
+    Re-open the underlying tool surface when needed so the next revision can
+    say something more concrete, more honest, or more useful than the previous
+    draft.
+60. When an unfinished tool is already useful in one narrow slice, describe
+    that slice positively first, then state the missing broader scope in calm
+    product language. Avoid framing that leads with absence, backlog thinking,
+    or a negative disclaimer when the present tool already has a real use.
 
 ## Commit Workflow (When Asked To Commit)
 

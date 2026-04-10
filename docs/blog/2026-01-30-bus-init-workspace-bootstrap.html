@@ -42,7 +42,7 @@
               <p class="eyebrow">BusDK Update</p>
               <h1>Työtilan alustus saa oman <code>bus-init</code>-komennon</h1>
               <p class="intro">BusDK saa 30.1.2026 ensimmäisen oman alustuskomentonsa. <code>bus init</code> kokoaa työtilan perustamisen yhden komennon alle sen sijaan, että käyttäjän pitäisi ajaa moduulien init-vaiheet käsin oikeassa järjestyksessä.</p>
-              <p class="intro">Samalla aloitus muuttuu turvallisemmaksi: komento ei vain kirjoita tiedostoja, vaan tarkistaa että odotettu rakenne on oikeasti syntynyt.</p>
+              <p class="intro">Komento myös tarkistaa, että odotettu työtilarakenne syntyy oikeasti eikä alustus jää puolitiehen.</p>
               <div class="hero-meta">
                 <span class="meta-chip">30.1.2026</span>
                 <span class="meta-chip">bus-init</span>
@@ -64,9 +64,9 @@
 
           <section class="content-panel section-stack">
             <p>Uusi pinta näyttää jo ensimmäisessä versiossaan tältä:</p>
-            <pre><code>bus init --year 2025 --layout fi --currency EUR
-bus-init --dry-run --year 2025 --layout fi --currency EUR</code></pre>
-            <p>Oleellinen muutos on järjestys ja vastuunjako. <code>bus-init</code> ei yritä omistaa kaikkia työtilan tiedostomuotoja itse, vaan kutsuu oikeita omistajamoduuleja oikeassa järjestyksessä: tilikartta, päiväkirja, laskut, ALV, liitteet, pankkiaineisto ja raportit perustetaan kukin oman moduulinsa kautta. Näin myöhempi kehitys voi muuttaa yksittäistä aluetta rikkomatta koko alustuspolkua.</p>
+            <pre><code>$ bus init --year 2025 --layout fi --currency EUR
+$ bus-init --dry-run --year 2025 --layout fi --currency EUR</code></pre>
+            <p>Oleellinen muutos on järjestys ja vastuunjako. <code>bus-init</code> koordinoi työtilan perustamisen niin, että tilikartta, päiväkirja, laskut, ALV, liitteet, pankkiaineisto ja raportit syntyvät kukin oman moduulinsa kautta oikeassa järjestyksessä.</p>
             <pre><code>bus accounts init --layout fi
 bus journal init --layout fi --year 2025 --currency EUR
 bus invoices init --layout fi --currency EUR
@@ -74,7 +74,7 @@ bus vat init --layout fi --year 2025
 bus attachments init --layout fi
 bus bank init --layout fi --year 2025
 bus reports init --layout fi</code></pre>
-            <p>Muutos näkyy myös lopputuloksessa. Alustuksen jälkeen työtilasta löytyy jo heti tunnistettava runko: <code>datapackage.json</code>, tilit, päiväkirja, laskut, ALV, pankki, liitteet ja raportit. Se tekee BusDK:n käyttöönotosta paljon helpommin toistettavan kuin käsin kirjoitettu komentolista. Nykyinen moduulisivu löytyy <a href="https://docs.busdk.com/modules/bus-init">bus-initin dokumentaatiosta</a>.</p>
+            <p>Alustuksen jälkeen työtilasta löytyy heti tunnistettava runko: <code>datapackage.json</code>, tilit, päiväkirja, laskut, ALV, pankki, liitteet ja raportit. Käyttöönotto muuttuu näin toistettavaksi työtilan valmisteluksi yhden komennon kautta. Nykyinen moduulisivu löytyy <a href="https://docs.busdk.com/modules/bus-init">bus-initin dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>

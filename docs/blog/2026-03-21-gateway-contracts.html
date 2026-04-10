@@ -59,8 +59,8 @@
               <p class="eyebrow">BusDK Update</p>
               <h1>Gateway saa palvelu- ja käyttäjähallinnan komentopinnan</h1>
               <p class="intro">
-                21.3.2026 tekee paikallisen selainympäristön näkyväksi hallintakerrokseksi.
-                Workspaceen näkyvät palvelut ja käyttäjät tulevat samalla omiksi komennoikseen.
+                Gatewayn palveluluettelo, käyttäjät ja näkyvät työkalut saavat oman komentopinnan.
+                Selainympäristön hallinta ei jää enää piiloon vain web-käyttöliittymän taakse.
               </p>
               <div class="hero-meta">
                 <span class="meta-chip">21.3.2026</span>
@@ -80,25 +80,21 @@
             </ul>
           </section>
           <section class="content-panel section-stack">
-            <p>
-              Uusi komentopinta näkyy jo helpissä:
-            </p>
-            <pre><code>bus-gateway --help</code></pre>
+            <p>Uusi komentopinta näkyy jo helpissä:</p>
+            <pre><code>$ bus gateway --help</code></pre>
             <pre><code>Commands:
   serve
   service
   settings
   user</code></pre>
-            <p>
-              Palveluluettelo ja käyttäjät tulevat nyt näkyväksi osaksi päivittäistä käyttöä.
-              Workspace voi kertoa yhdellä katsauksella mitä selaintyökaluja se tarjoaa ja kenelle ne
-              näkyvät. Tämä jatkaa
-              <a href="https://docs.busdk.com/modules/bus-portal"><code>bus-portal</code></a>- ja
-              <a href="https://docs.busdk.com/modules/bus-inspection"><code>bus-inspection</code></a>-moduuleille:
-              niiden ympärille tulee yhteinen sisäänkäynti sen sijaan, että jokainen näkymä eläisi omana
-              irrallisena saarekkeenaan. Tarkemmat komennot löytyvät
-              <a href="https://docs.busdk.com/modules/bus-gateway"><code>bus-gateway</code>-dokumentaatiosta</a>.
-            </p>
+            <p>Tyhjässä työtilassa gateway osaa jo listata oletuspalvelut suoraan:</p>
+            <pre><code>$ bus gateway -C ./workspace service list</code></pre>
+            <pre><code>id	title	enabled	command	root_mode	root_flag	args
+bus-factory	Factory	true	bus-factory	root-flag	--root	
+bus-inspection	Inspection	true	bus-inspection	chdir		
+bus-ledger	Ledger	true	bus-ledger	chdir		
+bus-portal	Portal	true	bus-portal	chdir</code></pre>
+            <p>Samasta komentopinnasta voi lisätä käyttäjän, rajata hänelle näkyvät palvelut ja asettaa työtilan kirjautumissivun tekstin. Käytännössä gatewaysta tulee työtilan oma hallintakerros selainpalveluille: samat rivit kertovat mitä työkaluja työtila tarjoaa ja kenelle ne ovat näkyvissä. Tarkemmat komennot löytyvät <a href="https://docs.busdk.com/modules/bus-gateway"><code>bus-gateway</code>-dokumentaatiosta</a>.</p>
           </section>
         </div>
       </main>
