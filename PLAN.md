@@ -1,7 +1,7 @@
 # PLAN.md
 
-- [ ] 25.4.2026: kirjoita artikkeli `bus-auth`- ja `bus-api-provider-auth`-muutoksista, joissa passwordless-kirjautuminen, tokenin hakeminen ja paikallinen compose-pohjainen auth-palvelu tulevat näkyväksi Bus API -käyttöpoluksi.
-- [ ] 25.4.2026: kirjoita artikkeli AI Platformin uusista tilakomennoista, joissa `bus-vm`, `bus-containers` ja `bus-status` näyttävät VM-tilan, konttiajojen tilan ja koostetun palvelunäkymän komentoriviltä.
+- [x] 25.4.2026: kirjoita artikkeli `bus-auth`- ja `bus-api-provider-auth`-muutoksista, joissa salasanaton kirjautuminen, tokenin hakeminen ja paikallinen compose-pohjainen auth-palvelu tulevat näkyväksi Bus API -käyttöpoluksi.
+- [x] 25.4.2026: kirjoita artikkeli AI Platformin uusista tilakomennoista, joissa `bus-vm`, `bus-containers` ja `bus-status` näyttävät VM-tilan, konttiajojen tilan ja koostetun palvelunäkymän komentoriviltä.
 - [x] Iteroi koko blogifeed uuden suomenkielisen korjausohjeen mukaan: korjaa merkitystä hämärtävät kohdat, yleiskielen normivirheitä, sanajärjestystä, toistoa, epäluontevaa AI-proosaa ja liian geneeristä hiottua kieltä kaikista julkaistuista blogiartikkeleista sekä tarvittaessa blogi-indeksin korteista.
 - [x] Tallenna käyttäjän uusi suomenkielisten blogitekstien korjausohjeistus `busdk.com/AGENTS.md`:ään siltä osin kuin se tuo uutta ja hyödyllistä pysyvää sääntöä blogin kirjoittamiseen, editointiin ja viimeistelyyn.
 - [x] Auditoi blogifeed uudelleen työkalujen README:iden, julkisten docsien, näkyvän komentopinnan, testien ja git-historian avulla. Kirjaa tästä kierroksesta puuttuvat artikkelit ja kirjoitusasun parannukset tähän PLANiin, päivitä `busdk.com/AGENTS.md`:ään selkeä iterointimalli ja tee ainakin yksi ensimmäinen korjauskierros ilmeisimpiin teksteihin.
