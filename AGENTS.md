@@ -43,6 +43,10 @@ Scoped guidance for the `busdk.com` repository.
 6. When linking from `busdk.com/docs/` to documentation pages, always use canonical `https://docs.busdk.com/...` URLs.
 7. Do not link directly to private SDD pages from `busdk.com/docs/`; you may mention that private implementation design specifications exist.
 8. Within published `busdk.com/docs/` pages, keep same-site navigation links relative so they work in local file or local server development as well as on the public site. Do not use absolute `https://busdk.com/...` URLs for header/home links inside subtree pages when a correct relative link exists.
+9. When the current working directory is already `busdk.com`, run `git` directly instead of using `git -C busdk.com`; otherwise Git tries to enter a nonexistent nested `busdk.com/busdk.com` path.
+10. When using `rg` from this repository with a search pattern containing
+    backticks, pass each pattern through a single-quoted `-e` argument; do not
+    put backtick-containing alternatives inside a double-quoted shell command.
 
 ## Publication Boundary
 

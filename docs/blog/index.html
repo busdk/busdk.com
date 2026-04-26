@@ -93,6 +93,42 @@
             <h2>BusDK:n tärkeimmät muutokset</h2>
             <div class="timeline">
               <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Integraatiotyöntekijät saavat yhteisen runtime-kirjaston</h3>
+                <p><code>bus-integration</code> kokoaa Events API -worker-loopin, publisher-adapterin ja request/reply-korrelaation <code>bus-integration-*</code>-moduuleille.</p>
+                <a href="2026-04-26-bus-integration-runtime.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>LLM-proxy siirtyy omaksi Bus API -provideriksi</h3>
+                <p><code>bus-api-provider-llm</code> proxyttää OpenAI-yhteensopivat <code>/v1/*</code>-pyynnöt, tarkistaa <code>llm:proxy</code>-tokenit ja kirjaa usage-tapahtumat.</p>
+                <a href="2026-04-26-llm-provider-and-usage-capture.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>UpCloud-runner saa erillisen SSH-transportin</h3>
+                <p><code>bus-integration-ssh-runner</code> hoitaa avaimet, <code>known_hosts</code>-tarkistuksen, target-valinnan ja output-rajauksen UpCloudin container runner -polulle.</p>
+                <a href="2026-04-26-upcloud-ssh-runner.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>VM- ja container-API:t saavat omat providerinsa</h3>
+                <p><code>bus-api-provider-vm</code> ja <code>bus-api-provider-containers</code> pitävät REST-pinnan cloud-neutralina ja ohjaavat pilvikohtaisen työn event-workerille.</p>
+                <a href="2026-04-26-ai-platform-rest-providers.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Usage-events siirtyy omaksi Bus API -provideriksi</h3>
+                <p><code>bus-api-provider-usage</code> erottaa sisäisen usage-keräilyn omaksi JWT-suojatuksi provideriksi ja pitää sen poissa loppukäyttäjän CLI-pinnasta.</p>
+                <a href="2026-04-26-usage-provider-extraction.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Bus Events saa komentopinnan ja API-providerin</h3>
+                <p><code>bus events send</code> ja <code>bus events listen</code> avaavat tapahtumien lähetyksen, kuuntelun sekä broadcast- ja work-jakelun Bus API:n kautta.</p>
+                <a href="2026-04-26-events-api-and-cli.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
                 <time datetime="2026-04-25">25.4.2026</time>
                 <h3>AI Platformin tila tulee Bus-komentoihin</h3>
                 <p><code>bus vm</code>, <code>bus containers</code> ja <code>bus status</code> näyttävät runtime- ja container-tilat samalla AI Platform -tokenilla.</p>

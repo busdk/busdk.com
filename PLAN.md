@@ -1,5 +1,11 @@
 # PLAN.md
 
+- [x] 26.4.2026: kirjoita artikkeli `bus-integration`-runtime-kirjastosta, jossa yhteinen Events API -worker-loop, publisher-adapteri ja request/reply-korrelaatio erotetaan provider-, SSH-, container- ja pilvikohtaisista moduuleista.
+- [x] 26.4.2026: kirjoita artikkeli `bus-integration-ssh-runner`-eriytymisestä ja UpCloud-container-runnerin SSH-polusta, jossa geneerinen SSH-transportti, known_hosts-käsittely, output-rajaus ja opt-in real SSH/cloud e2e erotetaan Podman- ja UpCloud-kohtaisesta työstä.
+- [x] 26.4.2026: kirjoita artikkeli cloud-neutral AI Platform REST -providerien eriytymisestä, jossa `bus-api-provider-vm` ja `bus-api-provider-containers` omistavat VM/container HTTP-pinnat ja `bus-integration-upcloud` pitää UpCloud-kohtaisen työn event-worker-rajassa.
+- [x] 26.4.2026: kirjoita artikkeli `bus-api-provider-llm`-muutoksesta, jossa OpenAI-yhteensopiva `/v1/*`-proxy siirtyy omaksi Bus API -provideriksi, validoi Bus auth AI Platform -tokenit, striptaa client authin backendiltä ja kirjaa usage-tapahtumat.
+- [x] 26.4.2026: kirjoita artikkeli `bus-events`- ja `bus-api-provider-events`-muutoksista, joissa tapahtumien lähetys, kuuntelu, broadcast/work-delivery ja valittavat memory/Redis/PostgreSQL-taustat tulevat näkyväksi Events API -pinnaksi.
+- [x] 26.4.2026: kirjoita artikkeli `bus-api-provider-usage`-muutoksesta, jossa AI Platformin sisäinen usage-events-keräilypinta irrotetaan omaksi Bus API -provideriksi ja samalla selkeytetään cloud-neutral providerien sekä UpCloud-event-workerin rajaa.
 - [x] 25.4.2026: kirjoita artikkeli `bus-auth`- ja `bus-api-provider-auth`-muutoksista, joissa salasanaton kirjautuminen, tokenin hakeminen ja paikallinen compose-pohjainen auth-palvelu tulevat näkyväksi Bus API -käyttöpoluksi.
 - [x] 25.4.2026: kirjoita artikkeli AI Platformin uusista tilakomennoista, joissa `bus-vm`, `bus-containers` ja `bus-status` näyttävät VM-tilan, konttiajojen tilan ja koostetun palvelunäkymän komentoriviltä.
 - [x] Iteroi koko blogifeed uuden suomenkielisen korjausohjeen mukaan: korjaa merkitystä hämärtävät kohdat, yleiskielen normivirheitä, sanajärjestystä, toistoa, epäluontevaa AI-proosaa ja liian geneeristä hiottua kieltä kaikista julkaistuista blogiartikkeleista sekä tarvittaessa blogi-indeksin korteista.
