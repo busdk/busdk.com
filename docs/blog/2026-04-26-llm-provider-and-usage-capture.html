@@ -9,7 +9,7 @@
   --backend-url http://127.0.0.1:11434 \
   --usage-backend events \
   --events-url "$BUS_EVENTS_API_URL" \
-  --events-token "$BUS_EVENTS_TOKEN"</code></pre><p>OpenAI-yhteensopiva pyyntö kulkee saman <code>/v1</code>-muodon läpi kuin SDK-asiakkaat odottavat. Kun asiakas lähettää <code>POST /v1/chat/completions</code> -pyynnön mallilla <code>gpt-test</code>, proxyn vastaus säilyttää backendin OpenAI-tyylisen muodon:</p><pre><code>{
+  --api-token "$BUS_API_TOKEN"</code></pre><p>OpenAI-yhteensopiva pyyntö kulkee saman <code>/v1</code>-muodon läpi kuin SDK-asiakkaat odottavat. Kun asiakas lähettää <code>POST /v1/chat/completions</code> -pyynnön mallilla <code>gpt-test</code>, proxyn vastaus säilyttää backendin OpenAI-tyylisen muodon:</p><pre><code>{
   "id": "chatcmpl_e2e",
   "usage": {
     "prompt_tokens": 2,

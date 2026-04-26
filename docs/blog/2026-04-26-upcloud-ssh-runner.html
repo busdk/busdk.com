@@ -20,7 +20,7 @@ response, err := requester.Request(
 )</code></pre><p>SSH-runnerin omat virheet ovat deployment-asetuksiin sidottuja ja näkyvät ennen etäyhteyden yritystä. Puuttuva avainpolku palauttaa <code>SSH private key path is required</code>, tyhjä target palauttaa <code>SSH target has no addresses</code> ja käyttäjien puuttuminen palauttaa <code>SSH target has no users</code>. Pitkä stdout tai stderr katkaistaan määrityksen mukaiseen rajaan, ja tulosteeseen lisätään tunniste:</p><pre><code>[output truncated]</code></pre><p>UpCloudin worker-puolella provider voi käyttää jo olemassa olevaa runneria muodossa <code>UPCLOUD_CONTAINER_SSH_TARGET=user@host</code>, tai se voi luoda ja käynnistää konfiguroidun runnerin UpCloud API:n kautta. Bootstrap kulkee SSH-runnerille event-payloadina, ja varsinainen container-ajo palauttaa korreloituun response-eventiin stdoutin, stderrin ja exit-koodin.</p><pre><code>$ bus-integration-upcloud \
   --provider upcloud \
   --events-url "$BUS_EVENTS_API_URL" \
-  --events-token "$BUS_EVENTS_TOKEN" \
+  --api-token "$BUS_API_TOKEN" \
   --upcloud-token "$UPCLOUD_TOKEN" \
   --vm-name "$UPCLOUD_VM_NAME" \
   --container-runner-name "$UPCLOUD_CONTAINER_RUNNER_NAME"</code></pre><p>Hermettinen e2e tarkistaa runner-paketin ilman oikeaa SSH-kohdetta. Real SSH -ajo pysyy opt-in-polussa, jotta julkiset testit eivät tarvitse avaimia tai pilviresursseja:</p><pre><code>SKIP bus-integration-ssh-runner real ssh e2e: set BUS_SSH_RUNNER_REAL_E2E=1 with SSH target/key configuration to opt in

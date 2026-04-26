@@ -1,5 +1,12 @@
 # PLAN.md
 
+- [x] Jatka latest changes -aihehakua rootin staged/submodule-pinnien kautta: tarkista staged diffit, submodule-päivitysten commitit ja docs/sdd-pinnat, ja lisää mahdolliset vielä puuttuvat toteutetut blogiaiheet.
+- [x] 26.4.2026: kirjoita artikkeli Events API:n domain-scope ACL -muutoksesta, jossa suojatut `bus.vm.*`, `bus.containers.*`, `bus.usage.*` ja `bus.ssh.*` eventit eivät enää avaudu yleisillä `events:send`/`events:listen`-scopeilla ilman erillistä admin-asetusta.
+- [x] Laajenna 26.4.2026 auth-token-artikkelia niin, että sama user config rootiin tallennettu `auth/api-token` kattaa `bus events` -komentojen lisäksi myös `bus vm`, `bus containers` ja aggregate `bus status` -komennot.
+- [x] Täsmennä 26.4.2026 auth-token-artikkelia providerien ja integraatiotyöntekijöiden `--api-token`/`BUS_API_TOKEN` -nimeämisellä, joka korvaa `--events-token`/`BUS_EVENTS_TOKEN` -nimet Events API -yhteyksissä.
+- [x] Päivitä aiemmat 25.4.2026 auth/status-artikkelien token-esimerkit pois repository-local `.bus/auth/*` -poluista ja kohti user config rootia tai oletuksena löytyvää Bus API -tokenia.
+- [x] 26.4.2026: kirjoita artikkeli `bus-preferences`-muutoksesta, jossa oletuspolku siirtyy yhtenäiseen Bus config rootiin, `BUS_CONFIG_DIR` ohjaa oletusta ja vanha `busdk/preferences.json` migroidaan uuteen polkuun ilman repository-local token/config -polkuja.
+- [x] 26.4.2026: kirjoita artikkeli `bus-auth token --scope`- ja `bus-events --api-token` -muutoksesta, jossa normaali Bus API JWT tallentuu user config rootin `auth/api-token`-polkuun ja `bus events` löytää sen ilman repository-local `.bus` -tunnuksia.
 - [x] Jatka latest changes -aihehakua vielä kerran: käy läpi kaikki muuttuneet submoduulit, niiden PLAN/README/source-diffit ja nykyiset 25.-26.4.2026 blogitekstit, ja lisää puuttuvat toteutetut blogiaiheet.
 - [x] Täsmennä 26.4.2026 README-reference-artikkelia provider-moduuleilla, joilla ei ole standalone runtime HTTP endpointtejä ja jotka sanovat suoraan etteivät ne triggeröi Bus Eventsejä.
 - [x] Jatka latest changes -auditointia laajemmalla rajauksella: tarkista root-pinnit, docs-only-muutokset, submoduulien PLAN/README-diffit ja varmista ettei toteutettuja blogiaiheita jää provider-/integraatiomoduulien ulkopuolelle.

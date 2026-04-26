@@ -100,6 +100,24 @@
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Bus Events suojaa domain-eventit omilla scopeilla</h3>
+                <p>Suojatut VM-, container-, usage- ja SSH-eventit vaativat nyt domain-scopeja kuten <code>vm:write</code>, <code>container:run</code> ja <code>usage:read</code>.</p>
+                <a href="2026-04-26-events-domain-scopes.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Preferences siirtyy yhteiseen Bus config -juureen</h3>
+                <p><code>bus-preferences</code> käyttää nyt <code>~/.config/bus/preferences.json</code> -oletusta ja siirtää vanhan <code>busdk</code>-preferences-tiedoston uuteen polkuun.</p>
+                <a href="2026-04-26-bus-preferences-config-root.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
+                <h3>Bus auth -token löytyy nyt API-asiakkaille</h3>
+                <p><code>bus-auth token --scope</code> tallentaa normaalin Bus API JWT:n user configiin, josta Events-, VM-, container- ja status-komennot löytävät sen.</p>
+                <a href="2026-04-26-auth-token-feeds-events.html">Lue 26.4.2026 uutinen</a>
+              </article>
+              <article class="timeline-item">
+                <time datetime="2026-04-26">26.4.2026</time>
                 <h3>Providerit ja integraatiot saavat tarkemmat rajapintaviitteet</h3>
                 <p><code>bus-api-provider-*</code>-READMEt listaavat endpointit ja event-triggerit, ja <code>bus-integration-*</code>-READMEt näyttävät request/response-eventit.</p>
                 <a href="2026-04-26-provider-event-reference-docs.html">Lue 26.4.2026 uutinen</a>
