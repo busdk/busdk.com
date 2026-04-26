@@ -1,11 +1,24 @@
 # PLAN.md
 
+- [x] Jatka latest changes -aihehakua vielä kerran: käy läpi kaikki muuttuneet submoduulit, niiden PLAN/README/source-diffit ja nykyiset 25.-26.4.2026 blogitekstit, ja lisää puuttuvat toteutetut blogiaiheet.
+- [x] Täsmennä 26.4.2026 README-reference-artikkelia provider-moduuleilla, joilla ei ole standalone runtime HTTP endpointtejä ja jotka sanovat suoraan etteivät ne triggeröi Bus Eventsejä.
+- [x] Jatka latest changes -auditointia laajemmalla rajauksella: tarkista root-pinnit, docs-only-muutokset, submoduulien PLAN/README-diffit ja varmista ettei toteutettuja blogiaiheita jää provider-/integraatiomoduulien ulkopuolelle.
+- [x] Laajenna 26.4.2026 LLM-provider-artikkelia `--usage-backend events` -polulla, jossa LLM usage-kirjaukset kulkevat `bus-integration-usage`-workerille Bus Events -request/replynä.
+- [x] Laajenna 26.4.2026 REST-provider-artikkelia container-runnerin usage-kirjauksella, jossa onnistunut container run voi kirjata `container.run`-usage-tapahtuman Events-pohjaiseen usage-storeen.
+- [x] Laajenna 26.4.2026 usage integration worker -artikkelia providerien Events-pohjaisella usage-store-roolilla ja `event_id`-idempotenssin yhteydellä PostgreSQL-usage-storeen.
+- [x] 26.4.2026: kirjoita artikkeli provider- ja integraatiomoduulien README-reference-standardista, jossa `bus-api-provider-*` dokumentoi jokaisen endpointin ja `bus-integration-*` jokaisen kuunnellun/lähetetyn eventin.
+- [x] Jatka latest changes -auditointia nykyisestä työpuusta: tarkista vielä muuttuneet Bus API-, provider- ja integraatiomoduulit sekä lisää blogiin kaikki puuttuvat toteutetut käyttäjälle näkyvät aiheet.
+- [x] Laajenna 25.4.2026 help-artikkelia `bus-auth`- ja `bus-api-provider-auth`-helpien yhtenäistämisellä, koska sama toteutettu docs/help-muutos koskee myös auth-moduuleja.
+- [x] 26.4.2026: kirjoita artikkeli `bus-integration-usage`-työntekijästä, jossa usage record/list/delete siirtyy Events API -request/reply-malliin, idempotentti `event_id` suojaa retryjä ja usage-tietokannan tunnukset jäävät erilliseen integraatioprosessiin.
+- [x] Laajenna 25.4.2026 auth-artikkelia Bus API:n built-in auth-provider -mountin polkunormalisoinnilla ja vakaalla `auth_provider_unavailable`-konfiguraatiovastauksella.
 - [x] 26.4.2026: kirjoita artikkeli `bus-integration`-runtime-kirjastosta, jossa yhteinen Events API -worker-loop, publisher-adapteri ja request/reply-korrelaatio erotetaan provider-, SSH-, container- ja pilvikohtaisista moduuleista.
 - [x] 26.4.2026: kirjoita artikkeli `bus-integration-ssh-runner`-eriytymisestä ja UpCloud-container-runnerin SSH-polusta, jossa geneerinen SSH-transportti, known_hosts-käsittely, output-rajaus ja opt-in real SSH/cloud e2e erotetaan Podman- ja UpCloud-kohtaisesta työstä.
 - [x] 26.4.2026: kirjoita artikkeli cloud-neutral AI Platform REST -providerien eriytymisestä, jossa `bus-api-provider-vm` ja `bus-api-provider-containers` omistavat VM/container HTTP-pinnat ja `bus-integration-upcloud` pitää UpCloud-kohtaisen työn event-worker-rajassa.
 - [x] 26.4.2026: kirjoita artikkeli `bus-api-provider-llm`-muutoksesta, jossa OpenAI-yhteensopiva `/v1/*`-proxy siirtyy omaksi Bus API -provideriksi, validoi Bus auth AI Platform -tokenit, striptaa client authin backendiltä ja kirjaa usage-tapahtumat.
 - [x] 26.4.2026: kirjoita artikkeli `bus-events`- ja `bus-api-provider-events`-muutoksista, joissa tapahtumien lähetys, kuuntelu, broadcast/work-delivery ja valittavat memory/Redis/PostgreSQL-taustat tulevat näkyväksi Events API -pinnaksi.
 - [x] 26.4.2026: kirjoita artikkeli `bus-api-provider-usage`-muutoksesta, jossa AI Platformin sisäinen usage-events-keräilypinta irrotetaan omaksi Bus API -provideriksi ja samalla selkeytetään cloud-neutral providerien sekä UpCloud-event-workerin rajaa.
+- [x] 25.4.2026: kirjoita artikkeli `bus-api`-, `bus-api-provider-books`-, `bus-api-provider-data`- ja `bus-api-provider-session`-helpien yhtenäistämisestä Git-tyylisiin osioihin ja dokumentaatiolinkkeihin.
+- [x] Laajenna 25.4.2026 auth-artikkelia kehityskäyttöön tarkoitetulla console OTP -senderillä, jotta toteutettu MailHogin rinnakkainen paikallinen OTP-polku näkyy blogissa.
 - [x] 25.4.2026: kirjoita artikkeli `bus-auth`- ja `bus-api-provider-auth`-muutoksista, joissa salasanaton kirjautuminen, tokenin hakeminen ja paikallinen compose-pohjainen auth-palvelu tulevat näkyväksi Bus API -käyttöpoluksi.
 - [x] 25.4.2026: kirjoita artikkeli AI Platformin uusista tilakomennoista, joissa `bus-vm`, `bus-containers` ja `bus-status` näyttävät VM-tilan, konttiajojen tilan ja koostetun palvelunäkymän komentoriviltä.
 - [x] Iteroi koko blogifeed uuden suomenkielisen korjausohjeen mukaan: korjaa merkitystä hämärtävät kohdat, yleiskielen normivirheitä, sanajärjestystä, toistoa, epäluontevaa AI-proosaa ja liian geneeristä hiottua kieltä kaikista julkaistuista blogiartikkeleista sekä tarvittaessa blogi-indeksin korteista.
