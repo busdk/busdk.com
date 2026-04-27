@@ -1,8 +1,8 @@
 # PLAN.md
 
-- [ ] 27.4.2026: kirjoita artikkeli `bus-work`-moduulista, jossa durable work streamit kulkevat Bus Eventsin yli, työ voidaan lähettää yhdelle tai usealle vastaanottajalle, `show`/`watch`/`wait` käyttävät replay/follow-mallia ja työ ei ole sidottu Codexiin, kontteihin tai yhteen worker-tyyppiin.
-- [ ] 27.4.2026: kirjoita artikkeli `bus-operator`-moduulista, jossa waitlist-hallinta ja sisäisten service-tokenien bootstrap erotetaan `bus auth` -loppukäyttäjävirrasta omaksi operaattorikomentopinnaksi.
-- [ ] 27.4.2026: kirjoita artikkeli Events API:n replay-ohjauksesta, jossa `bus events listen --replay --no-follow` tekee tapahtumahistoriasta luettavan snapshotin ja work-delivery-ryhmät voivat poimia aiemmin julkaistua työtä ilman jatkuvaa live-yhteyttä.
+- [x] 27.4.2026: kirjoita artikkeli `bus-work`-moduulista, jossa durable work streamit kulkevat Bus Eventsin yli, työ voidaan lähettää yhdelle tai usealle vastaanottajalle, `show`/`watch`/`wait` käyttävät replay/follow-mallia ja työ ei ole sidottu Codexiin, kontteihin tai yhteen worker-tyyppiin.
+- [x] 27.4.2026: kirjoita artikkeli `bus-operator`-moduulista, jossa waitlist-hallinta ja sisäisten service-tokenien bootstrap erotetaan `bus auth` -loppukäyttäjävirrasta omaksi operaattorikomentopinnaksi.
+- [x] 27.4.2026: kirjoita artikkeli Events API:n replay-ohjauksesta, jossa `bus events listen --replay --no-follow` tekee tapahtumahistoriasta luettavan snapshotin ja work-delivery-ryhmät voivat poimia aiemmin julkaistua työtä ilman jatkuvaa live-yhteyttä.
 - [x] Jatka latest changes -aihehakua rootin staged/submodule-pinnien kautta: tarkista staged diffit, submodule-päivitysten commitit ja docs/sdd-pinnat, ja lisää mahdolliset vielä puuttuvat toteutetut blogiaiheet.
 - [x] 26.4.2026: kirjoita artikkeli Events API:n domain-scope ACL -muutoksesta, jossa suojatut `bus.vm.*`, `bus.containers.*`, `bus.usage.*` ja `bus.ssh.*` eventit eivät enää avaudu yleisillä `events:send`/`events:listen`-scopeilla ilman erillistä admin-asetusta.
 - [x] Laajenna 26.4.2026 auth-token-artikkelia niin, että sama user config rootiin tallennettu `auth/api-token` kattaa `bus events` -komentojen lisäksi myös `bus vm`, `bus containers` ja aggregate `bus status` -komennot.
