@@ -113,7 +113,7 @@
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
                 <h3>Integraatiotyöntekijät saavat yhteisen runtime-kirjaston</h3>
-                <p><code>bus-integration</code> kokoaa Events API -worker-loopin, publisher-adapterin ja request/reply-korrelaation <code>bus-integration-*</code>-moduuleille.</p>
+                <p><code>bus-integration</code> kokoaa Events API -worker-loopin, request/reply-korrelaation sekä retry- ja readiness-mekaniikan <code>bus-integration-*</code>-moduuleille.</p>
                 <a href="2026-04-26-bus-integration-runtime.html">Lue 26.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
@@ -143,25 +143,25 @@
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
                 <h3>Usage-kirjaukset saavat oman integraatiotyöntekijän</h3>
-                <p><code>bus-integration-usage</code> käsittelee record-, list- ja delete-pyynnöt Bus Eventsin kautta ja pitää usage-tietokannan tunnukset erillisessä työntekijässä.</p>
+                <p><code>bus-integration-usage</code> käsittelee record-, list- ja delete-pyynnöt Bus Eventsin kautta, omistaa usage-tallennuksen ja retryttää listener-yhteyttä jaetuilla asetuksilla.</p>
                 <a href="2026-04-26-usage-integration-worker.html">Lue 26.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
                 <h3>LLM-proxy siirtyy omaksi Bus API -provideriksi</h3>
-                <p><code>bus-api-provider-llm</code> proxyttää OpenAI-yhteensopivat <code>/v1/*</code>-pyynnöt, tarkistaa <code>llm:proxy</code>-tokenit ja voi kirjata usage-tapahtumat Events-polulla.</p>
+                <p><code>bus-api-provider-llm</code> proxyttää OpenAI-yhteensopivat <code>/v1/*</code>-pyynnöt, odottaa tarvittaessa backendin valmiutta ja kirjaa usage-tapahtumat Events-polulla.</p>
                 <a href="2026-04-26-llm-provider-and-usage-capture.html">Lue 26.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
                 <h3>UpCloud-runner saa erillisen SSH-transportin</h3>
-                <p><code>bus-integration-ssh-runner</code> hoitaa avaimet, <code>known_hosts</code>-tarkistuksen, target-valinnan ja output-rajauksen UpCloudin container runner -polulle.</p>
+                <p><code>bus-integration-ssh-runner</code> hoitaa SSH-ajon, ja UpCloud-worker odottaa runnerin provider-tilaa sekä SSH TCP -valmiutta ennen skriptien ajoa.</p>
                 <a href="2026-04-26-upcloud-ssh-runner.html">Lue 26.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
                 <time datetime="2026-04-26">26.4.2026</time>
                 <h3>VM- ja container-API:t saavat omat providerinsa</h3>
-                <p><code>bus-api-provider-vm</code> ja <code>bus-api-provider-containers</code> pitävät REST-pinnan cloud-neutralina, ohjaavat pilvityön event-workerille ja kirjaavat container-run-usagen.</p>
+                <p><code>bus-api-provider-vm</code> ja <code>bus-api-provider-containers</code> pitävät REST-pinnan cloud-neutralina, raportoivat listener-readinessin ja rajaavat container-vastaukset callerin accountiin.</p>
                 <a href="2026-04-26-ai-platform-rest-providers.html">Lue 26.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">
@@ -191,7 +191,7 @@
               <article class="timeline-item">
                 <time datetime="2026-04-25">25.4.2026</time>
                 <h3>Bus API saa salasanattoman kirjautumisen</h3>
-                <p><code>bus auth</code> tuo rekisteröinnin, OTP-vahvistuksen, hyväksyntätilan ja AI Platform -tokenin samaan komentopintaan.</p>
+                <p><code>bus auth</code> tuo rekisteröinnin, OTP-vahvistuksen, hyväksyntätilan, AI Platform -tokenin ja auth-providerin tuotantokäyttöön tarkoitetut API-reitit.</p>
                 <a href="2026-04-25-auth-provider-and-local-login.html">Lue 25.4.2026 uutinen</a>
               </article>
               <article class="timeline-item">

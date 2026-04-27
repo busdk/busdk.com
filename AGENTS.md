@@ -52,6 +52,10 @@ Scoped guidance for the `busdk.com` repository.
 10. When using `rg` from this repository with a search pattern containing
     backticks, pass each pattern through a single-quoted `-e` argument; do not
     put backtick-containing alternatives inside a double-quoted shell command.
+11. Before passing optional repository paths such as `package.json`, `scripts`,
+    or other tool-specific files to `rg`, `sed`, or `cat`, verify they exist
+    in `busdk.com`; this static site repo may not contain common package or
+    script directories.
 
 ## Publication Boundary
 
