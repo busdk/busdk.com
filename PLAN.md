@@ -1,5 +1,6 @@
 # PLAN.md
 
+- [ ] 28.4.2026: auditoi superprojektin ja submoduulien uusimmat BusDK-muutokset blogiaiheiksi tai aiempien aiheiden päivityksiksi. Hyväksy vain Busissa toteutetut ja paikallisesti testattavat pinnat, varmista jokainen aihe git-diffillä, README/helpillä ja soveltuvilla moduleiden testeillä, ja sulje tämä kohta vasta kun blogiin ei jää avoimia PLAN-kohtia.
 - [x] 27.4.2026: kirjoita artikkeli `bus-work`-moduulista, jossa durable work streamit kulkevat Bus Eventsin yli, työ voidaan lähettää yhdelle tai usealle vastaanottajalle, `show`/`watch`/`wait` käyttävät replay/follow-mallia ja työ ei ole sidottu Codexiin, kontteihin tai yhteen worker-tyyppiin.
 - [x] 27.4.2026: kirjoita artikkeli `bus-operator`-moduulista, jossa waitlist-hallinta ja sisäisten service-tokenien bootstrap erotetaan `bus auth` -loppukäyttäjävirrasta omaksi operaattorikomentopinnaksi.
 - [x] 27.4.2026: kirjoita artikkeli Events API:n replay-ohjauksesta, jossa `bus events listen --replay --no-follow` tekee tapahtumahistoriasta luettavan snapshotin ja work-delivery-ryhmät voivat poimia aiemmin julkaistua työtä ilman jatkuvaa live-yhteyttä.
