@@ -32,6 +32,11 @@ Scoped guidance for the `busdk.com` repository.
    uncovers a clearly blog-worthy future topic, add it immediately to
    `busdk.com/PLAN.md` as an unchecked item with the most natural article date
    for that topic. Do not leave promising article ideas only in conversation.
+8. Blog topic discovery should add only BusDK product surfaces that are actually
+   implemented in Bus and can be verified through local module docs, help text,
+   tests, or safe command execution. Do not add external regulatory, market, or
+   background-only article ideas unless the user explicitly asks for that kind
+   of topic.
 
 ## Documentation Rules
 
