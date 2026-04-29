@@ -45,14 +45,16 @@ Scoped guidance for the `busdk.com` repository.
 3. Use lists/tables only when they materially improve clarity.
 4. When mentioning the `bus` GitHub repository, inline-link to `https://github.com/busdk/bus`.
 5. Product pages on `busdk.com` may include commercial/landing messaging and product-audience framing when it improves clarity for buyers/evaluators.
-6. When linking from `busdk.com/docs/` to documentation pages, always use canonical `https://docs.busdk.com/...` URLs.
-7. Do not link directly to private SDD pages from `busdk.com/docs/`; you may mention that private implementation design specifications exist.
-8. Within published `busdk.com/docs/` pages, keep same-site navigation links relative so they work in local file or local server development as well as on the public site. Do not use absolute `https://busdk.com/...` URLs for header/home links inside subtree pages when a correct relative link exists.
-9. When the current working directory is already `busdk.com`, run `git` directly instead of using `git -C busdk.com`; otherwise Git tries to enter a nonexistent nested `busdk.com/busdk.com` path.
-10. When using `rg` from this repository with a search pattern containing
+6. Current product positioning: present BusDK as a self-hostable platform for developing, hosting, billing, and operating AI products, with accounting and compliance as an important supported product package rather than the whole product identity.
+7. When discussing deployment, distinguish managed Finnish cloud operation, dedicated/customer-controlled environments, and customer self-hosting. Contractual data-processing terms are a commercial offer and must not be described as a code feature.
+8. When linking from `busdk.com/docs/` to documentation pages, always use canonical `https://docs.busdk.com/...` URLs.
+9. Do not link directly to private SDD pages from `busdk.com/docs/`; you may mention that private implementation design specifications exist.
+10. Within published `busdk.com/docs/` pages, keep same-site navigation links relative so they work in local file or local server development as well as on the public site. Do not use absolute `https://busdk.com/...` URLs for header/home links inside subtree pages when a correct relative link exists.
+11. When the current working directory is already `busdk.com`, run `git` directly instead of using `git -C busdk.com`; otherwise Git tries to enter a nonexistent nested `busdk.com/busdk.com` path.
+12. When using `rg` from this repository with a search pattern containing
     backticks, pass each pattern through a single-quoted `-e` argument; do not
     put backtick-containing alternatives inside a double-quoted shell command.
-11. Before passing optional repository paths such as `package.json`, `scripts`,
+13. Before passing optional repository paths such as `package.json`, `scripts`,
     or other tool-specific files to `rg`, `sed`, or `cat`, verify they exist
     in `busdk.com`; this static site repo may not contain common package or
     script directories.
