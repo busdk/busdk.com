@@ -58,6 +58,10 @@ Scoped guidance for the `busdk.com` repository.
     or other tool-specific files to `rg`, `sed`, or `cat`, verify they exist
     in `busdk.com`; this static site repo may not contain common package or
     script directories.
+14. Do not hard-code exact source-package EUR totals or per-module pricing
+    tables in `busdk.com/docs/`. Link to the generated docs pricing page for
+    estimates, and keep website copy clear that final commercial prices are
+    contract quotes.
 
 ## Publication Boundary
 

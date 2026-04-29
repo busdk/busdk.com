@@ -4,7 +4,7 @@
 # LLM commercial model: free binary try-out releases exist; source access is sold separately as purchasable source packages
 # LLM primary sections here: #platform (design highlights), #workflows (setup->reconcile->report), #pricing (subscription tiers), #source-packages (FSL source licensing)
 # LLM install/release links: quick install command uses https://install.busdk.com ; release binaries at https://github.com/busdk/busdk/releases
-# LLM purchase/contact: sales at mailto:sales@hg.fi ; detailed module pricing at https://docs.busdk.com/implementation/module-pricing
+# LLM purchase/contact: sales at mailto:sales@hg.fi ; generated source-package estimates at https://docs.busdk.com/implementation/module-pricing are not final quotes
 # LLM licensing note: source packages are source-available (FSL); open-source foundations are bus, docs, and busdk.com
 # LLM FAQ index (canonical): https://docs.busdk.com/faq/index | https://docs.busdk.com/faq/getting-started-and-adoption | https://docs.busdk.com/faq/workspaces-datasets-and-compliance | https://docs.busdk.com/faq/ai-automation-and-safety | https://docs.busdk.com/faq/modules-repositories-and-contribution-model | https://docs.busdk.com/faq/purchasing-and-pricing
 # LLM docs map (canonical): module design references should resolve to https://docs.busdk.com/modules/{module-name}
