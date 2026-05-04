@@ -1,5 +1,7 @@
 # PLAN.md
 
+- [x] 4.5.2026: publish a BusDK.com blog article for recipient-owned isolated dev-task worktrees: explain the read-only workspace dependency view, writable recipient task worktree, workspace-recipient configuration, and why this makes parallel local agent development safer.
+
 - [x] 29.4.2026: remove stale hard-coded source-package prices from `busdk.com/docs/`, keep the website pricing section contract/contact-led, and verify that no outdated EUR package totals remain on the landing page.
 - [x] 29.4.2026: refine the `busdk.com/docs/` landing page so BusDK is positioned as a self-hostable AI product platform that can run on Finnish cloud infrastructure, customer-owned infrastructure, or contract-managed deployments. Keep accounting as a supported product package rather than the whole product identity, and verify the static site after editing.
 - [x] 28.4.2026: review the current completed BusDK implementation for new implemented, locally testable blog topics. Focus first on newly present billing, Stripe, operator, auth/token, and provider modules; verify each candidate through README/help/tests or safe local commands; write or update only topics that are actually implemented in Bus; close this item only after blog checks pass and no open PLAN rows remain.
