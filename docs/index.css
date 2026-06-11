@@ -241,7 +241,9 @@ section {
 
 .hero,
 .proof,
+.products,
 .workflows,
+.product-page,
 .modules,
 .pricing,
 .final-cta,
@@ -254,6 +256,7 @@ section {
 }
 
 .proof,
+.products,
 .modules,
 .pricing,
 .final-cta {
@@ -465,10 +468,37 @@ h1 {
 }
 
 .workflow-grid,
+.product-grid,
 .modules-list {
   margin-top: 1.8rem;
   display: grid;
   gap: 1.1rem;
+}
+
+.product-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.product-card {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+  border: 0;
+  border-radius: var(--radius-md);
+  padding: 1.3rem;
+  min-height: 100%;
+}
+
+.product-card-primary {
+  box-shadow: var(--shadow);
+}
+
+.product-card h3 {
+  font-size: 1.08rem;
+}
+
+.product-card p {
+  margin: 0.88rem 0;
+  color: var(--text-muted);
+  line-height: 1.68;
 }
 
 .workflow-grid {
@@ -717,6 +747,43 @@ h1 {
   line-height: 1.68;
 }
 
+.product-page .section-inner {
+  max-width: 920px;
+}
+
+.product-page h1 {
+  max-width: 18ch;
+}
+
+.product-page .hero-copy {
+  max-width: 76ch;
+}
+
+.product-section {
+  margin-top: 2.4rem;
+}
+
+.product-section h2 {
+  font-size: clamp(1.32rem, 2.2vw, 1.72rem);
+}
+
+.product-section p,
+.product-section li {
+  color: var(--text-muted);
+  line-height: 1.74;
+}
+
+.product-section ul {
+  padding-left: 1.2rem;
+}
+
+.product-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
 .final-cta {
   text-align: center;
 }
@@ -756,6 +823,10 @@ h1 {
 
 @media (max-width: 1040px) {
   .proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
     grid-template-columns: 1fr;
   }
 
