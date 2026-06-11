@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Services Modules | BusDK</title>
+    <meta
+      name="description"
+      content="The implementation map behind Bus Services: services.yml, service lifecycle commands, provider surfaces, integration workers, and runtime hooks."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../">Overview</a>
+            <a href="../../#products">Products</a>
+            <a href="https://docs.busdk.com/products/services/">Docs</a>
+            <a href="../../blog/">Blog</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus Services</p>
+            <h1>Modules behind predictable service stacks.</h1>
+            <p class="hero-copy">
+              Bus Services is a product for local and project service orchestration. Runtime modules
+              can participate, but they are not marketed as separate service-stack products.
+            </p>
+            <div class="product-section">
+              <h2>Core product modules</h2>
+              <ul>
+                <li><code>bus-services</code> for service contract parsing, validation, planning, start, status, and stop.</li>
+                <li><code>bus-api-provider-services</code> for API-hosted service lifecycle access.</li>
+                <li><code>bus-integration-services</code> for worker-side service lifecycle integration.</li>
+                <li>OS, container, VM, network, and systemd modules when a resolved service type needs them.</li>
+              </ul>
+            </div>
+            <div class="product-section">
+              <h2>Evaluator path</h2>
+              <p>
+                Start with the product docs for <code>services.yml</code>, lifecycle commands,
+                public-safe planning, and runtime boundaries.
+              </p>
+              <p><a href="https://docs.busdk.com/products/services/">Open product docs</a></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

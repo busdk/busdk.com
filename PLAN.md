@@ -214,4 +214,4 @@
 - [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.
 # Current work
 
-- [ ] Refactor `busdk.com/docs/` and `docs.busdk.com` around the current BusDK product lines: Bus Agentic Development, Bus AI Platform, Bus Books, Bus Inspection, Bus GX/UI Library, Bus Top, and Bus Services. Update public website navigation/product pages and docs product overviews without removing the existing module reference.
+- [x] Refactor `busdk.com/docs/` and `docs.busdk.com` around the current BusDK product lines: Bus Agentic Development, Bus AI Platform, Bus Books, Bus Inspection, Bus GX/UI Library, Bus Top, and Bus Services. Update public website navigation/product pages and docs product overviews without removing the existing module reference.
