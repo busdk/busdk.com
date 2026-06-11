@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BusDK | Self-Hostable AI Product Platform</title>
+    <title>BusDK | Business software product lines</title>
     <meta
       name="description"
-      content="BusDK is a modular platform for building, hosting, billing, and operating AI products on Finnish cloud infrastructure or customer-owned systems."
+      content="BusDK is a family of self-hostable business software products for agentic development, AI infrastructure, auditable finance, inspections, Go-native UI, process monitoring, and service stacks."
     />
     <link rel="stylesheet" href="index.css" />
   </head>
@@ -14,16 +14,16 @@
     <div class="site-shell">
       <header class="site-header">
         <div class="site-header-inner">
-          <a class="brand" href="https://busdk.com" aria-label="BusDK home">
+          <a class="brand" href="./" aria-label="BusDK home">
             <img class="brand-logo" src="busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
           <nav class="site-nav" aria-label="Primary">
+            <a href="#products">Products</a>
             <a href="#platform">Platform</a>
             <a href="#deployment">Deployment</a>
-            <a href="#workflows">Use cases</a>
             <a href="#pricing">Pricing</a>
-            <a href="https://docs.busdk.com">Documentation</a>
+            <a href="https://docs.busdk.com">Docs</a>
             <a href="blog/">Blog</a>
             <button
               id="theme-toggle"
@@ -44,17 +44,16 @@
             <div class="hero-grid">
               <div class="hero-content">
                 <p class="eyebrow">Business Development Kit</p>
-                <h1>Build and operate AI products on a self-hostable platform.</h1>
+                <h1>Business software built as focused Bus products.</h1>
                 <p class="hero-copy">
-                  BusDK gives teams a modular control plane for AI products: deterministic CLI
-                  tooling, authenticated APIs, event-driven workers, portals, VM and container
-                  runtime surfaces, billing, usage capture, and auditable workspace datasets. Run it
-                  with us on Finnish cloud infrastructure, deploy it in your own environment, or use
-                  it under a contract that defines the data-processing boundary.
+                  BusDK is a family of self-hostable product lines, not one vague tool. Use it for
+                  semi-autonomous software work, AI service infrastructure, auditable financial
+                  workflows, inspection reports, Go-native UI components, local process monitoring,
+                  and predictable project service stacks.
                 </p>
                 <div class="hero-cta">
-                  <a class="button button-primary" href="https://docs.busdk.com">Start with docs</a>
-                  <a class="button button-secondary" href="https://github.com/busdk/busdk">View on GitHub</a>
+                  <a class="button button-primary" href="#products">Browse products</a>
+                  <a class="button button-secondary" href="https://docs.busdk.com/products/">Open product docs</a>
                 </div>
                 <div class="quick-install" aria-label="Quick install">
                   <h2>Quick install</h2>
@@ -72,68 +71,118 @@
           </div>
         </section>
 
+        <section class="products reveal" id="products">
+          <div class="section-inner">
+            <div class="section-title-wrap">
+              <p class="eyebrow">Product lines</p>
+              <h2>The public BusDK products</h2>
+              <p>
+                Each product page explains a concrete buyer or evaluator story. Module names stay
+                visible where they help technical users, but the product lines are organized around
+                use cases instead of repository boundaries.
+              </p>
+            </div>
+            <div class="product-grid">
+              <article class="product-card product-card-primary">
+                <p class="eyebrow">Strategic product</p>
+                <h3>Bus Agentic Development</h3>
+                <p>
+                  Semi-autonomous software development with supervisor agents, worker agents,
+                  durable tasks, repositories, terminals, notes, reviews, MCP, and local or
+                  SSH-accessible work capacity.
+                </p>
+                <a href="products/agents/">Open product page</a>
+              </article>
+              <article class="product-card product-card-primary">
+                <p class="eyebrow">Strategic product</p>
+                <h3>Bus AI Platform</h3>
+                <p>
+                  Self-hostable AI product infrastructure with OpenAI-compatible model access,
+                  inference runtime control, deployment, auth, usage, billing, VMs, containers, and
+                  service hooks.
+                </p>
+                <a href="products/ai-platform/">Open product page</a>
+              </article>
+              <article class="product-card product-card-primary">
+                <p class="eyebrow">Strategic product</p>
+                <h3>Bus Books</h3>
+                <p>
+                  Auditable financial workflows for humans and agentic AI over inspectable workspace
+                  data: books, invoices, evidence, reconciliation, validation, reports, formulas,
+                  PDFs, CLI, and API.
+                </p>
+                <a href="products/books/">Open product page</a>
+              </article>
+              <article class="product-card">
+                <h3>Bus Inspection</h3>
+                <p>
+                  Local inspection reports and action lists with sites, observations, photo
+                  evidence, customer acknowledgements, role-scoped access, and snapshot exports.
+                </p>
+                <a href="products/inspection/">Open product page</a>
+              </article>
+              <article class="product-card">
+                <h3>Bus GX/UI Library</h3>
+                <p>
+                  Go-native UI components with TSX-like authoring, compiled Go render roots,
+                  reusable component families, runtime bridges, and deterministic tests.
+                </p>
+                <a href="products/gx-ui/">Open product page</a>
+              </article>
+              <article class="product-card">
+                <h3>Bus Top</h3>
+                <p>
+                  Friendly local process monitoring with deterministic system facts,
+                  process-family grouping, snapshots, host diagnosis, and optional
+                  privacy-aware AI explanations.
+                </p>
+                <a href="products/top/">Open product page</a>
+              </article>
+              <article class="product-card">
+                <h3>Bus Services</h3>
+                <p>
+                  Predictable project service stacks using public-safe <code>services.yml</code>
+                  contracts to validate, plan, start, inspect, and stop process-level services.
+                </p>
+                <a href="products/services/">Open product page</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section class="proof reveal" id="platform" aria-label="Platform highlights">
           <div class="section-inner">
             <div class="section-title-wrap">
-              <p class="eyebrow">Platform</p>
-              <h2>What the current BusDK platform covers</h2>
+              <p class="eyebrow">Supporting platform</p>
+              <h2>The shared BusDK platform underneath</h2>
             </div>
             <div class="proof-grid">
               <article class="panel">
-                <h2>Self-hostable by design</h2>
+                <h2>Bus CLI and Busfiles</h2>
                 <p>
-                  Bus modules run as CLIs, API providers, portals, and workers that can be deployed
-                  in a customer environment or operated as a managed service.
+                  Deterministic command dispatch and <code>.bus</code> automation files give every
+                  product a scriptable interface.
                 </p>
               </article>
               <article class="panel">
-                <h2>Finnish cloud option</h2>
+                <h2>Workspaces</h2>
                 <p>
-                  Managed deployments can target Finnish cloud infrastructure while keeping the same
-                  module and API contracts available for other environments.
+                  Workspace initialization, configuration, preferences, secrets, and open datasets
+                  keep product data inspectable.
                 </p>
               </article>
               <article class="panel">
-                <h2>OpenAI-compatible APIs</h2>
+                <h2>API, events, and integrations</h2>
                 <p>
-                  The LLM provider exposes <code>/v1/*</code> model proxy routes with Bus
-                  authentication, backend isolation, runtime wake-up, usage capture, and billing
-                  checks.
+                  Provider-hosting APIs, event workers, replayable events, and integration runtimes
+                  connect product modules without turning every module into a public product.
                 </p>
               </article>
               <article class="panel">
-                <h2>VM and container runtime</h2>
+                <h2>Operator and portal hosts</h2>
                 <p>
-                  Cloud-neutral VM and container APIs coordinate with event workers, SSH runners, and
-                  provider-specific integrations such as UpCloud.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Events and durable work</h2>
-                <p>
-                  Bus Events and <code>bus work</code> provide request/reply, replay, fan-out, and
-                  worker delivery paths for agentic and service workflows.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Auth, billing, operator tooling</h2>
-                <p>
-                  Passwordless login, scoped JWTs, billing setup, Stripe integration, usage export,
-                  and operator commands support real product operation.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Portal and UI surfaces</h2>
-                <p>
-                  Portal modules, accounting UI, AI portal surfaces, terminal providers, and chat
-                  modules give browser-facing entry points around the same APIs.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Auditable business data</h2>
-                <p>
-                  Accounting, invoices, banking, reporting, validation, and filing remain available
-                  as structured business-data modules for AI products that need traceable operations.
+                  Operator commands and portal dispatchers host trusted admin, deployment, frontend,
+                  and module UI surfaces.
                 </p>
               </article>
             </div>
@@ -150,7 +199,7 @@
               <article class="workflow-card">
                 <h3>Managed Finnish cloud</h3>
                 <p>
-                  Heusala can operate BusDK-based AI products on Finnish cloud infrastructure, with
+                  Heusala can operate BusDK-based products on Finnish cloud infrastructure, with
                   service and data-processing terms agreed directly with the customer.
                 </p>
                 <a href="mailto:sales@hg.fi">Discuss managed deployment</a>
@@ -158,8 +207,8 @@
               <article class="workflow-card">
                 <h3>Customer self-hosted</h3>
                 <p>
-                  Teams that need direct infrastructure control can host the Bus modules, API
-                  providers, workers, portals, databases, and secrets in their own systems.
+                  Teams that need direct infrastructure control can host Bus modules, APIs, workers,
+                  portals, databases, and secrets in their own systems.
                 </p>
                 <a href="https://docs.busdk.com/integration/deployment-and-data-control">Read deployment docs</a>
               </article>
@@ -175,134 +224,34 @@
           </div>
         </section>
 
-        <section class="workflows reveal" id="workflows">
-          <div class="section-inner">
-            <div class="section-title-wrap">
-              <p class="eyebrow">Use cases</p>
-              <h2>Product surfaces already in the platform</h2>
-            </div>
-            <div class="workflow-grid">
-              <article class="workflow-card">
-                <h3>1. Build agentic workflows</h3>
-                <p>
-                  Use <code>bus agent</code>, <code>bus dev</code>, <code>bus run</code>,
-                  <code>bus work</code>, and Bus Events to connect human review, local automation,
-                  model-backed tasks, and durable worker delivery.
-                </p>
-                <a href="https://docs.busdk.com/modules/bus-agent">Read agent docs</a>
-              </article>
-              <article class="workflow-card">
-                <h3>2. Host AI product APIs</h3>
-                <p>
-                  Combine Bus API, auth, LLM proxying, VM/container providers, usage collection,
-                  billing entitlements, operator commands, and portal modules.
-                </p>
-                <a href="https://docs.busdk.com/modules/bus-api-provider-llm">Read LLM provider docs</a>
-              </article>
-              <article class="workflow-card">
-                <h3>3. Run auditable business operations</h3>
-                <p>
-                  Keep finance, invoices, banking, validation, reports, filing, and evidence flows
-                  available as structured datasets for humans and AI systems.
-                </p>
-                <a href="https://docs.busdk.com/workflow/accounting-workflow-overview">See accounting workflow</a>
-              </article>
-            </div>
-          </div>
-        </section>
-
         <section class="pricing reveal" id="pricing">
           <div class="section-inner">
             <div class="section-title-wrap">
               <p class="eyebrow">Pricing</p>
-              <h2>Subscription plans</h2>
+              <h2>Subscription plans and source packages</h2>
             </div>
             <p class="pricing-copy">
               Subscription plans cover hosted and managed BusDK services. Self-hosted deployments,
-              dedicated Finnish cloud environments, source access, support, and data-processing terms
-              are handled by contract.
+              dedicated Finnish cloud environments, source access, support, and data-processing
+              terms are handled by contract.
             </p>
             <div class="subscription-plans" role="region" aria-label="Subscription plans">
               <article class="panel">
                 <h3>Base</h3>
                 <p><strong>25 EUR/user/month</strong></p>
-                <p class="meta">
-                  For individuals getting started with hosted BusDK services. Includes core hosted
-                  features and standard support.
-                </p>
+                <p class="meta">For individuals getting started with hosted BusDK services.</p>
               </article>
               <article class="panel">
                 <h3>Pro</h3>
                 <p><strong>100 EUR/user/month</strong></p>
-                <p class="meta">
-                  For product teams that need higher usage limits, AI platform controls, and faster
-                  support.
-                </p>
+                <p class="meta">For product teams that need higher limits, AI controls, and support.</p>
               </article>
               <article class="panel">
                 <h3>Enterprise</h3>
                 <p class="meta">
-                  For organizations that need dedicated infrastructure, self-hosted deployment,
-                  data-processing terms, onboarding, and custom licensing.
+                  For dedicated infrastructure, self-hosted deployment, onboarding, and custom
+                  licensing.
                 </p>
-              </article>
-            </div>
-            <div class="pricing-cta" aria-label="Subscription actions">
-              <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales</a>
-              <a class="button button-secondary" href="#source-packages">See source packages</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="pricing reveal" id="source-packages">
-          <div class="section-inner">
-            <div class="section-title-wrap">
-              <p class="eyebrow">Source package licenses</p>
-              <h2>Source package licenses</h2>
-            </div>
-            <p class="pricing-copy">
-              Source code packages use the source-available Functional Source License (FSL).
-              Alternative commercial licensing is available by contract. After two years, each
-              release converts to Apache 2.0 or MIT. Source access, self-hosted deployments,
-              dedicated environments, and alternative commercial terms are quoted by agreement.
-            </p>
-            <div class="pricing-facts">
-              <article class="panel">
-                <h3>Commercial source access</h3>
-                <p>
-                  Current source-package estimates are generated from the pricing data model. Final
-                  quotes depend on contract scope, deployment model, support, and licensing terms.
-                </p>
-                <div class="pricing-facts-cta" aria-label="Commercial source access actions">
-                  <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales</a>
-                  <a class="button button-secondary" href="https://docs.busdk.com/implementation/module-pricing"
-                    >Generated estimates</a
-                  >
-                </div>
-              </article>
-              <article class="panel">
-                <h3>Open-source foundations</h3>
-                <p>
-                  <code>bus</code>, <code>docs</code>, and <code>busdk.com</code> are open source and
-                  excluded from source package license pricing.
-                </p>
-                <div class="pricing-facts-cta" aria-label="Open-source foundation links">
-                  <a class="button button-primary" href="https://docs.busdk.com">Open docs</a>
-                  <a class="button button-secondary" href="https://github.com/busdk/busdk">Open GitHub</a>
-                </div>
-              </article>
-              <article class="panel">
-                <h3>Pricing model</h3>
-                <p>
-                  Base estimates are allocated by module commit share. Dependency-inclusive
-                  estimates include the selected module and its transitive BusDK dependencies.
-                </p>
-                <div class="pricing-facts-cta" aria-label="Pricing model actions">
-                  <a class="button button-primary" href="https://docs.busdk.com/implementation/module-pricing"
-                    >Generated estimates</a
-                  >
-                  <a class="button button-secondary" href="mailto:sales@hg.fi">Contact sales</a>
-                </div>
               </article>
             </div>
             <div class="pricing-cta" aria-label="Pricing actions">
@@ -317,19 +266,19 @@
         <section class="trust reveal">
           <div class="section-inner">
             <div class="trust-panel">
-              <h2>Built for controlled AI operations</h2>
+              <h2>Built for inspectable business software</h2>
               <p>
                 BusDK favors deterministic command surfaces, explicit API boundaries, scoped tokens,
-                evented workers, and open workspace data so AI automation remains inspectable.
+                evented workers, open workspace data, and reusable frontend surfaces so automation
+                stays understandable.
               </p>
               <p>
-                Deployment is a contract boundary as much as a technical choice: customers can use a
-                managed Finnish cloud service, a dedicated environment, or their own infrastructure.
+                Start from a product line, then drill into module references when you need command
+                flags, API details, or integration ownership.
               </p>
               <p>
-                Learn the architecture in <a href="https://docs.busdk.com/architecture">docs.busdk.com/architecture</a>
-                and the core dispatcher in
-                <a href="https://github.com/busdk/bus">github.com/busdk/bus</a>.
+                Product documentation starts at
+                <a href="https://docs.busdk.com/products/">docs.busdk.com/products</a>.
               </p>
             </div>
             <aside class="status-panel" aria-label="Project status">
@@ -342,14 +291,15 @@
 
         <section class="final-cta reveal">
           <div class="section-inner">
-            <h2>Evaluate BusDK in your workflow</h2>
+            <h2>Evaluate the product line that matches your work</h2>
             <p>
-              Start with the documentation, then evaluate the CLI, API, runtime, billing, portal, and
-              business-data modules against the deployment model your product needs.
+              BusDK is a bundle, but adoption should start with the product you actually need: agentic
+              development, AI infrastructure, auditable books, inspections, Go-native UI, process
+              monitoring, or service stacks.
             </p>
             <div class="hero-cta">
-              <a class="button button-primary" href="https://docs.busdk.com">Open documentation</a>
-              <a class="button button-secondary" href="https://github.com/busdk">Browse organization</a>
+              <a class="button button-primary" href="https://docs.busdk.com/products/">Open product docs</a>
+              <a class="button button-secondary" href="https://github.com/busdk">Browse GitHub</a>
             </div>
           </div>
         </section>
@@ -359,7 +309,7 @@
         <div class="site-footer-inner">
           <p>
             © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK provides transparent,
-            auditable, module-driven AI product platform tooling.
+            auditable, module-driven business software.
           </p>
         </div>
       </footer>

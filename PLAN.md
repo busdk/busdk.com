@@ -212,3 +212,6 @@
 - [x] Kirjoita current-workspace-comparatives-muutosta käsittelevä blogiartikkeli varmennetuilla komentoesimerkeillä ja ilman vanhentuneita sopimusväitteitä.
 - [x] 23.1.2026: kirjoita artikkeli ensimmäisestä julkisesta BusDK-design-specistä, jossa tuotteen tarkoitus, kohdekäyttö ja tiedostopohjainen kirjanpitomalli kuvattiin ensimmäisen kerran docs-repossa.
 - [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.
+# Current work
+
+- [ ] Refactor `busdk.com/docs/` and `docs.busdk.com` around the current BusDK product lines: Bus Agentic Development, Bus AI Platform, Bus Books, Bus Inspection, Bus GX/UI Library, Bus Top, and Bus Services. Update public website navigation/product pages and docs product overviews without removing the existing module reference.
