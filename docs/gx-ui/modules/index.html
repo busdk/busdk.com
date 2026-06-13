@@ -32,23 +32,42 @@
             <p class="eyebrow">Bus GX/UI Library</p>
             <h1>Modules behind the Go-native UI product.</h1>
             <p class="hero-copy">
-              Bus GX/UI is a product line for teams that want React-like authoring and reusable UI
-              surfaces while keeping Go as the primary product implementation language.
+              Bus GX/UI is a product line for teams that want typed component authoring, generated
+              Go render roots, reusable checked UI surfaces, and a Go-owned runtime boundary.
             </p>
             <div class="product-section">
               <h2>Core product modules</h2>
               <ul>
-                <li><code>bus-gx</code> for GX source, compilation, render trees, runtime bridges, and tests.</li>
-                <li><code>bus-ui</code> for reusable shells, forms, tables, terminals, assistant UI, and evidence components.</li>
-                <li>Portal and product module adapters that mount UI without owning product policy.</li>
-                <li>Deterministic test harnesses for generated render roots and component behavior.</li>
+                <li><code>bus-gx</code> for <code>.gx</code> source parsing, formatting, linting, compilation, render trees, callback plumbing, browser runtime bridges, and tests.</li>
+                <li><code>bus-ui</code> for reusable checked components: shells, panels, forms, status, tables, lists, files, evidence, terminals, assistant controls, and portal integration surfaces.</li>
+                <li><code>bus-portal</code> for host chrome, module launch, mounted app runtime handoff, framework fixtures, and policy-free portal acceptance coverage.</li>
+                <li><code>bus-portal-ai</code>, <code>bus-portal-accounting</code>, <code>bus-portal-auth</code>, and <code>bus-portal-notes</code> for module-owned adapters that consume shared GX/UI surfaces while keeping product behavior local.</li>
+                <li>Deterministic test harnesses for generated render roots, checked adapters, mounted apps, callback dispatch, and component behavior.</li>
               </ul>
+            </div>
+            <div class="product-section">
+              <h2>Boundary model</h2>
+              <p>
+                Presentation roots compile to Go. Shared components validate their public props and
+                fail closed when required slots, hrefs, or trusted fragments are unsafe. Product
+                modules still own data loading, provider calls, authorization, storage, upload
+                policy, evidence access, redaction, and state transitions.
+              </p>
+            </div>
+            <div class="product-section">
+              <h2>Adoption state</h2>
+              <p>
+                The Bus portal family now uses shared GX/UI surfaces for the common page, action,
+                status, form, evidence, table/list, assistant, terminal, and mounted-app paths.
+                Remaining behavior-heavy helpers are documented as Go-owned exclusions rather than
+                missing presentation roots.
+              </p>
             </div>
             <div class="product-section">
               <h2>Evaluator path</h2>
               <p>
-                Read the product docs for the authoring model and boundaries between UI components,
-                product policy, generated Go, and browser runtime behavior.
+                Read the product docs for the full authoring model, component reference, versioned
+                feature pages, generated Go contract, and browser runtime behavior.
               </p>
               <p><a href="https://docs.busdk.com/products/gx-ui/">Open product docs</a></p>
             </div>

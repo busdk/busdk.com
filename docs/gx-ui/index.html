@@ -6,7 +6,7 @@
     <title>Bus GX/UI Library | BusDK</title>
     <meta
       name="description"
-      content="Go-native UI components with TSX-like authoring, compiled Go render roots, reusable component families, runtime bridges, deterministic tests, and policy-free frontend surfaces."
+      content="Go-native browser UI with HTML-like .gx source, generated Go render roots, reusable checked components, WebAssembly runtime handoff, deterministic tests, and product-owned policy."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -30,10 +30,11 @@
         <section class="product-page">
           <div class="section-inner">
             <p class="eyebrow">Bus GX/UI Library</p>
-            <h1>Go-native UI components with TSX-like authoring.</h1>
+            <h1>Typed Go UI roots for browser apps.</h1>
             <p class="hero-copy">
-              Bus GX/UI Library helps Go-heavy product teams build reusable, testable frontend
-              surfaces without moving product ownership into a separate JavaScript-first application.
+              Bus GX/UI Library lets Go teams write browser UI as typed components with
+              HTML-like <code>.gx</code> markup, compile it into generated Go, and reuse checked
+              component families across portal modules without moving product policy away from Go.
             </p>
             <div class="product-links">
               <a class="button button-primary" href="https://docs.busdk.com/products/gx-ui/">Read docs</a>
@@ -43,25 +44,63 @@
               <h2>What it is for</h2>
               <p>
                 This product is for Go developers, platform engineers, BusDK module authors, and
-                AI-native engineering teams that need frontend components to be typed, inspectable,
-                deterministic, and easy to review.
+                AI-native engineering teams that want frontend code to sit next to product models,
+                pass through ordinary Go review, and render deterministically in tests.
               </p>
             </div>
             <div class="product-section">
-              <h2>Core workflows</h2>
+              <h2>Developer workflow</h2>
               <ul>
-                <li>Write TSX-like <code>.gx</code> UI roots near Go code.</li>
+                <li>Write HTML-like <code>.gx</code> roots in the same package as the Go presenter.</li>
+                <li>Pass ordinary Go values, typed props, and callback functions into component tags.</li>
                 <li>Compile GX source into generated Go render roots.</li>
-                <li>Use shared Bus UI components for shells, status, forms, tables, assistant UI, evidence, terminal, and portal surfaces.</li>
+                <li>Use shared checked components for shells, forms, status, tables, evidence, terminal, assistant, and portal surfaces.</li>
                 <li>Keep validation, authorization, provider behavior, secrets, and business policy in the owning product module.</li>
               </ul>
+            </div>
+            <div class="product-section">
+              <h2>Code shape</h2>
+              <p>
+                GX source looks like Go with markup in place. Generated output remains Go, so the
+                same package can test rendering, adapter behavior, and product policy together.
+              </p>
+              <pre><code>package portalui
+
+func EvidenceCard(props EvidenceCardProps) gx.Node {
+  return &lt;article class="evidence-card"&gt;
+    &lt;h2&gt;{props.Title}&lt;/h2&gt;
+    &lt;EvidencePreview evidence={props.Evidence} /&gt;
+    &lt;EventBar items={props.Actions} /&gt;
+  &lt;/article&gt;
+}</code></pre>
+              <p>
+                The full API reference and component contracts live in the product documentation.
+                This website page stays focused on the developer pitch and adoption path.
+              </p>
+            </div>
+            <div class="product-section">
+              <h2>What is implemented</h2>
+              <p>
+                The current library covers the surfaces used by Bus portal modules: app and page
+                shells, navigation, tabs, panels, status states, event bars, fields, filter
+                toolbars, submit controls, file inputs, drop zones, evidence links and previews,
+                projection details, provider errors, dense tables, text tables, summary rows,
+                record lists, terminal panels, assistant workbench controls, model selection,
+                approvals, review state, and thread-isolation UI.
+              </p>
+              <p>
+                Policy-heavy behavior stays explicit in Go. URL checks, upload rules, evidence
+                access, redaction, provider errors, trusted slots, callbacks, reducers, and
+                authorization boundaries remain owned by the product module or shared Go adapter.
+              </p>
             </div>
             <div class="product-section">
               <h2>Modules behind the product</h2>
               <p>
                 <code>bus-gx</code> owns the source format, compiler, render tree, browser runtime,
-                and test utilities. <code>bus-ui</code> owns reusable components, adapters, CSS
-                hooks, mount helpers, portal integration surfaces, and test harnesses.
+                callback/event plumbing, and test utilities. <code>bus-ui</code> owns reusable
+                checked components, adapters, CSS hooks, mount helpers, portal integration
+                surfaces, and test harnesses.
               </p>
               <p><a href="modules/">See the module map for this product.</a></p>
             </div>

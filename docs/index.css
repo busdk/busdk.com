@@ -777,6 +777,22 @@ h1 {
   padding-left: 1.2rem;
 }
 
+.product-section pre {
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  background: var(--code-bg);
+  color: var(--code-text);
+}
+
+.product-section pre code {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
 .product-links {
   display: flex;
   flex-wrap: wrap;
