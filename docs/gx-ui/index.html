@@ -18,170 +18,230 @@
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="../#products">Products</a>
-            <a href="authoring/">Authoring</a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="authoring/">Learn</a>
             <a href="components/">Components</a>
             <a href="runtime/">Runtime</a>
             <a href="surfaces/">Surfaces</a>
             <a href="modules/">Modules</a>
-            <a href="https://docs.busdk.com/products/gx-ui/">Docs</a>
+            <a class="gx-search-link" href="https://docs.busdk.com/products/gx-ui/">Search docs</a>
           </nav>
         </div>
       </header>
       <main>
-        <section class="product-page">
+        <section class="product-page gx-product-home">
           <div class="section-inner">
-            <p class="eyebrow">Bus GX/UI Library</p>
-            <h1>Typed Go components for frontend products.</h1>
-            <p class="hero-copy">
-              Bus GX/UI Library lets Go teams write frontend UI as typed components with
-              HTML-like <code>.gx</code> markup, compile it into Go, and reuse checked
-              component families across portal modules without moving product policy away from Go.
-            </p>
-            <div class="product-links">
-              <a class="button button-primary" href="authoring/">Start the tutorial</a>
-              <a class="button button-secondary" href="components/">Browse components</a>
-              <a class="button button-secondary" href="https://docs.busdk.com/products/gx-ui/">Reference docs</a>
-            </div>
-            <div class="product-section">
-              <h2>What it is for</h2>
-              <p>
-                This product is for Go developers, platform engineers, BusDK module authors, and
-                AI-native engineering teams that want frontend code to sit next to product models,
-                pass through ordinary Go review, and render deterministically in tests.
-              </p>
-              <div class="tutorial-grid">
-                <article class="tutorial-card">
-                  <h3><a href="authoring/">Author typed GX components</a></h3>
-                  <p>
-                    Use <code>.gx</code> files for markup-shaped Go functions, typed props,
-                    callback functions, children, intrinsic elements, and generated Go output.
-                  </p>
-                </article>
-                <article class="tutorial-card">
-                  <h3><a href="components/">Use Bus UI primitives</a></h3>
-                  <p>
-                    Compose shells, navigation, fields, tables, status, files, evidence,
-                    terminals, and assistant controls through checked Go APIs.
-                  </p>
-                </article>
-                <article class="tutorial-card">
-                  <h3><a href="runtime/">Wire runtime and tests</a></h3>
-                  <p>
-                    Mount component trees, dispatch actions, call host resources, test render
-                    output, and bridge to Go/WASM when a browser host is used.
-                  </p>
-                </article>
-                <article class="tutorial-card">
-                  <h3><a href="surfaces/">Build product surfaces</a></h3>
-                  <p>
-                    See portal pages, provider errors, uploads, evidence, AI workbenches,
-                    terminal sessions, and module-owned policy.
-                  </p>
-                </article>
+            <div class="gx-hero">
+              <img class="gx-hero-mark" src="../busdk-logo.png" alt="" aria-hidden="true" />
+              <p class="eyebrow">Bus GX/UI Library</p>
+              <h1>Bus GX/UI</h1>
+              <p class="hero-copy">Typed Go components for frontend products.</p>
+              <div class="product-links gx-hero-actions">
+                <a class="button button-primary" href="authoring/">Learn GX/UI</a>
+                <a class="button button-secondary" href="https://docs.busdk.com/products/gx-ui/">API Reference</a>
               </div>
             </div>
-            <div class="product-section">
-              <h2>Developer workflow</h2>
-              <ul>
-                <li>Write HTML-like <code>.gx</code> components in the same package as the Go presenter.</li>
-                <li>Pass ordinary Go values, typed props, and callback functions into component tags.</li>
-                <li>Compile GX source into generated Go rendering.</li>
-                <li>Use shared checked components for shells, forms, status, tables, evidence, terminal, assistant, and portal surfaces.</li>
-                <li>Keep validation, authorization, provider behavior, secrets, and business policy in the owning product module.</li>
-              </ul>
-            </div>
-            <div class="product-section">
-              <h2>Feature map</h2>
-              <table class="tutorial-table">
-                <thead>
-                  <tr>
-                    <th>Capability</th>
-                    <th>What you can build</th>
-                    <th>Where to start</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>GX source tools</td>
-                    <td>Format, lint, and compile <code>.gx</code> files into ordinary Go.</td>
-                    <td><a href="authoring/">Authoring tutorial</a></td>
-                  </tr>
-                  <tr>
-                    <td>Typed components</td>
-                    <td>Pass Go structs, children, function callbacks, and safe intrinsic props.</td>
-                    <td><a href="authoring/#component-props">Component props</a></td>
-                  </tr>
-                  <tr>
-                    <td>Checked UI primitives</td>
-                    <td>Render forms, status, tables, lists, evidence, uploads, navigation, and panels with validation.</td>
-                    <td><a href="components/">Component tutorial</a></td>
-                  </tr>
-                  <tr>
-                    <td>Action and resource helpers</td>
-                    <td>Route UI events into Go actions and provider requests without putting secrets into markup.</td>
-                    <td><a href="runtime/#actions-resources">Runtime tutorial</a></td>
-                  </tr>
-                  <tr>
-                    <td>Testing harnesses</td>
-                    <td>Assert deterministic HTML, generated output, fake resources, and mounted app behavior.</td>
-                    <td><a href="runtime/#testing">Testing examples</a></td>
-                  </tr>
-                  <tr>
-                    <td>Product surfaces</td>
-                    <td>Build portal modules, AI workbenches, terminal panels, upload/drop flows, and evidence previews.</td>
-                    <td><a href="surfaces/">Product-surface tutorial</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="product-section">
-              <h2>Code shape</h2>
-              <p>
-                GX source looks like Go with markup in place. Generated output remains Go, so the
-                same package can test rendering, adapter behavior, and product policy together.
-              </p>
-              <pre><code>package portalui
 
-func EvidenceCard(props EvidenceCardProps) gx.Node {
+            <div class="gx-section gx-duo">
+              <div class="gx-copy">
+                <h2>Create interfaces from checked components</h2>
+                <p>
+                  Build screens from small Go-owned components, then combine them into complete
+                  product surfaces. Shared Bus UI primitives validate public props, escape text,
+                  preserve accessibility hooks, and keep business policy in the owning module.
+                </p>
+                <p><a href="components/">Browse the component tutorial</a></p>
+              </div>
+              <div class="gx-demo" aria-label="Component example">
+                <div class="gx-code-card">
+                  <div class="gx-card-head">EvidenceCard.gx</div>
+                  <pre><code>func EvidenceCard(props EvidenceCardProps) gx.Node {
   return &lt;article class="evidence-card"&gt;
     &lt;h2&gt;{props.Title}&lt;/h2&gt;
     &lt;EvidencePreview evidence={props.Evidence} /&gt;
-    &lt;EventBar items={props.Actions} /&gt;
+    &lt;EventBar actions={props.Actions} /&gt;
   &lt;/article&gt;
 }</code></pre>
-              <p>
-                The same package can render the card on the server, mount it through the browser
-                runtime, and verify the output with deterministic Go tests before product code
-                wires real data into it.
-              </p>
+                </div>
+                <div class="gx-preview-card">
+                  <p class="gx-preview-label">Evidence pack</p>
+                  <h3>June receipts</h3>
+                  <p>3 files prepared for review.</p>
+                  <div class="gx-button-row">
+                    <span>Preview</span>
+                    <span>Download</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="product-section">
-              <h2>What is implemented</h2>
-              <p>
-                The current library covers the surfaces used by Bus portal modules: app and page
-                shells, navigation, tabs, panels, status states, event bars, fields, filter
-                toolbars, submit controls, file inputs, drop zones, evidence links and previews,
-                projection details, provider errors, dense tables, text tables, summary rows,
-                record lists, terminal panels, assistant workbench controls, model selection,
-                approvals, review state, and thread-isolation UI.
-              </p>
-              <p>
-                Policy-heavy behavior stays explicit in Go. URL checks, upload rules, evidence
-                access, redaction, provider errors, trusted slots, callbacks, reducers, and
-                authorization boundaries remain owned by the product module or shared Go adapter.
-              </p>
+
+            <div class="gx-section gx-duo gx-duo-reverse">
+              <div class="gx-copy">
+                <h2>Write components with Go and markup</h2>
+                <p>
+                  A <code>.gx</code> file is a Go package file with markup inside Go functions.
+                  Typed props, ordinary control flow, children, safe intrinsic elements, and
+                  callback functions all stay visible in the same source package as the presenter.
+                </p>
+                <p><a href="authoring/">Start with GX authoring</a></p>
+              </div>
+              <div class="gx-code-card">
+                <div class="gx-card-head">Notice.gx</div>
+                <pre><code>type NoticeProps struct {
+  Title    string
+  Tone     string `gx:",optional"`
+  Children []gx.Node
+}
+
+func Notice(props NoticeProps) gx.Node {
+  return &lt;section class={"notice " + props.Tone}&gt;
+    &lt;h2&gt;{props.Title}&lt;/h2&gt;
+    {props.Children}
+  &lt;/section&gt;
+}</code></pre>
+              </div>
             </div>
-            <div class="product-section">
-              <h2>Modules behind the product</h2>
-              <p>
-                <code>bus-gx</code> owns the source format, compiler, render tree, runtime bridges,
-                callback/event plumbing, and test utilities. <code>bus-ui</code> owns reusable
-                checked components, adapters, CSS hooks, mount helpers, portal integration
-                surfaces, and test harnesses.
-              </p>
-              <p><a href="modules/">See the module map for this product.</a></p>
+
+            <div class="gx-section gx-duo">
+              <div class="gx-copy">
+                <h2>Add interactivity wherever the host needs it</h2>
+                <p>
+                  Event callbacks are typed Go functions. Action and resource helpers turn UI
+                  events into public result shapes, validated provider requests, field errors,
+                  navigation results, or no-op updates without putting credentials into markup.
+                </p>
+                <p><a href="runtime/#actions-resources">Learn action and resource dispatch</a></p>
+              </div>
+              <div class="gx-code-card">
+                <div class="gx-card-head">actions.go</div>
+                <pre><code>actions := uikit.ActionSet[string]{
+  "files.refresh": {
+    Token: "files.refresh",
+    RunResult: func(moduleID string) uikit.Result {
+      return uikit.Success(map[string]string{
+        "module": moduleID,
+      })
+    },
+  },
+}
+
+state := uikit.NewActionState()
+result := uikit.RunAction(actions, state, "files.refresh", "accounting")</code></pre>
+              </div>
+            </div>
+
+            <div class="gx-section gx-duo gx-duo-reverse">
+              <div class="gx-copy">
+                <h2>Keep product policy in Go</h2>
+                <p>
+                  Bus UI handles reusable presentation contracts. Product modules still own data
+                  loading, provider calls, authorization, upload policy, evidence access,
+                  redaction, billing, usage, and state transitions.
+                </p>
+                <p><a href="surfaces/">See product-surface examples</a></p>
+              </div>
+              <div class="gx-preview-card gx-policy-card">
+                <h3>Checked boundary</h3>
+                <ul>
+                  <li>Safe href and same-origin evidence checks</li>
+                  <li>Public provider-error summaries and request ids</li>
+                  <li>Host-owned runtime config without secrets</li>
+                  <li>Module-owned reducers, resources, and authorization</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="gx-section gx-platforms">
+              <div class="gx-copy gx-centered">
+                <h2>Use the same component model across frontend hosts</h2>
+                <p>
+                  Render stable HTML on the server, mount stateful Go components, bridge through
+                  Go/WASM where browser interaction is needed, and embed shared shells inside Bus
+                  portal modules.
+                </p>
+              </div>
+              <div class="tutorial-grid">
+                <article class="tutorial-card">
+                  <h3>Server-rendered pages</h3>
+                  <p>Use deterministic HTML for documents, pages, snapshots, and tests.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Mounted apps</h3>
+                  <p>Keep hook state across renders with explicit runtime diagnostics.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Portal modules</h3>
+                  <p>Pass host context, public config, assets, and provider origins safely.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Browser bridges</h3>
+                  <p>Use Go/WASM helpers only where the frontend host needs browser APIs.</p>
+                </article>
+              </div>
+            </div>
+
+            <div class="gx-section gx-duo">
+              <div class="gx-copy">
+                <h2>Test before product code depends on it</h2>
+                <p>
+                  The same components can be verified with generated-output checks, deterministic
+                  HTML assertions, fake resource clients, fake file/drop readers, terminal source
+                  fakes, mounted app harnesses, and browser-backed Go/WASM tests.
+                </p>
+                <p><a href="runtime/#testing">Open testing examples</a></p>
+              </div>
+              <div class="gx-code-card">
+                <div class="gx-card-head">render_test.go</div>
+                <pre><code>func TestStatusPanel(t *testing.T) {
+  html := gxtest.RenderHTML(t, StatusPage(StatusPageProps{
+    Message: "Ready",
+  }))
+
+  uikittest.AssertHTMLContains(t, html,
+    `data-ui-component="StatusPill"`,
+    "Ready",
+  )
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="gx-section">
+              <div class="gx-copy gx-centered">
+                <h2>Learn the library by building real surfaces</h2>
+                <p>
+                  Follow the tutorials in order or jump straight to the part of the library you
+                  need for a product module.
+                </p>
+              </div>
+              <div class="gx-learning-grid">
+                <a class="tutorial-card" href="authoring/">
+                  <h3>Authoring</h3>
+                  <p>Write <code>.gx</code> source, compile it into Go, and render without a host.</p>
+                </a>
+                <a class="tutorial-card" href="components/">
+                  <h3>Components</h3>
+                  <p>Use checked shells, controls, forms, status, tables, files, and evidence UI.</p>
+                </a>
+                <a class="tutorial-card" href="runtime/">
+                  <h3>Runtime</h3>
+                  <p>Mount apps, dispatch actions, validate resources, and test behavior.</p>
+                </a>
+                <a class="tutorial-card" href="surfaces/">
+                  <h3>Surfaces</h3>
+                  <p>Build portal, upload, evidence, AI, terminal, and artifact surfaces.</p>
+                </a>
+              </div>
+            </div>
+
+            <div class="gx-section gx-reference-strip">
+              <div>
+                <h2>Reference documentation</h2>
+                <p>
+                  The full product documentation covers versioned feature pages, public component
+                  contracts, generated Go behavior, runtime config, and module integration details.
+                </p>
+              </div>
+              <a class="button button-primary" href="https://docs.busdk.com/products/gx-ui/">Open API Reference</a>
             </div>
           </div>
         </section>
