@@ -79,6 +79,11 @@
                 The generic portal host owns mounting, token-aware URLs, public config, assets, and
                 security headers; the product module owns the business behavior.
               </p>
+              <p>
+                The <code>pkg/ui</code> facade covers the core checked set. Shell, evidence,
+                assistant, and terminal surfaces still use <code>pkg/uikit</code> until those
+                wrappers are promoted.
+              </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
   uikit "github.com/busdk/bus-ui/pkg/uikit"
@@ -108,7 +113,7 @@ page, err := uikit.AppShellChecked(uikit.AppShellProps{
                 safe open/download links, while previews embed only approved content types and show
                 public fallback text when a file cannot be previewed inline.
               </p>
-              <pre><code>preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
+              <pre><code>preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
   Title:       "Receipt PDF",
   ContentType: "application/pdf",
   PreviewURL:  "/modules/accounting/api/evidence/receipt.pdf",
@@ -125,7 +130,7 @@ page, err := uikit.AppShellChecked(uikit.AppShellProps{
                 record fields and evidence actions while the product module owns authorization and
                 data meaning.
               </p>
-              <pre><code>panel, err := ui.ProviderErrorChecked(ui.ProviderErrorProps{
+              <pre><code>panel, err := uikit.ProviderErrorChecked(uikit.ProviderErrorProps{
   Title:     "Provider request failed",
   Summary:   "The accounting provider could not prepare the evidence pack.",
   RequestID: "req_20260613_001",

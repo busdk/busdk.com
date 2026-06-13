@@ -85,17 +85,22 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+              <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
 
-preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
+preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
   Title: "Bank statement",
-  Items: []ui.EvidenceLinkProps{
+  Items: []uikit.EvidenceLinkProps{
     {
       Label: "Open PDF",
       Href:  "/modules/accounting/evidence/bank-statement.pdf",
     },
   },
 })</code></pre>
+              <p>
+                The <code>pkg/ui</code> facade is the preferred path for the core checked
+                components. Evidence previews remain on <code>pkg/uikit</code> until that surface
+                is promoted.
+              </p>
             </div>
           </div>
 

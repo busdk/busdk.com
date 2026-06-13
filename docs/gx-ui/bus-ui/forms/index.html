@@ -85,29 +85,42 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
+              <p>
+                Compose the form from typed child nodes. The checked facade keeps labels,
+                controls, and validation explicit without falling back to raw HTML slots.
+              </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
+field, err := ui.FieldNodeChecked(ui.FieldProps{
+  Label: "Description",
+  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
+    return ui.TextInputNodeChecked(ui.TextInputProps{
+      Name:  "description",
+      Value: "Bank statement",
+      Attrs: attrs,
+    })
+  },
+})
+if err != nil {
+  return err
+}
+
+submit, err := ui.SubmitControlNodeChecked(ui.SubmitControlProps{
+  Label: "Upload",
+})
+if err != nil {
+  return err
+}
+
 form, err := ui.FormChecked(ui.FormProps{
   Method: ui.FormMethodPost,
   Action: "/modules/accounting/api/files",
   BodyNodes: []gx.Node{
-    ui.Field(ui.FieldProps{
-      Label:               "Description",
-      RenderControlNode: ui.TextInput(ui.TextInputProps{
-        Name:  "description",
-        Value: "Bank statement",
-      }),
-    }),
-    ui.FileInput(ui.FileInputProps{
-      Name:      "file",
-      AriaLabel: "Evidence file",
-    }),
-    ui.SubmitControl(ui.SubmitControlProps{
-      Label: "Upload",
-    }),
+    field,
+    submit,
   },
 })</code></pre>
             </div>

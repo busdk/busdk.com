@@ -157,7 +157,7 @@ shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
                 fake resources, fake file/drop readers, fake terminal sources, and browser-backed
                 Go/WASM paths.
               </p>
-  <pre><code>func TestStatusPanel(t *testing.T) {
+              <pre><code>func TestStatusPanel(t *testing.T) {
   html := gxtest.RenderHTML(t, StatusPage(StatusPageProps{
     Message: "Ready",
   }))

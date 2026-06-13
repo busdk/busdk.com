@@ -86,10 +86,10 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+              <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
 
-records, err := ui.RecordListChecked(ui.RecordListProps{
-  Items: []ui.SummaryItemProps{
+records, err := uikit.RecordListChecked(uikit.RecordListProps{
+  Items: []uikit.SummaryItemProps{
     {
       Title:    "June receipts",
       Metadata: "3 files",
@@ -98,6 +98,11 @@ records, err := ui.RecordListChecked(ui.RecordListProps{
     },
   },
 })</code></pre>
+              <p>
+                The <code>pkg/ui</code> facade covers the core checked component set. Data
+                display remains on <code>pkg/uikit</code> for now while those wrappers are
+                promoted.
+              </p>
             </div>
           </div>
 
