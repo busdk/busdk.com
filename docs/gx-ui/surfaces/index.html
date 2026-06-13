@@ -138,12 +138,11 @@ page, err := uikit.AppShellChecked(uikit.AppShellProps{
 })</code></pre>
             </div>
             <div class="product-section">
-              <h2>Assistant and terminal workbench</h2>
+              <h2>Assistant workbench</h2>
               <p>
                 Assistant surfaces cover thread lists, messages, model selection, attachments,
-                approvals, review status, isolation conflicts, close guards, terminal sessions,
-                terminal input, and approval prompts. Transport, execution, persistence, billing,
-                and authorization stay in the host module.
+                approvals, review status, isolation conflicts, and close guards. Transport,
+                execution, persistence, billing, and authorization stay in the host module.
               </p>
               <pre><code>modelPicker, err := uikit.AIModelSelectChecked(uikit.AIModelSelectProps{
   Current: "gpt-5.4-mini",
@@ -160,8 +159,8 @@ page, err := uikit.AppShellChecked(uikit.AppShellProps{
               <h2>Terminal session UI</h2>
               <p>
                 Terminal helpers normalize stream aliases, validate caller-order sequences, escape
-                output chunks, render idle/running/waiting/exited/error states, and expose typed
-                submit, input, exit, and approval events.
+                output chunks, render idle, running, waiting, exited, and error states, and expose
+                typed submit, input, exit, and approval events.
               </p>
               <pre><code>seq1, seq2 := 1, 2
 terminal, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{

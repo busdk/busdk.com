@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Assistant And Terminal | BusDK</title>
-    <meta
-      name="description"
-      content="Compatibility page for Bus UI assistant and terminal topics now split into separate pages."
-    />
+    <title>Bus UI Terminal | BusDK</title>
+    <meta name="description" content="Bus UI terminal concepts for session panels, streamed output, command input, approval prompts, and running state." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -55,8 +52,7 @@
                 <a href="../data/index.html">Data display</a>
                 <a href="../evidence/index.html">Evidence and files</a>
                 <a href="../assistant/index.html">Assistant</a>
-                <a href="./index.html" aria-current="page">Assistant and terminal</a>
-                <a href="../terminal/index.html">Terminal</a>
+                <a href="./index.html" aria-current="page">Terminal</a>
                 <a href="../portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
@@ -68,28 +64,39 @@
               </div>
             </aside>
             <div class="gx-doc-content">
-              <p class="eyebrow">Bus UI Assistant And Terminal</p>
-              <h1>This topic now lives on two pages.</h1>
+              <p class="eyebrow">Bus UI Terminal</p>
+              <h1>Session panels and operator IO.</h1>
               <p class="hero-copy">
-                Assistant UI and terminal UI are documented separately so each concept page can
-                stay focused on its own layouts, states, and checked component names.
+                Terminal surfaces keep session layout, command input, streamed output, prompt
+                state, approvals, and running status consistent across Bus products.
               </p>
               <div class="product-section">
-                <h2>Continue to the split pages</h2>
-                <p>
-                  Use the assistant page for shell, panel, composer, model, approval, review, and
-                  thread isolation behavior. Use the terminal page for session panels, output,
-                  command input, and approval prompts.
-                </p>
-                <p>
-                  <a href="../assistant/index.html">Open the assistant page</a>
-                  and
-                  <a href="../terminal/index.html">open the terminal page</a>.
-                </p>
-                <p>
-                  For the broader component map, see
-                  <a href="../../reference/index.html">the reference index</a>.
-                </p>
+                <h2>Terminal pieces</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Session panel</td><td>Session chrome, command context, and status framing.</td><td><code>TerminalSessionPanelChecked</code></td></tr>
+                    <tr><td>Output stream</td><td>Stdout and stderr chunks, idle states, and exit feedback.</td><td><code>TerminalOutputChecked</code></td></tr>
+                    <tr><td>Input and approvals</td><td>Command entry, submit states, approval prompts, and action handoff.</td><td><code>TerminalInputChecked</code></td></tr>
+                    <tr><td>Adapters</td><td>Connect terminal sources and session metadata to checked rendering.</td><td>terminal source and adapter helpers</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>seq1, seq2 := 1, 2
+terminal, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{
+  Title:     "Verification",
+  Command:   "go test ./...",
+  SessionID: "sess_123",
+  State:     uikit.TerminalSessionStateRunning,
+  Output: []uikit.TerminalChunk{
+    {Stream: "stdout", Sequence: &amp;seq1, Text: "go test ./..."},
+    {Stream: "stdout", Sequence: &amp;seq2, Text: "ok"},
+  },
+})</code></pre>
               </div>
             </div>
           </div>

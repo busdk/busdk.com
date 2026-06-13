@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Assistant And Terminal | BusDK</title>
-    <meta
-      name="description"
-      content="Compatibility page for Bus UI assistant and terminal topics now split into separate pages."
-    />
+    <title>Bus UI Assistant | BusDK</title>
+    <meta name="description" content="Bus UI assistant concepts for shells, AI panels, composer state, model selection, approvals, review status, and thread isolation." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -54,8 +51,7 @@
                 <a href="../forms/index.html">Forms</a>
                 <a href="../data/index.html">Data display</a>
                 <a href="../evidence/index.html">Evidence and files</a>
-                <a href="../assistant/index.html">Assistant</a>
-                <a href="./index.html" aria-current="page">Assistant and terminal</a>
+                <a href="./index.html" aria-current="page">Assistant</a>
                 <a href="../terminal/index.html">Terminal</a>
                 <a href="../portal/index.html">Portal integration</a>
               </div>
@@ -68,28 +64,35 @@
               </div>
             </aside>
             <div class="gx-doc-content">
-              <p class="eyebrow">Bus UI Assistant And Terminal</p>
-              <h1>This topic now lives on two pages.</h1>
+              <p class="eyebrow">Bus UI Assistant</p>
+              <h1>Guided AI workbench surfaces.</h1>
               <p class="hero-copy">
-                Assistant UI and terminal UI are documented separately so each concept page can
-                stay focused on its own layouts, states, and checked component names.
+                Assistant surfaces keep model choice, approvals, review status, thread isolation,
+                composer state, and panel layout consistent across Bus products.
               </p>
               <div class="product-section">
-                <h2>Continue to the split pages</h2>
-                <p>
-                  Use the assistant page for shell, panel, composer, model, approval, review, and
-                  thread isolation behavior. Use the terminal page for session panels, output,
-                  command input, and approval prompts.
-                </p>
-                <p>
-                  <a href="../assistant/index.html">Open the assistant page</a>
-                  and
-                  <a href="../terminal/index.html">open the terminal page</a>.
-                </p>
-                <p>
-                  For the broader component map, see
-                  <a href="../../reference/index.html">the reference index</a>.
-                </p>
+                <h2>Assistant pieces</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Shell and panel</td><td>Thread layout, workbench chrome, message panels, and assistant framing.</td><td><code>AssistantShellChecked</code>, <code>AIPanelChecked</code></td></tr>
+                    <tr><td>Composer</td><td>Prompt entry, attachments, send state, and reply controls.</td><td><code>AIComposerChecked</code></td></tr>
+                    <tr><td>Controls</td><td>Model selection, approval prompts, review status, and thread isolation cues.</td><td><code>AIModelSelectChecked</code>, <code>AIApprovalsChecked</code>, <code>AIReviewStatusChecked</code>, <code>AIThreadIsolationChecked</code></td></tr>
+                    <tr><td>Adapters</td><td>Connect assistant state to checked rendering.</td><td>assistant state and adapter helpers</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>panel, err := uikit.AIPanelChecked(uikit.AIPanelProps{
+  Title: "Review",
+  BodyHTML: uikit.AIReviewStatus(uikit.AIReviewStatusProps{
+    State:   uikit.AIReviewAccepted,
+    Message: "Changes accepted by supervisor.",
+  }),
+})</code></pre>
               </div>
             </div>
           </div>
