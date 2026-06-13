@@ -157,9 +157,11 @@
               </div>
               <div class="gx-code-card">
                 <div class="gx-card-head">result.go</div>
-                <pre><code>panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+panel, err := ui.ResultPanelChecked(ui.ResultPanelProps{
   Title:   "Evidence pack ready",
-  Status:  uikit.StatusSuccess,
+  Status:  ui.StatusSuccess,
   Summary: "3 files prepared for review.",
 })</code></pre>
               </div>

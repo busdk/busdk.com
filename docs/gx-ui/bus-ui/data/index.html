@@ -86,8 +86,10 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>records, err := uikit.RecordListChecked(uikit.RecordListProps{
-  Items: []uikit.SummaryItemProps{
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+records, err := ui.RecordListChecked(ui.RecordListProps{
+  Items: []ui.SummaryItemProps{
     {
       Title:    "June receipts",
       Metadata: "3 files",

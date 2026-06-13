@@ -85,7 +85,14 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  uiportal "github.com/busdk/bus-ui/pkg/uiportal"
+)
+
+page := gx.Element("main", nil, gx.Text("Portal content"))
+
+shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
   Title: "Accounting",
   HostContext: uiportal.HostContext{
     ModuleID:       "accounting",
@@ -95,7 +102,9 @@
       "locale": "fi-FI",
     },
   },
-  BodyHTML: pageHTML,
+  MainNodes: []gx.Node{
+    page,
+  },
 })</code></pre>
             </div>
           </div>

@@ -71,7 +71,9 @@
             <p class="hero-copy">
               Runtime helpers let a host render deterministic HTML, mount stateful component trees,
               dispatch action/resource results, and bridge into Go/WASM only when the host needs
-              browser-specific interaction.
+              browser-specific interaction. The <code>pkg/ui</code> facade stays the preferred
+              public path for the core checked component set while advanced runtime surfaces
+              continue to move over incrementally.
             </p>
             <div class="product-section">
               <h2>Mount a stateful component tree</h2>
@@ -80,7 +82,13 @@
                 when disposed state tries to update after unmount. The same contract can run without
                 browser globals for server-side tests.
               </p>
-              <pre><code>app := uikit.NewMountedGXNodeApp("counter", func(ctx *uikit.RenderCtx) gx.Node {
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  uikit "github.com/busdk/bus-ui/pkg/uikit"
+  uiportal "github.com/busdk/bus-ui/pkg/uiportal"
+)
+
+app := uikit.NewMountedGXNodeApp("counter", func(ctx *uikit.RenderCtx) gx.Node {
   count, setCount := uikit.UseState(ctx, 0)
   return gx.Element("button", gx.Props{
     "data-ui-action": "increment",
@@ -123,7 +131,11 @@ request, err := uikit.NormalizeResourceRequest(uikit.ResourceRequest{
                 declared provider origins, assets, and logging callbacks through checked host
                 context helpers. Secret-bearing values are rejected instead of rendered.
               </p>
-              <pre><code>shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
+              <pre><code>import uiportal "github.com/busdk/bus-ui/pkg/uiportal"
+
+page := gx.Element("main", nil, gx.Text("Accounting"))
+
+shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
   Title: "Accounting",
   HostContext: uiportal.HostContext{
     ModuleID:           "accounting",
@@ -134,7 +146,7 @@ request, err := uikit.NormalizeResourceRequest(uikit.ResourceRequest{
       "locale": "fi-FI",
     },
   },
-  BodyHTML: pageHTML,
+  MainNodes: []gx.Node{page},
   RenderRuntimeConfig: true,
 })</code></pre>
             </div>
@@ -145,7 +157,7 @@ request, err := uikit.NormalizeResourceRequest(uikit.ResourceRequest{
                 fake resources, fake file/drop readers, fake terminal sources, and browser-backed
                 Go/WASM paths.
               </p>
-              <pre><code>func TestStatusPanel(t *testing.T) {
+  <pre><code>func TestStatusPanel(t *testing.T) {
   html := gxtest.RenderHTML(t, StatusPage(StatusPageProps{
     Message: "Ready",
   }))

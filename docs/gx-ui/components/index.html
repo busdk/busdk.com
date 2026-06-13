@@ -115,23 +115,32 @@
             <div class="product-section">
               <h2>Render a form with checked inputs</h2>
               <p>
-                Generic inputs reject unsafe shapes, while file input has its own wrapper so
-                browser file access and upload policy stay outside the generic text-input path.
+                Compose the form from typed child nodes. Generic inputs reject unsafe shapes, while
+                file input has its own wrapper so browser file access and upload policy stay outside
+                the generic text-input path.
               </p>
-              <pre><code>form, err := uikit.FormChecked(uikit.FormProps{
-  Method: uikit.FormMethodPost,
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
+
+form, err := ui.FormChecked(ui.FormProps{
+  Method: ui.FormMethodPost,
   Action: "/modules/accounting/api/files",
-  BodyHTML: uikit.Field(uikit.FieldProps{
-    Label: "Description",
-    BodyHTML: uikit.TextInput(uikit.TextInputProps{
-      Name:  "description",
-      Value: "Bank statement",
+  BodyNodes: []gx.Node{
+    ui.Field(ui.FieldProps{
+      Label:               "Description",
+      RenderControlNode: ui.TextInput(ui.TextInputProps{
+        Name:  "description",
+        Value: "Bank statement",
+      }),
     }),
-  }) + uikit.FileInput(uikit.FileInputProps{
-    Name:          "file",
-    AriaLabel:     "Evidence file",
-    AcceptedTypes: []string{"application/pdf", "image/png"},
-  }),
+    ui.FileInput(ui.FileInputProps{
+      Name:          "file",
+      AriaLabel:     "Evidence file",
+      AcceptedTypes: []string{"application/pdf", "image/png"},
+    }),
+  },
 })</code></pre>
             </div>
             <div class="product-section">
@@ -140,15 +149,17 @@
                 Status surfaces use semantic states and public-safe text. Result panels can include
                 recovery controls without taking ownership of the provider call.
               </p>
-              <pre><code>html, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+html, err := ui.ResultPanelChecked(ui.ResultPanelProps{
   Title:   "Evidence pack ready",
-  Status:  uikit.StatusSuccess,
+  Status:  ui.StatusSuccess,
   Summary: "3 files prepared for review.",
-  Events: []uikit.EventBarAction{
+  Events: []ui.EventBarAction{
     {
       Label:   "Open pack",
-      Variant: uikit.ButtonPrimary,
-      Control: uikit.ControlProps{Action: "open-pack"},
+      Variant: ui.ButtonPrimary,
+      Control: ui.ControlProps{Action: "open-pack"},
     },
   },
 })</code></pre>
@@ -160,14 +171,16 @@
                 projected objects. Summary items provide a compact title, metadata, detail, and
                 badge contract.
               </p>
-              <pre><code>table, err := uikit.DenseTableChecked(uikit.DenseTableProps{
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+table, err := ui.DenseTableChecked(ui.DenseTableProps{
   Caption: "Invoices",
-  Columns: []uikit.DenseTableColumn{
-    uikit.DenseTableColumnText("date", "Date"),
-    uikit.DenseTableColumnText("total", "Total"),
+  Columns: []ui.DenseTableColumn{
+    ui.DenseTableColumnText("date", "Date"),
+    ui.DenseTableColumnText("total", "Total"),
   },
-  Rows: []uikit.DenseTableRow{
-    uikit.DenseTableRowText("2026-06-12", "128.40 EUR"),
+  Rows: []ui.DenseTableRow{
+    ui.DenseTableRowText("2026-06-12", "128.40 EUR"),
   },
 })</code></pre>
             </div>
@@ -177,6 +190,10 @@
                 Checked components validate their public rendering contracts. Product modules still
                 own authorization, route selection, upload endpoints, provider calls, business
                 state transitions, and redaction policy.
+              </p>
+              <p>
+                Compatibility wrappers remain available for migrations, but new work should use
+                typed <code>gx.Node</code> composition and the public <code>pkg/ui</code> API.
               </p>
             </div>
           </div>

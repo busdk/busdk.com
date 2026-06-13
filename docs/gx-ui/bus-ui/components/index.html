@@ -86,18 +86,32 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>shell, err := uikit.AppShellChecked(uikit.AppShellProps{
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  uikit "github.com/busdk/bus-ui/pkg/uikit"
+)
+
+tabs := uikit.Tabs(uikit.TabsProps{
+  Active: "files",
+  Items: []uikit.TabItem{
+    {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
+    {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
+  },
+})
+
+page := gx.Element("main", nil, gx.Text("Module content"))
+
+shell, err := uikit.AppShellChecked(uikit.AppShellProps{
   Title: "Accounting",
-  NavHTML: uikit.Tabs(uikit.TabsProps{
-    Active: "files",
-    Items: []uikit.TabItem{
-      {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
-      {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
-    },
-  }),
-  BodyHTML: pageHTML,
+  NavNodes: []gx.Node{tabs},
+  MainNodes: []gx.Node{page},
 })</code></pre>
             </div>
+            <p>
+              The <code>pkg/ui</code> facade is the preferred public path for the core checked
+              component set. Shell, tab, and runtime helpers still live in <code>pkg/uikit</code>
+              while those surfaces move over incrementally.
+            </p>
           </div>
 
           </div></section>

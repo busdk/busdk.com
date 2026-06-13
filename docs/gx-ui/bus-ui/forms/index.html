@@ -85,21 +85,30 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>form, err := uikit.FormChecked(uikit.FormProps{
-  Method: uikit.FormMethodPost,
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
+
+form, err := ui.FormChecked(ui.FormProps{
+  Method: ui.FormMethodPost,
   Action: "/modules/accounting/api/files",
-  BodyHTML: uikit.Field(uikit.FieldProps{
-    Label: "Description",
-    BodyHTML: uikit.TextInput(uikit.TextInputProps{
-      Name:  "description",
-      Value: "Bank statement",
+  BodyNodes: []gx.Node{
+    ui.Field(ui.FieldProps{
+      Label:               "Description",
+      RenderControlNode: ui.TextInput(ui.TextInputProps{
+        Name:  "description",
+        Value: "Bank statement",
+      }),
     }),
-  }) + uikit.FileInput(uikit.FileInputProps{
-    Name:      "file",
-    AriaLabel: "Evidence file",
-  }) + uikit.SubmitControl(uikit.SubmitControlProps{
-    Label: "Upload",
-  }),
+    ui.FileInput(ui.FileInputProps{
+      Name:      "file",
+      AriaLabel: "Evidence file",
+    }),
+    ui.SubmitControl(ui.SubmitControlProps{
+      Label: "Upload",
+    }),
+  },
 })</code></pre>
             </div>
           </div>

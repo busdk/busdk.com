@@ -85,12 +85,11 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>panel, err := uikit.AIPanelChecked(uikit.AIPanelProps{
-  Title: "Review",
-  BodyHTML: uikit.AIReviewStatus(uikit.AIReviewStatusProps{
-    State:   uikit.AIReviewAccepted,
-    Message: "Changes accepted for apply.",
-  }),
+              <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+panel, err := uikit.AIReviewStatusChecked(uikit.AIReviewStatusProps{
+  State:   uikit.AIReviewAccepted,
+  Message: "Changes accepted by supervisor.",
 })</code></pre>
             </div>
           </div>

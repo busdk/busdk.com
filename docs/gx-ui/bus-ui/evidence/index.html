@@ -85,9 +85,11 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
   Title: "Bank statement",
-  Items: []uikit.EvidenceLinkProps{
+  Items: []ui.EvidenceLinkProps{
     {
       Label: "Open PDF",
       Href:  "/modules/accounting/evidence/bank-statement.pdf",
