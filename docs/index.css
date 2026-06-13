@@ -777,6 +777,11 @@ h1 {
   padding-left: 1.2rem;
 }
 
+.product-section h3 {
+  margin-top: 1.4rem;
+  font-size: 1.04rem;
+}
+
 .product-section pre {
   margin: 1rem 0;
   padding: 1rem;
@@ -798,6 +803,61 @@ h1 {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 1.2rem;
+}
+
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.tutorial-card,
+.tutorial-callout {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+}
+
+.tutorial-card h3,
+.tutorial-callout h3 {
+  margin-top: 0;
+}
+
+.tutorial-card p,
+.tutorial-callout p {
+  margin-bottom: 0;
+}
+
+.tutorial-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.tutorial-table th,
+.tutorial-table td {
+  border: 1px solid var(--border);
+  padding: 0.72rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tutorial-table th {
+  color: var(--text);
+  background: var(--surface-soft);
+}
+
+.tutorial-table td {
+  color: var(--text-muted);
+}
+
+@media (max-width: 780px) {
+  .tutorial-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .final-cta {

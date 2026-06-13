@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GX/UI Product Surfaces Tutorial | BusDK</title>
+    <meta
+      name="description"
+      content="See how Bus GX/UI supports portal modules, uploads, evidence previews, provider errors, AI workbenches, terminal sessions, and Go-owned product policy."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../">GX/UI</a>
+            <a href="../authoring/">Authoring</a>
+            <a href="../components/">Components</a>
+            <a href="../runtime/">Runtime</a>
+            <a href="../modules/">Modules</a>
+            <a href="https://docs.busdk.com/products/gx-ui/">Docs</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus GX/UI Tutorial</p>
+            <h1>Build real product surfaces without moving policy out of Go.</h1>
+            <p class="hero-copy">
+              Bus UI is used by portal modules that need structured pages, provider-backed data,
+              uploads, evidence, assistant workflows, terminal sessions, and deterministic tests.
+            </p>
+            <div class="product-section">
+              <h2>Portal module shell</h2>
+              <p>
+                A module can render a shared shell and fill page slots with module-owned content.
+                The generic portal host owns mounting, token-aware URLs, public config, assets, and
+                security headers; the product module owns the business behavior.
+              </p>
+              <pre><code>tabs := uikit.Tabs(uikit.TabsProps{
+  Label:  "Accounting",
+  Active: "files",
+  Items: []uikit.TabItem{
+    {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
+    {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
+  },
+})
+
+page, err := uikit.AppShellChecked(uikit.AppShellProps{
+  Title:    "Accounting",
+  NavHTML:  tabs,
+  BodyHTML: filesPage,
+})</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Uploads and evidence</h2>
+              <p>
+                File inputs and drop zones normalize public metadata. Evidence URL helpers validate
+                safe open/download links, while previews embed only approved content types and show
+                public fallback text when a file cannot be previewed inline.
+              </p>
+              <pre><code>preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+  Title:       "Receipt PDF",
+  ContentType: "application/pdf",
+  PreviewURL:  "/modules/accounting/api/evidence/receipt.pdf",
+  OpenURL:     "/modules/accounting/api/evidence/receipt.pdf",
+  DownloadURL: "/modules/accounting/api/evidence/receipt.pdf?download=1",
+  Fallback:    "Open or download this evidence file.",
+})</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Provider errors and projections</h2>
+              <p>
+                Provider errors can be redacted into public-safe summaries with request ids,
+                field-level errors, retry controls, and severity mapping. Projection details render
+                record fields and evidence actions while the product module owns authorization and
+                data meaning.
+              </p>
+              <pre><code>panel, err := uikit.ProviderErrorChecked(uikit.ProviderErrorProps{
+  Title:     "Provider request failed",
+  Summary:   "The accounting provider could not prepare the evidence pack.",
+  RequestID: "req_20260613_001",
+  Status:    503,
+})</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Assistant and terminal workbench</h2>
+              <p>
+                Assistant surfaces cover thread lists, messages, model selection, attachments,
+                approvals, review status, isolation conflicts, close guards, terminal sessions,
+                terminal input, and approval prompts. Transport, execution, persistence, billing,
+                and authorization stay in the host module.
+              </p>
+              <pre><code>modelPicker, err := uikit.AIModelSelectChecked(uikit.AIModelSelectProps{
+  Current: "gpt-5.4-mini",
+  Options: []uikit.AIModelOption{
+    {ID: "gpt-5.4-mini", Label: "GPT 5.4 mini"},
+    {ID: "gpt-5.4", Label: "GPT 5.4", Disabled: true, Reason: "Requires approval"},
+  },
+  OnChange: func(event uikit.AIModelEvent) uikit.Result {
+    return uikit.Success(event.Model)
+  },
+})</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Terminal session UI</h2>
+              <p>
+                Terminal helpers normalize stream aliases, validate caller-order sequences, escape
+                output chunks, render idle/running/waiting/exited/error states, and expose typed
+                submit, input, exit, and approval events.
+              </p>
+              <pre><code>seq1, seq2 := 1, 2
+terminal, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{
+  Title:     "Verification",
+  Command:   "go test ./...",
+  SessionID: "sess_123",
+  State:     uikit.TerminalSessionStateRunning,
+  Output: []uikit.TerminalChunk{
+    {Stream: "stdout", Sequence: &amp;seq1, Text: "go test ./..."},
+    {Stream: "stdout", Sequence: &amp;seq2, Text: "ok"},
+  },
+})</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Catalog and artifact metadata</h2>
+              <p>
+                Component catalog metadata and UI artifact validation make it possible to audit
+                which files are human-authored GX, generated Go, runtime config, resource contracts,
+                runtime fixtures, and render fixtures.
+              </p>
+              <pre><code>err := uiartifact.ValidateArtifacts([]uiartifact.Artifact{
+  {
+    Kind:      uiartifact.GXSource,
+    Owner:     "bus-portal-accounting",
+    Source:    "pkg/accountingportal/accounting_files.gx",
+    Generated: "pkg/accountingportal/accounting_files_gx_generated.go",
+  },
+  {
+    Kind:   uiartifact.GeneratedGo,
+    Owner:  "bus-portal-accounting",
+    Source: "pkg/accountingportal/accounting_files_gx_generated.go",
+  },
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -6,7 +6,7 @@
     <title>Bus GX/UI Modules | BusDK</title>
     <meta
       name="description"
-      content="The implementation map behind Bus GX/UI Library: GX compiler, Go render roots, browser runtime, components, mount helpers, and test harnesses."
+      content="The implementation map behind Bus GX/UI Library: GX compiler, generated Go rendering, runtime bridges, components, mount helpers, and test harnesses."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -20,9 +20,11 @@
           </a>
           <nav class="site-nav" aria-label="Primary">
             <a href="../">Overview</a>
-            <a href="../../#products">Products</a>
+            <a href="../authoring/">Authoring</a>
+            <a href="../components/">Components</a>
+            <a href="../runtime/">Runtime</a>
+            <a href="../surfaces/">Surfaces</a>
             <a href="https://docs.busdk.com/products/gx-ui/">Docs</a>
-            <a href="../../blog/">Blog</a>
           </nav>
         </div>
       </header>
@@ -33,22 +35,22 @@
             <h1>Modules behind the Go-native UI product.</h1>
             <p class="hero-copy">
               Bus GX/UI is a product line for teams that want typed component authoring, generated
-              Go render roots, reusable checked UI surfaces, and a Go-owned runtime boundary.
+              Go rendering, reusable checked UI surfaces, and a Go-owned runtime boundary.
             </p>
             <div class="product-section">
               <h2>Core product modules</h2>
               <ul>
-                <li><code>bus-gx</code> for <code>.gx</code> source parsing, formatting, linting, compilation, render trees, callback plumbing, browser runtime bridges, and tests.</li>
+                <li><code>bus-gx</code> for <code>.gx</code> source parsing, formatting, linting, compilation, render trees, callback plumbing, runtime bridges, and tests.</li>
                 <li><code>bus-ui</code> for reusable checked components: shells, panels, forms, status, tables, lists, files, evidence, terminals, assistant controls, and portal integration surfaces.</li>
-                <li><code>bus-portal</code> for host chrome, module launch, mounted app runtime handoff, framework fixtures, and policy-free portal acceptance coverage.</li>
+                <li><code>bus-portal</code> for host chrome, module launch, mounted app runtime handoff, runtime fixtures, and policy-free portal acceptance coverage.</li>
                 <li><code>bus-portal-ai</code>, <code>bus-portal-accounting</code>, <code>bus-portal-auth</code>, and <code>bus-portal-notes</code> for module-owned adapters that consume shared GX/UI surfaces while keeping product behavior local.</li>
-                <li>Deterministic test harnesses for generated render roots, checked adapters, mounted apps, callback dispatch, and component behavior.</li>
+                <li>Deterministic test harnesses for generated rendering, checked adapters, mounted apps, callback dispatch, and component behavior.</li>
               </ul>
             </div>
             <div class="product-section">
               <h2>Boundary model</h2>
               <p>
-                Presentation roots compile to Go. Shared components validate their public props and
+                Presentation components compile to Go. Shared components validate their public props and
                 fail closed when required slots, hrefs, or trusted fragments are unsafe. Product
                 modules still own data loading, provider calls, authorization, storage, upload
                 policy, evidence access, redaction, and state transitions.
@@ -60,14 +62,14 @@
                 The Bus portal family now uses shared GX/UI surfaces for the common page, action,
                 status, form, evidence, table/list, assistant, terminal, and mounted-app paths.
                 Remaining behavior-heavy helpers are documented as Go-owned exclusions rather than
-                missing presentation roots.
+                missing presentation components.
               </p>
             </div>
             <div class="product-section">
               <h2>Reference documentation</h2>
               <p>
                 The product documentation covers the authoring model, component contracts,
-                versioned feature pages, generated Go output, and browser runtime behavior.
+                versioned feature pages, generated Go output, and runtime behavior.
               </p>
               <p><a href="https://docs.busdk.com/products/gx-ui/">Open product docs</a></p>
             </div>
