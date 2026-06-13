@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Testing | BusDK</title><meta name="description" content="GX test helpers for source, HTML, VNode, and mounted runtime tests." /><link rel="stylesheet" href="../../../index.css" /></head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+    <p class="eyebrow">GX Framework</p><h1>Testing</h1><p class="hero-copy">GX test helpers keep rendering and generated output easy to assert from Go tests.</p>
+    <div class="product-section"><h2>Helpers</h2><table class="tutorial-table"><tbody><tr><th><code>gxtest.RenderHTML</code></th><td>Render and fail the test on render errors.</td></tr><tr><th><code>gxtest.VNode</code></th><td>Inspect the normalized render tree.</td></tr><tr><th><code>gxtest.RequireProp[T]</code></th><td>Read a typed VNode prop.</td></tr><tr><th><code>gxtest.CompileGX</code></th><td>Compile source in tests.</td></tr><tr><th><code>gxtest.MountWASM</code></th><td>Run browser-backed mount assertions.</td></tr></tbody></table></div>
+    <div class="product-section"><h2>Example</h2><pre><code>html := gxtest.RenderHTML(t, Notice(NoticeProps{
+  Title: "Ready",
+}))</code></pre></div>
+  </div></section></main></div></body>
+</html>

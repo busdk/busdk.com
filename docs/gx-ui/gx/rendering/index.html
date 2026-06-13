@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Rendering | BusDK</title><meta name="description" content="GX render tree, HTML rendering, VNodes, and deterministic output." /><link rel="stylesheet" href="../../../index.css" /></head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+    <p class="eyebrow">GX Framework</p><h1>Rendering</h1><p class="hero-copy">GX rendering is deterministic so pages, snapshots, and tests can compare stable output.</p>
+    <div class="product-section"><h2>Core rendering APIs</h2><table class="tutorial-table"><tbody><tr><th><code>gx.Node</code></th><td>Interface returned by component functions.</td></tr><tr><th><code>gx.Element</code></th><td>Creates an intrinsic element node.</td></tr><tr><th><code>gx.Text</code></th><td>Creates escaped text.</td></tr><tr><th><code>gx.Fragment</code></th><td>Groups children without an extra element.</td></tr><tr><th><code>gx.RenderHTML</code></th><td>Renders stable HTML.</td></tr></tbody></table></div>
+    <div class="product-section"><h2>Example</h2><pre><code>html, err := gx.RenderHTML(gx.Element("p",
+  gx.Props{"class": "message"},
+  gx.Text("Hello &lt;Bus&gt;"),
+))</code></pre></div>
+  </div></section></main></div></body>
+</html>

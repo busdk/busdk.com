@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Evidence And Files | BusDK</title>
+    <meta name="description" content="Bus UI evidence and file concepts for safe links, previews, upload controls, drop zones, and host-owned URL policy." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Evidence And Files</p>
+            <h1>Evidence UI without leaking storage policy.</h1>
+            <p class="hero-copy">
+              Evidence primitives render upload controls, safe links, and previews. The module owns
+              access checks, storage URLs, provider credentials, and download policy.
+            </p>
+            <div class="product-section">
+              <h2>Evidence pieces</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Upload</td><td>File selection and drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
+                  <tr><td>Links</td><td>Safe evidence links with disabled states and labels.</td><td><code>EvidenceLinkChecked</code></td></tr>
+                  <tr><td>Preview</td><td>Inline evidence summaries and preview metadata.</td><td><code>EvidencePreviewChecked</code></td></tr>
+                  <tr><td>URL policy</td><td>Normalize public URLs and block unsafe or unavailable links.</td><td>evidence URL helpers</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+  Title: "Bank statement",
+  Items: []uikit.EvidenceLinkProps{
+    {
+      Label: "Open PDF",
+      Href:  "/modules/accounting/evidence/bank-statement.pdf",
+    },
+  },
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Data Display | BusDK</title>
+    <meta name="description" content="Bus UI data display concepts for tables, record lists, summary items, projections, result panels, errors, timelines, and galleries." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Data Display</p>
+            <h1>Readable data surfaces from checked Go props.</h1>
+            <p class="hero-copy">
+              Use table primitives for comparable rows, record primitives for projected objects,
+              and status primitives for result and error states.
+            </p>
+            <div class="product-section">
+              <h2>Display families</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Family</th><th>Use it for</th><th>Names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Tables</td><td>Dense comparable rows or text-only table output.</td><td><code>DenseTableChecked</code>, <code>TextTableChecked</code></td></tr>
+                  <tr><td>Records</td><td>Title, metadata, detail, badge, and action lists.</td><td><code>RecordListChecked</code>, <code>SummaryItemChecked</code></td></tr>
+                  <tr><td>Projection</td><td>Provider fields, public error summaries, and structured detail.</td><td><code>ProjectionDetailChecked</code>, <code>ProviderErrorChecked</code></td></tr>
+                  <tr><td>Status</td><td>Result panels and error banners.</td><td><code>ResultPanelChecked</code>, <code>ErrorBannerChecked</code></td></tr>
+                  <tr><td>Media and history</td><td>Time-ordered activity and compact image sets.</td><td><code>TimelineChecked</code>, <code>ImageGalleryChecked</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>records, err := uikit.RecordListChecked(uikit.RecordListProps{
+  Items: []uikit.SummaryItemProps{
+    {
+      Title:    "June receipts",
+      Metadata: "3 files",
+      Detail:   "Prepared for accounting review.",
+      Badge:    "Ready",
+    },
+  },
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

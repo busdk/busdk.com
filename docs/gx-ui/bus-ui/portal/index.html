@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Portal Integration | BusDK</title>
+    <meta name="description" content="Bus UI portal integration concepts for module shells, host context, runtime config, assets, and same-origin API resolution." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Portal Integration</p>
+            <h1>Module pages with host-owned runtime context.</h1>
+            <p class="hero-copy">
+              Portal helpers wrap module HTML in shared chrome while keeping public config,
+              provider origins, static assets, and API bases explicit.
+            </p>
+            <div class="product-section">
+              <h2>Portal pieces</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Shell</td><td>Render a module page with shared portal chrome.</td><td><code>PortalShellChecked</code></td></tr>
+                  <tr><td>Host context</td><td>Pass module id, base paths, public config, assets, and provider origins.</td><td><code>uiportal.HostContext</code></td></tr>
+                  <tr><td>Runtime config</td><td>Expose non-secret JSON that frontend hosts can read.</td><td>runtime config script helpers</td></tr>
+                  <tr><td>Resolution</td><td>Build module URLs and API URLs without hard-coded deployment paths.</td><td>module URL and API URL helpers</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
+  Title: "Accounting",
+  HostContext: uiportal.HostContext{
+    ModuleID:       "accounting",
+    BasePath:       "/modules/accounting/",
+    PortalBasePath: "/",
+    PublicRuntimeConfig: map[string]any{
+      "locale": "fi-FI",
+    },
+  },
+  BodyHTML: pageHTML,
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

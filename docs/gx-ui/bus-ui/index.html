@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Library | BusDK</title>
+    <meta name="description" content="Bus UI Library concepts: checked components, forms, data display, evidence and files, assistant and terminal surfaces, and portal integration." />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../gx/">GX Framework</a>
+            <a href="../bus-ui/">Bus UI Library</a>
+            <a href="../reference/">Reference</a>
+            <a href="../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Library</p>
+            <h1>Checked components built on GX.</h1>
+            <p class="hero-copy">
+              Bus UI gives Bus products shared shells, forms, data display, evidence, assistant,
+              terminal, and portal surfaces without moving product policy out of Go modules.
+            </p>
+            <div class="gx-concept-grid">
+              <a class="tutorial-card" href="components/"><h3>Components</h3><p>Use shells, navigation, panels, controls, status, and action rows.</p></a>
+              <a class="tutorial-card" href="forms/"><h3>Forms</h3><p>Render checked fields, inputs, file controls, drop zones, filters, and submit states.</p></a>
+              <a class="tutorial-card" href="data/"><h3>Data Display</h3><p>Show tables, records, summaries, projections, errors, timelines, and galleries.</p></a>
+              <a class="tutorial-card" href="evidence/"><h3>Evidence And Files</h3><p>Link and preview evidence while keeping URL and authorization policy in the host.</p></a>
+              <a class="tutorial-card" href="assistant-terminal/"><h3>Assistant And Terminal</h3><p>Compose AI workbench and terminal session surfaces from shared parts.</p></a>
+              <a class="tutorial-card" href="portal/"><h3>Portal Integration</h3><p>Mount module pages with public host context, assets, runtime config, and API bases.</p></a>
+            </div>
+            <div class="gx-section gx-duo">
+              <div class="gx-copy">
+                <h2>What belongs to Bus UI</h2>
+                <p>
+                  Bus UI owns reusable presentation contracts: prop validation, accessible
+                  defaults, stable data attributes, generated GX roots, Go adapters, and tests for
+                  shared component behavior.
+                </p>
+                <p>
+                  Product modules still own data loading, provider calls, credentials, uploads,
+                  redaction, billing rules, and business state.
+                </p>
+              </div>
+              <div class="gx-code-card">
+                <div class="gx-card-head">result.go</div>
+                <pre><code>panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
+  Title:   "Evidence pack ready",
+  Status:  uikit.StatusSuccess,
+  Summary: "3 files prepared for review.",
+})</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

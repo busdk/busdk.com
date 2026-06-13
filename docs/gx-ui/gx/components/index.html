@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Component Functions | BusDK</title><meta name="description" content="GX component functions, props, children, and composition." /><link rel="stylesheet" href="../../../index.css" /></head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+    <p class="eyebrow">GX Framework</p><h1>Component functions</h1><p class="hero-copy">A GX component is a Go function that returns <code>gx.Node</code>.</p>
+    <div class="product-section"><h2>Props and children</h2><p>Props are ordinary Go structs. Child nodes are passed through a <code>Children []gx.Node</code> field.</p><pre><code>type PanelProps struct {
+  Title    string
+  Children []gx.Node
+}
+
+func Panel(props PanelProps) gx.Node {
+  return &lt;section class="panel"&gt;
+    &lt;h2&gt;{props.Title}&lt;/h2&gt;
+    {props.Children}
+  &lt;/section&gt;
+}</code></pre></div>
+    <div class="product-section"><h2>Rules</h2><ul><li>Uppercase tags call component functions.</li><li>Lowercase tags render intrinsic elements.</li><li>Strings become escaped text.</li><li><code>gx.Node</code> values become children.</li><li><code>[]gx.Node</code> values splice in source order.</li></ul></div>
+  </div></section></main></div></body>
+</html>

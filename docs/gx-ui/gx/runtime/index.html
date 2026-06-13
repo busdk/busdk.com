@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Runtime Bridges | BusDK</title><meta name="description" content="GX runtime bridge and Go/WASM mount concepts." /><link rel="stylesheet" href="../../../index.css" /></head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+    <p class="eyebrow">GX Framework</p><h1>Runtime bridges</h1><p class="hero-copy">GX can render without a runtime. Runtime bridges are used only when a host needs mounted interaction.</p>
+    <div class="product-section"><h2>Mount APIs</h2><table class="tutorial-table"><tbody><tr><th><code>gxwasm.Mount</code></th><td>Mounts a root function into a host selector.</td></tr><tr><th><code>gxwasm.MountApp</code></th><td>Mounts a stateful app root.</td></tr><tr><th><code>Handle.RequestUpdate</code></th><td>Requests a rerender for one mounted root.</td></tr><tr><th><code>Handle.Unmount</code></th><td>Disposes one mounted root.</td></tr></tbody></table></div>
+    <div class="product-section"><h2>Boundary</h2><p>GX runtime bridges do not own provider calls, secrets, storage, authorization, or product policy. Hosts provide those pieces explicitly.</p></div>
+  </div></section></main></div></body>
+</html>

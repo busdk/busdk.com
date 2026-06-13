@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Components | BusDK</title>
+    <meta name="description" content="Bus UI component reference for shells, navigation, panels, controls, action rows, and status surfaces." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Components</p>
+            <h1>Shared structure for product surfaces.</h1>
+            <p class="hero-copy">
+              Start with shells and navigation, then add panels, action rows, buttons, status, and
+              empty or loading states. Every checked component returns either safe markup or a clear
+              validation error.
+            </p>
+            <div class="product-section">
+              <h2>Core families</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Family</th><th>Use it for</th><th>Primary names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Shells</td><td>Application frames, module pages, sidebar layouts, split surfaces.</td><td><code>AppShellChecked</code>, <code>PageShellChecked</code>, <code>SidebarShellChecked</code>, <code>SplitLayoutChecked</code></td></tr>
+                  <tr><td>Navigation</td><td>Tabs, menus, side navigation, section switching.</td><td><code>TabsChecked</code>, <code>SidebarNavChecked</code>, <code>MenuChecked</code></td></tr>
+                  <tr><td>Controls</td><td>Buttons, icon buttons, links, grouped actions.</td><td><code>ButtonChecked</code>, <code>LinkButtonChecked</code>, <code>EventBarChecked</code></td></tr>
+                  <tr><td>Status</td><td>Simple state, progress, empty screens, recoverable errors.</td><td><code>StatusPillChecked</code>, <code>LoadingStateChecked</code>, <code>EmptyStateChecked</code>, <code>ErrorBannerChecked</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>shell, err := uikit.AppShellChecked(uikit.AppShellProps{
+  Title: "Accounting",
+  NavHTML: uikit.Tabs(uikit.TabsProps{
+    Active: "files",
+    Items: []uikit.TabItem{
+      {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
+      {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
+    },
+  }),
+  BodyHTML: pageHTML,
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Events | BusDK</title><meta name="description" content="GX typed callback and event payload concepts." /><link rel="stylesheet" href="../../../index.css" /></head>
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+    <p class="eyebrow">GX Framework</p><h1>Events</h1><p class="hero-copy">GX event props are Go functions. Static HTML omits function values; runtime hosts can keep them in the render tree.</p>
+    <div class="product-section"><h2>Common payloads</h2><table class="tutorial-table"><tbody><tr><th><code>gx.ClickEvent</code></th><td>Button and control activation.</td></tr><tr><th><code>gx.SubmitEvent</code></th><td>Form submit payloads.</td></tr><tr><th><code>gx.InputEvent</code></th><td>Text input and change payloads.</td></tr><tr><th><code>gx.FileInputEvent</code></th><td>File input payload metadata.</td></tr><tr><th><code>gx.DragEvent</code></th><td>Drag and drop payload metadata.</td></tr></tbody></table></div>
+    <div class="product-section"><h2>Example</h2><pre><code>type SaveProps struct {
+  OnSubmit func(gx.SubmitEvent) gx.Result
+}
+
+func SaveForm(props SaveProps) gx.Node {
+  return &lt;form onSubmit={props.OnSubmit}&gt;
+    &lt;button type="submit"&gt;Save&lt;/button&gt;
+  &lt;/form&gt;
+}</code></pre></div>
+  </div></section></main></div></body>
+</html>

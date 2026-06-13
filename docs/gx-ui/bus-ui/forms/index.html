@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Forms | BusDK</title>
+    <meta name="description" content="Bus UI form concepts for checked fields, inputs, file inputs, drop zones, filters, and submit states." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Forms</p>
+            <h1>Inputs with explicit boundaries.</h1>
+            <p class="hero-copy">
+              Form primitives keep labels, validation text, disabled states, file selection, and
+              submit feedback consistent while the owning module decides routes and policy.
+            </p>
+            <div class="product-section">
+              <h2>Form pieces</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Form and field</td><td>Method, action, field label, help text, and errors.</td><td><code>FormChecked</code>, <code>FieldChecked</code></td></tr>
+                  <tr><td>Text inputs</td><td>Text, password, date, select, and textarea controls.</td><td><code>InputChecked</code>, <code>TextAreaChecked</code>, <code>SelectChecked</code></td></tr>
+                  <tr><td>Files</td><td>Upload controls and drag/drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
+                  <tr><td>Workflow</td><td>Filters, submit buttons, pending states, and result summaries.</td><td><code>FilterToolbarChecked</code>, <code>SubmitControlChecked</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>form, err := uikit.FormChecked(uikit.FormProps{
+  Method: uikit.FormMethodPost,
+  Action: "/modules/accounting/api/files",
+  BodyHTML: uikit.Field(uikit.FieldProps{
+    Label: "Description",
+    BodyHTML: uikit.TextInput(uikit.TextInputProps{
+      Name:  "description",
+      Value: "Bank statement",
+    }),
+  }) + uikit.FileInput(uikit.FileInputProps{
+    Name:      "file",
+    AriaLabel: "Evidence file",
+  }) + uikit.SubmitControl(uikit.SubmitControlProps{
+    Label: "Upload",
+  }),
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

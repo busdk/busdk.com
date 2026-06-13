@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus GX/UI Modules | BusDK</title>
+    <title>Bus GX And Bus UI Modules | BusDK</title>
     <meta
       name="description"
-      content="The implementation map behind Bus GX/UI Library: GX compiler, generated Go rendering, runtime bridges, components, mount helpers, and test harnesses."
+      content="The implementation map behind GX framework and Bus UI library: GX compiler, generated Go rendering, runtime bridges, components, mount helpers, and test harnesses."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -19,23 +19,21 @@
             <span class="brand-wordmark">BusDK</span>
           </a>
           <nav class="site-nav gx-doc-nav" aria-label="Primary">
-            <a href="../">GX/UI</a>
-            <a href="../authoring/">Learn</a>
-            <a href="../components/">Components</a>
-            <a href="../runtime/">Runtime</a>
-            <a href="../surfaces/">Surfaces</a>
-            <a class="gx-search-link" href="https://docs.busdk.com/products/gx-ui/">Search docs</a>
+            <a href="../gx/">GX Framework</a>
+            <a href="../bus-ui/">Bus UI Library</a>
+            <a href="../reference/">Reference</a>
+            <a href="../modules/">Modules</a>
           </nav>
         </div>
       </header>
       <main>
         <section class="product-page">
           <div class="section-inner">
-            <p class="eyebrow">Bus GX/UI Library</p>
-            <h1>Modules behind the Go-native UI product.</h1>
+            <p class="eyebrow">Bus GX And Bus UI</p>
+            <h1>Modules behind the framework and library.</h1>
             <p class="hero-copy">
-              Bus GX/UI is a product line for teams that want typed component authoring, generated
-              Go rendering, reusable checked UI surfaces, and a Go-owned runtime boundary.
+              GX provides typed component authoring and generated Go rendering. Bus UI provides
+              reusable checked surfaces built on top of GX.
             </p>
             <div class="product-section">
               <h2>Core product modules</h2>
@@ -43,7 +41,7 @@
                 <li><code>bus-gx</code> for <code>.gx</code> source parsing, formatting, linting, compilation, render trees, callback plumbing, runtime bridges, and tests.</li>
                 <li><code>bus-ui</code> for reusable checked components: shells, panels, forms, status, tables, lists, files, evidence, terminals, assistant controls, and portal integration surfaces.</li>
                 <li><code>bus-portal</code> for host chrome, module launch, mounted app runtime handoff, runtime fixtures, and policy-free portal acceptance coverage.</li>
-                <li><code>bus-portal-ai</code>, <code>bus-portal-accounting</code>, <code>bus-portal-auth</code>, and <code>bus-portal-notes</code> for module-owned adapters that consume shared GX/UI surfaces while keeping product behavior local.</li>
+                <li><code>bus-portal-ai</code>, <code>bus-portal-accounting</code>, <code>bus-portal-auth</code>, and <code>bus-portal-notes</code> for module-owned adapters that consume shared Bus UI surfaces while keeping product behavior local.</li>
                 <li>Deterministic test harnesses for generated rendering, checked adapters, mounted apps, callback dispatch, and component behavior.</li>
               </ul>
             </div>
@@ -59,7 +57,7 @@
             <div class="product-section">
               <h2>Adoption state</h2>
               <p>
-                The Bus portal family now uses shared GX/UI surfaces for the common page, action,
+                The Bus portal family now uses shared Bus UI surfaces for the common page, action,
                 status, form, evidence, table/list, assistant, terminal, and mounted-app paths.
                 Remaining behavior-heavy helpers are documented as Go-owned exclusions rather than
                 missing presentation components.

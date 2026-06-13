@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Assistant And Terminal | BusDK</title>
+    <meta name="description" content="Bus UI assistant and terminal concepts for model selection, approvals, review status, thread isolation, terminal sessions, and terminal IO." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/">GX Framework</a>
+            <a href="../">Bus UI Library</a>
+            <a href="../../reference/">Reference</a>
+            <a href="../../modules/">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">Bus UI Assistant And Terminal</p>
+            <h1>Workbench surfaces for guided operations.</h1>
+            <p class="hero-copy">
+              Assistant and terminal components keep model choice, approvals, review state, thread
+              isolation, session output, and operator input consistent across Bus products.
+            </p>
+            <div class="product-section">
+              <h2>Workbench pieces</h2>
+              <table class="tutorial-table">
+                <thead>
+                  <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Assistant shell</td><td>Thread layout, message panels, composer area, and workbench chrome.</td><td><code>AssistantShellChecked</code>, <code>AIPanelChecked</code>, <code>AIComposerChecked</code></td></tr>
+                  <tr><td>Controls</td><td>Model choice, approval prompts, review status, and thread isolation cues.</td><td><code>AIModelSelectChecked</code>, <code>AIApprovalsChecked</code>, <code>AIReviewStatusChecked</code>, <code>AIThreadIsolationChecked</code></td></tr>
+                  <tr><td>Terminal</td><td>Session panels, command input, output chunks, prompts, and approvals.</td><td><code>TerminalSessionPanelChecked</code>, <code>TerminalOutputChecked</code>, <code>TerminalInputChecked</code></td></tr>
+                  <tr><td>Adapters</td><td>Connect terminal sources and assistant state to checked rendering.</td><td>terminal source and adapter helpers</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product-section">
+              <h2>Example</h2>
+              <pre><code>panel, err := uikit.AIPanelChecked(uikit.AIPanelProps{
+  Title: "Review",
+  BodyHTML: uikit.AIReviewStatus(uikit.AIReviewStatusProps{
+    State:   uikit.AIReviewAccepted,
+    Message: "Changes accepted by supervisor.",
+  }),
+})</code></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
