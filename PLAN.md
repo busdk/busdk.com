@@ -214,5 +214,6 @@
 - [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.
 # Current work
 
+- [x] Remove self-referential copy from the published GX/UI website pages and align the text with BusDK content rules: concrete product behavior, clear developer value, and no explanation of page intent in reader-facing text.
 - [x] Refresh the published GX/UI website pages for the completed Go-native UI library work: remove third-party framework comparison wording, explain `.gx` authoring, generated Go render roots, reusable checked components, Go/WebAssembly runtime handoff, portal adoption, test harnesses, and product-policy boundaries for developer evaluators.
 - [x] Refactor `busdk.com/docs/` and `docs.busdk.com` around the current BusDK product lines: Bus Agentic Development, Bus AI Platform, Bus Books, Bus Inspection, Bus GX/UI Library, Bus Top, and Bus Services. Update public website navigation/product pages and docs product overviews without removing the existing module reference.
