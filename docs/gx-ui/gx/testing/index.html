@@ -1,11 +1,49 @@
 <!doctype html>
 <html lang="en">
   <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>GX Testing | BusDK</title><meta name="description" content="GX test helpers for source, HTML, VNode, and mounted runtime tests." /><link rel="stylesheet" href="../../../index.css" /></head>
-  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner">
+  <body><div class="site-shell"><header class="site-header"><div class="site-header-inner"><a class="brand" href="../../../" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav gx-doc-nav" aria-label="Primary"><a href="../">GX Framework</a><a href="../../bus-ui/">Bus UI Library</a><a href="../../reference/">Reference</a><a href="../../modules/">Modules</a></nav></div></header><main><section class="product-page gx-doc-page"><div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" aria-label="GX/UI documentation">
+              <p class="gx-side-nav-title">GX and Bus UI</p>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Overview</p>
+                <a href="../../">Overview</a>
+                <a href="../../reference/">Reference</a>
+                <a href="../../modules/">Modules</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">GX Framework</p>
+                <a href="../../gx/">GX Framework</a>
+                <a href="../../gx/source-files/">Source files</a>
+                <a href="../../gx/components/">Component functions</a>
+                <a href="../../gx/events/">Events</a>
+                <a href="../../gx/rendering/">Rendering</a>
+                <a href="../../gx/runtime/">Runtime bridges</a>
+                <a href="./" aria-current="page">Testing</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Bus UI Library</p>
+                <a href="../../bus-ui/">Bus UI Library</a>
+                <a href="../../bus-ui/components/">Components</a>
+                <a href="../../bus-ui/forms/">Forms</a>
+                <a href="../../bus-ui/data/">Data display</a>
+                <a href="../../bus-ui/evidence/">Evidence and files</a>
+                <a href="../../bus-ui/assistant-terminal/">Assistant and terminal</a>
+                <a href="../../bus-ui/portal/">Portal integration</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Tutorials</p>
+                <a href="../../authoring/">Authoring tutorial</a>
+                <a href="../../runtime/">Runtime and testing</a>
+                <a href="../../components/">Component tutorial</a>
+                <a href="../../surfaces/">Product surfaces</a>
+              </div>
+            </aside>
+            <div class="gx-doc-content">
     <p class="eyebrow">GX Framework</p><h1>Testing</h1><p class="hero-copy">GX test helpers keep rendering and generated output easy to assert from Go tests.</p>
     <div class="product-section"><h2>Helpers</h2><table class="tutorial-table"><tbody><tr><th><code>gxtest.RenderHTML</code></th><td>Render and fail the test on render errors.</td></tr><tr><th><code>gxtest.VNode</code></th><td>Inspect the normalized render tree.</td></tr><tr><th><code>gxtest.RequireProp[T]</code></th><td>Read a typed VNode prop.</td></tr><tr><th><code>gxtest.CompileGX</code></th><td>Compile source in tests.</td></tr><tr><th><code>gxtest.MountWASM</code></th><td>Run browser-backed mount assertions.</td></tr></tbody></table></div>
     <div class="product-section"><h2>Example</h2><pre><code>html := gxtest.RenderHTML(t, Notice(NoticeProps{
   Title: "Ready",
 }))</code></pre></div>
-  </div></section></main></div></body>
+  </div>
+          </div></section></main></div></body>
 </html>

@@ -214,7 +214,7 @@
 - [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.
 # Current work
 
-- [x] Separate the published GX/UI website into clear GX Framework and Bus UI Library documentation tracks, add concept pages for the inner GX and Bus UI concepts, add an on-site reference index, update navigation/overview copy to mirror the library's simple mental model, verify the static pages, and promote the finished branch to `develop`.
+- [x] Add clear GX/UI side navigation that connects the overview, GX Framework concept pages, Bus UI Library concept pages, reference, and module map from every inner GX/UI page; verify desktop/mobile layout and promote the finished branch to `develop`.
 - [x] Refactor the GX/UI product overview toward a product-docs tutorial structure with a centered product hero, Learn/API CTAs, section-by-section code/output examples, platform-host cards, and a reference-documentation strip.
 - [x] Expand the GX/UI product website into a tutorial-style product section with overview, authoring, component, runtime/testing, product-surface, and module-map pages with concrete examples.
 - [x] Broaden the GX/UI website wording from browser-only positioning to reusable typed Go frontend components, generated Go rendering, and runtime bridges.
