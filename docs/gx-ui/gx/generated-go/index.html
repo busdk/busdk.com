@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GX Runtime Mounting | BusDK</title>
+    <title>GX Generated Go | BusDK</title>
     <meta
       name="description"
-      content="GX runtime mounting, host bridges, state hooks, and effect routing."
+      content="GX generated Go roots, compiled output, and the package code that runtime and tests execute."
     />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
@@ -30,31 +30,29 @@
         <section class="product-page gx-doc-page">
           <div class="section-inner">
             <p class="eyebrow">GX Framework</p>
-            <h1>Runtime mounting</h1>
+            <h1>Generated Go</h1>
             <p class="hero-copy">
-              GX can render without a runtime. Mounting is for the hosts that need stateful
-              interaction, rerenders, and bridge code around a component tree.
+              The compiler writes Go roots that mirror the authored GX component tree. Those
+              roots are what the package, renderer, and tests execute after the markup has been
+              lowered into ordinary Go.
             </p>
             <div class="product-section">
-              <h2>Mount APIs</h2>
-              <table class="tutorial-table">
-                <tbody>
-                  <tr><th><code>gxwasm.Mount</code></th><td>Mounts a root function into a host selector.</td></tr>
-                  <tr><th><code>gxwasm.MountApp</code></th><td>Mounts a stateful app root.</td></tr>
-                  <tr><th><code>Handle.RequestUpdate</code></th><td>Requests a rerender for one mounted root.</td></tr>
-                  <tr><th><code>Handle.Unmount</code></th><td>Disposes one mounted root.</td></tr>
-                </tbody>
-              </table>
+              <h2>What the generated file is for</h2>
+              <p>
+                Generated Go keeps the review surface deterministic. It lets a developer inspect the
+                compiled output, compare it in diffs, and use the same package in normal Go code.
+              </p>
+              <pre><code>bus gx compile notice.gx --output notice_gx_generated.go</code></pre>
             </div>
             <div class="product-section">
-              <h2>Boundary</h2>
+              <h2>Compiled roots stay in the package</h2>
               <p>
-                Runtime bridges do not own provider calls, secrets, storage, authorization, or
-                product policy. Hosts provide those pieces explicitly, while GX keeps the tree and
-                callbacks reviewable.
+                The generated roots preserve the original package boundary. That makes the compiled
+                output easy to call from other Go code and easy to pair with rendering or snapshot
+                tests.
               </p>
               <p>
-                See also <a href="../effects/index.html">Effects</a> and
+                See also <a href="../source-files/index.html">Source files</a> and
                 <a href="../testing/index.html">Testing</a>.
               </p>
             </div>

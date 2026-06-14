@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GX Runtime Mounting | BusDK</title>
+    <title>GX Nodes And Render Tree | BusDK</title>
     <meta
       name="description"
-      content="GX runtime mounting, host bridges, state hooks, and effect routing."
+      content="GX nodes, fragments, text, and render-tree composition for programmer-facing components."
     />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
@@ -30,31 +30,35 @@
         <section class="product-page gx-doc-page">
           <div class="section-inner">
             <p class="eyebrow">GX Framework</p>
-            <h1>Runtime mounting</h1>
+            <h1>Nodes and render tree</h1>
             <p class="hero-copy">
-              GX can render without a runtime. Mounting is for the hosts that need stateful
-              interaction, rerenders, and bridge code around a component tree.
+              A GX node is the value that carries render structure from one component to the next.
+              Use nodes when you want to assemble a tree, pass nested content around, or inspect
+              the structure before it becomes HTML.
             </p>
             <div class="product-section">
-              <h2>Mount APIs</h2>
-              <table class="tutorial-table">
-                <tbody>
-                  <tr><th><code>gxwasm.Mount</code></th><td>Mounts a root function into a host selector.</td></tr>
-                  <tr><th><code>gxwasm.MountApp</code></th><td>Mounts a stateful app root.</td></tr>
-                  <tr><th><code>Handle.RequestUpdate</code></th><td>Requests a rerender for one mounted root.</td></tr>
-                  <tr><th><code>Handle.Unmount</code></th><td>Disposes one mounted root.</td></tr>
-                </tbody>
-              </table>
+              <h2>When programmers use nodes</h2>
+              <p>
+                Nodes are the common language between component functions, child slots, fragments,
+                and render helpers. They let you keep composition explicit without flattening the
+                tree into strings too early.
+              </p>
+              <pre><code>func Notice(title string, body gx.Node) gx.Node {
+  return gx.Element("section", gx.Props{"class": "notice"},
+    gx.Element("h2", nil, gx.Text(title)),
+    body,
+  )
+}</code></pre>
             </div>
             <div class="product-section">
-              <h2>Boundary</h2>
+              <h2>Why the tree matters</h2>
               <p>
-                Runtime bridges do not own provider calls, secrets, storage, authorization, or
-                product policy. Hosts provide those pieces explicitly, while GX keeps the tree and
-                callbacks reviewable.
+                The render tree preserves structure for rendering, snapshot tests, and runtime
+                mounts. It is the layer you look at when you want to understand what a component
+                produces before the output turns into HTML.
               </p>
               <p>
-                See also <a href="../effects/index.html">Effects</a> and
+                See also <a href="../rendering/index.html">Rendering</a> and
                 <a href="../testing/index.html">Testing</a>.
               </p>
             </div>

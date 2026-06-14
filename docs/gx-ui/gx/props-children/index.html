@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GX Props And Children | BusDK</title>
+    <meta
+      name="description"
+      content="GX component props, children, optional fields, and nested content slots."
+    />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../index.html">GX Framework</a>
+            <a href="../../bus-ui/index.html">Bus UI Library</a>
+            <a href="../../reference/index.html">Reference</a>
+            <a href="../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">GX Framework</p>
+            <h1>Props and children</h1>
+            <p class="hero-copy">
+              Props are ordinary Go structs. Children are explicit node slots that let a component
+              accept nested content without guessing how the caller wants to compose it.
+            </p>
+            <div class="product-section">
+              <h2>Data goes in props</h2>
+              <p>
+                Use props for labels, flags, callbacks, and other values that describe the
+                component. Keep the shape visible in the Go type so reviews can see what is
+                required and what is optional.
+              </p>
+              <pre><code>type CardProps struct {
+  Title    string
+  Tone     string `gx:",optional"`
+  Children []gx.Node
+}
+
+func Card(props CardProps) gx.Node {
+  return gx.Element("section", gx.Props{"class": "card " + props.Tone},
+    gx.Element("h2", nil, gx.Text(props.Title)),
+    props.Children,
+  )
+}</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Children carry nested content</h2>
+              <p>
+                Children keep the caller in charge of the inner structure. Use them for body copy,
+                lists, nested controls, and other content that should render in the order the
+                caller wrote it.
+              </p>
+              <p>
+                See also <a href="../components/index.html">Component functions</a> and
+                <a href="../nodes/index.html">Nodes and render tree</a>.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

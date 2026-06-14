@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GX Runtime and Testing Tutorial | BusDK</title>
+    <title>GX Runtime And Testing Tutorial | BusDK</title>
     <meta
       name="description"
-      content="Learn GX runtime bridges, mounted app helpers, action/resource dispatch, public runtime config, and deterministic UI tests."
+      content="Learn the GX runtime pages for mounting, effect routing, generated output, and deterministic tests."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -27,157 +27,42 @@
         </div>
       </header>
       <main>
-        <section class="product-page gx-doc-page">
-          <div class="section-inner gx-doc-layout">
-            <aside class="gx-side-nav" aria-label="GX/UI documentation">
-              <p class="gx-side-nav-title">GX and Bus UI</p>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Overview</p>
-                <a href="../index.html">Overview</a>
-                <a href="../reference/index.html">Reference</a>
-                <a href="../modules/index.html">Modules</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">GX Framework</p>
-                <a href="../gx/index.html">GX Framework</a>
-                <a href="../gx/source-files/index.html">Source files</a>
-                <a href="../gx/components/index.html">Component functions</a>
-                <a href="../gx/events/index.html">Events</a>
-                <a href="../gx/rendering/index.html">Rendering</a>
-                <a href="../gx/runtime/index.html">Runtime bridges</a>
-                <a href="../gx/testing/index.html">Testing</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Bus UI Library</p>
-                <a href="../bus-ui/index.html">Bus UI Library</a>
-                <a href="../bus-ui/components/index.html">Components</a>
-                <a href="../bus-ui/forms/index.html">Forms</a>
-                <a href="../bus-ui/data/index.html">Data display</a>
-                <a href="../bus-ui/evidence/index.html">Evidence and files</a>
-                <a href="../bus-ui/assistant/index.html">Assistant</a>
-                <a href="../bus-ui/terminal/index.html">Terminal</a>
-                <a href="../bus-ui/portal/index.html">Portal integration</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Tutorials</p>
-                <a href="../authoring/index.html">Authoring tutorial</a>
-                <a href="./index.html" aria-current="page">Runtime and testing</a>
-                <a href="../components/index.html">Component tutorial</a>
-                <a href="../surfaces/index.html">Product surfaces</a>
-              </div>
-            </aside>
-            <div class="gx-doc-content">
+        <section class="product-page">
+          <div class="section-inner">
             <p class="eyebrow">GX Runtime Tutorial</p>
-            <h1>Render, mount, dispatch, and test from Go.</h1>
+            <h1>Mount, route effects, and test from Go.</h1>
             <p class="hero-copy">
-              Runtime helpers let a host render deterministic HTML, mount stateful component trees,
-              dispatch action/resource results, and bridge into Go/WASM only when the host needs
-              browser-specific interaction. The <code>pkg/ui</code> facade stays the preferred
-              public path for the core checked component set while advanced runtime surfaces
-              continue to move over incrementally.
+              Runtime pages are split so you can read mounting, effect routing, generated output,
+              and testing as separate concepts instead of one blended tutorial.
             </p>
-            <div class="product-section">
-              <h2>Mount a stateful component tree</h2>
-              <p>
-                <code>MountedApp</code> keeps hook state across renders and records diagnostics
-                when disposed state tries to update after unmount. The same contract can run without
-                browser globals for server-side tests.
-              </p>
-              <pre><code>import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
-  uiportal "github.com/busdk/bus-ui/pkg/uiportal"
-)
-
-app := uikit.NewMountedGXNodeApp("counter", func(ctx *uikit.RenderCtx) gx.Node {
-  count, setCount := uikit.UseState(ctx, 0)
-  return gx.Element("button", gx.Props{
-    "data-ui-action": "increment",
-    "onClick": func() { setCount(count + 1) },
-  }, gx.Text(fmt.Sprintf("Count %d", count)))
-})
-
-html, err := app.Render()</code></pre>
-            </div>
-            <div class="product-section" id="actions-resources">
-              <h2>Route actions and provider requests</h2>
-              <p>
-                Actions return public result shapes. Resources validate method, base, and path
-                before a host client sends a request. Provider details, credentials, and retry
-                policy stay outside the component.
-              </p>
-              <pre><code>state := uikit.NewActionState()
-actions := uikit.ActionSet[string]{
-  "files.refresh": {
-    Token: "files.refresh",
-    RunResult: func(moduleID string) uikit.Result {
-      return uikit.Success(map[string]string{"module": moduleID})
-    },
-  },
-}
-
-result := uikit.RunAction(actions, state, "files.refresh", "accounting")
-
-request, err := uikit.NormalizeResourceRequest(uikit.ResourceRequest{
-  Name:   "FilesIndex",
-  Method: uikit.ResourceMethodGet,
-  Base:   "module",
-  Path:   "/api/files",
-})</code></pre>
+            <div class="gx-concept-grid">
+              <a class="tutorial-card" href="../gx/runtime/index.html">
+                <h3>Runtime mounting</h3>
+                <p>Mount stateful trees, rerender them, and keep host bridges explicit.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/effects/index.html">
+                <h3>Effects</h3>
+                <p>Route actions and resources through the host without polluting the node tree.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/generated-go/index.html">
+                <h3>Generated Go</h3>
+                <p>Inspect the compiled roots that runtime and tests execute.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/testing/index.html">
+                <h3>Testing</h3>
+                <p>Assert HTML snapshots, normalized trees, compiled output, and mounted behavior.</p>
+              </a>
             </div>
             <div class="product-section">
-              <h2>Pass public runtime config</h2>
+              <h2>What this page points to</h2>
               <p>
-                Portal hosts can expose non-secret runtime config, same-origin module URLs,
-                declared provider origins, assets, and logging callbacks through checked host
-                context helpers. Secret-bearing values are rejected instead of rendered.
+                Use the mounting page when you need a host interaction model, the effects page when
+                you need host-directed work, and the testing page when you need deterministic
+                checks on the result.
               </p>
-              <pre><code>import uiportal "github.com/busdk/bus-ui/pkg/uiportal"
-
-page := gx.Element("main", nil, gx.Text("Accounting"))
-
-shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
-  Title: "Accounting",
-  HostContext: uiportal.HostContext{
-    ModuleID:           "accounting",
-    BasePath:           "/modules/accounting/",
-    PortalBasePath:     "/",
-    SameOriginBasePath: "/",
-    PublicRuntimeConfig: map[string]any{
-      "locale": "fi-FI",
-    },
-  },
-  MainNodes: []gx.Node{page},
-  RenderRuntimeConfig: true,
-})</code></pre>
-            </div>
-            <div class="product-section" id="testing">
-              <h2>Test rendering and interaction</h2>
-              <p>
-                Test helpers cover generated GX output, deterministic HTML, mounted app behavior,
-                fake resources, fake file/drop readers, fake terminal sources, and browser-backed
-                Go/WASM paths.
-              </p>
-              <pre><code>func TestStatusPanel(t *testing.T) {
-  html := gxtest.RenderHTML(t, StatusPage(StatusPageProps{
-    Message: "Ready",
-  }))
-  uikittest.AssertHTMLContains(t, html, `data-ui-component="StatusPill"`)
-}
-
-func TestResourceRequest(t *testing.T) {
-  stub := uikittest.ResourceStub{
-    Result: uikit.Success("ok"),
-  }
-  result := uikit.RunResource(&amp;stub, request, nil)
-  if result.Kind != uikit.ResultKindSuccess {
-    t.Fatalf("unexpected result: %s", result.Kind)
-  }
-}</code></pre>
             </div>
           </div>
-
-          </div></section>
+        </section>
       </main>
     </div>
   </body>

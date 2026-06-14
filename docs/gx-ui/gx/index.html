@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GX Framework | BusDK</title>
-    <meta name="description" content="GX framework concepts: source files, component functions, typed events, rendering, runtime bridges, and testing." />
+    <meta name="description" content="GX framework concepts: nodes, component functions, props, source files, generated Go, events, rendering, runtime mounting, effects, and testing." />
     <link rel="stylesheet" href="../../index.css" />
   </head>
   <body>
@@ -25,78 +25,80 @@
       </header>
       <main>
         <section class="product-page gx-doc-page">
-          <div class="section-inner gx-doc-layout">
-            <aside class="gx-side-nav" aria-label="GX/UI documentation">
-              <p class="gx-side-nav-title">GX and Bus UI</p>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Overview</p>
-                <a href="../index.html">Overview</a>
-                <a href="../reference/index.html">Reference</a>
-                <a href="../modules/index.html">Modules</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">GX Framework</p>
-                <a href="./index.html" aria-current="page">GX Framework</a>
-                <a href="../gx/source-files/index.html">Source files</a>
-                <a href="../gx/components/index.html">Component functions</a>
-                <a href="../gx/events/index.html">Events</a>
-                <a href="../gx/rendering/index.html">Rendering</a>
-                <a href="../gx/runtime/index.html">Runtime bridges</a>
-                <a href="../gx/testing/index.html">Testing</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Bus UI Library</p>
-                <a href="../bus-ui/index.html">Bus UI Library</a>
-                <a href="../bus-ui/components/index.html">Components</a>
-                <a href="../bus-ui/forms/index.html">Forms</a>
-                <a href="../bus-ui/data/index.html">Data display</a>
-                <a href="../bus-ui/evidence/index.html">Evidence and files</a>
-                <a href="../bus-ui/assistant/index.html">Assistant</a>
-                <a href="../bus-ui/terminal/index.html">Terminal</a>
-                <a href="../bus-ui/portal/index.html">Portal integration</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Tutorials</p>
-                <a href="../authoring/index.html">Authoring tutorial</a>
-                <a href="../runtime/index.html">Runtime and testing</a>
-                <a href="../components/index.html">Component tutorial</a>
-                <a href="../surfaces/index.html">Product surfaces</a>
-              </div>
-            </aside>
-            <div class="gx-doc-content">
-            <p class="eyebrow">GX Framework</p>
-            <h1>The frontend foundation.</h1>
-            <p class="hero-copy">
-              GX is the source format, compiler, render tree, runtime bridge, and test layer.
-              Bus UI is built on top of it.
-            </p>
-            <div class="gx-concept-grid">
-              <a class="tutorial-card" href="source-files/index.html"><h3>Source files</h3><p>Write markup inside Go package files and compile it into Go.</p></a>
-              <a class="tutorial-card" href="components/index.html"><h3>Component functions</h3><p>Use typed props, children, and ordinary Go composition.</p></a>
-              <a class="tutorial-card" href="events/index.html"><h3>Events</h3><p>Pass typed callback functions through the render tree.</p></a>
-              <a class="tutorial-card" href="rendering/index.html"><h3>Rendering</h3><p>Render stable HTML and normalized VNodes.</p></a>
-              <a class="tutorial-card" href="runtime/index.html"><h3>Runtime bridges</h3><p>Mount Go component trees where a host needs runtime interaction.</p></a>
-              <a class="tutorial-card" href="testing/index.html"><h3>Testing</h3><p>Assert generated output, HTML, VNodes, and mounted behavior.</p></a>
-            </div>
-            <div class="gx-section gx-duo">
-              <div class="gx-copy">
-                <h2>What belongs to GX</h2>
-                <p>
-                  GX owns the low-level component language: source parsing, formatting, linting,
-                  compilation, render-tree constructors, deterministic HTML rendering, callback
-                  payloads, runtime mounts, and core test helpers.
+          <div class="section-inner">
+            <div class="gx-doc-layout">
+              <aside class="gx-side-nav" aria-label="GX and Bus UI pages">
+                <div class="gx-side-nav-group">
+                  <p class="gx-side-nav-title">Overview</p>
+                  <a href="../index.html">Home</a>
+                  <a aria-current="page" href="index.html">GX Framework</a>
+                  <a href="../bus-ui/index.html">Bus UI Library</a>
+                  <a href="../reference/index.html">Reference</a>
+                  <a href="../modules/index.html">Modules</a>
+                </div>
+                <div class="gx-side-nav-group">
+                  <p class="gx-side-nav-title">GX Framework</p>
+                  <a href="nodes/index.html">Nodes and render tree</a>
+                  <a href="components/index.html">Component functions</a>
+                  <a href="props-children/index.html">Props and children</a>
+                  <a href="source-files/index.html">Source files</a>
+                  <a href="generated-go/index.html">Generated Go</a>
+                  <a href="events/index.html">Events</a>
+                  <a href="rendering/index.html">Rendering</a>
+                  <a href="runtime/index.html">Runtime bridges</a>
+                  <a href="effects/index.html">Effects</a>
+                  <a href="testing/index.html">Testing</a>
+                </div>
+                <div class="gx-side-nav-group">
+                  <p class="gx-side-nav-title">Bus UI Library</p>
+                  <a href="../bus-ui/components/index.html">Components</a>
+                  <a href="../bus-ui/forms/index.html">Forms</a>
+                  <a href="../bus-ui/data/index.html">Data display</a>
+                  <a href="../bus-ui/evidence/index.html">Evidence and files</a>
+                  <a href="../bus-ui/assistant/index.html">Assistant</a>
+                  <a href="../bus-ui/terminal/index.html">Terminal</a>
+                  <a href="../bus-ui/portal/index.html">Portal integration</a>
+                </div>
+              </aside>
+              <div class="gx-doc-content">
+                <p class="eyebrow">GX Framework</p>
+                <h1>The frontend foundation.</h1>
+                <p class="hero-copy">
+                  GX is the source format, compiler, render tree, runtime bridge, and test layer.
+                  Bus UI is built on top of it.
                 </p>
-              </div>
-              <div class="gx-code-card">
-                <div class="gx-card-head">hello.gx</div>
-                <pre><code>func Hello(name string) gx.Node {
+                <div class="gx-concept-grid">
+                  <a class="tutorial-card" href="nodes/index.html"><h3>Nodes and render tree</h3><p>Return and compose <code>gx.Node</code> values.</p></a>
+                  <a class="tutorial-card" href="source-files/index.html"><h3>Source files</h3><p>Write markup inside Go package files and compile it into Go.</p></a>
+                  <a class="tutorial-card" href="components/index.html"><h3>Component functions</h3><p>Use Go functions as reusable UI building blocks.</p></a>
+                  <a class="tutorial-card" href="props-children/index.html"><h3>Props and children</h3><p>Pass data through structs and nested content through slots.</p></a>
+                  <a class="tutorial-card" href="generated-go/index.html"><h3>Generated Go</h3><p>Inspect the compiled roots that runtime and tests execute.</p></a>
+                  <a class="tutorial-card" href="events/index.html"><h3>Events</h3><p>Pass typed callback functions through the render tree.</p></a>
+                  <a class="tutorial-card" href="rendering/index.html"><h3>Rendering</h3><p>Render stable HTML and normalized VNodes.</p></a>
+                  <a class="tutorial-card" href="runtime/index.html"><h3>Runtime bridges</h3><p>Mount Go component trees and host effect surfaces.</p></a>
+                  <a class="tutorial-card" href="effects/index.html"><h3>Effects</h3><p>Route actions and resource requests through the host.</p></a>
+                  <a class="tutorial-card" href="testing/index.html"><h3>Testing</h3><p>Assert output, HTML, VNodes, snapshots, and mounted behavior.</p></a>
+                </div>
+                <div class="gx-section gx-duo">
+                  <div class="gx-copy">
+                    <h2>What belongs to GX</h2>
+                    <p>
+                      GX owns the low-level component language: source parsing, formatting, linting,
+                      compilation, render-tree constructors, deterministic HTML rendering, callback
+                      payloads, runtime mounts, effect routing, and core test helpers.
+                    </p>
+                  </div>
+                  <div class="gx-code-card">
+                    <div class="gx-card-head">hello.gx</div>
+                    <pre><code>func Hello(name string) gx.Node {
   return &lt;p class="message"&gt;
     Hello {name}
   &lt;/p&gt;
 }</code></pre>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </section>
       </main>

@@ -70,93 +70,38 @@
             <p class="eyebrow">GX Framework Tutorial</p>
             <h1>Write frontend components as Go-owned source.</h1>
             <p class="hero-copy">
-              A <code>.gx</code> file is a Go package file with markup inside Go functions.
-              The compiler lowers that markup into deterministic Go rendering while keeping
-              props, callbacks, children, and validation visible to normal Go review.
+              A <code>.gx</code> file is a Go package file with markup inside Go functions. The
+              authoring flow is split into pages for source files, component functions, props and
+              children, generated Go, and the runtime surfaces that consume the result.
             </p>
-            <div class="product-section">
-              <h2>Start with a component</h2>
-              <p>
-                Component props are ordinary Go structs. Strings become escaped text, nodes stay
-                nodes, slices of nodes splice into the child list, and optional fields remain
-                visible in the type definition.
-              </p>
-              <pre><code>package notesui
-
-import "github.com/busdk/bus-gx/pkg/gx"
-
-type NoticeProps struct {
-  Title    string
-  Tone     string `gx:",optional"`
-  Children []gx.Node
-}
-
-func Notice(props NoticeProps) gx.Node {
-  return &lt;section class={"notice " + props.Tone}&gt;
-    &lt;h2&gt;{props.Title}&lt;/h2&gt;
-    {props.Children}
-  &lt;/section&gt;
-}</code></pre>
-            </div>
-            <div class="product-section" id="component-props">
-              <h2>Add callbacks and safe intrinsic elements</h2>
-              <p>
-                Lowercase tags map to validated intrinsic elements. Callback props stay as Go
-                functions in the render tree and are omitted from serialized HTML until a runtime
-                host wires them.
-              </p>
-              <pre><code>type EditorProps struct {
-  Title    string
-  OnTitle  func(string)
-  OnSubmit func(gx.SubmitEvent) gx.Result
-}
-
-func NoteEditor(props EditorProps) gx.Node {
-  return &lt;form onSubmit={props.OnSubmit}&gt;
-    &lt;label for="title"&gt;Title&lt;/label&gt;
-    &lt;input id="title" name="title" value={props.Title} onInput={props.OnTitle}&gt;&lt;/input&gt;
-    &lt;button type="submit"&gt;Save&lt;/button&gt;
-  &lt;/form&gt;
-}</code></pre>
-              <div class="tutorial-callout">
-                <h3>Built-in callback payloads</h3>
-                <p>
-                  GX supports typed click, submit, input/change, keyboard, focus/blur, file-input,
-                  and drag/drop event payloads. Invalid callback signatures produce diagnostics
-                  before generated Go is accepted.
-                </p>
-              </div>
+            <div class="gx-concept-grid">
+              <a class="tutorial-card" href="../gx/source-files/index.html">
+                <h3>Source files</h3>
+                <p>See the source-file shape, formatter, linter, and compile command.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/components/index.html">
+                <h3>Component functions</h3>
+                <p>Write reusable component functions that return nodes.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/props-children/index.html">
+                <h3>Props and children</h3>
+                <p>Keep structured inputs and nested content explicit.</p>
+              </a>
+              <a class="tutorial-card" href="../gx/generated-go/index.html">
+                <h3>Generated Go</h3>
+                <p>Inspect the compiled roots written by the GX compiler.</p>
+              </a>
             </div>
             <div class="product-section">
-              <h2>Format, lint, and compile</h2>
+              <h2>What the authoring flow gives you</h2>
               <p>
-                The source tools are deterministic. Format and lint can run before compile, while
-                compile writes generated Go in the same package as the human-authored source.
+                Component props stay visible in Go types, child content stays explicit in the tree,
+                and the compiled output stays in the same package for review and testing.
               </p>
-              <pre><code>bus gx fmt --check notes.gx
-bus gx lint --format json notes.gx
-bus gx compile notes.gx --output notes_gx_generated.go</code></pre>
               <p>
-                Generated code keeps the Go declaration shape and replaces markup expressions with
-                calls such as <code>gx.Element</code>, <code>gx.Text</code>, and component functions.
+                Use the <a href="../reference/index.html">Reference</a> page when you want the
+                exact page for a concept or the primary Go names behind it.
               </p>
-            </div>
-            <div class="product-section">
-              <h2>Render without a host</h2>
-              <p>
-                Components can render to stable HTML for server output, snapshots, and unit tests.
-                This is useful even when the same component is later mounted into a browser host.
-              </p>
-              <pre><code>html, err := gx.RenderHTML(Notice(NoticeProps{
-  Title: "Ready",
-  Tone:  "success",
-  Children: []gx.Node{
-    gx.Element("p", nil, gx.Text("Generated by Go.")),
-  },
-}))
-if err != nil {
-  return err
-}</code></pre>
             </div>
           </div>
 

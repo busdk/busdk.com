@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GX Effects | BusDK</title>
+    <meta
+      name="description"
+      content="GX action and resource effects for host-directed work, requests, and runtime effects."
+    />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../index.html">GX Framework</a>
+            <a href="../../bus-ui/index.html">Bus UI Library</a>
+            <a href="../../reference/index.html">Reference</a>
+            <a href="../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner">
+            <p class="eyebrow">GX Framework</p>
+            <h1>Effects</h1>
+            <p class="hero-copy">
+              Actions and resources are the host-facing effect layer around a pure render tree.
+              Use them when a component needs to trigger work, fetch data, or hand a request to the
+              runtime instead of only emitting HTML.
+            </p>
+            <div class="product-section">
+              <h2>What belongs here</h2>
+              <p>
+                Keep user-visible actions, request normalization, and response wiring separate from
+                the node tree itself. That keeps rendering deterministic while still letting the
+                runtime handle side effects.
+              </p>
+              <pre><code>state := uikit.NewActionState()
+actions := uikit.ActionSet[string]{
+  "files.refresh": {
+    Token: "files.refresh",
+    RunResult: func(moduleID string) uikit.Result {
+      return uikit.Success(map[string]string{"module": moduleID})
+    },
+  },
+}
+
+result := uikit.RunAction(actions, state, "files.refresh", "accounting")</code></pre>
+            </div>
+            <div class="product-section">
+              <h2>Why it gets its own page</h2>
+              <p>
+                Effects are the piece programmers reach for when a component stops being pure and
+                starts coordinating host work. Separating them keeps the render-tree pages focused
+                on structure and the runtime pages focused on mounting.
+              </p>
+              <p>
+                See also <a href="../runtime/index.html">Runtime mounting</a> and
+                <a href="../rendering/index.html">Rendering</a>.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

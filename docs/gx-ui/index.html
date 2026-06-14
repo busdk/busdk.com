@@ -168,6 +168,54 @@ panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
               </div>
             </div>
 
+            <div class="gx-section">
+              <div class="gx-copy gx-centered">
+                <h2>GX concepts at the page level</h2>
+                <p>
+                  The framework docs split the render tree, component inputs, compiled roots,
+                  runtime effects, and testing surfaces into separate programmer-facing pages.
+                </p>
+              </div>
+              <div class="gx-concept-grid">
+                <a class="tutorial-card" href="gx/nodes/index.html">
+                  <h3>Nodes and render tree</h3>
+                  <p>Work with <code>gx.Node</code>, fragments, text, and composed child trees.</p>
+                </a>
+                <a class="tutorial-card" href="gx/components/index.html">
+                  <h3>Component functions</h3>
+                  <p>Return nodes from Go functions and keep composition explicit.</p>
+                </a>
+                <a class="tutorial-card" href="gx/props-children/index.html">
+                  <h3>Props and children</h3>
+                  <p>Pass data through Go structs and nested content through child slots.</p>
+                </a>
+                <a class="tutorial-card" href="gx/source-files/index.html">
+                  <h3>Source files</h3>
+                  <p>Author <code>.gx</code> files, format them, and compile them into Go.</p>
+                </a>
+                <a class="tutorial-card" href="gx/generated-go/index.html">
+                  <h3>Generated Go</h3>
+                  <p>Inspect the compiled roots that the package and tests actually execute.</p>
+                </a>
+                <a class="tutorial-card" href="gx/events/index.html">
+                  <h3>Events</h3>
+                  <p>Use typed callbacks and payloads for click, form, input, and drop handling.</p>
+                </a>
+                <a class="tutorial-card" href="gx/rendering/index.html">
+                  <h3>Rendering</h3>
+                  <p>Turn nodes into stable HTML and a normalized render tree.</p>
+                </a>
+                <a class="tutorial-card" href="gx/runtime/index.html">
+                  <h3>Runtime mounting</h3>
+                  <p>Mount stateful trees and separate host effects from pure rendering.</p>
+                </a>
+                <a class="tutorial-card" href="gx/testing/index.html">
+                  <h3>Testing</h3>
+                  <p>Assert snapshots, generated output, and mounted behavior from Go tests.</p>
+                </a>
+              </div>
+            </div>
+
             <div class="gx-section gx-platforms">
               <div class="gx-copy gx-centered">
                 <h2>Use it across frontend hosts</h2>
