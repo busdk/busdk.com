@@ -3,15 +3,16 @@
 - [x] Remove redundant inline next/back navigation copy from GX/UI Bus UI pages. Acceptance: `docs/gx-ui/bus-ui/**` no longer uses footer-style "Continue to ... or back to ..." or "Go back to ..." paragraphs that duplicate the side navigation, meaningful prose links remain intact, `git diff --check` passes, and the GX/UI local link scan remains clean.
 - [x] Apply the GX/UI nested side-nav and component leaf-page pattern across all Bus UI component families, not only Shells. Acceptance: all `docs/gx-ui/**` pages use a consistent nested Bus UI side navigation; Navigation, Action, Surface, and Status family components have individual pages matching the Shell component-page pattern; family tables link to those pages; local links use explicit `index.html`; `git diff --check` and the GX/UI local link scan pass.
 - [x] Fix the GX/UI Bus UI component side-nav hierarchy and add Shell component leaf pages. Acceptance: component side navigation visually nests component families under Components and Shell component pages under Shells; each shell component listed on the Shells page has its own page with description, checked API, and code example; local links use explicit `index.html`; `git diff --check` and the local link scan pass.
-- [x] Refresh the GX/UI website pages to describe node-first `gx.Node`
+- [ ] Refresh the GX/UI website pages to describe node-first `gx.Node`
   composition, validation-first checked helpers, and HTML adapters as
-  compatibility vocabulary rather than the primary teaching surface.
+  temporary migration vocabulary rather than the primary teaching surface.
   - Scope: `docs/gx-ui/**` pages that currently foreground `Checked` or
     `pkg/uikit` in examples.
   - Acceptance: public examples show typed `gx.Node` composition where the
-    code supports it, old HTML-body wording is replaced with explicit adapter
-    vocabulary, and the touched pages pass `git diff --check` plus the local
-    link scan.
+    code supports it, old HTML-body wording is replaced with explicit
+    temporary-migration adapter vocabulary, `pkg/uikit` is not presented as a
+    long-term compatibility package, and the touched pages pass
+    `git diff --check` plus the local link scan.
 - [ ] Rewrite `busdk.com/docs/` internal directory links so `file://` preview works without an HTTP server. Acceptance: all local directory `href`/`src` links in `docs/**` end in `index.html`, representative nested pages resolve from the filesystem, `git diff --check` passes, and the resulting `busdk.com` pointer can be updated from this branch.
 - [x] Create individual Bus UI component-family pages for shells, navigation, actions, surfaces, and status under `docs/gx-ui/bus-ui/components/`. Acceptance: each page exists, names the checked function and props type, states whether the public `pkg/ui` facade already exports the symbol or whether the current path is still `pkg/uikit`, links back to the component category and reference pages with explicit `/index.html` targets, and the changed pages plus index pass the link scan and `git diff --check`.
 - [x] Add individual Bus UI forms, input, submit, filter, upload, and auth-form pages under `docs/gx-ui/bus-ui/forms/`, and keep the pages honest about the current `pkg/ui` migration boundary.
@@ -234,15 +235,15 @@
 
 - [x] Add individual Bus UI documentation pages for DenseTable, TextTable, RecordList, SummaryItem, ProjectionDetail, ProviderError, EvidenceLink, EvidencePreview, Timeline, and ImageGallery; update the Bus UI data/evidence category pages to link to each page.
 - [ ] Promote the Bus UI shell, navigation, and status examples to the public
-  `pkg/ui` facade and leave `pkg/uikit` only as compatibility wording where
-  the docs intentionally describe non-public helpers.
+  `pkg/ui` facade and remove public `pkg/uikit` teaching.
   - Scope: `docs/gx-ui/components/`, `docs/gx-ui/bus-ui/components/`, the
     shell/navigation/status example pages, and the corresponding `bus-ui`
     import snippets.
   - Acceptance: exported shell/navigation/status wrapper examples use
     `ui "github.com/busdk/bus-ui/pkg/ui"` in the public website examples, any
-    remaining `pkg/uikit` references are explicitly compatibility/deprecation
-    notes, and the changed pages pass the local link and diff checks.
+    remaining `pkg/uikit` references are limited to temporary migration debt or
+    implementation-boundary notes with a deletion path, and the changed pages
+    pass the local link and diff checks.
 
 - [x] Add clear GX/UI side navigation that connects the overview, GX Framework concept pages, Bus UI Library concept pages, reference, and module map from every inner GX/UI page; verify desktop/mobile layout and promote the finished branch to `develop`.
 - [x] Refactor the GX/UI product overview toward a product-docs tutorial structure with a centered product hero, Learn/API CTAs, section-by-section code/output examples, platform-host cards, and a reference-documentation strip.
