@@ -52,18 +52,15 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := uikit.EvidenceLinkChecked(uikit.EvidenceLinkProps{
+html, err := ui.EvidenceLinkChecked(ui.EvidenceLinkProps{
   Label:     "Open PDF",
   Href:      "/modules/accounting/evidence/bank-statement.pdf",
-  Operation: uikit.EvidenceOperationDownload,
+  Operation: ui.EvidenceOperationDownload,
   Download:  true,
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this evidence link surface.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

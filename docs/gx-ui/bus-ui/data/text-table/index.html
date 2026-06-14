@@ -52,17 +52,14 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-rows := []uikit.Node{
-  uikit.Node("<tr><td>June receipts</td><td>3 files</td><td>Ready</td></tr>"),
+rows := []ui.Node{
+  ui.Node("<tr><td>June receipts</td><td>3 files</td><td>Ready</td></tr>"),
 }
 
-table, err := uikit.TextTableChecked([]string{"Title", "Files", "State"}, rows, nil)</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+table, err := ui.TextTableChecked([]string{"Title", "Files", "State"}, rows, nil)</code></pre>
+                <p>Use the public <code>pkg/ui</code> facade for this compatibility table helper.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

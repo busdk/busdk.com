@@ -51,11 +51,11 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-result, err := uikit.ImageGalleryChecked(uikit.ImageGalleryProps{
+result, err := ui.ImageGalleryChecked(ui.ImageGalleryProps{
   ImageOrigins: []string{"https://files.example.com"},
-  Items: []uikit.ImageGalleryItem{
+  Items: []ui.ImageGalleryItem{
     {
       Src:  "https://files.example.com/evidence/photo-1.jpg",
       Alt:  "Receipt on a desk",
@@ -63,10 +63,7 @@ result, err := uikit.ImageGalleryChecked(uikit.ImageGalleryProps{
     },
   },
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this image gallery surface.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

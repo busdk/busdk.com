@@ -51,23 +51,20 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-result, err := uikit.ProjectionDetailChecked(uikit.ProjectionDetailProps{
+result, err := ui.ProjectionDetailChecked(ui.ProjectionDetailProps{
   Title:   "Invoice projection",
   Summary: "Checked before the provider response is exposed.",
-  Fields: []uikit.ProjectionField{
+  Fields: []ui.ProjectionField{
     {Label: "Provider", Value: "Stripe"},
     {Label: "State", Value: "Ready"},
   },
-  Evidence: []uikit.ProjectionEvidenceAction{
-    {Label: "Open evidence", Operation: uikit.EvidenceOperationOpen, URL: "/evidence/invoice.pdf"},
+  Evidence: []ui.ProjectionEvidenceAction{
+    {Label: "Open evidence", Operation: ui.EvidenceOperationOpen, URL: "/evidence/invoice.pdf"},
   },
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this projection detail surface.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

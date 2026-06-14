@@ -53,23 +53,20 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-table, err := uikit.DenseTableChecked(uikit.DenseTableProps{
+table, err := ui.DenseTableChecked(ui.DenseTableProps{
   Caption: "Document queue",
-  Columns: []uikit.DenseTableColumn{
-    uikit.DenseTableColumnText("title", "Title"),
-    uikit.DenseTableColumnText("files", "Files"),
-    uikit.DenseTableColumnText("state", "State"),
+  Columns: []ui.DenseTableColumn{
+    ui.DenseTableColumnText("title", "Title"),
+    ui.DenseTableColumnText("files", "Files"),
+    ui.DenseTableColumnText("state", "State"),
   },
-  Rows: []uikit.DenseTableRow{
-    uikit.DenseTableRowText("June receipts", "3 files", "Ready"),
+  Rows: []ui.DenseTableRow{
+    ui.DenseTableRowText("June receipts", "3 files", "Ready"),
   },
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this generic table helper.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

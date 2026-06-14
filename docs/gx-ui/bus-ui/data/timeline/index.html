@@ -51,27 +51,24 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := uikit.TimelineChecked(uikit.TimelineProps{
+html, err := ui.TimelineChecked(ui.TimelineProps{
   Label: "Invoice workflow",
-  Items: []uikit.TimelineItem{
+  Items: []ui.TimelineItem{
     {
       Time:   "2026-06-14T09:00:00Z",
       Body:   "Invoice imported",
-      Status: uikit.TimelineStatusSuccess,
+      Status: ui.TimelineStatusSuccess,
     },
     {
       Time:   "2026-06-14T09:10:00Z",
       Body:   "Provider error reviewed",
-      Status: uikit.TimelineStatusWarning,
+      Status: ui.TimelineStatusWarning,
     },
   },
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this timeline surface.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

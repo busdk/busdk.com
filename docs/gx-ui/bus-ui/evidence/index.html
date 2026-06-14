@@ -67,8 +67,9 @@
             <p class="eyebrow">Bus UI Evidence And Files</p>
             <h1>Evidence UI without leaking storage policy.</h1>
             <p class="hero-copy">
-              Use the individual evidence pages for safe links, inline previews, and image
-              galleries. The checked APIs keep URL policy and preview fallbacks explicit.
+              Use the individual evidence pages for the public <code>pkg/ui</code> wrappers that
+              cover safe links, inline previews, and image galleries. The checked APIs keep URL
+              policy and preview fallbacks explicit.
             </p>
             <div class="product-section">
               <h2>Concept pages</h2>
@@ -87,19 +88,16 @@
             </div>
             <div class="product-section">
               <h2>Shared example</h2>
-              <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
   Title:       "Bank statement",
   PreviewURL:  "/modules/accounting/evidence/bank-statement.pdf",
   OpenURL:     "/modules/accounting/evidence/bank-statement.pdf",
   ContentType: "application/pdf",
   Fallback:    "Preview is unavailable.",
 })</code></pre>
-              <p>
-                This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                examples use <code>pkg/uikit</code> directly until that migration lands.
-              </p>
+              <p>These shared evidence examples now use the public <code>pkg/ui</code> facade.</p>
             </div>
             <div class="product-section">
               <h2>Back links</h2>

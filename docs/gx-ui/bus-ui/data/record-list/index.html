@@ -50,19 +50,16 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := uikit.RecordListChecked(uikit.RecordListProps{
-  Items: []uikit.RecordListItem{
-    uikit.RecordListItemSummary("June receipts", "3 files", "Prepared for accounting review."),
+html, err := ui.RecordListChecked(ui.RecordListProps{
+  Items: []ui.RecordListItem{
+    ui.RecordListItemSummary("June receipts", "3 files", "Prepared for accounting review."),
   },
   EmptyTitle:  "No receipts yet",
   EmptyDetail: "Upload files to build the list.",
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this ordered summary list.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

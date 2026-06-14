@@ -52,18 +52,15 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := uikit.SummaryItemChecked(uikit.SummaryItemProps{
+html, err := ui.SummaryItemChecked(ui.SummaryItemProps{
   Title: "June receipts",
   Meta:  "3 files",
   Detail: "Prepared for accounting review.",
   Badge:  "Ready",
 })</code></pre>
-                <p>
-                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
-                  example uses <code>pkg/uikit</code> directly.
-                </p>
+                <p>Use the public <code>pkg/ui</code> facade for this compact summary helper.</p>
               </div>
               <div class="product-section">
                 <h2>Related</h2>
