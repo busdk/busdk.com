@@ -1,5 +1,12 @@
 # PLAN.md
 
+- [ ] Replace public GX/UI `*Checked` examples with the validation-default
+  `gx.Node` component API story. Acceptance: pages under `docs/gx-ui/**` no
+  longer use `Checked API` or `Checked surface` as section headings,
+  examples prefer node/component APIs plus explicit render boundaries, any
+  remaining `*Checked` references are temporary migration notes with deletion
+  paths, and `ui.AppShellChecked()` is no longer shown as the primary shell
+  example.
 - [x] Remove redundant inline next/back navigation copy from GX/UI Bus UI pages. Acceptance: `docs/gx-ui/bus-ui/**` no longer uses footer-style "Continue to ... or back to ..." or "Go back to ..." paragraphs that duplicate the side navigation, meaningful prose links remain intact, `git diff --check` passes, and the GX/UI local link scan remains clean.
 - [x] Apply the GX/UI nested side-nav and component leaf-page pattern across all Bus UI component families, not only Shells. Acceptance: all `docs/gx-ui/**` pages use a consistent nested Bus UI side navigation; Navigation, Action, Surface, and Status family components have individual pages matching the Shell component-page pattern; family tables link to those pages; local links use explicit `index.html`; `git diff --check` and the GX/UI local link scan pass.
 - [x] Fix the GX/UI Bus UI component side-nav hierarchy and add Shell component leaf pages. Acceptance: component side navigation visually nests component families under Components and Shell component pages under Shells; each shell component listed on the Shells page has its own page with description, checked API, and code example; local links use explicit `index.html`; `git diff --check` and the local link scan pass.
