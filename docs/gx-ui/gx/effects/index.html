@@ -34,7 +34,9 @@
             <p class="hero-copy">
               Actions and resources are the host-facing effect layer around a pure render tree.
               Use them when a component needs to trigger work, fetch data, or hand a request to the
-              runtime instead of only emitting HTML.
+              runtime instead of only emitting HTML. The code sample keeps the current
+              compatibility alias short, but the page treats this as a boundary surface rather
+              than a primary public component API.
             </p>
             <div class="product-section">
               <h2>What belongs here</h2>
@@ -43,17 +45,17 @@
                 the node tree itself. That keeps rendering deterministic while still letting the
                 runtime handle side effects.
               </p>
-              <pre><code>state := uikit.NewActionState()
-actions := uikit.ActionSet[string]{
+              <pre><code>state := ui.NewActionState()
+actions := ui.ActionSet[string]{
   "files.refresh": {
     Token: "files.refresh",
-    RunResult: func(moduleID string) uikit.Result {
-      return uikit.Success(map[string]string{"module": moduleID})
+    RunResult: func(moduleID string) ui.Result {
+      return ui.Success(map[string]string{"module": moduleID})
     },
   },
 }
 
-result := uikit.RunAction(actions, state, "files.refresh", "accounting")</code></pre>
+result := ui.RunAction(actions, state, "files.refresh", "accounting")</code></pre>
             </div>
             <div class="product-section">
               <h2>Why it gets its own page</h2>

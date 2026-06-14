@@ -93,31 +93,33 @@
             <h1>Frames for whole pages and whole modules.</h1>
             <p class="hero-copy">
               Use shell components when a page needs stable chrome around a module view. These
-              helpers now export through <code>pkg/ui</code>, so the current import path is the
+              helpers export through <code>pkg/ui</code>, so the current import path is the
               public facade rather than <code>pkg/uikit</code>. The shell slots are typed
-              <code>gx.Node</code> trees and the checked path is the normal validation route.
+              <code>gx.Node</code> trees, and the checked helper remains the validation and
+              compatibility boundary.
             </p>
             <div class="product-section">
-              <h2>Validated APIs</h2>
+              <h2>Public APIs</h2>
               <table class="tutorial-table">
                 <thead>
-                  <tr><th>Component</th><th>Use it for</th><th>Checked API</th><th>Current path</th></tr>
+                  <tr><th>Component</th><th>Use it for</th><th>Public API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./app-shell/index.html">AppShell</a></td><td>Full document chrome with title, head assets, nav, main, and footer slots.</td><td><code>AppShellChecked</code> / <code>AppShellProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./page-shell/index.html">PageShell</a></td><td>In-document header, main, and footer structure.</td><td><code>PageShellChecked</code> / <code>PageShellProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./sidebar-shell/index.html">SidebarShell</a></td><td>Left-rail layouts with a nav rail and main content.</td><td><code>SidebarShellChecked</code> / <code>SidebarShellProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./sidebar-nav/index.html">SidebarNav</a></td><td>Collapsible app navigation rails with active item support.</td><td><code>SidebarNavChecked</code> / <code>SidebarNavProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./shell-action-panel/index.html">ShellActionPanel</a></td><td>Bounded shell panels with a title, body, actions, and footer.</td><td><code>ShellActionPanelChecked</code> / <code>ShellActionPanelCheckedProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./app-shell/index.html">AppShell</a></td><td>Full document chrome with title, head assets, nav, main, and footer slots.</td><td><code>AppShellProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./page-shell/index.html">PageShell</a></td><td>In-document header, main, and footer structure.</td><td><code>PageShellProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./sidebar-shell/index.html">SidebarShell</a></td><td>Left-rail layouts with a nav rail and main content.</td><td><code>SidebarShellProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./sidebar-nav/index.html">SidebarNav</a></td><td>Collapsible app navigation rails with active item support.</td><td><code>SidebarNavProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./shell-action-panel/index.html">ShellActionPanel</a></td><td>Bounded shell panels with a title, body, actions, and footer.</td><td><code>ShellActionPanelProps</code></td><td><code>pkg/ui</code></td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                Choose <code>PageShellChecked</code> when a module already owns the browser
-                document and only needs a predictable page frame inside it. The page shell
-                composes header, main, and footer node trees before render.
+                Choose the page-shell helper when a module already owns the browser document and
+                only needs a predictable page frame inside it. The page shell composes header,
+                main, and footer node trees before render; the checked name remains the
+                validation boundary.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"

@@ -175,22 +175,22 @@
 
             <div class="gx-section gx-duo">
               <div class="gx-copy">
-                <h2>Bus UI: use validated components</h2>
+                <h2>Bus UI: use the public facade</h2>
                 <p>
                   Shared components validate public props, keep stable CSS and data hooks, and
-                  return explicit errors when a component cannot render safely. HTML adapters are
-                  narrow and named.
+                  return explicit errors when a component cannot render safely. Use the public
+                  <code>pkg/ui</code> facade first, and treat checked helpers as the render
+                  boundary where a wrapper still needs validation.
                 </p>
                 <p><a href="bus-ui/components/index.html">Browse component families</a></p>
               </div>
               <div class="gx-code-card">
-                <div class="gx-card-head">result.go</div>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <div class="gx-card-head">button.go</div>
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
-  Title:   "Evidence pack ready",
-  Status:  uikit.StatusSuccess,
-  Summary: "3 files prepared for review.",
+button := ui.Button(ui.ButtonProps{
+  Label:   "Save draft",
+  Variant: ui.ButtonPrimary,
 })</code></pre>
               </div>
             </div>

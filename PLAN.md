@@ -12,6 +12,10 @@
     code supports it, old HTML-body wording is replaced with explicit adapter
     vocabulary, and the touched pages pass `git diff --check` plus the local
     link scan.
+- [ ] 2026-06-14: clean up the public GX/UI website again so the current pages
+  teach node-first composition and public facades before any checked helper or
+  `pkg/uikit` compatibility wording, with only explicit boundary notes left
+  where no public facade exists yet.
 - [ ] Rewrite `busdk.com/docs/` internal directory links so `file://` preview works without an HTTP server. Acceptance: all local directory `href`/`src` links in `docs/**` end in `index.html`, representative nested pages resolve from the filesystem, `git diff --check` passes, and the resulting `busdk.com` pointer can be updated from this branch.
 - [x] Create individual Bus UI component-family pages for shells, navigation, actions, surfaces, and status under `docs/gx-ui/bus-ui/components/`. Acceptance: each page exists, names the checked function and props type, states whether the public `pkg/ui` facade already exports the symbol or whether the current path is still `pkg/uikit`, links back to the component category and reference pages with explicit `/index.html` targets, and the changed pages plus index pass the link scan and `git diff --check`.
 - [x] Add individual Bus UI forms, input, submit, filter, upload, and auth-form pages under `docs/gx-ui/bus-ui/forms/`, and keep the pages honest about the current `pkg/ui` migration boundary.

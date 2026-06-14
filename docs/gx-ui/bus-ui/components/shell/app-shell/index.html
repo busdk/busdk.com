@@ -92,16 +92,16 @@
               <p class="eyebrow">Bus UI Shells</p>
               <h1>AppShell renders the full document frame.</h1>
               <p class="hero-copy">
-                Use <code>AppShellChecked</code> when a module owns the whole response document:
+                Use the AppShell render boundary when a module owns the whole response document:
                 title, head assets, navigation, main content, footer, and optional mount metadata.
               </p>
               <div class="product-section">
-                <h2>Checked API</h2>
+                <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
                     <tr><th>Function</th><td><code>ui.AppShellChecked</code></td></tr>
                     <tr><th>Props</th><td><code>ui.AppShellProps</code></td></tr>
-                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks.</td></tr>
+                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks. This remains the compatibility boundary for whole-document rendering.</td></tr>
                   </tbody>
                 </table>
               </div>
