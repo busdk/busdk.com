@@ -1,5 +1,6 @@
 # PLAN.md
 
+- [x] Remove redundant inline next/back navigation copy from GX/UI Bus UI pages. Acceptance: `docs/gx-ui/bus-ui/**` no longer uses footer-style "Continue to ... or back to ..." or "Go back to ..." paragraphs that duplicate the side navigation, meaningful prose links remain intact, `git diff --check` passes, and the GX/UI local link scan remains clean.
 - [x] Apply the GX/UI nested side-nav and component leaf-page pattern across all Bus UI component families, not only Shells. Acceptance: all `docs/gx-ui/**` pages use a consistent nested Bus UI side navigation; Navigation, Action, Surface, and Status family components have individual pages matching the Shell component-page pattern; family tables link to those pages; local links use explicit `index.html`; `git diff --check` and the GX/UI local link scan pass.
 - [x] Fix the GX/UI Bus UI component side-nav hierarchy and add Shell component leaf pages. Acceptance: component side navigation visually nests component families under Components and Shell component pages under Shells; each shell component listed on the Shells page has its own page with description, checked API, and code example; local links use explicit `index.html`; `git diff --check` and the local link scan pass.
 - [x] Refresh the GX/UI website pages to describe node-first `gx.Node`
@@ -13,7 +14,7 @@
     link scan.
 - [ ] Rewrite `busdk.com/docs/` internal directory links so `file://` preview works without an HTTP server. Acceptance: all local directory `href`/`src` links in `docs/**` end in `index.html`, representative nested pages resolve from the filesystem, `git diff --check` passes, and the resulting `busdk.com` pointer can be updated from this branch.
 - [x] Create individual Bus UI component-family pages for shells, navigation, actions, surfaces, and status under `docs/gx-ui/bus-ui/components/`. Acceptance: each page exists, names the checked function and props type, states whether the public `pkg/ui` facade already exports the symbol or whether the current path is still `pkg/uikit`, links back to the component category and reference pages with explicit `/index.html` targets, and the changed pages plus index pass the link scan and `git diff --check`.
-- [ ] Add individual Bus UI forms, input, submit, filter, upload, and auth-form pages under `docs/gx-ui/bus-ui/forms/`, and keep the pages honest about the current `pkg/ui` migration boundary.
+- [x] Add individual Bus UI forms, input, submit, filter, upload, and auth-form pages under `docs/gx-ui/bus-ui/forms/`, and keep the pages honest about the current `pkg/ui` migration boundary.
   - Goal: one page each for Form, Field, Input family, TextArea, Select, SubmitControl, FilterToolbar, FileInput, DropZone, and CredentialLoginCard, with explicit links back to the forms/evidence/reference hubs.
   - Acceptance: the new pages exist, the forms and evidence hubs link to them with explicit `index.html` paths, the pages name the checked function and props type, and the import path shown in the example matches the current export state.
 
