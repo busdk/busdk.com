@@ -46,19 +46,39 @@
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Bus UI Library</p>
-                <a href="../../bus-ui/index.html">Bus UI Library</a>
-                <a href="./index.html" aria-current="page">Components</a>
-                <a href="./shell/index.html">Shell</a>
-                <a href="./navigation/index.html">Navigation</a>
-                <a href="./action/index.html">Action</a>
-                <a href="./surface/index.html">Surface</a>
-                <a href="./status/index.html">Status</a>
-                <a href="../../bus-ui/forms/index.html">Forms</a>
-                <a href="../../bus-ui/data/index.html">Data display</a>
-                <a href="../../bus-ui/evidence/index.html">Evidence and files</a>
-                <a href="../../bus-ui/assistant/index.html">Assistant</a>
-                <a href="../../bus-ui/terminal/index.html">Terminal</a>
-                <a href="../../bus-ui/portal/index.html">Portal integration</a>
+                <a href="../index.html">Bus UI Library</a>
+                <a href="index.html" aria-current="page">Components</a>
+                <a class="gx-side-nav-child" href="shell/index.html">Shells</a>
+                <a class="gx-side-nav-grandchild" href="shell/app-shell/index.html">AppShell</a>
+                <a class="gx-side-nav-grandchild" href="shell/page-shell/index.html">PageShell</a>
+                <a class="gx-side-nav-grandchild" href="shell/sidebar-shell/index.html">SidebarShell</a>
+                <a class="gx-side-nav-grandchild" href="shell/sidebar-nav/index.html">SidebarNav</a>
+                <a class="gx-side-nav-grandchild" href="shell/shell-action-panel/index.html">ShellActionPanel</a>
+                <a class="gx-side-nav-child" href="navigation/index.html">Navigation</a>
+                <a class="gx-side-nav-grandchild" href="navigation/menu/index.html">Menu</a>
+                <a class="gx-side-nav-grandchild" href="navigation/tabs/index.html">Tabs</a>
+                <a class="gx-side-nav-grandchild" href="navigation/navigation/index.html">Navigation</a>
+                <a class="gx-side-nav-child" href="action/index.html">Actions</a>
+                <a class="gx-side-nav-grandchild" href="action/button/index.html">Button</a>
+                <a class="gx-side-nav-grandchild" href="action/link-button/index.html">LinkButton</a>
+                <a class="gx-side-nav-grandchild" href="action/icon-button/index.html">IconButton</a>
+                <a class="gx-side-nav-grandchild" href="action/event-bar/index.html">EventBar</a>
+                <a class="gx-side-nav-child" href="surface/index.html">Surfaces</a>
+                <a class="gx-side-nav-grandchild" href="surface/panel/index.html">Panel</a>
+                <a class="gx-side-nav-grandchild" href="surface/surface-card/index.html">SurfaceCard</a>
+                <a class="gx-side-nav-grandchild" href="surface/metric-card/index.html">MetricCard</a>
+                <a class="gx-side-nav-child" href="status/index.html">Status</a>
+                <a class="gx-side-nav-grandchild" href="status/status-pill/index.html">StatusPill</a>
+                <a class="gx-side-nav-grandchild" href="status/empty-state/index.html">EmptyState</a>
+                <a class="gx-side-nav-grandchild" href="status/loading-state/index.html">LoadingState</a>
+                <a class="gx-side-nav-grandchild" href="status/result-panel/index.html">ResultPanel</a>
+                <a class="gx-side-nav-grandchild" href="status/error-banner/index.html">ErrorBanner</a>
+                <a href="../forms/index.html">Forms</a>
+                <a href="../data/index.html">Data display</a>
+                <a href="../evidence/index.html">Evidence and files</a>
+                <a href="../assistant/index.html">Assistant</a>
+                <a href="../terminal/index.html">Terminal</a>
+                <a href="../portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Tutorials</p>
@@ -72,10 +92,10 @@
             <p class="eyebrow">Bus UI Components</p>
             <h1>Shared structure for product surfaces.</h1>
             <p class="hero-copy">
-              These family pages explain the checked component APIs one layer at a time. Some
-              surfaces already use the public <code>pkg/ui</code> facade; shells and navigation
-              still live on <code>pkg/uikit</code>, so the pages call out the current path
-              explicitly.
+              These family pages explain the validated component APIs one layer at a time.
+              The shared components build <code>gx.Node</code> trees, validate before render,
+              and only use <code>pkg/uikit</code> explicitly when the page is documenting a
+              compatibility detail.
             </p>
             <div class="product-section">
               <h2>Family pages</h2>
@@ -84,7 +104,7 @@
                   <tr><th>Family</th><th>Use it for</th><th>Page</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Shells</td><td>Application frames, module pages, sidebar layouts, and shell action panels.</td><td><a href="./shell/index.html">Shell</a></td></tr>
+                  <tr><td>Shells</td><td>Application frames, module pages, sidebar layouts, and shell action panels.</td><td><a href="./shell/index.html">Shells</a></td></tr>
                   <tr><td>Navigation</td><td>Menus, tabs, and generic navigation rails.</td><td><a href="./navigation/index.html">Navigation</a></td></tr>
                   <tr><td>Actions</td><td>Buttons, button links, icon buttons, and action bars.</td><td><a href="./action/index.html">Action</a></td></tr>
                   <tr><td>Surfaces</td><td>Panels, surface cards, and metric cards.</td><td><a href="./surface/index.html">Surface</a></td></tr>
@@ -95,15 +115,16 @@
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The shell family is still anchored in <code>pkg/uikit</code>. Use the page-shell
-                helper when the module already owns its own header, body, and footer structure.
+                The shell family now exports through <code>pkg/ui</code>. Use the page-shell
+                helper when the module already owns its own header, body, and footer structure
+                and wants to compose typed node trees before render.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
+  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-shell, err := uikit.PageShellChecked(uikit.PageShellProps{
+shell, err := ui.PageShellChecked(ui.PageShellProps{
   HeaderNodes: []gx.Node{
     gx.Element("h1", nil, gx.Text("Accounting")),
   },
@@ -115,10 +136,6 @@ shell, err := uikit.PageShellChecked(uikit.PageShellProps{
   },
 })</code></pre>
             </div>
-            <p>
-              Back to the <a href="../index.html">Bus UI Library</a> or the
-              <a href="../../reference/index.html">Reference</a>.
-            </p>
           </div>
 
           </div></section>

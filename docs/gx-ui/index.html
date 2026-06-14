@@ -172,8 +172,9 @@ panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
               <div class="gx-copy gx-centered">
                 <h2>GX concepts at the page level</h2>
                 <p>
-                  The framework docs split the render tree, component inputs, compiled roots,
-                  runtime effects, and testing surfaces into separate programmer-facing pages.
+                  The framework docs split nodes, component functions, props and children, source
+                  files, generated Go, events, rendering, runtime mounting, effects, and testing
+                  into separate programmer-facing pages.
                 </p>
               </div>
               <div class="gx-concept-grid">
@@ -206,8 +207,12 @@ panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
                   <p>Turn nodes into stable HTML and a normalized render tree.</p>
                 </a>
                 <a class="tutorial-card" href="gx/runtime/index.html">
-                  <h3>Runtime mounting</h3>
-                  <p>Mount stateful trees and separate host effects from pure rendering.</p>
+                  <h3>Runtime bridges</h3>
+                  <p>Mount stateful trees and separate host interaction from pure rendering.</p>
+                </a>
+                <a class="tutorial-card" href="gx/effects/index.html">
+                  <h3>Effects</h3>
+                  <p>Route actions and resource requests through the host.</p>
                 </a>
                 <a class="tutorial-card" href="gx/testing/index.html">
                   <h3>Testing</h3>

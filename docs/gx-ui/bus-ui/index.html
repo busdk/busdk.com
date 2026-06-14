@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Library | BusDK</title>
-    <meta name="description" content="Bus UI Library concepts: checked components, forms, data display, evidence and files, assistant and terminal surfaces, and portal integration." />
+    <meta name="description" content="Bus UI Library concepts: node-first components, forms, data display, evidence and files, assistant and terminal surfaces, and portal integration." />
     <link rel="stylesheet" href="../../index.css" />
   </head>
   <body>
@@ -46,14 +46,39 @@
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Bus UI Library</p>
-                <a href="./index.html" aria-current="page">Bus UI Library</a>
-                <a href="../bus-ui/components/index.html">Components</a>
-                <a href="../bus-ui/forms/index.html">Forms</a>
-                <a href="../bus-ui/data/index.html">Data display</a>
-                <a href="../bus-ui/evidence/index.html">Evidence and files</a>
-                <a href="../bus-ui/assistant/index.html">Assistant</a>
-                <a href="../bus-ui/terminal/index.html">Terminal</a>
-                <a href="../bus-ui/portal/index.html">Portal integration</a>
+                <a href="index.html" aria-current="page">Bus UI Library</a>
+                <a href="components/index.html">Components</a>
+                <a class="gx-side-nav-child" href="components/shell/index.html">Shells</a>
+                <a class="gx-side-nav-grandchild" href="components/shell/app-shell/index.html">AppShell</a>
+                <a class="gx-side-nav-grandchild" href="components/shell/page-shell/index.html">PageShell</a>
+                <a class="gx-side-nav-grandchild" href="components/shell/sidebar-shell/index.html">SidebarShell</a>
+                <a class="gx-side-nav-grandchild" href="components/shell/sidebar-nav/index.html">SidebarNav</a>
+                <a class="gx-side-nav-grandchild" href="components/shell/shell-action-panel/index.html">ShellActionPanel</a>
+                <a class="gx-side-nav-child" href="components/navigation/index.html">Navigation</a>
+                <a class="gx-side-nav-grandchild" href="components/navigation/menu/index.html">Menu</a>
+                <a class="gx-side-nav-grandchild" href="components/navigation/tabs/index.html">Tabs</a>
+                <a class="gx-side-nav-grandchild" href="components/navigation/navigation/index.html">Navigation</a>
+                <a class="gx-side-nav-child" href="components/action/index.html">Actions</a>
+                <a class="gx-side-nav-grandchild" href="components/action/button/index.html">Button</a>
+                <a class="gx-side-nav-grandchild" href="components/action/link-button/index.html">LinkButton</a>
+                <a class="gx-side-nav-grandchild" href="components/action/icon-button/index.html">IconButton</a>
+                <a class="gx-side-nav-grandchild" href="components/action/event-bar/index.html">EventBar</a>
+                <a class="gx-side-nav-child" href="components/surface/index.html">Surfaces</a>
+                <a class="gx-side-nav-grandchild" href="components/surface/panel/index.html">Panel</a>
+                <a class="gx-side-nav-grandchild" href="components/surface/surface-card/index.html">SurfaceCard</a>
+                <a class="gx-side-nav-grandchild" href="components/surface/metric-card/index.html">MetricCard</a>
+                <a class="gx-side-nav-child" href="components/status/index.html">Status</a>
+                <a class="gx-side-nav-grandchild" href="components/status/status-pill/index.html">StatusPill</a>
+                <a class="gx-side-nav-grandchild" href="components/status/empty-state/index.html">EmptyState</a>
+                <a class="gx-side-nav-grandchild" href="components/status/loading-state/index.html">LoadingState</a>
+                <a class="gx-side-nav-grandchild" href="components/status/result-panel/index.html">ResultPanel</a>
+                <a class="gx-side-nav-grandchild" href="components/status/error-banner/index.html">ErrorBanner</a>
+                <a href="forms/index.html">Forms</a>
+                <a href="data/index.html">Data display</a>
+                <a href="evidence/index.html">Evidence and files</a>
+                <a href="assistant/index.html">Assistant</a>
+                <a href="terminal/index.html">Terminal</a>
+                <a href="portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Tutorials</p>
@@ -65,14 +90,16 @@
             </aside>
             <div class="gx-doc-content">
             <p class="eyebrow">Bus UI Library</p>
-            <h1>Checked components built on GX.</h1>
+            <h1>Node-first components built on GX.</h1>
             <p class="hero-copy">
               Bus UI gives Bus products shared shells, forms, data display, evidence, assistant,
-              terminal, and portal surfaces without moving product policy out of Go modules.
+              terminal, and portal surfaces. Components build <code>gx.Node</code> trees,
+              validate before render, and hand HTML off through shared render boundaries or
+              named adapters.
             </p>
             <div class="gx-concept-grid">
               <a class="tutorial-card" href="components/index.html"><h3>Components</h3><p>Use shells, navigation, panels, controls, status, and action rows.</p></a>
-              <a class="tutorial-card" href="forms/index.html"><h3>Forms</h3><p>Render checked fields, inputs, file controls, drop zones, filters, and submit states.</p></a>
+              <a class="tutorial-card" href="forms/index.html"><h3>Forms</h3><p>Render validated fields, inputs, file controls, drop zones, filters, and submit states.</p></a>
               <a class="tutorial-card" href="data/index.html"><h3>Data Display</h3><p>Show tables, records, summaries, projections, errors, timelines, and galleries.</p></a>
               <a class="tutorial-card" href="evidence/index.html"><h3>Evidence And Files</h3><p>Link and preview evidence while keeping URL and authorization policy in the host.</p></a>
               <a class="tutorial-card" href="assistant/index.html"><h3>Assistant</h3><p>Compose model selection, approvals, review state, thread isolation, and AI panel layouts.</p></a>
@@ -85,7 +112,7 @@
                 <p>
                   Bus UI owns reusable presentation contracts: prop validation, accessible
                   defaults, stable data attributes, generated GX roots, Go adapters, and tests for
-                  shared component behavior.
+                  shared component behavior. Node-first composition is the normal shape.
                 </p>
                 <p>
                   Product modules still own data loading, provider calls, credentials, uploads,
@@ -94,11 +121,11 @@
               </div>
               <div class="gx-code-card">
                 <div class="gx-card-head">result.go</div>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-panel, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
+panel, err := ui.ResultPanelChecked(ui.ResultPanelProps{
   Title:   "Evidence pack ready",
-  Status:  uikit.StatusSuccess,
+  Status:  ui.StatusSuccess,
   Summary: "3 files prepared for review.",
 })</code></pre>
               </div>
