@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AssistantShell | Bus UI Assistant | BusDK</title>
+    <meta name="description" content="AssistantShell renders the generic business-plus-assistant shell with typed slots or compatibility HTML." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../gx/index.html">GX Framework</a>
+            <a href="../index.html">Bus UI Library</a>
+            <a href="../../reference/index.html">Reference</a>
+            <a href="../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" aria-label="GX/UI documentation">
+              <p class="gx-side-nav-title">GX and Bus UI</p>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Overview</p>
+                <a href="../../index.html">Overview</a>
+                <a href="../../reference/index.html">Reference</a>
+                <a href="../../modules/index.html">Modules</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">GX Framework</p>
+                <a href="../../gx/index.html">GX Framework</a>
+                <a href="../../gx/source-files/index.html">Source files</a>
+                <a href="../../gx/components/index.html">Component functions</a>
+                <a href="../../gx/events/index.html">Events</a>
+                <a href="../../gx/rendering/index.html">Rendering</a>
+                <a href="../../gx/runtime/index.html">Runtime bridges</a>
+                <a href="../../gx/testing/index.html">Testing</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Bus UI Library</p>
+                <a href="../index.html">Bus UI Library</a>
+                <a href="../components/index.html">Components</a>
+                <a href="../forms/index.html">Forms</a>
+                <a href="../data/index.html">Data display</a>
+                <a href="../evidence/index.html">Evidence and files</a>
+                <a href="../assistant/index.html">Assistant</a>
+                <a href="../terminal/index.html">Terminal</a>
+                <a href="../portal/index.html">Portal integration</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Assistant UI</p>
+                <a href="../assistant/index.html">Assistant</a>
+                <a href="./index.html" aria-current="page">AssistantShell</a>
+                <a href="../ai-panel/index.html">AIPanel</a>
+                <a href="../ai-composer/index.html">AIComposer</a>
+                <a href="../ai-model-select/index.html">AIModelSelect</a>
+                <a href="../ai-approvals/index.html">AIApprovals</a>
+                <a href="../ai-review-status/index.html">AIReviewStatus</a>
+                <a href="../ai-thread-isolation/index.html">AIThreadIsolation</a>
+                <a href="../ai-thread-list/index.html">AIThreadList</a>
+                <a href="../ai-message/index.html">AIMessage</a>
+                <a href="../ai-markdown/index.html">AIMarkdown</a>
+                <a href="../ai-attachment-list/index.html">AIAttachmentList</a>
+              </div>
+            </aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Assistant</p>
+              <h1>AssistantShell wraps business and assistant panes.</h1>
+              <p class="hero-copy">
+                Use it for a split workbench that keeps product content and assistant content in
+                the same shell while still giving each side its own slot tree or compatibility HTML.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>AssistantShellChecked(p AssistantShellProps) (string, error)</code></p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>AssistantShell</code> when the product page needs a stable split
+                  between the business workflow and the AI assistant area. It is the outer layout
+                  primitive, not the transcript or composer itself.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Key props</h2>
+                <p>
+                  <code>BusinessNodes</code>, <code>AssistantNodes</code>, <code>HeaderNodes</code>,
+                  <code>BusinessHTML</code>, <code>AssistantHTML</code>, <code>Collapsed</code>,
+                  <code>OnToggle</code>, and the slot attribute maps.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+shell, err := uikit.AssistantShellChecked(uikit.AssistantShellProps{
+  BusinessHTML:  "&lt;main&gt;Work area&lt;/main&gt;",
+  AssistantHTML: "&lt;aside&gt;AI assistant&lt;/aside&gt;",
+})</code></pre>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Return to <a href="../assistant/index.html">Assistant</a> or the
+                  <a href="../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Assistant | BusDK</title>
-    <meta name="description" content="Bus UI assistant concepts for shells, panels, composer state, model selection, approvals, review status, thread lists, messages, markdown, attachments, and thread isolation." />
+    <title>AIPanel | Bus UI Assistant | BusDK</title>
+    <meta name="description" content="AIPanel renders assistant threads, messages, approvals, attachments, model controls, and draft composer state in one checked panel." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -51,15 +51,15 @@
                 <a href="../forms/index.html">Forms</a>
                 <a href="../data/index.html">Data display</a>
                 <a href="../evidence/index.html">Evidence and files</a>
-                <a href="./index.html" aria-current="page">Assistant</a>
+                <a href="../assistant/index.html">Assistant</a>
                 <a href="../terminal/index.html">Terminal</a>
                 <a href="../portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Assistant UI</p>
-                <a href="./index.html">Assistant</a>
+                <a href="../assistant/index.html">Assistant</a>
                 <a href="../assistant-shell/index.html">AssistantShell</a>
-                <a href="../ai-panel/index.html">AIPanel</a>
+                <a href="./index.html" aria-current="page">AIPanel</a>
                 <a href="../ai-composer/index.html">AIComposer</a>
                 <a href="../ai-model-select/index.html">AIModelSelect</a>
                 <a href="../ai-approvals/index.html">AIApprovals</a>
@@ -70,48 +70,41 @@
                 <a href="../ai-markdown/index.html">AIMarkdown</a>
                 <a href="../ai-attachment-list/index.html">AIAttachmentList</a>
               </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Tutorials</p>
-                <a href="../../authoring/index.html">Authoring tutorial</a>
-                <a href="../../runtime/index.html">Runtime and testing</a>
-                <a href="../../components/index.html">Component tutorial</a>
-                <a href="../../surfaces/index.html">Product surfaces</a>
-              </div>
             </aside>
             <div class="gx-doc-content">
               <p class="eyebrow">Bus UI Assistant</p>
-              <h1>Assistant surfaces are split into focused concept pages.</h1>
+              <h1>AIPanel composes the assistant workbench.</h1>
               <p class="hero-copy">
-                Use these pages for the assistant shell, panel, composer, model chooser, approval
-                flows, review status, thread list, message rendering, markdown, attachments, and
-                thread isolation.
+                Use it when one panel should own the thread list, transcript, approval items,
+                attachments, model state, and draft composer together.
               </p>
               <div class="product-section">
-                <h2>Concept pages</h2>
-                <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Page</th><th>Use it for</th><th>Checked API</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td><a href="../assistant-shell/index.html">AssistantShell</a></td><td>Generic business-plus-assistant shell layout with collapsible assistant chrome.</td><td><code>AssistantShellChecked(p AssistantShellProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-panel/index.html">AIPanel</a></td><td>Thread lists, messages, approvals, attachments, composer state, and model controls in one panel.</td><td><code>AIPanelChecked(p AIPanelProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-composer/index.html">AIComposer</a></td><td>Controlled prompt input with send and interrupt actions.</td><td><code>AIComposerChecked(p AIComposerProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-model-select/index.html">AIModelSelect</a></td><td>Model selection or display-only model state.</td><td><code>AIModelSelectChecked(p AIModelSelectProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-approvals/index.html">AIApprovals</a></td><td>Pending approval requests with approve and reject controls.</td><td><code>AIApprovalsChecked(p AIApprovalsProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-review-status/index.html">AIReviewStatus</a></td><td>Review-before-apply status cards and state summaries.</td><td><code>AIReviewStatusChecked(p AIReviewStatusProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-thread-isolation/index.html">AIThreadIsolation</a></td><td>Workspace, branch, owner, and conflict status for assistant thread isolation.</td><td><code>AIThreadIsolationChecked(p AIThreadIsolationProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-thread-list/index.html">AIThreadList</a></td><td>Selectable assistant thread lists and archive actions.</td><td><code>AIThreadListChecked(p AIThreadListProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-message/index.html">AIMessage</a></td><td>Validated transcript bubbles with trusted markdown or escaped text.</td><td><code>AIMessageChecked(p AIMessageProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-markdown/index.html">AIMarkdown</a></td><td>Safe markdown rendering with explicit link policy.</td><td><code>AIMarkdownChecked(p AIMarkdownProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-attachment-list/index.html">AIAttachmentList</a></td><td>Attachment chips with open, inspect, and remove actions.</td><td><code>AIAttachmentListChecked(p AIAttachmentListProps) (string, error)</code></td></tr>
-                  </tbody>
-                </table>
+                <h2>Checked API</h2>
+                <p><code>AIPanelChecked(p AIPanelProps) (string, error)</code></p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>AIPanel</code> for the main assistant surface in a product page. Keep
+                  provider calls, review policy, and thread routing in the host, then hand the
+                  render state to this panel.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Key props</h2>
+                <p>
+                  <code>Title</code>, <code>ActiveThread</code>, <code>Threads</code>,
+                  <code>Messages</code>, <code>Approvals</code>, <code>Model</code>,
+                  <code>ModelOptions</code>, <code>Attachments</code>, <code>Draft</code>,
+                  <code>OnSend</code>, <code>OnModelChange</code>, <code>OnAttachment</code>,
+                  <code>OnApprove</code>, and <code>OnReject</code>.
+                </p>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
                 <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
 
-panel, err := uikit.AIPanelChecked(uikit.AIPanelProps{
+html, err := uikit.AIPanelChecked(uikit.AIPanelProps{
   Title:        "Review",
   ActiveThread:  "thread-1",
   Threads:      []uikit.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
@@ -124,8 +117,8 @@ panel, err := uikit.AIPanelChecked(uikit.AIPanelProps{
               <div class="product-section">
                 <h2>Related</h2>
                 <p>
-                  See the <a href="../index.html">Bus UI library index</a> or the
-                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                  Return to <a href="../assistant/index.html">Assistant</a> or the
+                  <a href="../../reference/index.html">Bus UI reference</a>.
                 </p>
               </div>
             </div>

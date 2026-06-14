@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Terminal | BusDK</title>
-    <meta name="description" content="Bus UI terminal concepts for session panels, streamed output, command input, approval prompts, and adapter/session-view helpers." />
+    <title>TerminalAdapters | Bus UI Terminal | BusDK</title>
+    <meta name="description" content="TerminalAdapters normalize terminal events into a session view for rendering." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -52,68 +52,64 @@
                 <a href="../data/index.html">Data display</a>
                 <a href="../evidence/index.html">Evidence and files</a>
                 <a href="../assistant/index.html">Assistant</a>
-                <a href="./index.html" aria-current="page">Terminal</a>
+                <a href="../terminal/index.html">Terminal</a>
                 <a href="../portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Terminal UI</p>
-                <a href="./index.html">Terminal</a>
+                <a href="../terminal/index.html">Terminal</a>
                 <a href="../terminal-session-panel/index.html">TerminalSessionPanel</a>
                 <a href="../terminal-output-view/index.html">TerminalOutputView</a>
                 <a href="../terminal-input-box/index.html">TerminalInputBox</a>
                 <a href="../terminal-approval-prompt/index.html">TerminalApprovalPrompt</a>
-                <a href="../terminal-adapters/index.html">TerminalAdapters</a>
-              </div>
-              <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Tutorials</p>
-                <a href="../../authoring/index.html">Authoring tutorial</a>
-                <a href="../../runtime/index.html">Runtime and testing</a>
-                <a href="../../components/index.html">Component tutorial</a>
-                <a href="../../surfaces/index.html">Product surfaces</a>
+                <a href="./index.html" aria-current="page">TerminalAdapters</a>
               </div>
             </aside>
             <div class="gx-doc-content">
               <p class="eyebrow">Bus UI Terminal</p>
-              <h1>Terminal surfaces are split into focused concept pages.</h1>
+              <h1>TerminalAdapters normalize terminal events.</h1>
               <p class="hero-copy">
-                Use these pages for the session panel, output stream, input box, approval prompt,
-                and the adapter/session-view layer that projects terminal events into renderable
-                state.
+                Use the adapter layer when the host has event streams or session metadata and needs
+                a stable <code>TerminalSessionView</code> before rendering the session panel.
               </p>
               <div class="product-section">
-                <h2>Concept pages</h2>
-                <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Page</th><th>Use it for</th><th>Checked API</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td><a href="../terminal-session-panel/index.html">TerminalSessionPanel</a></td><td>Terminal session chrome, command context, output, and session status.</td><td><code>TerminalSessionPanelChecked(props TerminalSessionPanelProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../terminal-output-view/index.html">TerminalOutputView</a></td><td>Validated stdout, stderr, stdin, and system output chunks.</td><td><code>TerminalOutputViewChecked(chunks []TerminalChunk, emptyText string, log ControlLogSink) (string, error)</code></td></tr>
-                    <tr><td><a href="../terminal-input-box/index.html">TerminalInputBox</a></td><td>Command entry, submit state, and exit actions.</td><td><code>TerminalInputBoxChecked(props TerminalInputBoxProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../terminal-approval-prompt/index.html">TerminalApprovalPrompt</a></td><td>Pending approval prompts and decision buttons.</td><td><code>TerminalApprovalPromptChecked(prompt TerminalApprovalPrompt) (string, error)</code></td></tr>
-                    <tr><td><a href="../terminal-adapters/index.html">TerminalAdapters</a></td><td>Terminal event normalization, session views, and adapter helpers.</td><td><code>TerminalSessionAdapter(input TerminalSessionAdapterInput) (TerminalSessionView, Dispose, error)</code></td></tr>
-                  </tbody>
-                </table>
+                <h2>Checked API</h2>
+                <p><code>TerminalSessionAdapter(input TerminalSessionAdapterInput) (TerminalSessionView, Dispose, error)</code></p>
+                <p><code>BuildAITerminalSessionView(input AITerminalEventAdapterInput) (TerminalSessionView, error)</code></p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>TerminalAdapters</code> when terminal data arrives as generic events and
+                  the host wants a normalized session view for checked rendering or diagnostics.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Key names</h2>
+                <p>
+                  <code>TerminalSessionAdapterInput</code>, <code>TerminalSessionView</code>,
+                  <code>TerminalSessionMetadata</code>, <code>TerminalEvent</code>,
+                  <code>TerminalAdapterDiagnostic</code>, and
+                  <code>TerminalSessionView.TerminalSessionPanelProps()</code>.
+                </p>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
                 <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
 
-seq := 1
-panel, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{
-  Title:      "Verification",
-  Command:    "go test ./...",
-  SessionID:  "sess_123",
-  State:      uikit.TerminalSessionStateRunning,
-  Output:     []uikit.TerminalChunk{{Stream: "stdout", Sequence: &amp;seq, Text: "ok"}},
-  EmptyOutput: "No output yet.",
+view, _, err := uikit.TerminalSessionAdapter(uikit.TerminalSessionAdapterInput{
+  Metadata: uikit.TerminalSessionMetadata{SessionID: "sess_123", Command: "go test ./..."},
+  Events: []uikit.TerminalEvent{
+    {Type: uikit.TerminalEventOpened},
+    {Type: uikit.TerminalEventOutput, Payload: uikit.TerminalEventPayload{Text: "ok"}},
+  },
 })</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>
                 <p>
-                  See the <a href="../index.html">Bus UI library index</a> or the
-                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                  Return to <a href="../terminal/index.html">Terminal</a> or the
+                  <a href="../../reference/index.html">Bus UI reference</a>.
                 </p>
               </div>
             </div>
