@@ -94,7 +94,7 @@
               <p class="hero-copy">
                 Use the AppShell render boundary when a module owns the whole response document:
                 title, head assets, navigation, main content, footer, and optional mount metadata.
-                The checked helper is temporary migration vocabulary, not the final public story.
+                The compatibility helper is temporary migration vocabulary, not the final public story.
               </p>
               <div class="product-section">
                 <h2>Render boundary</h2>
@@ -102,7 +102,7 @@
                   <tbody>
                     <tr><th>Boundary data</th><td><code>gx.Node</code> slices for navigation, main content, and footer slots</td></tr>
                     <tr><th>Props</th><td><code>ui.AppShellProps</code></td></tr>
-                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks. The checked adapter is a temporary render-boundary migration step with a deletion path once the public shell wrapper lands.</td></tr>
+                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks. The node-first adapter is a temporary render-boundary migration step only until the public shell wrapper lands.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -125,7 +125,7 @@ footerNodes := []gx.Node{
   gx.Element("small", nil, gx.Text("Bus UI")),
 }</code></pre>
                 <p>
-                  Pass those nodes through the temporary checked render boundary while the
+                  Pass those nodes through the temporary node-first render boundary while the
                   public shell wrapper is being finalized.
                 </p>
               </div>

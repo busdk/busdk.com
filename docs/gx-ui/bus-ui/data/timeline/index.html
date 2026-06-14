@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>TimelineChecked(p TimelineProps) (string, error)</code></p>
+                <p><code>Timeline(p TimelineProps) gx.Node</code></p>
                 <p>
                   The input model is <code>TimelineProps</code> with <code>TimelineItem</code> and
                   <code>TimelineMeta</code> entries. The helper returns HTML as a string.
@@ -45,7 +45,7 @@
                 <h2>When to use it</h2>
                 <p>
                   Use <code>Timeline</code> when the order itself matters and each entry needs a
-                  status, time, and optional supporting metadata. The checked path rejects raw HTML
+                  status, time, and optional supporting metadata. The node-first path rejects raw HTML
                   in the body field.
                 </p>
               </div>
@@ -53,7 +53,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.TimelineChecked(ui.TimelineProps{
+html, err := ui.Timeline(ui.TimelineProps{
   Label: "Invoice workflow",
   Items: []ui.TimelineItem{
     {

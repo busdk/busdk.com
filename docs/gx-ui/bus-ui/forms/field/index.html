@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Field | BusDK</title>
-    <meta name="description" content="Bus UI Field explains the checked labeled-field wrapper, typed control composition, and FieldChecked with FieldProps." />
+    <meta name="description" content="Bus UI Field explains the node-first labeled-field wrapper, typed control composition, and Field with FieldProps." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -108,14 +108,14 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>FieldChecked</code></td><td><code>FieldProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>Field</code></td><td><code>FieldProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>FieldChecked</code> when the host module wants one labeled wrapper
+                  Use <code>Field</code> when the host module wants one labeled wrapper
                   around a text input, textarea, select, checkbox, or any other deterministic
                   control. <code>RenderControlNode</code> is the preferred composition path.
                 </p>
@@ -132,21 +132,20 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-field, err := ui.FieldChecked(ui.FieldProps{
+field := ui.Field(ui.FieldProps{
   Label:       "Description",
   ControlID:   "description",
   ControlName: "description",
   HintText:    "Shown on the evidence card.",
-  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
-    return ui.TextInputNodeChecked(ui.TextInputProps{
+  RenderControlNode: func(attrs map[string]string) gx.Node {
+    return ui.TextInput(ui.TextInputProps{
       Name:  "description",
       Attrs: attrs,
     })
   },
 })
-if err != nil {
-  return err
-}</code></pre>
+
+html, err := gx.RenderHTML(field)</code></pre>
                 <p>
                   The field helper is already on <code>pkg/ui</code>, so the preferred import path
                   is stable here as well.

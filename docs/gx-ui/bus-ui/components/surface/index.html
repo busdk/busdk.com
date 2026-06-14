@@ -104,16 +104,16 @@
                   <tr><th>Component</th><th>Use it for</th><th>Public API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./panel/index.html">Panel</a></td><td>Generic titled work surfaces with optional actions and footers.</td><td><code>PanelChecked</code> / <code>PanelProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./surface-card/index.html">SurfaceCard</a></td><td>Compact grouped content cards with validated body slots.</td><td><code>SurfaceCardChecked</code> / <code>SurfaceCardProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./metric-card/index.html">MetricCard</a></td><td>Headline numbers with semantic status accents and detail text.</td><td><code>MetricCardChecked</code> / <code>MetricCardProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./panel/index.html">Panel</a></td><td>Generic titled work surfaces with optional actions and footers.</td><td><code>Panel</code> / <code>PanelProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./surface-card/index.html">SurfaceCard</a></td><td>Compact grouped content cards with validated body slots.</td><td><code>SurfaceCard</code> / <code>SurfaceCardProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./metric-card/index.html">MetricCard</a></td><td>Headline numbers with semantic status accents and detail text.</td><td><code>MetricCard</code> / <code>MetricCardProps</code></td><td><code>pkg/ui</code></td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The checked facade is useful when the module wants the surface contract verified
+                The node-first helper is useful when the module wants the surface contract verified
                 before render and still wants to compose with typed Go nodes.
               </p>
               <pre><code>import (
@@ -121,7 +121,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-panel, err := ui.PanelChecked(ui.PanelProps{
+panel, err := ui.Panel(ui.PanelProps{
   Title: "Monthly close",
   BodyNodes: []gx.Node{
     gx.Element("p", nil, gx.Text("3 statements ready")),

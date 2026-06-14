@@ -105,7 +105,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>AIThreadListChecked(p AIThreadListProps) (string, error)</code></p>
+                <p><code>AIThreadList(p AIThreadListProps) gx.Node</code></p>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
@@ -125,7 +125,7 @@
                 <h2>Example</h2>
                 <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
 
-html, err := assistantui.AIThreadListChecked(assistantui.AIThreadListProps{
+html, err := assistantui.AIThreadList(assistantui.AIThreadListProps{
   Threads: []assistantui.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
 })</code></pre>
               </div>

@@ -96,8 +96,8 @@
             <h1>Compose public UI from Go APIs.</h1>
             <p class="hero-copy">
               <code>bus-ui</code> provides reusable component families with deterministic markup,
-              explicit validation errors, stable CSS hooks, and compatibility wrappers for existing
-              Go presenters.
+              explicit validation errors, stable CSS hooks, and node-first public helpers.
+              Deprecated compatibility wrappers remain only for migration.
             </p>
             <div class="product-section">
               <h2>Component families</h2>
@@ -144,9 +144,9 @@
               </table>
             </div>
             <div class="product-section">
-              <h2>Render a form with checked inputs</h2>
+              <h2>Render a form with node-first inputs</h2>
               <p>
-                Compose the form from typed child nodes. The checked facade keeps labels,
+                Compose the form from typed child nodes. The public helpers keep labels,
                 controls, and validation explicit without falling back to raw HTML slots.
               </p>
               <pre><code>import (
@@ -154,35 +154,31 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-field, err := ui.FieldNodeChecked(ui.FieldProps{
+field := ui.Field(ui.FieldProps{
   Label: "Description",
-  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
-    return ui.TextInputNodeChecked(ui.TextInputProps{
+  RenderControlNode: func(attrs map[string]string) gx.Node {
+    return ui.TextInput(ui.TextInputProps{
       Name:  "description",
       Value: "Bank statement",
       Attrs: attrs,
     })
   },
 })
-if err != nil {
-  return err
-}
 
-submit, err := ui.SubmitControlNodeChecked(ui.SubmitControlProps{
+submit := ui.SubmitControl(ui.SubmitControlProps{
   Label: "Upload",
 })
-if err != nil {
-  return err
-}
 
-form, err := ui.FormChecked(ui.FormProps{
+node := ui.Form(ui.FormProps{
   Method: ui.FormMethodPost,
   Action: "/modules/accounting/api/files",
   BodyNodes: []gx.Node{
     field,
     submit,
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
             <div class="product-section">
               <h2>Show status and results</h2>
@@ -192,7 +188,7 @@ form, err := ui.FormChecked(ui.FormProps{
               </p>
               <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.ResultPanelChecked(ui.ResultPanelProps{
+html, err := ui.ResultPanel(ui.ResultPanelProps{
   Title:   "Evidence pack ready",
   Status:  ui.StatusSuccess,
   Summary: "3 files prepared for review.",
@@ -214,7 +210,7 @@ html, err := ui.ResultPanelChecked(ui.ResultPanelProps{
               </p>
               <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-table, err := ui.DenseTableChecked(ui.DenseTableProps{
+table, err := ui.DenseTable(ui.DenseTableProps{
   Caption: "Invoices",
   Columns: []ui.DenseTableColumn{
     ui.DenseTableColumnText("date", "Date"),
@@ -228,7 +224,7 @@ table, err := ui.DenseTableChecked(ui.DenseTableProps{
             <div class="product-section">
               <h2>Keep policy out of components</h2>
               <p>
-                Checked components validate their public rendering contracts. Product modules still
+                Node-first components validate their public rendering contracts. Product modules still
                 own authorization, route selection, upload endpoints, provider calls, business
                 state transitions, and redaction policy.
               </p>

@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Surfaces</p>
               <h1>Panel renders bounded work surfaces.</h1>
               <p class="hero-copy">
-                Use <code>PanelChecked</code> for a titled surface with typed body nodes, optional actions, and validated attributes.
+                Use <code>Panel</code> for a titled surface with typed body nodes, optional actions, and validated attributes.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.PanelChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.Panel</code></td></tr>
                     <tr><th>Props</th><td><code>ui.PanelProps</code></td></tr>
                     <tr><th>Use for</th><td>Generic titled work surfaces with optional action and footer regions.</td></tr>
                   </tbody>
@@ -111,7 +111,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-panel, err := ui.PanelChecked(ui.PanelProps{
+panel, err := ui.Panel(ui.PanelProps{
   Title: "Monthly close",
   BodyNodes: []gx.Node{
     gx.Element("p", nil, gx.Text("3 statements ready")),

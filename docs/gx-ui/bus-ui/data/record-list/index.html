@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>RecordList | Bus UI Data Display | BusDK</title>
-    <meta name="description" content="RecordList renders ordered record summaries with an empty state and checked validation." />
+    <meta name="description" content="RecordList renders ordered record summaries with an empty state and node-first validation." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>RecordListChecked(p RecordListProps) (string, error)</code></p>
+                <p><code>RecordList(p RecordListProps) gx.Node</code></p>
                 <p>
                   The input model is <code>RecordListProps</code> with <code>RecordListItem</code>
                   entries. The helper returns the rendered HTML string.
@@ -52,7 +52,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.RecordListChecked(ui.RecordListProps{
+html, err := ui.RecordList(ui.RecordListProps{
   Items: []ui.RecordListItem{
     ui.RecordListItemSummary("June receipts", "3 files", "Prepared for accounting review."),
   },

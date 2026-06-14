@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Surfaces</p>
               <h1>SurfaceCard frames repeated content.</h1>
               <p class="hero-copy">
-                Use <code>SurfaceCardChecked</code> for compact grouped content where each repeated item needs the same validated surface treatment.
+                Use <code>SurfaceCard</code> for compact grouped content where each repeated item needs the same validated surface treatment.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.SurfaceCardChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.SurfaceCard</code></td></tr>
                     <tr><th>Props</th><td><code>ui.SurfaceCardProps</code></td></tr>
                     <tr><th>Use for</th><td>Repeated or grouped cards with validated typed body slots.</td></tr>
                   </tbody>
@@ -111,7 +111,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-card, err := ui.SurfaceCardChecked(ui.SurfaceCardProps{
+card, err := ui.SurfaceCard(ui.SurfaceCardProps{
   Title: "Bank file",
   BodyNodes: []gx.Node{
     gx.Element("p", nil, gx.Text("Imported successfully")),

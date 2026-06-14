@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI File Input | BusDK</title>
-    <meta name="description" content="Bus UI File Input explains the checked file picker input and FileInputChecked with FileInputProps." />
+    <meta name="description" content="Bus UI File Input explains the node-first file picker input and FileInput with FileInputProps." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -108,17 +108,16 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>FileInputChecked</code></td><td><code>FileInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>FileInput</code></td><td><code>FileInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>FileInputChecked</code> when the host module wants a plain file input
+                  Use <code>FileInput</code> when the host module wants a plain file input
                   without adding drag-and-drop policy. The helper is now on <code>pkg/ui</code>,
-                  while any <code>pkg/uikit</code> reference here is temporary migration debt with
-                  a deletion path.
+                  while any <code>pkg/uikit</code> reference here is deprecated compatibility only.
                 </p>
                 <p>
                   See also <a href="../drop-zone/index.html">Drop zone</a>,
@@ -130,7 +129,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-pickerHTML, err := ui.FileInputChecked(ui.FileInputProps{
+pickerHTML, err := ui.FileInput(ui.FileInputProps{
   Name:          "attachment",
   AcceptedTypes: []string{"application/pdf", "image/png"},
   Multiple:      true,

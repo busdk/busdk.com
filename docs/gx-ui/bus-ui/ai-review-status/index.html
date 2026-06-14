@@ -105,7 +105,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>AIReviewStatusChecked(p AIReviewStatusProps) (string, error)</code></p>
+                <p><code>AIReviewStatus(p AIReviewStatusProps) gx.Node</code></p>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
@@ -125,7 +125,7 @@
                 <h2>Example</h2>
                 <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
 
-html, err := assistantui.AIReviewStatusChecked(assistantui.AIReviewStatusProps{
+html, err := assistantui.AIReviewStatus(assistantui.AIReviewStatusProps{
   State:   assistantui.AIReviewStateWaiting,
   Title:   "Awaiting review",
   Summary: "Supervisor approval is required.",

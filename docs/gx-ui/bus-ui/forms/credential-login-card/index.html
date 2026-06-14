@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Credential Login Card | BusDK</title>
-    <meta name="description" content="Bus UI Credential Login Card explains the checked auth form wrapper and CredentialLoginCardChecked with CredentialLoginCardProps." />
+    <meta name="description" content="Bus UI Credential Login Card explains the node-first auth form wrapper and CredentialLoginCard with CredentialLoginCardProps." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -100,7 +100,7 @@
               <p class="hero-copy">
                 Use the credential login card when a portal or admin screen needs a ready-made
                 sign-in surface with username, password, optional request actions, and a POST
-                form. Any checked helper mentioned on this page is migration debt with a deletion
+                form. Any compatibility helper mentioned on this page is migration debt with a deletion
                 path.
               </p>
               <div class="product-section">
@@ -110,7 +110,7 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>CredentialLoginCardChecked</code></td><td><code>CredentialLoginCardProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>CredentialLoginCard</code></td><td><code>CredentialLoginCardProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -120,8 +120,7 @@
                   Use the credential login card node API when the host module wants a full
                   credential card rather than assembling the username, password, submit, and OTP
                   request controls by hand. The public wrapper is on <code>pkg/ui</code>; any
-                  <code>pkg/uikit</code> mention is temporary migration debt with a deletion
-                  path.
+                  <code>pkg/uikit</code> is deprecated compatibility only.
                 </p>
                 <p>
                   See also <a href="../form/index.html">Form</a>,
@@ -134,7 +133,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-cardHTML, err := ui.CredentialLoginCardChecked(ui.CredentialLoginCardProps{
+cardHTML, err := ui.CredentialLoginCard(ui.CredentialLoginCardProps{
   ID:            "portal-login",
   Title:         "Sign in",
   FormMethod:    ui.FormMethodPost,

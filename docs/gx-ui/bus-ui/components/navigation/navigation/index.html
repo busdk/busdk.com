@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Navigation</p>
               <h1>Navigation renders generic section lists.</h1>
               <p class="hero-copy">
-                Use <code>NavigationChecked</code> for labeled navigation lists where route policy stays in the owning module and Bus UI validates item ids, labels, and targets.
+                Use <code>Navigation</code> for labeled navigation lists where route policy stays in the owning module and Bus UI validates item ids, labels, and targets.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.NavigationChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.Navigation</code></td></tr>
                     <tr><th>Props</th><td><code>ui.NavigationProps</code></td></tr>
                     <tr><th>Item props</th><td><code>ui.NavigationItem</code></td></tr>
                     <tr><th>Use for</th><td>Generic navigation rails and section lists with active state.</td></tr>
@@ -109,7 +109,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-nav, err := ui.NavigationChecked(ui.NavigationProps{
+nav, err := ui.Navigation(ui.NavigationProps{
   Label:  "Settings",
   Active: "billing",
   Items: []ui.NavigationItem{

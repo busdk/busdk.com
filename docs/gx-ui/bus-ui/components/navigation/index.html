@@ -103,9 +103,9 @@
                   <tr><th>Component</th><th>Use it for</th><th>Public API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./menu/index.html">Menu</a></td><td>Immediate command menus with a trigger and bounded choices.</td><td><code>MenuChecked</code> / <code>MenuProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./tabs/index.html">Tabs</a></td><td>Sibling views that swap by stable active tab id.</td><td><code>TabsChecked</code> / <code>TabsProps</code></td><td><code>pkg/ui</code></td></tr>
-                  <tr><td><a href="./navigation/index.html">Navigation</a></td><td>Generic navigation rails and section lists.</td><td><code>NavigationChecked</code> / <code>NavigationProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./menu/index.html">Menu</a></td><td>Immediate command menus with a trigger and bounded choices.</td><td><code>Menu</code> / <code>MenuProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./tabs/index.html">Tabs</a></td><td>Sibling views that swap by stable active tab id.</td><td><code>Tabs</code> / <code>TabsProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td><a href="./navigation/index.html">Navigation</a></td><td>Generic navigation rails and section lists.</td><td><code>Navigation</code> / <code>NavigationProps</code></td><td><code>pkg/ui</code></td></tr>
                 </tbody>
               </table>
             </div>
@@ -117,7 +117,7 @@
               </p>
               <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-tabs, err := ui.TabsChecked(ui.TabsProps{
+tabs, err := ui.Tabs(ui.TabsProps{
   Label:  "Accounting navigation",
   Active: "files",
   Items: []ui.TabItem{

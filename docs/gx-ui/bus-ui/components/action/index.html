@@ -93,10 +93,9 @@
             <h1>Buttons and action bars with consistent control semantics.</h1>
             <p class="hero-copy">
               Use action components for the visible controls that move a screen forward. The
-              public facade already exposes <code>ui.Button</code> and <code>ui.ButtonProps</code>,
+              public package already exposes <code>ui.Button</code> and <code>ui.ButtonProps</code>,
               while the more specialized link, icon, and event-bar helpers still live on
-              <code>pkg/uikit</code> only as temporary migration debt or a deletion-path note
-              where a public wrapper still has to be promoted.
+              <code>pkg/uikit</code> as deprecated compatibility only until their public wrappers are promoted.
             </p>
             <div class="product-section">
               <h2>Public APIs</h2>
@@ -105,17 +104,17 @@
                   <tr><th>Component</th><th>Use it for</th><th>Public API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./button/index.html">Button</a></td><td>Primary, secondary, danger, and ghost actions.</td><td><code>ButtonProps</code></td><td><code>pkg/ui</code>; checked helper kept only until the deletion path lands</td></tr>
-                  <tr><td><a href="./link-button/index.html">LinkButton</a></td><td>Anchor-like actions styled as buttons.</td><td><code>LinkButtonProps</code></td><td>Temporary migration debt on <code>pkg/uikit</code> until a public wrapper exists</td></tr>
-                  <tr><td><a href="./icon-button/index.html">IconButton</a></td><td>Compact icon-only or icon-leading actions.</td><td><code>IconButtonProps</code></td><td>Temporary migration debt on <code>pkg/uikit</code> until a public wrapper exists</td></tr>
-                  <tr><td><a href="./event-bar/index.html">EventBar</a></td><td>Dense rows of action controls inside headers or panels.</td><td><code>EventBarProps</code></td><td>Temporary migration debt on <code>pkg/uikit</code> until a public wrapper exists</td></tr>
+                  <tr><td><a href="./button/index.html">Button</a></td><td>Primary, secondary, danger, and ghost actions.</td><td><code>ButtonProps</code></td><td><code>pkg/ui</code>; deprecated compatibility only</td></tr>
+                  <tr><td><a href="./link-button/index.html">LinkButton</a></td><td>Anchor-like actions styled as buttons.</td><td><code>LinkButtonProps</code></td><td>Deprecated compatibility only</td></tr>
+                  <tr><td><a href="./icon-button/index.html">IconButton</a></td><td>Compact icon-only or icon-leading actions.</td><td><code>IconButtonProps</code></td><td>Deprecated compatibility only</td></tr>
+                  <tr><td><a href="./event-bar/index.html">EventBar</a></td><td>Dense rows of action controls inside headers or panels.</td><td><code>EventBarProps</code></td><td>Deprecated compatibility only</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The public facade can already render the common button shape. When a module only
+                The public package can already render the common button shape. When a module only
                 needs a labelled action, the wrapper is the simplest entry point.
               </p>
               <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"

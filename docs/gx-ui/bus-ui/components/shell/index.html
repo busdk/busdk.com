@@ -94,9 +94,9 @@
             <p class="hero-copy">
               Use shell components when a page needs stable chrome around a module view. These
               helpers export through <code>pkg/ui</code>, so the current import path is the
-              public facade rather than <code>pkg/uikit</code>. The shell slots are typed
-              <code>gx.Node</code> trees, and any checked helper that still appears here is
-              temporary migration debt that should be deleted after the public wrapper lands.
+              public package rather than <code>pkg/uikit</code>. The shell slots are typed
+              <code>gx.Node</code> trees, and any compatibility helper that still appears here is
+              deprecated compatibility only that should be deleted after the deprecated compatibility only.
             </p>
             <div class="product-section">
               <h2>Public APIs</h2>
@@ -118,7 +118,7 @@
               <p>
                 Choose the page-shell helper when a module already owns the browser document and
                 only needs a predictable page frame inside it. The page shell composes header,
-                main, and footer node trees before render; the checked name remains the
+                main, and footer node trees before render; the node-first name remains the
                 validation boundary.
               </p>
               <pre><code>import (
@@ -126,7 +126,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-shell, err := ui.PageShellChecked(ui.PageShellProps{
+shell, err := ui.PageShell(ui.PageShellProps{
   HeaderNodes: []gx.Node{
     gx.Element("h1", nil, gx.Text("Accounting")),
   },

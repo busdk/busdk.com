@@ -102,7 +102,7 @@
                   <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Shell</td><td>Render a module page with shared portal chrome.</td><td><code>PortalShellChecked</code></td></tr>
+                  <tr><td>Shell</td><td>Render a module page with shared portal chrome.</td><td><code>PortalShell</code></td></tr>
                   <tr><td>Host context</td><td>Pass module id, base paths, public config, assets, and provider origins.</td><td><code>uiportal.HostContext</code></td></tr>
                   <tr><td>Runtime config</td><td>Expose non-secret JSON that frontend hosts can read.</td><td>runtime config script helpers</td></tr>
                   <tr><td>Resolution</td><td>Build module URLs and API URLs without hard-coded deployment paths.</td><td>module URL and API URL helpers</td></tr>
@@ -118,7 +118,7 @@
 
 page := gx.Element("main", nil, gx.Text("Portal content"))
 
-shell, err := uiportal.PortalShellChecked(uiportal.PortalShellProps{
+shell, err := uiportal.PortalShell(uiportal.PortalShellProps{
   Title: "Accounting",
   HostContext: uiportal.HostContext{
     ModuleID:       "accounting",

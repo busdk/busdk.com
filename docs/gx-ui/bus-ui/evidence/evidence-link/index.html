@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>EvidenceLinkChecked(p EvidenceLinkProps) (string, error)</code></p>
+                <p><code>EvidenceLink(p EvidenceLinkProps) gx.Node</code></p>
                 <p>
                   The input model is <code>EvidenceLinkProps</code>. It uses
                   <code>EvidenceOperation</code> and <code>EvidenceDenialReason</code> to keep the
@@ -54,7 +54,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.EvidenceLinkChecked(ui.EvidenceLinkProps{
+html, err := ui.EvidenceLink(ui.EvidenceLinkProps{
   Label:     "Open PDF",
   Href:      "/modules/accounting/evidence/bank-statement.pdf",
   Operation: ui.EvidenceOperationDownload,

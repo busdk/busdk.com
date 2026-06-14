@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>ProviderErrorChecked(p ProviderErrorProps) (string, error)</code></p>
+                <p><code>ProviderError(p ProviderErrorProps) gx.Node</code></p>
                 <p>
                   The input model is <code>ProviderErrorProps</code>, plus
                   <code>ProviderErrorField</code> and <code>ProviderErrorFromResult(Result)</code>
@@ -54,7 +54,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.ProviderErrorChecked(ui.ProviderErrorProps{
+html, err := ui.ProviderError(ui.ProviderErrorProps{
   Title:     "Provider request failed",
   Summary:   "The backend returned a validation error.",
   Code:      "invalid_request",

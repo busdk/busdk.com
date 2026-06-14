@@ -92,7 +92,7 @@
               <p class="eyebrow">Bus UI Shells</p>
               <h1>PageShell frames content inside an existing document.</h1>
               <p class="hero-copy">
-                Use <code>PageShellChecked</code> when the host already owns the document and the
+                Use <code>PageShell</code> when the host already owns the document and the
                 module needs a validated header, main region, and optional footer. The shell
                 composes typed <code>gx.Node</code> trees before the HTML boundary.
               </p>
@@ -100,7 +100,7 @@
                 <h2>Validated API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.PageShellChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.PageShell</code></td></tr>
                     <tr><th>Props</th><td><code>ui.PageShellProps</code></td></tr>
                     <tr><th>Use for</th><td>Module-local page frames composed from typed GX nodes.</td></tr>
                   </tbody>
@@ -113,7 +113,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-shell, err := ui.PageShellChecked(ui.PageShellProps{
+shell, err := ui.PageShell(ui.PageShellProps{
   HeaderNodes: []gx.Node{
     gx.Element("h1", nil, gx.Text("Files")),
   },

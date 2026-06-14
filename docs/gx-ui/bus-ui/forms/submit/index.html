@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Submit Control | BusDK</title>
-    <meta name="description" content="Bus UI Submit Control explains the checked submit-state button and SubmitControlChecked with SubmitControlProps." />
+    <meta name="description" content="Bus UI Submit Control explains the node-first submit-state button and SubmitControl with SubmitControlProps." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -108,14 +108,14 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>SubmitControlChecked</code></td><td><code>SubmitControlProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>SubmitControl</code></td><td><code>SubmitControlProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>SubmitControlChecked</code> when the control should switch label and
+                  Use <code>SubmitControl</code> when the control should switch label and
                   disabled state as the form moves between idle, working, success, and error. This
                   helper is already on <code>pkg/ui</code>.
                 </p>
@@ -129,7 +129,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-submitHTML, err := ui.SubmitControlChecked(ui.SubmitControlProps{
+submitHTML, err := ui.SubmitControl(ui.SubmitControlProps{
   State: ui.SubmitStateWorking,
   Label: "Saving",
 })

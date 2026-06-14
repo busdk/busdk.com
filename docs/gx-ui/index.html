@@ -97,8 +97,10 @@
               <p class="eyebrow">Bus GX And Bus UI</p>
               <h1>Go components for product frontends.</h1>
               <p class="hero-copy">
-                GX is the framework. Bus UI builds typed <code>gx.Node</code> trees, validates
-                component props before render, and uses named HTML adapters only where needed.
+                GX is the framework. Bus UI exposes public node-first packages such as
+                <code>ui</code>, <code>assistantui</code>, <code>terminalui</code>, and
+                <code>uiportal</code>, then renders <code>gx.Node</code> trees with
+                <code>gx.RenderHTML</code> at the boundary.
               </p>
               <div class="product-links gx-hero-actions">
                 <a class="button button-primary" href="gx/index.html">Learn GX</a>
@@ -175,23 +177,29 @@
 
             <div class="gx-section gx-duo">
               <div class="gx-copy">
-                <h2>Bus UI: use the public facade</h2>
+                <h2>Bus UI: use the public package</h2>
                 <p>
                   Shared components validate public props, keep stable CSS and data hooks, and
                   return explicit errors when a component cannot render safely. Use the public
-                  <code>pkg/ui</code> facade first, and treat checked helpers as the render
+                  <code>pkg/ui</code> facade first, and treat compatibility helpers as the render
                   boundary where a wrapper still needs validation.
                 </p>
                 <p><a href="bus-ui/components/index.html">Browse component families</a></p>
               </div>
               <div class="gx-code-card">
                 <div class="gx-card-head">button.go</div>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-button := ui.Button(ui.ButtonProps{
-  Label:   "Save draft",
-  Variant: ui.ButtonPrimary,
-})</code></pre>
+node := ui.ResultPanel(ui.ResultPanelProps{
+  Title:   "Evidence pack ready",
+  Status:  ui.StatusSuccess,
+  Summary: "3 files prepared for review.",
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
 

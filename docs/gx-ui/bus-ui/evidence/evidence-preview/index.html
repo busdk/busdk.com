@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>EvidencePreviewChecked(p EvidencePreviewProps) (string, error)</code></p>
+                <p><code>EvidencePreview(p EvidencePreviewProps) gx.Node</code></p>
                 <p>
                   The input model is <code>EvidencePreviewProps</code>, and the policy helper
                   <code>EvidencePreviewPolicy</code> explains why a preview is inline or blocked.
@@ -53,7 +53,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
+html, err := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:              "Bank statement",
   PreviewURL:          "/modules/accounting/evidence/bank-statement.pdf",
   OpenURL:             "/modules/accounting/evidence/bank-statement.pdf",

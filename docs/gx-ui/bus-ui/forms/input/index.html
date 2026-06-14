@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Input Family | BusDK</title>
-    <meta name="description" content="Bus UI Input family explains InputChecked, TextInputChecked, PasswordInputChecked, and DateInputChecked with current import paths." />
+    <meta name="description" content="Bus UI Input family explains Input, TextInput, PasswordInput, and DateInput with current import paths." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -110,21 +110,21 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>InputChecked</code>, <code>TextInputChecked</code></td><td><code>InputProps</code>, <code>TextInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
-                    <tr><td><code>PasswordInputChecked</code>, <code>DateInputChecked</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>Input</code>, <code>TextInput</code></td><td><code>InputProps</code>, <code>TextInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>PasswordInput</code>, <code>DateInput</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>InputChecked</code> or <code>TextInputChecked</code> for ordinary text
-                  entry, <code>PasswordInputChecked</code> for secret values, and
-                  <code>DateInputChecked</code> when the field must stay in YYYY-MM-DD form.
+                  Use <code>Input</code> or <code>TextInput</code> for ordinary text
+                  entry, <code>PasswordInput</code> for secret values, and
+                  <code>DateInput</code> when the field must stay in YYYY-MM-DD form.
                 </p>
                 <p>
                   The text-input, password, and date helpers are all on <code>pkg/ui</code>.
-                  <code>pkg/uikit</code> mention is temporary migration debt with a deletion path.
+                  <code>pkg/uikit</code> is deprecated compatibility only.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -138,7 +138,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-title, err := ui.TextInputChecked(ui.TextInputProps{
+title, err := ui.TextInput(ui.TextInputProps{
   Name:  "title",
   Value: "Bank statement",
 })
@@ -146,7 +146,7 @@ if err != nil {
   return err
 }
 
-password, err := ui.PasswordInputChecked(
+password, err := ui.PasswordInput(
   "password",
   "",
   "Enter your password",
@@ -158,7 +158,7 @@ if err != nil {
   return err
 }
 
-date, err := ui.DateInputChecked("posting_date", "2026-06-14", nil, nil)
+date, err := ui.DateInput("posting_date", "2026-06-14", nil, nil)
 if err != nil {
   return err
 }</code></pre>

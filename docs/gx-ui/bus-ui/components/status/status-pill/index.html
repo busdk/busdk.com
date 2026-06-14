@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Status</p>
               <h1>StatusPill labels compact state.</h1>
               <p class="hero-copy">
-                Use <code>StatusPillChecked</code> when a row, summary, or result needs a short semantic status label.
+                Use <code>StatusPill</code> when a row, summary, or result needs a short semantic status label.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.StatusPillChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.StatusPill</code></td></tr>
                     <tr><th>Props</th><td><code>ui.StatusPillProps</code></td></tr>
                     <tr><th>Use for</th><td>Compact labels such as ready, working, warning, or failed.</td></tr>
                   </tbody>
@@ -108,7 +108,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-pill, err := ui.StatusPillChecked(ui.StatusPillProps{
+pill, err := ui.StatusPill(ui.StatusPillProps{
   Label:  "Ready",
   Status: ui.StatusSuccess,
 })</code></pre>

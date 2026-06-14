@@ -108,7 +108,7 @@
               <p>
                 The <code>pkg/ui</code> facade covers the public shell and surface helpers.
                 Evidence, assistant, and terminal pages still call out temporary render-boundary
-                vocabulary where a checked wrapper remains the migration path.
+                vocabulary where a deprecated compatibility wrapper remains the migration path.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
@@ -123,7 +123,7 @@ mainNodes := []gx.Node{
   gx.Element("main", nil, gx.Text("Files")),
 }</code></pre>
               <p>
-                The checked shell adapter can consume the same node slices during migration, but
+                The node-first shell adapter can consume the same node slices during migration, but
                 the example above shows the preferred node-first composition.
               </p>
             </div>
@@ -134,7 +134,7 @@ mainNodes := []gx.Node{
                 safe open/download links, while previews embed only approved content types and show
                 public fallback text when a file cannot be previewed inline.
               </p>
-              <pre><code>preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
+              <pre><code>preview, err := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:       "Receipt PDF",
   ContentType: "application/pdf",
   PreviewURL:  "/modules/accounting/api/evidence/receipt.pdf",
@@ -151,7 +151,7 @@ mainNodes := []gx.Node{
                 record fields and evidence actions while the product module owns authorization and
                 data meaning.
               </p>
-              <pre><code>panel, err := ui.ProviderErrorChecked(ui.ProviderErrorProps{
+              <pre><code>panel, err := ui.ProviderError(ui.ProviderErrorProps{
   Title:     "Provider request failed",
   Summary:   "The accounting provider could not prepare the evidence pack.",
   RequestID: "req_20260613_001",
@@ -165,7 +165,7 @@ mainNodes := []gx.Node{
                 approvals, review status, isolation conflicts, and close guards. Transport,
                 execution, persistence, billing, and authorization stay in the host module.
               </p>
-              <pre><code>modelPicker, err := ui.AIModelSelectChecked(ui.AIModelSelectProps{
+              <pre><code>modelPicker, err := ui.AIModelSelect(ui.AIModelSelectProps{
   Current: "gpt-5.4-mini",
   Options: []ui.AIModelOption{
     {ID: "gpt-5.4-mini", Label: "GPT 5.4 mini"},
@@ -184,7 +184,7 @@ mainNodes := []gx.Node{
                 typed submit, input, exit, and approval events.
               </p>
               <pre><code>seq1, seq2 := 1, 2
-terminal, err := ui.TerminalSessionPanelChecked(ui.TerminalSessionPanelProps{
+terminal, err := ui.TerminalSessionPanel(ui.TerminalSessionPanelProps{
   Title:     "Verification",
   Command:   "go test ./...",
   SessionID: "sess_123",

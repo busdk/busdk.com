@@ -105,7 +105,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>AIApprovalsChecked(p AIApprovalsProps) (string, error)</code></p>
+                <p><code>AIApprovals(p AIApprovalsProps) gx.Node</code></p>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
@@ -125,7 +125,7 @@
                 <h2>Example</h2>
                 <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
 
-html, err := assistantui.AIApprovalsChecked(assistantui.AIApprovalsProps{
+html, err := assistantui.AIApprovals(assistantui.AIApprovalsProps{
   ThreadID: "thread-1",
   Items: []assistantui.AIApprovalRequest{{RequestID: "req-1", Title: "Run migration"}},
 })</code></pre>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AIModelSelect | Bus UI Assistant | BusDK</title>
-    <meta name="description" content="AIModelSelect renders the checked assistant model picker or display-only model label." />
+    <meta name="description" content="AIModelSelect renders the node-first assistant model picker or display-only model label." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -100,12 +100,12 @@
               <p class="eyebrow">Bus UI Assistant</p>
               <h1>AIModelSelect keeps model choice explicit.</h1>
               <p class="hero-copy">
-                Use it when the host needs a checked picker or read-only model label with a known
+                Use it when the host needs a node-first picker or read-only model label with a known
                 fallback for unavailable selections.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>AIModelSelectChecked(p AIModelSelectProps) (string, error)</code></p>
+                <p><code>AIModelSelect(p AIModelSelectProps) gx.Node</code></p>
               </div>
               <div class="product-section">
                 <h2>When to use it</h2>
@@ -126,7 +126,7 @@
                 <h2>Example</h2>
                 <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
 
-html, err := assistantui.AIModelSelectChecked(assistantui.AIModelSelectProps{
+html, err := assistantui.AIModelSelect(assistantui.AIModelSelectProps{
   ID:      "model",
   Current: "gpt-5",
   Options: []assistantui.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},

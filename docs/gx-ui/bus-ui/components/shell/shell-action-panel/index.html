@@ -92,15 +92,15 @@
               <p class="eyebrow">Bus UI Shells</p>
               <h1>ShellActionPanel keeps shell actions bounded.</h1>
               <p class="hero-copy">
-                Use <code>ShellActionPanelChecked</code> for a shell-level panel with a required
+                Use <code>ShellActionPanel</code> for a shell-level panel with a required
                 title, typed body nodes, validated controls, and optional footer content.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.ShellActionPanelChecked</code></td></tr>
-                    <tr><th>Props</th><td><code>ui.ShellActionPanelCheckedProps</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.ShellActionPanel</code></td></tr>
+                    <tr><th>Props</th><td><code>ui.ShellActionPanelProps</code></td></tr>
                     <tr><th>Control props</th><td><code>ui.ShellActionPanelControl</code></td></tr>
                     <tr><th>Use for</th><td>Validated shell panels that include actions beside descriptive content.</td></tr>
                   </tbody>
@@ -113,7 +113,7 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-panel, err := ui.ShellActionPanelChecked(ui.ShellActionPanelCheckedProps{
+node := ui.ShellActionPanel(ui.ShellActionPanelProps{
   Title: "Review import",
   Body: []gx.Node{
     gx.Element("p", nil, gx.Text("Validate the imported evidence before posting.")),
@@ -122,7 +122,9 @@ panel, err := ui.ShellActionPanelChecked(ui.ShellActionPanelCheckedProps{
     Label: "Approve",
     Control: ui.ControlProps{Action: "approve-import"},
   }},
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

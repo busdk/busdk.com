@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Status</p>
               <h1>LoadingState marks work in progress.</h1>
               <p class="hero-copy">
-                Use <code>LoadingStateChecked</code> for busy, pending, or progress-aware states with accessible status semantics.
+                Use <code>LoadingState</code> for busy, pending, or progress-aware states with accessible status semantics.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.LoadingStateChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.LoadingState</code></td></tr>
                     <tr><th>Props</th><td><code>ui.LoadingStateProps</code></td></tr>
                     <tr><th>Use for</th><td>Pending work, background refresh, and progress-aware surfaces.</td></tr>
                   </tbody>
@@ -109,7 +109,7 @@
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
 progress := 45
-loading, err := ui.LoadingStateChecked(ui.LoadingStateProps{
+loading, err := ui.LoadingState(ui.LoadingStateProps{
   Message:         "Importing files",
   ProgressLabel:   "Import progress",
   ProgressPercent: &progress,

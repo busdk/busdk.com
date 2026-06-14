@@ -44,13 +44,13 @@
                   <tr><th><code>gx.Element</code></th><td>Creates an intrinsic element node.</td></tr>
                   <tr><th><code>gx.Text</code></th><td>Creates escaped text.</td></tr>
                   <tr><th><code>gx.Fragment</code></th><td>Groups children without an extra element.</td></tr>
-                  <tr><th><code>gx.RenderHTML</code></th><td>Renders stable HTML.</td></tr>
+                  <tr><th><code>gx.Render</code></th><td>Renders stable HTML.</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>html, err := gx.RenderHTML(gx.Element("p",
+              <pre><code>html, err := gx.Render(gx.Element("p",
   gx.Props{"class": "message"},
   gx.Text("Hello &lt;Bus&gt;"),
 ))</code></pre>

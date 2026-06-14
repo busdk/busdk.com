@@ -31,12 +31,12 @@
               <h1>TextTable is the compatibility path for trusted row HTML.</h1>
               <p class="hero-copy">
                 Use it when the headers are static and the row nodes already come from another
-                checked helper. It keeps the old string-or-node table shape alive while validation
+                compatibility helper. It keeps the old string-or-node table shape alive while validation
                 stays explicit.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>TextTableChecked(headers []string, rows []Node, log ControlLogSink) (Node, error)</code></p>
+                <p><code>TextTable(headers []string, rows []Node, log ControlLogSink) gx.Node</code></p>
                 <p>
                   The inputs are static headers and trusted row <code>Node</code> values. The
                   result is a rendered <code>Node</code>.
@@ -58,7 +58,7 @@ rows := []ui.Node{
   ui.Node("<tr><td>June receipts</td><td>3 files</td><td>Ready</td></tr>"),
 }
 
-table, err := ui.TextTableChecked([]string{"Title", "Files", "State"}, rows, nil)</code></pre>
+table, err := ui.TextTable([]string{"Title", "Files", "State"}, rows, nil)</code></pre>
                 <p>Use the public <code>pkg/ui</code> facade for this compatibility table helper.</p>
               </div>
             </div>

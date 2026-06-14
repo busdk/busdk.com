@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Surfaces</p>
               <h1>MetricCard presents one dashboard number.</h1>
               <p class="hero-copy">
-                Use <code>MetricCardChecked</code> for headline numbers with optional detail text and semantic status accents.
+                Use <code>MetricCard</code> for headline numbers with optional detail text and semantic status accents.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.MetricCardChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.MetricCard</code></td></tr>
                     <tr><th>Props</th><td><code>ui.MetricCardProps</code></td></tr>
                     <tr><th>Use for</th><td>Dashboard metrics, counters, and summarized state.</td></tr>
                   </tbody>
@@ -108,7 +108,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-metric, err := ui.MetricCardChecked(ui.MetricCardProps{
+metric, err := ui.MetricCard(ui.MetricCardProps{
   Title:  "Ready files",
   Value:  "12",
   Detail: "3 waiting for review",

@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>ProjectionDetailChecked(p ProjectionDetailProps) (ProjectionDetailResult, error)</code></p>
+                <p><code>ProjectionDetail(p ProjectionDetailProps) (ProjectionDetailResult, error)</code></p>
                 <p>
                   The inputs are <code>ProjectionDetailProps</code>, <code>ProjectionField</code>,
                   and <code>ProjectionEvidenceAction</code>. The result includes rendered HTML plus
@@ -53,9 +53,9 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-result, err := ui.ProjectionDetailChecked(ui.ProjectionDetailProps{
+result, err := ui.ProjectionDetail(ui.ProjectionDetailProps{
   Title:   "Invoice projection",
-  Summary: "Checked before the provider response is exposed.",
+  Summary: "Validated before the provider response is exposed.",
   Fields: []ui.ProjectionField{
     {Label: "Provider", Value: "Stripe"},
     {Label: "State", Value: "Ready"},

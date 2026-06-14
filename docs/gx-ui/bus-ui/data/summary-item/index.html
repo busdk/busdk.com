@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SummaryItem | Bus UI Data Display | BusDK</title>
-    <meta name="description" content="SummaryItem renders compact title/meta/detail cards with checked validation." />
+    <meta name="description" content="SummaryItem renders compact title/meta/detail cards with node-first validation." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>SummaryItemChecked(p SummaryItemProps) (string, error)</code></p>
+                <p><code>SummaryItem(p SummaryItemProps) gx.Node</code></p>
                 <p>
                   The input model is <code>SummaryItemProps</code>. The helper accepts
                   <code>Title</code>/<code>Meta</code> or the <code>Label</code>/<code>Value</code>
@@ -54,7 +54,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := ui.SummaryItemChecked(ui.SummaryItemProps{
+html, err := ui.SummaryItem(ui.SummaryItemProps{
   Title: "June receipts",
   Meta:  "3 files",
   Detail: "Prepared for accounting review.",

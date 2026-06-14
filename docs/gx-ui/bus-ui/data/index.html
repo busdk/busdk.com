@@ -90,7 +90,7 @@
             </aside>
             <div class="gx-doc-content">
             <p class="eyebrow">Bus UI Data Display</p>
-            <h1>Readable data surfaces from checked Go props.</h1>
+            <h1>Readable data surfaces from node-first Go props.</h1>
             <p class="hero-copy">
               Use the individual concept pages for the public `pkg/ui` data-display wrappers.
               Each page names the exact Go entry point and the return type.
@@ -102,13 +102,13 @@
                   <tr><th>Page</th><th>Use it for</th><th>Public API</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./dense-table/index.html">DenseTable</a></td><td>Dense comparable rows with validated headings and cell counts.</td><td><code>DenseTableChecked(p DenseTableProps) (Node, error)</code></td></tr>
-                  <tr><td><a href="./text-table/index.html">TextTable</a></td><td>Compatibility tables that already own trusted row nodes.</td><td><code>TextTableChecked(headers []string, rows []Node, log ControlLogSink) (Node, error)</code></td></tr>
-                  <tr><td><a href="./record-list/index.html">RecordList</a></td><td>Ordered record summaries with empty-state support.</td><td><code>RecordListChecked(p RecordListProps) (string, error)</code></td></tr>
-                  <tr><td><a href="./summary-item/index.html">SummaryItem</a></td><td>Compact summary cards and list items.</td><td><code>SummaryItemChecked(p SummaryItemProps) (string, error)</code></td></tr>
-                  <tr><td><a href="./projection-detail/index.html">ProjectionDetail</a></td><td>Public-safe projection fields plus evidence actions and diagnostics.</td><td><code>ProjectionDetailChecked(p ProjectionDetailProps) (ProjectionDetailResult, error)</code></td></tr>
-                  <tr><td><a href="./provider-error/index.html">ProviderError</a></td><td>Public provider failure surfaces and redacted field errors.</td><td><code>ProviderErrorChecked(p ProviderErrorProps) (string, error)</code></td></tr>
-                  <tr><td><a href="./timeline/index.html">Timeline</a></td><td>Ordered event history with timestamps, sequences, and status chips.</td><td><code>TimelineChecked(p TimelineProps) (string, error)</code></td></tr>
+                  <tr><td><a href="./dense-table/index.html">DenseTable</a></td><td>Dense comparable rows with validated headings and cell counts.</td><td><code>DenseTable(p DenseTableProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./text-table/index.html">TextTable</a></td><td>Compatibility tables that already own trusted row nodes.</td><td><code>TextTable(headers []string, rows []Node, log ControlLogSink) gx.Node</code></td></tr>
+                  <tr><td><a href="./record-list/index.html">RecordList</a></td><td>Ordered record summaries with empty-state support.</td><td><code>RecordList(p RecordListProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./summary-item/index.html">SummaryItem</a></td><td>Compact summary cards and list items.</td><td><code>SummaryItem(p SummaryItemProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./projection-detail/index.html">ProjectionDetail</a></td><td>Public-safe projection fields plus evidence actions and diagnostics.</td><td><code>ProjectionDetail(p ProjectionDetailProps) (ProjectionDetailResult, error)</code></td></tr>
+                  <tr><td><a href="./provider-error/index.html">ProviderError</a></td><td>Public provider failure surfaces and redacted field errors.</td><td><code>ProviderError(p ProviderErrorProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./timeline/index.html">Timeline</a></td><td>Ordered event history with timestamps, sequences, and status chips.</td><td><code>Timeline(p TimelineProps) gx.Node</code></td></tr>
                 </tbody>
               </table>
             </div>
@@ -120,7 +120,7 @@ rows := []ui.DenseTableRow{
   ui.DenseTableRowText("June receipts", "3 files", "Ready"),
 }
 
-table, err := ui.DenseTableChecked(ui.DenseTableProps{
+table, err := ui.DenseTable(ui.DenseTableProps{
   Caption: "Document queue",
   Columns: []ui.DenseTableColumn{
     ui.DenseTableColumnText("title", "Title"),

@@ -95,7 +95,7 @@
               Form primitives keep labels, validation text, disabled states, file selection, and
               submit feedback consistent while the owning module decides routes and policy.
               The preferred API composes typed <code>gx.Node</code> trees. Any remaining
-              <code>pkg/uikit</code> reference here is migration debt with a deletion path.
+              <code>pkg/uikit</code> reference here is deprecated compatibility only.
             </p>
             <div class="product-section">
               <h2>Form pieces</h2>
@@ -118,8 +118,8 @@
               <p>
                 Use the form page when you need native submit wiring, the field page when you need
                 a labeled control wrapper, and the upload pages when the module owns file intake or
-                drag-and-drop policy. The public facade is on <code>pkg/ui</code>; any
-                <code>pkg/uikit</code> reference here is migration debt with a deletion path.
+                drag-and-drop policy. The public package is on <code>pkg/ui</code>; any
+                <code>pkg/uikit</code> reference here is deprecated compatibility only.
               </p>
               <p>
                 See also <a href="../evidence/index.html">Evidence and files</a> and
@@ -147,7 +147,7 @@ formNodes := []gx.Node{
   gx.Element("button", gx.Props{"type": "submit"}, gx.Text("Upload")),
 }</code></pre>
               <p>
-                During migration, the checked helpers can wrap this node tree, but the public
+                During migration, the compatibility helpers can wrap this node tree, but the public
                 example stays node-first.
               </p>
             </div>

@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Navigation</p>
               <h1>Menu renders bounded command choices.</h1>
               <p class="hero-copy">
-                Use <code>MenuChecked</code> when a view needs an immediate command menu with a validated trigger, item list, selected value, and callback-backed choices.
+                Use <code>Menu</code> when a view needs an immediate command menu with a validated trigger, item list, selected value, and callback-backed choices.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.MenuChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.Menu</code></td></tr>
                     <tr><th>Props</th><td><code>ui.MenuProps</code></td></tr>
                     <tr><th>Item props</th><td><code>ui.MenuItem</code></td></tr>
                     <tr><th>Use for</th><td>Immediate menus with deterministic item values and callback dispatch.</td></tr>
@@ -109,7 +109,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-menu, err := ui.MenuChecked(ui.MenuProps{
+menu, err := ui.Menu(ui.MenuProps{
   TriggerLabel: "Actions",
   Items: []ui.MenuItem{
     {Label: "Refresh", Value: "refresh", OnClick: handleMenu},

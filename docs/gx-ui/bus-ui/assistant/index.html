@@ -109,10 +109,9 @@
               <p class="hero-copy">
                 Use these pages for the assistant shell, panel, composer, model chooser, approval
                 flows, review status, thread list, message rendering, markdown, attachments, and
-                thread isolation. Preferred public import path:
+                thread isolation. Preferred public package:
                 <code>github.com/busdk/bus-ui/pkg/assistantui</code>. Any
-                <code>pkg/uikit</code> reference here is temporary migration debt with a deletion
-                path, not a stable API.
+                <code>pkg/uikit</code> reference here is deprecated compatibility only.
               </p>
               <div class="product-section">
                 <h2>Concept pages</h2>
@@ -121,33 +120,38 @@
                     <tr><th>Page</th><th>Use it for</th><th>Public API</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><a href="../assistant-shell/index.html">AssistantShell</a></td><td>Generic business-plus-assistant shell layout with collapsible assistant chrome.</td><td><code>AssistantShellChecked(p AssistantShellProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-panel/index.html">AIPanel</a></td><td>Thread lists, messages, approvals, attachments, composer state, and model controls in one panel.</td><td><code>AIPanelChecked(p AIPanelProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-composer/index.html">AIComposer</a></td><td>Controlled prompt input with send and interrupt actions.</td><td><code>AIComposerChecked(p AIComposerProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-model-select/index.html">AIModelSelect</a></td><td>Model selection or display-only model state.</td><td><code>AIModelSelectChecked(p AIModelSelectProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-approvals/index.html">AIApprovals</a></td><td>Pending approval requests with approve and reject controls.</td><td><code>AIApprovalsChecked(p AIApprovalsProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-review-status/index.html">AIReviewStatus</a></td><td>Review-before-apply status cards and state summaries.</td><td><code>AIReviewStatusChecked(p AIReviewStatusProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-thread-isolation/index.html">AIThreadIsolation</a></td><td>Workspace, branch, owner, and conflict status for assistant thread isolation.</td><td><code>AIThreadIsolationChecked(p AIThreadIsolationProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-thread-list/index.html">AIThreadList</a></td><td>Selectable assistant thread lists and archive actions.</td><td><code>AIThreadListChecked(p AIThreadListProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-message/index.html">AIMessage</a></td><td>Validated transcript bubbles with trusted markdown or escaped text.</td><td><code>AIMessageChecked(p AIMessageProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-markdown/index.html">AIMarkdown</a></td><td>Safe markdown rendering with explicit link policy.</td><td><code>AIMarkdownChecked(p AIMarkdownProps) (string, error)</code></td></tr>
-                    <tr><td><a href="../ai-attachment-list/index.html">AIAttachmentList</a></td><td>Attachment chips with open, inspect, and remove actions.</td><td><code>AIAttachmentListChecked(p AIAttachmentListProps) (string, error)</code></td></tr>
+                    <tr><td><a href="../assistant-shell/index.html">AssistantShell</a></td><td>Generic business-plus-assistant shell layout with collapsible assistant chrome.</td><td><code>AssistantShell(p AssistantShellProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-panel/index.html">AIPanel</a></td><td>Thread lists, messages, approvals, attachments, composer state, and model controls in one panel.</td><td><code>AIPanel(p AIPanelProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-composer/index.html">AIComposer</a></td><td>Controlled prompt input with send and interrupt actions.</td><td><code>AIComposer(p AIComposerProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-model-select/index.html">AIModelSelect</a></td><td>Model selection or display-only model state.</td><td><code>AIModelSelect(p AIModelSelectProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-approvals/index.html">AIApprovals</a></td><td>Pending approval requests with approve and reject controls.</td><td><code>AIApprovals(p AIApprovalsProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-review-status/index.html">AIReviewStatus</a></td><td>Review-before-apply status cards and state summaries.</td><td><code>AIReviewStatus(p AIReviewStatusProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-thread-isolation/index.html">AIThreadIsolation</a></td><td>Workspace, branch, owner, and conflict status for assistant thread isolation.</td><td><code>AIThreadIsolation(p AIThreadIsolationProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-thread-list/index.html">AIThreadList</a></td><td>Selectable assistant thread lists and archive actions.</td><td><code>AIThreadList(p AIThreadListProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-message/index.html">AIMessage</a></td><td>Validated transcript bubbles with trusted markdown or escaped text.</td><td><code>AIMessage(p AIMessageProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-markdown/index.html">AIMarkdown</a></td><td>Safe markdown rendering with explicit link policy.</td><td><code>AIMarkdown(p AIMarkdownProps) gx.Node</code></td></tr>
+                    <tr><td><a href="../ai-attachment-list/index.html">AIAttachmentList</a></td><td>Attachment chips with open, inspect, and remove actions.</td><td><code>AIAttachmentList(p AIAttachmentListProps) gx.Node</code></td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+)
 
-panel, err := assistantui.AIPanelChecked(assistantui.AIPanelProps{
-  Title:        "Review",
-  ActiveThread:  "thread-1",
-  Threads:      []assistantui.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
-  Messages:     []assistantui.AIPanelMessage{{Role: "assistant", Text: "Ready for review."}},
-  Draft:        "Check the diff",
-  Model:        "gpt-5",
-  ModelOptions:  []assistantui.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},
-})</code></pre>
+node := assistantui.AIPanel(assistantui.AIPanelProps{
+  Title:       "Review",
+  ActiveThread: "thread-1",
+  Threads:     []assistantui.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
+  Messages:    []assistantui.AIPanelMessage{{Role: "assistant", Text: "Ready for review."}},
+  Draft:       "Check the diff",
+  Model:       "gpt-5",
+  ModelOptions: []assistantui.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

@@ -40,7 +40,7 @@
               <h2>Helpers</h2>
               <table class="tutorial-table">
                 <tbody>
-                  <tr><th><code>gxtest.RenderHTML</code></th><td>Render and fail the test on render errors.</td></tr>
+                  <tr><th><code>gxtest.Render</code></th><td>Render and fail the test on render errors.</td></tr>
                   <tr><th><code>gxtest.VNode</code></th><td>Inspect the normalized render tree.</td></tr>
                   <tr><th><code>gxtest.RequireProp[T]</code></th><td>Read a typed VNode prop.</td></tr>
                   <tr><th><code>gxtest.CompileGX</code></th><td>Compile source in tests.</td></tr>
@@ -50,7 +50,7 @@
             </div>
             <div class="product-section">
               <h2>Example</h2>
-              <pre><code>html := gxtest.RenderHTML(t, Notice(NoticeProps{
+              <pre><code>html := gxtest.Render(t, Notice(NoticeProps{
   Title: "Ready",
 }))</code></pre>
               <p>

@@ -35,7 +35,7 @@
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>ImageGalleryChecked(p ImageGalleryProps) (ImageGalleryResult, error)</code></p>
+                <p><code>ImageGallery(p ImageGalleryProps) (ImageGalleryResult, error)</code></p>
                 <p>
                   The input model is <code>ImageGalleryProps</code> with <code>ImageGalleryItem</code>
                   entries and an allowlist of image origins. The result includes rendered HTML,
@@ -53,7 +53,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-result, err := ui.ImageGalleryChecked(ui.ImageGalleryProps{
+result, err := ui.ImageGallery(ui.ImageGalleryProps{
   ImageOrigins: []string{"https://files.example.com"},
   Items: []ui.ImageGalleryItem{
     {

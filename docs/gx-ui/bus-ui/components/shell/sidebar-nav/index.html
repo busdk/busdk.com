@@ -92,14 +92,14 @@
               <p class="eyebrow">Bus UI Shells</p>
               <h1>SidebarNav renders the left-rail choices.</h1>
               <p class="hero-copy">
-                Use <code>SidebarNavChecked</code> when a sidebar needs safe links, callback-backed
+                Use <code>SidebarNav</code> when a sidebar needs safe links, callback-backed
                 controls, active state, collapse metadata, and deterministic item ids.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.SidebarNavChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.SidebarNav</code></td></tr>
                     <tr><th>Props</th><td><code>ui.SidebarNavProps</code></td></tr>
                     <tr><th>Item props</th><td><code>ui.SidebarNavItemProps</code></td></tr>
                     <tr><th>Use for</th><td>Reusable navigation rails with link and typed control targets.</td></tr>
@@ -110,7 +110,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-nav, err := ui.SidebarNavChecked(ui.SidebarNavProps{
+nav, err := ui.SidebarNav(ui.SidebarNavProps{
   AppLabel:  "Accounting",
   MountPath: "/accounting/",
   Items: []ui.SidebarNavItemProps{

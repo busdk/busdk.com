@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Select | BusDK</title>
-    <meta name="description" content="Bus UI Select explains the checked select control and SelectChecked with SelectProps." />
+    <meta name="description" content="Bus UI Select explains the node-first select control and Select with SelectProps." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -99,7 +99,7 @@
               <h1>Choice lists with typed options and validation.</h1>
               <p class="hero-copy">
                 Use the select helper when the module needs a controlled dropdown with a stable
-                selected option and the options themselves stay in Go data. The checked name is
+                selected option and the options themselves stay in Go data. The node-first name is
                 only a migration boundary until the public node API is complete.
               </p>
               <div class="product-section">
@@ -109,7 +109,7 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>SelectChecked</code></td><td><code>SelectProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>Select</code></td><td><code>SelectProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -118,7 +118,7 @@
                 <p>
                   Use the select node API when the control should render a finite set of options
                   with one selected value. The public wrapper is on <code>pkg/ui</code>; any
-                  <code>pkg/uikit</code> mention is temporary migration debt with a deletion path.
+                  <code>pkg/uikit</code> is deprecated compatibility only.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -130,7 +130,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-selectHTML, err := ui.SelectChecked(ui.SelectProps{
+selectHTML, err := ui.Select(ui.SelectProps{
   Name:     "status",
   Selected: "ready",
   Options: []ui.SelectOption{

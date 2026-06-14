@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DenseTable | Bus UI Data Display | BusDK</title>
-    <meta name="description" content="DenseTable renders validated comparable rows with explicit checked props, cell counts, and accessibility attributes." />
+    <meta name="description" content="DenseTable renders validated comparable rows with explicit node-first props, cell counts, and accessibility attributes." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -30,13 +30,13 @@
               <p class="eyebrow">Bus UI Data Display</p>
               <h1>DenseTable keeps dense rows validated before they render.</h1>
               <p class="hero-copy">
-                Use this for comparable rows that share the same column shape. The checked helper
+                Use this for comparable rows that share the same column shape. The compatibility helper
                 rejects missing headings, mismatched row widths, and unsafe attributes before it
                 emits markup.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
-                <p><code>DenseTableChecked(p DenseTableProps) (Node, error)</code></p>
+                <p><code>DenseTable(p DenseTableProps) gx.Node</code></p>
                 <p>
                   The input model is <code>DenseTableProps</code>, plus <code>DenseTableColumn</code>,
                   <code>DenseTableRow</code>, and <code>DenseTableCell</code>. The result is a
@@ -55,7 +55,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-table, err := ui.DenseTableChecked(ui.DenseTableProps{
+table, err := ui.DenseTable(ui.DenseTableProps{
   Caption: "Document queue",
   Columns: []ui.DenseTableColumn{
     ui.DenseTableColumnText("title", "Title"),

@@ -93,7 +93,7 @@
             <h1>Evidence UI without leaking storage policy.</h1>
             <p class="hero-copy">
               Use the individual evidence pages for the public <code>pkg/ui</code> wrappers that
-              cover safe links, inline previews, and image galleries. The checked APIs keep URL
+              cover safe links, inline previews, and image galleries. The node-first APIs keep URL
               policy and preview fallbacks explicit.
             </p>
             <div class="product-section">
@@ -103,10 +103,10 @@
                   <tr><th>Page</th><th>Use it for</th><th>Public API</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Upload</td><td>File selection and drop affordances.</td><td><a href="../forms/file-input/index.html"><code>FileInputChecked</code></a>, <a href="../forms/drop-zone/index.html"><code>DropZoneChecked</code></a></td></tr>
-                  <tr><td><a href="./evidence-link/index.html">EvidenceLink</a></td><td>Safe open/download links with disabled states.</td><td><code>EvidenceLinkChecked(p EvidenceLinkProps) (string, error)</code></td></tr>
-                  <tr><td><a href="./evidence-preview/index.html">EvidencePreview</a></td><td>Inline previews or fallback panels when embedding is blocked.</td><td><code>EvidencePreviewChecked(p EvidencePreviewProps) (string, error)</code></td></tr>
-                  <tr><td><a href="./image-gallery/index.html">ImageGallery</a></td><td>Allowlisted image sets with per-item diagnostics.</td><td><code>ImageGalleryChecked(p ImageGalleryProps) (ImageGalleryResult, error)</code></td></tr>
+                  <tr><td>Upload</td><td>File selection and drop affordances.</td><td><a href="../forms/file-input/index.html"><code>FileInput</code></a>, <a href="../forms/drop-zone/index.html"><code>DropZone</code></a></td></tr>
+                  <tr><td><a href="./evidence-link/index.html">EvidenceLink</a></td><td>Safe open/download links with disabled states.</td><td><code>EvidenceLink(p EvidenceLinkProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./evidence-preview/index.html">EvidencePreview</a></td><td>Inline previews or fallback panels when embedding is blocked.</td><td><code>EvidencePreview(p EvidencePreviewProps) gx.Node</code></td></tr>
+                  <tr><td><a href="./image-gallery/index.html">ImageGallery</a></td><td>Allowlisted image sets with per-item diagnostics.</td><td><code>ImageGallery(p ImageGalleryProps) (ImageGalleryResult, error)</code></td></tr>
                   <tr><td>URL policy</td><td>Normalize public URLs and block unsafe or unavailable links.</td><td>evidence URL helpers</td></tr>
                 </tbody>
               </table>
@@ -115,7 +115,7 @@
               <h2>Shared example</h2>
               <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
+preview, err := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:       "Bank statement",
   PreviewURL:  "/modules/accounting/evidence/bank-statement.pdf",
   OpenURL:     "/modules/accounting/evidence/bank-statement.pdf",
@@ -133,7 +133,7 @@ preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
               <p>
                 Upload flows should continue to the dedicated <a href="../forms/file-input/index.html">File input</a>
                 and <a href="../forms/drop-zone/index.html">Drop zone</a> pages when you need the
-                concrete checked input and drag-and-drop surfaces.
+                concrete node-first input and drag-and-drop surfaces.
               </p>
             </div>
           </div>

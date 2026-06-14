@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Status</p>
               <h1>EmptyState explains missing content.</h1>
               <p class="hero-copy">
-                Use <code>EmptyStateChecked</code> when a collection or detail view has no content and can optionally offer a recovery action.
+                Use <code>EmptyState</code> when a collection or detail view has no content and can optionally offer a recovery action.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.EmptyStateChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.EmptyState</code></td></tr>
                     <tr><th>Props</th><td><code>ui.EmptyStateProps</code></td></tr>
                     <tr><th>Use for</th><td>Visible absence states with optional action controls.</td></tr>
                   </tbody>
@@ -108,7 +108,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-empty, err := ui.EmptyStateChecked(ui.EmptyStateProps{
+empty, err := ui.EmptyState(ui.EmptyStateProps{
   Title:      "No files yet",
   EventLabel: "Upload file",
   Event:      ui.ControlProps{Action: "upload-file"},

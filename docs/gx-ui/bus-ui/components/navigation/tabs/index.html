@@ -92,13 +92,13 @@
               <p class="eyebrow">Bus UI Navigation</p>
               <h1>Tabs switch between sibling module views.</h1>
               <p class="hero-copy">
-                Use <code>TabsChecked</code> when a screen stays in one module but the active section changes through safe links or typed callbacks.
+                Use <code>Tabs</code> when a screen stays in one module but the active section changes through safe links or typed callbacks.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table">
                   <tbody>
-                    <tr><th>Function</th><td><code>ui.TabsChecked</code></td></tr>
+                    <tr><th>Function</th><td><code>ui.Tabs</code></td></tr>
                     <tr><th>Props</th><td><code>ui.TabsProps</code></td></tr>
                     <tr><th>Item props</th><td><code>ui.TabItem</code></td></tr>
                     <tr><th>Use for</th><td>Sibling views with stable active tab ids and validated targets.</td></tr>
@@ -109,7 +109,7 @@
                 <h2>Example</h2>
                 <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-tabs, err := ui.TabsChecked(ui.TabsProps{
+tabs, err := ui.Tabs(ui.TabsProps{
   Label:  "Accounting views",
   Active: "files",
   Items: []ui.TabItem{
