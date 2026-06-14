@@ -83,7 +83,7 @@
                   </thead>
                   <tbody>
                     <tr><td><code>InputChecked</code>, <code>TextInputChecked</code></td><td><code>InputProps</code>, <code>TextInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
-                    <tr><td><code>PasswordInputChecked</code>, <code>DateInputChecked</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/uikit</code></td></tr>
+                    <tr><td><code>PasswordInputChecked</code>, <code>DateInputChecked</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -95,9 +95,8 @@
                   <code>DateInputChecked</code> when the field must stay in YYYY-MM-DD form.
                 </p>
                 <p>
-                  The text-input helpers are already on <code>pkg/ui</code>. Password and date
-                  helpers still live on <code>pkg/uikit</code> while the facade migration is in
-                  flight.
+                  The text-input, password, and date helpers are all on <code>pkg/ui</code>.
+                  <code>pkg/uikit</code> remains the implementation path behind the facade.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -109,7 +108,6 @@
                 <h2>Example</h2>
                 <pre><code>import (
   ui "github.com/busdk/bus-ui/pkg/ui"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
 )
 
 title, err := ui.TextInputChecked(ui.TextInputProps{
@@ -120,7 +118,7 @@ if err != nil {
   return err
 }
 
-password, err := uikit.PasswordInputChecked(
+password, err := ui.PasswordInputChecked(
   "password",
   "",
   "Enter your password",
@@ -132,7 +130,7 @@ if err != nil {
   return err
 }
 
-date, err := uikit.DateInputChecked("posting_date", "2026-06-14", nil, nil)
+date, err := ui.DateInputChecked("posting_date", "2026-06-14", nil, nil)
 if err != nil {
   return err
 }</code></pre>

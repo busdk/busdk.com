@@ -102,16 +102,16 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
 
-html, err := uikit.AIPanelChecked(uikit.AIPanelProps{
+html, err := assistantui.AIPanelChecked(assistantui.AIPanelProps{
   Title:        "Review",
   ActiveThread:  "thread-1",
-  Threads:      []uikit.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
-  Messages:     []uikit.AIPanelMessage{{Role: "assistant", Text: "Ready for review."}},
+  Threads:      []assistantui.AIThreadSummary{{ID: "thread-1", Title: "Draft review"}},
+  Messages:     []assistantui.AIPanelMessage{{Role: "assistant", Text: "Ready for review."}},
   Draft:        "Check the diff",
   Model:        "gpt-5",
-  ModelOptions:  []uikit.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},
+  ModelOptions:  []assistantui.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},
 })</code></pre>
               </div>
               <div class="product-section">

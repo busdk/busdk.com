@@ -78,7 +78,8 @@
               <p class="hero-copy">
                 Use these pages for the session panel, output stream, input box, approval prompt,
                 and the adapter/session-view layer that projects terminal events into renderable
-                state.
+                state. Preferred public import path: <code>github.com/busdk/bus-ui/pkg/terminalui</code>;
+                <code>pkg/uikit</code> remains compatibility-only for legacy callers.
               </p>
               <div class="product-section">
                 <h2>Concept pages</h2>
@@ -97,15 +98,15 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import terminalui "github.com/busdk/bus-ui/pkg/terminalui"
 
 seq := 1
-panel, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{
+panel, err := terminalui.TerminalSessionPanelChecked(terminalui.TerminalSessionPanelProps{
   Title:      "Verification",
   Command:    "go test ./...",
   SessionID:  "sess_123",
-  State:      uikit.TerminalSessionStateRunning,
-  Output:     []uikit.TerminalChunk{{Stream: "stdout", Sequence: &amp;seq, Text: "ok"}},
+  State:      terminalui.TerminalSessionStateRunning,
+  Output:     []terminalui.TerminalChunk{{Stream: "stdout", Sequence: &amp;seq, Text: "ok"}},
   EmptyOutput: "No output yet.",
 })</code></pre>
               </div>

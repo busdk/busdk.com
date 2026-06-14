@@ -82,18 +82,19 @@
               </p>
               <p>
                 The <code>pkg/ui</code> facade covers the core checked set. Shell, evidence,
-                assistant, and terminal surfaces still use <code>pkg/uikit</code> until those
-                wrappers are promoted.
+                assistant, and terminal surfaces are split by export boundary; shell helpers now
+                use <code>pkg/ui</code>, while evidence, assistant, and terminal remain on
+                <code>pkg/uikit</code> until those wrappers are promoted.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
+  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-tabs := uikit.Tabs(uikit.TabsProps{
+tabs := ui.Tabs(ui.TabsProps{
   Label:  "Accounting",
   Active: "files",
-  Items: []uikit.TabItem{
+  Items: []ui.TabItem{
     {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
     {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
   },
@@ -101,7 +102,7 @@ tabs := uikit.Tabs(uikit.TabsProps{
 
 filesPage := gx.Element("main", nil, gx.Text("Files"))
 
-page, err := uikit.AppShellChecked(uikit.AppShellProps{
+page, err := ui.AppShellChecked(ui.AppShellProps{
   Title: "Accounting",
   NavNodes: []gx.Node{tabs},
   MainNodes: []gx.Node{filesPage},

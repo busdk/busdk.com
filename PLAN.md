@@ -221,7 +221,16 @@
 # Current work
 
 - [x] Add individual Bus UI documentation pages for DenseTable, TextTable, RecordList, SummaryItem, ProjectionDetail, ProviderError, EvidenceLink, EvidencePreview, Timeline, and ImageGallery; update the Bus UI data/evidence category pages to link to each page.
-- [ ] Promote the matching checked wrappers into `pkg/ui` once that facade exists; the docs currently use `pkg/uikit` directly because this checkout does not export those wrappers yet.
+- [ ] Promote the Bus UI shell, navigation, and status examples to the public
+  `pkg/ui` facade and leave `pkg/uikit` only as compatibility wording where
+  the docs intentionally describe non-public helpers.
+  - Scope: `docs/gx-ui/components/`, `docs/gx-ui/bus-ui/components/`, the
+    shell/navigation/status example pages, and the corresponding `bus-ui`
+    import snippets.
+  - Acceptance: exported shell/navigation/status wrapper examples use
+    `ui "github.com/busdk/bus-ui/pkg/ui"` in the public website examples, any
+    remaining `pkg/uikit` references are explicitly compatibility/deprecation
+    notes, and the changed pages pass the local link and diff checks.
 
 - [x] Add clear GX/UI side navigation that connects the overview, GX Framework concept pages, Bus UI Library concept pages, reference, and module map from every inner GX/UI page; verify desktop/mobile layout and promote the finished branch to `develop`.
 - [x] Refactor the GX/UI product overview toward a product-docs tutorial structure with a centered product hero, Learn/API CTAs, section-by-section code/output examples, platform-host cards, and a reference-documentation strip.

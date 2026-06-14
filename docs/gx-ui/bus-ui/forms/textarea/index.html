@@ -82,7 +82,7 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>TextAreaChecked</code></td><td><code>TextAreaProps</code></td><td><code>github.com/busdk/bus-ui/pkg/uikit</code></td></tr>
+                    <tr><td><code>TextAreaChecked</code></td><td><code>TextAreaProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -91,7 +91,8 @@
                 <p>
                   Use <code>TextAreaChecked</code> for notes, descriptions, and longer free-form
                   fields that still need a stable name, label, and safe attributes. This helper
-                  remains on <code>pkg/uikit</code> for now.
+                  is now on <code>pkg/ui</code>, while <code>pkg/uikit</code> remains the
+                  implementation path behind the facade.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -101,9 +102,9 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-notes, err := uikit.TextAreaChecked(uikit.TextAreaProps{
+notes, err := ui.TextAreaChecked(ui.TextAreaProps{
   Name:        "notes",
   Value:       "Reviewed by accounting.",
   Placeholder: "Add notes",

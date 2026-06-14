@@ -82,7 +82,7 @@
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>SelectChecked</code></td><td><code>SelectProps</code></td><td><code>github.com/busdk/bus-ui/pkg/uikit</code></td></tr>
+                    <tr><td><code>SelectChecked</code></td><td><code>SelectProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -90,8 +90,9 @@
                 <h2>When to use it</h2>
                 <p>
                   Use <code>SelectChecked</code> when the control should render a finite set of
-                  options with one selected value. This helper is still on <code>pkg/uikit</code>
-                  while the public facade continues to expand.
+                  options with one selected value. This helper is now on <code>pkg/ui</code>,
+                  while <code>pkg/uikit</code> remains the implementation path behind the public
+                  facade.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -101,12 +102,12 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-selectHTML, err := uikit.SelectChecked(uikit.SelectProps{
+selectHTML, err := ui.SelectChecked(ui.SelectProps{
   Name:     "status",
   Selected: "ready",
-  Options: []uikit.SelectOption{
+  Options: []ui.SelectOption{
     {ID: "ready", Label: "Ready"},
     {ID: "blocked", Label: "Blocked"},
   },

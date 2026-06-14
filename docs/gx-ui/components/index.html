@@ -165,17 +165,17 @@ form, err := ui.FormChecked(ui.FormProps{
                 Status surfaces use semantic states and public-safe text. Result panels can include
                 recovery controls without taking ownership of the provider call.
               </p>
-              <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-html, err := uikit.ResultPanelChecked(uikit.ResultPanelProps{
+html, err := ui.ResultPanelChecked(ui.ResultPanelProps{
   Title:   "Evidence pack ready",
-  Status:  uikit.StatusSuccess,
+  Status:  ui.StatusSuccess,
   Summary: "3 files prepared for review.",
-  Events: []uikit.EventBarAction{
+  Events: []ui.EventBarAction{
     {
       Label:   "Open pack",
-      Variant: uikit.ButtonPrimary,
-      Control: uikit.ControlProps{Action: "open-pack"},
+      Variant: ui.ButtonPrimary,
+      Control: ui.ControlProps{Action: "open-pack"},
     },
   },
 })</code></pre>
