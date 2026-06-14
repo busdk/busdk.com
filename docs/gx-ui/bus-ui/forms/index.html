@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Forms | BusDK</title>
-    <meta name="description" content="Bus UI form concepts for checked fields, inputs, file inputs, drop zones, filters, and submit states." />
+    <meta name="description" content="Bus UI form concepts for validated fields, inputs, file inputs, drop zones, filters, and submit states." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -94,6 +94,8 @@
             <p class="hero-copy">
               Form primitives keep labels, validation text, disabled states, file selection, and
               submit feedback consistent while the owning module decides routes and policy.
+              The checked helpers compose typed <code>gx.Node</code> trees and only fall back
+              to compatibility HTML slots when a page already owns trusted fragments.
             </p>
             <div class="product-section">
               <h2>Form pieces</h2>
@@ -116,12 +118,8 @@
               <p>
                 Use the form page when you need native submit wiring, the field page when you need
                 a labeled control wrapper, and the upload pages when the module owns file intake or
-                drag-and-drop policy.
-              </p>
-              <p>
-                The checked helpers are now available through <code>pkg/ui</code>, and that is
-                the preferred public import path. <code>pkg/uikit</code> remains the
-                implementation and compatibility path for lower-level helpers.
+                drag-and-drop policy. The public facade is on <code>pkg/ui</code>; only the
+                lower-level compatibility helpers remain on <code>pkg/uikit</code>.
               </p>
               <p>
                 See also <a href="../evidence/index.html">Evidence and files</a> and

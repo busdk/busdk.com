@@ -6,7 +6,7 @@
     <title>Bus GX And Bus UI | BusDK</title>
     <meta
       name="description"
-      content="Learn Bus GX, the Go component framework, and Bus UI, the checked component library built on top of it."
+      content="Learn Bus GX, the Go component framework, and Bus UI, the node-first component library built on top of it."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -97,7 +97,8 @@
               <p class="eyebrow">Bus GX And Bus UI</p>
               <h1>Go components for product frontends.</h1>
               <p class="hero-copy">
-                GX is the framework. Bus UI is the checked component library built on it.
+                GX is the framework. Bus UI builds typed <code>gx.Node</code> trees, validates
+                component props before render, and uses named HTML adapters only where needed.
               </p>
               <div class="product-links gx-hero-actions">
                 <a class="button button-primary" href="gx/index.html">Learn GX</a>
@@ -144,7 +145,7 @@
                 </a>
                 <a class="tutorial-card" href="bus-ui/index.html">
                   <h3>Bus UI Library</h3>
-                  <p>Use checked components for forms, shells, status, data, evidence, assistant, terminal, and portal pages.</p>
+                  <p>Use validated components for forms, shells, status, data, evidence, assistant, terminal, and portal pages.</p>
                 </a>
                 <a class="tutorial-card" href="reference/index.html">
                   <h3>Reference</h3>
@@ -174,10 +175,11 @@
 
             <div class="gx-section gx-duo">
               <div class="gx-copy">
-                <h2>Bus UI: use checked components</h2>
+                <h2>Bus UI: use validated components</h2>
                 <p>
-                  Shared components validate public props, escape text, keep stable CSS and data
-                  hooks, and return explicit errors when a component cannot render safely.
+                  Shared components validate public props, keep stable CSS and data hooks, and
+                  return explicit errors when a component cannot render safely. HTML adapters are
+                  narrow and named.
                 </p>
                 <p><a href="bus-ui/components/index.html">Browse component families</a></p>
               </div>

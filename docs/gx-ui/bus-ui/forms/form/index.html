@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Form | BusDK</title>
-    <meta name="description" content="Bus UI Form explains the checked form wrapper, submit wiring, and when to use FormChecked with FormProps." />
+    <meta name="description" content="Bus UI Form explains the checked form wrapper, submit wiring, and when to use FormChecked with FormProps and node bodies." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -99,9 +99,11 @@
               <p class="hero-copy">
                 Use the form wrapper when the module owns method, action, target, busy state, or
                 submit callbacks and you want a controlled HTML form instead of ad hoc markup.
+                Compose the body with typed node trees first; keep raw HTML only as a
+                compatibility slot.
               </p>
               <div class="product-section">
-                <h2>Checked surface</h2>
+                <h2>Validated surface</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -117,7 +119,8 @@
                   Use <code>FormChecked</code> when the form needs explicit GET or POST handling,
                   safe action and target validation, body nodes, or a typed <code>OnSubmit</code>
                   callback. The wrapper keeps the submit path in Go and leaves policy in the host
-                  module.
+                  module. <code>BodyNodes</code> is the preferred composition path; legacy
+                  <code>BodyHTML</code> stays compatibility-only.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,

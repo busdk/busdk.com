@@ -99,9 +99,11 @@
               <p class="hero-copy">
                 Use the filter toolbar when a list or report needs a labeled filter strip with
                 submit and reset controls, but the module still owns the actual filtering logic.
+                The toolbar composes field nodes first and only falls back to compatibility HTML
+                when a caller already owns trusted fragments.
               </p>
               <div class="product-section">
-                <h2>Checked surface</h2>
+                <h2>Validated surface</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -116,7 +118,8 @@
                 <p>
                   Use <code>FilterToolbarChecked</code> when a data view needs a set of fields plus
                   submit and reset controls that belong to the owning module. The toolbar is still
-                  on <code>pkg/uikit</code> for now.
+                  on <code>pkg/uikit</code> for now. <code>Fields</code> is the preferred
+                  composition path; <code>BodyHTML</code> is compatibility only.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
