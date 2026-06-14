@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Text Area | BusDK</title>
+    <meta name="description" content="Bus UI Text Area explains the checked multiline input wrapper and TextAreaChecked with TextAreaProps." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" aria-label="GX/UI documentation">
+              <p class="gx-side-nav-title">GX and Bus UI</p>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Overview</p>
+                <a href="../../../index.html">Overview</a>
+                <a href="../../../reference/index.html">Reference</a>
+                <a href="../../../modules/index.html">Modules</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">GX Framework</p>
+                <a href="../../../gx/index.html">GX Framework</a>
+                <a href="../../../gx/source-files/index.html">Source files</a>
+                <a href="../../../gx/components/index.html">Component functions</a>
+                <a href="../../../gx/events/index.html">Events</a>
+                <a href="../../../gx/rendering/index.html">Rendering</a>
+                <a href="../../../gx/runtime/index.html">Runtime bridges</a>
+                <a href="../../../gx/testing/index.html">Testing</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Bus UI Library</p>
+                <a href="../../index.html">Bus UI Library</a>
+                <a href="../../components/index.html">Components</a>
+                <a href="../index.html">Forms</a>
+                <a href="../../data/index.html">Data display</a>
+                <a href="../../evidence/index.html">Evidence and files</a>
+                <a href="../../assistant-terminal/index.html">Assistant and terminal</a>
+                <a href="../../portal/index.html">Portal integration</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Forms</p>
+                <a href="../form/index.html">Form</a>
+                <a href="../field/index.html">Field</a>
+                <a href="../input/index.html">Input family</a>
+                <a href="./index.html" aria-current="page">Text area</a>
+                <a href="../select/index.html">Select</a>
+                <a href="../submit/index.html">Submit control</a>
+                <a href="../filter-toolbar/index.html">Filter toolbar</a>
+                <a href="../file-input/index.html">File input</a>
+                <a href="../drop-zone/index.html">Drop zone</a>
+                <a href="../credential-login-card/index.html">Credential login card</a>
+              </div>
+            </aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Text Area</p>
+              <h1>Multiline text with checked rows and attributes.</h1>
+              <p class="hero-copy">
+                Use the textarea helper when a control needs a larger text box, fixed rows, and the
+                same controlled validation path as the single-line input helpers.
+              </p>
+              <div class="product-section">
+                <h2>Checked surface</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>TextAreaChecked</code></td><td><code>TextAreaProps</code></td><td><code>github.com/busdk/bus-ui/pkg/uikit</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>TextAreaChecked</code> for notes, descriptions, and longer free-form
+                  fields that still need a stable name, label, and safe attributes. This helper
+                  remains on <code>pkg/uikit</code> for now.
+                </p>
+                <p>
+                  See also <a href="../field/index.html">Field</a>,
+                  <a href="../input/index.html">Input family</a>, and
+                  <a href="../../reference/index.html">Reference</a>.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+notes, err := uikit.TextAreaChecked(uikit.TextAreaProps{
+  Name:        "notes",
+  Value:       "Reviewed by accounting.",
+  Placeholder: "Add notes",
+  Rows:        4,
+})
+if err != nil {
+  return err
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

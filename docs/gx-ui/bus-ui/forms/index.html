@@ -76,12 +76,31 @@
                   <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Form and field</td><td>Method, action, field label, help text, and errors.</td><td><code>FormChecked</code>, <code>FieldChecked</code></td></tr>
-                  <tr><td>Text inputs</td><td>Text, password, date, select, and textarea controls.</td><td><code>InputChecked</code>, <code>TextAreaChecked</code>, <code>SelectChecked</code></td></tr>
-                  <tr><td>Files</td><td>Upload controls and drag/drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
-                  <tr><td>Workflow</td><td>Filters, submit buttons, pending states, and result summaries.</td><td><code>FilterToolbarChecked</code>, <code>SubmitControlChecked</code></td></tr>
+                  <tr><td><a href="./form/index.html">Form</a> and <a href="./field/index.html">field</a></td><td>Method, action, field label, help text, and errors.</td><td><code>FormChecked</code>, <code>FieldChecked</code></td></tr>
+                  <tr><td><a href="./input/index.html">Input family</a></td><td>Text, password, and date controls.</td><td><code>InputChecked</code>, <code>TextInputChecked</code>, <code>PasswordInputChecked</code>, <code>DateInputChecked</code></td></tr>
+                  <tr><td><a href="./textarea/index.html">Text area</a> and <a href="./select/index.html">select</a></td><td>Multiline text and choice controls.</td><td><code>TextAreaChecked</code>, <code>SelectChecked</code></td></tr>
+                  <tr><td><a href="./submit/index.html">Submit control</a> and <a href="./filter-toolbar/index.html">filter toolbar</a></td><td>Pending states, submit buttons, filters, and reset actions.</td><td><code>SubmitControlChecked</code>, <code>FilterToolbarChecked</code></td></tr>
+                  <tr><td><a href="./file-input/index.html">File input</a> and <a href="./drop-zone/index.html">drop zone</a></td><td>Upload controls and drag/drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
+                  <tr><td><a href="./credential-login-card/index.html">Credential login card</a></td><td>Username and password sign-in cards.</td><td><code>CredentialLoginCardChecked</code></td></tr>
                 </tbody>
               </table>
+            </div>
+            <div class="product-section">
+              <h2>Where to start</h2>
+              <p>
+                Use the form page when you need native submit wiring, the field page when you need
+                a labeled control wrapper, and the upload pages when the module owns file intake or
+                drag-and-drop policy.
+              </p>
+              <p>
+                The checked helpers already on <code>pkg/ui</code> are the preferred public
+                import path. The rest of the form family still lives on <code>pkg/uikit</code>
+                while those wrappers move over.
+              </p>
+              <p>
+                See also <a href="../evidence/index.html">Evidence and files</a> and
+                <a href="../../reference/index.html">Reference</a>.
+              </p>
             </div>
             <div class="product-section">
               <h2>Example</h2>
@@ -95,7 +114,9 @@
 )
 
 field, err := ui.FieldNodeChecked(ui.FieldProps{
-  Label: "Description",
+  Label:       "Description",
+  ControlID:   "description",
+  ControlName: "description",
   RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
     return ui.TextInputNodeChecked(ui.TextInputProps{
       Name:  "description",

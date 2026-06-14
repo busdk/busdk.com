@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Field | BusDK</title>
+    <meta name="description" content="Bus UI Field explains the checked labeled-field wrapper, typed control composition, and FieldChecked with FieldProps." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" aria-label="GX/UI documentation">
+              <p class="gx-side-nav-title">GX and Bus UI</p>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Overview</p>
+                <a href="../../../index.html">Overview</a>
+                <a href="../../../reference/index.html">Reference</a>
+                <a href="../../../modules/index.html">Modules</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">GX Framework</p>
+                <a href="../../../gx/index.html">GX Framework</a>
+                <a href="../../../gx/source-files/index.html">Source files</a>
+                <a href="../../../gx/components/index.html">Component functions</a>
+                <a href="../../../gx/events/index.html">Events</a>
+                <a href="../../../gx/rendering/index.html">Rendering</a>
+                <a href="../../../gx/runtime/index.html">Runtime bridges</a>
+                <a href="../../../gx/testing/index.html">Testing</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Bus UI Library</p>
+                <a href="../../index.html">Bus UI Library</a>
+                <a href="../../components/index.html">Components</a>
+                <a href="../index.html">Forms</a>
+                <a href="../../data/index.html">Data display</a>
+                <a href="../../evidence/index.html">Evidence and files</a>
+                <a href="../../assistant-terminal/index.html">Assistant and terminal</a>
+                <a href="../../portal/index.html">Portal integration</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Forms</p>
+                <a href="../form/index.html">Form</a>
+                <a href="./index.html" aria-current="page">Field</a>
+                <a href="../input/index.html">Input family</a>
+                <a href="../textarea/index.html">Text area</a>
+                <a href="../select/index.html">Select</a>
+                <a href="../submit/index.html">Submit control</a>
+                <a href="../filter-toolbar/index.html">Filter toolbar</a>
+                <a href="../file-input/index.html">File input</a>
+                <a href="../drop-zone/index.html">Drop zone</a>
+                <a href="../credential-login-card/index.html">Credential login card</a>
+              </div>
+            </aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Field</p>
+              <h1>Labeled control wrappers that stay accessible.</h1>
+              <p class="hero-copy">
+                Use a field wrapper when a control needs a stable label, hint text, error text, and
+                explicit control identity without hand-building the surrounding form markup.
+              </p>
+              <div class="product-section">
+                <h2>Checked surface</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>FieldChecked</code></td><td><code>FieldProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>FieldChecked</code> when the host module wants one labeled wrapper
+                  around a text input, textarea, select, checkbox, or any other deterministic
+                  control. <code>RenderControlNode</code> is the preferred composition path.
+                </p>
+                <p>
+                  See also <a href="../input/index.html">Input family</a>,
+                  <a href="../select/index.html">Select</a>, and
+                  <a href="../../reference/index.html">Reference</a>.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
+
+field, err := ui.FieldChecked(ui.FieldProps{
+  Label:       "Description",
+  ControlID:   "description",
+  ControlName: "description",
+  HintText:    "Shown on the evidence card.",
+  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
+    return ui.TextInputNodeChecked(ui.TextInputProps{
+      Name:  "description",
+      Attrs: attrs,
+    })
+  },
+})
+if err != nil {
+  return err
+}</code></pre>
+                <p>
+                  The field helper is already on <code>pkg/ui</code>, so the preferred import path
+                  is stable here as well.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Input Family | BusDK</title>
+    <meta name="description" content="Bus UI Input family explains InputChecked, TextInputChecked, PasswordInputChecked, and DateInputChecked with current import paths." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" aria-label="GX/UI documentation">
+              <p class="gx-side-nav-title">GX and Bus UI</p>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Overview</p>
+                <a href="../../../index.html">Overview</a>
+                <a href="../../../reference/index.html">Reference</a>
+                <a href="../../../modules/index.html">Modules</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">GX Framework</p>
+                <a href="../../../gx/index.html">GX Framework</a>
+                <a href="../../../gx/source-files/index.html">Source files</a>
+                <a href="../../../gx/components/index.html">Component functions</a>
+                <a href="../../../gx/events/index.html">Events</a>
+                <a href="../../../gx/rendering/index.html">Rendering</a>
+                <a href="../../../gx/runtime/index.html">Runtime bridges</a>
+                <a href="../../../gx/testing/index.html">Testing</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Bus UI Library</p>
+                <a href="../../index.html">Bus UI Library</a>
+                <a href="../../components/index.html">Components</a>
+                <a href="../index.html">Forms</a>
+                <a href="../../data/index.html">Data display</a>
+                <a href="../../evidence/index.html">Evidence and files</a>
+                <a href="../../assistant-terminal/index.html">Assistant and terminal</a>
+                <a href="../../portal/index.html">Portal integration</a>
+              </div>
+              <div class="gx-side-nav-group">
+                <p class="gx-side-nav-heading">Forms</p>
+                <a href="../form/index.html">Form</a>
+                <a href="../field/index.html">Field</a>
+                <a href="./index.html" aria-current="page">Input family</a>
+                <a href="../textarea/index.html">Text area</a>
+                <a href="../select/index.html">Select</a>
+                <a href="../submit/index.html">Submit control</a>
+                <a href="../filter-toolbar/index.html">Filter toolbar</a>
+                <a href="../file-input/index.html">File input</a>
+                <a href="../drop-zone/index.html">Drop zone</a>
+                <a href="../credential-login-card/index.html">Credential login card</a>
+              </div>
+            </aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Input Family</p>
+              <h1>Single-line controls for text, secrets, and dates.</h1>
+              <p class="hero-copy">
+                Use the input family when you need a typed native control with shared validation,
+                stable attributes, and a consistent wrapper for text, password, or date fields.
+              </p>
+              <div class="product-section">
+                <h2>Checked surface</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>InputChecked</code>, <code>TextInputChecked</code></td><td><code>InputProps</code>, <code>TextInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><td><code>PasswordInputChecked</code>, <code>DateInputChecked</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/uikit</code></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>InputChecked</code> or <code>TextInputChecked</code> for ordinary text
+                  entry, <code>PasswordInputChecked</code> for secret values, and
+                  <code>DateInputChecked</code> when the field must stay in YYYY-MM-DD form.
+                </p>
+                <p>
+                  The text-input helpers are already on <code>pkg/ui</code>. Password and date
+                  helpers still live on <code>pkg/uikit</code> while the facade migration is in
+                  flight.
+                </p>
+                <p>
+                  See also <a href="../field/index.html">Field</a>,
+                  <a href="../form/index.html">Form</a>, and
+                  <a href="../../reference/index.html">Reference</a>.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import (
+  ui "github.com/busdk/bus-ui/pkg/ui"
+  uikit "github.com/busdk/bus-ui/pkg/uikit"
+)
+
+title, err := ui.TextInputChecked(ui.TextInputProps{
+  Name:  "title",
+  Value: "Bank statement",
+})
+if err != nil {
+  return err
+}
+
+password, err := uikit.PasswordInputChecked(
+  "password",
+  "",
+  "Enter your password",
+  "current-password",
+  nil,
+  nil,
+)
+if err != nil {
+  return err
+}
+
+date, err := uikit.DateInputChecked("posting_date", "2026-06-14", nil, nil)
+if err != nil {
+  return err
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

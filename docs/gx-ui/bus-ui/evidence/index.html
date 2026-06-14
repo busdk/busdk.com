@@ -76,7 +76,7 @@
                   <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Upload</td><td>File selection and drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
+                  <tr><td>Upload</td><td>File selection and drop affordances.</td><td><a href="../forms/file-input/index.html"><code>FileInputChecked</code></a>, <a href="../forms/drop-zone/index.html"><code>DropZoneChecked</code></a></td></tr>
                   <tr><td>Links</td><td>Safe evidence links with disabled states and labels.</td><td><code>EvidenceLinkChecked</code></td></tr>
                   <tr><td>Preview</td><td>Inline evidence summaries and preview metadata.</td><td><code>EvidencePreviewChecked</code></td></tr>
                   <tr><td>URL policy</td><td>Normalize public URLs and block unsafe or unavailable links.</td><td>evidence URL helpers</td></tr>
@@ -100,6 +100,11 @@ preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
                 The <code>pkg/ui</code> facade is the preferred path for the core checked
                 components. Evidence previews remain on <code>pkg/uikit</code> until that surface
                 is promoted.
+              </p>
+              <p>
+                Upload flows should continue to the dedicated <a href="../forms/file-input/index.html">File input</a>
+                and <a href="../forms/drop-zone/index.html">Drop zone</a> pages when you need the
+                concrete checked input and drag-and-drop surfaces.
               </p>
             </div>
           </div>
