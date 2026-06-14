@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Components | BusDK</title>
-    <meta name="description" content="Bus UI component family index for shell, navigation, action, surface, and status pages." />
+    <title>Bus UI Action Components | BusDK</title>
+    <meta name="description" content="Bus UI action components for buttons, link buttons, icon buttons, and action bars." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -47,12 +47,12 @@
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Bus UI Library</p>
                 <a href="../../bus-ui/index.html">Bus UI Library</a>
-                <a href="./index.html" aria-current="page">Components</a>
-                <a href="./shell/index.html">Shell</a>
-                <a href="./navigation/index.html">Navigation</a>
-                <a href="./action/index.html">Action</a>
-                <a href="./surface/index.html">Surface</a>
-                <a href="./status/index.html">Status</a>
+                <a href="../index.html">Components</a>
+                <a href="../shell/index.html">Shell</a>
+                <a href="../navigation/index.html">Navigation</a>
+                <a href="./index.html" aria-current="page">Action</a>
+                <a href="../surface/index.html">Surface</a>
+                <a href="../status/index.html">Status</a>
                 <a href="../../bus-ui/forms/index.html">Forms</a>
                 <a href="../../bus-ui/data/index.html">Data display</a>
                 <a href="../../bus-ui/evidence/index.html">Evidence and files</a>
@@ -68,59 +68,48 @@
               </div>
             </aside>
             <div class="gx-doc-content">
-            <p class="eyebrow">Bus UI Components</p>
-            <h1>Shared structure for product surfaces.</h1>
+            <p class="eyebrow">Bus UI Action Components</p>
+            <h1>Buttons and action bars with consistent control semantics.</h1>
             <p class="hero-copy">
-              These family pages explain the checked component APIs one layer at a time. Some
-              surfaces already use the public <code>pkg/ui</code> facade; shells and navigation
-              still live on <code>pkg/uikit</code>, so the pages call out the current path
-              explicitly.
+              Use action components for the visible controls that move a screen forward. The
+              public facade already exposes <code>ui.Button</code> and <code>ui.ButtonProps</code>;
+              the more specialized link, icon, and event-bar helpers still live on
+              <code>pkg/uikit</code>.
             </p>
             <div class="product-section">
-              <h2>Family pages</h2>
+              <h2>Checked APIs</h2>
               <table class="tutorial-table">
                 <thead>
-                  <tr><th>Family</th><th>Use it for</th><th>Page</th></tr>
+                  <tr><th>Component</th><th>Use it for</th><th>Checked API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Shells</td><td>Application frames, module pages, sidebar layouts, and shell action panels.</td><td><a href="./shell/index.html">Shell</a></td></tr>
-                  <tr><td>Navigation</td><td>Menus, tabs, and generic navigation rails.</td><td><a href="./navigation/index.html">Navigation</a></td></tr>
-                  <tr><td>Actions</td><td>Buttons, button links, icon buttons, and action bars.</td><td><a href="./action/index.html">Action</a></td></tr>
-                  <tr><td>Surfaces</td><td>Panels, surface cards, and metric cards.</td><td><a href="./surface/index.html">Surface</a></td></tr>
-                  <tr><td>Status</td><td>Status pills, empty states, loading states, result panels, and error banners.</td><td><a href="./status/index.html">Status</a></td></tr>
+                  <tr><td>Button</td><td>Primary, secondary, danger, and ghost actions.</td><td><code>ButtonChecked</code> / <code>ButtonProps</code></td><td><code>pkg/ui</code> wrapper, checked helper on <code>pkg/uikit</code></td></tr>
+                  <tr><td>Link button</td><td>Anchor-like actions styled as buttons.</td><td><code>LinkButtonChecked</code> / <code>LinkButtonProps</code></td><td><code>pkg/uikit</code></td></tr>
+                  <tr><td>Icon button</td><td>Compact icon-only or icon-leading actions.</td><td><code>IconButtonChecked</code> / <code>IconButtonProps</code></td><td><code>pkg/uikit</code></td></tr>
+                  <tr><td>Event bar</td><td>Dense rows of action controls inside headers or panels.</td><td><code>EventBarChecked</code> / <code>EventBarProps</code></td><td><code>pkg/uikit</code></td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The shell family is still anchored in <code>pkg/uikit</code>. Use the page-shell
-                helper when the module already owns its own header, body, and footer structure.
+                The public facade can already render the common button shape. When a module only
+                needs a labelled action, the wrapper is the simplest entry point.
               </p>
-              <pre><code>import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
-)
+              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
 
-shell, err := uikit.PageShellChecked(uikit.PageShellProps{
-  HeaderNodes: []gx.Node{
-    gx.Element("h1", nil, gx.Text("Accounting")),
-  },
-  MainNodes: []gx.Node{
-    gx.Element("p", nil, gx.Text("Module content")),
-  },
-  FooterNodes: []gx.Node{
-    gx.Element("small", nil, gx.Text("Synced")),
-  },
+html := ui.Button(ui.ButtonProps{
+  Label:   "Save draft",
+  Variant: ui.ButtonPrimary,
 })</code></pre>
             </div>
             <p>
-              Back to the <a href="../index.html">Bus UI Library</a> or the
+              Continue to the <a href="../index.html">Components index</a> or the
               <a href="../../reference/index.html">Reference</a>.
             </p>
           </div>
-
-          </div></section>
+          </div>
+        </section>
       </main>
     </div>
   </body>

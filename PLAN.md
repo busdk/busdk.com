@@ -1,6 +1,7 @@
 # PLAN.md
 
 - [ ] Rewrite `busdk.com/docs/` internal directory links so `file://` preview works without an HTTP server. Acceptance: all local directory `href`/`src` links in `docs/**` end in `index.html`, representative nested pages resolve from the filesystem, `git diff --check` passes, and the resulting `busdk.com` pointer can be updated from this branch.
+- [ ] Create individual Bus UI component-family pages for shells, navigation, actions, surfaces, and status under `docs/gx-ui/bus-ui/components/`. Acceptance: each page exists, names the checked function and props type, states whether the public `pkg/ui` facade already exports the symbol or whether the current path is still `pkg/uikit`, links back to the component category and reference pages with explicit `/index.html` targets, and the changed pages plus index pass the link scan and `git diff --check`.
 
 - [x] 4.5.2026: publish a BusDK.com blog article for recipient-owned isolated dev-task worktrees: explain the read-only workspace dependency view, writable recipient task worktree, workspace-recipient configuration, and why this makes parallel local agent development safer.
 

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Components | BusDK</title>
-    <meta name="description" content="Bus UI component family index for shell, navigation, action, surface, and status pages." />
+    <title>Bus UI Surface Components | BusDK</title>
+    <meta name="description" content="Bus UI surface components for panels, cards, and metric cards." />
     <link rel="stylesheet" href="../../../index.css" />
   </head>
   <body>
@@ -47,12 +47,12 @@
               <div class="gx-side-nav-group">
                 <p class="gx-side-nav-heading">Bus UI Library</p>
                 <a href="../../bus-ui/index.html">Bus UI Library</a>
-                <a href="./index.html" aria-current="page">Components</a>
-                <a href="./shell/index.html">Shell</a>
-                <a href="./navigation/index.html">Navigation</a>
-                <a href="./action/index.html">Action</a>
-                <a href="./surface/index.html">Surface</a>
-                <a href="./status/index.html">Status</a>
+                <a href="../index.html">Components</a>
+                <a href="../shell/index.html">Shell</a>
+                <a href="../navigation/index.html">Navigation</a>
+                <a href="../action/index.html">Action</a>
+                <a href="./index.html" aria-current="page">Surface</a>
+                <a href="../status/index.html">Status</a>
                 <a href="../../bus-ui/forms/index.html">Forms</a>
                 <a href="../../bus-ui/data/index.html">Data display</a>
                 <a href="../../bus-ui/evidence/index.html">Evidence and files</a>
@@ -68,59 +68,51 @@
               </div>
             </aside>
             <div class="gx-doc-content">
-            <p class="eyebrow">Bus UI Components</p>
-            <h1>Shared structure for product surfaces.</h1>
+            <p class="eyebrow">Bus UI Surface Components</p>
+            <h1>Bounded content blocks for dashboards and detail views.</h1>
             <p class="hero-copy">
-              These family pages explain the checked component APIs one layer at a time. Some
-              surfaces already use the public <code>pkg/ui</code> facade; shells and navigation
-              still live on <code>pkg/uikit</code>, so the pages call out the current path
-              explicitly.
+              Use surface components when the screen needs a clear container around content,
+              metrics, or compact summaries. These checked helpers are already available through
+              the public <code>pkg/ui</code> facade.
             </p>
             <div class="product-section">
-              <h2>Family pages</h2>
+              <h2>Checked APIs</h2>
               <table class="tutorial-table">
                 <thead>
-                  <tr><th>Family</th><th>Use it for</th><th>Page</th></tr>
+                  <tr><th>Component</th><th>Use it for</th><th>Checked API</th><th>Current path</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>Shells</td><td>Application frames, module pages, sidebar layouts, and shell action panels.</td><td><a href="./shell/index.html">Shell</a></td></tr>
-                  <tr><td>Navigation</td><td>Menus, tabs, and generic navigation rails.</td><td><a href="./navigation/index.html">Navigation</a></td></tr>
-                  <tr><td>Actions</td><td>Buttons, button links, icon buttons, and action bars.</td><td><a href="./action/index.html">Action</a></td></tr>
-                  <tr><td>Surfaces</td><td>Panels, surface cards, and metric cards.</td><td><a href="./surface/index.html">Surface</a></td></tr>
-                  <tr><td>Status</td><td>Status pills, empty states, loading states, result panels, and error banners.</td><td><a href="./status/index.html">Status</a></td></tr>
+                  <tr><td>Panel</td><td>Generic titled work surfaces with optional actions and footers.</td><td><code>PanelChecked</code> / <code>PanelProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td>Surface card</td><td>Compact grouped content cards with validated body slots.</td><td><code>SurfaceCardChecked</code> / <code>SurfaceCardProps</code></td><td><code>pkg/ui</code></td></tr>
+                  <tr><td>Metric card</td><td>Headline numbers with semantic status accents and detail text.</td><td><code>MetricCardChecked</code> / <code>MetricCardProps</code></td><td><code>pkg/ui</code></td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The shell family is still anchored in <code>pkg/uikit</code>. Use the page-shell
-                helper when the module already owns its own header, body, and footer structure.
+                The checked facade is useful when the module wants the surface contract verified
+                before render and still wants to compose with typed Go nodes.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
+  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-shell, err := uikit.PageShellChecked(uikit.PageShellProps{
-  HeaderNodes: []gx.Node{
-    gx.Element("h1", nil, gx.Text("Accounting")),
-  },
-  MainNodes: []gx.Node{
-    gx.Element("p", nil, gx.Text("Module content")),
-  },
-  FooterNodes: []gx.Node{
-    gx.Element("small", nil, gx.Text("Synced")),
+panel, err := ui.PanelChecked(ui.PanelProps{
+  Title: "Monthly close",
+  BodyNodes: []gx.Node{
+    gx.Element("p", nil, gx.Text("3 statements ready")),
   },
 })</code></pre>
             </div>
             <p>
-              Back to the <a href="../index.html">Bus UI Library</a> or the
+              Back to the <a href="../index.html">Components index</a> or the
               <a href="../../reference/index.html">Reference</a>.
             </p>
           </div>
-
-          </div></section>
+          </div>
+        </section>
       </main>
     </div>
   </body>
