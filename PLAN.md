@@ -220,6 +220,8 @@
 - [x] 24.1.2026: kirjoita artikkeli siitä, miten julkinen dokumentaatio jäsentyi arkkitehtuuri-, CLI-, data- ja esimerkkityönkuluiksi, kun spec hajotettiin navigoitaviksi osa-alueiksi ja mukaan tuli ensimmäinen konkreettinen minimal example layout.
 # Current work
 
+- [ ] Add individual Bus UI documentation pages for DenseTable, TextTable, RecordList, SummaryItem, ProjectionDetail, ProviderError, EvidenceLink, EvidencePreview, Timeline, and ImageGallery; update the Bus UI data/evidence category pages to link to each page, keep the examples honest about `pkg/uikit` vs. `pkg/ui`, and close the remaining `pkg/ui` migration follow-up once the exported surface exists.
+
 - [x] Add clear GX/UI side navigation that connects the overview, GX Framework concept pages, Bus UI Library concept pages, reference, and module map from every inner GX/UI page; verify desktop/mobile layout and promote the finished branch to `develop`.
 - [x] Refactor the GX/UI product overview toward a product-docs tutorial structure with a centered product hero, Learn/API CTAs, section-by-section code/output examples, platform-host cards, and a reference-documentation strip.
 - [x] Expand the GX/UI product website into a tutorial-style product section with overview, authoring, component, runtime/testing, product-surface, and module-map pages with concrete examples.

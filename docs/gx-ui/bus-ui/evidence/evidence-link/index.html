@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EvidenceLink | Bus UI Evidence And Files | BusDK</title>
+    <meta name="description" content="EvidenceLink renders safe open and download links with disabled states and explicit reasons." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Evidence And Files</p>
+              <h1>EvidenceLink keeps evidence actions safe.</h1>
+              <p class="hero-copy">
+                Use it for open and download links that may also need to render as disabled text
+                when the evidence URL is missing or denied.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>EvidenceLinkChecked(p EvidenceLinkProps) (string, error)</code></p>
+                <p>
+                  The input model is <code>EvidenceLinkProps</code>. It uses
+                  <code>EvidenceOperation</code> and <code>EvidenceDenialReason</code> to keep the
+                  intent and the failure mode explicit.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>EvidenceLink</code> when a visible link belongs to an evidence surface,
+                  but the same control must also handle disabled states and download intent without
+                  exposing unsafe href values.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+html, err := uikit.EvidenceLinkChecked(uikit.EvidenceLinkProps{
+  Label:     "Open PDF",
+  Href:      "/modules/accounting/evidence/bank-statement.pdf",
+  Operation: uikit.EvidenceOperationDownload,
+  Download:  true,
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Evidence and files</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

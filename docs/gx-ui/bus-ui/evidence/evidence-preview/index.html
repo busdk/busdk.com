@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EvidencePreview | Bus UI Evidence And Files | BusDK</title>
+    <meta name="description" content="EvidencePreview renders inline previews or fallback panels based on embeddability and policy." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Evidence And Files</p>
+              <h1>EvidencePreview chooses inline preview or fallback copy.</h1>
+              <p class="hero-copy">
+                Use it for PDFs, images, or plain text snippets where the preview policy must stay
+                explicit. The helper can fall back cleanly when the evidence is not embeddable.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>EvidencePreviewChecked(p EvidencePreviewProps) (string, error)</code></p>
+                <p>
+                  The input model is <code>EvidencePreviewProps</code>, and the policy helper
+                  <code>EvidencePreviewPolicy</code> explains why a preview is inline or blocked.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>EvidencePreview</code> when you want a single panel to show either the
+                  preview itself or a readable fallback, without letting ambiguous content-type or
+                  disposition rules leak into the page.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+html, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+  Title:              "Bank statement",
+  PreviewURL:          "/modules/accounting/evidence/bank-statement.pdf",
+  OpenURL:             "/modules/accounting/evidence/bank-statement.pdf",
+  ContentType:         "application/pdf",
+  ContentDisposition:  "inline",
+  Fallback:            "Preview is unavailable.",
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Evidence and files</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

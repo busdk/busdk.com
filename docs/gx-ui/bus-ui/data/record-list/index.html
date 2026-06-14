@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RecordList | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="RecordList renders ordered record summaries with an empty state and checked validation." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Data Display</p>
+              <h1>RecordList handles ordered record summaries.</h1>
+              <p class="hero-copy">
+                Use it for a sequence of records that need title, meta, detail, and badge fields,
+                plus a deliberate empty state when there is nothing to show.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>RecordListChecked(p RecordListProps) (string, error)</code></p>
+                <p>
+                  The input model is <code>RecordListProps</code> with <code>RecordListItem</code>
+                  entries. The helper returns the rendered HTML string.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>RecordList</code> when the list is the primary shape, not a table. It is
+                  a good fit for compact queues, recent activity, and short audit summaries.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+html, err := uikit.RecordListChecked(uikit.RecordListProps{
+  Items: []uikit.RecordListItem{
+    uikit.RecordListItemSummary("June receipts", "3 files", "Prepared for accounting review."),
+  },
+  EmptyTitle:  "No receipts yet",
+  EmptyDetail: "Upload files to build the list.",
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

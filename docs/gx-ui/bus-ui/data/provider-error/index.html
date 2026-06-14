@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProviderError | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="ProviderError renders public-safe provider failures with severity, request IDs, and field errors." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Status Output</p>
+              <h1>ProviderError turns provider failures into public-safe status output.</h1>
+              <p class="hero-copy">
+                Use it when a provider call fails and you need a surfaced title, summary, status,
+                request ID, and field-level hints without leaking raw diagnostics.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>ProviderErrorChecked(p ProviderErrorProps) (string, error)</code></p>
+                <p>
+                  The input model is <code>ProviderErrorProps</code>, plus
+                  <code>ProviderErrorField</code> and <code>ProviderErrorFromResult(Result)</code>
+                  for projection from a runtime result.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>ProviderError</code> for public failure states that belong on screen or
+                  in a response body. It is the right fit when validation should fail closed and
+                  redaction should happen before render.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+html, err := uikit.ProviderErrorChecked(uikit.ProviderErrorProps{
+  Title:     "Provider request failed",
+  Summary:   "The backend returned a validation error.",
+  Code:      "invalid_request",
+  Status:    "failed",
+  RequestID: "req_12345",
+  Fields: map[string]string{
+    "field": "invoice_id",
+  },
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

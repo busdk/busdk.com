@@ -66,40 +66,45 @@
             <p class="eyebrow">Bus UI Evidence And Files</p>
             <h1>Evidence UI without leaking storage policy.</h1>
             <p class="hero-copy">
-              Evidence primitives render upload controls, safe links, and previews. The module owns
-              access checks, storage URLs, provider credentials, and download policy.
+              Use the individual evidence pages for safe links, inline previews, and image
+              galleries. The checked APIs keep URL policy and preview fallbacks explicit.
             </p>
             <div class="product-section">
-              <h2>Evidence pieces</h2>
+              <h2>Concept pages</h2>
               <table class="tutorial-table">
                 <thead>
-                  <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
+                  <tr><th>Page</th><th>Use it for</th><th>Checked API</th></tr>
                 </thead>
                 <tbody>
                   <tr><td>Upload</td><td>File selection and drop affordances.</td><td><a href="../forms/file-input/index.html"><code>FileInputChecked</code></a>, <a href="../forms/drop-zone/index.html"><code>DropZoneChecked</code></a></td></tr>
-                  <tr><td>Links</td><td>Safe evidence links with disabled states and labels.</td><td><code>EvidenceLinkChecked</code></td></tr>
-                  <tr><td>Preview</td><td>Inline evidence summaries and preview metadata.</td><td><code>EvidencePreviewChecked</code></td></tr>
+                  <tr><td><a href="./evidence-link/index.html">EvidenceLink</a></td><td>Safe open/download links with disabled states.</td><td><code>EvidenceLinkChecked(p EvidenceLinkProps) (string, error)</code></td></tr>
+                  <tr><td><a href="./evidence-preview/index.html">EvidencePreview</a></td><td>Inline previews or fallback panels when embedding is blocked.</td><td><code>EvidencePreviewChecked(p EvidencePreviewProps) (string, error)</code></td></tr>
+                  <tr><td><a href="./image-gallery/index.html">ImageGallery</a></td><td>Allowlisted image sets with per-item diagnostics.</td><td><code>ImageGalleryChecked(p ImageGalleryProps) (ImageGalleryResult, error)</code></td></tr>
                   <tr><td>URL policy</td><td>Normalize public URLs and block unsafe or unavailable links.</td><td>evidence URL helpers</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="product-section">
-              <h2>Example</h2>
+              <h2>Shared example</h2>
               <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
 
 preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
-  Title: "Bank statement",
-  Items: []uikit.EvidenceLinkProps{
-    {
-      Label: "Open PDF",
-      Href:  "/modules/accounting/evidence/bank-statement.pdf",
-    },
-  },
+  Title:       "Bank statement",
+  PreviewURL:  "/modules/accounting/evidence/bank-statement.pdf",
+  OpenURL:     "/modules/accounting/evidence/bank-statement.pdf",
+  ContentType: "application/pdf",
+  Fallback:    "Preview is unavailable.",
 })</code></pre>
               <p>
-                The <code>pkg/ui</code> facade is the preferred path for the core checked
-                components. Evidence previews remain on <code>pkg/uikit</code> until that surface
-                is promoted.
+                This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                examples use <code>pkg/uikit</code> directly until that migration lands.
+              </p>
+            </div>
+            <div class="product-section">
+              <h2>Back links</h2>
+              <p>
+                Return to the <a href="../index.html">Evidence and files</a> category or the
+                <a href="../../../reference/index.html">Bus UI reference</a>.
               </p>
               <p>
                 Upload flows should continue to the dedicated <a href="../forms/file-input/index.html">File input</a>

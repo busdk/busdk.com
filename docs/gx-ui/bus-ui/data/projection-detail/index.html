@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProjectionDetail | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="ProjectionDetail renders public-safe projection fields and evidence actions with diagnostics." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Data Display</p>
+              <h1>ProjectionDetail renders one public-safe projection.</h1>
+              <p class="hero-copy">
+                Use it when you need a structured detail view with fields, optional summary text,
+                and evidence actions that may be omitted or disabled with diagnostics.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>ProjectionDetailChecked(p ProjectionDetailProps) (ProjectionDetailResult, error)</code></p>
+                <p>
+                  The inputs are <code>ProjectionDetailProps</code>, <code>ProjectionField</code>,
+                  and <code>ProjectionEvidenceAction</code>. The result includes rendered HTML plus
+                  <code>ProjectionDetailDiagnostic</code> entries.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>ProjectionDetail</code> for provider payloads or other projected data
+                  that needs public-safe redaction and evidence affordances in one surface.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+result, err := uikit.ProjectionDetailChecked(uikit.ProjectionDetailProps{
+  Title:   "Invoice projection",
+  Summary: "Checked before the provider response is exposed.",
+  Fields: []uikit.ProjectionField{
+    {Label: "Provider", Value: "Stripe"},
+    {Label: "State", Value: "Ready"},
+  },
+  Evidence: []uikit.ProjectionEvidenceAction{
+    {Label: "Open evidence", Operation: uikit.EvidenceOperationOpen, URL: "/evidence/invoice.pdf"},
+  },
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

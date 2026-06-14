@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TextTable | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="TextTable renders compatibility tables from static headers and trusted row nodes." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Data Display</p>
+              <h1>TextTable is the compatibility path for trusted row HTML.</h1>
+              <p class="hero-copy">
+                Use it when the headers are static and the row nodes already come from another
+                checked helper. It keeps the old string-or-node table shape alive while validation
+                stays explicit.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>TextTableChecked(headers []string, rows []Node, log ControlLogSink) (Node, error)</code></p>
+                <p>
+                  The inputs are static headers and trusted row <code>Node</code> values. The
+                  result is a rendered <code>Node</code>.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>TextTable</code> for legacy or compatibility callers that already own
+                  row markup. If you want cell-level validation and generated row objects, use
+                  <a href="../dense-table/index.html">DenseTable</a> instead.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+rows := []uikit.Node{
+  uikit.Node("<tr><td>June receipts</td><td>3 files</td><td>Ready</td></tr>"),
+}
+
+table, err := uikit.TextTableChecked([]string{"Title", "Files", "State"}, rows, nil)</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

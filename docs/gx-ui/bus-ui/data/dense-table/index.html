@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DenseTable | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="DenseTable renders validated comparable rows with explicit checked props, cell counts, and accessibility attributes." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Data Display</p>
+              <h1>DenseTable keeps dense rows validated before they render.</h1>
+              <p class="hero-copy">
+                Use this for comparable rows that share the same column shape. The checked helper
+                rejects missing headings, mismatched row widths, and unsafe attributes before it
+                emits markup.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>DenseTableChecked(p DenseTableProps) (Node, error)</code></p>
+                <p>
+                  The input model is <code>DenseTableProps</code>, plus <code>DenseTableColumn</code>,
+                  <code>DenseTableRow</code>, and <code>DenseTableCell</code>. The result is a
+                  <code>Node</code> with the compiled table HTML.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Choose <code>DenseTable</code> when the table is a real grid: every row must have
+                  the same number of cells, every heading must be present, and you want the helper
+                  to validate that shape for you.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+table, err := uikit.DenseTableChecked(uikit.DenseTableProps{
+  Caption: "Document queue",
+  Columns: []uikit.DenseTableColumn{
+    uikit.DenseTableColumnText("title", "Title"),
+    uikit.DenseTableColumnText("files", "Files"),
+    uikit.DenseTableColumnText("state", "State"),
+  },
+  Rows: []uikit.DenseTableRow{
+    uikit.DenseTableRowText("June receipts", "3 files", "Ready"),
+  },
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

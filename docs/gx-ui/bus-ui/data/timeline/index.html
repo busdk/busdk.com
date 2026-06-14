@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Timeline | Bus UI Data Display | BusDK</title>
+    <meta name="description" content="Timeline renders ordered event history with timestamps, sequences, and semantic status values." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../../../gx/index.html">GX Framework</a>
+            <a href="../../index.html">Bus UI Library</a>
+            <a href="../../../reference/index.html">Reference</a>
+            <a href="../../../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Data Display</p>
+              <h1>Timeline keeps event history in order.</h1>
+              <p class="hero-copy">
+                Use it for audit trails, work progress, or other ordered histories. Each item can
+                carry escaped body text or a trusted body node, plus timestamps and metadata.
+              </p>
+              <div class="product-section">
+                <h2>Checked API</h2>
+                <p><code>TimelineChecked(p TimelineProps) (string, error)</code></p>
+                <p>
+                  The input model is <code>TimelineProps</code> with <code>TimelineItem</code> and
+                  <code>TimelineMeta</code> entries. The helper returns HTML as a string.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>When to use it</h2>
+                <p>
+                  Use <code>Timeline</code> when the order itself matters and each entry needs a
+                  status, time, and optional supporting metadata. The checked path rejects raw HTML
+                  in the body field.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>import uikit "github.com/busdk/bus-ui/pkg/uikit"
+
+html, err := uikit.TimelineChecked(uikit.TimelineProps{
+  Label: "Invoice workflow",
+  Items: []uikit.TimelineItem{
+    {
+      Time:   "2026-06-14T09:00:00Z",
+      Body:   "Invoice imported",
+      Status: uikit.TimelineStatusSuccess,
+    },
+    {
+      Time:   "2026-06-14T09:10:00Z",
+      Body:   "Provider error reviewed",
+      Status: uikit.TimelineStatusWarning,
+    },
+  },
+})</code></pre>
+                <p>
+                  This checkout does not expose a matching <code>pkg/ui</code> wrapper yet, so the
+                  example uses <code>pkg/uikit</code> directly.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Related</h2>
+                <p>
+                  Go back to <a href="../index.html">Data display</a> or the
+                  <a href="../../../reference/index.html">Bus UI reference</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
