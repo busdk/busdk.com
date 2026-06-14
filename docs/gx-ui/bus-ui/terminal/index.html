@@ -103,14 +103,16 @@
               <p class="hero-copy">
                 Use these pages for the session panel, output stream, input box, approval prompt,
                 and the adapter/session-view layer that projects terminal events into renderable
-                state. Preferred public import path: <code>github.com/busdk/bus-ui/pkg/terminalui</code>;
-                <code>pkg/uikit</code> remains compatibility-only for legacy callers.
+                state. Preferred public import path:
+                <code>github.com/busdk/bus-ui/pkg/terminalui</code>. Any
+                <code>pkg/uikit</code> reference here is temporary migration debt with a deletion
+                path, not a stable API.
               </p>
               <div class="product-section">
                 <h2>Concept pages</h2>
                 <table class="tutorial-table">
                   <thead>
-                    <tr><th>Page</th><th>Use it for</th><th>Checked API</th></tr>
+                    <tr><th>Page</th><th>Use it for</th><th>Public API</th></tr>
                   </thead>
                   <tbody>
                     <tr><td><a href="../terminal-session-panel/index.html">TerminalSessionPanel</a></td><td>Terminal session chrome, command context, output, and session status.</td><td><code>TerminalSessionPanelChecked(props TerminalSessionPanelProps) (string, error)</code></td></tr>

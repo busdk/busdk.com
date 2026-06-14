@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Filter Toolbar | BusDK</title>
-    <meta name="description" content="Bus UI Filter Toolbar explains the checked filter form wrapper and FilterToolbarChecked with FilterToolbarProps." />
+    <meta name="description" content="Bus UI Filter Toolbar explains the filter form boundary, node-first composition, and the temporary checked migration helper." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -100,11 +100,11 @@
               <p class="hero-copy">
                 Use the filter toolbar when a list or report needs a labeled filter strip with
                 submit and reset controls, but the module still owns the actual filtering logic.
-                The toolbar composes field nodes first and only falls back to compatibility HTML
-                when a caller already owns trusted fragments.
+                The toolbar composes field nodes first and only falls back to migration-boundary
+                vocabulary when a caller already owns trusted fragments.
               </p>
               <div class="product-section">
-                <h2>Validated surface</h2>
+                <h2>Component boundary</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -117,10 +117,10 @@
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>FilterToolbarChecked</code> when a data view needs a set of fields plus
-                  submit and reset controls that belong to the owning module. The toolbar is still
-                  on <code>pkg/uikit</code> for now. <code>Fields</code> is the preferred
-                  composition path; <code>BodyHTML</code> is compatibility only.
+                  Use the filter toolbar when a data view needs a set of fields plus submit and
+                  reset controls that belong to the owning module. <code>Fields</code> is the
+                  preferred composition path. <code>BodyHTML</code> and the checked helper are
+                  temporary migration vocabulary with a deletion path.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -131,30 +131,22 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  uikit "github.com/busdk/bus-ui/pkg/uikit"
-)
+                <pre><code>import "github.com/busdk/bus-gx/pkg/gx"
 
-toolbarHTML, err := uikit.FilterToolbarChecked(uikit.FilterToolbarProps{
-  SourceID: "ledger-filters",
-  Fields: []uikit.FieldProps{
-    {
-      Label:       "Search",
-      ControlID:   "search",
-      ControlName: "search",
-      RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
-        return uikit.TextInputNodeChecked(uikit.TextInputProps{
-          Name:  "search",
-          Attrs: attrs,
-        })
-      },
-    },
-  },
-})
-if err != nil {
-  return err
+toolbarNodes := []gx.Node{
+  gx.Element("label", gx.Props{"for": "search"}, gx.Text("Search")),
+  gx.Element("input", gx.Props{
+    "id":   "search",
+    "name": "search",
+    "type": "search",
+  }),
+  gx.Element("button", gx.Props{"type": "submit"}, gx.Text("Filter")),
+  gx.Element("button", gx.Props{"type": "reset"}, gx.Text("Reset")),
 }</code></pre>
+                <p>
+                  The checked toolbar adapter can wrap the same node set during migration, but it
+                  is not the endpoint.
+                </p>
               </div>
             </div>
           </div>

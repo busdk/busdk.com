@@ -20,6 +20,12 @@
     temporary-migration adapter vocabulary, `pkg/uikit` is not presented as a
     long-term compatibility package, and the touched pages pass
     `git diff --check` plus the local link scan.
+  - Progress 2026-06-14: current pages now teach node-first composition and
+    public facades before any checked helper or `pkg/uikit` wording, with
+    remaining `pkg/uikit` mentions framed as temporary migration debt,
+    implementation-boundary notes, or deletion-path references. Keep this
+    item open until a final post-API-merge audit confirms no old primary
+    examples remain.
 - [ ] Rewrite `busdk.com/docs/` internal directory links so `file://` preview works without an HTTP server. Acceptance: all local directory `href`/`src` links in `docs/**` end in `index.html`, representative nested pages resolve from the filesystem, `git diff --check` passes, and the resulting `busdk.com` pointer can be updated from this branch.
 - [x] Create individual Bus UI component-family pages for shells, navigation, actions, surfaces, and status under `docs/gx-ui/bus-ui/components/`. Acceptance: each page exists, names the checked function and props type, states whether the public `pkg/ui` facade already exports the symbol or whether the current path is still `pkg/uikit`, links back to the component category and reference pages with explicit `/index.html` targets, and the changed pages plus index pass the link scan and `git diff --check`.
 - [x] Add individual Bus UI forms, input, submit, filter, upload, and auth-form pages under `docs/gx-ui/bus-ui/forms/`, and keep the pages honest about the current `pkg/ui` migration boundary.

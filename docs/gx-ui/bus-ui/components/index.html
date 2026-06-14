@@ -92,10 +92,10 @@
             <p class="eyebrow">Bus UI Components</p>
             <h1>Shared structure for product surfaces.</h1>
             <p class="hero-copy">
-              These family pages explain the validated component APIs one layer at a time.
-              The shared components build <code>gx.Node</code> trees, validate before render,
-              and only use <code>pkg/uikit</code> explicitly when the page is documenting a
-              compatibility detail.
+              These family pages explain the public component APIs one layer at a time. The
+              shared components build <code>gx.Node</code> trees, validate before render, and
+              only use <code>pkg/uikit</code> explicitly when the page is documenting
+              temporary migration debt with a deletion path.
             </p>
             <div class="product-section">
               <h2>Family pages</h2>
@@ -115,26 +115,25 @@
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The shell family now exports through <code>pkg/ui</code>. Use the page-shell
-                helper when the module already owns its own header, body, and footer structure
-                and wants to compose typed node trees before render.
+                The shell family now exports through <code>pkg/ui</code>. Compose the page
+                frame with typed node trees first, then route it through a boundary adapter only
+                if the page is still carrying migration debt.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-shell, err := ui.PageShellChecked(ui.PageShellProps{
-  HeaderNodes: []gx.Node{
-    gx.Element("h1", nil, gx.Text("Accounting")),
-  },
-  MainNodes: []gx.Node{
-    gx.Element("p", nil, gx.Text("Module content")),
-  },
-  FooterNodes: []gx.Node{
-    gx.Element("small", nil, gx.Text("Synced")),
-  },
-})</code></pre>
+headerNodes := []gx.Node{
+  gx.Element("h1", nil, gx.Text("Accounting")),
+}
+
+mainNodes := []gx.Node{
+  gx.Element("p", nil, gx.Text("Module content")),
+}
+
+footerNodes := []gx.Node{
+  gx.Element("small", nil, gx.Text("Synced")),
+}</code></pre>
             </div>
           </div>
 

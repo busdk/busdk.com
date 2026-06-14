@@ -96,13 +96,15 @@
             </aside>
             <div class="gx-doc-content">
               <p class="eyebrow">Bus UI Credential Login Card</p>
-              <h1>A checked auth form card for username and password sign-in.</h1>
+              <h1>A node-based auth form card for username and password sign-in.</h1>
               <p class="hero-copy">
                 Use the credential login card when a portal or admin screen needs a ready-made
-                sign-in surface with username, password, optional request actions, and a POST form.
+                sign-in surface with username, password, optional request actions, and a POST
+                form. Any checked helper mentioned on this page is migration debt with a deletion
+                path.
               </p>
               <div class="product-section">
-                <h2>Checked surface</h2>
+              <h2>Component API</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -115,10 +117,11 @@
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>CredentialLoginCardChecked</code> when the host module wants a full
+                  Use the credential login card node API when the host module wants a full
                   credential card rather than assembling the username, password, submit, and OTP
-                  request controls by hand. The helper is now on <code>pkg/ui</code>, while
-                  <code>pkg/uikit</code> remains the implementation path behind the facade.
+                  request controls by hand. The public wrapper is on <code>pkg/ui</code>; any
+                  <code>pkg/uikit</code> mention is temporary migration debt with a deletion
+                  path.
                 </p>
                 <p>
                   See also <a href="../form/index.html">Form</a>,

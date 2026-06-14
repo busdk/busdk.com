@@ -99,10 +99,10 @@
               <h1>Drag-and-drop upload affordances with host-owned policy.</h1>
               <p class="hero-copy">
                 Use the drop zone when the module wants a visible upload target, optional actions,
-                and a checked shell that still leaves storage and authorization policy in the host.
+                and a node-first shell that still leaves storage and authorization policy in the host.
               </p>
               <div class="product-section">
-                <h2>Checked surface</h2>
+                <h2>Public surface</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -117,8 +117,9 @@
                 <p>
                   Use <code>DropZoneChecked</code> when a module needs drag-and-drop intake, a
                   friendly title and copy block, and the ability to keep the file picker inside the
-                  same shared surface. The helper is now on <code>pkg/ui</code>, while
-                  <code>pkg/uikit</code> remains the implementation path behind the facade.
+                  same shared surface. The helper is now on <code>pkg/ui</code>, while any
+                  <code>pkg/uikit</code> reference here is temporary migration debt with a
+                  deletion path.
                 </p>
                 <p>
                   See also <a href="../file-input/index.html">File input</a>,

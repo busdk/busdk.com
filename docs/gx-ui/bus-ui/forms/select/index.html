@@ -99,10 +99,11 @@
               <h1>Choice lists with typed options and validation.</h1>
               <p class="hero-copy">
                 Use the select helper when the module needs a controlled dropdown with a stable
-                selected option and the options themselves stay in Go data.
+                selected option and the options themselves stay in Go data. The checked name is
+                only a migration boundary until the public node API is complete.
               </p>
               <div class="product-section">
-                <h2>Checked surface</h2>
+              <h2>Component API</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
@@ -115,10 +116,9 @@
               <div class="product-section">
                 <h2>When to use it</h2>
                 <p>
-                  Use <code>SelectChecked</code> when the control should render a finite set of
-                  options with one selected value. This helper is now on <code>pkg/ui</code>,
-                  while <code>pkg/uikit</code> remains the implementation path behind the public
-                  facade.
+                  Use the select node API when the control should render a finite set of options
+                  with one selected value. The public wrapper is on <code>pkg/ui</code>; any
+                  <code>pkg/uikit</code> mention is temporary migration debt with a deletion path.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,

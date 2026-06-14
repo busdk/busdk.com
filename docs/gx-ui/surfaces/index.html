@@ -94,10 +94,10 @@
             <div class="gx-doc-content">
             <p class="eyebrow">Bus UI Product Surfaces</p>
             <h1>Build real product surfaces without moving policy out of Go.</h1>
-            <p class="hero-copy">
-              Bus UI is used by portal modules that need structured pages, provider-backed data,
-              uploads, evidence, assistant workflows, terminal sessions, and deterministic tests.
-            </p>
+              <p class="hero-copy">
+                Bus UI is used by portal modules that need structured pages, provider-backed data,
+                uploads, evidence, assistant workflows, terminal sessions, and deterministic tests.
+              </p>
             <div class="product-section">
               <h2>Portal module shell</h2>
               <p>
@@ -106,32 +106,26 @@
                 security headers; the product module owns the business behavior.
               </p>
               <p>
-                The <code>pkg/ui</code> facade covers the core checked set. Shell, evidence,
-                assistant, and terminal surfaces are split by export boundary; shell helpers now
-                use <code>pkg/ui</code>, while evidence, assistant, and terminal remain on
-                <code>pkg/uikit</code> until those wrappers are promoted.
+                The <code>pkg/ui</code> facade covers the public shell and surface helpers.
+                Evidence, assistant, and terminal pages still call out temporary render-boundary
+                vocabulary where a checked wrapper remains the migration path.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-tabs := ui.Tabs(ui.TabsProps{
-  Label:  "Accounting",
-  Active: "files",
-  Items: []ui.TabItem{
-    {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
-    {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
-  },
-})
+navNodes := []gx.Node{
+  gx.Element("a", gx.Props{"href": "/modules/accounting/"}, gx.Text("Overview")),
+  gx.Element("a", gx.Props{"href": "/modules/accounting/files"}, gx.Text("Files")),
+}
 
-filesPage := gx.Element("main", nil, gx.Text("Files"))
-
-page, err := ui.AppShellChecked(ui.AppShellProps{
-  Title: "Accounting",
-  NavNodes: []gx.Node{tabs},
-  MainNodes: []gx.Node{filesPage},
-})</code></pre>
+mainNodes := []gx.Node{
+  gx.Element("main", nil, gx.Text("Files")),
+}</code></pre>
+              <p>
+                The checked shell adapter can consume the same node slices during migration, but
+                the example above shows the preferred node-first composition.
+              </p>
             </div>
             <div class="product-section">
               <h2>Uploads and evidence</h2>
@@ -140,7 +134,7 @@ page, err := ui.AppShellChecked(ui.AppShellProps{
                 safe open/download links, while previews embed only approved content types and show
                 public fallback text when a file cannot be previewed inline.
               </p>
-              <pre><code>preview, err := uikit.EvidencePreviewChecked(uikit.EvidencePreviewProps{
+              <pre><code>preview, err := ui.EvidencePreviewChecked(ui.EvidencePreviewProps{
   Title:       "Receipt PDF",
   ContentType: "application/pdf",
   PreviewURL:  "/modules/accounting/api/evidence/receipt.pdf",
@@ -157,7 +151,7 @@ page, err := ui.AppShellChecked(ui.AppShellProps{
                 record fields and evidence actions while the product module owns authorization and
                 data meaning.
               </p>
-              <pre><code>panel, err := uikit.ProviderErrorChecked(uikit.ProviderErrorProps{
+              <pre><code>panel, err := ui.ProviderErrorChecked(ui.ProviderErrorProps{
   Title:     "Provider request failed",
   Summary:   "The accounting provider could not prepare the evidence pack.",
   RequestID: "req_20260613_001",
@@ -171,14 +165,14 @@ page, err := ui.AppShellChecked(ui.AppShellProps{
                 approvals, review status, isolation conflicts, and close guards. Transport,
                 execution, persistence, billing, and authorization stay in the host module.
               </p>
-              <pre><code>modelPicker, err := uikit.AIModelSelectChecked(uikit.AIModelSelectProps{
+              <pre><code>modelPicker, err := ui.AIModelSelectChecked(ui.AIModelSelectProps{
   Current: "gpt-5.4-mini",
-  Options: []uikit.AIModelOption{
+  Options: []ui.AIModelOption{
     {ID: "gpt-5.4-mini", Label: "GPT 5.4 mini"},
     {ID: "gpt-5.4", Label: "GPT 5.4", Disabled: true, Reason: "Requires approval"},
   },
-  OnChange: func(event uikit.AIModelEvent) uikit.Result {
-    return uikit.Success(event.Model)
+  OnChange: func(event ui.AIModelEvent) ui.Result {
+    return ui.Success(event.Model)
   },
 })</code></pre>
             </div>
@@ -190,12 +184,12 @@ page, err := ui.AppShellChecked(ui.AppShellProps{
                 typed submit, input, exit, and approval events.
               </p>
               <pre><code>seq1, seq2 := 1, 2
-terminal, err := uikit.TerminalSessionPanelChecked(uikit.TerminalSessionPanelProps{
+terminal, err := ui.TerminalSessionPanelChecked(ui.TerminalSessionPanelProps{
   Title:     "Verification",
   Command:   "go test ./...",
   SessionID: "sess_123",
-  State:     uikit.TerminalSessionStateRunning,
-  Output: []uikit.TerminalChunk{
+  State:     ui.TerminalSessionStateRunning,
+  Output: []ui.TerminalChunk{
     {Stream: "stdout", Sequence: &amp;seq1, Text: "go test ./..."},
     {Stream: "stdout", Sequence: &amp;seq2, Text: "ok"},
   },
