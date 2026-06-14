@@ -99,7 +99,7 @@
               <h1>A safe file picker input for upload flows.</h1>
               <p class="hero-copy">
                 Use the file input helper when a module needs a controlled native file picker and
-                wants the checked helper to own the accept, multiple, and accessibility wiring.
+                wants the node-first surface to own the accept, multiple, and accessibility wiring.
               </p>
               <div class="product-section">
                 <h2>Public surface</h2>
@@ -117,7 +117,8 @@
                 <p>
                   Use <code>FileInputChecked</code> when the host module wants a plain file input
                   without adding drag-and-drop policy. The helper is now on <code>pkg/ui</code>,
-                  while <code>pkg/uikit</code> remains the implementation path behind the facade.
+                  while any <code>pkg/uikit</code> reference here is temporary migration debt with
+                  a deletion path.
                 </p>
                 <p>
                   See also <a href="../drop-zone/index.html">Drop zone</a>,

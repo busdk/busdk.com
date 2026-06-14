@@ -107,30 +107,25 @@
               </p>
               <p>
                 The <code>pkg/ui</code> facade covers the public shell and surface helpers.
-                Evidence, assistant, and terminal pages still call out the compatibility boundary
-                where a checked wrapper remains the safest render path.
+                Evidence, assistant, and terminal pages still call out temporary render-boundary
+                vocabulary where a checked wrapper remains the migration path.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-tabs := ui.Tabs(ui.TabsProps{
-  Label:  "Accounting",
-  Active: "files",
-  Items: []ui.TabItem{
-    {ID: "overview", Label: "Overview", Href: "/modules/accounting/"},
-    {ID: "files", Label: "Files", Href: "/modules/accounting/files"},
-  },
-})
+navNodes := []gx.Node{
+  gx.Element("a", gx.Props{"href": "/modules/accounting/"}, gx.Text("Overview")),
+  gx.Element("a", gx.Props{"href": "/modules/accounting/files"}, gx.Text("Files")),
+}
 
-filesPage := gx.Element("main", nil, gx.Text("Files"))
-
-page, err := ui.AppShellChecked(ui.AppShellProps{
-  Title: "Accounting",
-  NavNodes: []gx.Node{tabs},
-  MainNodes: []gx.Node{filesPage},
-})</code></pre>
+mainNodes := []gx.Node{
+  gx.Element("main", nil, gx.Text("Files")),
+}</code></pre>
+              <p>
+                The checked shell adapter can consume the same node slices during migration, but
+                the example above shows the preferred node-first composition.
+              </p>
             </div>
             <div class="product-section">
               <h2>Uploads and evidence</h2>

@@ -95,8 +95,8 @@
               Use shell components when a page needs stable chrome around a module view. These
               helpers export through <code>pkg/ui</code>, so the current import path is the
               public facade rather than <code>pkg/uikit</code>. The shell slots are typed
-              <code>gx.Node</code> trees, and the checked helper remains the validation and
-              compatibility boundary.
+              <code>gx.Node</code> trees, and any checked helper that still appears here is
+              temporary migration debt that should be deleted after the public wrapper lands.
             </p>
             <div class="product-section">
               <h2>Public APIs</h2>

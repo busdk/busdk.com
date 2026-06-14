@@ -94,8 +94,8 @@
             <p class="hero-copy">
               Form primitives keep labels, validation text, disabled states, file selection, and
               submit feedback consistent while the owning module decides routes and policy.
-              The checked helpers compose typed <code>gx.Node</code> trees and only fall back
-              to compatibility HTML slots when a page already owns trusted fragments.
+              The preferred API composes typed <code>gx.Node</code> trees. Any remaining
+              <code>pkg/uikit</code> reference here is migration debt with a deletion path.
             </p>
             <div class="product-section">
               <h2>Form pieces</h2>
@@ -104,12 +104,12 @@
                   <tr><th>Piece</th><th>Use it for</th><th>Names</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td><a href="./form/index.html">Form</a> and <a href="./field/index.html">field</a></td><td>Method, action, field label, help text, and errors.</td><td><code>FormChecked</code>, <code>FieldChecked</code></td></tr>
-                  <tr><td><a href="./input/index.html">Input family</a></td><td>Text, password, and date controls.</td><td><code>InputChecked</code>, <code>TextInputChecked</code>, <code>PasswordInputChecked</code>, <code>DateInputChecked</code></td></tr>
-                  <tr><td><a href="./textarea/index.html">Text area</a> and <a href="./select/index.html">select</a></td><td>Multiline text and choice controls.</td><td><code>TextAreaChecked</code>, <code>SelectChecked</code></td></tr>
-                  <tr><td><a href="./submit/index.html">Submit control</a> and <a href="./filter-toolbar/index.html">filter toolbar</a></td><td>Pending states, submit buttons, filters, and reset actions.</td><td><code>SubmitControlChecked</code>, <code>FilterToolbarChecked</code></td></tr>
-                  <tr><td><a href="./file-input/index.html">File input</a> and <a href="./drop-zone/index.html">drop zone</a></td><td>Upload controls and drag/drop affordances.</td><td><code>FileInputChecked</code>, <code>DropZoneChecked</code></td></tr>
-                  <tr><td><a href="./credential-login-card/index.html">Credential login card</a></td><td>Username and password sign-in cards.</td><td><code>CredentialLoginCardChecked</code></td></tr>
+                  <tr><td><a href="./form/index.html">Form</a> and <a href="./field/index.html">field</a></td><td>Method, action, field label, help text, and errors.</td><td><code>FormProps</code>, <code>FieldProps</code></td></tr>
+                  <tr><td><a href="./input/index.html">Input family</a></td><td>Text, password, and date controls.</td><td><code>InputProps</code>, <code>TextInputProps</code>, <code>PasswordInputProps</code>, <code>DateInputProps</code></td></tr>
+                  <tr><td><a href="./textarea/index.html">Text area</a> and <a href="./select/index.html">select</a></td><td>Multiline text and choice controls.</td><td><code>TextAreaProps</code>, <code>SelectProps</code></td></tr>
+                  <tr><td><a href="./submit/index.html">Submit control</a> and <a href="./filter-toolbar/index.html">filter toolbar</a></td><td>Pending states, submit buttons, filters, and reset actions.</td><td><code>SubmitControlProps</code>, <code>FilterToolbarProps</code></td></tr>
+                  <tr><td><a href="./file-input/index.html">File input</a> and <a href="./drop-zone/index.html">drop zone</a></td><td>Upload controls and drag/drop affordances.</td><td><code>FileInputProps</code>, <code>DropZoneProps</code></td></tr>
+                  <tr><td><a href="./credential-login-card/index.html">Credential login card</a></td><td>Username and password sign-in cards.</td><td><code>CredentialLoginCardProps</code></td></tr>
                 </tbody>
               </table>
             </div>
@@ -118,8 +118,8 @@
               <p>
                 Use the form page when you need native submit wiring, the field page when you need
                 a labeled control wrapper, and the upload pages when the module owns file intake or
-                drag-and-drop policy. The public facade is on <code>pkg/ui</code>; only the
-                lower-level compatibility helpers remain on <code>pkg/uikit</code>.
+                drag-and-drop policy. The public facade is on <code>pkg/ui</code>; any
+                <code>pkg/uikit</code> reference here is migration debt with a deletion path.
               </p>
               <p>
                 See also <a href="../evidence/index.html">Evidence and files</a> and
@@ -129,45 +129,27 @@
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                Compose the form from typed child nodes. The checked facade keeps labels,
-                controls, and validation explicit without falling back to raw HTML slots.
+                Compose the form from typed child nodes. The node API keeps labels, controls,
+                and validation explicit without falling back to raw HTML slots.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-field, err := ui.FieldNodeChecked(ui.FieldProps{
-  Label:       "Description",
-  ControlID:   "description",
-  ControlName: "description",
-  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
-    return ui.TextInputNodeChecked(ui.TextInputProps{
-      Name:  "description",
-      Value: "Bank statement",
-      Attrs: attrs,
-    })
-  },
-})
-if err != nil {
-  return err
-}
-
-submit, err := ui.SubmitControlNodeChecked(ui.SubmitControlProps{
-  Label: "Upload",
-})
-if err != nil {
-  return err
-}
-
-form, err := ui.FormChecked(ui.FormProps{
-  Method: ui.FormMethodPost,
-  Action: "/modules/accounting/api/files",
-  BodyNodes: []gx.Node{
-    field,
-    submit,
-  },
-})</code></pre>
+formNodes := []gx.Node{
+  gx.Element("label", gx.Props{"for": "description"}, gx.Text("Description")),
+  gx.Element("input", gx.Props{
+    "id":    "description",
+    "name":  "description",
+    "value": "Bank statement",
+    "type":  "text",
+  }),
+  gx.Element("button", gx.Props{"type": "submit"}, gx.Text("Upload")),
+}</code></pre>
+              <p>
+                During migration, the checked helpers can wrap this node tree, but the public
+                example stays node-first.
+              </p>
             </div>
           </div>
 
