@@ -1,4 +1,6 @@
 (function () {
+  var loaderPromiseKey = "__busUIDemoLoaderPromise";
+
   function currentScript() {
     return (
       document.currentScript ||
@@ -25,16 +27,41 @@
     document.head.appendChild(link);
   }
 
-  function setFallback(message) {
-    document.querySelectorAll("[data-bus-ui-demo]").forEach(function (node) {
-      if (node.childElementCount === 0 && node.textContent.trim() === "") {
-        node.textContent = message;
-        node.classList.add("bus-ui-demo-fallback");
-      }
+  function demoNodes() {
+    return Array.prototype.slice.call(document.querySelectorAll("[data-bus-ui-demo]"));
+  }
+
+  function setDemoState(state) {
+    demoNodes().forEach(function (node) {
+      node.setAttribute("data-bus-ui-demo-state", state);
     });
   }
 
+  function setFallback(message) {
+    demoNodes().forEach(function (node) {
+      node.textContent = message;
+      node.classList.add("bus-ui-demo-fallback");
+      node.setAttribute("data-bus-ui-demo-state", "failed");
+    });
+  }
+
+  function loadDemoWASM(wasmURL, go) {
+    return fetch(wasmURL)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Bus UI demo fetch failed.");
+        }
+        return response.arrayBuffer();
+      })
+      .then(function (bytes) {
+        return WebAssembly.instantiate(bytes, go.importObject);
+      });
+  }
+
   function start() {
+    if (window[loaderPromiseKey]) {
+      return window[loaderPromiseKey];
+    }
     var script = currentScript();
     ensureStylesheet(assetURL(script, "bus-ui.css"));
     var wasmURL = script && script.getAttribute("data-bus-ui-wasm");
@@ -49,26 +76,17 @@
       setFallback("Bus UI demo runtime is missing.");
       return;
     }
+    setDemoState("loading");
     var go = new Go();
-    WebAssembly.instantiateStreaming(fetch(wasmURL), go.importObject)
+    window[loaderPromiseKey] = loadDemoWASM(wasmURL, go)
       .then(function (result) {
+        setDemoState("starting");
         go.run(result.instance);
-      })
-      .catch(function () {
-        return fetch(wasmURL)
-          .then(function (response) {
-            return response.arrayBuffer();
-          })
-          .then(function (bytes) {
-            return WebAssembly.instantiate(bytes, go.importObject);
-          })
-          .then(function (result) {
-            go.run(result.instance);
-          });
       })
       .catch(function () {
         setFallback("Bus UI demo failed to load.");
       });
+    return window[loaderPromiseKey];
   }
 
   if (document.readyState === "loading") {

@@ -25,19 +25,22 @@ func mountAll() {
 	for i := 0; i < nodes.Length(); i++ {
 		el := nodes.Index(i)
 		id := el.Get("dataset").Get("busUiDemo").String()
+		el.Call("setAttribute", "data-bus-ui-demo-state", "mounting")
 		root, ok := demo.Lookup(id)
 		if !ok {
-			setFallback(el, fmt.Sprintf("Unknown Bus UI demo: %s", id))
+			setFallback(el, "Bus UI demo is unavailable.")
 			continue
 		}
 		selector := ensureID(el, i)
 		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
 			OnError: func(err error) {
-				setFallback(el, err.Error())
+				setFallback(el, "Bus UI demo failed to render.")
 			},
 		}); err != nil {
-			setFallback(el, err.Error())
+			setFallback(el, "Bus UI demo failed to render.")
+			continue
 		}
+		el.Call("setAttribute", "data-bus-ui-demo-state", "mounted")
 	}
 }
 
@@ -53,4 +56,5 @@ func ensureID(el js.Value, index int) string {
 func setFallback(el js.Value, text string) {
 	el.Set("textContent", text)
 	el.Get("classList").Call("add", "bus-ui-demo-fallback")
+	el.Call("setAttribute", "data-bus-ui-demo-state", "failed")
 }

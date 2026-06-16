@@ -44,5 +44,12 @@ notes.
 2. API tables and examples must match the currently documented public surface.
    If a public helper exists, name it directly; if it is only a lower-level
    implementation detail, do not pretend it is the reader-facing API.
-3. When a page changes navigation or layout, verify local links for the edited
+3. Every Bus UI component or component-family page that shows a Go API example
+   must also show a `.gx source` example for the same visible use case.
+   `.gx source` examples should look like TSX-style Go markup: intrinsic tags,
+   nested children, `<Text value={...}></Text>`, and uppercase local component
+   tags with lower-camel props. Do not satisfy this requirement with a pure Go
+   wrapper around `ui.*`, `gx.Element` slices, or generated-Go render-boundary
+   code.
+4. When a page changes navigation or layout, verify local links for the edited
    subtree and inspect at least one representative rendered page when practical.
