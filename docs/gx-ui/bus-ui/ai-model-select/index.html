@@ -124,13 +124,18 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+)
 
-html, err := assistantui.AIModelSelect(assistantui.AIModelSelectProps{
+node := assistantui.AIModelSelect(assistantui.AIModelSelectProps{
   ID:      "model",
   Current: "gpt-5",
   Options: []assistantui.AIModelOption{{ID: "gpt-5", Label: "GPT-5"}},
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

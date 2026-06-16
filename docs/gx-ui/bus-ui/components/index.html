@@ -94,8 +94,7 @@
             <p class="hero-copy">
               These family pages explain the public component APIs one layer at a time. The
               shared components build <code>gx.Node</code> trees, validate before render, and
-              only use <code>pkg/uikit</code> explicitly when the page is documenting
-              deprecated compatibility only.
+              use the public package paths shown on each component page.
             </p>
             <div class="product-section">
               <h2>Family pages</h2>
@@ -115,9 +114,8 @@
             <div class="product-section">
               <h2>Example</h2>
               <p>
-                The shell family now exports through <code>pkg/ui</code>. Compose the page
-                frame with typed node trees first, then route it through a boundary adapter only
-                if the page is still carrying migration debt.
+                The shell family exports through <code>pkg/ui</code>. Compose the page frame with
+                typed node trees first, then render at the page boundary.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"

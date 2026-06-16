@@ -111,12 +111,14 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-panel, err := ui.Panel(ui.PanelProps{
+node := ui.Panel(ui.PanelProps{
   Title: "Monthly close",
   BodyNodes: []gx.Node{
     gx.Element("p", nil, gx.Text("3 statements ready")),
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

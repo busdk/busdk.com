@@ -114,13 +114,16 @@
             </div>
             <div class="product-section">
               <h2>Shared example</h2>
-              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
 rows := []ui.DenseTableRow{
   ui.DenseTableRowText("June receipts", "3 files", "Ready"),
 }
 
-table, err := ui.DenseTable(ui.DenseTableProps{
+node := ui.DenseTable(ui.DenseTableProps{
   Caption: "Document queue",
   Columns: []ui.DenseTableColumn{
     ui.DenseTableColumnText("title", "Title"),
@@ -128,7 +131,9 @@ table, err := ui.DenseTable(ui.DenseTableProps{
     ui.DenseTableColumnText("state", "State"),
   },
   Rows: rows,
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               <p>These shared examples now use the public <code>pkg/ui</code> facade.</p>
             </div>
             <div class="product-section">

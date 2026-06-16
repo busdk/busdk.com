@@ -99,8 +99,7 @@
               <h1>Choice lists with typed options and validation.</h1>
               <p class="hero-copy">
                 Use the select helper when the module needs a controlled dropdown with a stable
-                selected option and the options themselves stay in Go data. The node-first name is
-                only a migration boundary until the public node API is complete.
+                selected option and the options themselves stay in Go data.
               </p>
               <div class="product-section">
               <h2>Component API</h2>
@@ -117,8 +116,7 @@
                 <h2>When to use it</h2>
                 <p>
                   Use the select node API when the control should render a finite set of options
-                  with one selected value. The public wrapper is on <code>pkg/ui</code>; any
-                  <code>pkg/uikit</code> is deprecated compatibility only.
+                  with one selected value. The public API is <code>pkg/ui</code>.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -128,9 +126,12 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-selectHTML, err := ui.Select(ui.SelectProps{
+node, err := ui.Select(ui.SelectProps{
   Name:     "status",
   Selected: "ready",
   Options: []ui.SelectOption{
@@ -140,7 +141,9 @@ selectHTML, err := ui.Select(ui.SelectProps{
 })
 if err != nil {
   return err
-}</code></pre>
+}
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

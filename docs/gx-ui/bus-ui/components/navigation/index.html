@@ -115,16 +115,21 @@
                 Tabs are the simplest fit when the screen stays in one module and only the visible
                 section changes.
               </p>
-              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-tabs, err := ui.Tabs(ui.TabsProps{
+node, err := ui.Tabs(ui.TabsProps{
   Label:  "Accounting navigation",
   Active: "files",
   Items: []ui.TabItem{
     {ID: "overview", Label: "Overview", Href: "/modules/accounting/index.html"},
     {ID: "files", Label: "Files", Href: "/modules/accounting/files/index.html"},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
           </div>
           </div>

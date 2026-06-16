@@ -123,12 +123,17 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+)
 
-html, err := assistantui.AIMessage(assistantui.AIMessageProps{
+node := assistantui.AIMessage(assistantui.AIMessageProps{
   Role: "assistant",
   Text: "Ready for review.",
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

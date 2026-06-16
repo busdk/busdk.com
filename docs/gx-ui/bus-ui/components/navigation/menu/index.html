@@ -107,15 +107,20 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-menu, err := ui.Menu(ui.MenuProps{
+node, err := ui.Menu(ui.MenuProps{
   TriggerLabel: "Actions",
   Items: []ui.MenuItem{
     {Label: "Refresh", Value: "refresh", OnClick: handleMenu},
     {Label: "Archive", Value: "archive", OnClick: handleMenu},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

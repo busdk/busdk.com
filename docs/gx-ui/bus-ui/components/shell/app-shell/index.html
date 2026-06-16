@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI AppShell | BusDK</title>
-    <meta name="description" content="Use Bus UI AppShell as the document-frame render boundary while the node-first shell API settles." />
+    <meta name="description" content="Use Bus UI AppShell as the document-frame render boundary for node-first shell slots." />
     <link rel="stylesheet" href="../../../../../index.css" />
   </head>
   <body>
@@ -94,7 +94,6 @@
               <p class="hero-copy">
                 Use the AppShell render boundary when a module owns the whole response document:
                 title, head assets, navigation, main content, footer, and optional mount metadata.
-                The compatibility helper is temporary migration vocabulary, not the final public story.
               </p>
               <div class="product-section">
                 <h2>Render boundary</h2>
@@ -102,7 +101,7 @@
                   <tbody>
                     <tr><th>Boundary data</th><td><code>gx.Node</code> slices for navigation, main content, and footer slots</td></tr>
                     <tr><th>Props</th><td><code>ui.AppShellProps</code></td></tr>
-                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks. The node-first adapter is a temporary render-boundary migration step only until the public shell wrapper lands.</td></tr>
+                    <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks, composed from typed node slots.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -125,8 +124,8 @@ footerNodes := []gx.Node{
   gx.Element("small", nil, gx.Text("Bus UI")),
 }</code></pre>
                 <p>
-                  Pass those nodes through the temporary node-first render boundary while the
-                  public shell wrapper is being finalized.
+                  Pass those nodes through the AppShell render boundary when the page needs a
+                  complete HTML document.
                 </p>
               </div>
             </div>

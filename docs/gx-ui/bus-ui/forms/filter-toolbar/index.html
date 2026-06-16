@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Filter Toolbar | BusDK</title>
-    <meta name="description" content="Bus UI Filter Toolbar explains the filter form boundary, node-first composition, and the temporary node-first migration helper." />
+    <meta name="description" content="Bus UI Filter Toolbar explains the filter form boundary and node-first composition." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -100,8 +100,7 @@
               <p class="hero-copy">
                 Use the filter toolbar when a list or report needs a labeled filter strip with
                 submit and reset controls, but the module still owns the actual filtering logic.
-                The toolbar composes field nodes first and only falls back to migration-boundary
-                vocabulary when a caller already owns trusted fragments.
+                The toolbar composes field nodes first and leaves filtering policy in the host.
               </p>
               <div class="product-section">
                 <h2>Component boundary</h2>
@@ -119,8 +118,8 @@
                 <p>
                   Use the filter toolbar when a data view needs a set of fields plus submit and
                   reset controls that belong to the owning module. <code>Fields</code> is the
-                  preferred composition path. <code>Body</code> and the compatibility helper are
-                  deprecated compatibility only.
+                  preferred composition path. HTML body slots remain available for explicit
+                  render-boundary integrations.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -144,8 +143,8 @@ toolbarNodes := []gx.Node{
   gx.Element("button", gx.Props{"type": "reset"}, gx.Text("Reset")),
 }</code></pre>
                 <p>
-                  The node-first toolbar adapter can wrap the same node set during migration, but it
-                  is not the endpoint.
+                  Use the public toolbar API when the host wants this node set wrapped as a shared
+                  filter surface.
                 </p>
               </div>
             </div>

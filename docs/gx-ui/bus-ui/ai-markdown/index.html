@@ -123,13 +123,18 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+)
 
-html, err := assistantui.AIMarkdown(assistantui.AIMarkdownProps{
+node := assistantui.AIMarkdown(assistantui.AIMarkdownProps{
   Text:  "See [docs](/docs/gx-ui/reference/index.html).",
   Links: assistantui.AIMarkdownLinksWorkspacePaths,
   ResolveWorkspaceHref: func(target string) string { return target },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

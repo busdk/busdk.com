@@ -100,8 +100,8 @@
               <p class="hero-copy">
                 Use the form wrapper when the module owns method, action, target, busy state, or
                 submit callbacks and you want a controlled HTML form instead of ad hoc markup.
-                Compose the body with typed node trees first; keep raw HTML only as a
-                compatibility slot.
+                Compose the body with typed node trees first; keep raw HTML only for explicit
+                render-boundary integrations.
               </p>
               <div class="product-section">
                 <h2>Validated surface</h2>
@@ -120,8 +120,7 @@
                   Use <code>Form</code> when the form needs explicit GET or POST handling,
                   safe action and target validation, body nodes, or a typed <code>OnSubmit</code>
                   callback. The wrapper keeps the submit path in Go and leaves policy in the host
-                  module. <code>BodyNodes</code> is the preferred composition path; legacy
-                  <code>Body</code> stays compatibility-only.
+                  module. <code>BodyNodes</code> is the preferred composition path.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -136,32 +135,41 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-description := ui.Field(ui.FieldProps{
+description, err := ui.Field(ui.FieldProps{
   Label:       "Description",
   ControlID:   "description",
   ControlName: "description",
-  RenderControlNode: func(attrs map[string]string) gx.Node {
-    return ui.TextInput(ui.TextInputProps{
+  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
+    return ui.Input(ui.InputProps{
       Name:  "description",
       Attrs: attrs,
     })
   },
 })
+if err != nil {
+  return err
+}
 
-submit := ui.SubmitControl(ui.SubmitControlProps{
+submit, err := ui.SubmitControl(ui.SubmitControlProps{
   Label: "Save",
 })
+if err != nil {
+  return err
+}
 
-node := ui.Form(ui.FormProps{
+node, err := ui.Form(ui.FormProps{
   Method: ui.FormMethodPost,
   Action: "/modules/accounting/api/items",
   BodyNodes: []gx.Node{description, submit},
 })
+if err != nil {
+  return err
+}
 
 html, err := gx.RenderHTML(node)</code></pre>
                 <p>
-                  The form helper is already on <code>pkg/ui</code>, so the preferred import path
-                  is stable here.
+                  The form helper is on <code>pkg/ui</code>, so use that import path for product
+                  code.
                 </p>
               </div>
             </div>

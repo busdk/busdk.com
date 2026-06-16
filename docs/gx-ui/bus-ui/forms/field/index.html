@@ -132,23 +132,26 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-field := ui.Field(ui.FieldProps{
+field, err := ui.Field(ui.FieldProps{
   Label:       "Description",
   ControlID:   "description",
   ControlName: "description",
   HintText:    "Shown on the evidence card.",
-  RenderControlNode: func(attrs map[string]string) gx.Node {
-    return ui.TextInput(ui.TextInputProps{
+  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
+    return ui.Input(ui.InputProps{
       Name:  "description",
       Attrs: attrs,
     })
   },
 })
+if err != nil {
+  return err
+}
 
 html, err := gx.RenderHTML(field)</code></pre>
                 <p>
-                  The field helper is already on <code>pkg/ui</code>, so the preferred import path
-                  is stable here as well.
+                  The field helper is on <code>pkg/ui</code>, so use that import path for product
+                  code.
                 </p>
               </div>
             </div>

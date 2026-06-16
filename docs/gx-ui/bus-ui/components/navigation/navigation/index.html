@@ -107,16 +107,21 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-nav, err := ui.Navigation(ui.NavigationProps{
+node, err := ui.Navigation(ui.NavigationProps{
   Label:  "Settings",
   Active: "billing",
   Items: []ui.NavigationItem{
     {ID: "profile", Label: "Profile", Href: "profile/index.html"},
     {ID: "billing", Label: "Billing", Href: "billing/index.html"},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

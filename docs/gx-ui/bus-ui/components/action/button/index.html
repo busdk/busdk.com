@@ -92,7 +92,7 @@
               <p class="eyebrow">Bus UI Actions</p>
               <h1>Button renders the common action shape.</h1>
               <p class="hero-copy">
-                Use <code>Button</code> for the common labelled action. The current public package exposes the deprecated compatibility wrapper and props under <code>pkg/ui</code>.
+                Use <code>Button</code> for the common labelled action. The public package returns a typed node and keeps HTML rendering explicit.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
@@ -100,19 +100,27 @@
                   <tbody>
                     <tr><th>Function</th><td><code>ui.Button</code></td></tr>
                     <tr><th>Props</th><td><code>ui.ButtonProps</code></td></tr>
-                    <tr><th>Compatibility helper</th><td><code>Button</code> remains implementation-owned today</td></tr>
+                    <tr><th>Render boundary</th><td>Render the returned node with <code>gx.RenderHTML</code> when HTML is needed.</td></tr>
                     <tr><th>Use for</th><td>Primary, secondary, danger, and compact labelled actions.</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-html := ui.Button(ui.ButtonProps{
+node, err := ui.Button(ui.ButtonProps{
   Label:   "Save draft",
   Variant: ui.ButtonPrimary,
-})</code></pre>
+})
+if err != nil {
+  return err
+}
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

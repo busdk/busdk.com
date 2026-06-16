@@ -107,8 +107,8 @@
               </p>
               <p>
                 The <code>pkg/ui</code> facade covers the public shell and surface helpers.
-                Evidence, assistant, and terminal pages still call out temporary render-boundary
-                vocabulary where a deprecated compatibility wrapper remains the migration path.
+                Evidence, assistant, and terminal pages show the package-specific node APIs and
+                explicit render boundaries for serialized HTML.
               </p>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
@@ -123,8 +123,8 @@ mainNodes := []gx.Node{
   gx.Element("main", nil, gx.Text("Files")),
 }</code></pre>
               <p>
-                The node-first shell adapter can consume the same node slices during migration, but
-                the example above shows the preferred node-first composition.
+                The shell render boundary consumes those node slices when a page needs serialized
+                HTML.
               </p>
             </div>
             <div class="product-section">
@@ -134,14 +134,16 @@ mainNodes := []gx.Node{
                 safe open/download links, while previews embed only approved content types and show
                 public fallback text when a file cannot be previewed inline.
               </p>
-              <pre><code>preview, err := ui.EvidencePreview(ui.EvidencePreviewProps{
+              <pre><code>node := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:       "Receipt PDF",
   ContentType: "application/pdf",
   PreviewURL:  "/modules/accounting/api/evidence/receipt.pdf",
   OpenURL:     "/modules/accounting/api/evidence/receipt.pdf",
   DownloadURL: "/modules/accounting/api/evidence/receipt.pdf?download=1",
   Fallback:    "Open or download this evidence file.",
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
             <div class="product-section">
               <h2>Provider errors and projections</h2>
@@ -151,12 +153,14 @@ mainNodes := []gx.Node{
                 record fields and evidence actions while the product module owns authorization and
                 data meaning.
               </p>
-              <pre><code>panel, err := ui.ProviderError(ui.ProviderErrorProps{
+              <pre><code>node := ui.ProviderError(ui.ProviderErrorProps{
   Title:     "Provider request failed",
   Summary:   "The accounting provider could not prepare the evidence pack.",
   RequestID: "req_20260613_001",
   Status:    503,
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
             <div class="product-section">
               <h2>Assistant workbench</h2>
@@ -165,16 +169,23 @@ mainNodes := []gx.Node{
                 approvals, review status, isolation conflicts, and close guards. Transport,
                 execution, persistence, billing, and authorization stay in the host module.
               </p>
-              <pre><code>modelPicker, err := ui.AIModelSelect(ui.AIModelSelectProps{
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  assistantui "github.com/busdk/bus-ui/pkg/assistantui"
+)
+
+node := assistantui.AIModelSelect(assistantui.AIModelSelectProps{
   Current: "gpt-5.4-mini",
-  Options: []ui.AIModelOption{
+  Options: []assistantui.AIModelOption{
     {ID: "gpt-5.4-mini", Label: "GPT 5.4 mini"},
     {ID: "gpt-5.4", Label: "GPT 5.4", Disabled: true, Reason: "Requires approval"},
   },
-  OnChange: func(event ui.AIModelEvent) ui.Result {
-    return ui.Success(event.Model)
+  OnChange: func(event assistantui.AIModelEvent) assistantui.Result {
+    return assistantui.Success(event.ModelID)
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
             <div class="product-section">
               <h2>Terminal session UI</h2>
@@ -183,17 +194,24 @@ mainNodes := []gx.Node{
                 output chunks, render idle, running, waiting, exited, and error states, and expose
                 typed submit, input, exit, and approval events.
               </p>
-              <pre><code>seq1, seq2 := 1, 2
-terminal, err := ui.TerminalSessionPanel(ui.TerminalSessionPanelProps{
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  terminalui "github.com/busdk/bus-ui/pkg/terminalui"
+)
+
+seq1, seq2 := 1, 2
+node := terminalui.TerminalSessionPanel(terminalui.TerminalSessionPanelProps{
   Title:     "Verification",
   Command:   "go test ./...",
   SessionID: "sess_123",
-  State:     ui.TerminalSessionStateRunning,
-  Output: []ui.TerminalChunk{
+  State:     terminalui.TerminalSessionStateRunning,
+  Output: []terminalui.TerminalChunk{
     {Stream: "stdout", Sequence: &amp;seq1, Text: "go test ./..."},
     {Stream: "stdout", Sequence: &amp;seq2, Text: "ok"},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
             <div class="product-section">
               <h2>Catalog and artifact metadata</h2>

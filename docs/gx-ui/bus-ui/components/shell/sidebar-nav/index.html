@@ -108,16 +108,21 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-nav, err := ui.SidebarNav(ui.SidebarNavProps{
+node, err := ui.SidebarNav(ui.SidebarNavProps{
   AppLabel:  "Accounting",
   MountPath: "/accounting/",
   Items: []ui.SidebarNavItemProps{
     {ID: "overview", Label: "Overview", Href: "index.html", Active: true},
     {ID: "files", Label: "Files", Href: "files/index.html"},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

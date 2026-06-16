@@ -51,9 +51,12 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-result, err := ui.ProjectionDetail(ui.ProjectionDetailProps{
+node := ui.ProjectionDetail(ui.ProjectionDetailProps{
   Title:   "Invoice projection",
   Summary: "Validated before the provider response is exposed.",
   Fields: []ui.ProjectionField{
@@ -63,7 +66,9 @@ result, err := ui.ProjectionDetail(ui.ProjectionDetailProps{
   Evidence: []ui.ProjectionEvidenceAction{
     {Label: "Open evidence", Operation: ui.EvidenceOperationOpen, URL: "/evidence/invoice.pdf"},
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
                 <p>Use the public <code>pkg/ui</code> facade for this projection detail surface.</p>
               </div>
             </div>

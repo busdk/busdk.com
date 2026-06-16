@@ -30,9 +30,9 @@
               <p class="eyebrow">Bus UI Data Display</p>
               <h1>DenseTable keeps dense rows validated before they render.</h1>
               <p class="hero-copy">
-                Use this for comparable rows that share the same column shape. The compatibility helper
-                rejects missing headings, mismatched row widths, and unsafe attributes before it
-                emits markup.
+                Use this for comparable rows that share the same column shape. The helper rejects
+                missing headings, mismatched row widths, and unsafe attributes before it emits
+                markup.
               </p>
               <div class="product-section">
                 <h2>Public API</h2>
@@ -53,9 +53,12 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-table, err := ui.DenseTable(ui.DenseTableProps{
+node := ui.DenseTable(ui.DenseTableProps{
   Caption: "Document queue",
   Columns: []ui.DenseTableColumn{
     ui.DenseTableColumnText("title", "Title"),
@@ -65,7 +68,9 @@ table, err := ui.DenseTable(ui.DenseTableProps{
   Rows: []ui.DenseTableRow{
     ui.DenseTableRowText("June receipts", "3 files", "Ready"),
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
                 <p>Use the public <code>pkg/ui</code> facade for this generic table helper.</p>
               </div>
             </div>

@@ -100,22 +100,30 @@
                   <tbody>
                     <tr><th>Function</th><td><code>ui.EventBar</code></td></tr>
                     <tr><th>Props</th><td><code>ui.EventBarProps</code></td></tr>
-                    <tr><th>Deprecated compatibility</th><td><code>EventBar</code> deprecated compatibility only</td></tr>
+                    <tr><th>Render boundary</th><td>Render the returned node with <code>gx.RenderHTML</code> when HTML is needed.</td></tr>
                     <tr><th>Use for</th><td>Dense rows of action controls inside headers or panels.</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-html := ui.EventBar(ui.EventBarProps{
+node, err := ui.EventBar(ui.EventBarProps{
   Label: "File actions",
   Actions: []ui.EventBarAction{{
     Label: "Import",
     Control: ui.ControlProps{Action: "import-file"},
   }},
-})</code></pre>
+})
+if err != nil {
+  return err
+}
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

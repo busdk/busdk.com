@@ -100,19 +100,27 @@
                   <tbody>
                     <tr><th>Function</th><td><code>ui.IconButton</code></td></tr>
                     <tr><th>Props</th><td><code>ui.IconButtonProps</code></td></tr>
-                    <tr><th>Deprecated compatibility</th><td><code>IconButton</code> deprecated compatibility only</td></tr>
+                    <tr><th>Render boundary</th><td>Render the returned node with <code>gx.RenderHTML</code> when HTML is needed.</td></tr>
                     <tr><th>Use for</th><td>Compact toolbar actions with explicit accessible labels.</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-html := ui.IconButton(ui.IconButtonProps{
+node, err := ui.IconButton(ui.IconButtonProps{
   Label: "Refresh",
   Icon:  ui.IconRefresh,
-})</code></pre>
+})
+if err != nil {
+  return err
+}
+
+html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
           </div>

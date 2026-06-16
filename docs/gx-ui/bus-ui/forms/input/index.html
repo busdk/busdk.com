@@ -101,7 +101,7 @@
                 Use the input family when you need a typed native control with shared validation,
                 stable attributes, and a consistent wrapper for text, password, or date fields.
                 The node-first path uses the typed helpers inside field composition, while the
-                string-returning wrappers stay available for compatibility.
+                string-returning wrappers remain available for simple field HTML.
               </p>
               <div class="product-section">
                 <h2>Validated surface</h2>
@@ -124,7 +124,6 @@
                 </p>
                 <p>
                   The text-input, password, and date helpers are all on <code>pkg/ui</code>.
-                  <code>pkg/uikit</code> is deprecated compatibility only.
                 </p>
                 <p>
                   See also <a href="../field/index.html">Field</a>,
@@ -138,30 +137,11 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-title, err := ui.TextInput(ui.TextInputProps{
-  Name:  "title",
-  Value: "Bank statement",
-})
-if err != nil {
-  return err
-}
+titleHTML := ui.TextInput("title", "Bank statement", "Invoice title", nil)
 
-password, err := ui.PasswordInput(
-  "password",
-  "",
-  "Enter your password",
-  "current-password",
-  nil,
-  nil,
-)
-if err != nil {
-  return err
-}
+passwordHTML := ui.PasswordInput("password", "", "Enter your password", nil)
 
-date, err := ui.DateInput("posting_date", "2026-06-14", nil, nil)
-if err != nil {
-  return err
-}</code></pre>
+dateHTML := ui.DateInput("posting_date", "2026-06-14", nil)</code></pre>
               </div>
             </div>
           </div>

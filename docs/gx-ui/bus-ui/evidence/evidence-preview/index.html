@@ -51,16 +51,21 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-html, err := ui.EvidencePreview(ui.EvidencePreviewProps{
+node := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:              "Bank statement",
   PreviewURL:          "/modules/accounting/evidence/bank-statement.pdf",
   OpenURL:             "/modules/accounting/evidence/bank-statement.pdf",
   ContentType:         "application/pdf",
   ContentDisposition:  "inline",
   Fallback:            "Preview is unavailable.",
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
                 <p>Use the public <code>pkg/ui</code> facade for this evidence preview surface.</p>
               </div>
             </div>

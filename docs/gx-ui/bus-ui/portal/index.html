@@ -118,7 +118,7 @@
 
 page := gx.Element("main", nil, gx.Text("Portal content"))
 
-shell, err := uiportal.PortalShell(uiportal.PortalShellProps{
+node := uiportal.PortalShell(uiportal.PortalShellProps{
   Title: "Accounting",
   HostContext: uiportal.HostContext{
     ModuleID:       "accounting",
@@ -131,7 +131,9 @@ shell, err := uiportal.PortalShell(uiportal.PortalShellProps{
   MainNodes: []gx.Node{
     page,
   },
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
             </div>
           </div>
 

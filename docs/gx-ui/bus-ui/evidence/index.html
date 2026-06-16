@@ -113,15 +113,20 @@
             </div>
             <div class="product-section">
               <h2>Shared example</h2>
-              <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+              <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
 
-preview, err := ui.EvidencePreview(ui.EvidencePreviewProps{
+node := ui.EvidencePreview(ui.EvidencePreviewProps{
   Title:       "Bank statement",
   PreviewURL:  "/modules/accounting/evidence/bank-statement.pdf",
   OpenURL:     "/modules/accounting/evidence/bank-statement.pdf",
   ContentType: "application/pdf",
   Fallback:    "Preview is unavailable.",
-})</code></pre>
+})
+
+html, err := gx.RenderHTML(node)</code></pre>
               <p>These shared evidence examples now use the public <code>pkg/ui</code> facade.</p>
             </div>
             <div class="product-section">
