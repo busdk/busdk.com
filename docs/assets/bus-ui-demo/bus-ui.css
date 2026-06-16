@@ -1346,6 +1346,58 @@ body {
   flex-wrap: wrap;
 }
 
+.bus-ui-loader {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bus-ui-space-2);
+  color: var(--bus-ui-app-muted);
+  line-height: 1.45;
+}
+
+.bus-ui-loader-svg {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  animation: bus-ui-loader-spin .9s linear infinite;
+}
+
+.bus-ui-loader-track {
+  opacity: .22;
+}
+
+.bus-ui-loader-arc {
+  color: var(--bus-ui-app-accent);
+}
+
+.bus-ui-loader-label {
+  overflow-wrap: anywhere;
+}
+
+.bus-ui-loader-sm .bus-ui-loader-svg {
+  width: .875rem;
+  height: .875rem;
+}
+
+.bus-ui-loader-md .bus-ui-loader-svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bus-ui-loader-lg .bus-ui-loader-svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@keyframes bus-ui-loader-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .bus-ui-loading {
   display: inline-flex;
   align-items: center;
