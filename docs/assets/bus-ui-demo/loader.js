@@ -31,9 +31,20 @@
     return Array.prototype.slice.call(document.querySelectorAll("[data-bus-ui-demo]"));
   }
 
-  function setDemoState(state) {
+  function sideNavNodes() {
+    return Array.prototype.slice.call(document.querySelectorAll("aside.gx-side-nav[data-gx-ui-side-nav]"));
+  }
+
+  function mountNodes() {
+    return demoNodes().concat(sideNavNodes());
+  }
+
+  function setMountState(state) {
     demoNodes().forEach(function (node) {
       node.setAttribute("data-bus-ui-demo-state", state);
+    });
+    sideNavNodes().forEach(function (node) {
+      node.setAttribute("data-gx-ui-side-nav-state", state);
     });
   }
 
@@ -42,6 +53,11 @@
       node.textContent = message;
       node.classList.add("bus-ui-demo-fallback");
       node.setAttribute("data-bus-ui-demo-state", "failed");
+    });
+    sideNavNodes().forEach(function (node) {
+      node.textContent = message;
+      node.classList.add("bus-ui-demo-fallback");
+      node.setAttribute("data-gx-ui-side-nav-state", "failed");
     });
   }
 
@@ -71,6 +87,9 @@
     if (window[loaderPromiseKey]) {
       return window[loaderPromiseKey];
     }
+    if (mountNodes().length === 0) {
+      return;
+    }
     var script = currentScript();
     ensureStylesheet(assetURL(script, "bus-ui.css"));
     var wasmURL = script && script.getAttribute("data-bus-ui-wasm");
@@ -89,11 +108,11 @@
       setFallback("Bus UI demos need a local HTTP server to load WebAssembly.");
       return;
     }
-    setDemoState("loading");
+    setMountState("loading");
     var go = new Go();
     window[loaderPromiseKey] = loadDemoWASM(wasmURL, go)
       .then(function (result) {
-        setDemoState("starting");
+        setMountState("starting");
         go.run(result.instance);
       })
       .catch(function () {
