@@ -66,12 +66,16 @@ Scoped guidance for the `busdk.com` repository.
 ## Publication Boundary
 
 1. `busdk.com/docs/` is a published static site tree. Do not place `AGENTS.md`
-   files anywhere under that tree.
+   files anywhere under that tree unless the operator explicitly requests
+   published-safe local guidance for a docs subtree.
 2. Keep durable agent instructions for the `busdk.com` repo in non-published
    paths such as `busdk.com/AGENTS.md`.
-3. If a subtree under `busdk.com/docs/` needs extra guidance, add a clearly
-   named section for that subtree in this root file instead of creating a new
-   published `AGENTS.md`.
+3. The GX/UI docs subtree intentionally contains published-safe `AGENTS.md`
+   files under `busdk.com/docs/gx-ui/`. Those files must stay free of secrets,
+   private paths, worker ids, internal task ids, and process-only notes.
+4. If another subtree under `busdk.com/docs/` needs extra guidance, add a
+   clearly named section for that subtree in this root file unless the operator
+   explicitly asks for published-safe local `AGENTS.md` files.
 
 ## Blog Rules (`busdk.com/docs/blog/`)
 
