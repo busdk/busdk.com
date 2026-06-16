@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Input Family | BusDK</title>
-    <meta name="description" content="Bus UI Input family explains Input, TextInput, PasswordInput, and DateInput with current import paths." />
+    <title>Bus UI Input | BusDK</title>
+    <meta name="description" content="Bus UI Input explains the typed Input helper and InputProps for shared native controls." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -39,9 +39,13 @@
                 <a href="../../../gx/index.html">GX Framework</a>
                 <a href="../../../gx/source-files/index.html">Source files</a>
                 <a href="../../../gx/components/index.html">Component functions</a>
+                <a href="../../../gx/props-children/index.html">Props and children</a>
+                <a href="../../../gx/generated-go/index.html">Generated Go</a>
                 <a href="../../../gx/events/index.html">Events</a>
                 <a href="../../../gx/rendering/index.html">Rendering</a>
                 <a href="../../../gx/runtime/index.html">Runtime bridges</a>
+                <a href="../../../gx/effects/index.html">Effects</a>
+                <a href="../../../gx/nodes/index.html">Nodes and render tree</a>
                 <a href="../../../gx/testing/index.html">Testing</a>
               </div>
               <div class="gx-side-nav-group">
@@ -73,63 +77,77 @@
                 <a class="gx-side-nav-grandchild" href="../../components/status/loading-state/index.html">LoadingState</a>
                 <a class="gx-side-nav-grandchild" href="../../components/status/result-panel/index.html">ResultPanel</a>
                 <a class="gx-side-nav-grandchild" href="../../components/status/error-banner/index.html">ErrorBanner</a>
-                <a href="../index.html">Forms</a>
-                <a href="../../data/index.html">Data display</a>
-                <a href="../../evidence/index.html">Evidence and files</a>
-                <a href="../../assistant/index.html">Assistant</a>
-                <a href="../../terminal/index.html">Terminal</a>
+                <a class="gx-side-nav-child" href="../index.html">Forms</a>
+                <a class="gx-side-nav-grandchild" href="../form/index.html">Form</a>
+                <a class="gx-side-nav-grandchild" href="../field/index.html">Field</a>
+                <a class="gx-side-nav-grandchild" href="index.html" aria-current="page">Input</a>
+                <a class="gx-side-nav-grandchild" href="../text-input/index.html">TextInput</a>
+                <a class="gx-side-nav-grandchild" href="../password-input/index.html">PasswordInput</a>
+                <a class="gx-side-nav-grandchild" href="../date-input/index.html">DateInput</a>
+                <a class="gx-side-nav-grandchild" href="../textarea/index.html">TextArea</a>
+                <a class="gx-side-nav-grandchild" href="../select/index.html">Select</a>
+                <a class="gx-side-nav-grandchild" href="../submit/index.html">SubmitControl</a>
+                <a class="gx-side-nav-grandchild" href="../filter-toolbar/index.html">FilterToolbar</a>
+                <a class="gx-side-nav-grandchild" href="../file-input/index.html">FileInput</a>
+                <a class="gx-side-nav-grandchild" href="../drop-zone/index.html">DropZone</a>
+                <a class="gx-side-nav-grandchild" href="../credential-login-card/index.html">CredentialLoginCard</a>
+                <a class="gx-side-nav-child" href="../../data/index.html">Data display</a>
+                <a class="gx-side-nav-grandchild" href="../../data/dense-table/index.html">DenseTable</a>
+                <a class="gx-side-nav-grandchild" href="../../data/text-table/index.html">TextTable</a>
+                <a class="gx-side-nav-grandchild" href="../../data/record-list/index.html">RecordList</a>
+                <a class="gx-side-nav-grandchild" href="../../data/summary-item/index.html">SummaryItem</a>
+                <a class="gx-side-nav-grandchild" href="../../data/projection-detail/index.html">ProjectionDetail</a>
+                <a class="gx-side-nav-grandchild" href="../../data/provider-error/index.html">ProviderError</a>
+                <a class="gx-side-nav-grandchild" href="../../data/timeline/index.html">Timeline</a>
+                <a class="gx-side-nav-child" href="../../evidence/index.html">Evidence and files</a>
+                <a class="gx-side-nav-grandchild" href="../../evidence/evidence-link/index.html">EvidenceLink</a>
+                <a class="gx-side-nav-grandchild" href="../../evidence/evidence-preview/index.html">EvidencePreview</a>
+                <a class="gx-side-nav-grandchild" href="../../evidence/image-gallery/index.html">ImageGallery</a>
+                <a class="gx-side-nav-child" href="../../assistant/index.html">Assistant</a>
+                <a class="gx-side-nav-grandchild" href="../../assistant-shell/index.html">AssistantShell</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-panel/index.html">AIPanel</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-composer/index.html">AIComposer</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-model-select/index.html">AIModelSelect</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-approvals/index.html">AIApprovals</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-review-status/index.html">AIReviewStatus</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-thread-isolation/index.html">AIThreadIsolation</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-thread-list/index.html">AIThreadList</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-message/index.html">AIMessage</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-markdown/index.html">AIMarkdown</a>
+                <a class="gx-side-nav-grandchild" href="../../ai-attachment-list/index.html">AIAttachmentList</a>
+                <a class="gx-side-nav-child" href="../../terminal/index.html">Terminal</a>
+                <a class="gx-side-nav-grandchild" href="../../terminal-session-panel/index.html">TerminalSessionPanel</a>
+                <a class="gx-side-nav-grandchild" href="../../terminal-output-view/index.html">TerminalOutputView</a>
+                <a class="gx-side-nav-grandchild" href="../../terminal-input-box/index.html">TerminalInputBox</a>
+                <a class="gx-side-nav-grandchild" href="../../terminal-approval-prompt/index.html">TerminalApprovalPrompt</a>
+                <a class="gx-side-nav-grandchild" href="../../terminal-adapters/index.html">TerminalAdapters</a>
                 <a href="../../portal/index.html">Portal integration</a>
               </div>
               <div class="gx-side-nav-group">
-                <p class="gx-side-nav-heading">Forms</p>
-                <a href="../form/index.html">Form</a>
-                <a href="../field/index.html">Field</a>
-                <a href="./index.html" aria-current="page">Input family</a>
-                <a href="../textarea/index.html">Text area</a>
-                <a href="../select/index.html">Select</a>
-                <a href="../submit/index.html">Submit control</a>
-                <a href="../filter-toolbar/index.html">Filter toolbar</a>
-                <a href="../file-input/index.html">File input</a>
-                <a href="../drop-zone/index.html">Drop zone</a>
-                <a href="../credential-login-card/index.html">Credential login card</a>
+                <p class="gx-side-nav-heading">Tutorials</p>
+                <a href="../../../authoring/index.html">Authoring tutorial</a>
+                <a href="../../../runtime/index.html">Runtime and testing</a>
+                <a href="../../../components/index.html">Component tutorial</a>
+                <a href="../../../surfaces/index.html">Product surfaces</a>
               </div>
             </aside>
             <div class="gx-doc-content">
-              <p class="eyebrow">Bus UI Input Family</p>
-              <h1>Single-line controls for text, secrets, and dates.</h1>
+              <p class="eyebrow">Bus UI Input</p>
+              <h1>Input is the typed base control.</h1>
               <p class="hero-copy">
-                Use the input family when you need a typed native control with shared validation,
-                stable attributes, and a consistent wrapper for text, password, or date fields.
-                The node-first path uses the typed helpers inside field composition, while the
-                string-returning wrappers remain available for simple field HTML.
+                Use <code>Input</code> when a module needs one validated native input with an explicit
+                type, stable attributes, and node-first composition through <code>InputProps</code>.
               </p>
               <div class="product-section">
                 <h2>Validated surface</h2>
                 <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
-                  </thead>
                   <tbody>
-                    <tr><td><code>Input</code>, <code>TextInput</code></td><td><code>InputProps</code>, <code>TextInputProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
-                    <tr><td><code>PasswordInput</code>, <code>DateInput</code></td><td>string args plus attrs/log</td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><th>Function</th><td><code>Input</code>, <code>InputChecked</code>, <code>InputNodeChecked</code></td></tr>
+                    <tr><th>Props</th><td><code>InputProps</code></td></tr>
+                    <tr><th>Import path</th><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><th>Use for</th><td>Shared text, search, email, URL, number, date, password, checkbox, radio, and hidden inputs.</td></tr>
                   </tbody>
                 </table>
-              </div>
-              <div class="product-section">
-                <h2>When to use it</h2>
-                <p>
-                  Use <code>Input</code> or <code>TextInput</code> for ordinary text
-                  entry, <code>PasswordInput</code> for secret values, and
-                  <code>DateInput</code> when the field must stay in YYYY-MM-DD form.
-                </p>
-                <p>
-                  The text-input, password, and date helpers are all on <code>pkg/ui</code>.
-                </p>
-                <p>
-                  See also <a href="../field/index.html">Field</a>,
-                  <a href="../form/index.html">Form</a>, and
-                  <a href="../../../reference/index.html">Reference</a>.
-                </p>
               </div>
               <div class="product-section">
                 <h2>Example</h2>
@@ -137,11 +155,11 @@
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-titleHTML := ui.TextInput("title", "Bank statement", "Invoice title", nil)
-
-passwordHTML := ui.PasswordInput("password", "", "Enter your password", nil)
-
-dateHTML := ui.DateInput("posting_date", "2026-06-14", nil)</code></pre>
+node, err := ui.Input(ui.InputProps{
+  Type:        string(ui.InputTypeSearch),
+  Name:        "query",
+  Placeholder: "Search evidence",
+})</code></pre>
               </div>
             </div>
           </div>

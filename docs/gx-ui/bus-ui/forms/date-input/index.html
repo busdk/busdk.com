@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus UI Form | BusDK</title>
-    <meta name="description" content="Bus UI Form explains the node-first form wrapper, submit wiring, and when to use Form with FormProps and node bodies." />
+    <title>Bus UI DateInput | BusDK</title>
+    <meta name="description" content="Bus UI DateInput explains validated date controls with YYYY-MM-DD values." />
     <link rel="stylesheet" href="../../../../index.css" />
   </head>
   <body>
@@ -78,12 +78,12 @@
                 <a class="gx-side-nav-grandchild" href="../../components/status/result-panel/index.html">ResultPanel</a>
                 <a class="gx-side-nav-grandchild" href="../../components/status/error-banner/index.html">ErrorBanner</a>
                 <a class="gx-side-nav-child" href="../index.html">Forms</a>
-                <a class="gx-side-nav-grandchild" href="index.html" aria-current="page">Form</a>
+                <a class="gx-side-nav-grandchild" href="../form/index.html">Form</a>
                 <a class="gx-side-nav-grandchild" href="../field/index.html">Field</a>
                 <a class="gx-side-nav-grandchild" href="../input/index.html">Input</a>
                 <a class="gx-side-nav-grandchild" href="../text-input/index.html">TextInput</a>
                 <a class="gx-side-nav-grandchild" href="../password-input/index.html">PasswordInput</a>
-                <a class="gx-side-nav-grandchild" href="../date-input/index.html">DateInput</a>
+                <a class="gx-side-nav-grandchild" href="index.html" aria-current="page">DateInput</a>
                 <a class="gx-side-nav-grandchild" href="../textarea/index.html">TextArea</a>
                 <a class="gx-side-nav-grandchild" href="../select/index.html">Select</a>
                 <a class="gx-side-nav-grandchild" href="../submit/index.html">SubmitControl</a>
@@ -132,82 +132,35 @@
               </div>
             </aside>
             <div class="gx-doc-content">
-              <p class="eyebrow">Bus UI Form</p>
-              <h1>Native submit wiring with node-first props.</h1>
+              <p class="eyebrow">Bus UI DateInput</p>
+              <h1>DateInput keeps dates in browser-native form.</h1>
               <p class="hero-copy">
-                Use the form wrapper when the module owns method, action, target, busy state, or
-                submit callbacks and you want a controlled HTML form instead of ad hoc markup.
-                Compose the body with typed node trees first; keep raw HTML only for explicit
-                render-boundary integrations.
+                Use <code>DateInput</code> when a workflow or filter needs a native date control
+                whose value stays empty or in <code>YYYY-MM-DD</code> form.
               </p>
               <div class="product-section">
                 <h2>Validated surface</h2>
                 <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Function</th><th>Props type</th><th>Import path</th></tr>
-                  </thead>
                   <tbody>
-                    <tr><td><code>Form</code></td><td><code>FormProps</code></td><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><th>Function</th><td><code>DateInput</code>, <code>DateInputChecked</code>, <code>DateInputNodeChecked</code></td></tr>
+                    <tr><th>Props</th><td>Explicit checked-helper arguments; no <code>DateInputProps</code> type is currently exported.</td></tr>
+                    <tr><th>Import path</th><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                    <tr><th>Use for</th><td>Date filters, posting-date fields, and workflow forms with native date validation.</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="product-section">
-                <h2>When to use it</h2>
-                <p>
-                  Use <code>Form</code> when the form needs explicit GET or POST handling,
-                  safe action and target validation, body nodes, or a typed <code>OnSubmit</code>
-                  callback. The wrapper keeps the submit path in Go and leaves policy in the host
-                  module. <code>BodyNodes</code> is the preferred composition path.
-                </p>
-                <p>
-                  See also <a href="../field/index.html">Field</a>,
-                  <a href="../submit/index.html">Submit control</a>, and
-                  <a href="../../../reference/index.html">Reference</a>.
-                </p>
-              </div>
-              <div class="product-section">
                 <h2>Example</h2>
                 <pre><code>import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
-description, err := ui.Field(ui.FieldProps{
-  Label:       "Description",
-  ControlID:   "description",
-  ControlName: "description",
-  RenderControlNode: func(attrs map[string]string) (gx.Node, error) {
-    return ui.Input(ui.InputProps{
-      Name:  "description",
-      Attrs: attrs,
-    })
-  },
-})
-if err != nil {
-  return err
-}
-
-submit, err := ui.SubmitControl(ui.SubmitControlProps{
-  Label: "Save",
-})
-if err != nil {
-  return err
-}
-
-node, err := ui.Form(ui.FormProps{
-  Method: ui.FormMethodPost,
-  Action: "/modules/accounting/api/items",
-  BodyNodes: []gx.Node{description, submit},
-})
-if err != nil {
-  return err
-}
-
-html, err := gx.RenderHTML(node)</code></pre>
-                <p>
-                  The form helper is on <code>pkg/ui</code>, so use that import path for product
-                  code.
-                </p>
+node, err := ui.DateInputNodeChecked(
+  "posting_date",
+  "2026-06-14",
+  nil,
+  nil,
+)</code></pre>
               </div>
             </div>
           </div>
