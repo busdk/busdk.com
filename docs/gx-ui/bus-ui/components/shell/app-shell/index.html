@@ -99,6 +99,7 @@
                 <h2>Render boundary</h2>
                 <table class="tutorial-table">
                   <tbody>
+                    <tr><th>Function</th><td><code>ui.AppShell</code></td></tr>
                     <tr><th>Boundary data</th><td><code>gx.Node</code> slices for navigation, main content, and footer slots</td></tr>
                     <tr><th>Props</th><td><code>ui.AppShellProps</code></td></tr>
                     <tr><th>Use for</th><td>Top-level HTML documents with safe stylesheet and WASM preload hooks, composed from typed node slots.</td></tr>
@@ -109,6 +110,7 @@
                 <h2>Example</h2>
                 <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
 )
 
 navNodes := []gx.Node{
@@ -122,9 +124,18 @@ mainNodes := []gx.Node{
 
 footerNodes := []gx.Node{
   gx.Element("small", nil, gx.Text("Bus UI")),
-}</code></pre>
+}
+
+node, err := ui.AppShell(ui.AppShellProps{
+  Title: "Accounting",
+  NavNodes: navNodes,
+  MainNodes: mainNodes,
+  FooterNodes: footerNodes,
+})
+
+html, err := ui.RenderHTML(node)</code></pre>
                 <p>
-                  Pass those nodes through the AppShell render boundary when the page needs a
+                  Pass those nodes through <code>ui.AppShell</code> when the page needs a
                   complete HTML document.
                 </p>
               </div>

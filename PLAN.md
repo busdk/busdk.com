@@ -1,5 +1,7 @@
 # PLAN.md
 
+- [x] Fix the GX/UI AppShell component page so it names `ui.AppShell` and shows a complete node-first call example. Acceptance: `docs/gx-ui/bus-ui/components/shell/app-shell/index.html` lists the function alongside `ui.AppShellProps`, imports `pkg/ui`, shows `ui.AppShell(ui.AppShellProps{...})` plus explicit HTML rendering, `git diff --check` passes, and the page remains locally navigable.
+- [ ] Add `.gx` authoring examples alongside the Go API examples on Bus UI component docs pages under `docs/gx-ui/bus-ui/components/`. Acceptance: each component leaf page that currently has an `Example` section with raw Go also shows a clear `.gx` syntax example for the same component/use case, the Go examples remain available, published prose distinguishes `.gx` authoring from generated Go/render-boundary code, local links remain valid, `git diff --check` passes, and any available static-site quality/link checks pass.
 - [x] Refresh the public GX/UI website after the completed `pkg/uikit`
   deletion. Acceptance: pages under `docs/gx-ui/**` teach the public
   node-first packages (`pkg/ui`, `pkg/assistantui`, `pkg/terminalui`,
