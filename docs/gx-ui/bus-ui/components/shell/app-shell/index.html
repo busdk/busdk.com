@@ -178,50 +178,23 @@ node, err := ui.AppShell(ui.AppShellProps{
 })
 
 html, err := ui.RenderHTML(node)</code></pre>
-                <p>
-                  In <code>.gx</code> source, wrap <code>ui.AppShell</code> in a
-                  package-scope component and convert any validation error into a text node.
-                </p>
                 <h3>.gx source</h3>
-              <pre><code>package shellui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type AccountingAppShellProps struct {
-  Title string
-}
-
-func AccountingAppShell(props AccountingAppShellProps) gx.Node {
-  node, err := ui.AppShell(ui.AppShellProps{
-    Title: props.Title,
-    NavNodes: []gx.Node{
-      gx.Element("a", gx.Props{"href": "/accounting/index.html"}, gx.Text("Overview")),
-    },
-    MainNodes: []gx.Node{
-      gx.Element("h1", nil, gx.Text("Accounting")),
-      gx.Element("p", nil, gx.Text("Review imported files and evidence.")),
-    },
-    FooterNodes: []gx.Node{
-      gx.Element("small", nil, gx.Text("Bus UI")),
-    },
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type AccountingDocumentProps struct{}
-
-func AccountingDocument(props AccountingDocumentProps) gx.Node {
-  return &lt;AccountingAppShell title="Accounting"&gt;&lt;/AccountingAppShell&gt;
+func AppShellExample() gx.Node {
+  return &lt;AppShell title="Accounting"&gt;
+    &lt;main&gt;Accounting overview&lt;/main&gt;
+  &lt;/AppShell&gt;
 }</code></pre>
                 <p>
-                  Pass those nodes through <code>ui.AppShell</code> when the page needs a
-                  complete HTML document.
+                  Use the tag form when the page source should show the document shell directly.
                 </p>
               </div>
             </div>

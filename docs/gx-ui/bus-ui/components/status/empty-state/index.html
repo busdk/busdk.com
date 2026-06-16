@@ -167,34 +167,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   event control stays in Go and the readable text stays in markup.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package statusui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type FilesEmptyStateProps struct {
-  Title      string
-  EventLabel string
-}
-
-func FilesEmptyState(props FilesEmptyStateProps) gx.Node {
-  node, err := ui.EmptyState(ui.EmptyStateProps{
-    Title:      props.Title,
-    EventLabel: props.EventLabel,
-    Event:      ui.ControlProps{Action: "upload-file"},
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type EmptyFilesViewProps struct{}
-
-func EmptyFilesView(props EmptyFilesViewProps) gx.Node {
-  return &lt;FilesEmptyState title="No files yet" eventLabel="Upload file"&gt;&lt;/FilesEmptyState&gt;
+func EmptyStateExample() gx.Node {
+  return &lt;EmptyState title="No files yet"&gt;&lt;/EmptyState&gt;
 }</code></pre>
               </div>
             </div>

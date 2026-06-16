@@ -174,34 +174,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   be wrapped without an error branch.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package shellui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ReviewImportPanelProps struct {
-  Title string
-}
-
-func ReviewImportPanel(props ReviewImportPanelProps) gx.Node {
-  return ui.ShellActionPanel(ui.ShellActionPanelProps{
-    Title: props.Title,
-    Body: []gx.Node{
-      gx.Element("p", nil, gx.Text("Validate the imported evidence before posting.")),
-    },
-    Actions: []ui.ShellActionPanelControl{{
-      Label: "Approve",
-      Control: ui.ControlProps{Action: "approve-import"},
-    }},
-  })
-}
-
-type ReviewImportProps struct{}
-
-func ReviewImport(props ReviewImportProps) gx.Node {
-  return &lt;ReviewImportPanel title="Review import"&gt;&lt;/ReviewImportPanel&gt;
+func ShellActionPanelExample() gx.Node {
+  return &lt;ShellActionPanel title="Review changes"&gt;&lt;/ShellActionPanel&gt;
 }</code></pre>
               </div>
             </div>

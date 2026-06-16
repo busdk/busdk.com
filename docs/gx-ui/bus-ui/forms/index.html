@@ -178,7 +178,8 @@
                 Compose the form from typed child nodes. The node API keeps labels, controls,
                 and validation explicit without falling back to raw HTML slots.
               </p>
-              <pre><code>import (
+              <h3>Go API</h3>
+                <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
 )
 
@@ -191,6 +192,22 @@ formNodes := []gx.Node{
     "type":  "text",
   }),
   gx.Element("button", gx.Props{"type": "submit"}, gx.Text("Upload")),
+}</code></pre>
+                <h3>.gx source</h3>
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func FormExample() gx.Node {
+  return &lt;Form method="post" action="/upload"&gt;
+    &lt;Field label="Description" controlId="description"&gt;&lt;/Field&gt;
+    &lt;SubmitControl label="Upload"&gt;&lt;/SubmitControl&gt;
+  &lt;/Form&gt;
 }</code></pre>
               <p>
                 Compose the shared form as a node tree and render at the page boundary.

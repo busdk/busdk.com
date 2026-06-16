@@ -179,37 +179,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                 the wrapper as an uppercase component tag.
               </p>
               <h3>.gx source</h3>
-              <pre><code>package navigationui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type AccountingNavigationTabsProps struct {
-  Label  string
-  Active string
-}
-
-func AccountingNavigationTabs(props AccountingNavigationTabsProps) gx.Node {
-  node, err := ui.Tabs(ui.TabsProps{
-    Label:  props.Label,
-    Active: props.Active,
-    Items: []ui.TabItem{
-      {ID: "overview", Label: "Overview", Href: "/modules/accounting/index.html"},
-      {ID: "files", Label: "Files", Href: "/modules/accounting/files/index.html"},
-    },
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type AccountingNavProps struct{}
-
-func AccountingNav(props AccountingNavProps) gx.Node {
-  return &lt;AccountingNavigationTabs label="Accounting navigation" active="files"&gt;&lt;/AccountingNavigationTabs&gt;
+func TabsExample() gx.Node {
+  return &lt;Tabs active="overview"&gt;&lt;/Tabs&gt;
 }</code></pre>
             </div>
           </div>

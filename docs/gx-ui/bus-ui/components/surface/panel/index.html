@@ -168,30 +168,19 @@ html, err := gx.RenderHTML(node)</code></pre>
                   wrapped without an error branch.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package surfaceui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type MonthlyClosePanelProps struct {
-  Title string
-}
-
-func MonthlyClosePanel(props MonthlyClosePanelProps) gx.Node {
-  return ui.Panel(ui.PanelProps{
-    Title: props.Title,
-    BodyNodes: []gx.Node{
-      gx.Element("p", nil, gx.Text("3 statements ready")),
-    },
-  })
-}
-
-type MonthlyCloseSurfaceProps struct{}
-
-func MonthlyCloseSurface(props MonthlyCloseSurfaceProps) gx.Node {
-  return &lt;MonthlyClosePanel title="Monthly close"&gt;&lt;/MonthlyClosePanel&gt;
+func PanelExample() gx.Node {
+  return &lt;Panel title="Evidence"&gt;
+    &lt;p&gt;Preview selected evidence.&lt;/p&gt;
+  &lt;/Panel&gt;
 }</code></pre>
               </div>
             </div>

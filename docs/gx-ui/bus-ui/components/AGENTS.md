@@ -15,10 +15,9 @@ notes.
 2. Keep the existing Go example. The `.gx` example is an additional authoring
    view, not a replacement.
 3. Label the examples clearly, for example "Go API" and ".gx source".
-4. Make `.gx` examples technically honest. GX component tags resolve to
-   package-scope Go callables that return `gx.Node`; if the public helper
-   returns `(gx.Node, error)`, show a tiny checked wrapper or explain the
-   boundary instead of pretending the helper can be called directly as a tag.
+4. Make `.gx` examples real source syntax: uppercase component tags,
+   lower-camel props, and intrinsic markup. Do not use generated-Go wrapper
+   examples, `ui.*` calls, or `gx.Element` slices inside `.gx source` blocks.
 5. Examples should be specific to the documented component. Avoid generic
    placeholder `.gx` snippets that do not exercise that component.
 6. When a public function exists, name it directly in the page's API table and

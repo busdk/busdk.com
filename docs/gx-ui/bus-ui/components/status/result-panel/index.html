@@ -167,34 +167,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   the reader-facing strings as attributes.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package statusui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ImportResultPanelProps struct {
-  Title   string
-  Summary string
-}
-
-func ImportResultPanel(props ImportResultPanelProps) gx.Node {
-  node, err := ui.ResultPanel(ui.ResultPanelProps{
-    Status:  ui.StatusSuccess,
-    Title:   props.Title,
-    Summary: props.Summary,
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type ImportResultProps struct{}
-
-func ImportResult(props ImportResultProps) gx.Node {
-  return &lt;ImportResultPanel title="Import complete" summary="12 rows were accepted."&gt;&lt;/ImportResultPanel&gt;
+func ResultPanelExample() gx.Node {
+  return &lt;ResultPanel title="Import complete"&gt;&lt;/ResultPanel&gt;
 }</code></pre>
               </div>
             </div>

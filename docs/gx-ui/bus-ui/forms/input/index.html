@@ -151,6 +151,7 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
+                <h3>Go API</h3>
                 <pre><code>import (
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
@@ -160,6 +161,19 @@ node, err := ui.Input(ui.InputProps{
   Name:        "query",
   Placeholder: "Search evidence",
 })</code></pre>
+                <h3>.gx source</h3>
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func InputExample() gx.Node {
+  return &lt;Input name="description" value="Bank statement"&gt;&lt;/Input&gt;
+}</code></pre>
               </div>
             </div>
           </div>

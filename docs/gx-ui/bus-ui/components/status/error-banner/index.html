@@ -162,34 +162,17 @@ banner, err := ui.ErrorBanner(ui.ErrorBannerProps{
                   control remains typed Go while the message is authored in markup.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package statusui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ProviderErrorBannerProps struct {
-  Message    string
-  RetryLabel string
-}
-
-func ProviderErrorBanner(props ProviderErrorBannerProps) gx.Node {
-  node, err := ui.ErrorBanner(ui.ErrorBannerProps{
-    Message:    props.Message,
-    RetryLabel: props.RetryLabel,
-    Retry:      ui.ControlProps{Action: "retry-provider"},
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type ProviderErrorViewProps struct{}
-
-func ProviderErrorView(props ProviderErrorViewProps) gx.Node {
-  return &lt;ProviderErrorBanner message="Provider is temporarily unavailable." retryLabel="Retry"&gt;&lt;/ProviderErrorBanner&gt;
+func ErrorBannerExample() gx.Node {
+  return &lt;ErrorBanner title="Upload failed"&gt;&lt;/ErrorBanner&gt;
 }</code></pre>
               </div>
             </div>

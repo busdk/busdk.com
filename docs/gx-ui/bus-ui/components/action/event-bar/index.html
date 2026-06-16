@@ -173,35 +173,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   package-scope wrapper so the tag stays declarative.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package actionsui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type FileEventBarProps struct {
-  Label string
-}
-
-func FileEventBar(props FileEventBarProps) gx.Node {
-  node, err := ui.EventBar(ui.EventBarProps{
-    Label: props.Label,
-    Actions: []ui.EventBarAction{{
-      Label: "Import",
-      Control: ui.ControlProps{Action: "import-file"},
-    }},
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type FileActionsProps struct{}
-
-func FileActions(props FileActionsProps) gx.Node {
-  return &lt;FileEventBar label="File actions"&gt;&lt;/FileEventBar&gt;
+func EventBarExample() gx.Node {
+  return &lt;EventBar title="File imported"&gt;&lt;/EventBar&gt;
 }</code></pre>
               </div>
             </div>

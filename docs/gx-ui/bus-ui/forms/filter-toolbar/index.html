@@ -167,6 +167,7 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
+                <h3>Go API</h3>
                 <pre><code>import "github.com/busdk/bus-gx/pkg/gx"
 
 toolbarNodes := []gx.Node{
@@ -178,6 +179,19 @@ toolbarNodes := []gx.Node{
   }),
   gx.Element("button", gx.Props{"type": "submit"}, gx.Text("Filter")),
   gx.Element("button", gx.Props{"type": "reset"}, gx.Text("Reset")),
+}</code></pre>
+                <h3>.gx source</h3>
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func FilterToolbarExample() gx.Node {
+  return &lt;FilterToolbar label="Search" sourceId="files"&gt;&lt;/FilterToolbar&gt;
 }</code></pre>
                 <p>
                   Use the public toolbar API when the host wants this node set wrapped as a shared

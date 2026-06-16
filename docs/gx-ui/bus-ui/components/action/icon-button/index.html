@@ -170,32 +170,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   calling it with an uppercase component tag.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package actionsui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type RefreshIconButtonProps struct {
-  Label string
-}
-
-func RefreshIconButton(props RefreshIconButtonProps) gx.Node {
-  node, err := ui.IconButton(ui.IconButtonProps{
-    Label: props.Label,
-    Icon:  ui.IconRefresh,
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type RefreshControlsProps struct{}
-
-func RefreshControls(props RefreshControlsProps) gx.Node {
-  return &lt;RefreshIconButton label="Refresh"&gt;&lt;/RefreshIconButton&gt;
+func IconButtonExample() gx.Node {
+  return &lt;IconButton label="Refresh" icon="refresh"&gt;&lt;/IconButton&gt;
 }</code></pre>
               </div>
             </div>

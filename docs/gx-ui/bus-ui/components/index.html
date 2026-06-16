@@ -181,26 +181,20 @@ footerNodes := []gx.Node{
                 node tree as an uppercase component tag.
               </p>
               <h3>.gx source</h3>
-              <pre><code>package componentsui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import "github.com/busdk/bus-gx/pkg/gx"
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ComponentFrameProps struct {
-  Title string
-}
-
-func ComponentFrame(props ComponentFrameProps) gx.Node {
-  return &lt;section class="component-frame"&gt;
-    &lt;h1&gt;{props.Title}&lt;/h1&gt;
+func PageShellExample() gx.Node {
+  return &lt;PageShell title="Accounting"&gt;
+    &lt;h1&gt;Accounting&lt;/h1&gt;
     &lt;p&gt;Module content&lt;/p&gt;
-    &lt;small&gt;Synced&lt;/small&gt;
-  &lt;/section&gt;
-}
-
-type ComponentsExampleProps struct{}
-
-func ComponentsExample(props ComponentsExampleProps) gx.Node {
-  return &lt;ComponentFrame title="Accounting"&gt;&lt;/ComponentFrame&gt;
+  &lt;/PageShell&gt;
 }</code></pre>
             </div>
           </div>

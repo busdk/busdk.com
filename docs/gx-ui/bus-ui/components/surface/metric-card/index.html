@@ -168,32 +168,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   status value while exposing the readable fields as attributes.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package surfaceui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ReadyFilesMetricProps struct {
-  Title  string
-  Value  string
-  Detail string
-}
-
-func ReadyFilesMetric(props ReadyFilesMetricProps) gx.Node {
-  return ui.MetricCard(ui.MetricCardProps{
-    Title:  props.Title,
-    Value:  props.Value,
-    Detail: props.Detail,
-    Status: ui.StatusSuccess,
-  })
-}
-
-type MetricsSummaryProps struct{}
-
-func MetricsSummary(props MetricsSummaryProps) gx.Node {
-  return &lt;ReadyFilesMetric title="Ready files" value="12" detail="3 waiting for review"&gt;&lt;/ReadyFilesMetric&gt;
+func MetricCardExample() gx.Node {
+  return &lt;MetricCard label="Open files" value="12"&gt;&lt;/MetricCard&gt;
 }</code></pre>
               </div>
             </div>

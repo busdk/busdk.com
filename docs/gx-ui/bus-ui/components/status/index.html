@@ -177,32 +177,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                 and use the wrapper from markup.
               </p>
               <h3>.gx source</h3>
-              <pre><code>package statusui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ReadyStatusPillProps struct {
-  Label string
-}
-
-func ReadyStatusPill(props ReadyStatusPillProps) gx.Node {
-  node, err := ui.StatusPill(ui.StatusPillProps{
-    Label:  props.Label,
-    Status: ui.StatusSuccess,
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type StatusSummaryProps struct{}
-
-func StatusSummary(props StatusSummaryProps) gx.Node {
-  return &lt;ReadyStatusPill label="Ready"&gt;&lt;/ReadyStatusPill&gt;
+func StatusPillExample() gx.Node {
+  return &lt;StatusPill status="ready" label="Ready"&gt;&lt;/StatusPill&gt;
 }</code></pre>
             </div>
             <p>

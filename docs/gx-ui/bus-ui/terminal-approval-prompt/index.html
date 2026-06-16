@@ -159,6 +159,7 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
+                <h3>Go API</h3>
                 <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
   terminalui "github.com/busdk/bus-ui/pkg/terminalui"
@@ -173,6 +174,19 @@ node := terminalui.TerminalApprovalPrompt(terminalui.TerminalApprovalPromptProps
 })
 
 html, err := gx.RenderHTML(node)</code></pre>
+                <h3>.gx source</h3>
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func TerminalApprovalPromptExample() gx.Node {
+  return &lt;TerminalApprovalPrompt title="Approve command"&gt;&lt;/TerminalApprovalPrompt&gt;
+}</code></pre>
               </div>
               <div class="product-section">
                 <h2>Related</h2>

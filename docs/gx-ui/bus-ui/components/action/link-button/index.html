@@ -170,33 +170,17 @@ html, err := gx.RenderHTML(node)</code></pre>
                   package-scope component wrapper and use lower-camel source attributes.
                 </p>
                 <h3>.gx source</h3>
-              <pre><code>package actionsui
+                <p>
+                  In <code>.gx</code> source, use the component as an uppercase tag with
+                  lower-camel props. The compiler turns this authoring syntax into Go that calls
+                  the public component boundary.
+                </p>
+                <pre><code>package busuiexamples
 
-import (
-  gx "github.com/busdk/bus-gx/pkg/gx"
-  ui "github.com/busdk/bus-ui/pkg/ui"
-)
+import gx "github.com/busdk/bus-gx/pkg/gx"
 
-type ReportLinkButtonProps struct {
-  Label string
-  Href  string
-}
-
-func ReportLinkButton(props ReportLinkButtonProps) gx.Node {
-  node, err := ui.LinkButton(ui.LinkButtonProps{
-    Label: props.Label,
-    Href:  props.Href,
-  })
-  if err != nil {
-    return gx.Text(err.Error())
-  }
-  return node
-}
-
-type ReportActionsProps struct{}
-
-func ReportActions(props ReportActionsProps) gx.Node {
-  return &lt;ReportLinkButton label="Download report" href="report/index.html"&gt;&lt;/ReportLinkButton&gt;
+func LinkButtonExample() gx.Node {
+  return &lt;LinkButton href="./index.html" label="Open details"&gt;&lt;/LinkButton&gt;
 }</code></pre>
               </div>
             </div>
