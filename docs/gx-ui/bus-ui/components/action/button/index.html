@@ -150,6 +150,9 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
+                <div class="bus-ui-demo-frame" aria-label="Live Button demo">
+                  <div data-bus-ui-demo="button">Loading Button demo...</div>
+                </div>
                 <h3>Go API</h3>
               <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
@@ -184,5 +187,7 @@ func ButtonExample() gx.Node {
         </section>
       </main>
     </div>
+    <script defer src="../../../../../assets/bus-ui-demo/wasm_exec.js"></script>
+    <script defer src="../../../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
   </body>
 </html>

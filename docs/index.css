@@ -1084,6 +1084,26 @@ h1 {
   color: var(--text-muted);
 }
 
+.bus-ui-demo-frame {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.bus-ui-demo-frame [data-bus-ui-demo] {
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.bus-ui-demo-fallback {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 .gx-preview-label {
   margin: 0;
   color: var(--accent);
