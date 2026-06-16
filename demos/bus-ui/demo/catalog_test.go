@@ -23,7 +23,17 @@ func TestButtonDemoRendersRealBusUIButton(t *testing.T) {
 	if err != nil {
 		t.Fatalf("RenderHTML(button demo) failed: %v", err)
 	}
-	for _, want := range []string{"bus-ui-btn", "bus-ui-btn-primary", "Save draft"} {
+	for _, want := range []string{
+		"bus-ui-btn",
+		"bus-ui-btn-primary",
+		"Save draft",
+		"data-bus-ui-demo-widget",
+		`data-bus-ui-demo-action="button-click"`,
+		`data-bus-ui-demo-status="button"`,
+		`role="status"`,
+		`aria-live="polite"`,
+		"Ready",
+	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("button demo HTML %q does not contain %q", html, want)
 		}

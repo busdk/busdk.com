@@ -58,6 +58,15 @@
       });
   }
 
+  function unsupportedWASMProtocol(url) {
+    try {
+      var parsed = new URL(url, window.location.href);
+      return parsed.protocol === "file:";
+    } catch (_) {
+      return window.location.protocol === "file:";
+    }
+  }
+
   function start() {
     if (window[loaderPromiseKey]) {
       return window[loaderPromiseKey];
@@ -74,6 +83,10 @@
     }
     if (typeof Go !== "function") {
       setFallback("Bus UI demo runtime is missing.");
+      return;
+    }
+    if (unsupportedWASMProtocol(wasmURL)) {
+      setFallback("Bus UI demos need a local HTTP server to load WebAssembly.");
       return;
     }
     setDemoState("loading");

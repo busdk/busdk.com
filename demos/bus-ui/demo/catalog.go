@@ -38,11 +38,20 @@ func Button() gx.Node {
 		Variant: ui.ButtonPrimary,
 		Size:    ui.ButtonMd,
 		Attrs: map[string]string{
-			"type": "button",
+			"type":                    "button",
+			"data-bus-ui-demo-action": "button-click",
 		},
 	})
 	if err != nil {
 		return gx.Element("p", gx.Props{"class": "bus-ui-demo-error"}, gx.Text(err.Error()))
 	}
-	return node
+	return gx.Element("div", gx.Props{"class": "bus-ui-demo-button", "data-bus-ui-demo-widget": "button"},
+		node,
+		gx.Element("span", gx.Props{
+			"class":                   "bus-ui-demo-status",
+			"role":                    "status",
+			"aria-live":               "polite",
+			"data-bus-ui-demo-status": "button",
+		}, gx.Text("Ready")),
+	)
 }

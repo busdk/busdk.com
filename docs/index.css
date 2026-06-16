@@ -1104,6 +1104,18 @@ h1 {
   font-size: 0.95rem;
 }
 
+.bus-ui-demo-button {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.bus-ui-demo-status {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 .gx-preview-label {
   margin: 0;
   color: var(--accent);

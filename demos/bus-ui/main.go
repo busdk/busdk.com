@@ -11,6 +11,8 @@ import (
 	"github.com/busdk/busdk.com/demos/bus-ui/demo"
 )
 
+var retainedDemoCallbacks []js.Func
+
 func main() {
 	mountAll()
 	select {}
@@ -40,6 +42,7 @@ func mountAll() {
 			setFallback(el, "Bus UI demo failed to render.")
 			continue
 		}
+		bindDemoInteractions(el)
 		el.Call("setAttribute", "data-bus-ui-demo-state", "mounted")
 	}
 }
@@ -57,4 +60,21 @@ func setFallback(el js.Value, text string) {
 	el.Set("textContent", text)
 	el.Get("classList").Call("add", "bus-ui-demo-fallback")
 	el.Call("setAttribute", "data-bus-ui-demo-state", "failed")
+}
+
+func bindDemoInteractions(root js.Value) {
+	if !root.Truthy() {
+		return
+	}
+	button := root.Call("querySelector", `[data-bus-ui-demo-action="button-click"]`)
+	status := root.Call("querySelector", `[data-bus-ui-demo-status="button"]`)
+	if !button.Truthy() || !status.Truthy() {
+		return
+	}
+	cb := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		status.Set("textContent", "Button clicked")
+		return nil
+	})
+	retainedDemoCallbacks = append(retainedDemoCallbacks, cb)
+	button.Call("addEventListener", "click", cb)
 }
