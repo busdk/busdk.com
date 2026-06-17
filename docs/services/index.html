@@ -28,43 +28,55 @@
       </header>
       <main>
         <section class="product-page">
-          <div class="section-inner">
-            <p class="eyebrow">Bus Services</p>
-            <h1>Predictable service stacks without requiring virtualization.</h1>
-            <p class="hero-copy">
-              Bus Services turns project dependencies into public-safe <code>services.yml</code>
-              stacks you can validate, plan, start, inspect, and stop as ordinary user-land
-              services.
-            </p>
-            <div class="product-links">
-              <a class="button button-primary" href="https://docs.busdk.com/products/services/">Read docs</a>
-              <a class="button button-secondary" href="../index.html#products">Browse BusDK products</a>
-            </div>
-            <div class="product-section">
-              <h2>What it is for</h2>
-              <p>
-                Bus Services is for developers and operators who need repeatable project-level
-                service stacks without relying on drifting README steps, ad hoc shell scripts, or a
-                container-only assumption.
+          <div class="section-inner product-doc-layout">
+            <nav class="product-side-nav" aria-label="Product family">
+              <p class="product-side-nav-title">Product family</p>
+              <a href="../agents/index.html">Bus Agentic Development</a>
+              <a href="../ai-platform/index.html">Bus AI Platform</a>
+              <a href="../books/index.html">Bus Books</a>
+              <a href="../inspection/index.html">Bus Inspection</a>
+              <a href="../gx-ui/index.html">Bus GX/UI Library</a>
+              <a href="../top/index.html">Bus Top</a>
+              <a href="index.html" aria-current="page">Bus Services</a>
+            </nav>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Services</p>
+              <h1>Predictable service stacks without requiring virtualization.</h1>
+              <p class="hero-copy">
+                Bus Services turns project dependencies into public-safe <code>services.yml</code>
+                stacks you can validate, plan, start, inspect, and stop as ordinary user-land
+                services.
               </p>
-            </div>
-            <div class="product-section">
-              <h2>Core workflows</h2>
-              <ul>
-                <li>Define public service configuration in <code>services.yml</code>.</li>
-                <li>Validate and inspect a non-secret plan before startup.</li>
-                <li>Start services, inspect status, and stop the resolved running stack.</li>
-                <li>Use OS, container, VM, network, or systemd controls when isolation is required.</li>
-              </ul>
-            </div>
-            <div class="product-section">
-              <h2>Modules behind the product</h2>
-              <p>
-                The product owns <code>bus-services</code>, <code>bus-api-provider-services</code>,
-                and <code>bus-integration-services</code>. Runtime/provider modules participate when
-                a service type uses them, but they stay owned by their product or platform boundary.
-              </p>
-              <p><a href="modules/index.html">See the module map for this product.</a></p>
+              <div class="product-links">
+                <a class="button button-primary" href="https://docs.busdk.com/products/services/">Read docs</a>
+                <a class="button button-secondary" href="../index.html#products">Browse BusDK products</a>
+              </div>
+              <div class="product-section">
+                <h2>What it is for</h2>
+                <p>
+                  Bus Services is for developers and operators who need repeatable project-level
+                  service stacks without relying on drifting README steps, ad hoc shell scripts, or a
+                  container-only assumption.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Core workflows</h2>
+                <ul>
+                  <li>Define public service configuration in <code>services.yml</code>.</li>
+                  <li>Validate and inspect a non-secret plan before startup.</li>
+                  <li>Start services, inspect status, and stop the resolved running stack.</li>
+                  <li>Use OS, container, VM, network, or systemd controls when isolation is required.</li>
+                </ul>
+              </div>
+              <div class="product-section">
+                <h2>Modules behind the product</h2>
+                <p>
+                  The product owns <code>bus-services</code>, <code>bus-api-provider-services</code>,
+                  and <code>bus-integration-services</code>. Runtime/provider modules participate when
+                  a service type uses them, but they stay owned by their product or platform boundary.
+                </p>
+                <p><a href="modules/index.html">See the module map for this product.</a></p>
+              </div>
             </div>
           </div>
         </section>
