@@ -9,7 +9,7 @@ import (
 )
 
 func TestIDsExposeRegisteredDemos(t *testing.T) {
-	if got, want := IDs(), []string{"app-shell", "button", "empty-state", "error-banner", "event-bar", "icon-button", "link-button", "loading-state", "menu", "metric-card", "navigation", "page-shell", "panel", "result-panel", "shell-action-panel", "sidebar-nav", "sidebar-shell", "status-pill", "surface-card", "tabs"}; !reflect.DeepEqual(got, want) {
+	if got, want := IDs(), []string{"ai-approvals", "ai-attachment-list", "ai-composer", "ai-markdown", "ai-message", "ai-model-select", "ai-panel", "ai-review-status", "ai-thread-isolation", "ai-thread-list", "app-shell", "assistant-shell", "button", "credential-login-card", "date-input", "dense-table", "drop-zone", "empty-state", "error-banner", "event-bar", "evidence-link", "evidence-preview", "field", "file-input", "filter-toolbar", "form", "icon-button", "image-gallery", "input", "link-button", "loading-state", "menu", "metric-card", "navigation", "page-shell", "panel", "password-input", "portal", "projection-detail", "provider-error", "record-list", "result-panel", "select", "shell-action-panel", "sidebar-nav", "sidebar-shell", "status-pill", "submit", "summary-item", "surface-card", "tabs", "terminal-adapters", "terminal-approval-prompt", "terminal-input-box", "terminal-output-view", "terminal-session-panel", "text-input", "text-table", "textarea", "timeline"}; !reflect.DeepEqual(got, want) {
 		t.Fatalf("IDs() = %#v, want %#v", got, want)
 	}
 }

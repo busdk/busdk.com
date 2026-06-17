@@ -14,6 +14,36 @@ type docsDemoPage struct {
 
 var docsDemoPages = []docsDemoPage{
 	{
+		id:    "terminal-adapters",
+		label: "Loading TerminalAdapters demo...",
+		path:  "../../../docs/gx-ui/bus-ui/terminal-adapters/index.html",
+	},
+	{
+		id:    "terminal-approval-prompt",
+		label: "Loading TerminalApprovalPrompt demo...",
+		path:  "../../../docs/gx-ui/bus-ui/terminal-approval-prompt/index.html",
+	},
+	{
+		id:    "terminal-input-box",
+		label: "Loading TerminalInputBox demo...",
+		path:  "../../../docs/gx-ui/bus-ui/terminal-input-box/index.html",
+	},
+	{
+		id:    "terminal-output-view",
+		label: "Loading TerminalOutputView demo...",
+		path:  "../../../docs/gx-ui/bus-ui/terminal-output-view/index.html",
+	},
+	{
+		id:    "terminal-session-panel",
+		label: "Loading TerminalSessionPanel demo...",
+		path:  "../../../docs/gx-ui/bus-ui/terminal-session-panel/index.html",
+	},
+	{
+		id:    "portal",
+		label: "Loading Portal demo...",
+		path:  "../../../docs/gx-ui/bus-ui/portal/index.html",
+	},
+	{
 		id:    "button",
 		label: "Loading Button demo...",
 		path:  "../../../docs/gx-ui/bus-ui/components/action/button/index.html",
