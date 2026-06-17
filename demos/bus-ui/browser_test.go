@@ -234,6 +234,22 @@ func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileA
 	if err != nil {
 		t.Fatalf("capture browser DOM for %s failed: %v\n%s", pageURL, err, stderr.String())
 	}
+	if !allowFileAccess {
+		if err := client.clickAndWaitForText(ctx, "", `[data-bus-ui-demo-action="button-click"]`, `[data-bus-ui-demo-status="button"]`, "Button clicked"); err != nil {
+			t.Fatalf("click button demo for %s failed: %v\n%s", pageURL, err, stderr.String())
+		}
+		snapshot, err = client.waitForSnapshot(ctx, "", []string{
+			`data-bus-ui-demo-state="mounted"`,
+			`data-bus-ui-demo-asset="css"`,
+			`data-bus-ui-demo-widget="button"`,
+			`data-bus-ui-demo-action="button-click"`,
+			`data-bus-ui-demo-status="button"`,
+			"Button clicked",
+		}...)
+		if err != nil {
+			t.Fatalf("capture clicked browser DOM for %s failed: %v\n%s", pageURL, err, stderr.String())
+		}
+	}
 	return snapshot
 }
 
@@ -393,23 +409,9 @@ func (c *chromeDebugger) call(ctx context.Context, sessionID string, method stri
 
 func (c *chromeDebugger) waitForSnapshot(ctx context.Context, sessionID string, want ...string) (string, error) {
 	for i := 0; i < 200; i++ {
-		raw, err := c.call(ctx, sessionID, "Runtime.evaluate", map[string]any{
-			"expression":        "document.documentElement.outerHTML",
-			"returnByValue":     true,
-			"awaitPromise":      false,
-			"replMode":          false,
-			"throwOnSideEffect": false,
-		})
+		value, err := c.evaluateString(ctx, sessionID, "document.documentElement.outerHTML")
 		if err != nil {
 			return "", err
-		}
-		result, ok := raw["result"].(map[string]any)
-		if !ok {
-			return "", errors.New("runtime evaluate missing result")
-		}
-		value, ok := result["value"].(string)
-		if !ok {
-			return "", errors.New("runtime evaluate missing value")
 		}
 		if containsAll(value, want...) {
 			return value, nil
@@ -417,6 +419,61 @@ func (c *chromeDebugger) waitForSnapshot(ctx context.Context, sessionID string, 
 		time.Sleep(250 * time.Millisecond)
 	}
 	return "", context.DeadlineExceeded
+}
+
+func (c *chromeDebugger) clickAndWaitForText(ctx context.Context, sessionID string, clickSelector string, statusSelector string, want string) error {
+	clickExpr := fmt.Sprintf(`(() => {
+		const target = document.querySelector(%q);
+		if (!target) {
+			return "missing";
+		}
+		target.click();
+		return "clicked";
+	})()`, clickSelector)
+	clickResult, err := c.evaluateString(ctx, sessionID, clickExpr)
+	if err != nil {
+		return err
+	}
+	if clickResult != "clicked" {
+		return fmt.Errorf("click target %s not available", clickSelector)
+	}
+	statusExpr := fmt.Sprintf(`(() => {
+		const status = document.querySelector(%q);
+		return status ? status.textContent : "";
+	})()`, statusSelector)
+	for i := 0; i < 200; i++ {
+		value, err := c.evaluateString(ctx, sessionID, statusExpr)
+		if err != nil {
+			return err
+		}
+		if value == want {
+			return nil
+		}
+		time.Sleep(250 * time.Millisecond)
+	}
+	return context.DeadlineExceeded
+}
+
+func (c *chromeDebugger) evaluateString(ctx context.Context, sessionID string, expression string) (string, error) {
+	raw, err := c.call(ctx, sessionID, "Runtime.evaluate", map[string]any{
+		"expression":        expression,
+		"returnByValue":     true,
+		"awaitPromise":      false,
+		"replMode":          false,
+		"throwOnSideEffect": false,
+	})
+	if err != nil {
+		return "", err
+	}
+	result, ok := raw["result"].(map[string]any)
+	if !ok {
+		return "", errors.New("runtime evaluate missing result")
+	}
+	value, ok := result["value"].(string)
+	if !ok {
+		return "", errors.New("runtime evaluate missing value")
+	}
+	return value, nil
 }
 
 type websocketConn struct {
