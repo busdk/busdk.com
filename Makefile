@@ -23,4 +23,4 @@ bus-ui-demo-assets:
 	mkdir -p $(BUS_UI_DEMO_ASSET_DIR)
 	cp "$$(go env GOROOT)/lib/wasm/wasm_exec.js" $(BUS_UI_DEMO_ASSET_DIR)/wasm_exec.js
 	cp ../bus-ui/pkg/ui/assets/uikit.css $(BUS_UI_DEMO_ASSET_DIR)/bus-ui.css
-	cd demos/bus-ui && GOCACHE=$(BUS_UI_DEMO_GO_CACHE) GOOS=js GOARCH=wasm go build -o ../../$(BUS_UI_DEMO_ASSET_DIR)/bus-ui-demo.wasm .
+	cd demos/bus-ui && GOCACHE=$(BUS_UI_DEMO_GO_CACHE) GOOS=js GOARCH=wasm go build -trimpath -buildvcs=false -ldflags="-buildid=" -o ../../$(BUS_UI_DEMO_ASSET_DIR)/bus-ui-demo.wasm .

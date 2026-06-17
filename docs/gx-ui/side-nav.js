@@ -1,5 +1,8 @@
 (function () {
   const scriptElement = document.currentScript;
+  const topHeaderNodes = Array.prototype.slice.call(
+    document.querySelectorAll("header.site-header[data-gx-ui-top-header]")
+  );
   const navNodes = Array.prototype.slice.call(
     document.querySelectorAll("aside.gx-side-nav[data-gx-ui-side-nav]")
   );
@@ -7,6 +10,7 @@
     ? new URL("./", scriptElement.src)
     : new URL("docs/gx-ui/", window.location.href);
 
+  window.__gxUIDocsBaseURL = baseUrl.href;
   window.__gxUISideNavBaseURL = baseUrl.href;
 
   function setFallback(message) {
@@ -14,6 +18,9 @@
       node.textContent = message;
       node.classList.add("bus-ui-demo-fallback");
       node.setAttribute("data-gx-ui-side-nav-state", "failed");
+    });
+    topHeaderNodes.forEach(function (node) {
+      node.setAttribute("data-gx-ui-top-header-state", "failed");
     });
   }
 
@@ -44,7 +51,7 @@
     document.head.appendChild(wasmExecScript);
   }
 
-  if (navNodes.length > 0) {
+  if (navNodes.length > 0 || topHeaderNodes.length > 0) {
     ensureLoaderScript();
   }
 })();

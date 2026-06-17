@@ -14,6 +14,36 @@ var currentMarkerPattern = regexp.MustCompile(`data-gx-ui-current="([^"]+)"`)
 
 const gxUIBaseURL = "https://busdk.com/docs/gx-ui/"
 
+func TestGXUITopHeaderIncludesBrandLogoAndPricing(t *testing.T) {
+	html := renderGXUITopHeader(t, gxUIBaseURL)
+	for _, want := range []string{
+		`class="site-header-inner"`,
+		`class="brand" href="https://busdk.com/docs/index.html"`,
+		`class="brand-logo" src="https://busdk.com/docs/busdk-logo.png" alt="BusDK logo"`,
+		`href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
+		`href="https://busdk.com/docs/gx-ui/reference/index.html">Reference</a>`,
+		`href="https://busdk.com/docs/gx-ui/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/pricing/index.html">Pricing</a>`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("GXUITopHeader HTML missing %q in %s", want, html)
+		}
+	}
+}
+
+func TestGXUITopHeaderResolvesPricingOutsideGXUIRoot(t *testing.T) {
+	html := renderGXUITopHeader(t, gxUIBaseURL)
+	want := `href="https://busdk.com/docs/pricing/index.html">Pricing</a>`
+	if !strings.Contains(html, want) {
+		t.Fatalf("GXUITopHeader HTML missing %q in %s", want, html)
+	}
+	unwanted := `href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`
+	if strings.Contains(html, unwanted) {
+		t.Fatalf("GXUITopHeader HTML unexpectedly included %q in %s", unwanted, html)
+	}
+}
+
 func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 	html := renderGXUISideNav(t, "bus-ui/forms")
 	for _, want := range []string{
@@ -154,6 +184,15 @@ func renderGXUISideNav(t *testing.T, currentID string) string {
 	html, err := gx.RenderHTML(GXUISideNav(currentID, gxUIBaseURL))
 	if err != nil {
 		t.Fatalf("RenderHTML(GXUISideNav %q) failed: %v", currentID, err)
+	}
+	return html
+}
+
+func renderGXUITopHeader(t *testing.T, baseURL string) string {
+	t.Helper()
+	html, err := gx.RenderHTML(GXUITopHeader(baseURL))
+	if err != nil {
+		t.Fatalf("RenderHTML(GXUITopHeader %q) failed: %v", baseURL, err)
 	}
 	return html
 }

@@ -1,6 +1,7 @@
 package demo
 
 import (
+	"html"
 	"net/url"
 	"strings"
 
@@ -17,6 +18,27 @@ type navEntry struct {
 	Href     string
 	Label    string
 	Children []navEntry
+}
+
+type topHeaderLink struct {
+	Href  string
+	Label string
+}
+
+var gxUITopHeader = struct {
+	BrandHref string
+	LogoHref  string
+	Links     []topHeaderLink
+}{
+	BrandHref: "../index.html",
+	LogoHref:  "../busdk-logo.png",
+	Links: []topHeaderLink{
+		{Href: "gx/index.html", Label: "GX Framework"},
+		{Href: "bus-ui/index.html", Label: "Bus UI Library"},
+		{Href: "reference/index.html", Label: "Reference"},
+		{Href: "modules/index.html", Label: "Modules"},
+		{Href: "../pricing/index.html", Label: "Pricing"},
+	},
 }
 
 var gxUISideNav = struct {
@@ -197,6 +219,31 @@ var gxUISideNav = struct {
 			},
 		},
 	},
+}
+
+// GXUITopHeader returns the shared GX/UI docs top header rendered through GX nodes.
+func GXUITopHeader(baseURL string) gx.Node {
+	navLinks := make([]gx.Node, 0, len(gxUITopHeader.Links))
+	for _, link := range gxUITopHeader.Links {
+		navLinks = append(navLinks, gx.Element("a", gx.Props{
+			"href": resolveNavHref(baseURL, link.Href),
+		}, gx.Text(link.Label)))
+	}
+
+	return gx.Element("div", gx.Props{"class": "site-header-inner"},
+		gx.Element("a", gx.Props{
+			"class":      "brand",
+			"href":       resolveNavHref(baseURL, gxUITopHeader.BrandHref),
+			"aria-label": "BusDK home",
+		},
+			gx.TrustedMarkdownHTML(`<img class="brand-logo" src="`+html.EscapeString(resolveNavHref(baseURL, gxUITopHeader.LogoHref))+`" alt="BusDK logo" />`),
+			gx.Element("span", gx.Props{"class": "brand-wordmark"}, gx.Text("BusDK")),
+		),
+		gx.Element("nav", gx.Props{
+			"class":      "site-nav gx-doc-nav",
+			"aria-label": "Primary",
+		}, navLinks...),
+	)
 }
 
 // GXUISideNav returns the shared GX/UI docs navigation rendered through GX nodes.

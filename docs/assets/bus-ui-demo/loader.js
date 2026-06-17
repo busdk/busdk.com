@@ -35,8 +35,12 @@
     return Array.prototype.slice.call(document.querySelectorAll("aside.gx-side-nav[data-gx-ui-side-nav]"));
   }
 
+  function topHeaderNodes() {
+    return Array.prototype.slice.call(document.querySelectorAll("header.site-header[data-gx-ui-top-header]"));
+  }
+
   function mountNodes() {
-    return demoNodes().concat(sideNavNodes());
+    return demoNodes().concat(sideNavNodes(), topHeaderNodes());
   }
 
   function setMountState(state) {
@@ -45,6 +49,9 @@
     });
     sideNavNodes().forEach(function (node) {
       node.setAttribute("data-gx-ui-side-nav-state", state);
+    });
+    topHeaderNodes().forEach(function (node) {
+      node.setAttribute("data-gx-ui-top-header-state", state);
     });
   }
 
@@ -58,6 +65,9 @@
       node.textContent = message;
       node.classList.add("bus-ui-demo-fallback");
       node.setAttribute("data-gx-ui-side-nav-state", "failed");
+    });
+    topHeaderNodes().forEach(function (node) {
+      node.setAttribute("data-gx-ui-top-header-state", "failed");
     });
   }
 

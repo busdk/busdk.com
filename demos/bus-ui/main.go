@@ -25,6 +25,7 @@ func mountAll() {
 		return
 	}
 	mountBusUIDemos(document)
+	mountGXUITopHeaders(document)
 	mountGXUISideNavs(document)
 }
 
@@ -55,7 +56,7 @@ func mountBusUIDemos(document js.Value) {
 
 func mountGXUISideNavs(document js.Value) {
 	nodes := document.Call("querySelectorAll", "aside.gx-side-nav[data-gx-ui-side-nav]")
-	baseURL := gxUISideNavBaseURL(document)
+	baseURL := gxUIDocsBaseURL(document)
 	for i := 0; i < nodes.Length(); i++ {
 		el := nodes.Index(i)
 		currentID := el.Call("getAttribute", "data-gx-ui-current").String()
@@ -81,8 +82,35 @@ func mountGXUISideNavs(document js.Value) {
 	}
 }
 
-func gxUISideNavBaseURL(document js.Value) string {
+func mountGXUITopHeaders(document js.Value) {
+	nodes := document.Call("querySelectorAll", "header.site-header[data-gx-ui-top-header]")
+	baseURL := gxUIDocsBaseURL(document)
+	for i := 0; i < nodes.Length(); i++ {
+		el := nodes.Index(i)
+		fallbackHTML := el.Get("innerHTML").String()
+		el.Call("setAttribute", "data-gx-ui-top-header-state", "mounting")
+		selector := ensureID(el, "gx-ui-top-header-root", i)
+		headerBaseURL := baseURL
+		root := func() gx.Node {
+			return demo.GXUITopHeader(headerBaseURL)
+		}
+		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
+			OnError: func(err error) {
+				setTopHeaderFallback(el, fallbackHTML)
+			},
+		}); err != nil {
+			setTopHeaderFallback(el, fallbackHTML)
+			continue
+		}
+		el.Call("setAttribute", "data-gx-ui-top-header-state", "mounted")
+	}
+}
+
+func gxUIDocsBaseURL(document js.Value) string {
 	window := js.Global().Get("window")
+	if baseURL := window.Get("__gxUIDocsBaseURL"); !baseURL.IsUndefined() && !baseURL.IsNull() && baseURL.String() != "" {
+		return baseURL.String()
+	}
 	if baseURL := window.Get("__gxUISideNavBaseURL"); !baseURL.IsUndefined() && !baseURL.IsNull() && baseURL.String() != "" {
 		return baseURL.String()
 	}
@@ -115,6 +143,11 @@ func setSideNavFallback(el js.Value, text string) {
 	el.Set("textContent", text)
 	el.Get("classList").Call("add", "bus-ui-demo-fallback")
 	el.Call("setAttribute", "data-gx-ui-side-nav-state", "failed")
+}
+
+func setTopHeaderFallback(el js.Value, html string) {
+	el.Set("innerHTML", html)
+	el.Call("setAttribute", "data-gx-ui-top-header-state", "failed")
 }
 
 func bindDemoInteractions(root js.Value) {
