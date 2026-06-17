@@ -195,9 +195,6 @@ func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileA
 
 	wsURL, err := waitForPageWebSocketURL(ctx, userDataDir)
 	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			t.Skipf("skip button browser regression: headless browser did not expose DevToolsActivePort for %s", pageURL)
-		}
 		t.Fatalf("discover page websocket for %s failed: %v\n%s", pageURL, err, stderr.String())
 	}
 	client, err := dialChromeDebugger(wsURL)
