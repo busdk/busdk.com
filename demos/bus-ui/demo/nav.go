@@ -41,6 +41,14 @@ var gxUITopHeader = struct {
 	},
 }
 
+var gxUIFooter = struct {
+	Href  string
+	Label string
+}{
+	Href:  "https://hg.fi/",
+	Label: "Heusala Group Ltd",
+}
+
 var gxUISideNav = struct {
 	Title  string
 	Groups []navGroup
@@ -243,6 +251,17 @@ func GXUITopHeader(baseURL string) gx.Node {
 			"class":      "site-nav gx-doc-nav",
 			"aria-label": "Primary",
 		}, navLinks...),
+	)
+}
+
+// GXUIFooter returns the shared GX/UI docs footer rendered through GX nodes.
+func GXUIFooter() gx.Node {
+	return gx.Element("div", gx.Props{"class": "site-footer-inner"},
+		gx.Element("p", nil,
+			gx.Text("© "),
+			gx.Element("a", gx.Props{"href": gxUIFooter.Href}, gx.Text(gxUIFooter.Label)),
+			gx.Text("."),
+		),
 	)
 }
 

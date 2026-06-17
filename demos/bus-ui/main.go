@@ -26,6 +26,7 @@ func mountAll() {
 	}
 	mountBusUIDemos(document)
 	mountGXUITopHeaders(document)
+	mountGXUIFooters(document)
 	mountGXUISideNavs(document)
 }
 
@@ -106,6 +107,28 @@ func mountGXUITopHeaders(document js.Value) {
 	}
 }
 
+func mountGXUIFooters(document js.Value) {
+	nodes := document.Call("querySelectorAll", "footer.site-footer[data-gx-ui-footer]")
+	for i := 0; i < nodes.Length(); i++ {
+		el := nodes.Index(i)
+		fallbackHTML := el.Get("innerHTML").String()
+		el.Call("setAttribute", "data-gx-ui-footer-state", "mounting")
+		selector := ensureID(el, "gx-ui-footer-root", i)
+		root := func() gx.Node {
+			return demo.GXUIFooter()
+		}
+		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
+			OnError: func(err error) {
+				setFooterFallback(el, fallbackHTML)
+			},
+		}); err != nil {
+			setFooterFallback(el, fallbackHTML)
+			continue
+		}
+		el.Call("setAttribute", "data-gx-ui-footer-state", "mounted")
+	}
+}
+
 func gxUIDocsBaseURL(document js.Value) string {
 	window := js.Global().Get("window")
 	if baseURL := window.Get("__gxUIDocsBaseURL"); !baseURL.IsUndefined() && !baseURL.IsNull() && baseURL.String() != "" {
@@ -148,6 +171,11 @@ func setSideNavFallback(el js.Value, text string) {
 func setTopHeaderFallback(el js.Value, html string) {
 	el.Set("innerHTML", html)
 	el.Call("setAttribute", "data-gx-ui-top-header-state", "failed")
+}
+
+func setFooterFallback(el js.Value, html string) {
+	el.Set("innerHTML", html)
+	el.Call("setAttribute", "data-gx-ui-footer-state", "failed")
 }
 
 func bindDemoInteractions(root js.Value) {

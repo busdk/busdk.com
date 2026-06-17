@@ -3,6 +3,9 @@
   const topHeaderNodes = Array.prototype.slice.call(
     document.querySelectorAll("header.site-header[data-gx-ui-top-header]")
   );
+  const footerNodes = Array.prototype.slice.call(
+    document.querySelectorAll("footer.site-footer[data-gx-ui-footer]")
+  );
   const navNodes = Array.prototype.slice.call(
     document.querySelectorAll("aside.gx-side-nav[data-gx-ui-side-nav]")
   );
@@ -21,6 +24,9 @@
     });
     topHeaderNodes.forEach(function (node) {
       node.setAttribute("data-gx-ui-top-header-state", "failed");
+    });
+    footerNodes.forEach(function (node) {
+      node.setAttribute("data-gx-ui-footer-state", "failed");
     });
   }
 
@@ -51,7 +57,7 @@
     document.head.appendChild(wasmExecScript);
   }
 
-  if (navNodes.length > 0 || topHeaderNodes.length > 0) {
+  if (navNodes.length > 0 || topHeaderNodes.length > 0 || footerNodes.length > 0) {
     ensureLoaderScript();
   }
 })();

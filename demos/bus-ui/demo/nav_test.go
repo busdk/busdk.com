@@ -44,6 +44,19 @@ func TestGXUITopHeaderResolvesPricingOutsideGXUIRoot(t *testing.T) {
 	}
 }
 
+func TestGXUIFooterIncludesCopyrightFallbackContent(t *testing.T) {
+	html := renderGXUIFooter(t)
+	for _, want := range []string{
+		`class="site-footer-inner"`,
+		`© `,
+		`href="https://hg.fi/">Heusala Group Ltd</a>.`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("GXUIFooter HTML missing %q in %s", want, html)
+		}
+	}
+}
+
 func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 	html := renderGXUISideNav(t, "bus-ui/forms")
 	for _, want := range []string{
@@ -193,6 +206,15 @@ func renderGXUITopHeader(t *testing.T, baseURL string) string {
 	html, err := gx.RenderHTML(GXUITopHeader(baseURL))
 	if err != nil {
 		t.Fatalf("RenderHTML(GXUITopHeader %q) failed: %v", baseURL, err)
+	}
+	return html
+}
+
+func renderGXUIFooter(t *testing.T) string {
+	t.Helper()
+	html, err := gx.RenderHTML(GXUIFooter())
+	if err != nil {
+		t.Fatalf("RenderHTML(GXUIFooter) failed: %v", err)
 	}
 	return html
 }

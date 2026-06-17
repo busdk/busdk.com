@@ -39,8 +39,12 @@
     return Array.prototype.slice.call(document.querySelectorAll("header.site-header[data-gx-ui-top-header]"));
   }
 
+  function footerNodes() {
+    return Array.prototype.slice.call(document.querySelectorAll("footer.site-footer[data-gx-ui-footer]"));
+  }
+
   function mountNodes() {
-    return demoNodes().concat(sideNavNodes(), topHeaderNodes());
+    return demoNodes().concat(sideNavNodes(), topHeaderNodes(), footerNodes());
   }
 
   function setMountState(state) {
@@ -52,6 +56,9 @@
     });
     topHeaderNodes().forEach(function (node) {
       node.setAttribute("data-gx-ui-top-header-state", state);
+    });
+    footerNodes().forEach(function (node) {
+      node.setAttribute("data-gx-ui-footer-state", state);
     });
   }
 
@@ -68,6 +75,9 @@
     });
     topHeaderNodes().forEach(function (node) {
       node.setAttribute("data-gx-ui-top-header-state", "failed");
+    });
+    footerNodes().forEach(function (node) {
+      node.setAttribute("data-gx-ui-footer-state", "failed");
     });
   }
 
