@@ -61,7 +61,7 @@ func TestButtonDocsPreviewBrowserSmoke(t *testing.T) {
 	}
 
 	t.Run("file-preview", func(t *testing.T) {
-		output := runHeadlessBrowser(t, browser, fileURL(buttonPath))
+		output := runHeadlessBrowser(t, browser, fileURL(buttonPath), true)
 		for _, want := range []string{
 			`data-bus-ui-demo-state="failed"`,
 			`data-bus-ui-demo-asset="css"`,
@@ -80,7 +80,7 @@ func TestButtonDocsPreviewBrowserSmoke(t *testing.T) {
 		baseURL, cleanup := serveRepoOnLoopback(t)
 		defer cleanup()
 
-		output := runHeadlessBrowser(t, browser, baseURL+buttonDocsPreviewRelativePath)
+		output := runHeadlessBrowser(t, browser, baseURL+buttonDocsPreviewRelativePath, false)
 		for _, want := range []string{
 			`data-bus-ui-demo-state="mounted"`,
 			`data-bus-ui-demo-asset="css"`,
@@ -146,13 +146,33 @@ func headlessBrowserBinary() (string, bool) {
 	return "", false
 }
 
-func runHeadlessBrowser(t *testing.T, browser string, pageURL string) string {
+func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileAccess bool) string {
 	t.Helper()
 
 	ctx, cancel := context.WithTimeout(context.Background(), 45*time.Second)
 	defer cancel()
 
 	userDataDir := t.TempDir()
+	if allowFileAccess {
+		cmd := exec.CommandContext(ctx, browser,
+			"--headless",
+			"--disable-gpu",
+			"--disable-background-networking",
+			"--disable-dev-shm-usage",
+			"--disable-extensions",
+			"--disable-sync",
+			"--metrics-recording-only",
+			"--no-default-browser-check",
+			"--no-first-run",
+			"--run-all-compositor-stages-before-draw",
+			"--virtual-time-budget=12000",
+			"--user-data-dir="+userDataDir,
+			"--allow-file-access-from-files",
+			"--dump-dom",
+			pageURL,
+		)
+		return runBrowserCommand(t, ctx, cmd, pageURL)
+	}
 	cmd := exec.CommandContext(ctx, browser,
 		"--headless",
 		"--disable-gpu",
@@ -169,6 +189,11 @@ func runHeadlessBrowser(t *testing.T, browser string, pageURL string) string {
 		"--dump-dom",
 		pageURL,
 	)
+	return runBrowserCommand(t, ctx, cmd, pageURL)
+}
+
+func runBrowserCommand(t *testing.T, ctx context.Context, cmd *exec.Cmd, pageURL string) string {
+	t.Helper()
 
 	output, err := cmd.CombinedOutput()
 	if ctx.Err() == context.DeadlineExceeded {
