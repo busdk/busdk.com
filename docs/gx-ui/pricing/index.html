@@ -90,12 +90,16 @@
                 </div>
                 <div class="gx-code-card">
                   <div class="gx-card-head">notice.gx</div>
-                  <pre><code>func Notice(props NoticeProps) gx.Node {
+                  <pre><code>func FoundationNotice(props NoticeProps) gx.Node {
   return &lt;section class="notice"&gt;
     &lt;h2&gt;{props.Title}&lt;/h2&gt;
     {props.Children}
   &lt;/section&gt;
-}</code></pre>
+}
+
+var gxPackage = &lt;FoundationNotice title={"Bus GX"}&gt;
+  Build your own product components on the GX library.
+&lt;/FoundationNotice&gt;</code></pre>
                 </div>
               </div>
 
@@ -114,12 +118,12 @@
                   </p>
                 </div>
                 <div class="gx-code-card">
-                  <div class="gx-card-head">bus-ui.go</div>
-                  <pre><code>node := ui.ResultPanel(ui.ResultPanelProps{
-  Title:   "Evidence pack ready",
-  Status:  ui.StatusSuccess,
-  Summary: "3 files prepared for review.",
-})</code></pre>
+                  <div class="gx-card-head">bus-ui-package.gx</div>
+                  <pre><code>var busUIPackage = &lt;ResultPanel
+  title={"Bus UI"}
+  status={"Complete component package"}
+  summary={"Includes Bus GX plus supported product components."}
+&gt;&lt;/ResultPanel&gt;</code></pre>
                 </div>
               </div>
             </div>
