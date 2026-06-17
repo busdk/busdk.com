@@ -24,6 +24,7 @@ import (
 )
 
 const buttonDocsPreviewRelativePath = "docs/gx-ui/bus-ui/components/action/button/index.html"
+const linkButtonDocsPreviewRelativePath = "docs/gx-ui/bus-ui/components/action/link-button/index.html"
 
 func TestButtonDocsPreviewStaticMarkupUsesPublishedDocsTree(t *testing.T) {
 	t.Parallel()
@@ -69,51 +70,126 @@ func TestButtonDocsPreviewBrowserSmoke(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	t.Run("file-preview", func(t *testing.T) {
-		output := runHeadlessBrowser(t, browser, fileURL(buttonPath), true)
-		for _, want := range []string{
-			`data-bus-ui-demo-state="failed"`,
-			`data-bus-ui-demo-asset="css"`,
-			"Bus UI demos need a local HTTP server to load WebAssembly.",
-		} {
-			if !strings.Contains(output, want) {
-				t.Fatalf("file:// output missing %q in:\n%s", want, output)
+	linkButtonPath, err := docsPreviewPath(linkButtonDocsPreviewRelativePath)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	t.Run("button", func(t *testing.T) {
+		t.Run("file-preview", func(t *testing.T) {
+			output := runHeadlessBrowser(t, browser, fileURL(buttonPath), true, demoBrowserExpectations{})
+			for _, want := range []string{
+				`data-bus-ui-demo-state="failed"`,
+				`data-bus-ui-demo-asset="css"`,
+				"Bus UI demos need a local HTTP server to load WebAssembly.",
+			} {
+				if !strings.Contains(output, want) {
+					t.Fatalf("file:// output missing %q in:\n%s", want, output)
+				}
 			}
-		}
-		if strings.Contains(output, `data-bus-ui-demo-widget="button"`) {
-			t.Fatalf("file:// preview unexpectedly mounted the Button demo:\n%s", output)
-		}
+			if strings.Contains(output, `data-bus-ui-demo-widget="button"`) {
+				t.Fatalf("file:// preview unexpectedly mounted the Button demo:\n%s", output)
+			}
+		})
+
+		t.Run("http-preview", func(t *testing.T) {
+			baseURL, cleanup := serveRepoOnLoopback(t)
+			defer cleanup()
+
+			output := runHeadlessBrowser(t, browser, baseURL+buttonDocsPreviewRelativePath, false, demoBrowserExpectations{
+				mountedNeedles: []string{
+					`data-bus-ui-demo-widget="button"`,
+					"bus-ui-btn",
+					"bus-ui-btn-primary",
+					"Save draft",
+					`data-bus-ui-demo-status="button"`,
+				},
+				clickSelector: `[data-bus-ui-demo-action="button-click"]`,
+				clickedNeedles: []string{
+					`data-bus-ui-demo-action="button-click"`,
+					`data-bus-ui-demo-status="button"`,
+				},
+				statusSelector: `[data-bus-ui-demo-status="button"]`,
+				statusText:     "Button clicked",
+			})
+			for _, want := range []string{
+				`data-bus-ui-demo-state="mounted"`,
+				`data-bus-ui-demo-asset="css"`,
+				`data-bus-ui-demo-widget="button"`,
+				"bus-ui-btn",
+				"bus-ui-btn-primary",
+				`data-bus-ui-demo-status="button"`,
+			} {
+				if !strings.Contains(output, want) {
+					t.Fatalf("http output missing %q in:\n%s", want, output)
+				}
+			}
+			if strings.Contains(output, "Bus UI demos need a local HTTP server to load WebAssembly.") {
+				t.Fatalf("http preview unexpectedly used the file:// fallback:\n%s", output)
+			}
+		})
 	})
 
-	t.Run("http-preview", func(t *testing.T) {
-		baseURL, cleanup := serveRepoOnLoopback(t)
-		defer cleanup()
-
-		output := runHeadlessBrowser(t, browser, baseURL+buttonDocsPreviewRelativePath, false)
-		for _, want := range []string{
-			`data-bus-ui-demo-state="mounted"`,
-			`data-bus-ui-demo-asset="css"`,
-			`data-bus-ui-demo-widget="button"`,
-			"bus-ui-btn",
-			"bus-ui-btn-primary",
-			`data-bus-ui-demo-status="button"`,
-		} {
-			if !strings.Contains(output, want) {
-				t.Fatalf("http output missing %q in:\n%s", want, output)
+	t.Run("link-button", func(t *testing.T) {
+		t.Run("file-preview", func(t *testing.T) {
+			output := runHeadlessBrowser(t, browser, fileURL(linkButtonPath), true, demoBrowserExpectations{})
+			for _, want := range []string{
+				`data-bus-ui-demo-state="failed"`,
+				`data-bus-ui-demo-asset="css"`,
+				"Bus UI demos need a local HTTP server to load WebAssembly.",
+				"assets/bus-ui-demo/wasm_exec.js",
+				"assets/bus-ui-demo/loader.js",
+				"data-bus-ui-demo-loader",
+			} {
+				if !strings.Contains(output, want) {
+					t.Fatalf("link-button file:// output missing %q in:\n%s", want, output)
+				}
 			}
-		}
-		if strings.Contains(output, "Bus UI demos need a local HTTP server to load WebAssembly.") {
-			t.Fatalf("http preview unexpectedly used the file:// fallback:\n%s", output)
-		}
+			if strings.Contains(output, `data-bus-ui-demo-widget="link-button"`) {
+				t.Fatalf("file:// preview unexpectedly mounted the LinkButton demo:\n%s", output)
+			}
+		})
+
+		t.Run("http-preview", func(t *testing.T) {
+			baseURL, cleanup := serveRepoOnLoopback(t)
+			defer cleanup()
+
+			output := runHeadlessBrowser(t, browser, baseURL+linkButtonDocsPreviewRelativePath, false, demoBrowserExpectations{
+				mountedNeedles: []string{
+					`data-bus-ui-demo-widget="link-button"`,
+					"bus-ui-btn",
+					"bus-ui-btn-secondary",
+					"Open invoices",
+				},
+			})
+			for _, want := range []string{
+				`data-bus-ui-demo-state="mounted"`,
+				`data-bus-ui-demo-asset="css"`,
+				"assets/bus-ui-demo/wasm_exec.js",
+				"assets/bus-ui-demo/loader.js",
+				"data-bus-ui-demo-loader",
+			} {
+				if !strings.Contains(output, want) {
+					t.Fatalf("link-button http output missing %q in:\n%s", want, output)
+				}
+			}
+			if strings.Contains(output, "Bus UI demos need a local HTTP server to load WebAssembly.") {
+				t.Fatalf("link-button http preview unexpectedly used the file:// fallback:\n%s", output)
+			}
+		})
 	})
 }
 
 func buttonDocsPreviewPath() (string, error) {
+	return docsPreviewPath(buttonDocsPreviewRelativePath)
+}
+
+func docsPreviewPath(relativePath string) (string, error) {
 	repoRoot, err := repoRootDir()
 	if err != nil {
 		return "", err
 	}
-	return filepath.Join(repoRoot, filepath.FromSlash(buttonDocsPreviewRelativePath)), nil
+	return filepath.Join(repoRoot, filepath.FromSlash(relativePath)), nil
 }
 
 func repoRootDir() (string, error) {
@@ -157,7 +233,7 @@ func headlessBrowserBinary() (string, bool) {
 	return "", false
 }
 
-func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileAccess bool) string {
+func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileAccess bool, opts demoBrowserExpectations) string {
 	t.Helper()
 
 	ctx, cancel := context.WithTimeout(context.Background(), 45*time.Second)
@@ -222,35 +298,49 @@ func runHeadlessBrowser(t *testing.T, browser string, pageURL string, allowFileA
 		"Bus UI demos need a local HTTP server to load WebAssembly.",
 	}
 	if !allowFileAccess {
+		if len(opts.mountedNeedles) == 0 {
+			t.Fatalf("runHeadlessBrowser with HTTP preview mode requires mountedNeedles")
+		}
 		want = []string{
 			`data-bus-ui-demo-state="mounted"`,
 			`data-bus-ui-demo-asset="css"`,
-			"Save draft",
-			`data-bus-ui-demo-widget="button"`,
 		}
+		want = append(want, opts.mountedNeedles...)
 	}
 
 	snapshot, err := client.waitForSnapshot(ctx, "", want...)
 	if err != nil {
 		t.Fatalf("capture browser DOM for %s failed: %v\n%s", pageURL, err, stderr.String())
 	}
+
 	if !allowFileAccess {
-		if err := client.clickAndWaitForText(ctx, "", `[data-bus-ui-demo-action="button-click"]`, `[data-bus-ui-demo-status="button"]`, "Button clicked"); err != nil {
-			t.Fatalf("click button demo for %s failed: %v\n%s", pageURL, err, stderr.String())
-		}
-		snapshot, err = client.waitForSnapshot(ctx, "", []string{
-			`data-bus-ui-demo-state="mounted"`,
-			`data-bus-ui-demo-asset="css"`,
-			`data-bus-ui-demo-widget="button"`,
-			`data-bus-ui-demo-action="button-click"`,
-			`data-bus-ui-demo-status="button"`,
-			"Button clicked",
-		}...)
-		if err != nil {
-			t.Fatalf("capture clicked browser DOM for %s failed: %v\n%s", pageURL, err, stderr.String())
+		if opts.clickSelector != "" && opts.statusSelector != "" && opts.statusText != "" {
+			if err := client.clickAndWaitForText(ctx, "", opts.clickSelector, opts.statusSelector, opts.statusText); err != nil {
+				t.Fatalf("click button demo for %s failed: %v\n%s", pageURL, err, stderr.String())
+			}
+			clickedWant := []string{
+				`data-bus-ui-demo-state="mounted"`,
+				`data-bus-ui-demo-asset="css"`,
+			}
+			clickedWant = append(clickedWant, opts.mountedNeedles...)
+			clickedWant = append(clickedWant, opts.clickedNeedles...)
+			clickedWant = append(clickedWant, opts.statusText)
+
+			snapshot, err = client.waitForSnapshot(ctx, "", clickedWant...)
+			if err != nil {
+				t.Fatalf("capture clicked browser DOM for %s failed: %v\n%s", pageURL, err, stderr.String())
+			}
 		}
 	}
 	return snapshot
+}
+
+type demoBrowserExpectations struct {
+	mountedNeedles []string
+	clickSelector  string
+	clickedNeedles []string
+	statusSelector string
+	statusText     string
 }
 
 func serveRepoOnLoopback(t *testing.T) (string, func()) {
