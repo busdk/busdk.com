@@ -16,6 +16,7 @@ func TestButtonDocsPageUsesReusableExampleTabs(t *testing.T) {
 	text := string(body)
 
 	for _, want := range []string{
+		`data-example-tabs`,
 		`role="tablist"`,
 		`aria-orientation="horizontal"`,
 		`id="button-example-tab-go-api"`,
@@ -44,6 +45,7 @@ func TestButtonDocsPageUsesReusableExampleTabs(t *testing.T) {
 		want int
 	}{
 		{name: "tablist", got: strings.Count(text, `role="tablist"`), want: 1},
+		{name: "example tabs root", got: strings.Count(text, `data-example-tabs`), want: 1},
 		{name: "tabs", got: strings.Count(text, `id="button-example-tab-`), want: 2},
 		{name: "panels", got: strings.Count(text, `id="button-example-panel-`), want: 2},
 		{name: "selected tabs", got: strings.Count(text, `aria-selected="true"`), want: 1},

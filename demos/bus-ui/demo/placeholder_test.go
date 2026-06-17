@@ -145,6 +145,21 @@ var docsDemoPages = []docsDemoPage{
 	},
 }
 
+func TestDocsDemoPlaceholdersMapToRegisteredDemoIDs(t *testing.T) {
+	t.Parallel()
+
+	for _, page := range docsDemoPages {
+		page := page
+		t.Run(page.id, func(t *testing.T) {
+			t.Parallel()
+
+			if _, ok := Lookup(page.id); !ok {
+				t.Fatalf("Lookup(%q) reported no demo for docs placeholder at %s", page.id, page.path)
+			}
+		})
+	}
+}
+
 func TestPlaceholderHTMLUsesSharedLoader(t *testing.T) {
 	t.Parallel()
 
