@@ -279,6 +279,8 @@ func GXUISideNavCurrentCount(currentID string) int {
 }
 
 func gxUISideNavChildren(currentID string, baseURL string) ([]gx.Node, int) {
+	currentID = strings.TrimSpace(currentID)
+	baseURL = strings.TrimSpace(baseURL)
 	nodes := []gx.Node{
 		gx.Element("p", gx.Props{"class": "gx-side-nav-title"}, gx.Text(gxUISideNav.Title)),
 	}
@@ -287,9 +289,11 @@ func gxUISideNavChildren(currentID string, baseURL string) ([]gx.Node, int) {
 		groupChildren := []gx.Node{
 			gx.Element("p", gx.Props{"class": "gx-side-nav-heading"}, gx.Text(group.Heading)),
 		}
-		entries, count := renderNavEntries(group.Entries, strings.TrimSpace(currentID), strings.TrimSpace(baseURL), 0)
-		currentCount += count
-		groupChildren = append(groupChildren, entries...)
+		if navEntriesContainCurrent(group.Entries, currentID) {
+			entries, count := renderNavEntries(group.Entries, currentID, baseURL, 0)
+			currentCount += count
+			groupChildren = append(groupChildren, entries...)
+		}
 		nodes = append(nodes, gx.Element("div", gx.Props{"class": "gx-side-nav-group"}, groupChildren...))
 	}
 	return nodes, currentCount
@@ -328,6 +332,15 @@ func navEntryContainsCurrent(entry navEntry, currentID string) bool {
 	}
 	for _, child := range entry.Children {
 		if navEntryContainsCurrent(child, currentID) {
+			return true
+		}
+	}
+	return false
+}
+
+func navEntriesContainCurrent(entries []navEntry, currentID string) bool {
+	for _, entry := range entries {
+		if navEntryContainsCurrent(entry, currentID) {
 			return true
 		}
 	}
