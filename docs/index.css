@@ -1194,6 +1194,14 @@ h1 {
   box-shadow: var(--shadow);
 }
 
+.gx-pricing-checkout {
+  margin-top: 2rem;
+}
+
+.gx-pricing-notes {
+  margin-top: 1.4rem;
+}
+
 .gx-learning-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -6,9 +6,10 @@
     <title>Bus GX And Bus UI Pricing | BusDK</title>
     <meta
       name="description"
-      content="Current source-package pricing for Bus GX and Bus UI, including the difference between the GX framework library and the complete Bus UI component package."
+      content="Buy one year of Bus GX or Bus GX plus Bus UI source access with manual GitHub repository fulfillment and GitHub Issues support."
     />
     <link rel="stylesheet" href="../../index.css" />
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
   </head>
   <body>
     <div class="site-shell">
@@ -35,48 +36,43 @@
               <p class="eyebrow">GX/UI Pricing</p>
               <h1>Choose the UI layer you need.</h1>
               <p class="hero-copy">
-                Bus GX and Bus UI are commercial source-available Bus modules. These are the
-                current initial prices we offer for
-                <a href="https://fsl.software/">FSL-licensed</a> source access;
-                customer-specific offers can be discussed with
-                <a href="mailto:sales@hg.fi">sales@hg.fi</a>.
+                Bus GX and Bus UI are commercial source-available Bus modules. Buy one year of
+                <a href="https://fsl.software/">FSL-licensed</a> source access, with GitHub
+                repository invitations handled manually after checkout and GitHub Issues available
+                for support.
               </p>
 
-              <div class="gx-concept-grid">
+              <div class="gx-pricing-checkout" aria-label="Bus GX and Bus UI checkout">
+                <stripe-pricing-table
+                  pricing-table-id="prctbl_1TjL6TDTIhYU3CtMVzGEuNoI"
+                  publishable-key="pk_live_hfdl5u8Hs2HzGPQVmJaFQSLj00O8oIMvW0"
+                >
+                </stripe-pricing-table>
+              </div>
+
+              <div class="gx-concept-grid gx-pricing-notes">
                 <article class="tutorial-card">
-                  <h3>Bus GX</h3>
-                  <p><strong>1 390 €</strong></p>
+                  <h3>One-year repository access</h3>
                   <p>
-                    The GX framework library: <code>.gx</code> authoring, typed nodes, generated
-                    Go rendering, runtime bridges, callbacks, effects, and test helpers.
-                  </p>
-                  <p>
-                    Choose GX when you want the low-level Go UI foundation and will build your own
-                    product components on top of it.
+                    Each purchase grants one year of GitHub repository access as an outside
+                    collaborator. After payment, we email setup details and send the repository
+                    invitation to the purchaser's GitHub account.
                   </p>
                 </article>
                 <article class="tutorial-card">
-                  <h3>Bus UI</h3>
-                  <p><strong>7 802 €</strong></p>
+                  <h3>License and support</h3>
                   <p>
-                    The complete Bus UI component package, including Bus GX. It provides supported
-                    shells, forms, data display, evidence, assistant, terminal, portal, status, and
-                    action components for Go-owned products.
-                  </p>
-                  <p>
-                    Choose Bus UI when you want the ready component library instead of building and
-                    maintaining that layer yourself.
+                    Source access is licensed under FSL, converting to MIT or Apache 2.0 two years
+                    after release. Repository instructions are included, and support questions can
+                    be placed as GitHub Issues.
                   </p>
                 </article>
                 <article class="tutorial-card">
-                  <h3>How to buy</h3>
+                  <h3>Checkout and VAT</h3>
                   <p>
-                    Contact <a href="mailto:sales@hg.fi">sales@hg.fi</a> for
-                    <a href="https://fsl.software/">FSL-licensed</a> source access, commercial
-                    terms, and customer-specific package offers.
-                  </p>
-                  <p>
-                    Use this GX/UI pricing page for Bus GX and Bus UI package decisions.
+                    Customers are charged immediately during Stripe checkout. VAT is added at
+                    checkout where applicable. If checkout is unavailable, contact
+                    <a href="mailto:sales@hg.fi">sales@hg.fi</a>.
                   </p>
                 </article>
               </div>
