@@ -50,8 +50,15 @@
                 <div class="bus-ui-demo-frame" aria-label="Live Button demo">
                   <div data-bus-ui-demo="button"><span aria-busy="true" aria-live="polite" class="bus-ui-loader bus-ui-demo-placeholder-loader bus-ui-loader-md" data-ui-busy="true" data-ui-component="Loader" role="status"><svg aria-hidden="true" class="bus-ui-loader-svg" focusable="false" viewBox="0 0 24 24"><circle class="bus-ui-loader-track" cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="3"></circle><path class="bus-ui-loader-arc" d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-dasharray="14 42" stroke-dashoffset="1" stroke-linecap="round" stroke-width="3"></path></svg><span class="bus-ui-loader-label">Loading Button demo...</span></span></div>
                 </div>
-                <h3>Go API</h3>
-              <pre><code>import (
+                <div class="gx-example-tabs" data-example-tabs>
+                  <div class="gx-example-tabs-list" role="tablist" aria-label="Button example formats" aria-orientation="horizontal">
+                    <button class="gx-example-tab" id="button-example-tab-go-api" role="tab" type="button" aria-controls="button-example-panel-go-api" aria-selected="true">Go API</button>
+                    <button class="gx-example-tab" id="button-example-tab-gx-source" role="tab" type="button" aria-controls="button-example-panel-gx-source" aria-selected="false">.gx source</button>
+                  </div>
+                  <section class="gx-example-tab-panel" id="button-example-panel-go-api" role="tabpanel" aria-labelledby="button-example-tab-go-api">
+                    <h3>Go API</h3>
+                    <p>Use the helper when a module needs a typed node and explicit HTML rendering at the boundary.</p>
+                    <pre><code>import (
   gx "github.com/busdk/bus-gx/pkg/gx"
   ui "github.com/busdk/bus-ui/pkg/ui"
 )
@@ -65,11 +72,13 @@ if err != nil {
 }
 
 html, err := gx.RenderHTML(node)</code></pre>
-                <p>
-                  In <code>.gx</code> source, write the button as markup or wrap that markup in a local component with lower-camel props.
-                </p>
-                <h3>.gx source</h3>
-              <pre><code>package actionsui
+                  </section>
+                  <section class="gx-example-tab-panel" id="button-example-panel-gx-source" role="tabpanel" aria-labelledby="button-example-tab-gx-source">
+                    <h3>.gx source</h3>
+                    <p>
+                      In <code>.gx</code> source, write the button as markup or wrap that markup in a local component with lower-camel props.
+                    </p>
+                    <pre><code>package actionsui
 
 import gx "github.com/busdk/bus-gx/pkg/gx"
 
@@ -84,6 +93,8 @@ func PrimaryButton(props PrimaryButtonProps) gx.Node {
 }
 
 var toolbarButton = &lt;PrimaryButton label={"Save draft"}&gt;&lt;/PrimaryButton&gt;</code></pre>
+                  </section>
+                </div>
               </div>
             </div>
           </div>
@@ -98,6 +109,7 @@ var toolbarButton = &lt;PrimaryButton label={"Save draft"}&gt;&lt;/PrimaryButton
     </div>
     <script defer src="../../../../../assets/bus-ui-demo/wasm_exec.js"></script>
     <script defer src="../../../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
+    <script defer src="../../../../example-tabs.js"></script>
         <script src="../../../../side-nav.js"></script>
 </body>
 </html>

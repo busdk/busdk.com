@@ -1180,6 +1180,66 @@ h1 {
   font-size: 0.95rem;
 }
 
+.gx-example-tabs {
+  display: grid;
+  gap: 1rem;
+}
+
+.gx-example-tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.gx-example-tab {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 0.52rem 0.96rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 150ms ease, background 150ms ease, border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.gx-example-tab:hover {
+  color: var(--text);
+}
+
+.gx-example-tab[aria-selected="true"] {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.gx-example-tab-panel {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+}
+
+.gx-example-tab-panel h3 {
+  margin-top: 0;
+}
+
+.gx-example-tab-panel p {
+  margin: 0.85rem 0 0;
+  color: var(--text-muted);
+}
+
+.gx-example-tab-panel pre {
+  margin-bottom: 0;
+}
+
 .gx-preview-label {
   margin: 0;
   color: var(--accent);
