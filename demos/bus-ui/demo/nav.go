@@ -37,7 +37,7 @@ var gxUITopHeader = struct {
 		{Href: "bus-ui/index.html", Label: "Bus UI Library"},
 		{Href: "reference/index.html", Label: "Reference"},
 		{Href: "modules/index.html", Label: "Modules"},
-		{Href: "../pricing/index.html", Label: "Pricing"},
+		{Href: "pricing/index.html", Label: "Pricing"},
 	},
 }
 
@@ -59,6 +59,7 @@ var gxUISideNav = struct {
 			Heading: "Overview",
 			Entries: []navEntry{
 				{ID: "index", Href: "index.html", Label: "Overview"},
+				{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
 				{ID: "reference", Href: "reference/index.html", Label: "Reference"},
 				{ID: "modules", Href: "modules/index.html", Label: "Modules"},
 			},

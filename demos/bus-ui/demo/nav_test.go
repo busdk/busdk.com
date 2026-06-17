@@ -24,7 +24,7 @@ func TestGXUITopHeaderIncludesBrandLogoAndPricing(t *testing.T) {
 		`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
 		`href="https://busdk.com/docs/gx-ui/reference/index.html">Reference</a>`,
 		`href="https://busdk.com/docs/gx-ui/modules/index.html">Modules</a>`,
-		`href="https://busdk.com/docs/pricing/index.html">Pricing</a>`,
+		`href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`,
 	} {
 		if !strings.Contains(html, want) {
 			t.Fatalf("GXUITopHeader HTML missing %q in %s", want, html)
@@ -32,13 +32,13 @@ func TestGXUITopHeaderIncludesBrandLogoAndPricing(t *testing.T) {
 	}
 }
 
-func TestGXUITopHeaderResolvesPricingOutsideGXUIRoot(t *testing.T) {
+func TestGXUITopHeaderResolvesPricingInsideGXUIRoot(t *testing.T) {
 	html := renderGXUITopHeader(t, gxUIBaseURL)
-	want := `href="https://busdk.com/docs/pricing/index.html">Pricing</a>`
+	want := `href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`
 	if !strings.Contains(html, want) {
 		t.Fatalf("GXUITopHeader HTML missing %q in %s", want, html)
 	}
-	unwanted := `href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`
+	unwanted := `href="https://busdk.com/docs/pricing/index.html">Pricing</a>`
 	if strings.Contains(html, unwanted) {
 		t.Fatalf("GXUITopHeader HTML unexpectedly included %q in %s", unwanted, html)
 	}
@@ -65,6 +65,7 @@ func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 		`>GX Framework</p>`,
 		`>Bus UI Library</p>`,
 		`>Tutorials</p>`,
+		`href="https://busdk.com/docs/gx-ui/pricing/index.html"`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html"`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/data/index.html"`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/evidence/index.html"`,

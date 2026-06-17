@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus GX And Bus UI Pricing | BusDK</title>
+    <meta
+      name="description"
+      content="Current source-package pricing for Bus GX and Bus UI, including the difference between the GX framework library and the complete Bus UI component package."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header>
+        <div class="site-header-inner">
+          <a class="brand" href="../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav gx-doc-nav" aria-label="Primary">
+            <a href="../gx/index.html">GX Framework</a>
+            <a href="../bus-ui/index.html">Bus UI Library</a>
+            <a href="../reference/index.html">Reference</a>
+            <a href="../modules/index.html">Modules</a>
+            <a href="index.html">Pricing</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="pricing" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">GX/UI Pricing</p>
+              <h1>Choose the UI layer you need.</h1>
+              <p class="hero-copy">
+                Bus GX and Bus UI are commercial source-available Bus modules. These are the
+                current initial prices we offer for FSL-licensed source access; customer-specific
+                offers can be discussed with <a href="mailto:sales@hg.fi">sales@hg.fi</a>.
+              </p>
+
+              <div class="gx-concept-grid">
+                <article class="tutorial-card">
+                  <h3>Bus GX</h3>
+                  <p><strong>1 390 €</strong></p>
+                  <p>
+                    The GX framework library: <code>.gx</code> authoring, typed nodes, generated
+                    Go rendering, runtime bridges, callbacks, effects, and test helpers.
+                  </p>
+                  <p>
+                    Choose GX when you want the low-level Go UI foundation and will build your own
+                    product components on top of it.
+                  </p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Bus UI</h3>
+                  <p><strong>7 802 €</strong></p>
+                  <p>
+                    The complete Bus UI component package, including Bus GX. It provides supported
+                    shells, forms, data display, evidence, assistant, terminal, portal, status, and
+                    action components for Go-owned products.
+                  </p>
+                  <p>
+                    Choose Bus UI when you want the ready component library instead of building and
+                    maintaining that layer yourself.
+                  </p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>How to buy</h3>
+                  <p>
+                    Contact <a href="mailto:sales@hg.fi">sales@hg.fi</a> for FSL-licensed source
+                    access, commercial terms, and customer-specific package offers.
+                  </p>
+                  <p>
+                    The wider Bus module pricing catalog remains available for comparing these
+                    modules with the rest of BusDK.
+                  </p>
+                </article>
+              </div>
+
+              <div class="gx-section gx-duo">
+                <div class="gx-copy">
+                  <h2>GX is the library layer</h2>
+                  <p>
+                    Bus GX gives your team the component language and runtime primitives. It is the
+                    right fit when you want to define your own design system, component inventory,
+                    and product-specific presentation rules.
+                  </p>
+                </div>
+                <div class="gx-code-card">
+                  <div class="gx-card-head">notice.gx</div>
+                  <pre><code>func Notice(props NoticeProps) gx.Node {
+  return &lt;section class="notice"&gt;
+    &lt;h2&gt;{props.Title}&lt;/h2&gt;
+    {props.Children}
+  &lt;/section&gt;
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="gx-section gx-duo gx-duo-reverse">
+                <div class="gx-copy">
+                  <h2>Bus UI includes GX</h2>
+                  <p>
+                    Bus UI includes the GX foundation and adds the complete supported component
+                    package. It is the practical choice when the goal is to ship product screens
+                    with shared, tested UI contracts instead of starting from primitives.
+                  </p>
+                  <p>
+                    <a href="../gx/index.html">Learn GX</a>,
+                    <a href="../bus-ui/index.html">browse Bus UI</a>, or
+                    <a href="../../pricing/index.html">compare all Bus module prices</a>.
+                  </p>
+                </div>
+                <div class="gx-code-card">
+                  <div class="gx-card-head">bus-ui.go</div>
+                  <pre><code>node := ui.ResultPanel(ui.ResultPanelProps{
+  Title:   "Evidence pack ready",
+  Status:  ui.StatusSuccess,
+  Summary: "3 files prepared for review.",
+})</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" data-gx-ui-footer>
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../side-nav.js"></script>
+  </body>
+</html>
