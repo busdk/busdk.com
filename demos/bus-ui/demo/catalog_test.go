@@ -9,7 +9,7 @@ import (
 )
 
 func TestIDsExposeRegisteredDemos(t *testing.T) {
-	if got, want := IDs(), []string{"button", "event-bar", "icon-button", "link-button", "menu", "navigation", "tabs"}; !reflect.DeepEqual(got, want) {
+	if got, want := IDs(), []string{"app-shell", "button", "empty-state", "error-banner", "event-bar", "icon-button", "link-button", "loading-state", "menu", "metric-card", "navigation", "page-shell", "panel", "result-panel", "shell-action-panel", "sidebar-nav", "sidebar-shell", "status-pill", "surface-card", "tabs"}; !reflect.DeepEqual(got, want) {
 		t.Fatalf("IDs() = %#v, want %#v", got, want)
 	}
 }
@@ -138,6 +138,235 @@ func TestNavigationFamilyDemosRenderRealBusUIComponents(t *testing.T) {
 				`aria-label="Accounting views"`,
 				"Files",
 				`role="tablist"`,
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.id, func(t *testing.T) {
+			t.Parallel()
+
+			root, ok := Lookup(tc.id)
+			if !ok {
+				t.Fatalf("%s demo is not registered", tc.id)
+			}
+			html, err := gx.RenderHTML(root())
+			if err != nil {
+				t.Fatalf("RenderHTML(%s demo) failed: %v", tc.id, err)
+			}
+			for _, want := range tc.want {
+				if !strings.Contains(html, want) {
+					t.Fatalf("%s demo HTML %q does not contain %q", tc.id, html, want)
+				}
+			}
+		})
+	}
+}
+
+func TestSurfaceFamilyDemosRenderRealBusUIComponents(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		id   string
+		want []string
+	}{
+		{
+			id: "panel",
+			want: []string{
+				`data-bus-ui-demo-widget="panel"`,
+				"bus-ui-panel",
+				"Monthly close",
+				"3 statements ready for review",
+				`data-ui-action="panel.refresh"`,
+				"Last sync: 09:41",
+			},
+		},
+		{
+			id: "surface-card",
+			want: []string{
+				`data-bus-ui-demo-widget="surface-card"`,
+				"bus-ui-card",
+				"Receipt evidence",
+				"bus-ui-status-pill",
+				`data-ui-status="success"`,
+				"Open evidence queue",
+			},
+		},
+		{
+			id: "metric-card",
+			want: []string{
+				`data-bus-ui-demo-widget="metric-card"`,
+				"bus-ui-metric-card",
+				`data-ui-status="success"`,
+				"Accepted rows",
+				"128",
+				"5 waiting for manual review",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.id, func(t *testing.T) {
+			t.Parallel()
+
+			root, ok := Lookup(tc.id)
+			if !ok {
+				t.Fatalf("%s demo is not registered", tc.id)
+			}
+			html, err := gx.RenderHTML(root())
+			if err != nil {
+				t.Fatalf("RenderHTML(%s demo) failed: %v", tc.id, err)
+			}
+			for _, want := range tc.want {
+				if !strings.Contains(html, want) {
+					t.Fatalf("%s demo HTML %q does not contain %q", tc.id, html, want)
+				}
+			}
+		})
+	}
+}
+
+func TestStatusFamilyDemosRenderRealBusUIComponents(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		id   string
+		want []string
+	}{
+		{
+			id: "status-pill",
+			want: []string{
+				`data-bus-ui-demo-widget="status-pill"`,
+				"bus-ui-status-pill",
+				`data-ui-status="success"`,
+				"ready",
+			},
+		},
+		{
+			id: "empty-state",
+			want: []string{
+				`data-bus-ui-demo-widget="empty-state"`,
+				"bus-ui-empty",
+				"No files yet",
+				`data-ui-action="empty.upload"`,
+				"Upload file",
+			},
+		},
+		{
+			id: "loading-state",
+			want: []string{
+				`data-bus-ui-demo-widget="loading-state"`,
+				"bus-ui-loading",
+				`aria-busy="true"`,
+				"Importing evidence",
+				`value="67"`,
+			},
+		},
+		{
+			id: "result-panel",
+			want: []string{
+				`data-bus-ui-demo-widget="result-panel"`,
+				"bus-ui-result-panel",
+				`data-ui-status="success"`,
+				"Import complete",
+				`data-ui-action="result.view"`,
+				`data-ui-action="result.download"`,
+			},
+		},
+		{
+			id: "error-banner",
+			want: []string{
+				`data-bus-ui-demo-widget="error-banner"`,
+				"bus-ui-error-banner",
+				`role="alert"`,
+				"Provider is temporarily unavailable.",
+				`data-ui-action="error.retry"`,
+				`data-ui-action="error.dismiss"`,
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.id, func(t *testing.T) {
+			t.Parallel()
+
+			root, ok := Lookup(tc.id)
+			if !ok {
+				t.Fatalf("%s demo is not registered", tc.id)
+			}
+			html, err := gx.RenderHTML(root())
+			if err != nil {
+				t.Fatalf("RenderHTML(%s demo) failed: %v", tc.id, err)
+			}
+			for _, want := range tc.want {
+				if !strings.Contains(html, want) {
+					t.Fatalf("%s demo HTML %q does not contain %q", tc.id, html, want)
+				}
+			}
+		})
+	}
+}
+
+func TestShellFamilyDemosRenderRealBusUIComponents(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		id   string
+		want []string
+	}{
+		{
+			id: "app-shell",
+			want: []string{
+				`data-bus-ui-demo-widget="app-shell"`,
+				"<html",
+				`data-ui-shell="app"`,
+				"bus-ui-app-shell-document",
+				"Workspace",
+				"Bus UI shell preview",
+			},
+		},
+		{
+			id: "page-shell",
+			want: []string{
+				`data-bus-ui-demo-widget="page-shell"`,
+				"bus-ui-page-shell",
+				`data-ui-shell="page"`,
+				"Uploaded accounting files",
+				"Last import finished",
+			},
+		},
+		{
+			id: "sidebar-nav",
+			want: []string{
+				`data-bus-ui-demo-widget="sidebar-nav"`,
+				"bus-ui-sidebar-nav-rail",
+				"Accounting",
+				"is-active",
+				`data-ui-action="sidebar.refresh"`,
+			},
+		},
+		{
+			id: "sidebar-shell",
+			want: []string{
+				`data-bus-ui-demo-widget="sidebar-shell"`,
+				"bus-ui-sidebar-shell",
+				`data-ui-shell="sidebar"`,
+				"Selected view content stays beside the rail.",
+				"bus-ui-sidebar-nav-rail",
+			},
+		},
+		{
+			id: "shell-action-panel",
+			want: []string{
+				`data-bus-ui-demo-widget="shell-action-panel"`,
+				"bus-ui-shell-action-panel",
+				`data-ui-component="ShellActionPanel"`,
+				"Review import",
+				`data-ui-action="shell.approve"`,
+				"Posting stays locked until every receipt matches.",
 			},
 		},
 	}

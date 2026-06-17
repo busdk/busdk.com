@@ -48,6 +48,71 @@ var docsDemoPages = []docsDemoPage{
 		label: "Loading Tabs demo...",
 		path:  "../../../docs/gx-ui/bus-ui/components/navigation/tabs/index.html",
 	},
+	{
+		id:    "panel",
+		label: "Loading Panel demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/surface/panel/index.html",
+	},
+	{
+		id:    "surface-card",
+		label: "Loading SurfaceCard demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/surface/surface-card/index.html",
+	},
+	{
+		id:    "metric-card",
+		label: "Loading MetricCard demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/surface/metric-card/index.html",
+	},
+	{
+		id:    "status-pill",
+		label: "Loading StatusPill demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/status/status-pill/index.html",
+	},
+	{
+		id:    "empty-state",
+		label: "Loading EmptyState demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/status/empty-state/index.html",
+	},
+	{
+		id:    "loading-state",
+		label: "Loading LoadingState demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/status/loading-state/index.html",
+	},
+	{
+		id:    "result-panel",
+		label: "Loading ResultPanel demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/status/result-panel/index.html",
+	},
+	{
+		id:    "error-banner",
+		label: "Loading ErrorBanner demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/status/error-banner/index.html",
+	},
+	{
+		id:    "app-shell",
+		label: "Loading AppShell demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/app-shell/index.html",
+	},
+	{
+		id:    "page-shell",
+		label: "Loading PageShell demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/page-shell/index.html",
+	},
+	{
+		id:    "sidebar-shell",
+		label: "Loading SidebarShell demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/sidebar-shell/index.html",
+	},
+	{
+		id:    "sidebar-nav",
+		label: "Loading SidebarNav demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/sidebar-nav/index.html",
+	},
+	{
+		id:    "shell-action-panel",
+		label: "Loading ShellActionPanel demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/shell-action-panel/index.html",
+	},
 }
 
 func TestPlaceholderHTMLUsesSharedLoader(t *testing.T) {
