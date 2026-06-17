@@ -6,7 +6,7 @@
     <title>Bus GX And Bus UI | BusDK</title>
     <meta
       name="description"
-      content="Learn Bus GX, the Go component framework, and Bus UI, the node-first component library built on top of it."
+      content="GX and Bus UI provide a supported Go-native frontend stack for Go-first and agent-first product teams."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -34,12 +34,13 @@
             <div class="gx-hero">
               <img class="gx-hero-mark" src="../busdk-logo.png" alt="" aria-hidden="true" />
               <p class="eyebrow">Bus GX And Bus UI</p>
-              <h1>Go components for product frontends.</h1>
+              <h1>Go-native UI for agentic product teams.</h1>
               <p class="hero-copy">
-                GX is the framework. Bus UI exposes public node-first packages such as
-                <code>ui</code>, <code>assistantui</code>, <code>terminalui</code>, and
-                <code>uiportal</code>, then renders <code>gx.Node</code> trees with
-                <code>gx.RenderHTML</code> at the boundary.
+                GX and Bus UI let Go-first teams build product frontends in the same Go
+                production line as backend code, tests, and agentic maintenance. Instead of
+                standing up a separate TypeScript and React stack, teams can keep UI logic,
+                generated rendering, and reviewable changes inside the Go toolchain they already
+                operate.
               </p>
               <div class="product-links gx-hero-actions">
                 <a class="button button-primary" href="gx/index.html">Learn GX</a>
@@ -50,14 +51,16 @@
 
             <div class="gx-section gx-duo">
               <div class="gx-copy">
-                <h2>Two layers, one Go model</h2>
+                <h2>One language, one delivery model</h2>
                 <p>
                   GX gives you <code>.gx</code> source files, typed component functions, generated
                   Go rendering, event callbacks, runtime bridges, and tests.
                 </p>
                 <p>
                   Bus UI uses GX to provide shared shells, forms, data display, evidence, assistant,
-                  terminal, and portal surfaces for Bus products.
+                  terminal, and portal surfaces for Bus products. Together they keep frontend work
+                  close to the same static analysis, formatting, testing, and agent workflows used
+                  for the rest of the product.
                 </p>
               </div>
               <div class="gx-code-card">
@@ -68,6 +71,34 @@
     {props.Children}
   &lt;/section&gt;
 }</code></pre>
+              </div>
+            </div>
+
+            <div class="gx-section">
+              <div class="gx-copy gx-centered">
+                <h2>What this changes for a business</h2>
+                <p>
+                  GX is not a universal React replacement. It is a supported UI stack for products
+                  where Go is already the main engineering and automation language.
+                </p>
+              </div>
+              <div class="gx-concept-grid">
+                <article class="tutorial-card">
+                  <h3>Less stack to operate</h3>
+                  <p>Use one Go-oriented build, test, review, and agent workflow instead of a separate frontend production line.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>More useful automation</h3>
+                  <p>Existing Go-specialized agents can change backend, UI, rendering, and tests without switching language ecosystems.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Lower maintenance drag</h3>
+                  <p>Supported components can be fixed in the same codebase instead of waiting for an upstream dependency timeline.</p>
+                </article>
+                <article class="tutorial-card">
+                  <h3>Easier human review</h3>
+                  <p>Go types, formatting, static checks, and focused tests make generated UI changes easier to inspect.</p>
+                </article>
               </div>
             </div>
 
@@ -195,66 +226,14 @@ html, err := gx.RenderHTML(node)</code></pre>
               </div>
             </div>
 
-            <div class="gx-section">
-              <div class="gx-copy gx-centered">
-                <h2>GX concepts at the page level</h2>
-                <p>
-                  The framework docs split nodes, component functions, props and children, source
-                  files, generated Go, events, rendering, runtime mounting, effects, and testing
-                  into separate programmer-facing pages.
-                </p>
-              </div>
-              <div class="gx-concept-grid">
-                <a class="tutorial-card" href="gx/nodes/index.html">
-                  <h3>Nodes and render tree</h3>
-                  <p>Work with <code>gx.Node</code>, fragments, text, and composed child trees.</p>
-                </a>
-                <a class="tutorial-card" href="gx/components/index.html">
-                  <h3>Component functions</h3>
-                  <p>Return nodes from Go functions and keep composition explicit.</p>
-                </a>
-                <a class="tutorial-card" href="gx/props-children/index.html">
-                  <h3>Props and children</h3>
-                  <p>Pass data through Go structs and nested content through child slots.</p>
-                </a>
-                <a class="tutorial-card" href="gx/source-files/index.html">
-                  <h3>Source files</h3>
-                  <p>Author <code>.gx</code> files, format them, and compile them into Go.</p>
-                </a>
-                <a class="tutorial-card" href="gx/generated-go/index.html">
-                  <h3>Generated Go</h3>
-                  <p>Inspect the compiled roots that the package and tests actually execute.</p>
-                </a>
-                <a class="tutorial-card" href="gx/events/index.html">
-                  <h3>Events</h3>
-                  <p>Use typed callbacks and payloads for click, form, input, and drop handling.</p>
-                </a>
-                <a class="tutorial-card" href="gx/rendering/index.html">
-                  <h3>Rendering</h3>
-                  <p>Turn nodes into stable HTML and a normalized render tree.</p>
-                </a>
-                <a class="tutorial-card" href="gx/runtime/index.html">
-                  <h3>Runtime bridges</h3>
-                  <p>Mount stateful trees and separate host interaction from pure rendering.</p>
-                </a>
-                <a class="tutorial-card" href="gx/effects/index.html">
-                  <h3>Effects</h3>
-                  <p>Route actions and resource requests through the host.</p>
-                </a>
-                <a class="tutorial-card" href="gx/testing/index.html">
-                  <h3>Testing</h3>
-                  <p>Assert snapshots, generated output, and mounted behavior from Go tests.</p>
-                </a>
-              </div>
-            </div>
-
             <div class="gx-section gx-platforms">
               <div class="gx-copy gx-centered">
                 <h2>Use it across frontend hosts</h2>
                 <p>
                   Render stable HTML on the server, mount stateful Go components where a host needs
                   interaction, bridge through Go/WASM for browser-specific behavior, and embed
-                  shared shells inside Bus portal modules.
+                  shared shells inside Bus portal modules. Browser hosts still use normal web
+                  assets to load WASM; the application UI logic stays in Go.
                 </p>
               </div>
               <div class="tutorial-grid">

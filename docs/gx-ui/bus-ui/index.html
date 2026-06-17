@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bus UI Library | BusDK</title>
-    <meta name="description" content="Bus UI Library concepts: node-first components, forms, data display, evidence and files, assistant and terminal surfaces, and portal integration." />
+    <meta name="description" content="Bus UI provides supported Go-native components for forms, data display, assistant, terminal, portal, and product workflow surfaces." />
     <link rel="stylesheet" href="../../index.css" />
   </head>
   <body>
@@ -29,13 +29,15 @@
             <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui" aria-label="GX/UI documentation"></aside>
             <div class="gx-doc-content">
             <p class="eyebrow">Bus UI Library</p>
-            <h1>Node-first components built on GX.</h1>
+            <h1>Supported components for Go-owned products.</h1>
             <p class="hero-copy">
               Bus UI gives Bus products shared shells, forms, data display, evidence, assistant,
               terminal, and portal surfaces. Components build <code>gx.Node</code> trees through
               public packages such as <code>ui</code>, <code>assistantui</code>,
               <code>terminalui</code>, and <code>uiportal</code>, then render at the boundary
-              with <code>gx.RenderHTML</code>.
+              with <code>gx.RenderHTML</code>. The practical payoff is that product teams can reuse
+              accessible, tested UI contracts without creating a separate React component library
+              and maintenance process.
             </p>
             <div class="gx-concept-grid">
               <a class="tutorial-card" href="components/index.html"><h3>Components</h3><p>Use shells, navigation, panels, controls, status, and action rows.</p></a>
@@ -57,6 +59,10 @@
                 <p>
                   Product modules still own data loading, provider calls, credentials, uploads,
                   redaction, billing rules, and business state.
+                </p>
+                <p>
+                  This boundary keeps common presentation work in one supported Go library while
+                  business-specific behavior remains local to the product module that owns it.
                 </p>
               </div>
               <div class="gx-code-card">

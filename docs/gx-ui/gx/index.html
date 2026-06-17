@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GX Framework | BusDK</title>
-    <meta name="description" content="GX framework concepts: nodes, component functions, props, source files, generated Go, events, rendering, runtime mounting, effects, and testing." />
+    <meta name="description" content="GX framework concepts for Go-native frontend authoring, generated rendering, runtime mounting, and agent-friendly testing." />
     <link rel="stylesheet" href="../../index.css" />
   </head>
   <body>
@@ -30,10 +30,11 @@
               <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="gx" aria-label="GX/UI documentation"></aside>
               <div class="gx-doc-content">
                 <p class="eyebrow">GX Framework</p>
-                <h1>The frontend foundation.</h1>
+                <h1>The Go foundation for frontend work.</h1>
                 <p class="hero-copy">
-                  GX is the source format, compiler, render tree, runtime bridge, and test layer.
-                  Bus UI is built on top of it.
+                  GX keeps component authoring, generated rendering, callbacks, runtime bridges,
+                  and tests inside Go packages. That makes frontend changes easier for Go-first
+                  teams and Go-specialized agents to generate, inspect, and maintain.
                 </p>
                 <div class="gx-concept-grid">
                   <a class="tutorial-card" href="nodes/index.html"><h3>Nodes and render tree</h3><p>Return and compose <code>gx.Node</code> values.</p></a>
@@ -54,6 +55,11 @@
                       GX owns the low-level component language: source parsing, formatting, linting,
                       compilation, render-tree constructors, deterministic HTML rendering, callback
                       payloads, runtime mounts, effect routing, and core test helpers.
+                    </p>
+                    <p>
+                      The business value is not the syntax by itself. The value is avoiding a second
+                      TypeScript and React automation stack when the product, tests, and agentic
+                      maintenance already run best in Go.
                     </p>
                   </div>
                   <div class="gx-code-card">

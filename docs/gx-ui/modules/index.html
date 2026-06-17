@@ -6,7 +6,7 @@
     <title>Bus GX And Bus UI Modules | BusDK</title>
     <meta
       name="description"
-      content="The implementation map behind GX framework and Bus UI library: GX compiler, generated Go rendering, runtime bridges, components, mount helpers, and test harnesses."
+      content="The implementation and adoption map behind GX and Bus UI: supported Go-native UI modules, generated rendering, runtime bridges, components, and tests."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -32,10 +32,12 @@
             <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="modules" aria-label="GX/UI documentation"></aside>
             <div class="gx-doc-content">
             <p class="eyebrow">Bus GX And Bus UI</p>
-            <h1>Modules behind the framework and library.</h1>
+            <h1>Modules behind the supported Go UI stack.</h1>
             <p class="hero-copy">
               GX provides typed component authoring and generated Go rendering. Bus UI provides
-              reusable node-first surfaces built on top of GX.
+              reusable node-first surfaces built on top of GX. The module set is designed for
+              teams that want frontend code, backend code, tests, and agentic maintenance to share
+              one Go-oriented production line.
             </p>
             <div class="product-section">
               <h2>Core product modules</h2>
@@ -63,6 +65,25 @@
                 status, form, evidence, table/list, assistant, terminal, and mounted-app paths.
                 Remaining behavior-heavy helpers are documented as Go-owned exclusions rather than
                 missing presentation components.
+              </p>
+            </div>
+            <div class="product-section">
+              <h2>Commercial adoption</h2>
+              <p>
+                GX and Bus UI are currently offered as supported, source-available product modules
+                for known paying users rather than as an unsupported public drop. That keeps early
+                adopters close to the maintainers while the API and documentation are still moving.
+              </p>
+              <p>
+                The intended customer fit is a Go-first or agent-first product team that wants to
+                avoid building a second TypeScript and React agent, build, test, and component
+                stack. Browser-mounted apps still use normal web assets and Go/WASM loading where
+                needed; the application UI model stays in Go.
+              </p>
+              <p>
+                Supported access can be offered under an FSL license that converts to MIT after two
+                years, reducing long-term lock-in while still funding maintenance during the early
+                product phase.
               </p>
             </div>
             <div class="product-section">
