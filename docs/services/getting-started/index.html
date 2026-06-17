@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Services Getting Started | BusDK</title>
+    <meta
+      name="description"
+      content="Create a small services.yml stack, start it with Bus Services, inspect non-secret status, and stop it cleanly."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../index.html">Overview</a>
+            <a href="../examples/index.html">Examples</a>
+            <a href="../docker/index.html">Docker</a>
+            <a href="../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+            <nav class="product-side-nav" aria-label="Bus Services navigation">
+              <p class="product-side-nav-title">Product family</p>
+              <a href="../../agents/index.html">Bus Agentic Development</a>
+              <a href="../../ai-platform/index.html">Bus AI Platform</a>
+              <a href="../../books/index.html">Bus Books</a>
+              <a href="../../inspection/index.html">Bus Inspection</a>
+              <a href="../../gx-ui/index.html">Bus GX/UI Library</a>
+              <a href="../../top/index.html">Bus Top</a>
+              <a href="../index.html">Bus Services</a>
+              <p class="product-side-nav-title">Services guide</p>
+              <a href="../index.html">Overview</a>
+              <a href="index.html" aria-current="page">Getting started</a>
+              <a href="../examples/index.html">Examples</a>
+              <a href="../docker/index.html">Docker</a>
+              <a href="../modules/index.html">Modules</a>
+            </nav>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Services</p>
+              <h1>Start with one small service.</h1>
+              <p class="hero-copy">
+                A Services stack is just a public stack file plus profiles. The stack names the
+                services and dependencies; profiles describe how each service runs without putting
+                private tokens or DSNs into the public file.
+              </p>
+
+              <div class="product-section">
+                <h2>1. Create a stack file</h2>
+                <p>
+                  Put this in <code>services.yml</code>. It defines one service named
+                  <code>demo</code> and points it at a project-local profile.
+                </p>
+                <pre><code>version: "0"
+services:
+  demo:
+    profile: demo-native</code></pre>
+              </div>
+
+              <div class="product-section">
+                <h2>2. Add the profile</h2>
+                <p>
+                  Put this in <code>profiles/demo-native.yml</code>. The example service stays alive
+                  until Services stops it.
+                </p>
+                <pre><code>id: demo-native
+name: Demo native process
+service_kind: example.demo
+runtime:
+  kind: native
+  provider: local
+  command: ["/bin/sh"]
+  args: ["-c", "trap 'exit 0' TERM; while true; do sleep 1; done"]</code></pre>
+              </div>
+
+              <div class="product-section">
+                <h2>3. Validate, start, inspect, stop</h2>
+                <pre><code>bus services stack validate --file services.yml --profile-dir profiles
+bus services stack plan --file services.yml --profile-dir profiles
+bus services up --file services.yml --profile-dir profiles
+bus services ps --format json
+bus services down --file services.yml --profile-dir profiles</code></pre>
+                <p>
+                  <code>ps</code> shows service ids, status, runtime kind, provider, PID, start time,
+                  and log path. It does not show resolved token values, DSNs, passwords, or private
+                  keys.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>4. Put state where operations expect it</h2>
+                <p>
+                  By default, Services state lives under <code>.bus/services</code> next to the stack.
+                  Use <code>--state-dir</code> for a dedicated host directory or container volume.
+                </p>
+                <pre><code>bus services up \
+  --file services.yml \
+  --profile-dir profiles \
+  --state-dir /var/lib/bus/services</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

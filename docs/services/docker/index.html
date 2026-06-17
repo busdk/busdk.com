@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Services Docker | BusDK</title>
+    <meta
+      name="description"
+      content="Run Bus Services as the foreground supervisor inside a Docker image with baked stack files, release binaries, explicit state volumes, and JSON health checks."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="../../index.html" aria-label="BusDK home">
+            <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+            <span class="brand-wordmark">BusDK</span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="../index.html">Overview</a>
+            <a href="../getting-started/index.html">Start</a>
+            <a href="../examples/index.html">Examples</a>
+            <a href="../modules/index.html">Modules</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+            <nav class="product-side-nav" aria-label="Bus Services navigation">
+              <p class="product-side-nav-title">Product family</p>
+              <a href="../../agents/index.html">Bus Agentic Development</a>
+              <a href="../../ai-platform/index.html">Bus AI Platform</a>
+              <a href="../../books/index.html">Bus Books</a>
+              <a href="../../inspection/index.html">Bus Inspection</a>
+              <a href="../../gx-ui/index.html">Bus GX/UI Library</a>
+              <a href="../../top/index.html">Bus Top</a>
+              <a href="../index.html">Bus Services</a>
+              <p class="product-side-nav-title">Services guide</p>
+              <a href="../index.html">Overview</a>
+              <a href="../getting-started/index.html">Getting started</a>
+              <a href="../examples/index.html">Examples</a>
+              <a href="index.html" aria-current="page">Docker</a>
+              <a href="../modules/index.html">Modules</a>
+            </nav>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Services</p>
+              <h1>Use Bus Services inside a Docker image.</h1>
+              <p class="hero-copy">
+                In a container, Bus Services should be the foreground supervisor for Bus processes.
+                Bake the public stack and profiles into the image, mount writable state and logs,
+                inject secrets at runtime, and use JSON status as the health check.
+              </p>
+
+              <div class="product-section">
+                <h2>Runtime shape</h2>
+                <ul>
+                  <li>Install Bus release binaries in the image, including <code>bus</code>, <code>bus-services</code>, and <code>bus-integration-services</code>.</li>
+                  <li>Copy <code>services.yml</code> to <code>/opt/bus/services.yml</code>.</li>
+                  <li>Copy the profile tree to <code>/opt/bus/profiles</code>.</li>
+                  <li>Mount <code>/var/lib/bus</code> and <code>/var/log/bus</code> as writable runtime locations.</li>
+                  <li>Provide secrets such as <code>BUS_EVENTS_JWT_SECRET</code> at runtime, not in the image layer.</li>
+                </ul>
+              </div>
+
+              <div class="product-section">
+                <h2>Entrypoint command</h2>
+                <pre><code>/usr/local/bin/bus services up \
+  --file /opt/bus/services.yml \
+  --profile-dir /opt/bus/profiles \
+  --state-dir /var/lib/bus/services \
+  --foreground \
+  --all</code></pre>
+                <p>
+                  <code>--foreground</code> keeps the Services supervisor attached to the container
+                  lifecycle. <code>--state-dir</code> keeps frozen config, status files, token files,
+                  and logs out of the read-only stack location.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Dockerfile skeleton</h2>
+                <pre><code>FROM ubuntu:24.04
+
+ARG BUS_RELEASE_TARBALL
+ARG BUS_RELEASE_SHA256
+
+RUN apt-get update \
+  &amp;&amp; apt-get install -y --no-install-recommends ca-certificates postgresql-client \
+  &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+COPY ${BUS_RELEASE_TARBALL} /tmp/busdk.tgz
+RUN echo "${BUS_RELEASE_SHA256}  /tmp/busdk.tgz" | sha256sum -c - \
+  &amp;&amp; tar -xzf /tmp/busdk.tgz -C /usr/local/bin \
+  &amp;&amp; rm /tmp/busdk.tgz
+
+COPY services.yml /opt/bus/services.yml
+COPY profiles /opt/bus/profiles
+
+VOLUME ["/var/lib/bus", "/var/log/bus"]
+ENTRYPOINT ["/usr/local/bin/bus", "services", "up", "--file", "/opt/bus/services.yml", "--profile-dir", "/opt/bus/profiles", "--state-dir", "/var/lib/bus/services", "--foreground", "--all"]</code></pre>
+                <p>
+                  Production images should pin the Ubuntu base image and verify the Bus release
+                  artifact checksum or signature. Worker-capable images may add Go, Git, SSH, and
+                  runner tools, but project source and task worktrees should be mounted or created at
+                  runtime instead of baked into the image.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Compose health check</h2>
+                <pre><code>healthcheck:
+  test:
+    - CMD
+    - /usr/local/bin/bus
+    - services
+    - ps
+    - --file
+    - /opt/bus/services.yml
+    - --profile-dir
+    - /opt/bus/profiles
+    - --state-dir
+    - /var/lib/bus/services
+    - --format
+    - json
+  interval: 10s
+  timeout: 5s
+  retries: 6</code></pre>
+                <p>
+                  JSON status exits non-zero when the expected stack is degraded, while still writing
+                  the status payload. That gives Docker a real health signal and gives operators the
+                  same non-secret status output for troubleshooting.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Dependency containers</h2>
+                <p>
+                  A single Bus runtime container does not have to contain every standard dependency.
+                  PostgreSQL and Mailhog can run as ordinary Compose services when that is the clearer
+                  local-development or customer-controlled deployment shape. The important boundary is
+                  that Bus-related services remain supervised by Bus Services and that dependency
+                  connection details are explicit runtime configuration.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

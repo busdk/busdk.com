@@ -6,7 +6,7 @@
     <title>Bus Services Modules | BusDK</title>
     <meta
       name="description"
-      content="The implementation map behind Bus Services: services.yml, service lifecycle commands, provider surfaces, integration workers, and runtime hooks."
+      content="The implementation map behind Bus Services: CLI commands, service lifecycle API, runtime integration, profiles, and Docker/container boundaries."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -20,16 +20,16 @@
           </a>
           <nav class="site-nav" aria-label="Primary">
             <a href="../index.html">Overview</a>
-            <a href="../../index.html#products">Products</a>
-            <a href="https://docs.busdk.com/products/services/">Docs</a>
-            <a href="../../blog/index.html">Blog</a>
+            <a href="../getting-started/index.html">Start</a>
+            <a href="../examples/index.html">Examples</a>
+            <a href="../docker/index.html">Docker</a>
           </nav>
         </div>
       </header>
       <main>
         <section class="product-page">
           <div class="section-inner product-doc-layout">
-            <nav class="product-side-nav" aria-label="Product family">
+            <nav class="product-side-nav" aria-label="Bus Services navigation">
               <p class="product-side-nav-title">Product family</p>
               <a href="../../agents/index.html">Bus Agentic Development</a>
               <a href="../../ai-platform/index.html">Bus AI Platform</a>
@@ -37,31 +37,64 @@
               <a href="../../inspection/index.html">Bus Inspection</a>
               <a href="../../gx-ui/index.html">Bus GX/UI Library</a>
               <a href="../../top/index.html">Bus Top</a>
-              <a href="../index.html" aria-current="page">Bus Services</a>
+              <a href="../index.html">Bus Services</a>
+              <p class="product-side-nav-title">Services guide</p>
+              <a href="../index.html">Overview</a>
+              <a href="../getting-started/index.html">Getting started</a>
+              <a href="../examples/index.html">Examples</a>
+              <a href="../docker/index.html">Docker</a>
+              <a href="index.html" aria-current="page">Modules</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
-              <h1>Modules behind predictable service stacks.</h1>
+              <h1>The modules behind the Services product.</h1>
               <p class="hero-copy">
-                Bus Services is a product for local and project service orchestration. Runtime modules
-                can participate, but they are not marketed as separate service-stack products.
+                Bus Services has one user-facing product surface, but the implementation is split so
+                CLI behavior, API access, runtime supervision, and provider-specific mechanics stay
+                in the right ownership boundary.
               </p>
+
               <div class="product-section">
-                <h2>Core product modules</h2>
+                <h2>Core modules</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Module</th><th>Role</th><th>What users see</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>bus-services</code></td><td>User-facing CLI and profile client.</td><td><code>bus services up</code>, <code>ps</code>, <code>down</code>, validation, planning, and profile discovery.</td></tr>
+                    <tr><td><code>bus-api-provider-services</code></td><td>API-hosted Services lifecycle surface.</td><td>Remote or hosted systems can request and inspect service lifecycle actions through a Bus API boundary.</td></tr>
+                    <tr><td><code>bus-integration-services</code></td><td>Runtime integration and local supervision.</td><td>Dependency ordering, native process startup, frozen stack state, status, logs, shutdown, and foreground serving.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>Provider boundaries</h2>
+                <p>
+                  A service id should not encode how the service is powered. The profile declares the
+                  runtime kind and provider, then the correct integration module owns the mechanics.
+                  PostgreSQL can be a native process, a standard Docker sidecar for a runtime image,
+                  or a future managed provider without changing the basic Services workflow.
+                </p>
                 <ul>
-                  <li><code>bus-services</code> for service contract parsing, validation, planning, start, status, and stop.</li>
-                  <li><code>bus-api-provider-services</code> for API-hosted service lifecycle access.</li>
-                  <li><code>bus-integration-services</code> for worker-side service lifecycle integration.</li>
-                  <li>OS, container, VM, network, and systemd modules when a resolved service type needs them.</li>
+                  <li><code>native</code> services run as local processes supervised by Services.</li>
+                  <li><code>container</code> services route through the container integration boundary when that provider is enabled.</li>
+                  <li><code>managed</code>, <code>system</code>, and <code>vm</code> services keep their provider-specific lifecycle outside the generic CLI.</li>
                 </ul>
               </div>
+
               <div class="product-section">
-                <h2>Evaluator path</h2>
+                <h2>How the modules work together</h2>
+                <pre><code>bus services up
+  -> bus-services validates the public stack
+  -> bus-integration-services resolves profiles and starts services
+  -> provider modules handle runtime-specific mechanics
+  -> bus services ps reports non-secret status from the state directory</code></pre>
                 <p>
-                  Start with the product docs for <code>services.yml</code>, lifecycle commands,
-                  public-safe planning, and runtime boundaries.
+                  This split is why the same product can support a laptop process stack, a Docker
+                  image entrypoint, a dedicated host, and future runtime providers without turning
+                  one module into a hard-coded database or container wrapper.
                 </p>
-                <p><a href="https://docs.busdk.com/products/services/">Open product docs</a></p>
               </div>
             </div>
           </div>

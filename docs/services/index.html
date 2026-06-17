@@ -6,7 +6,7 @@
     <title>Bus Services | BusDK</title>
     <meta
       name="description"
-      content="Predictable project service stacks using public-safe services.yml contracts to validate, plan, start, inspect, and stop process-level services without requiring virtualization."
+      content="Bus Services turns project service stacks into a repeatable way to validate, start, inspect, stop, and containerize the runtimes behind BusDK products."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -20,16 +20,17 @@
           </a>
           <nav class="site-nav" aria-label="Primary">
             <a href="../index.html#products">Products</a>
+            <a href="getting-started/index.html">Start</a>
+            <a href="examples/index.html">Examples</a>
+            <a href="docker/index.html">Docker</a>
             <a href="modules/index.html">Modules</a>
-            <a href="https://docs.busdk.com/products/services/">Docs</a>
-            <a href="../blog/index.html">Blog</a>
           </nav>
         </div>
       </header>
       <main>
         <section class="product-page">
           <div class="section-inner product-doc-layout">
-            <nav class="product-side-nav" aria-label="Product family">
+            <nav class="product-side-nav" aria-label="Bus Services navigation">
               <p class="product-side-nav-title">Product family</p>
               <a href="../agents/index.html">Bus Agentic Development</a>
               <a href="../ai-platform/index.html">Bus AI Platform</a>
@@ -37,45 +38,99 @@
               <a href="../inspection/index.html">Bus Inspection</a>
               <a href="../gx-ui/index.html">Bus GX/UI Library</a>
               <a href="../top/index.html">Bus Top</a>
-              <a href="index.html" aria-current="page">Bus Services</a>
+              <a href="index.html">Bus Services</a>
+              <p class="product-side-nav-title">Services guide</p>
+              <a href="index.html" aria-current="page">Overview</a>
+              <a href="getting-started/index.html">Getting started</a>
+              <a href="examples/index.html">Examples</a>
+              <a href="docker/index.html">Docker</a>
+              <a href="modules/index.html">Modules</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
-              <h1>Predictable service stacks without requiring virtualization.</h1>
+              <h1>Run the service stack your product depends on.</h1>
               <p class="hero-copy">
-                Bus Services turns project dependencies into public-safe <code>services.yml</code>
-                stacks you can validate, plan, start, inspect, and stop as ordinary user-land
-                services.
+                Bus Services gives a BusDK project one repeatable control surface for the
+                long-running pieces around it: databases, Events APIs, worker runtimes, task
+                services, repositories, product APIs, relays, and future provider-backed services.
               </p>
               <div class="product-links">
-                <a class="button button-primary" href="https://docs.busdk.com/products/services/">Read docs</a>
-                <a class="button button-secondary" href="../index.html#products">Browse BusDK products</a>
+                <a class="button button-primary" href="getting-started/index.html">Start a stack</a>
+                <a class="button button-secondary" href="docker/index.html">Use Docker</a>
+                <a class="button button-secondary" href="mailto:sales@hg.fi">Discuss deployment</a>
               </div>
+
+              <div class="product-section">
+                <h2>What it is</h2>
+                <p>
+                  A service is something Bus can create, start, stop, observe, or verify. Bus
+                  Services reads a public <code>services.yml</code> file, resolves the referenced
+                  profiles, validates non-secret configuration, starts services in dependency order,
+                  and records status under a Services state directory.
+                </p>
+                <p>
+                  The same stack can be used by a developer on a laptop, by a CI smoke test, by a
+                  dedicated customer environment, or by a Docker image where Bus Services is the
+                  foreground supervisor for Bus processes.
+                </p>
+              </div>
+
               <div class="product-section">
                 <h2>What it is for</h2>
+                <div class="tutorial-grid">
+                  <article class="tutorial-card">
+                    <h3>Local product stacks</h3>
+                    <p>Start the database, Events API, task service, worker service, repos service, API, and relay needed by a BusDK product checkout.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Repeatable operations</h3>
+                    <p>Replace ad hoc setup notes with a stack file, a status command, log paths, and predictable shutdown behavior.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Deployment packaging</h3>
+                    <p>Copy a stack and profiles into an image or dedicated host and run one Bus command as the service supervisor.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Supportable customer environments</h3>
+                    <p>Give operators a common way to inspect what is running without exposing secrets, DSNs, or private token values.</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="product-section">
+                <h2>The everyday workflow</h2>
+                <pre><code>bus services stack validate --file services.yml --profile-dir profiles --all
+bus services stack plan --file services.yml --profile-dir profiles --all --format json
+bus services up --file services.yml --profile-dir profiles --all
+bus services ps --format json
+bus services down</code></pre>
                 <p>
-                  Bus Services is for developers and operators who need repeatable project-level
-                  service stacks without relying on drifting README steps, ad hoc shell scripts, or a
-                  container-only assumption.
+                  Validation catches stack and profile errors before startup. Planning shows the
+                  non-secret service plan. Startup freezes the resolved config so shutdown still
+                  targets the running stack even if the source file changes later.
                 </p>
               </div>
+
               <div class="product-section">
-                <h2>Core workflows</h2>
-                <ul>
-                  <li>Define public service configuration in <code>services.yml</code>.</li>
-                  <li>Validate and inspect a non-secret plan before startup.</li>
-                  <li>Start services, inspect status, and stop the resolved running stack.</li>
-                  <li>Use OS, container, VM, network, or systemd controls when isolation is required.</li>
-                </ul>
-              </div>
-              <div class="product-section">
-                <h2>Modules behind the product</h2>
-                <p>
-                  The product owns <code>bus-services</code>, <code>bus-api-provider-services</code>,
-                  and <code>bus-integration-services</code>. Runtime/provider modules participate when
-                  a service type uses them, but they stay owned by their product or platform boundary.
-                </p>
-                <p><a href="modules/index.html">See the module map for this product.</a></p>
+                <h2>Where to go next</h2>
+                <div class="tutorial-grid">
+                  <a class="tutorial-card" href="getting-started/index.html">
+                    <h3>Getting started</h3>
+                    <p>Create a small stack, start it, inspect status, and stop it cleanly.</p>
+                  </a>
+                  <a class="tutorial-card" href="examples/index.html">
+                    <h3>Examples</h3>
+                    <p>See a minimal native service and the BusDK repository stack commands.</p>
+                  </a>
+                  <a class="tutorial-card" href="docker/index.html">
+                    <h3>Docker</h3>
+                    <p>Run Bus Services as the foreground process inside a runtime image.</p>
+                  </a>
+                  <a class="tutorial-card" href="modules/index.html">
+                    <h3>Modules</h3>
+                    <p>Understand which modules own the CLI, API provider, integration runtime, and provider boundaries.</p>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
