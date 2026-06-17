@@ -232,18 +232,20 @@ func renderNavEntries(entries []navEntry, currentID string, baseURL string, dept
 	nodes := make([]gx.Node, 0, len(entries))
 	currentCount := 0
 	for _, entry := range entries {
+		entryCurrent := entry.ID == currentID
+		entryOpen := navEntryContainsCurrent(entry, currentID)
 		attrs := gx.Props{
 			"href": resolveNavHref(baseURL, entry.Href),
 		}
 		if className := linkClass(depth); className != "" {
 			attrs["class"] = className
 		}
-		if entry.ID == currentID {
+		if entryCurrent {
 			attrs["aria-current"] = "page"
 			currentCount++
 		}
 		nodes = append(nodes, gx.Element("a", attrs, gx.Text(entry.Label)))
-		if len(entry.Children) == 0 {
+		if len(entry.Children) == 0 || !entryOpen {
 			continue
 		}
 		children, count := renderNavEntries(entry.Children, currentID, baseURL, depth+1)
@@ -251,6 +253,18 @@ func renderNavEntries(entries []navEntry, currentID string, baseURL string, dept
 		nodes = append(nodes, children...)
 	}
 	return nodes, currentCount
+}
+
+func navEntryContainsCurrent(entry navEntry, currentID string) bool {
+	if entry.ID == currentID {
+		return true
+	}
+	for _, child := range entry.Children {
+		if navEntryContainsCurrent(child, currentID) {
+			return true
+		}
+	}
+	return false
 }
 
 func linkClass(depth int) string {

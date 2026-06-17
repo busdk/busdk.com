@@ -12,11 +12,10 @@ import (
 
 var currentMarkerPattern = regexp.MustCompile(`data-gx-ui-current="([^"]+)"`)
 
+const gxUIBaseURL = "https://busdk.com/docs/gx-ui/"
+
 func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
-	html, err := gx.RenderHTML(GXUISideNav("bus-ui/forms", "https://busdk.com/docs/gx-ui/"))
-	if err != nil {
-		t.Fatalf("RenderHTML(GXUISideNav) failed: %v", err)
-	}
+	html := renderGXUISideNav(t, "bus-ui/forms")
 	for _, want := range []string{
 		`class="gx-side-nav-title"`,
 		`>Overview</p>`,
@@ -36,10 +35,40 @@ func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 	}
 }
 
+func TestGXUISideNavFormsLeafShowsSiblingLeavesOnly(t *testing.T) {
+	html := renderGXUISideNav(t, "bus-ui/forms/text-input")
+	for _, want := range []string{
+		`href="https://busdk.com/docs/gx-ui/bus-ui/forms/form/index.html">Form</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/forms/password-input/index.html">PasswordInput</a>`,
+		`aria-current="page" class="gx-side-nav-child" href="https://busdk.com/docs/gx-ui/bus-ui/forms/text-input/index.html">TextInput</a>`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("GXUISideNav HTML missing %q in %s", want, html)
+		}
+	}
+	for _, unwanted := range []string{
+		`href="https://busdk.com/docs/gx-ui/bus-ui/data/dense-table/index.html">DenseTable</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/assistant-shell/index.html">AssistantShell</a>`,
+	} {
+		if strings.Contains(html, unwanted) {
+			t.Fatalf("GXUISideNav HTML unexpectedly included %q in %s", unwanted, html)
+		}
+	}
+	if got := strings.Count(html, `aria-current="page"`); got != 1 {
+		t.Fatalf("aria-current count = %d, want 1 in %s", got, html)
+	}
+}
+
 func TestGXUISideNavUsesIDForDuplicateLabels(t *testing.T) {
-	html, err := gx.RenderHTML(GXUISideNav("bus-ui/components/navigation/navigation", "https://busdk.com/docs/gx-ui/"))
-	if err != nil {
-		t.Fatalf("RenderHTML(GXUISideNav duplicate label case) failed: %v", err)
+	html := renderGXUISideNav(t, "bus-ui/components/navigation/navigation")
+	for _, want := range []string{
+		`href="https://busdk.com/docs/gx-ui/bus-ui/components/navigation/menu/index.html">Menu</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/components/navigation/tabs/index.html">Tabs</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/components/navigation/navigation/index.html">Navigation</a>`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("GXUISideNav HTML missing %q in %s", want, html)
+		}
 	}
 	want := `aria-current="page" class="gx-side-nav-child" href="https://busdk.com/docs/gx-ui/bus-ui/components/navigation/navigation/index.html">Navigation</a>`
 	if !strings.Contains(html, want) {
@@ -49,13 +78,34 @@ func TestGXUISideNavUsesIDForDuplicateLabels(t *testing.T) {
 	if strings.Contains(html, unwanted) {
 		t.Fatalf("GXUISideNav incorrectly marked family link current in %s", html)
 	}
+	if got := strings.Count(html, `aria-current="page"`); got != 1 {
+		t.Fatalf("aria-current count = %d, want 1 in %s", got, html)
+	}
+}
+
+func TestGXUISideNavTopLevelPageKeepsChildrenCollapsed(t *testing.T) {
+	html := renderGXUISideNav(t, "reference")
+	for _, unwanted := range []string{
+		`href="https://busdk.com/docs/gx-ui/bus-ui/components/navigation/menu/index.html">Menu</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/forms/form/index.html">Form</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/data/dense-table/index.html">DenseTable</a>`,
+		`href="https://busdk.com/docs/gx-ui/bus-ui/assistant-shell/index.html">AssistantShell</a>`,
+	} {
+		if strings.Contains(html, unwanted) {
+			t.Fatalf("GXUISideNav HTML unexpectedly included %q in %s", unwanted, html)
+		}
+	}
+	want := `aria-current="page" href="https://busdk.com/docs/gx-ui/reference/index.html">Reference</a>`
+	if !strings.Contains(html, want) {
+		t.Fatalf("GXUISideNav HTML missing %q in %s", want, html)
+	}
+	if got := strings.Count(html, `aria-current="page"`); got != 1 {
+		t.Fatalf("aria-current count = %d, want 1 in %s", got, html)
+	}
 }
 
 func TestGXUISideNavRepresentativeRenderHasExactlyOneCurrent(t *testing.T) {
-	html, err := gx.RenderHTML(GXUISideNav("bus-ui/data/provider-error", "https://busdk.com/docs/gx-ui/"))
-	if err != nil {
-		t.Fatalf("RenderHTML(GXUISideNav representative case) failed: %v", err)
-	}
+	html := renderGXUISideNav(t, "bus-ui/data/provider-error")
 	if got := strings.Count(html, `aria-current="page"`); got != 1 {
 		t.Fatalf("aria-current count = %d, want 1 in %s", got, html)
 	}
@@ -97,4 +147,13 @@ func TestGXUISideNavCoversPublishedCurrentMarkers(t *testing.T) {
 	if pages == 0 {
 		t.Fatal("no docs/gx-ui pages with data-gx-ui-current found")
 	}
+}
+
+func renderGXUISideNav(t *testing.T, currentID string) string {
+	t.Helper()
+	html, err := gx.RenderHTML(GXUISideNav(currentID, gxUIBaseURL))
+	if err != nil {
+		t.Fatalf("RenderHTML(GXUISideNav %q) failed: %v", currentID, err)
+	}
+	return html
 }
