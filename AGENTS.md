@@ -72,6 +72,10 @@ Scoped guidance for the `busdk.com` repository.
     profiles`, default env files, or default state paths unless the example is
     specifically teaching non-default paths, Docker images, dedicated state, or
     deployment packaging.
+17. Product-site navigation must not link directly to `mailto:` addresses.
+    Route navigation to product-local pages such as Contact, Pricing, or
+    Deployment instead, and reserve `mailto:` links for explicit CTA buttons in
+    page content.
 
 ## Publication Boundary
 

@@ -24,7 +24,8 @@
             <a href="../examples/index.html">Examples</a>
             <a href="../docker/index.html" aria-current="page">Docker</a>
             <a href="../modules/index.html">Modules</a>
-            <a href="mailto:sales@hg.fi">Contact</a>
+            <a href="../pricing/index.html">Pricing</a>
+            <a href="../contact/index.html">Contact</a>
           </nav>
         </div>
       </header>
@@ -38,7 +39,8 @@
               <a href="../examples/index.html">Examples</a>
               <a href="../docker/index.html" aria-current="page">Docker</a>
               <a href="../modules/index.html">Modules</a>
-              <a href="mailto:sales@hg.fi">Discuss deployment</a>
+              <a href="../pricing/index.html">Pricing</a>
+              <a href="../contact/index.html">Contact</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
@@ -188,7 +190,7 @@ runtime:
 
               <div class="product-section">
                 <h2>Health check</h2>
-                <pre><code>/usr/local/bin/bus services ps \
+                <pre><code>/usr/local/bin/bus services list \
   --file /opt/bus/services.yml \
   --profile-dir /opt/bus/profiles \
   --state-dir /var/lib/bus/services \
@@ -197,6 +199,8 @@ runtime:
                   JSON status exits non-zero when the expected stack is degraded, while still writing
                   the status payload. That gives Docker a real health signal and gives operators the
                   same non-secret status output for troubleshooting.
+                  <code>bus services ps</code> remains a compatibility alias for existing Docker
+                  health checks and scripts.
                 </p>
               </div>
 
@@ -214,6 +218,11 @@ runtime:
           </div>
         </section>
       </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

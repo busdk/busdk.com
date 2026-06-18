@@ -24,7 +24,8 @@
             <a href="../examples/index.html">Examples</a>
             <a href="../docker/index.html">Docker</a>
             <a href="../modules/index.html" aria-current="page">Modules</a>
-            <a href="mailto:sales@hg.fi">Contact</a>
+            <a href="../pricing/index.html">Pricing</a>
+            <a href="../contact/index.html">Contact</a>
           </nav>
         </div>
       </header>
@@ -38,7 +39,8 @@
               <a href="../examples/index.html">Examples</a>
               <a href="../docker/index.html">Docker</a>
               <a href="../modules/index.html" aria-current="page">Modules</a>
-              <a href="mailto:sales@hg.fi">Discuss deployment</a>
+              <a href="../pricing/index.html">Pricing</a>
+              <a href="../contact/index.html">Contact</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
@@ -56,7 +58,7 @@
                     <tr><th>Module</th><th>Role</th><th>What users see</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>bus-services</code></td><td>User-facing CLI and profile client.</td><td><code>bus services up</code>, <code>ps</code>, <code>down</code>, validation, planning, and profile discovery.</td></tr>
+                    <tr><td><code>bus-services</code></td><td>User-facing CLI and profile client.</td><td><code>bus services up</code>, <code>list</code>, <code>down</code>, validation, planning, and profile discovery.</td></tr>
                     <tr><td><code>bus-api-provider-services</code></td><td>API-hosted Services lifecycle surface.</td><td>Remote or hosted systems can request and inspect service lifecycle actions through a Bus API boundary.</td></tr>
                     <tr><td><code>bus-integration-services</code></td><td>Runtime integration and local supervision.</td><td>Dependency ordering, native process startup, frozen stack state, status, logs, shutdown, and foreground serving.</td></tr>
                   </tbody>
@@ -84,7 +86,7 @@
   -> bus-services validates the public stack
   -> bus-integration-services resolves profiles and starts services
   -> provider modules handle runtime-specific mechanics
-  -> bus services ps reports non-secret status from the state directory</code></pre>
+  -> bus services list reports non-secret status from the state directory</code></pre>
                 <p>
                   This split is why the same product can support a laptop process stack, a Docker
                   image entrypoint, a dedicated host, and future runtime providers without turning
@@ -95,6 +97,11 @@
           </div>
         </section>
       </main>
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
