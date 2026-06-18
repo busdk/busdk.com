@@ -56,8 +56,8 @@
                   <code>services.yml</code> and the profile tree in <code>profiles/</code>. Start by
                   validating and planning all declared services.
                 </p>
-                <pre><code>bus services stack validate --file services.yml --profile-dir profiles --all
-bus services stack plan --file services.yml --profile-dir profiles --all --format json</code></pre>
+                <pre><code>bus services stack validate --all
+bus services stack plan --all</code></pre>
               </div>
 
               <div class="product-section">
@@ -66,9 +66,9 @@ bus services stack plan --file services.yml --profile-dir profiles --all --forma
                   <code>default_services</code> lets the stack define a smaller everyday startup set.
                   Use <code>--all</code> only when you want every service in the file.
                 </p>
-                <pre><code>bus services up --file services.yml --profile-dir profiles
+                <pre><code>bus services up
 bus services ps
-bus services down --file services.yml --profile-dir profiles</code></pre>
+bus services down</code></pre>
               </div>
 
               <div class="product-section">
@@ -78,8 +78,8 @@ bus services down --file services.yml --profile-dir profiles</code></pre>
                   groups: PostgreSQL, an Events API, relays, repository services, workers, task
                   services, and the local product API.
                 </p>
-                <pre><code>bus services up --file services.yml --profile-dir profiles --all
-bus services ps --format json</code></pre>
+                <pre><code>bus services up --all
+bus services ps</code></pre>
               </div>
 
               <div class="product-section">

@@ -93,15 +93,18 @@
 
               <div class="product-section">
                 <h2>The everyday workflow</h2>
-                <pre><code>bus services stack validate --file services.yml --profile-dir profiles --all
-bus services stack plan --file services.yml --profile-dir profiles --all --format json
-bus services up --file services.yml --profile-dir profiles --all
-bus services ps --format json
+                <pre><code>bus services stack validate
+bus services stack plan
+bus services up
+bus services ps
 bus services down</code></pre>
                 <p>
                   Validation catches stack and profile errors before startup. Planning shows the
                   non-secret service plan. Startup freezes the resolved config so shutdown still
                   targets the running stack even if the source file changes later.
+                  These commands use the normal defaults: <code>services.yml</code>, a
+                  <code>profiles/</code> directory when present, and <code>.bus/services</code>
+                  state.
                 </p>
               </div>
 

@@ -67,6 +67,11 @@ Scoped guidance for the `busdk.com` repository.
     side nav, or shared rendered nav. Shared static, GX, WASM, or other
     components may be reused, but the content they render must be specific to
     the current product site.
+16. Product examples should show the smallest normal command first. Do not add
+    optional default flags such as `--file services.yml`, `--profile-dir
+    profiles`, default env files, or default state paths unless the example is
+    specifically teaching non-default paths, Docker images, dedicated state, or
+    deployment packaging.
 
 ## Publication Boundary
 

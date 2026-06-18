@@ -79,11 +79,11 @@ runtime:
 
               <div class="product-section">
                 <h2>3. Validate, start, inspect, stop</h2>
-                <pre><code>bus services stack validate --file services.yml --profile-dir profiles
-bus services stack plan --file services.yml --profile-dir profiles
-bus services up --file services.yml --profile-dir profiles
-bus services ps --format json
-bus services down --file services.yml --profile-dir profiles</code></pre>
+                <pre><code>bus services stack validate
+bus services stack plan
+bus services up
+bus services ps
+bus services down</code></pre>
                 <p>
                   <code>ps</code> shows service ids, status, runtime kind, provider, PID, start time,
                   and log path. It does not show resolved token values, DSNs, passwords, or private
@@ -98,8 +98,6 @@ bus services down --file services.yml --profile-dir profiles</code></pre>
                   Use <code>--state-dir</code> for a dedicated host directory or container volume.
                 </p>
                 <pre><code>bus services up \
-  --file services.yml \
-  --profile-dir profiles \
   --state-dir /var/lib/bus/services</code></pre>
               </div>
             </div>
