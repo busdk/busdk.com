@@ -6,7 +6,7 @@
     <title>Bus Services | BusDK</title>
     <meta
       name="description"
-      content="Bus Services turns project service stacks into a repeatable way to validate, start, inspect, stop, and containerize the runtimes behind BusDK products."
+      content="Bus Services turns application service stacks into a repeatable way to validate, start, inspect, stop, and containerize app runtimes."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -18,12 +18,13 @@
             <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="../index.html#products">Products</a>
+          <nav class="site-nav" aria-label="Bus Services navigation">
+            <a href="index.html" aria-current="page">Overview</a>
             <a href="getting-started/index.html">Start</a>
             <a href="examples/index.html">Examples</a>
             <a href="docker/index.html">Docker</a>
             <a href="modules/index.html">Modules</a>
+            <a href="mailto:sales@hg.fi">Contact</a>
           </nav>
         </div>
       </header>
@@ -31,28 +32,21 @@
         <section class="product-page">
           <div class="section-inner product-doc-layout">
             <nav class="product-side-nav" aria-label="Bus Services navigation">
-              <p class="product-side-nav-title">Product family</p>
-              <a href="../agents/index.html">Bus Agentic Development</a>
-              <a href="../ai-platform/index.html">Bus AI Platform</a>
-              <a href="../books/index.html">Bus Books</a>
-              <a href="../inspection/index.html">Bus Inspection</a>
-              <a href="../gx-ui/index.html">Bus GX/UI Library</a>
-              <a href="../top/index.html">Bus Top</a>
-              <a href="index.html">Bus Services</a>
               <p class="product-side-nav-title">Services guide</p>
               <a href="index.html" aria-current="page">Overview</a>
               <a href="getting-started/index.html">Getting started</a>
               <a href="examples/index.html">Examples</a>
               <a href="docker/index.html">Docker</a>
               <a href="modules/index.html">Modules</a>
+              <a href="mailto:sales@hg.fi">Discuss deployment</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
               <h1>Run the service stack your product depends on.</h1>
               <p class="hero-copy">
-                Bus Services gives a BusDK project one repeatable control surface for the
-                long-running pieces around it: databases, Events APIs, worker runtimes, task
-                services, repositories, product APIs, relays, and future provider-backed services.
+                Bus Services gives any application one repeatable control surface for the
+                long-running pieces around it: databases, APIs, worker runtimes, task queues,
+                repositories, relays, background jobs, and provider-backed services.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="getting-started/index.html">Start a stack</a>
@@ -70,8 +64,8 @@
                 </p>
                 <p>
                   The same stack can be used by a developer on a laptop, by a CI smoke test, by a
-                  dedicated customer environment, or by a Docker image where Bus Services is the
-                  foreground supervisor for Bus processes.
+                  dedicated customer environment, or by a Docker image where Services supervises
+                  the application processes inside the runtime.
                 </p>
               </div>
 
@@ -79,8 +73,8 @@
                 <h2>What it is for</h2>
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
-                    <h3>Local product stacks</h3>
-                    <p>Start the database, Events API, task service, worker service, repos service, API, and relay needed by a BusDK product checkout.</p>
+                    <h3>Local application stacks</h3>
+                    <p>Start the database, API, queue, worker, repository service, relay, and helper processes an application needs.</p>
                   </article>
                   <article class="tutorial-card">
                     <h3>Repeatable operations</h3>
@@ -88,7 +82,7 @@
                   </article>
                   <article class="tutorial-card">
                     <h3>Deployment packaging</h3>
-                    <p>Copy a stack and profiles into an image or dedicated host and run one Bus command as the service supervisor.</p>
+                    <p>Copy a stack and profiles into an image or dedicated host and run one Services command as the process supervisor.</p>
                   </article>
                   <article class="tutorial-card">
                     <h3>Supportable customer environments</h3>
@@ -120,11 +114,11 @@ bus services down</code></pre>
                   </a>
                   <a class="tutorial-card" href="examples/index.html">
                     <h3>Examples</h3>
-                    <p>See a minimal native service and the BusDK repository stack commands.</p>
+                    <p>See a minimal native service and an existing repository stack shape.</p>
                   </a>
                   <a class="tutorial-card" href="docker/index.html">
                     <h3>Docker</h3>
-                    <p>Run Bus Services as the foreground process inside a runtime image.</p>
+                    <p>Use Bus Services inside a runtime image without requiring PID 1.</p>
                   </a>
                   <a class="tutorial-card" href="modules/index.html">
                     <h3>Modules</h3>

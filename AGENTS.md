@@ -62,6 +62,11 @@ Scoped guidance for the `busdk.com` repository.
     tables in `busdk.com/docs/`. Link to the generated docs pricing page for
     estimates, and keep website copy clear that final commercial prices are
     contract quotes.
+15. Published product sites under `busdk.com/docs/<product>/` must stand alone:
+    do not add cross-product product-family navigation inside their top nav,
+    side nav, or shared rendered nav. Shared static, GX, WASM, or other
+    components may be reused, but the content they render must be specific to
+    the current product site.
 
 ## Publication Boundary
 

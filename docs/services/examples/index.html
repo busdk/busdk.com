@@ -6,7 +6,7 @@
     <title>Bus Services Examples | BusDK</title>
     <meta
       name="description"
-      content="Practical Bus Services command examples for minimal native services, the BusDK repository stack, status checks, and shutdown."
+      content="Practical Bus Services command examples for minimal native services, repository stacks, status checks, and shutdown."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -18,11 +18,13 @@
             <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
             <span class="brand-wordmark">BusDK</span>
           </a>
-          <nav class="site-nav" aria-label="Primary">
+          <nav class="site-nav" aria-label="Bus Services navigation">
             <a href="../index.html">Overview</a>
             <a href="../getting-started/index.html">Start</a>
+            <a href="../examples/index.html" aria-current="page">Examples</a>
             <a href="../docker/index.html">Docker</a>
             <a href="../modules/index.html">Modules</a>
+            <a href="mailto:sales@hg.fi">Contact</a>
           </nav>
         </div>
       </header>
@@ -30,20 +32,13 @@
         <section class="product-page">
           <div class="section-inner product-doc-layout">
             <nav class="product-side-nav" aria-label="Bus Services navigation">
-              <p class="product-side-nav-title">Product family</p>
-              <a href="../../agents/index.html">Bus Agentic Development</a>
-              <a href="../../ai-platform/index.html">Bus AI Platform</a>
-              <a href="../../books/index.html">Bus Books</a>
-              <a href="../../inspection/index.html">Bus Inspection</a>
-              <a href="../../gx-ui/index.html">Bus GX/UI Library</a>
-              <a href="../../top/index.html">Bus Top</a>
-              <a href="../index.html">Bus Services</a>
               <p class="product-side-nav-title">Services guide</p>
               <a href="../index.html">Overview</a>
               <a href="../getting-started/index.html">Getting started</a>
-              <a href="index.html" aria-current="page">Examples</a>
+              <a href="../examples/index.html" aria-current="page">Examples</a>
               <a href="../docker/index.html">Docker</a>
               <a href="../modules/index.html">Modules</a>
+              <a href="mailto:sales@hg.fi">Discuss deployment</a>
             </nav>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Services</p>
@@ -57,7 +52,7 @@
               <div class="product-section">
                 <h2>Plan a repository stack</h2>
                 <p>
-                  A BusDK checkout can keep its product services in the repository root
+                  An application repository can keep its service stack in the repository root
                   <code>services.yml</code> and the profile tree in <code>profiles/</code>. Start by
                   validating and planning all declared services.
                 </p>
@@ -77,11 +72,11 @@ bus services down --file services.yml --profile-dir profiles</code></pre>
               </div>
 
               <div class="product-section">
-                <h2>Start the full local Bus stack</h2>
+                <h2>Start a full local app stack</h2>
                 <p>
-                  The full BusDK Services stack currently includes infrastructure, integration, and
-                  gateway groups: PostgreSQL, Events, Events relay, repos, workers, tasks, and the
-                  local API.
+                  A larger Services stack can include infrastructure, integration, and gateway
+                  groups: PostgreSQL, an Events API, relays, repository services, workers, task
+                  services, and the local product API.
                 </p>
                 <pre><code>bus services up --file services.yml --profile-dir profiles --all
 bus services ps --format json</code></pre>
