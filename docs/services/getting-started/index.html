@@ -52,7 +52,21 @@
               </p>
 
               <div class="product-section">
-                <h2>1. Create a stack file</h2>
+                <h2>1. Install the Bus binary tools</h2>
+                <p>
+                  Use the standard BusDK installer first. It installs the Bus binary tools needed
+                  for Bus Services, including the <code>bus</code> command and Services modules in
+                  the release.
+                </p>
+                <pre><code>curl -fsSL https://install.busdk.com | bash</code></pre>
+                <p>
+                  Other downloads are available from
+                  <a href="https://github.com/busdk/busdk/releases">github.com/busdk/busdk/releases</a>.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>2. Create a stack file</h2>
                 <p>
                   Put this in <code>services.yml</code>. It defines one service named
                   <code>demo</code> and points it at a project-local profile.
@@ -64,7 +78,7 @@ services:
               </div>
 
               <div class="product-section">
-                <h2>2. Add the profile</h2>
+                <h2>3. Add the profile</h2>
                 <p>
                   Put this in <code>profiles/demo-native.yml</code>. The example service stays alive
                   until Services stops it.
@@ -80,7 +94,7 @@ runtime:
               </div>
 
               <div class="product-section">
-                <h2>3. Validate, start, inspect, stop</h2>
+                <h2>4. Validate, start, inspect, stop</h2>
                 <pre><code>bus services stack validate
 bus services stack plan
 bus services up
@@ -94,7 +108,7 @@ bus services down</code></pre>
               </div>
 
               <div class="product-section">
-                <h2>4. Put state where operations expect it</h2>
+                <h2>5. Put state where operations expect it</h2>
                 <p>
                   By default, Services state lives under <code>.bus/services</code> next to the stack.
                   Use <code>--state-dir</code> for a dedicated host directory or container volume.
