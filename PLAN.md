@@ -1,5 +1,6 @@
 # PLAN.md
 
+- [x] 2026-06-18: fix linked tutorial-card styling so product guide cards, including the Services "Where to go next" section, render as cards without inherited link underlines or link colors; verify with browser computed styles and quality checks.
 - [x] 2026-06-18: clarify Bus Services pricing copy so the free binary test release is valid for two weeks from installation, and continued use requires a subscription or staying on the latest released binary.
 - [x] 2026-06-18: remove direct `mailto:` links from standalone product top/side navigation, add product-local contact pages, and reserve email links for CTA buttons inside page content; also record this product-site navigation rule in `AGENTS.md`.
 - [x] 2026-06-18: add the missing footer to the Bus Services product pages so the standalone Services site ends consistently like the other published product pages with footers.

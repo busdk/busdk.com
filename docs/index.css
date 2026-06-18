@@ -875,13 +875,30 @@ h1 {
   padding: 1.15rem;
 }
 
+a.tutorial-card {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+a.tutorial-card:hover,
+a.tutorial-card:focus-visible {
+  color: var(--text);
+  border-color: var(--accent);
+  box-shadow: 0 10px 24px var(--tile-hover-shadow);
+  transform: translateY(-1px);
+}
+
 .tutorial-card h3,
 .tutorial-callout h3 {
+  color: var(--text);
   margin-top: 0;
 }
 
 .tutorial-card p,
 .tutorial-callout p {
+  color: var(--text-muted);
   margin-bottom: 0;
 }
 
