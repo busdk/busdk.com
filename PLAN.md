@@ -1,5 +1,6 @@
 # PLAN.md
 
+- [x] 2026-06-18: align the Bus Services product site with the GX/UI commercial product flow now that live Stripe products exist. Acceptance: `docs/services/index.html` exposes a clear pricing path like GX/UI, `docs/services/pricing/index.html` describes the live Binary, FSL source subscription, and MIT source release options instead of planned checkout, includes or is ready for the live Stripe pricing table embed, same-site links stay relative, `git diff --check` passes, and `make quality` passes or any skip is recorded.
 - [x] 2026-06-18: fix linked tutorial-card styling so product guide cards, including the Services "Where to go next" section, render as cards without inherited link underlines or link colors; verify with browser computed styles and quality checks.
 - [x] 2026-06-18: clarify Bus Services pricing copy so the free binary test release is valid for two weeks from installation, and continued use requires a subscription or staying on the latest released binary.
 - [x] 2026-06-18: remove direct `mailto:` links from standalone product top/side navigation, add product-local contact pages, and reserve email links for CTA buttons inside page content; also record this product-site navigation rule in `AGENTS.md`.
