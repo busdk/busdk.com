@@ -6,7 +6,7 @@
     <title>Bus Services Docker | BusDK</title>
     <meta
       name="description"
-      content="Run Bus Services as the foreground supervisor inside a Docker image with baked stack files, release binaries, explicit state volumes, and JSON health checks."
+      content="Use Bus Services inside a Docker Ubuntu image with PostgreSQL, the Events API, writable state, non-root runtime users, and JSON health checks."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -49,46 +49,57 @@
               <p class="eyebrow">Bus Services</p>
               <h1>Use Bus Services inside a Docker image.</h1>
               <p class="hero-copy">
-                In a container, Bus Services should be the foreground supervisor for Bus processes.
-                Bake the public stack and profiles into the image, mount writable state and logs,
-                inject secrets at runtime, and use JSON status as the health check.
+                Bus Services does not need to be PID 1. Install it in the image, run it from
+                an entrypoint script, process supervisor, or <code>docker exec</code>, and let it
+                manage the Bus-related processes inside the container. The practical requirements
+                are a writable state directory, runtime secrets, an unprivileged user for native
+                PostgreSQL, and a PID 1 that reaps child processes.
               </p>
 
               <div class="product-section">
                 <h2>Runtime shape</h2>
                 <ul>
                   <li>Install Bus release binaries in the image, including <code>bus</code>, <code>bus-services</code>, and <code>bus-integration-services</code>.</li>
+                  <li>Install the service binaries your stack uses, such as <code>postgres</code>, <code>initdb</code>, and <code>bus-api-provider-events</code>.</li>
                   <li>Copy <code>services.yml</code> to <code>/opt/bus/services.yml</code>.</li>
                   <li>Copy the profile tree to <code>/opt/bus/profiles</code>.</li>
                   <li>Mount <code>/var/lib/bus</code> and <code>/var/log/bus</code> as writable runtime locations.</li>
+                  <li>Run Bus Services as an unprivileged user when native PostgreSQL is part of the stack. PostgreSQL refuses <code>initdb</code> and <code>postgres</code> as root.</li>
+                  <li>Use a real init or supervisor such as <code>tini</code>, <code>s6</code>, or systemd when Bus Services is not PID 1. A bare <code>sleep</code> PID 1 does not reap stopped children.</li>
                   <li>Provide secrets such as <code>BUS_EVENTS_JWT_SECRET</code> at runtime, not in the image layer.</li>
                 </ul>
               </div>
 
               <div class="product-section">
-                <h2>Entrypoint command</h2>
+                <h2>Start Services from inside the container</h2>
                 <pre><code>/usr/local/bin/bus services up \
   --file /opt/bus/services.yml \
   --profile-dir /opt/bus/profiles \
   --state-dir /var/lib/bus/services \
-  --foreground \
   --all</code></pre>
                 <p>
-                  <code>--foreground</code> keeps the Services supervisor attached to the container
-                  lifecycle. <code>--state-dir</code> keeps frozen config, status files, token files,
-                  and logs out of the read-only stack location.
+                  This command can run from an entrypoint script, a shell inside the container,
+                  or a supervisor-managed command. It exits after the stack is started and leaves
+                  the Services daemon plus child services running. <code>--state-dir</code> keeps
+                  frozen config, status files, token files, and logs out of the read-only stack
+                  location.
+                </p>
+                <p>
+                  If the container exists only to host the Services stack, you can still add
+                  <code>--foreground</code> and make Bus Services the foreground child of
+                  <code>tini</code>. That is optional; it is not a PID 1 requirement.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>Dockerfile skeleton</h2>
+                <h2>Ubuntu image skeleton</h2>
                 <pre><code>FROM ubuntu:24.04
 
 ARG BUS_RELEASE_TARBALL
 ARG BUS_RELEASE_SHA256
 
 RUN apt-get update \
-  &amp;&amp; apt-get install -y --no-install-recommends ca-certificates postgresql-client \
+  &amp;&amp; apt-get install -y --no-install-recommends ca-certificates postgresql tini \
   &amp;&amp; rm -rf /var/lib/apt/lists/*
 
 COPY ${BUS_RELEASE_TARBALL} /tmp/busdk.tgz
@@ -99,35 +110,94 @@ RUN echo "${BUS_RELEASE_SHA256}  /tmp/busdk.tgz" | sha256sum -c - \
 COPY services.yml /opt/bus/services.yml
 COPY profiles /opt/bus/profiles
 
+RUN mkdir -p /var/lib/bus /var/log/bus \
+  &amp;&amp; chown -R postgres:postgres /var/lib/bus /var/log/bus /opt/bus
+
+ENV PATH="/usr/local/bin:/usr/lib/postgresql/16/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 VOLUME ["/var/lib/bus", "/var/log/bus"]
-ENTRYPOINT ["/usr/local/bin/bus", "services", "up", "--file", "/opt/bus/services.yml", "--profile-dir", "/opt/bus/profiles", "--state-dir", "/var/lib/bus/services", "--foreground", "--all"]</code></pre>
+USER postgres
+ENTRYPOINT ["/usr/bin/tini", "--"]
+CMD ["sleep", "infinity"]</code></pre>
                 <p>
-                  Production images should pin the Ubuntu base image and verify the Bus release
-                  artifact checksum or signature. Worker-capable images may add Go, Git, SSH, and
-                  runner tools, but project source and task worktrees should be mounted or created at
-                  runtime instead of baked into the image.
+                  The <code>CMD</code> above is useful for development and smoke tests where you
+                  start Services with <code>docker exec</code>. Production images usually replace it
+                  with an entrypoint script or supervisor command that starts Bus Services, starts
+                  the main application, traps termination, and runs <code>bus services down</code>.
+                  Keep <code>tini</code> or another reaping PID 1 in front of that script.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>Compose health check</h2>
-                <pre><code>healthcheck:
-  test:
-    - CMD
-    - /usr/local/bin/bus
-    - services
-    - ps
-    - --file
-    - /opt/bus/services.yml
-    - --profile-dir
-    - /opt/bus/profiles
-    - --state-dir
-    - /var/lib/bus/services
-    - --format
-    - json
-  interval: 10s
-  timeout: 5s
-  retries: 6</code></pre>
+                <h2>PostgreSQL plus Events API</h2>
+                <p>
+                  A single Ubuntu container can contain multiple Bus-managed services. This stack
+                  starts native PostgreSQL first, then starts an Events API provider that uses that
+                  PostgreSQL service as its backend.
+                </p>
+                <pre><code>version: "0"
+env_files:
+  - .env
+services:
+  postgres:
+    profile: postgres-native
+  events:
+    profile: bus-events-api-provider-postgres
+    depends_on: [postgres]
+    params:
+      port: 8081</code></pre>
+                <pre><code>BUS_POSTGRES_PORT=55432
+BUS_POSTGRES_PGDATA=/var/lib/bus/postgres/data
+BUS_POSTGRES_SOCKET_DIR=/tmp
+BUS_EVENTS_JWT_SECRET=replace-at-runtime
+BUS_EVENTS_POSTGRES_DSN=postgres://bus_service@127.0.0.1:55432/postgres?sslmode=disable</code></pre>
+              </div>
+
+              <div class="product-section">
+                <h2>Events API profile</h2>
+                <p>
+                  Profiles are the bridge between Services and the processes in your image. This
+                  profile starts the standalone Events API provider binary with the PostgreSQL
+                  backend and exposes a TCP health check on the configured port.
+                </p>
+                <pre><code>id: bus-events-api-provider-postgres
+name: Bus Events API standalone PostgreSQL backend
+service_kind: bus.api.events
+parameters:
+  - name: port
+    type: integer
+    description: Local TCP port for the Events API service.
+    default: 8081
+runtime:
+  kind: native
+  provider: bus
+  command: [bus-api-provider-events]
+  args: ["--addr", "127.0.0.1:{param:port}", "--events-backend", "postgres"]
+  env:
+    - name: PATH
+      description: Process search path used to locate Bus and PostgreSQL binaries.
+      value_from: process_env:PATH
+    - name: BUS_EVENTS_JWT_SECRET
+      description: HS256 secret used by the Events API to validate bearer tokens.
+      value_from: env:BUS_EVENTS_JWT_SECRET
+    - name: BUS_EVENTS_POSTGRES_DSN
+      description: PostgreSQL connection string used as the durable Events backend.
+      value_from: env:BUS_EVENTS_POSTGRES_DSN
+    - name: BUS_EVENTS_API_PORT
+      description: Local TCP port used by the Events API healthcheck.
+      value: "{param:port}"
+  healthcheck:
+    tcp_port_from: env:BUS_EVENTS_API_PORT
+    interval: 250ms
+    timeout: 20s</code></pre>
+              </div>
+
+              <div class="product-section">
+                <h2>Health check</h2>
+                <pre><code>/usr/local/bin/bus services ps \
+  --file /opt/bus/services.yml \
+  --profile-dir /opt/bus/profiles \
+  --state-dir /var/lib/bus/services \
+  --format json</code></pre>
                 <p>
                   JSON status exits non-zero when the expected stack is degraded, while still writing
                   the status payload. That gives Docker a real health signal and gives operators the
@@ -136,13 +206,13 @@ ENTRYPOINT ["/usr/local/bin/bus", "services", "up", "--file", "/opt/bus/services
               </div>
 
               <div class="product-section">
-                <h2>Dependency containers</h2>
+                <h2>Sidecars are optional</h2>
                 <p>
-                  A single Bus runtime container does not have to contain every standard dependency.
-                  PostgreSQL and Mailhog can run as ordinary Compose services when that is the clearer
-                  local-development or customer-controlled deployment shape. The important boundary is
-                  that Bus-related services remain supervised by Bus Services and that dependency
-                  connection details are explicit runtime configuration.
+                  PostgreSQL and the Events API can run inside the same Ubuntu container when that is
+                  the deployment shape you need. They can also run as separate Compose services or
+                  platform-managed services. The important boundary is that the stack is explicit:
+                  Bus Services owns Bus-related process lifecycle, writable state is outside the
+                  read-only stack location, and connection details come from runtime configuration.
                 </p>
               </div>
             </div>
