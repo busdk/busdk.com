@@ -14,7 +14,7 @@ var currentMarkerPattern = regexp.MustCompile(`data-gx-ui-current="([^"]+)"`)
 
 const gxUIBaseURL = "https://busdk.com/docs/gx-ui/"
 
-func TestGXUITopHeaderIncludesBrandLogoAndPricing(t *testing.T) {
+func TestGXUITopHeaderUsesGXUILinks(t *testing.T) {
 	html := renderGXUITopHeader(t, gxUIBaseURL)
 	for _, want := range []string{
 		`class="site-header-inner"`,
@@ -32,15 +32,51 @@ func TestGXUITopHeaderIncludesBrandLogoAndPricing(t *testing.T) {
 	}
 }
 
-func TestGXUITopHeaderResolvesPricingInsideGXUIRoot(t *testing.T) {
+func TestGXUITopHeaderDoesNotRenderGlobalSiteLinks(t *testing.T) {
 	html := renderGXUITopHeader(t, gxUIBaseURL)
-	want := `href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`
-	if !strings.Contains(html, want) {
-		t.Fatalf("GXUITopHeader HTML missing %q in %s", want, html)
+	for _, unwanted := range []string{
+		`href="https://busdk.com/docs/index.html#products">Products</a>`,
+		`href="https://docs.busdk.com/">Documentation</a>`,
+		`href="https://busdk.com/docs/blog/index.html">Blog</a>`,
+	} {
+		if strings.Contains(html, unwanted) {
+			t.Fatalf("GXUITopHeader HTML unexpectedly included %q in %s", unwanted, html)
+		}
 	}
-	unwanted := `href="https://busdk.com/docs/pricing/index.html">Pricing</a>`
-	if strings.Contains(html, unwanted) {
-		t.Fatalf("GXUITopHeader HTML unexpectedly included %q in %s", unwanted, html)
+}
+
+func TestBusDKTopHeaderMarksRequestedCurrentLink(t *testing.T) {
+	html := renderBusDKTopHeader(t, "site", "https://busdk.com/docs/", "blog")
+	want := `aria-current="page" href="https://busdk.com/docs/blog/index.html">Blog</a>`
+	if !strings.Contains(html, want) {
+		t.Fatalf("BusDKTopHeader HTML missing %q in %s", want, html)
+	}
+	if got := strings.Count(html, `aria-current="page"`); got != 1 {
+		t.Fatalf("aria-current count = %d, want 1 in %s", got, html)
+	}
+}
+
+func TestBusDKTopHeaderRendersProductLocalLinks(t *testing.T) {
+	html := renderBusDKTopHeader(t, "services", "https://busdk.com/docs/services/", "pricing")
+	for _, want := range []string{
+		`class="brand" href="https://busdk.com/docs/index.html"`,
+		`href="https://busdk.com/docs/services/index.html">Overview</a>`,
+		`href="https://busdk.com/docs/services/getting-started/index.html">Getting started</a>`,
+		`href="https://busdk.com/docs/services/docker/index.html">Docker</a>`,
+		`aria-current="page" href="https://busdk.com/docs/services/pricing/index.html">Pricing</a>`,
+		`href="https://busdk.com/docs/services/contact/index.html">Contact</a>`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("BusDKTopHeader HTML missing %q in %s", want, html)
+		}
+	}
+	for _, unwanted := range []string{
+		`href="https://busdk.com/docs/index.html#products">Products</a>`,
+		`href="https://busdk.com/docs/blog/index.html">Blog</a>`,
+	} {
+		if strings.Contains(html, unwanted) {
+			t.Fatalf("BusDKTopHeader HTML unexpectedly included %q in %s", unwanted, html)
+		}
 	}
 }
 
@@ -57,14 +93,36 @@ func TestGXUIFooterIncludesCopyrightFallbackContent(t *testing.T) {
 	}
 }
 
+func TestBusDKProductSideNavRendersProductLocalEntries(t *testing.T) {
+	html := renderBusDKProductSideNav(t, "services", "docker", "https://busdk.com/docs/services/")
+	for _, want := range []string{
+		`class="gx-side-nav-title"`,
+		`>Services guide</p>`,
+		`href="https://busdk.com/docs/services/index.html">Overview</a>`,
+		`href="https://busdk.com/docs/services/getting-started/index.html">Getting started</a>`,
+		`href="https://busdk.com/docs/services/examples/index.html">Examples</a>`,
+		`aria-current="page" href="https://busdk.com/docs/services/docker/index.html">Docker</a>`,
+		`href="https://busdk.com/docs/services/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/services/pricing/index.html">Pricing</a>`,
+		`href="https://busdk.com/docs/services/contact/index.html">Contact</a>`,
+	} {
+		if !strings.Contains(html, want) {
+			t.Fatalf("BusDKProductSideNav HTML missing %q in %s", want, html)
+		}
+	}
+	if got := BusDKProductSideNavCurrentCount("services", "docker"); got != 1 {
+		t.Fatalf("BusDKProductSideNavCurrentCount() = %d, want 1", got)
+	}
+}
+
 func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 	html := renderGXUISideNav(t, "bus-ui/forms")
 	for _, want := range []string{
 		`class="gx-side-nav-title"`,
-		`>Overview</p>`,
-		`>GX Framework</p>`,
+		`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
+		`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
 		`>Bus UI Library</p>`,
-		`>Tutorials</p>`,
+		`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/authoring/index.html">Tutorials</a>`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/index.html"`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html"`,
 		`href="https://busdk.com/docs/gx-ui/bus-ui/data/index.html"`,
@@ -90,38 +148,50 @@ func TestGXUISideNavCollapsesTopLevelContext(t *testing.T) {
 			name:    "overview",
 			current: "index",
 			want: []string{
+				`>Overview</p>`,
 				`aria-current="page" href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/authoring/index.html">Tutorials</a>`,
 				`href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`,
 				`href="https://busdk.com/docs/gx-ui/reference/index.html">Reference</a>`,
 				`href="https://busdk.com/docs/gx-ui/modules/index.html">Modules</a>`,
 			},
 			unwanted: []string{
-				`href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
-				`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
 				`href="https://busdk.com/docs/gx-ui/runtime/index.html">Runtime and testing</a>`,
+				`href="https://busdk.com/docs/gx-ui/gx/events/index.html">Events</a>`,
+				`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html">Forms</a>`,
 			},
 		},
 		{
 			name:    "gx framework",
 			current: "gx/events",
 			want: []string{
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
+				`>GX Framework</p>`,
 				`href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
 				`aria-current="page" href="https://busdk.com/docs/gx-ui/gx/events/index.html">Events</a>`,
 				`href="https://busdk.com/docs/gx-ui/gx/nodes/index.html">Nodes and render tree</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/authoring/index.html">Tutorials</a>`,
 			},
 			unwanted: []string{
 				`href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`,
-				`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
 				`href="https://busdk.com/docs/gx-ui/runtime/index.html">Runtime and testing</a>`,
+				`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html">Forms</a>`,
 			},
 		},
 		{
 			name:    "bus ui",
 			current: "bus-ui/forms/text-input",
 			want: []string{
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
+				`>Bus UI Library</p>`,
 				`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
 				`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html">Forms</a>`,
 				`aria-current="page" class="gx-side-nav-child" href="https://busdk.com/docs/gx-ui/bus-ui/forms/text-input/index.html">TextInput</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/authoring/index.html">Tutorials</a>`,
 			},
 			unwanted: []string{
 				`href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`,
@@ -133,14 +203,18 @@ func TestGXUISideNavCollapsesTopLevelContext(t *testing.T) {
 			name:    "tutorials",
 			current: "runtime",
 			want: []string{
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
+				`class="gx-side-nav-heading" href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
+				`>Tutorials</p>`,
 				`href="https://busdk.com/docs/gx-ui/authoring/index.html">Authoring tutorial</a>`,
 				`aria-current="page" href="https://busdk.com/docs/gx-ui/runtime/index.html">Runtime and testing</a>`,
 				`href="https://busdk.com/docs/gx-ui/components/index.html">Component tutorial</a>`,
 			},
 			unwanted: []string{
-				`href="https://busdk.com/docs/gx-ui/index.html">Overview</a>`,
-				`href="https://busdk.com/docs/gx-ui/gx/index.html">GX Framework</a>`,
-				`href="https://busdk.com/docs/gx-ui/bus-ui/index.html">Bus UI Library</a>`,
+				`href="https://busdk.com/docs/gx-ui/pricing/index.html">Pricing</a>`,
+				`href="https://busdk.com/docs/gx-ui/gx/events/index.html">Events</a>`,
+				`href="https://busdk.com/docs/gx-ui/bus-ui/forms/index.html">Forms</a>`,
 			},
 		},
 	}
@@ -148,16 +222,6 @@ func TestGXUISideNavCollapsesTopLevelContext(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			html := renderGXUISideNav(t, tt.current)
-			for _, heading := range []string{
-				`>Overview</p>`,
-				`>GX Framework</p>`,
-				`>Bus UI Library</p>`,
-				`>Tutorials</p>`,
-			} {
-				if !strings.Contains(html, heading) {
-					t.Fatalf("GXUISideNav HTML missing heading %q in %s", heading, html)
-				}
-			}
 			for _, want := range tt.want {
 				if !strings.Contains(html, want) {
 					t.Fatalf("GXUISideNav HTML missing %q in %s", want, html)
@@ -307,11 +371,29 @@ func renderGXUITopHeader(t *testing.T, baseURL string) string {
 	return html
 }
 
+func renderBusDKTopHeader(t *testing.T, navID string, baseURL string, currentID string) string {
+	t.Helper()
+	html, err := gx.RenderHTML(BusDKTopHeader(navID, baseURL, currentID))
+	if err != nil {
+		t.Fatalf("RenderHTML(BusDKTopHeader %q, %q, %q) failed: %v", navID, baseURL, currentID, err)
+	}
+	return html
+}
+
 func renderGXUIFooter(t *testing.T) string {
 	t.Helper()
 	html, err := gx.RenderHTML(GXUIFooter())
 	if err != nil {
 		t.Fatalf("RenderHTML(GXUIFooter) failed: %v", err)
+	}
+	return html
+}
+
+func renderBusDKProductSideNav(t *testing.T, navID string, currentID string, baseURL string) string {
+	t.Helper()
+	html, err := gx.RenderHTML(BusDKProductSideNav(navID, currentID, baseURL))
+	if err != nil {
+		t.Fatalf("RenderHTML(BusDKProductSideNav %q, %q, %q) failed: %v", navID, currentID, baseURL, err)
 	}
 	return html
 }

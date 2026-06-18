@@ -31,30 +31,19 @@
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header">
-        <div class="site-header-inner">
-          <a class="brand" href="../index.html" aria-label="BusDK home">
-            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
-            <span class="brand-wordmark">BusDK</span>
-          </a>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="../index.html#platform">Platform</a>
-            <a href="../index.html#workflows">Workflows</a>
-            <a href="../index.html#pricing">Pricing</a>
-            <a href="https://docs.busdk.com">Documentation</a>
-            <a href="./index.html" aria-current="page">Blog</a>
-            <button
-              id="theme-toggle"
-              class="theme-toggle"
-              type="button"
-              aria-label="Toggle dark theme"
-              aria-pressed="false"
-            >
-              Dark
-            </button>
-          </nav>
-        </div>
-      </header>
+        <header class="site-header" data-busdk-top-header data-busdk-current="blog">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#products">Products</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
       <main>
         <div class="page-shell">
           <article class="hero-panel">
@@ -113,14 +102,11 @@ human-readable text files and tracked in a Git repository</code></pre>
           </section>
         </div>
       </main>
-      <footer class="site-footer">
-        <div class="site-footer-inner">
-          <p>
-            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin
-            historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.
-          </p>
-        </div>
-      </footer>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
     </div>
     <script>
       const root = document.documentElement;
@@ -155,5 +141,6 @@ human-readable text files and tracked in a Git repository</code></pre>
         applyTheme(event.matches ? "dark" : "light");
       });
     </script>
+    <script src="../site-chrome.js"></script>
   </body>
 </html>

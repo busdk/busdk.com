@@ -12,30 +12,30 @@
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header">
-        <div class="site-header-inner">
-          <a class="brand" href="../index.html" aria-label="BusDK home">
-            <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
-            <span class="brand-wordmark">BusDK</span>
-          </a>
-          <nav class="site-nav" aria-label="Bus Agentic Development navigation">
-            <a href="index.html" aria-current="page">Overview</a>
-            <a href="modules/index.html">Modules</a>
-            <a href="https://docs.busdk.com/products/agents/">Docs</a>
-            <a href="contact/index.html">Contact</a>
-          </nav>
-        </div>
-      </header>
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="agents" data-busdk-top-nav-base="./" data-busdk-current="overview">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="./contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
       <main>
         <section class="product-page">
           <div class="section-inner product-doc-layout">
-            <nav class="product-side-nav" aria-label="Bus Agentic Development navigation">
-              <p class="product-side-nav-title">Agentic Development</p>
-              <a href="index.html" aria-current="page">Overview</a>
-              <a href="modules/index.html">Modules</a>
-              <a href="https://docs.busdk.com/products/agents/">Product docs</a>
-              <a href="contact/index.html">Contact</a>
-            </nav>
+                <aside class="gx-side-nav" data-busdk-side-nav="agents" data-busdk-current="overview" data-busdk-side-nav-base="./" aria-label="Bus Agentic Development navigation">
+    <p class="gx-side-nav-title">Agentic Development</p>
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="./contact/index.html">Contact</a>
+  </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Agentic Development</p>
               <h1>Semi-autonomous software development with autonomous agents.</h1>
@@ -45,7 +45,7 @@
                 or SSH-accessible development environments.
               </p>
               <div class="product-links">
-                <a class="button button-primary" href="https://docs.busdk.com/products/agents/">Read docs</a>
+                <a class="button button-primary" href="https://docs.busdk.com/">Read docs</a>
                 <a class="button button-secondary" href="mailto:sales@hg.fi">Book a technical demo</a>
               </div>
               <div class="product-section">
@@ -79,6 +79,12 @@
           </div>
         </section>
       </main>
+      <footer class="site-footer" data-busdk-footer>
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
     </div>
+    <script src="../site-chrome.js"></script>
   </body>
 </html>

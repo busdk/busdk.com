@@ -9,21 +9,21 @@
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header" data-gx-ui-top-header>
-        <div class="site-header-inner">
-          <a class="brand" href="../../../../index.html" aria-label="BusDK home">
-            <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
-            <span class="brand-wordmark">BusDK</span>
-          </a>
-          <nav class="site-nav gx-doc-nav" aria-label="Primary">
-            <a href="../../../gx/index.html">GX Framework</a>
-            <a href="../../../bus-ui/index.html">Bus UI Library</a>
-            <a href="../../../reference/index.html">Reference</a>
-            <a href="../../../modules/index.html">Modules</a>
-            <a href="../../../pricing/index.html">Pricing</a>
-          </nav>
-        </div>
-      </header>
+        <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/forms/input">
+    <div class="site-header-inner">
+      <a class="brand" href="../../../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../../../gx/index.html">GX Framework</a>
+      <a href="../../../bus-ui/index.html" aria-current="page">Bus UI Library</a>
+      <a href="../../../reference/index.html">Reference</a>
+      <a href="../../../modules/index.html">Modules</a>
+      <a href="../../../pricing/index.html">Pricing</a>
+      </nav>
+    </div>
+  </header>
       <main>
         <section class="product-page gx-doc-page">
           <div class="section-inner gx-doc-layout">
@@ -83,10 +83,10 @@ func InputExample() gx.Node {
       </main>
 
       <footer class="site-footer" data-gx-ui-footer>
-        <div class="site-footer-inner">
-          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
-        </div>
-      </footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
     </div>
     <script defer src="../../../../../assets/bus-ui-demo/wasm_exec.js"></script>
     <script defer src="../../../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>

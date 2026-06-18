@@ -25,8 +25,9 @@ func mountAll() {
 		return
 	}
 	mountBusUIDemos(document)
-	mountGXUITopHeaders(document)
-	mountGXUIFooters(document)
+	mountBusDKTopHeaders(document)
+	mountBusDKFooters(document)
+	mountBusDKProductSideNavs(document)
 	mountGXUISideNavs(document)
 }
 
@@ -83,17 +84,30 @@ func mountGXUISideNavs(document js.Value) {
 	}
 }
 
-func mountGXUITopHeaders(document js.Value) {
-	nodes := document.Call("querySelectorAll", "header.site-header[data-gx-ui-top-header]")
-	baseURL := gxUIDocsBaseURL(document)
+func mountBusDKTopHeaders(document js.Value) {
+	nodes := document.Call("querySelectorAll", "header.site-header[data-busdk-top-header], header.site-header[data-gx-ui-top-header]")
 	for i := 0; i < nodes.Length(); i++ {
 		el := nodes.Index(i)
 		fallbackHTML := el.Get("innerHTML").String()
-		el.Call("setAttribute", "data-gx-ui-top-header-state", "mounting")
-		selector := ensureID(el, "gx-ui-top-header-root", i)
-		headerBaseURL := baseURL
+		setTopHeaderState(el, "mounting")
+		selector := ensureID(el, "busdk-top-header-root", i)
+		navID := dataAttribute(el, "busdkTopNav")
+		if navID == "" && hasAttribute(el, "data-gx-ui-top-header") {
+			navID = "gx-ui"
+		}
+		if navID == "" {
+			navID = "site"
+		}
+		headerBaseURL := busDKTopHeaderBaseURL(document, el, navID)
+		currentID := dataAttribute(el, "busdkCurrent")
+		if currentID == "" && navID == "gx-ui" {
+			currentID = gxUITopHeaderCurrentID(document)
+		}
+		headerNavID := navID
+		headerCurrentID := currentID
+		headerBaseHref := headerBaseURL
 		root := func() gx.Node {
-			return demo.GXUITopHeader(headerBaseURL)
+			return demo.BusDKTopHeader(headerNavID, headerBaseHref, headerCurrentID)
 		}
 		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
 			OnError: func(err error) {
@@ -103,19 +117,19 @@ func mountGXUITopHeaders(document js.Value) {
 			setTopHeaderFallback(el, fallbackHTML)
 			continue
 		}
-		el.Call("setAttribute", "data-gx-ui-top-header-state", "mounted")
+		setTopHeaderState(el, "mounted")
 	}
 }
 
-func mountGXUIFooters(document js.Value) {
-	nodes := document.Call("querySelectorAll", "footer.site-footer[data-gx-ui-footer]")
+func mountBusDKFooters(document js.Value) {
+	nodes := document.Call("querySelectorAll", "footer.site-footer[data-busdk-footer], footer.site-footer[data-gx-ui-footer]")
 	for i := 0; i < nodes.Length(); i++ {
 		el := nodes.Index(i)
 		fallbackHTML := el.Get("innerHTML").String()
-		el.Call("setAttribute", "data-gx-ui-footer-state", "mounting")
-		selector := ensureID(el, "gx-ui-footer-root", i)
+		setFooterState(el, "mounting")
+		selector := ensureID(el, "busdk-footer-root", i)
 		root := func() gx.Node {
-			return demo.GXUIFooter()
+			return demo.BusDKFooter()
 		}
 		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
 			OnError: func(err error) {
@@ -125,7 +139,38 @@ func mountGXUIFooters(document js.Value) {
 			setFooterFallback(el, fallbackHTML)
 			continue
 		}
-		el.Call("setAttribute", "data-gx-ui-footer-state", "mounted")
+		setFooterState(el, "mounted")
+	}
+}
+
+func mountBusDKProductSideNavs(document js.Value) {
+	nodes := document.Call("querySelectorAll", "aside.gx-side-nav[data-busdk-side-nav]")
+	for i := 0; i < nodes.Length(); i++ {
+		el := nodes.Index(i)
+		fallbackHTML := el.Get("innerHTML").String()
+		el.Call("setAttribute", "data-busdk-side-nav-state", "mounting")
+		selector := ensureID(el, "busdk-side-nav-root", i)
+		navID := dataAttribute(el, "busdkSideNav")
+		currentID := dataAttribute(el, "busdkCurrent")
+		baseURL := dataAttribute(el, "busdkSideNavBase")
+		navCurrentID := currentID
+		navBaseURL := baseURL
+		navKey := navID
+		root := func() gx.Node {
+			return demo.BusDKProductSideNav(navKey, navCurrentID, navBaseURL)
+		}
+		if _, err := gxwasm.Mount(selector, ui.GxWASMRoot(ui.GxNodeRoot(root)), gxwasm.Options{
+			OnError: func(err error) {
+				setBusDKSideNavFallback(el, fallbackHTML)
+			},
+		}); err != nil {
+			setBusDKSideNavFallback(el, fallbackHTML)
+			continue
+		}
+		if count := demo.BusDKProductSideNavCurrentCount(navID, currentID); count != 1 {
+			js.Global().Get("console").Call("warn", "BusDK side nav expected exactly one current entry", navID, currentID, count)
+		}
+		el.Call("setAttribute", "data-busdk-side-nav-state", "mounted")
 	}
 }
 
@@ -145,6 +190,40 @@ func gxUIDocsBaseURL(document js.Value) string {
 		}
 	}
 	return ""
+}
+
+func busDKSiteBaseURL(document js.Value, el js.Value) string {
+	for _, key := range []string{"busdkSiteBase", "gxUiSiteBase"} {
+		if value := dataAttribute(el, key); value != "" {
+			return value
+		}
+	}
+	window := js.Global().Get("window")
+	if baseURL := window.Get("__busDKSiteBaseURL"); !baseURL.IsUndefined() && !baseURL.IsNull() && baseURL.String() != "" {
+		return baseURL.String()
+	}
+	if gxBase := gxUIDocsBaseURL(document); gxBase != "" {
+		return js.Global().Get("URL").New("../", gxBase).Get("href").String()
+	}
+	return ""
+}
+
+func busDKTopHeaderBaseURL(document js.Value, el js.Value, navID string) string {
+	if baseURL := dataAttribute(el, "busdkTopNavBase"); baseURL != "" {
+		return baseURL
+	}
+	if navID == "gx-ui" {
+		return gxUIDocsBaseURL(document)
+	}
+	return busDKSiteBaseURL(document, el)
+}
+
+func gxUITopHeaderCurrentID(document js.Value) string {
+	node := document.Call("querySelector", "aside.gx-side-nav[data-gx-ui-current]")
+	if node.IsUndefined() || node.IsNull() {
+		return ""
+	}
+	return dataAttribute(node, "gxUiCurrent")
 }
 
 func ensureID(el js.Value, prefix string, index int) string {
@@ -170,12 +249,47 @@ func setSideNavFallback(el js.Value, text string) {
 
 func setTopHeaderFallback(el js.Value, html string) {
 	el.Set("innerHTML", html)
-	el.Call("setAttribute", "data-gx-ui-top-header-state", "failed")
+	setTopHeaderState(el, "failed")
 }
 
 func setFooterFallback(el js.Value, html string) {
 	el.Set("innerHTML", html)
-	el.Call("setAttribute", "data-gx-ui-footer-state", "failed")
+	setFooterState(el, "failed")
+}
+
+func setBusDKSideNavFallback(el js.Value, html string) {
+	el.Set("innerHTML", html)
+	el.Call("setAttribute", "data-busdk-side-nav-state", "failed")
+}
+
+func setTopHeaderState(el js.Value, state string) {
+	if hasAttribute(el, "data-busdk-top-header") {
+		el.Call("setAttribute", "data-busdk-top-header-state", state)
+	}
+	if hasAttribute(el, "data-gx-ui-top-header") {
+		el.Call("setAttribute", "data-gx-ui-top-header-state", state)
+	}
+}
+
+func setFooterState(el js.Value, state string) {
+	if hasAttribute(el, "data-busdk-footer") {
+		el.Call("setAttribute", "data-busdk-footer-state", state)
+	}
+	if hasAttribute(el, "data-gx-ui-footer") {
+		el.Call("setAttribute", "data-gx-ui-footer-state", state)
+	}
+}
+
+func hasAttribute(el js.Value, name string) bool {
+	return el.Call("hasAttribute", name).Bool()
+}
+
+func dataAttribute(el js.Value, name string) string {
+	value := el.Get("dataset").Get(name)
+	if value.IsUndefined() || value.IsNull() {
+		return ""
+	}
+	return value.String()
 }
 
 func bindDemoInteractions(root js.Value) {

@@ -6,37 +6,25 @@
     <title>BusDK | Business software product lines</title>
     <meta
       name="description"
-      content="BusDK is a family of self-hostable business software products for agentic development, AI infrastructure, auditable finance, inspections, Go-native UI, process monitoring, and service stacks."
+      content="BusDK provides self-hostable business software products for agentic development, AI infrastructure, auditable finance, inspections, Go-native UI, process monitoring, and service stacks."
     />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header">
-        <div class="site-header-inner">
-          <a class="brand" href="./index.html" aria-label="BusDK home">
-            <img class="brand-logo" src="busdk-logo.png" alt="BusDK logo" />
-            <span class="brand-wordmark">BusDK</span>
-          </a>
-          <nav class="site-nav" aria-label="Primary">
-            <a href="#products">Products</a>
-            <a href="#platform">Platform</a>
-            <a href="#deployment">Deployment</a>
-            <a href="pricing/index.html">Pricing</a>
-            <a href="https://docs.busdk.com">Docs</a>
-            <a href="blog/index.html">Blog</a>
-            <button
-              id="theme-toggle"
-              class="theme-toggle"
-              type="button"
-              aria-label="Toggle dark theme"
-              aria-pressed="false"
-            >
-              Dark
-            </button>
-          </nav>
-        </div>
-      </header>
+        <header class="site-header" data-busdk-top-header data-busdk-current="products">
+    <div class="site-header-inner">
+      <a class="brand" href="index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="index.html#products" aria-current="page">Products</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="blog/index.html">Blog</a>
+      </nav>
+    </div>
+  </header>
 
       <main>
         <section class="hero reveal">
@@ -46,25 +34,13 @@
                 <p class="eyebrow">Business Development Kit</p>
                 <h1>Business software built as focused Bus products.</h1>
                 <p class="hero-copy">
-                  BusDK is a family of self-hostable product lines, not one vague tool. Use it for
-                  semi-autonomous software work, AI service infrastructure, auditable financial
-                  workflows, inspection reports, Go-native UI components, local process monitoring,
-                  and predictable project service stacks.
+                  Self-hostable product lines for agentic development, AI infrastructure,
+                  auditable finance, inspections, Go-native UI, process monitoring, and service
+                  stacks.
                 </p>
                 <div class="hero-cta">
                   <a class="button button-primary" href="#products">Browse products</a>
-                  <a class="button button-secondary" href="https://docs.busdk.com/products/">Open product docs</a>
-                </div>
-                <div class="quick-install" aria-label="Quick install">
-                  <h2>Quick install</h2>
-                  <div class="install-row">
-                    <code id="quick-install-command">curl -fsSL https://install.busdk.com | bash</code>
-                    <button class="copy-button" type="button" data-copy-target="quick-install">Copy</button>
-                  </div>
-                  <p class="meta">
-                    Other downloads:
-                    <a href="https://github.com/busdk/busdk/releases">github.com/busdk/busdk/releases</a>
-                  </p>
+                  <a class="button button-secondary" href="https://docs.busdk.com/">Open documentation</a>
                 </div>
               </div>
             </div>
@@ -75,250 +51,75 @@
           <div class="section-inner">
             <div class="section-title-wrap">
               <p class="eyebrow">Product lines</p>
-              <h2>The public BusDK products</h2>
-              <p>
-                Each product page explains a concrete buyer or evaluator story. Module names stay
-                visible where they help technical users, but the product lines are organized around
-                use cases instead of repository boundaries.
-              </p>
+              <h2>Choose a product line</h2>
             </div>
             <div class="product-grid">
               <article class="product-card product-card-primary">
-                <p class="eyebrow">Strategic product</p>
                 <h3>Bus Agentic Development</h3>
                 <p>
-                  Semi-autonomous software development with supervisor agents, worker agents,
-                  durable tasks, repositories, terminals, notes, reviews, MCP, and local or
-                  SSH-accessible work capacity.
+                  Supervised agent work for repositories, terminals, tasks, notes, reviews, and
+                  MCP.
                 </p>
-                <a href="agents/index.html">Open product page</a>
+                <a href="agents/index.html">Open product site</a>
               </article>
               <article class="product-card product-card-primary">
-                <p class="eyebrow">Strategic product</p>
                 <h3>Bus AI Platform</h3>
                 <p>
-                  Self-hostable AI product infrastructure with OpenAI-compatible model access,
-                  inference runtime control, deployment, auth, usage, billing, VMs, containers, and
-                  service hooks.
+                  Self-hosted AI services with model access, inference control, deployment, auth,
+                  usage, billing, VMs, and containers.
                 </p>
-                <a href="ai-platform/index.html">Open product page</a>
+                <a href="ai-platform/index.html">Open product site</a>
               </article>
               <article class="product-card product-card-primary">
-                <p class="eyebrow">Strategic product</p>
                 <h3>Bus Books</h3>
                 <p>
-                  Auditable financial workflows for humans and agentic AI over inspectable workspace
-                  data: books, invoices, evidence, reconciliation, validation, reports, formulas,
-                  PDFs, CLI, and API.
+                  Auditable finance with books, invoices, evidence, reconciliation, validation,
+                  reports, PDFs, CLI, and API.
                 </p>
-                <a href="books/index.html">Open product page</a>
+                <a href="books/index.html">Open product site</a>
               </article>
               <article class="product-card">
                 <h3>Bus Inspection</h3>
                 <p>
-                  Local inspection reports and action lists with sites, observations, photo
-                  evidence, customer acknowledgements, role-scoped access, and snapshot exports.
+                  Inspection reports with observations, photos, action lists, acknowledgements,
+                  scoped access, and exports.
                 </p>
-                <a href="inspection/index.html">Open product page</a>
+                <a href="inspection/index.html">Open product site</a>
               </article>
               <article class="product-card">
-                <h3>Bus GX And Bus UI</h3>
+                <h3>Bus GX and Bus UI</h3>
                 <p>
-                  A commercial source-available <code>.gx</code> component framework plus a
-                  checked UI library with generated Go rendering, reusable components, runtime
+                  Go-native UI with <code>.gx</code>, reusable components, rendering, runtime
                   bridges, and deterministic tests.
                 </p>
-                <a href="gx-ui/index.html">Open product page</a>
+                <a href="gx-ui/index.html">Open product site</a>
               </article>
               <article class="product-card">
                 <h3>Bus Top</h3>
                 <p>
-                  Friendly local process monitoring with deterministic system facts,
-                  process-family grouping, snapshots, host diagnosis, and optional
+                  Local process monitoring with grouped processes, snapshots, host diagnosis, and
                   privacy-aware AI explanations.
                 </p>
-                <a href="top/index.html">Open product page</a>
+                <a href="top/index.html">Open product site</a>
               </article>
               <article class="product-card">
                 <h3>Bus Services</h3>
                 <p>
-                  Repeatable service-stack supervision for the databases, APIs, workers, task
-                  services, relays, and Docker runtime images that BusDK products depend on.
+                  Service-stack supervision for databases, APIs, workers, relays, and Docker
+                  runtime images.
                 </p>
-                <a href="services/index.html">Open product page</a>
+                <a href="services/index.html">Open product site</a>
               </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="proof reveal" id="platform" aria-label="Platform highlights">
-          <div class="section-inner">
-            <div class="section-title-wrap">
-              <p class="eyebrow">Supporting platform</p>
-              <h2>The shared BusDK platform underneath</h2>
-            </div>
-            <div class="proof-grid">
-              <article class="panel">
-                <h2>Bus CLI and Busfiles</h2>
-                <p>
-                  Deterministic command dispatch and <code>.bus</code> automation files give every
-                  product a scriptable interface.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Workspaces</h2>
-                <p>
-                  Workspace initialization, configuration, preferences, secrets, and open datasets
-                  keep product data inspectable.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>API, events, and integrations</h2>
-                <p>
-                  Provider-hosting APIs, event workers, replayable events, and integration runtimes
-                  connect product modules without turning every module into a public product.
-                </p>
-              </article>
-              <article class="panel">
-                <h2>Operator and portal hosts</h2>
-                <p>
-                  Operator commands and portal dispatchers host trusted admin, deployment, frontend,
-                  and module UI surfaces.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="workflows reveal" id="deployment">
-          <div class="section-inner">
-            <div class="section-title-wrap">
-              <p class="eyebrow">Deployment and data control</p>
-              <h2>Run with us, or run it yourself</h2>
-            </div>
-            <div class="workflow-grid">
-              <article class="workflow-card">
-                <h3>Managed Finnish cloud</h3>
-                <p>
-                  Heusala can operate BusDK-based products on Finnish cloud infrastructure, with
-                  service and data-processing terms agreed directly with the customer.
-                </p>
-                <a class="button button-secondary" href="mailto:sales@hg.fi">Discuss managed deployment</a>
-              </article>
-              <article class="workflow-card">
-                <h3>Customer self-hosted</h3>
-                <p>
-                  Teams that need direct infrastructure control can host Bus modules, APIs, workers,
-                  portals, databases, and secrets in their own systems.
-                </p>
-                <a href="https://docs.busdk.com/integration/deployment-and-data-control">Read deployment docs</a>
-              </article>
-              <article class="workflow-card">
-                <h3>Contract-defined processing</h3>
-                <p>
-                  Commercial deployments can define where data is processed, who operates the
-                  service, how secrets are supplied, and which support or licensing terms apply.
-                </p>
-                <a class="button button-secondary" href="mailto:sales@hg.fi">Contact sales</a>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="pricing reveal" id="pricing">
-          <div class="section-inner">
-            <div class="section-title-wrap">
-              <p class="eyebrow">Pricing</p>
-              <h2>Subscription plans and source access</h2>
-            </div>
-            <p class="pricing-copy">
-              Subscription plans cover hosted and managed BusDK services. Bus modules are
-              commercial source-available source packages, and
-              <a href="https://fsl.software/">FSL-licensed</a> source access is listed in the
-              BusDK source package pricing table. Use the contact button to purchase access or
-              discuss a customer-specific offer.
-            </p>
-            <div class="product-links">
-              <a class="button button-primary" href="mailto:sales@hg.fi">Contact sales@hg.fi</a>
-            </div>
-            <div class="subscription-plans" role="region" aria-label="Subscription plans">
-              <article class="panel">
-                <h3>Base</h3>
-                <p><strong>25 EUR/user/month</strong></p>
-                <p class="meta">For individuals getting started with hosted BusDK services.</p>
-              </article>
-              <article class="panel">
-                <h3>Pro</h3>
-                <p><strong>100 EUR/user/month</strong></p>
-                <p class="meta">For product teams that need higher limits, AI controls, and support.</p>
-              </article>
-              <article class="panel">
-                <h3>Enterprise</h3>
-                <p class="meta">
-                  For dedicated infrastructure, self-hosted deployment, onboarding, and custom
-                  licensing.
-                </p>
-              </article>
-            </div>
-            <div class="pricing-cta" aria-label="Pricing actions">
-              <a class="button button-primary" href="pricing/index.html">Pricing and source access</a>
-              <a class="button button-secondary" href="https://docs.busdk.com/implementation/module-pricing"
-                >Source package prices</a
-              >
-            </div>
-          </div>
-        </section>
-
-        <section class="trust reveal">
-          <div class="section-inner">
-            <div class="trust-panel">
-              <h2>Built for inspectable business software</h2>
-              <p>
-                BusDK favors deterministic command surfaces, explicit API boundaries, scoped tokens,
-                evented workers, open workspace data, and reusable frontend surfaces so automation
-                stays understandable.
-              </p>
-              <p>
-                Start from a product line, then drill into module references when you need command
-                flags, API details, or integration ownership.
-              </p>
-              <p>
-                Product documentation starts at
-                <a href="https://docs.busdk.com/products/">docs.busdk.com/products</a>.
-              </p>
-            </div>
-            <aside class="status-panel" aria-label="Project status">
-              <h3>Project status</h3>
-              <p>Pre-release and under active development.</p>
-              <p class="meta">Interfaces and schemas may change while modules stabilize.</p>
-            </aside>
-          </div>
-        </section>
-
-        <section class="final-cta reveal">
-          <div class="section-inner">
-            <h2>Evaluate the product line that matches your work</h2>
-            <p>
-              BusDK is a bundle, but adoption should start with the product you actually need: agentic
-              development, AI infrastructure, auditable books, inspections, Go-native UI, process
-              monitoring, or service stacks.
-            </p>
-            <div class="hero-cta">
-              <a class="button button-primary" href="https://docs.busdk.com/products/">Open product docs</a>
-              <a class="button button-secondary" href="https://github.com/busdk">Browse GitHub</a>
             </div>
           </div>
         </section>
       </main>
 
-      <footer class="site-footer">
-        <div class="site-footer-inner">
-          <p>
-            © <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK provides transparent,
-            auditable, module-driven business software.
-          </p>
-        </div>
-      </footer>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
     </div>
 
     <script>
@@ -360,38 +161,6 @@
         prefersDark.addListener(onSystemThemeChange);
       }
 
-      const copyButton = document.querySelector("[data-copy-target='quick-install']");
-      const installCommand = document.getElementById("quick-install-command");
-
-      if (copyButton && installCommand) {
-        const originalLabel = copyButton.textContent;
-        let resetTimeout;
-
-        copyButton.addEventListener("click", async () => {
-          const text = installCommand.textContent.trim();
-
-          try {
-            await navigator.clipboard.writeText(text);
-          } catch (error) {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            textarea.style.position = "fixed";
-            textarea.style.left = "-9999px";
-            document.body.appendChild(textarea);
-            textarea.focus();
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-          }
-
-          copyButton.textContent = "Copied";
-          clearTimeout(resetTimeout);
-          resetTimeout = window.setTimeout(() => {
-            copyButton.textContent = originalLabel;
-          }, 2000);
-        });
-      }
-
       const observer = new IntersectionObserver(
         (entries) => {
           for (const entry of entries) {
@@ -405,5 +174,6 @@
 
       document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
     </script>
+    <script src="site-chrome.js"></script>
   </body>
 </html>

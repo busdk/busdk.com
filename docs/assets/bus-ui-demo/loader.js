@@ -35,16 +35,24 @@
     return Array.prototype.slice.call(document.querySelectorAll("aside.gx-side-nav[data-gx-ui-side-nav]"));
   }
 
+  function busDKSideNavNodes() {
+    return Array.prototype.slice.call(document.querySelectorAll("aside.gx-side-nav[data-busdk-side-nav]"));
+  }
+
   function topHeaderNodes() {
-    return Array.prototype.slice.call(document.querySelectorAll("header.site-header[data-gx-ui-top-header]"));
+    return Array.prototype.slice.call(
+      document.querySelectorAll("header.site-header[data-gx-ui-top-header], header.site-header[data-busdk-top-header]")
+    );
   }
 
   function footerNodes() {
-    return Array.prototype.slice.call(document.querySelectorAll("footer.site-footer[data-gx-ui-footer]"));
+    return Array.prototype.slice.call(
+      document.querySelectorAll("footer.site-footer[data-gx-ui-footer], footer.site-footer[data-busdk-footer]")
+    );
   }
 
   function mountNodes() {
-    return demoNodes().concat(sideNavNodes(), topHeaderNodes(), footerNodes());
+    return demoNodes().concat(sideNavNodes(), busDKSideNavNodes(), topHeaderNodes(), footerNodes());
   }
 
   function setMountState(state) {
@@ -54,11 +62,24 @@
     sideNavNodes().forEach(function (node) {
       node.setAttribute("data-gx-ui-side-nav-state", state);
     });
+    busDKSideNavNodes().forEach(function (node) {
+      node.setAttribute("data-busdk-side-nav-state", state);
+    });
     topHeaderNodes().forEach(function (node) {
-      node.setAttribute("data-gx-ui-top-header-state", state);
+      if (node.hasAttribute("data-gx-ui-top-header")) {
+        node.setAttribute("data-gx-ui-top-header-state", state);
+      }
+      if (node.hasAttribute("data-busdk-top-header")) {
+        node.setAttribute("data-busdk-top-header-state", state);
+      }
     });
     footerNodes().forEach(function (node) {
-      node.setAttribute("data-gx-ui-footer-state", state);
+      if (node.hasAttribute("data-gx-ui-footer")) {
+        node.setAttribute("data-gx-ui-footer-state", state);
+      }
+      if (node.hasAttribute("data-busdk-footer")) {
+        node.setAttribute("data-busdk-footer-state", state);
+      }
     });
   }
 
@@ -73,11 +94,26 @@
       node.classList.add("bus-ui-demo-fallback");
       node.setAttribute("data-gx-ui-side-nav-state", "failed");
     });
+    busDKSideNavNodes().forEach(function (node) {
+      node.textContent = message;
+      node.classList.add("bus-ui-demo-fallback");
+      node.setAttribute("data-busdk-side-nav-state", "failed");
+    });
     topHeaderNodes().forEach(function (node) {
-      node.setAttribute("data-gx-ui-top-header-state", "failed");
+      if (node.hasAttribute("data-gx-ui-top-header")) {
+        node.setAttribute("data-gx-ui-top-header-state", "failed");
+      }
+      if (node.hasAttribute("data-busdk-top-header")) {
+        node.setAttribute("data-busdk-top-header-state", "failed");
+      }
     });
     footerNodes().forEach(function (node) {
-      node.setAttribute("data-gx-ui-footer-state", "failed");
+      if (node.hasAttribute("data-gx-ui-footer")) {
+        node.setAttribute("data-gx-ui-footer-state", "failed");
+      }
+      if (node.hasAttribute("data-busdk-footer")) {
+        node.setAttribute("data-busdk-footer-state", "failed");
+      }
     });
   }
 

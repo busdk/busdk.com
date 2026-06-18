@@ -19,7 +19,19 @@
   </head>
   <body>
     <div class="site-shell">
-      <header class="site-header"><div class="site-header-inner"><a class="brand" href="../index.html" aria-label="BusDK home"><img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a><nav class="site-nav" aria-label="Primary"><a href="../index.html#platform">Platform</a><a href="../index.html#workflows">Workflows</a><a href="../index.html#pricing">Pricing</a><a href="https://docs.busdk.com">Documentation</a><a href="./index.html" aria-current="page">Blog</a><button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">Dark</button></nav></div></header>
+        <header class="site-header" data-busdk-top-header data-busdk-current="blog">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#products">Products</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header>
       <main><div class="page-shell">
         <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1><code>docs.busdk.com</code> saa moduuli-indeksin, navigaation ja yhtenäisen rakenteen</h1><p class="intro">Docs-sivusto järjestyy uudelleen. Moduulit saavat yhteisen indeksin, sisältö jaetaan osioihin ja sivustolle tulee oma navigaatio sekä 404-sivu.</p><p class="intro">Moduuleja kuvataan nyt myös yhtenä <code>bus</code>-komentopintana irrallisten binäärien sijaan.</p><div class="hero-meta"><span class="meta-chip">31.1.2026</span><span class="meta-chip">docs.busdk.com</span><span class="meta-chip">Moduuli-indeksi</span><span class="meta-chip">Navigaatio</span></div></div></article>
         <section class="content-panel section-stack tldr-panel"><p class="small-label">Tiiviisti</p><h2>TL;DR</h2><ul class="tldr-list"><li>Docsit jaetaan selkeisiin osioihin ja niille tulee omat indeksisivut.</li><li>Moduuleille tulee yhteinen hakemisto ja sivustolle oma navigaatio.</li><li>Koodiblokit ja tumma teema saavat ensimmäiset yhtenäiset tyylinsä.</li><li>Komentoesimerkit alkavat näyttää BusDK:n yhtä yhteistä <code>bus</code>-entrypointia.</li></ul></section>
@@ -29,7 +41,11 @@ BusDK is organized as a set of independent modules...</code></pre><p>Docs-sivust
 bus journal validate
 bus validate</code></pre><p>Docsit sanovat nyt näkyvästi sen, mikä jää ilman esimerkkejä helposti abstraktiksi: moduulit muodostavat yhden CLI-pohjaisen työkaluketjun. Kun esimerkit siirtyvät <code>busdk ...</code>-muodosta <code>bus ...</code>-muotoon, dokumentaatio näyttää samaa komentomallia jonka käyttäjä kohtaa asennuksen jälkeen. Myöhempi docs-sivusto rakentuu suoraan tämän päivän rakenteiden päälle.</p></section>
       </div></main>
-      <footer class="site-footer"><div class="site-footer-inner"><p>© <a href="https://hg.fi">Heusala Group Ltd</a>. BusDK yhdistää Git-natiivin historian, deterministiset työnkulut ja modulaarisen CLI-ohjauspinnan.</p></div></footer>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
     </div>
     <script>
       const root = document.documentElement; const themeToggle = document.getElementById("theme-toggle"); const prefersDark = window.matchMedia("(prefers-color-scheme: dark)"); const storedTheme = localStorage.getItem("theme");
@@ -37,5 +53,6 @@ bus validate</code></pre><p>Docsit sanovat nyt näkyvästi sen, mikä jää ilma
       function resolveInitialTheme() { if (storedTheme === "light" || storedTheme === "dark") return storedTheme; return prefersDark.matches ? "dark" : "light"; }
       applyTheme(resolveInitialTheme()); if (themeToggle) { themeToggle.addEventListener("click", () => { const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark"; localStorage.setItem("theme", nextTheme); applyTheme(nextTheme); }); } prefersDark.addEventListener("change", (event) => { if (localStorage.getItem("theme")) return; applyTheme(event.matches ? "dark" : "light"); });
     </script>
+    <script src="../site-chrome.js"></script>
   </body>
 </html>

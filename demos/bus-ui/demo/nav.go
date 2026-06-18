@@ -23,30 +23,170 @@ type navEntry struct {
 type topHeaderLink struct {
 	Href  string
 	Label string
+	ID    string
 }
 
-var gxUITopHeader = struct {
+type topHeaderConfig struct {
 	BrandHref string
 	LogoHref  string
 	Links     []topHeaderLink
-}{
-	BrandHref: "../index.html",
-	LogoHref:  "../busdk-logo.png",
-	Links: []topHeaderLink{
-		{Href: "gx/index.html", Label: "GX Framework"},
-		{Href: "bus-ui/index.html", Label: "Bus UI Library"},
-		{Href: "reference/index.html", Label: "Reference"},
-		{Href: "modules/index.html", Label: "Modules"},
-		{Href: "pricing/index.html", Label: "Pricing"},
+}
+
+var busDKTopHeaders = map[string]topHeaderConfig{
+	"site": {
+		BrandHref: "index.html",
+		LogoHref:  "busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "products", Href: "index.html#products", Label: "Products"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "blog", Href: "blog/index.html", Label: "Blog"},
+		},
+	},
+	"agents": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"ai-platform": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"books": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"inspection": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"top": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"services": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "getting-started", Href: "getting-started/index.html", Label: "Getting started"},
+			{ID: "examples", Href: "examples/index.html", Label: "Examples"},
+			{ID: "docker", Href: "docker/index.html", Label: "Docker"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"gx-ui": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "gx", Href: "gx/index.html", Label: "GX Framework"},
+			{ID: "bus-ui", Href: "bus-ui/index.html", Label: "Bus UI Library"},
+			{ID: "reference", Href: "reference/index.html", Label: "Reference"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
+		},
 	},
 }
 
-var gxUIFooter = struct {
+var busDKFooter = struct {
 	Href  string
 	Label string
 }{
 	Href:  "https://hg.fi/",
 	Label: "Heusala Group Ltd",
+}
+
+var busDKProductSideNavs = map[string]struct {
+	Title   string
+	Entries []navEntry
+}{
+	"agents": {
+		Title: "Agentic Development",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"ai-platform": {
+		Title: "AI Platform",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"books": {
+		Title: "Books",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"inspection": {
+		Title: "Inspection",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"top": {
+		Title: "Top",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"services": {
+		Title: "Services guide",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "getting-started", Href: "getting-started/index.html", Label: "Getting started"},
+			{ID: "examples", Href: "examples/index.html", Label: "Examples"},
+			{ID: "docker", Href: "docker/index.html", Label: "Docker"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
 }
 
 var gxUISideNav = struct {
@@ -230,40 +370,105 @@ var gxUISideNav = struct {
 	},
 }
 
-// GXUITopHeader returns the shared GX/UI docs top header rendered through GX nodes.
+// GXUITopHeader keeps the GX/UI data hook backed by the shared BusDK top header.
 func GXUITopHeader(baseURL string) gx.Node {
-	navLinks := make([]gx.Node, 0, len(gxUITopHeader.Links))
-	for _, link := range gxUITopHeader.Links {
-		navLinks = append(navLinks, gx.Element("a", gx.Props{
-			"href": resolveNavHref(baseURL, link.Href),
-		}, gx.Text(link.Label)))
-	}
+	return BusDKTopHeader("gx-ui", baseURL, "")
+}
 
+// BusDKTopHeader returns the shared BusDK website top header rendered through GX nodes.
+func BusDKTopHeader(navID string, baseURL string, currentID string) gx.Node {
+	navID = strings.TrimSpace(navID)
+	if navID == "" {
+		navID = "site"
+	}
+	header, ok := busDKTopHeaders[navID]
+	if !ok {
+		header = busDKTopHeaders["site"]
+	}
+	currentID = topHeaderCurrentID(navID, currentID)
+	navLinks := make([]gx.Node, 0, len(header.Links))
+	for _, link := range header.Links {
+		attrs := gx.Props{
+			"href": resolveNavHref(baseURL, link.Href),
+		}
+		if link.ID != "" && link.ID == currentID {
+			attrs["aria-current"] = "page"
+		}
+		navLinks = append(navLinks, gx.Element("a", attrs, gx.Text(link.Label)))
+	}
 	return gx.Element("div", gx.Props{"class": "site-header-inner"},
 		gx.Element("a", gx.Props{
 			"class":      "brand",
-			"href":       resolveNavHref(baseURL, gxUITopHeader.BrandHref),
+			"href":       resolveNavHref(baseURL, header.BrandHref),
 			"aria-label": "BusDK home",
 		},
-			gx.TrustedMarkdownHTML(`<img class="brand-logo" src="`+html.EscapeString(resolveNavHref(baseURL, gxUITopHeader.LogoHref))+`" alt="BusDK logo" />`),
+			gx.TrustedMarkdownHTML(`<img class="brand-logo" src="`+html.EscapeString(resolveNavHref(baseURL, header.LogoHref))+`" alt="BusDK logo" />`),
 			gx.Element("span", gx.Props{"class": "brand-wordmark"}, gx.Text("BusDK")),
 		),
 		gx.Element("nav", gx.Props{
-			"class":      "site-nav gx-doc-nav",
+			"class":      "site-nav",
 			"aria-label": "Primary",
 		}, navLinks...),
 	)
 }
 
-// GXUIFooter returns the shared GX/UI docs footer rendered through GX nodes.
+func topHeaderCurrentID(navID string, currentID string) string {
+	currentID = strings.TrimSpace(currentID)
+	if navID != "gx-ui" {
+		return currentID
+	}
+	if currentID == "gx" || strings.HasPrefix(currentID, "gx/") {
+		return "gx"
+	}
+	if currentID == "bus-ui" || strings.HasPrefix(currentID, "bus-ui/") {
+		return "bus-ui"
+	}
+	switch currentID {
+	case "reference", "modules", "pricing":
+		return currentID
+	default:
+		return ""
+	}
+}
+
+// GXUIFooter keeps the GX/UI data hook backed by the shared BusDK footer.
 func GXUIFooter() gx.Node {
+	return BusDKFooter()
+}
+
+// BusDKFooter returns the shared BusDK website footer rendered through GX nodes.
+func BusDKFooter() gx.Node {
 	return gx.Element("div", gx.Props{"class": "site-footer-inner"},
 		gx.Element("p", nil,
 			gx.Text("© "),
-			gx.Element("a", gx.Props{"href": gxUIFooter.Href}, gx.Text(gxUIFooter.Label)),
+			gx.Element("a", gx.Props{"href": busDKFooter.Href}, gx.Text(busDKFooter.Label)),
 			gx.Text("."),
 		),
 	)
+}
+
+// BusDKProductSideNav returns a shared product-side navigation rendered through GX nodes.
+func BusDKProductSideNav(navID string, currentID string, baseURL string) gx.Node {
+	nav, ok := busDKProductSideNavs[strings.TrimSpace(navID)]
+	if !ok {
+		return gx.Fragment()
+	}
+	nodes := []gx.Node{
+		gx.Element("p", gx.Props{"class": "gx-side-nav-title"}, gx.Text(nav.Title)),
+	}
+	entries, _ := renderNavEntries(nav.Entries, strings.TrimSpace(currentID), baseURL, 0)
+	nodes = append(nodes, entries...)
+	return gx.Fragment(nodes...)
+}
+
+// BusDKProductSideNavCurrentCount reports how many product side-nav entries match.
+func BusDKProductSideNavCurrentCount(navID string, currentID string) int {
+	nav, ok := busDKProductSideNavs[strings.TrimSpace(navID)]
+	if !ok {
+		return 0
+	}
+	_, count := renderNavEntries(nav.Entries, strings.TrimSpace(currentID), "", 0)
+	return count
 }
 
 // GXUISideNav returns the shared GX/UI docs navigation rendered through GX nodes.
@@ -286,10 +491,11 @@ func gxUISideNavChildren(currentID string, baseURL string) ([]gx.Node, int) {
 	}
 	currentCount := 0
 	for _, group := range gxUISideNav.Groups {
+		groupOpen := navEntriesContainCurrent(group.Entries, currentID)
 		groupChildren := []gx.Node{
-			gx.Element("p", gx.Props{"class": "gx-side-nav-heading"}, gx.Text(group.Heading)),
+			gxUISideNavGroupHeading(group, baseURL, groupOpen),
 		}
-		if navEntriesContainCurrent(group.Entries, currentID) {
+		if groupOpen {
 			entries, count := renderNavEntries(group.Entries, currentID, baseURL, 0)
 			currentCount += count
 			groupChildren = append(groupChildren, entries...)
@@ -297,6 +503,16 @@ func gxUISideNavChildren(currentID string, baseURL string) ([]gx.Node, int) {
 		nodes = append(nodes, gx.Element("div", gx.Props{"class": "gx-side-nav-group"}, groupChildren...))
 	}
 	return nodes, currentCount
+}
+
+func gxUISideNavGroupHeading(group navGroup, baseURL string, open bool) gx.Node {
+	if open || len(group.Entries) == 0 || strings.TrimSpace(group.Entries[0].Href) == "" {
+		return gx.Element("p", gx.Props{"class": "gx-side-nav-heading"}, gx.Text(group.Heading))
+	}
+	return gx.Element("a", gx.Props{
+		"class": "gx-side-nav-heading",
+		"href":  resolveNavHref(baseURL, group.Entries[0].Href),
+	}, gx.Text(group.Heading))
 }
 
 func renderNavEntries(entries []navEntry, currentID string, baseURL string, depth int) ([]gx.Node, int) {
