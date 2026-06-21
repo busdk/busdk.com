@@ -53,6 +53,7 @@ catalog_page() {
     go-wasm-frontend-runtime) printf "gx/runtime" ;;
     go-wasm-runtime) printf "gx/runtime" ;;
     image-gallery-component) printf "image-gallery" ;;
+    navigation) printf "bus-ui/components/navigation/navigation" ;;
     node) printf "gx/nodes" ;;
     portal-host-context) printf "bus-ui/portal/host-context" ;;
     provider-error-component) printf "provider-error" ;;
