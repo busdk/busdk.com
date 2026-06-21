@@ -29,9 +29,9 @@
               <div class="product-section">
                 <h2>Public API</h2>
                 <table class="tutorial-table"><tbody>
-                  <tr><th>Package</th><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
-                  <tr><th>Normalize</th><td><code>NormalizeRuntimeConfig</code>, <code>RuntimeConfigPublicMap</code></td></tr>
-                  <tr><th>Render</th><td><code>RenderRuntimeConfig</code>, <code>RenderPublicRuntimeConfig</code></td></tr>
+                  <tr><th>Package</th><td><code>github.com/busdk/bus-ui/pkg/uiportal</code></td></tr>
+                  <tr><th>Render config</th><td><code>PublicRuntimeConfigRender</code>, <code>RenderPublicRuntimeConfig</code></td></tr>
+                  <tr><th>Host context</th><td><code>HostRuntimeConfigScriptChecked</code></td></tr>
                   <tr><th>Validate</th><td><code>ValidatePublicRuntimeConfig</code></td></tr>
                 </tbody></table>
               </div>
@@ -44,14 +44,14 @@
               </div>
               <div class="product-section">
                 <h2>Example</h2>
-                <pre><code>config := ui.RuntimeConfig{
-  ModuleID: "accounting",
-  Public: map[string]any{
+                <pre><code>config := uiportal.PublicRuntimeConfigRender{
+  ElementID: "bus-ui-runtime-config",
+  Config: map[string]any{
     "locale": "fi-FI",
   },
 }
 
-html, err := ui.RenderPublicRuntimeConfig(config)</code></pre>
+html, err := uiportal.RenderPublicRuntimeConfig(config)</code></pre>
               </div>
               <p><a href="../index.html">Back to portal integration</a>.</p>
             </div>

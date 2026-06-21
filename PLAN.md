@@ -2,8 +2,22 @@
 
 # Current work
 
-- [ ] Build a complete GX/UI reusable-element catalog under `docs/gx-ui/` so end users can identify, manually test, and choose the right shared component for each app surface.
-- [ ] Audit `bus-ui/pkg/*` exported reusable UI components, helpers, catalogs, and testkits against existing `docs/gx-ui/` pages; record missing page coverage, stale pages, and pages without both Go API and `.gx source` examples.
-- [ ] Add a deterministic docs coverage check that compares the reusable UI catalog/source inventory with `busdk.com/docs/gx-ui/` pages so missing manual-test pages are caught automatically.
-- [ ] Extend automated reusable-component tests so UI apps can rely on unit-tested shared components instead of duplicating component behavior tests in each app.
-- [ ] Audit Bus UI app consumers under `bus-*/internal/ui` and track local UI elements that should be replaced by reusable `bus-ui` components.
+- [ ] Complete the final GX/UI reusable-element completion audit by comparing
+  the module-owned catalog against exported public reusable UI APIs, deciding
+  whether any intentionally exported helpers should be added to the catalog or
+  explicitly classified as non-element runtime/infrastructure API.
+
+# Current evidence
+
+The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
+deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every
+implemented catalog entry has a GX/UI reference page, and every implemented
+component entry has a live demo hook plus the shared demo loader.
+
+The Bus UI `make component-test-coverage` target verifies implemented catalog
+symbols still exist as exported Go API and implemented component entries have
+package-local test evidence for preferred public symbols.
+
+The BusDK downstream adopter audit reports UI/GX adopters, fails on forbidden
+production `pkg/uikit` use, and currently reports zero local UI candidate files
+after moving the last generic DOM helper behavior into shared `bus-ui`.
