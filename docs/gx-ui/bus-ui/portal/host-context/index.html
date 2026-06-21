@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HostContext | Bus UI Portal | BusDK</title>
+    <meta name="description" content="HostContext passes portal-owned module paths, runtime config, and URL policy into Bus UI portal modules." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/portal/host-context">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../../gx/index.html">GX Framework</a><a href="../../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../../reference/index.html">Reference</a><a href="../../../modules/index.html">Modules</a><a href="../../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/portal/host-context" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Portal</p>
+              <h1>HostContext is the portal module boundary.</h1>
+              <p class="hero-copy">
+                Use HostContext when a reusable portal component needs module identity,
+                base paths, static asset paths, public runtime values, or API URL policy.
+              </p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Package</th><td><code>github.com/busdk/bus-ui/pkg/uiportal</code></td></tr>
+                  <tr><th>Context</th><td><code>HostContext</code>, <code>HostContextProvider</code></td></tr>
+                  <tr><th>Read</th><td><code>HostContextFromProvider</code></td></tr>
+                  <tr><th>Resolve</th><td><code>ResolveModuleURL</code>, <code>RuntimeAPIURL</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>ctx := uiportal.HostContext{
+  ModuleID:       "accounting",
+  BasePath:       "/modules/accounting/",
+  PortalBasePath: "/",
+}
+
+moduleURL, err := uiportal.ResolveModuleURL(ctx, "reports")</code></pre>
+              </div>
+              <p><a href="../index.html">Back to portal integration</a>.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script src="../../../side-nav.js"></script>
+  </body>
+</html>

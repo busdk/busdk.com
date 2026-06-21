@@ -331,6 +331,7 @@ var gxUISideNav = struct {
 					Href:  "bus-ui/evidence/index.html",
 					Label: "Evidence and files",
 					Children: []navEntry{
+						{ID: "bus-ui/evidence/evidence-url-resolver", Href: "bus-ui/evidence/evidence-url-resolver/index.html", Label: "EvidenceURLResolver"},
 						{ID: "bus-ui/evidence/evidence-link", Href: "bus-ui/evidence/evidence-link/index.html", Label: "EvidenceLink"},
 						{ID: "bus-ui/evidence/evidence-preview", Href: "bus-ui/evidence/evidence-preview/index.html", Label: "EvidencePreview"},
 						{ID: "bus-ui/evidence/image-gallery", Href: "bus-ui/evidence/image-gallery/index.html", Label: "ImageGallery"},
@@ -352,6 +353,7 @@ var gxUISideNav = struct {
 						{ID: "bus-ui/ai-message", Href: "bus-ui/ai-message/index.html", Label: "AIMessage"},
 						{ID: "bus-ui/ai-markdown", Href: "bus-ui/ai-markdown/index.html", Label: "AIMarkdown"},
 						{ID: "bus-ui/ai-attachment-list", Href: "bus-ui/ai-attachment-list/index.html", Label: "AIAttachmentList"},
+						{ID: "bus-ui/ai-drop-controller", Href: "bus-ui/ai-drop-controller/index.html", Label: "AIDropController"},
 					},
 				},
 				{
@@ -373,6 +375,21 @@ var gxUISideNav = struct {
 					Children: []navEntry{
 						{ID: "bus-ui/portal-shell", Href: "bus-ui/portal-shell/index.html", Label: "PortalShell"},
 						{ID: "bus-ui/session", Href: "bus-ui/session/index.html", Label: "Session"},
+						{ID: "bus-ui/portal/host-context", Href: "bus-ui/portal/host-context/index.html", Label: "HostContext"},
+						{ID: "bus-ui/portal/runtime-config", Href: "bus-ui/portal/runtime-config/index.html", Label: "RuntimeConfig"},
+						{ID: "bus-ui/portal/api-url-resolver", Href: "bus-ui/portal/api-url-resolver/index.html", Label: "APIURLResolver"},
+					},
+				},
+				{
+					ID:    "bus-ui/tooling",
+					Href:  "bus-ui/tooling/index.html",
+					Label: "Tooling",
+					Children: []navEntry{
+						{ID: "bus-ui/tooling/component-catalog", Href: "bus-ui/tooling/component-catalog/index.html", Label: "ComponentCatalog"},
+						{ID: "bus-ui/tooling/ui-artifact-metadata", Href: "bus-ui/tooling/ui-artifact-metadata/index.html", Label: "UIArtifact"},
+						{ID: "bus-ui/tooling/css-bundle", Href: "bus-ui/tooling/css-bundle/index.html", Label: "CSSBundle"},
+						{ID: "bus-ui/tooling/cli-runtime-flags", Href: "bus-ui/tooling/cli-runtime-flags/index.html", Label: "CLIRuntimeFlags"},
+						{ID: "bus-ui/tooling/browser-open", Href: "bus-ui/tooling/browser-open/index.html", Label: "BrowserOpen"},
 					},
 				},
 				{ID: "bus-ui/assistant-terminal", Href: "bus-ui/assistant-terminal/index.html", Label: "Assistant and Terminal split"},

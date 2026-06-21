@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIDropController | Bus UI Assistant | BusDK</title>
+    <meta name="description" content="AIDropController normalizes dropped files, paths, and staged tokens for assistant composer flows." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/ai-drop-controller">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../gx/index.html">GX Framework</a><a href="../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../reference/index.html">Reference</a><a href="../../modules/index.html">Modules</a><a href="../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/ai-drop-controller" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Assistant</p>
+              <h1>AIDropController validates assistant attachment intake.</h1>
+              <p class="hero-copy">
+                Use the drop controller helpers when assistant composer UI receives browser
+                drop events and must convert them into safe attachment references.
+              </p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Package</th><td><code>github.com/busdk/bus-ui/pkg/ui</code></td></tr>
+                  <tr><th>Context</th><td><code>DropZoneContext</code></td></tr>
+                  <tr><th>Accept</th><td><code>AcceptDropItems</code></td></tr>
+                  <tr><th>Decode</th><td><code>DecodeDropItems</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>accepted, err := ui.AcceptDropItems(ui.DropZoneContext{
+  MaxFiles: 5,
+}, browserItems)</code></pre>
+              </div>
+              <p><a href="../assistant/index.html">Back to assistant components</a>.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script src="../../side-nav.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ComponentCatalog | Bus UI Tooling | BusDK</title>
+    <meta name="description" content="ComponentCatalog emits the Bus UI reusable component inventory for docs and automated checks." />
+    <link rel="stylesheet" href="../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/tooling/component-catalog">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../../gx/index.html">GX Framework</a><a href="../../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../../reference/index.html">Reference</a><a href="../../../modules/index.html">Modules</a><a href="../../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/tooling/component-catalog" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Tooling</p>
+              <h1>ComponentCatalog is the reusable UI inventory.</h1>
+              <p class="hero-copy">Use it when docs, tests, or downstream audits need the same list of reusable UI concepts, components, runtime helpers, and tools.</p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Package</th><td><code>github.com/busdk/bus-ui/pkg/uicatalog</code></td></tr>
+                  <tr><th>Read</th><td><code>ComponentCatalog</code></td></tr>
+                  <tr><th>Write</th><td><code>WriteComponentCatalog</code></td></tr>
+                  <tr><th>CLI</th><td><code>bus-ui catalog --format json</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <pre><code>doc := uicatalog.ComponentCatalog()
+err := uicatalog.WriteComponentCatalog(os.Stdout, "json")</code></pre>
+              </div>
+              <p><a href="../index.html">Back to tooling</a>.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script src="../../../side-nav.js"></script>
+  </body>
+</html>
