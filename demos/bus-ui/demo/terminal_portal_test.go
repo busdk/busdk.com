@@ -80,6 +80,27 @@ func TestTerminalAndPortalDemosRenderRealPublicMarkup(t *testing.T) {
 				"finance@example.com",
 			},
 		},
+		{
+			id: "portal-shell",
+			want: []string{
+				`data-bus-ui-demo-widget="portal-shell"`,
+				`data-ui-component="PortalShell"`,
+				`data-portal-module="accounting"`,
+				`href="/modules/accounting/approvals"`,
+				"Portal helpers resolve module-local links",
+			},
+		},
+		{
+			id: "session",
+			want: []string{
+				`data-bus-ui-demo-widget="session"`,
+				`data-ui-component="Session"`,
+				`data-session-authenticated="true"`,
+				"finance@example.com",
+				"ledger.read",
+				"reports.export",
+			},
+		},
 	}
 
 	for _, tc := range tests {

@@ -9,7 +9,7 @@ import (
 )
 
 func TestIDsExposeRegisteredDemos(t *testing.T) {
-	if got, want := IDs(), []string{"ai-approvals", "ai-attachment-list", "ai-composer", "ai-markdown", "ai-message", "ai-model-select", "ai-panel", "ai-review-status", "ai-thread-isolation", "ai-thread-list", "app-shell", "assistant-shell", "button", "credential-login-card", "date-input", "dense-table", "drop-zone", "empty-state", "error-banner", "event-bar", "evidence-link", "evidence-preview", "field", "file-input", "filter-toolbar", "form", "icon-button", "image-gallery", "input", "link-button", "loading-state", "menu", "metric-card", "navigation", "page-shell", "panel", "password-input", "portal", "projection-detail", "provider-error", "record-list", "result-panel", "select", "shell-action-panel", "sidebar-nav", "sidebar-shell", "status-pill", "submit", "summary-item", "surface-card", "tabs", "terminal-adapters", "terminal-approval-prompt", "terminal-input-box", "terminal-output-view", "terminal-session-panel", "text-input", "text-table", "textarea", "timeline"}; !reflect.DeepEqual(got, want) {
+	if got, want := IDs(), []string{"ai-approvals", "ai-attachment-list", "ai-composer", "ai-markdown", "ai-message", "ai-model-select", "ai-panel", "ai-review-status", "ai-thread-isolation", "ai-thread-list", "app-shell", "assistant-shell", "button", "credential-login-card", "date-input", "dense-table", "drop-zone", "element", "empty-state", "error-banner", "event-bar", "evidence-link", "evidence-preview", "field", "file-input", "filter-toolbar", "form", "icon", "icon-button", "image-gallery", "input", "link-button", "loading-state", "menu", "metric-card", "navigation", "page-shell", "panel", "password-input", "portal", "portal-shell", "projection-detail", "props", "provider-error", "record-list", "result-panel", "select", "session", "shell-action-panel", "sidebar-nav", "sidebar-shell", "split-layout", "status-pill", "submit", "summary-item", "surface-card", "tabs", "terminal-adapters", "terminal-approval-prompt", "terminal-input-box", "terminal-output-view", "terminal-session-panel", "text", "text-input", "text-table", "textarea", "timeline", "v-node"}; !reflect.DeepEqual(got, want) {
 		t.Fatalf("IDs() = %#v, want %#v", got, want)
 	}
 }
@@ -58,6 +58,15 @@ func TestActionFamilyDemosRenderRealBusUIComponents(t *testing.T) {
 			},
 		},
 		{
+			id: "icon",
+			want: []string{
+				`data-bus-ui-demo-widget="icon"`,
+				`role="img"`,
+				`aria-label="Refresh"`,
+				"bus-ui-svg-icon",
+			},
+		},
+		{
 			id: "icon-button",
 			want: []string{
 				`data-bus-ui-demo-widget="icon-button"`,
@@ -77,6 +86,71 @@ func TestActionFamilyDemosRenderRealBusUIComponents(t *testing.T) {
 				`data-ui-action="import-file"`,
 				`data-ui-action="open-log"`,
 				"Open log",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.id, func(t *testing.T) {
+			t.Parallel()
+
+			root, ok := Lookup(tc.id)
+			if !ok {
+				t.Fatalf("%s demo is not registered", tc.id)
+			}
+			html, err := gx.RenderHTML(root())
+			if err != nil {
+				t.Fatalf("RenderHTML(%s demo) failed: %v", tc.id, err)
+			}
+			for _, want := range tc.want {
+				if !strings.Contains(html, want) {
+					t.Fatalf("%s demo HTML %q does not contain %q", tc.id, html, want)
+				}
+			}
+		})
+	}
+}
+
+func TestPrimitiveDemosRenderRealBusUIComponents(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		id   string
+		want []string
+	}{
+		{
+			id: "text",
+			want: []string{
+				`data-bus-ui-demo-widget="text"`,
+				"bus-ui-demo-primitive",
+				"Ready &lt;safe&gt;",
+			},
+		},
+		{
+			id: "element",
+			want: []string{
+				`data-bus-ui-demo-widget="element"`,
+				`data-ui-component="Element"`,
+				"Primitive element",
+				"Tag, props, and children render deterministically.",
+			},
+		},
+		{
+			id: "props",
+			want: []string{
+				`data-bus-ui-demo-widget="props"`,
+				`data-ui-component=&#34;Props&#34;`,
+				`aria-label=&#34;Props demo&#34;`,
+			},
+		},
+		{
+			id: "v-node",
+			want: []string{
+				`data-bus-ui-demo-widget="v-node"`,
+				`data-ui-component="VNode"`,
+				"Virtual node",
+				"VNode keeps a render tree before HTML.",
 			},
 		},
 	}
@@ -356,6 +430,16 @@ func TestShellFamilyDemosRenderRealBusUIComponents(t *testing.T) {
 				`data-ui-shell="sidebar"`,
 				"Selected view content stays beside the rail.",
 				"bus-ui-sidebar-nav-rail",
+			},
+		},
+		{
+			id: "split-layout",
+			want: []string{
+				`data-bus-ui-demo-widget="split-layout"`,
+				"bus-ui-split-layout",
+				`data-ui-layout="split"`,
+				"Receipt 1024",
+				"Matched supplier and VAT fields.",
 			},
 		},
 		{

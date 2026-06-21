@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI PortalShell | BusDK</title>
+    <meta name="description" content="Use Bus UI PortalShell to render module pages inside host-owned portal context." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/portal-shell">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../gx/index.html">GX Framework</a><a href="../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../reference/index.html">Reference</a><a href="../../modules/index.html">Modules</a><a href="../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/portal-shell" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Portal Integration</p>
+              <h1>PortalShell renders host-aware module pages.</h1>
+              <p class="hero-copy">Use <code>PortalShell</code> when a product module needs shared portal chrome while the host still owns base paths, public config, assets, and session context.</p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Function</th><td><code>uiportal.PortalShell</code></td></tr>
+                  <tr><th>Props</th><td><code>uiportal.PortalShellProps</code></td></tr>
+                  <tr><th>Host context</th><td><code>uiportal.HostContext</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <div class="bus-ui-demo-frame" aria-label="Live PortalShell demo">
+                  <div data-bus-ui-demo="portal-shell"><span aria-busy="true" aria-live="polite" class="bus-ui-loader bus-ui-demo-placeholder-loader bus-ui-loader-md" data-ui-busy="true" data-ui-component="Loader" role="status"><svg aria-hidden="true" class="bus-ui-loader-svg" focusable="false" viewBox="0 0 24 24"><circle class="bus-ui-loader-track" cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="3"></circle><path class="bus-ui-loader-arc" d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-dasharray="14 42" stroke-dashoffset="1" stroke-linecap="round" stroke-width="3"></path></svg><span class="bus-ui-loader-label">Loading PortalShell demo...</span></span></div>
+                </div>
+                <h3>Go API</h3>
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  uiportal "github.com/busdk/bus-ui/pkg/uiportal"
+)
+
+node := uiportal.PortalShell(uiportal.PortalShellProps{
+  Title: "Accounting",
+  HostContext: uiportal.HostContext{
+    ModuleID: "accounting",
+    BasePath: "/modules/accounting/",
+  },
+  MainNodes: []gx.Node{
+    gx.Element("p", nil, gx.Text("Portal content")),
+  },
+})</code></pre>
+                <h3>.gx source</h3>
+                <pre><code>package portalui
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func PortalShellExample() gx.Node {
+  return &lt;PortalShell title="Accounting" moduleId="accounting"&gt;
+    &lt;main&gt;&lt;Text value={"Portal content"}&gt;&lt;/Text&gt;&lt;/main&gt;
+  &lt;/PortalShell&gt;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script defer src="../../../assets/bus-ui-demo/wasm_exec.js"></script>
+    <script defer src="../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
+    <script src="../../side-nav.js"></script>
+  </body>
+</html>

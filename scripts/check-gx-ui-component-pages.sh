@@ -48,11 +48,28 @@ catalog_slug() {
 missing=0
 while IFS=$'\t' read -r id name layer symbols; do
   slug="$(catalog_slug "$id")"
-  if ! awk -F/ -v slug="$slug" '$NF == slug { found = 1 } END { exit found ? 0 : 1 }' "$TMP_DIR/pages.txt"; then
+  page_rel="$(awk -F/ -v slug="$slug" '$NF == slug { print; exit }' "$TMP_DIR/pages.txt")"
+  if [ -z "$page_rel" ]; then
     if [ "$missing" -eq 0 ]; then
       printf "Missing GX/UI manual component pages:\n" >&2
     fi
     printf "  - %s (%s) expected page slug: %s; symbols: %s\n" "$id" "$name" "$slug" "$symbols" >&2
+    missing=1
+    continue
+  fi
+  page_file="$DOC_ROOT/$page_rel/index.html"
+  if ! grep -Fq "data-bus-ui-demo=\"$slug\"" "$page_file"; then
+    if [ "$missing" -eq 0 ]; then
+      printf "Missing GX/UI manual component page demo hooks:\n" >&2
+    fi
+    printf "  - %s (%s) page %s missing data-bus-ui-demo=\"%s\"\n" "$id" "$name" "$page_rel/index.html" "$slug" >&2
+    missing=1
+  fi
+  if ! grep -Fq "data-bus-ui-demo-loader" "$page_file"; then
+    if [ "$missing" -eq 0 ]; then
+      printf "Missing GX/UI manual component page demo hooks:\n" >&2
+    fi
+    printf "  - %s (%s) page %s missing shared demo loader script\n" "$id" "$name" "$page_rel/index.html" >&2
     missing=1
   fi
 done < <(

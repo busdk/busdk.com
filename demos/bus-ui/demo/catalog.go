@@ -29,6 +29,7 @@ var catalog = map[string]Root{
 	"date-input":               DateInput,
 	"dense-table":              DenseTable,
 	"drop-zone":                DropZone,
+	"element":                  Element,
 	"empty-state":              EmptyState,
 	"error-banner":             ErrorBanner,
 	"event-bar":                EventBar,
@@ -38,6 +39,7 @@ var catalog = map[string]Root{
 	"file-input":               FileInput,
 	"filter-toolbar":           FilterToolbar,
 	"form":                     Form,
+	"icon":                     Icon,
 	"icon-button":              IconButton,
 	"image-gallery":            ImageGallery,
 	"input":                    Input,
@@ -50,14 +52,18 @@ var catalog = map[string]Root{
 	"panel":                    Panel,
 	"password-input":           PasswordInput,
 	"portal":                   Portal,
+	"portal-shell":             PortalShell,
 	"projection-detail":        ProjectionDetail,
+	"props":                    Props,
 	"provider-error":           ProviderError,
 	"record-list":              RecordList,
 	"result-panel":             ResultPanel,
 	"select":                   Select,
+	"session":                  Session,
 	"shell-action-panel":       ShellActionPanel,
 	"sidebar-nav":              SidebarNav,
 	"sidebar-shell":            SidebarShell,
+	"split-layout":             SplitLayout,
 	"status-pill":              StatusPill,
 	"submit":                   Submit,
 	"summary-item":             SummaryItem,
@@ -68,10 +74,12 @@ var catalog = map[string]Root{
 	"terminal-input-box":       TerminalInputBox,
 	"terminal-output-view":     TerminalOutputView,
 	"terminal-session-panel":   TerminalSessionPanel,
+	"text":                     Text,
 	"text-input":               TextInput,
 	"text-table":               TextTable,
 	"textarea":                 Textarea,
 	"timeline":                 Timeline,
+	"v-node":                   VNode,
 }
 
 // IDs returns the stable placeholder ids supported by the static demo runtime.
@@ -175,6 +183,47 @@ func EventBar() gx.Node {
 		return demoError(err)
 	}
 	return demoWidget("event-bar", node)
+}
+
+// Text renders one low-level escaped text primitive demo.
+func Text() gx.Node {
+	return demoWidget("text", gx.Element("p", gx.Props{"class": "bus-ui-demo-primitive"}, gx.TrustedMarkdownHTML(ui.Txt("Ready <safe>").String())))
+}
+
+// Element renders one low-level element primitive demo.
+func Element() gx.Node {
+	node := ui.El("section", ui.P("class", "bus-ui-demo-primitive", "data-ui-component", "Element"),
+		ui.El("h3", nil, ui.Txt("Primitive element")),
+		ui.El("p", nil, ui.Txt("Tag, props, and children render deterministically.")),
+	)
+	return demoWidget("element", gx.TrustedMarkdownHTML(node.String()))
+}
+
+// Props renders one deterministic props primitive demo.
+func Props() gx.Node {
+	attrs := ui.Attrs(ui.P("data-ui-component", "Props", "class", "bus-ui-demo-props", "aria-label", "Props demo"))
+	return demoWidget("props", gx.Element("span", gx.Props{"class": "bus-ui-demo-props"}, gx.Text("<div"+attrs+"></div>")))
+}
+
+// VNode renders one virtual DOM primitive demo.
+func VNode() gx.Node {
+	node := ui.VEl("article", ui.P("class", "bus-ui-demo-vnode", "data-ui-component", "VNode"),
+		ui.VEl("h3", nil, ui.VText("Virtual node")),
+		ui.VEl("p", nil, ui.VText("VNode keeps a render tree before HTML.")),
+	)
+	return demoWidget("v-node", gx.TrustedMarkdownHTML(node.HTML()))
+}
+
+// Icon renders one standalone shared SVG icon demo.
+func Icon() gx.Node {
+	node, err := ui.Icon(ui.IconProps{
+		Name:  ui.IconNameRefresh,
+		Title: "Refresh",
+	})
+	if err != nil {
+		return demoError(err)
+	}
+	return demoWidget("icon", gx.TrustedMarkdownHTML(node.String()))
 }
 
 // Menu renders one bounded command-choice menu demo.
@@ -488,6 +537,31 @@ func SidebarShell() gx.Node {
 		return demoError(err)
 	}
 	return demoWidget("sidebar-shell", node)
+}
+
+// SplitLayout renders one generic split-pane layout demo.
+func SplitLayout() gx.Node {
+	node, err := ui.SplitLayout(ui.SplitLayoutProps{
+		Orientation: ui.SplitLayoutHorizontal,
+		Left: ui.SplitLayoutPaneProps{
+			Label: "List",
+			Nodes: []gx.Node{
+				gx.Element("h3", nil, gx.Text("Files")),
+				gx.Element("p", nil, gx.Text("3 imports waiting")),
+			},
+		},
+		Right: ui.SplitLayoutPaneProps{
+			Label: "Detail",
+			Nodes: []gx.Node{
+				gx.Element("h3", nil, gx.Text("Receipt 1024")),
+				gx.Element("p", nil, gx.Text("Matched supplier and VAT fields.")),
+			},
+		},
+	})
+	if err != nil {
+		return demoError(err)
+	}
+	return demoWidget("split-layout", node)
 }
 
 // ShellActionPanel renders one bounded shell action panel demo.

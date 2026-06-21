@@ -150,6 +150,76 @@ body {
   line-height: 1.5;
 }
 
+.portal-auth-panel {
+  display: grid;
+  gap: var(--bus-ui-space-4);
+  width: min(100%, 28rem);
+}
+
+.portal-auth-view {
+  display: grid;
+  gap: var(--bus-ui-space-3);
+  align-content: start;
+}
+
+.portal-auth-sign-in-form,
+.portal-auth-compact-form {
+  width: 100%;
+}
+
+.portal-auth-sign-in-field,
+.portal-auth-compact-field {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  min-height: 2.35rem;
+  padding: .18rem;
+  background: color-mix(in srgb, var(--bus-ui-app-accent) 10%, var(--bus-ui-app-surface));
+}
+
+.portal-auth-sign-in-field:focus-within,
+.portal-auth-compact-field:focus-within {
+  background: color-mix(in srgb, var(--bus-ui-app-accent) 14%, var(--bus-ui-app-surface));
+}
+
+.portal-auth-sign-in-input,
+.portal-auth-compact-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: .35rem .45rem;
+  color: var(--bus-ui-app-text);
+}
+
+.portal-auth-sign-in-input:hover,
+.portal-auth-sign-in-input:focus,
+.portal-auth-compact-input:hover,
+.portal-auth-compact-input:focus {
+  border: 0;
+  outline: none;
+}
+
+.portal-auth-sign-in-submit,
+.portal-auth-compact-submit {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+}
+
+.portal-auth-view-switch {
+  width: fit-content;
+  gap: .35rem;
+  padding-inline: .55rem .7rem;
+}
+
+.portal-auth-view-switch .bus-ui-icon,
+.portal-auth-view-switch .bus-ui-svg-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
 .bus-ui-session {
   display: grid;
   gap: var(--bus-ui-space-2);

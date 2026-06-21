@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI SplitLayout | BusDK</title>
+    <meta name="description" content="Use Bus UI SplitLayout for shared two-pane and workspace split layouts." />
+    <link rel="stylesheet" href="../../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/components/shell/split-layout">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../../../gx/index.html">GX Framework</a><a href="../../../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../../../reference/index.html">Reference</a><a href="../../../../modules/index.html">Modules</a><a href="../../../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/components/shell/split-layout" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Shells</p>
+              <h1>SplitLayout gives panes a shared structure.</h1>
+              <p class="hero-copy">Use <code>SplitLayout</code> for list/detail, left/right, or workspace panes that need typed content slots and deterministic resize state.</p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Function</th><td><code>ui.SplitLayout</code></td></tr>
+                  <tr><th>Props</th><td><code>ui.SplitLayoutProps</code></td></tr>
+                  <tr><th>State</th><td><code>ui.SplitLayoutState</code>, <code>ui.NewDefaultSplitLayoutState</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <div class="bus-ui-demo-frame" aria-label="Live SplitLayout demo">
+                  <div data-bus-ui-demo="split-layout"><span aria-busy="true" aria-live="polite" class="bus-ui-loader bus-ui-demo-placeholder-loader bus-ui-loader-md" data-ui-busy="true" data-ui-component="Loader" role="status"><svg aria-hidden="true" class="bus-ui-loader-svg" focusable="false" viewBox="0 0 24 24"><circle class="bus-ui-loader-track" cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="3"></circle><path class="bus-ui-loader-arc" d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-dasharray="14 42" stroke-dashoffset="1" stroke-linecap="round" stroke-width="3"></path></svg><span class="bus-ui-loader-label">Loading SplitLayout demo...</span></span></div>
+                </div>
+                <h3>Go API</h3>
+                <pre><code>import (
+  gx "github.com/busdk/bus-gx/pkg/gx"
+  ui "github.com/busdk/bus-ui/pkg/ui"
+)
+
+node, err := ui.SplitLayout(ui.SplitLayoutProps{
+  Orientation: ui.SplitLayoutHorizontal,
+  Left: ui.SplitLayoutPaneProps{
+    Label: "Files",
+    Nodes: []gx.Node{gx.Element("p", nil, gx.Text("3 imports waiting"))},
+  },
+  Right: ui.SplitLayoutPaneProps{
+    Label: "Detail",
+    Nodes: []gx.Node{gx.Element("p", nil, gx.Text("Receipt 1024"))},
+  },
+})</code></pre>
+                <h3>.gx source</h3>
+                <pre><code>package shellui
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+func ReviewSplit() gx.Node {
+  return &lt;section class="bus-ui-split-layout" data-ui-layout="split"&gt;
+    &lt;section aria-label="Files"&gt;&lt;Text value={"3 imports waiting"}&gt;&lt;/Text&gt;&lt;/section&gt;
+    &lt;section aria-label="Detail"&gt;&lt;Text value={"Receipt 1024"}&gt;&lt;/Text&gt;&lt;/section&gt;
+  &lt;/section&gt;
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script defer src="../../../../../assets/bus-ui-demo/wasm_exec.js"></script>
+    <script defer src="../../../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
+    <script src="../../../../side-nav.js"></script>
+  </body>
+</html>

@@ -107,7 +107,22 @@ func TerminalSessionPanel() gx.Node {
 }
 
 func Portal() gx.Node {
-	ctx := uiportal.HostContext{
+	return demoWidget("portal", portalShellNode())
+}
+
+// PortalShell renders one focused portal shell component demo.
+func PortalShell() gx.Node {
+	return demoWidget("portal-shell", portalShellNode())
+}
+
+// Session renders one focused public session-state component demo.
+func Session() gx.Node {
+	ctx := portalDemoHostContext()
+	return demoWidget("session", uiportal.HostSession(ctx))
+}
+
+func portalDemoHostContext() uiportal.HostContext {
+	return uiportal.HostContext{
 		ModuleID:       "accounting",
 		BasePath:       "/modules/accounting/",
 		PortalBasePath: "/",
@@ -120,6 +135,10 @@ func Portal() gx.Node {
 			"locale": "fi-FI",
 		},
 	}
+}
+
+func portalShellNode() gx.Node {
+	ctx := portalDemoHostContext()
 	node := uiportal.PortalShell(uiportal.PortalShellProps{
 		Title:       "Accounting",
 		HostContext: ctx,
@@ -132,7 +151,7 @@ func Portal() gx.Node {
 			gx.Element("p", nil, gx.Text("Portal helpers resolve module-local links and render shared chrome from host context.")),
 		},
 	})
-	return demoWidget("portal", node)
+	return node
 }
 
 func noOpTerminalInput(terminalui.TerminalInputEvent) terminalui.Result {

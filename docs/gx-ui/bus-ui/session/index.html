@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Session | BusDK</title>
+    <meta name="description" content="Use Bus UI Session to render safe public identity and session state." />
+    <link rel="stylesheet" href="../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/session">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../gx/index.html">GX Framework</a><a href="../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../reference/index.html">Reference</a><a href="../../modules/index.html">Modules</a><a href="../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/session" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Portal Integration</p>
+              <h1>Session renders public identity state.</h1>
+              <p class="hero-copy">Use <code>Session</code> for signed-in, signed-out, and expired session summaries that expose only safe public labels, scopes, and attributes.</p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Function</th><td><code>uiportal.Session</code></td></tr>
+                  <tr><th>Props</th><td><code>uiportal.SessionProps</code></td></tr>
+                  <tr><th>Host helper</th><td><code>uiportal.HostSession</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <div class="bus-ui-demo-frame" aria-label="Live Session demo">
+                  <div data-bus-ui-demo="session"><span aria-busy="true" aria-live="polite" class="bus-ui-loader bus-ui-demo-placeholder-loader bus-ui-loader-md" data-ui-busy="true" data-ui-component="Loader" role="status"><svg aria-hidden="true" class="bus-ui-loader-svg" focusable="false" viewBox="0 0 24 24"><circle class="bus-ui-loader-track" cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="3"></circle><path class="bus-ui-loader-arc" d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-dasharray="14 42" stroke-dashoffset="1" stroke-linecap="round" stroke-width="3"></path></svg><span class="bus-ui-loader-label">Loading Session demo...</span></span></div>
+                </div>
+                <h3>Go API</h3>
+                <pre><code>import uiportal "github.com/busdk/bus-ui/pkg/uiportal"
+
+node := uiportal.Session(uiportal.SessionProps{
+  Authenticated: true,
+  IdentityLabel: "finance@example.com",
+  Scopes: []string{"ledger.read", "reports.export"},
+})</code></pre>
+                <h3>.gx source</h3>
+                <pre><code>package portalui
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+type SessionProps struct {
+  IdentityLabel string
+}
+
+func SessionSummary(props SessionProps) gx.Node {
+  return &lt;section class="bus-ui-session is-authenticated"&gt;
+    &lt;span&gt;&lt;Text value={"Signed in"}&gt;&lt;/Text&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;Text value={props.IdentityLabel}&gt;&lt;/Text&gt;&lt;/span&gt;
+  &lt;/section&gt;
+}
+
+var session = &lt;SessionSummary identityLabel={"finance@example.com"}&gt;&lt;/SessionSummary&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script defer src="../../../assets/bus-ui-demo/wasm_exec.js"></script>
+    <script defer src="../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
+    <script src="../../side-nav.js"></script>
+  </body>
+</html>

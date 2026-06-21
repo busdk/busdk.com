@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus UI Icon | BusDK</title>
+    <meta name="description" content="Use Bus UI Icon for standalone registered SVG symbols and audited custom icon paths." />
+    <link rel="stylesheet" href="../../../../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-gx-ui-top-header data-busdk-top-nav="gx-ui" data-busdk-current="bus-ui/components/action/icon">
+        <div class="site-header-inner">
+          <a class="brand" href="../../../../../index.html" aria-label="BusDK home"><img class="brand-logo" src="../../../../../busdk-logo.png" alt="BusDK logo" /><span class="brand-wordmark">BusDK</span></a>
+          <nav class="site-nav" aria-label="Primary"><a href="../../../../gx/index.html">GX Framework</a><a href="../../../../bus-ui/index.html" aria-current="page">Bus UI Library</a><a href="../../../../reference/index.html">Reference</a><a href="../../../../modules/index.html">Modules</a><a href="../../../../pricing/index.html">Pricing</a></nav>
+        </div>
+      </header>
+      <main>
+        <section class="product-page gx-doc-page">
+          <div class="section-inner gx-doc-layout">
+            <aside class="gx-side-nav" data-gx-ui-side-nav data-gx-ui-current="bus-ui/components/action/icon" aria-label="GX/UI documentation"></aside>
+            <div class="gx-doc-content">
+              <p class="eyebrow">Bus UI Actions</p>
+              <h1>Icon renders shared SVG symbols.</h1>
+              <p class="hero-copy">Use <code>Icon</code> when a component needs a standalone symbol from the shared icon catalog or an audited custom path.</p>
+              <div class="product-section">
+                <h2>Public API</h2>
+                <table class="tutorial-table"><tbody>
+                  <tr><th>Function</th><td><code>ui.Icon</code></td></tr>
+                  <tr><th>Props</th><td><code>ui.IconProps</code></td></tr>
+                  <tr><th>Catalog</th><td><code>ui.IconPathCatalog</code></td></tr>
+                </tbody></table>
+              </div>
+              <div class="product-section">
+                <h2>Example</h2>
+                <div class="bus-ui-demo-frame" aria-label="Live Icon demo">
+                  <div data-bus-ui-demo="icon"><span aria-busy="true" aria-live="polite" class="bus-ui-loader bus-ui-demo-placeholder-loader bus-ui-loader-md" data-ui-busy="true" data-ui-component="Loader" role="status"><svg aria-hidden="true" class="bus-ui-loader-svg" focusable="false" viewBox="0 0 24 24"><circle class="bus-ui-loader-track" cx="12" cy="12" fill="none" r="9" stroke="currentColor" stroke-width="3"></circle><path class="bus-ui-loader-arc" d="M21 12a9 9 0 0 0-9-9" fill="none" stroke="currentColor" stroke-dasharray="14 42" stroke-dashoffset="1" stroke-linecap="round" stroke-width="3"></path></svg><span class="bus-ui-loader-label">Loading Icon demo...</span></span></div>
+                </div>
+                <h3>Go API</h3>
+                <pre><code>import ui "github.com/busdk/bus-ui/pkg/ui"
+
+node, err := ui.Icon(ui.IconProps{
+  Name:  ui.IconNameRefresh,
+  Title: "Refresh",
+})</code></pre>
+                <h3>.gx source</h3>
+                <pre><code>package actionsui
+
+import gx "github.com/busdk/bus-gx/pkg/gx"
+
+type IconProps struct { Label string }
+
+func RefreshIcon(props IconProps) gx.Node {
+  return &lt;svg class="bus-ui-svg-icon" role="img" aria-label={props.Label} viewBox="0 0 24 24"&gt;
+    &lt;title&gt;&lt;Text value={props.Label}&gt;&lt;/Text&gt;&lt;/title&gt;
+    &lt;path d="M20 11a8 8 0 1 0-2.34 5.66"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+}
+
+var icon = &lt;RefreshIcon label={"Refresh"}&gt;&lt;/RefreshIcon&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-gx-ui-footer><div class="site-footer-inner"><p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p></div></footer>
+    </div>
+    <script defer src="../../../../../assets/bus-ui-demo/wasm_exec.js"></script>
+    <script defer src="../../../../../assets/bus-ui-demo/loader.js" data-bus-ui-demo-loader></script>
+    <script src="../../../../side-nav.js"></script>
+  </body>
+</html>

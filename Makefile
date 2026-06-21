@@ -17,7 +17,8 @@ clean:
 	rm -rf $(CLEAN_PATHS)
 
 quality:
-	@:
+	./scripts/check-gx-ui-component-pages.sh
+	cd demos/bus-ui && go test ./...
 
 bus-ui-demo-assets:
 	mkdir -p $(BUS_UI_DEMO_ASSET_DIR)

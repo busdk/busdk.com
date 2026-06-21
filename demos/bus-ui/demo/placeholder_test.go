@@ -14,6 +14,26 @@ type docsDemoPage struct {
 
 var docsDemoPages = []docsDemoPage{
 	{
+		id:    "text",
+		label: "Loading Text demo...",
+		path:  "../../../docs/gx-ui/gx/nodes/text/index.html",
+	},
+	{
+		id:    "element",
+		label: "Loading Element demo...",
+		path:  "../../../docs/gx-ui/gx/nodes/element/index.html",
+	},
+	{
+		id:    "props",
+		label: "Loading Props demo...",
+		path:  "../../../docs/gx-ui/gx/nodes/props/index.html",
+	},
+	{
+		id:    "v-node",
+		label: "Loading VNode demo...",
+		path:  "../../../docs/gx-ui/gx/nodes/v-node/index.html",
+	},
+	{
 		id:    "terminal-adapters",
 		label: "Loading TerminalAdapters demo...",
 		path:  "../../../docs/gx-ui/bus-ui/terminal-adapters/index.html",
@@ -44,6 +64,16 @@ var docsDemoPages = []docsDemoPage{
 		path:  "../../../docs/gx-ui/bus-ui/portal/index.html",
 	},
 	{
+		id:    "portal-shell",
+		label: "Loading PortalShell demo...",
+		path:  "../../../docs/gx-ui/bus-ui/portal-shell/index.html",
+	},
+	{
+		id:    "session",
+		label: "Loading Session demo...",
+		path:  "../../../docs/gx-ui/bus-ui/session/index.html",
+	},
+	{
 		id:    "button",
 		label: "Loading Button demo...",
 		path:  "../../../docs/gx-ui/bus-ui/components/action/button/index.html",
@@ -57,6 +87,11 @@ var docsDemoPages = []docsDemoPage{
 		id:    "icon-button",
 		label: "Loading IconButton demo...",
 		path:  "../../../docs/gx-ui/bus-ui/components/action/icon-button/index.html",
+	},
+	{
+		id:    "icon",
+		label: "Loading Icon demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/action/icon/index.html",
 	},
 	{
 		id:    "event-bar",
@@ -137,6 +172,11 @@ var docsDemoPages = []docsDemoPage{
 		id:    "sidebar-nav",
 		label: "Loading SidebarNav demo...",
 		path:  "../../../docs/gx-ui/bus-ui/components/shell/sidebar-nav/index.html",
+	},
+	{
+		id:    "split-layout",
+		label: "Loading SplitLayout demo...",
+		path:  "../../../docs/gx-ui/bus-ui/components/shell/split-layout/index.html",
 	},
 	{
 		id:    "shell-action-panel",
