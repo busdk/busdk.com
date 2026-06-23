@@ -41,6 +41,37 @@ func TestDocsDirectoryLinksUseIndexHTMLForFilePreview(t *testing.T) {
 	t.Logf("NO_LOCAL_DIRECTORY_LINKS_FOUND files=%d local_attrs=%d", filesScanned, localAttrsScanned)
 }
 
+func TestBusEngineGeneratedNavBasesUsePageRelativePaths(t *testing.T) {
+	repoRoot, err := repoRootDir()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tt := range []struct {
+		rel  string
+		base string
+	}{
+		{rel: "docs/engine/index.html", base: "./"},
+		{rel: "docs/engine/modules/index.html", base: "../"},
+		{rel: "docs/engine/pricing/index.html", base: "../"},
+		{rel: "docs/engine/contact/index.html", base: "../"},
+	} {
+		body, err := os.ReadFile(filepath.Join(repoRoot, tt.rel))
+		if err != nil {
+			t.Fatal(err)
+		}
+		text := string(body)
+		for _, attr := range []string{
+			`data-busdk-top-nav-base="` + tt.base + `"`,
+			`data-busdk-side-nav-base="` + tt.base + `"`,
+		} {
+			if !strings.Contains(text, attr) {
+				t.Fatalf("%s missing %s", tt.rel, attr)
+			}
+		}
+	}
+}
+
 func scanDocsDirectoryLinks(repoRoot string) ([]docsDirectoryLinkHit, int, int, error) {
 	docsRoot := filepath.Join(repoRoot, "docs")
 	var hits []docsDirectoryLinkHit

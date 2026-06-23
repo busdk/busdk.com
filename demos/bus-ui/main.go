@@ -152,7 +152,7 @@ func mountBusDKProductSideNavs(document js.Value) {
 		selector := ensureID(el, "busdk-side-nav-root", i)
 		navID := dataAttribute(el, "busdkSideNav")
 		currentID := dataAttribute(el, "busdkCurrent")
-		baseURL := dataAttribute(el, "busdkSideNavBase")
+		baseURL := resolvedDataBaseURL(document, el, "busdkSideNavBase")
 		navCurrentID := currentID
 		navBaseURL := baseURL
 		navKey := navID
@@ -209,13 +209,29 @@ func busDKSiteBaseURL(document js.Value, el js.Value) string {
 }
 
 func busDKTopHeaderBaseURL(document js.Value, el js.Value, navID string) string {
-	if baseURL := dataAttribute(el, "busdkTopNavBase"); baseURL != "" {
+	if baseURL := resolvedDataBaseURL(document, el, "busdkTopNavBase"); baseURL != "" {
 		return baseURL
 	}
 	if navID == "gx-ui" {
 		return gxUIDocsBaseURL(document)
 	}
 	return busDKSiteBaseURL(document, el)
+}
+
+func resolvedDataBaseURL(document js.Value, el js.Value, name string) string {
+	baseURL := dataAttribute(el, name)
+	if baseURL == "" {
+		return ""
+	}
+	location := document.Get("location")
+	if location.IsUndefined() || location.IsNull() {
+		return baseURL
+	}
+	href := location.Get("href")
+	if href.IsUndefined() || href.IsNull() || href.String() == "" {
+		return baseURL
+	}
+	return js.Global().Get("URL").New(baseURL, href.String()).Get("href").String()
 }
 
 func gxUITopHeaderCurrentID(document js.Value) string {

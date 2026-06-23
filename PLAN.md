@@ -2,6 +2,13 @@
 
 # Current work
 
+- [x] Rewrite the Bus Engine overview to explain that it is a Linux distribution for virtualized Bus workloads, show `bus engine` runtime examples, and describe artifact/profile-based base image, Bus Engine OS, kernel, and component version selection.
+- [x] Fix shared WASM-rendered BusDK product navigation so relative top and side nav bases resolve against the current page URL, covering `/engine/`, `/services/`, and other product pages.
+- [x] Remove the separate Bus Engine Documentation nav item and fold documentation links into the Modules page.
+- [x] Update Bus Engine AI access copy to name customer-provided OpenAI Codex access and configured local LLM model support instead of ChatGPT subscription wording.
+- [x] Rewrite the Bus Engine overview around the current product reality: a customizable Linux server operating-system distribution powered and maintained by Codex AI agents, with separate Codex subscription or API access required.
+- [x] Fix Bus Engine generated top and side navigation bases so runtime-rendered links keep the `/engine/` product prefix.
+- [x] Adjust the Bus Engine homepage card so it better matches neighboring product-card length and describes a custom operating-system outcome, not only engineering assistance.
 - [x] Apply the new `bus-lint` HTML rubric findings to the Bus Engine modules page so its capability overview uses buyer-facing language and links the stated evaluator path.
 - [x] Add Bus Engine pricing information using the Named Operator License model, including unlimited systems, monthly and one-time options, renewal, founding prices, support/account boundaries, and product-local pricing navigation.
 - [x] Balance the frontpage card copy lengths for Bus Agentic Development, Bus AI Platform, and Bus Engine without changing other product cards.

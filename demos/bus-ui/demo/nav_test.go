@@ -122,12 +122,14 @@ func TestBusDKProductNavRendersEnginePages(t *testing.T) {
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
 		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
 		`href="https://busdk.com/docs/engine/pricing/index.html">Pricing</a>`,
-		`href="https://docs.busdk.com/">Documentation</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(headerHTML, want) {
 			t.Fatalf("BusDKTopHeader engine HTML missing %q in %s", want, headerHTML)
 		}
+	}
+	if strings.Contains(headerHTML, `>Documentation</a>`) {
+		t.Fatalf("BusDKTopHeader engine HTML unexpectedly included Documentation link in %s", headerHTML)
 	}
 
 	sideNavHTML := renderBusDKProductSideNav(t, "engine", "modules", "https://busdk.com/docs/engine/")
@@ -137,12 +139,14 @@ func TestBusDKProductNavRendersEnginePages(t *testing.T) {
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
 		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
 		`href="https://busdk.com/docs/engine/pricing/index.html">Pricing</a>`,
-		`href="https://docs.busdk.com/">Documentation</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(sideNavHTML, want) {
 			t.Fatalf("BusDKProductSideNav engine HTML missing %q in %s", want, sideNavHTML)
 		}
+	}
+	if strings.Contains(sideNavHTML, `>Documentation</a>`) {
+		t.Fatalf("BusDKProductSideNav engine HTML unexpectedly included Documentation link in %s", sideNavHTML)
 	}
 	if got := BusDKProductSideNavCurrentCount("engine", "modules"); got != 1 {
 		t.Fatalf("BusDKProductSideNavCurrentCount(engine) = %d, want 1", got)
