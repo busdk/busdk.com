@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus Engine Pricing | Named Operator License</title>
+    <title>Bus Engine Founding Technical Preview Pricing | BusDK</title>
     <meta
       name="description"
-      content="Bus Engine pricing uses a Named Operator License: one named operator, unlimited systems, monthly or one-time options, updates, documentation, and support."
+      content="Join the limited Bus Engine Founding Technical Preview: source access, official Bus Linux builds, updates, and best-effort support for named operators."
     />
     <link rel="stylesheet" href="../../index.css" />
     <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
@@ -38,13 +38,14 @@
       <a href="../contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
-              <p class="eyebrow">Bus Engine Pricing</p>
-              <h1>One operator. Unlimited systems.</h1>
+              <p class="eyebrow">Bus Engine Founding Technical Preview</p>
+              <h1>Source-access preview for 25-50 named operators.</h1>
               <p class="hero-copy">
-                Bus Engine is priced by the people who operate and customize the platform, not by
-                the number of servers, virtual machines, containers, clusters, or other systems
-                they manage. One Named Operator License is assigned to one natural person and may
-                be used on unlimited systems for personal or commercial purposes.
+                The first paid Bus Engine release is a limited Technical Preview for experienced
+                server operators. It includes Bus Engine and BusDK source access under FSL,
+                official Bus Linux builds, updates, and best-effort support. One named operator may
+                use the preview across unlimited test systems for personal or commercial
+                evaluation.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="#bus-engine-checkout">Choose a plan</a>
@@ -60,7 +61,7 @@
               </div>
 
               <div class="product-section">
-                <h2>Named Operator License</h2>
+                <h2>Preview license boundary</h2>
                 <p>
                   Each license includes one individual account for official releases, update
                   services, documentation, and customer issue-tracker support. A named operator is
@@ -77,64 +78,100 @@
               </div>
 
               <div class="product-section">
-                <h2>Pricing options</h2>
+                <h2>Founding options</h2>
                 <p>
-                  The live checkout shows the current public named-operator prices for Bus
-                  Engine. VAT is added at checkout where applicable. Final custom terms, currency
-                  handling, and invoice questions can be confirmed through a written sales quote.
+                  The live checkout shows the current founding preview prices. VAT is added at
+                  checkout where applicable. The binary-only Runtime subscription is intentionally
+                  deferred until Public Beta, after installation, update, recovery, and rollback
+                  paths have been exercised by source-access operators.
                 </p>
                 <div class="gx-concept-grid gx-pricing-notes">
                   <article class="tutorial-card">
-                    <h3>Bus Runtime</h3>
+                    <h3><a href="https://fsl.software/">Monthly preview</a></h3>
                     <p>
-                      Official Bus components delivered as binaries, with signed updates,
-                      documentation, and runtime support. Third-party source remains available
-                      according to each component's license.
+                      Source access, official builds, updates, and best-effort support while the
+                      subscription is active. Intended for labs, development environments, staging
+                      systems, and non-critical workloads.
                     </p>
                   </article>
                   <article class="tutorial-card">
-                    <h3><a href="https://fsl.software/">Bus Engine Source</a></h3>
+                    <h3>Founding one-time purchase</h3>
                     <p>
-                      Everything in Runtime, plus current Bus Engine, BusDK, and included
-                      Engine-module source repositories under FSL, with repository access,
-                      version-matched build materials, and source-level support while active.
+                      Includes the entire Technical Preview period plus 12 months of updates and
+                      support beginning with the Bus Engine 1.0 general-availability release.
                     </p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>Bus Engine One-Time</h3>
+                    <h3>No production SLA</h3>
                     <p>
-                      Everything in Bus Engine Source for 12 months. Versions received during
-                      that period remain licensed under their included terms and can be used
-                      indefinitely.
+                      Support is best effort. Interfaces, configuration formats, package
+                      selections, and upgrade behavior may change before Bus Engine 1.0.
                     </p>
                   </article>
                 </div>
               </div>
 
               <div class="product-section">
-                <h2>Account and license boundary</h2>
+                <h2>Preview workflow</h2>
                 <p>
-                  The commercial account entitlement covers the named account, official
-                  distribution, update services, documentation, and support access. First-party Bus
-                  Engine components remain under their published software license terms, including
-                  <a href="https://fsl.software/">FSL terms</a> where applicable, and third-party
-                  packages remain under their own licenses.
+                  The preview focuses on one reliable workflow: install Bus Linux, configure an AI
+                  provider, ask Bus Engine for a system change, inspect the proposed change,
+                  approve it, apply it, verify it, and roll it back.
+                </p>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Default control loop</th><th>Purpose</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Plan</td><td>Describe the requested system change before touching the host.</td></tr>
+                    <tr><td>Diff</td><td>Show proposed file, package, service, or configuration changes.</td></tr>
+                    <tr><td>Approve</td><td>Require explicit operator approval before applying root-level changes.</td></tr>
+                    <tr><td>Apply</td><td>Apply the accepted change through the controlled Bus Engine workflow.</td></tr>
+                    <tr><td>Validate</td><td>Run checks and collect diagnostics after the change.</td></tr>
+                    <tr><td>Rollback</td><td>Return to the previous known state when validation fails.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>What the preview includes</h2>
+                <p>
+                  The preview scope is limited to Bus Engine, BusDK, and explicitly listed
+                  Engine-related modules. It includes source access under
+                  <a href="https://fsl.software/">FSL terms</a>, signed installation images and
+                  packages, exact third-party package sources, patches, build definitions, license
+                  notices, a working update channel, configuration history, audit logs, rollback,
+                  diagnostic bundles, and installation, recovery, upgrade, and known-issues
+                  documentation.
                 </p>
                 <p>
-                  One administrator managing 500 systems needs one license. Five administrators
-                  with accounts and support access need five licenses. After monthly cancellation,
-                  systems built with eligible releases can continue under the rights that applied to
-                  those received releases, but new official releases, updates, restricted
-                  documentation, and support require an active subscription or renewal period.
+                  Use pre-release versions such as <code>0.1.0-preview.1</code> or
+                  <code>0.2.0-preview.1</code>. Pre-release versions may be unstable and may not
+                  satisfy the compatibility expectations of the later normal release.
                 </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Release progression</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Stage</th><th>Audience</th><th>Commercial plans</th><th>Intended use</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Founding Technical Preview</td><td>25-50 operators</td><td>Monthly preview or founding purchase</td><td>Labs and staging</td></tr>
+                    <tr><td>Public Beta</td><td>100-300 operators</td><td>Add binary Runtime plan</td><td>Non-critical production evaluation</td></tr>
+                    <tr><td>Release Candidate</td><td>Broader audience</td><td>All three plans</td><td>Production migration testing</td></tr>
+                    <tr><td>Bus Engine 1.0</td><td>Public</td><td>Normal pricing</td><td>Supported production use</td></tr>
+                  </tbody>
+                </table>
               </div>
 
               <div class="gx-section gx-reference-strip">
                 <div>
-                  <h2>We charge for people we support.</h2>
+                  <h2>Help shape Bus Engine before 1.0.</h2>
                   <p>
-                    Bus Engine pricing does not count machines. It counts the named operators who
-                    need official releases, update services, documentation, and technical support.
+                    Join the founding cohort if you can evaluate source, run non-critical systems,
+                    share diagnostics, and give useful architectural feedback.
                   </p>
                 </div>
                 <a class="button button-primary" href="../contact/index.html">Contact Bus Engine</a>

@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus Engine | AI-configurable Linux distribution</title>
+    <title>Bus Engine Founding Technical Preview | AI-configurable Linux distribution</title>
     <meta
       name="description"
-      content="Bus Engine Operating System is a customizable Linux distribution for virtualized Bus workloads, with Debian cloud image support, Bus Engine OS profiles, custom kernels, and Codex-assisted maintenance."
+      content="Bus Engine Founding Technical Preview is a limited paid early release for source-access operators evaluating AI-configurable Linux systems before Bus Engine 1.0."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -37,51 +37,52 @@
       <a href="./contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
-              <p class="eyebrow">Bus Engine</p>
-              <h1>A Linux distribution you can run and modify with AI agents.</h1>
+              <p class="eyebrow">Bus Engine Founding Technical Preview</p>
+              <h1>A limited early release for source-access server operators.</h1>
               <p class="hero-copy">
-                Bus Engine Operating System is a Linux distribution that can be customized from
-                source and maintained with Codex AI agents. It gives teams a managed Linux runtime
-                for Bus workloads, including Linux virtualization on macOS and Windows hosts. The
-                current <code>bus engine</code> surface starts, stops, inspects, and opens operator
-                SSH access to that managed Linux system.
+                Bus Engine Founding Technical Preview is a paid early release for 25-50 named
+                operators who want to evaluate Bus Engine before version 1.0. It includes Bus
+                Engine, BusDK, and explicitly listed Engine-related source modules under FSL,
+                official Bus Linux builds, updates, and best-effort technical support. It is for
+                labs, development environments, staging systems, and non-critical workloads.
               </p>
               <div class="product-links">
-                <a class="button button-primary" href="contact/index.html">Discuss your server operating system</a>
+                <a class="button button-primary" href="pricing/index.html">Join the preview</a>
                 <a class="button button-secondary" href="pricing/index.html">View pricing</a>
                 <a class="button button-secondary" href="modules/index.html">Explore capabilities</a>
               </div>
 
               <div class="product-section">
-                <h2>What Bus Engine is used for</h2>
+                <h2>What the preview is for</h2>
                 <p>
-                  Bus Engine is the operating-system layer for Bus environments. It is used to run
-                  a controlled Linux server system inside supported virtualization, then change the
-                  system through versioned artifacts and source-level maintenance instead of
-                  treating the VM as an opaque appliance.
+                  The preview is for experienced operators who can inspect source, provide
+                  reproducible reports, attach diagnostic bundles, and help shape the platform
+                  before the broader beta. Commercial evaluation is allowed, but the preview does
+                  not include a production uptime or emergency-response SLA.
                 </p>
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
-                    <h3>Virtual Linux runtime</h3>
-                    <p>Run Linux workloads through Bus on supported Linux, macOS, and Windows hosts.</p>
+                    <h3>Source-access cohort</h3>
+                    <p>Bus Engine source, BusDK source, and named Engine modules are included under FSL.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>Configurable distribution</h3>
-                    <p>Select the base image, kernel package, OS profile, and component versions.</p>
+                    <h3>Unlimited test systems</h3>
+                    <p>One named operator may evaluate the preview across unlimited lab and staging systems.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>AI-assisted maintenance</h3>
-                    <p>Use Codex agents to adapt source configuration, diagnose boots, and maintain updates.</p>
+                    <h3>No binary-only plan yet</h3>
+                    <p>The lower-cost binary-only Runtime plan starts later, after source customers test updates and recovery.</p>
                   </article>
                 </div>
               </div>
 
               <div class="product-section">
-                <h2>Run the virtual service</h2>
+                <h2>One reliable workflow first</h2>
                 <p>
-                  The normal user surface is intentionally small. Start the managed Engine, wait
-                  for it to report <code>running</code>, open SSH when operator access is enabled,
-                  and stop it when the virtual Linux service is no longer needed.
+                  The first preview concentrates on one complete system-change workflow:
+                  install Bus Linux, configure an AI provider, ask Bus Engine for a system change,
+                  inspect the proposed change, approve it, apply it, verify it, and roll it back.
+                  AI-controlled server changes use an explicit approval loop by default.
                 </p>
                 <pre><code>bus engine status
 bus engine start
@@ -89,9 +90,9 @@ bus engine status
 bus engine ssh
 bus engine stop</code></pre>
                 <p>
-                  A healthy start returns an accepted start action, then status moves toward
-                  <code>running</code>. When SSH is available, <code>bus engine ssh</code> returns
-                  the operator SSH command for the local Engine port.
+                  The change workflow is <strong>plan, diff, explicit approval, apply, validate,
+                  and rollback</strong>. The preview should not silently allow an AI agent to make
+                  unrestricted root-level changes.
                 </p>
               </div>
 
@@ -142,13 +143,12 @@ bus artifacts catalog set bus-engine-kernel-amd64 \
               </div>
 
               <div class="product-section">
-                <h2>Supported targets now</h2>
+                <h2>Preview support boundary</h2>
                 <p>
-                  Bus Engine runs Linux workloads through Bus-supported virtualization providers,
-                  including supported macOS and Windows host configurations. Customer-defined
-                  physical servers, boards, appliances, and embedded devices can be explored with
-                  Bus Engine, but hardware-specific enablement and certification require separate
-                  engineering and validation work.
+                  The preview uses one officially supported architecture and a narrow
+                  virtualization or hardware matrix. Interfaces, configuration formats, package
+                  selections, and upgrade behavior may change before version 1.0. Release versions
+                  use pre-release identifiers such as <code>0.1.0-preview.1</code>.
                 </p>
               </div>
 
