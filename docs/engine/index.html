@@ -43,10 +43,10 @@
               <h1>A limited early release for source-access server operators.</h1>
               <p class="hero-copy">
                 Bus Engine Founding Technical Preview is a limited paid early release for
-                operators who want to evaluate Bus Engine before version 1.0. It includes Bus
-                Engine, BusDK, and explicitly listed Engine-related source modules under
-                <a href="https://fsl.software/">FSL</a>,
-                official Bus Linux builds, updates, and best-effort technical support. It is for
+                operators who want to evaluate Bus Engine before version 1.0. It includes the
+                limited Bus Engine product-line source modules under the
+                <a href="https://fsl.software/">Functional Source License</a>,
+                official Bus Engine OS builds, updates, and best-effort technical support. It is for
                 labs, development environments, staging systems, and non-critical workloads.
               </p>
               <div class="product-links">
@@ -66,15 +66,15 @@
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
                     <h3>Source-access preview</h3>
-                    <p>Bus Engine source, BusDK source, and named Engine modules are included under <a href="https://fsl.software/">FSL</a>.</p>
+                    <p>Named Bus Engine product-line source modules are included under the <a href="https://fsl.software/">Functional Source License</a>.</p>
                   </article>
                   <article class="tutorial-card">
                     <h3>Unlimited test systems</h3>
                     <p>One named operator may evaluate the preview across unlimited lab and staging systems.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>No binary-only plan yet</h3>
-                    <p>The lower-cost binary-only Runtime plan starts later, after source customers test updates and recovery.</p>
+                    <h3>Source access first</h3>
+                    <p>The founding preview is sold as source access for operators who can test updates, recovery, and rollback.</p>
                   </article>
                 </div>
               </div>
@@ -83,9 +83,9 @@
                 <h2>One reliable workflow first</h2>
                 <p>
                   The first preview concentrates on one complete system-change workflow:
-                  install Bus Linux, configure an AI provider, ask Bus Engine for a system change,
-                  inspect the proposed change, approve it, apply it, verify it, and roll it back.
-                  AI-controlled server changes use an explicit approval loop by default.
+                  install Bus Engine OS, configure an AI provider, ask Bus Engine for a system
+                  change, inspect the proposed change, approve it, apply it, verify it, and roll
+                  it back. AI-controlled server changes use an explicit approval loop by default.
                 </p>
                 <pre><code>bus engine status
 bus engine start
@@ -93,25 +93,28 @@ bus engine status
 bus engine ssh
 bus engine stop</code></pre>
                 <p>
+                  A successful start leaves the Engine service running, reports that state through
+                  <code>bus engine status</code>, and opens an SSH maintenance path for the
+                  configured target.
+                </p>
+                <p>
                   The change workflow is <strong>plan, diff, explicit approval, apply, validate,
-                  and rollback</strong>. The preview should not silently allow an AI agent to make
-                  unrestricted root-level changes.
+                  and rollback</strong>. The preview requires explicit approval before applying
+                  AI-authored root-level changes.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>Build the Bus Linux distribution</h2>
+                <h2>Build Bus Engine OS</h2>
                 <p>
                   Bus Engine OS is the Bus-built Linux distribution managed by AI agents. Its
                   profiles describe the selected runtime image, kernel package, package artifacts,
-                  patches, build definitions, and validation steps. Debian cloud images are
-                  swappable runtime image artifacts for preview and compatibility work, not the
-                  definition of Bus Engine OS itself.
+                  patches, build definitions, and validation steps. Debian cloud images can be
+                  selected as an optional compatibility input for preview runs.
                 </p>
                 <p>
-                  The overview keeps that product boundary short. Runtime image choices, Debian
-                  compatibility images, kernel packages, artifact checksums, and profile examples
-                  live on the dedicated images page.
+                  The dedicated images page explains Bus Engine OS images, optional Debian
+                  compatibility inputs, kernel packages, artifact checksums, and profile examples.
                 </p>
                 <p><a href="runtime-images/index.html">Review runtime images and artifacts</a></p>
               </div>
@@ -130,10 +133,10 @@ bus engine stop</code></pre>
               <div class="product-section">
                 <h2>Preview support boundary</h2>
                 <p>
-                  The preview uses one officially supported architecture and a narrow
-                  virtualization or hardware matrix. Interfaces, configuration formats, package
-                  selections, and upgrade behavior may change before version 1.0. Release versions
-                  use pre-release identifiers such as <code>0.1.0-preview.1</code>.
+                  Each preview release defines its supported architecture and target matrix in the
+                  release handoff. Interfaces, configuration formats, package selections, and
+                  upgrade behavior may change before version 1.0. Release versions use pre-release
+                  identifiers such as <code>0.1.0-preview.1</code>.
                 </p>
               </div>
 

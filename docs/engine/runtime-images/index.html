@@ -40,22 +40,20 @@
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Engine Images</p>
-              <h1>Runtime images are profile inputs, not the product identity.</h1>
+              <h1>Bus Engine OS comes first.</h1>
               <p class="hero-copy">
-                Bus Engine OS is the Bus-built Linux distribution managed by AI agents. Runtime
-                images are selected by Engine profiles so operators can evaluate the same Bus
-                workflow against Bus-built images, compatibility images, kernels, packages, and
-                signed artifacts.
+                Bus Engine OS is the Bus-built Linux distribution for Bus Engine. In the preview,
+                Engine profiles select the Bus-built image, kernel, packages, and signed artifacts
+                for each target. Debian cloud images can also be selected for compatibility checks.
               </p>
 
               <div class="product-section">
-                <h2>Bus-built Linux first</h2>
+                <h2>Bus Engine OS first</h2>
                 <p>
-                  The product direction is a Bus-controlled Linux distribution: source-managed
+                  Bus Engine OS is a Bus-controlled Linux distribution: source-managed
                   packages, patch sets, build definitions, kernel choices, installation images,
-                  update channels, audit history, diagnostics, and rollback. AI agents help
-                  maintain that distribution through explicit planning, diffs, approval, validation,
-                  and rollback.
+                  update channels, diagnostics, and rollback paths. The preview exposes those
+                  pieces through controlled planning, diffs, approval, validation, and rollback.
                 </p>
                 <p>
                   A runtime image is one artifact in that system. It can be replaced without
@@ -65,13 +63,12 @@
               </div>
 
               <div class="product-section">
-                <h2>Debian compatibility images</h2>
+                <h2>Optional Debian compatibility images</h2>
                 <p>
-                  Debian cloud images are useful preview inputs because they are familiar,
-                  reproducible enough for compatibility testing, and already work in common
-                  virtualization paths. They are not Bus Engine OS. They are swappable runtime
-                  image artifacts used while the preview hardens installation, updates, recovery,
-                  rollback, and diagnostics.
+                  Debian cloud images are useful preview inputs because they are familiar and
+                  already work in common virtualization paths. They help compare compatibility
+                  behavior while Bus Engine OS installation, updates, recovery, rollback, and
+                  diagnostics mature.
                 </p>
                 <p>
                   A Bus Engine profile can select a verified Debian cloud image for one test run
@@ -100,6 +97,10 @@ KERNEL_DIGEST="sha256:&lt;digest&gt;"
 bus artifacts catalog set bus-engine-kernel-amd64 \
   --handle "$KERNEL_DEB" \
   --digest "$KERNEL_DIGEST"</code></pre>
+                <p>
+                  Successful registration records the artifact handle and digest in the catalog, so
+                  Engine profiles can select the exact image and kernel package for a boot target.
+                </p>
               </div>
 
               <div class="product-section">
@@ -119,14 +120,14 @@ bus artifacts catalog set bus-engine-kernel-amd64 \
 
               <div class="gx-section gx-reference-strip">
                 <div>
-                  <h2>Keep image choice separate from release identity.</h2>
+                  <h2>Choose Bus Engine OS for the main preview path.</h2>
                   <p>
-                    The preview can use compatibility images while Bus Engine OS matures. The
-                    product promise remains the Bus-managed Linux distribution, source tree, update
-                    channel, validation workflow, and rollback model.
+                    Compatibility images help with preview testing. The main path is the
+                    Bus-managed Linux distribution, source tree, update channel, validation
+                    workflow, and rollback model.
                   </p>
                 </div>
-                <a class="button button-primary" href="../pricing/index.html">Join the preview</a>
+                <a class="button button-primary" href="../pricing/index.html">View pricing</a>
               </div>
             </div>
           </div>
