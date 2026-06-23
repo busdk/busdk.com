@@ -115,6 +115,38 @@ func TestBusDKProductSideNavRendersProductLocalEntries(t *testing.T) {
 	}
 }
 
+func TestBusDKProductNavRendersEngineOSPages(t *testing.T) {
+	headerHTML := renderBusDKTopHeader(t, "engine-os", "https://busdk.com/docs/engine-os/", "getting-started")
+	for _, want := range []string{
+		`class="brand" href="https://busdk.com/docs/index.html"`,
+		`href="https://busdk.com/docs/engine-os/index.html">Overview</a>`,
+		`aria-current="page" href="https://busdk.com/docs/engine-os/getting-started/index.html">Getting started</a>`,
+		`href="https://busdk.com/docs/engine-os/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine-os/contact/index.html">Contact</a>`,
+	} {
+		if !strings.Contains(headerHTML, want) {
+			t.Fatalf("BusDKTopHeader engine-os HTML missing %q in %s", want, headerHTML)
+		}
+	}
+
+	sideNavHTML := renderBusDKProductSideNav(t, "engine-os", "modules", "https://busdk.com/docs/engine-os/")
+	for _, want := range []string{
+		`class="gx-side-nav-title"`,
+		`>Engine OS</p>`,
+		`href="https://busdk.com/docs/engine-os/index.html">Overview</a>`,
+		`href="https://busdk.com/docs/engine-os/getting-started/index.html">Getting started</a>`,
+		`aria-current="page" href="https://busdk.com/docs/engine-os/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine-os/contact/index.html">Contact</a>`,
+	} {
+		if !strings.Contains(sideNavHTML, want) {
+			t.Fatalf("BusDKProductSideNav engine-os HTML missing %q in %s", want, sideNavHTML)
+		}
+	}
+	if got := BusDKProductSideNavCurrentCount("engine-os", "modules"); got != 1 {
+		t.Fatalf("BusDKProductSideNavCurrentCount(engine-os) = %d, want 1", got)
+	}
+}
+
 func TestGXUISideNavIncludesRequiredGroupsAndIDs(t *testing.T) {
 	html := renderGXUISideNav(t, "bus-ui/forms")
 	for _, want := range []string{

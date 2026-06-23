@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine OS Getting Started | BusDK</title>
+    <meta
+      name="description"
+      content="Plan a custom Bus Engine OS Linux environment with source, package, kernel, image, boot-test, artifact, and update decisions."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine-os" data-busdk-top-nav-base="../" data-busdk-current="getting-started">
+    <div class="site-header-inner">
+      <a class="brand" href="../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../getting-started/index.html" aria-current="page">Getting started</a>
+      <a href="../modules/index.html">Modules</a>
+      <a href="../contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="engine-os" data-busdk-current="getting-started" data-busdk-side-nav-base="../" aria-label="Bus Engine OS navigation">
+    <p class="gx-side-nav-title">Engine OS</p>
+      <a href="../index.html">Overview</a>
+      <a href="../getting-started/index.html" aria-current="page">Getting started</a>
+      <a href="../modules/index.html">Modules</a>
+      <a href="../contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Engine OS</p>
+              <h1>Start with the runtime environment you need to ship.</h1>
+              <p class="hero-copy">
+                A Bus Engine OS engagement starts by defining the smallest Linux environment that
+                can boot, run the workload, report its state, and receive updates safely. The build
+                pipeline then turns that profile into verified artifacts and boot evidence.
+              </p>
+
+              <div class="product-section">
+                <h2>1. Define the environment</h2>
+                <p>
+                  Name the workload class first: local QEMU development, hosted virtual servers,
+                  container-host images, agent worker environments, API servers, or dedicated Bus
+                  Engine runtime nodes. This decides which kernel features, packages, services,
+                  diagnostics, and update cadence belong in the image.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>2. Choose the bootstrap baseline</h2>
+                <p>
+                  Early Bus Engine OS builds use a Linux From Scratch derived pipeline so the source
+                  set, package boundaries, and boot image are explicit. Debian or Ubuntu cloud
+                  images may still be used by Bus Engine while a custom OS baseline is being built.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>3. Build from verified inputs</h2>
+                <p>
+                  Source manifests declare downloads, checksums, patches, package metadata, and
+                  build profiles. Packages install into private staging directories before they are
+                  archived, validated, and assembled into a root filesystem.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>4. Boot-test the image</h2>
+                <p>
+                  A useful image is one that boots without manual interpretation. The first proof
+                  target is serial-console evidence from QEMU: kernel boot, init, networking when
+                  enabled, expected service state, and a clear failure signal when the image is not
+                  usable.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>5. Publish artifacts and updates</h2>
+                <p>
+                  Kernel packages, root filesystem archives, disk images, checksums, provenance,
+                  and update metadata are artifact outputs. They should be mirrored and consumed by
+                  environments without requiring operators to copy large binaries through Git.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>AI in the workflow</h2>
+                <div class="tutorial-grid">
+                  <article class="tutorial-card">
+                    <h3>Manifest review</h3>
+                    <p>Check package inclusion, source pinning, checksums, licensing notes, and unnecessary runtime weight.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Kernel review</h3>
+                    <p>Explain why virtualization, filesystem, networking, namespace, or security options are present.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Update review</h3>
+                    <p>Compare package changes, boot evidence, provenance, and rollout impact before an update is promoted.</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
+    </div>
+    <script src="../../site-chrome.js"></script>
+  </body>
+</html>
