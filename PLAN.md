@@ -21,6 +21,9 @@ and hosting remain unchanged.
 Bus Engine product pages now foreground the story that the product provides a
 source-configurable Linux system operated by an AI Linux engineer.
 
+Bus Engine product pages avoid self-referential product-taxonomy wording and
+use direct buyer-facing sentences instead.
+
 The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
 deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every
 implemented catalog entry has a GX/UI reference page, and every implemented
