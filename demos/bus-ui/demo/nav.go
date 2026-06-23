@@ -67,8 +67,8 @@ var busDKTopHeaders = map[string]topHeaderConfig{
 		LogoHref:  "../busdk-logo.png",
 		Links: []topHeaderLink{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
-			{ID: "os", Href: "os/index.html", Label: "Engine OS"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},
@@ -162,8 +162,8 @@ var busDKProductSideNavs = map[string]struct {
 		Title: "Engine",
 		Entries: []navEntry{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
-			{ID: "os", Href: "os/index.html", Label: "Engine OS"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},

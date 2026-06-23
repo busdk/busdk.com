@@ -116,12 +116,12 @@ func TestBusDKProductSideNavRendersProductLocalEntries(t *testing.T) {
 }
 
 func TestBusDKProductNavRendersEnginePages(t *testing.T) {
-	headerHTML := renderBusDKTopHeader(t, "engine", "https://busdk.com/docs/engine/", "os")
+	headerHTML := renderBusDKTopHeader(t, "engine", "https://busdk.com/docs/engine/", "modules")
 	for _, want := range []string{
 		`class="brand" href="https://busdk.com/docs/index.html"`,
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
-		`aria-current="page" href="https://busdk.com/docs/engine/os/index.html">Engine OS</a>`,
-		`href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://docs.busdk.com/">Documentation</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(headerHTML, want) {
@@ -134,8 +134,8 @@ func TestBusDKProductNavRendersEnginePages(t *testing.T) {
 		`class="gx-side-nav-title"`,
 		`>Engine</p>`,
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
-		`href="https://busdk.com/docs/engine/os/index.html">Engine OS</a>`,
 		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://docs.busdk.com/">Documentation</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(sideNavHTML, want) {
