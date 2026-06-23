@@ -41,7 +41,7 @@ The Bus Engine pages pass the new `bus-lint` HTML public marketing rubric with
 `--agent codex`.
 
 Bus Engine pricing now uses a product-local Founding Technical Preview page:
-25-50 named operators, source access, unlimited test systems, monthly and
+a limited founding offer, source access, unlimited test systems, monthly and
 one-time founding options, account/support boundaries, no production SLA, no
 AI credits, and clear separation between commercial account entitlements and
 software license terms.
