@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine FAQ | BusDK</title>
+    <meta
+      name="description"
+      content="Frequently asked questions about Bus Engine, Bus Engine OS, development preview status, Codex App Server, AI model fees, hardware targets, source access, and persistent storage."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine" data-busdk-top-nav-base="../" data-busdk-current="faq">
+    <div class="site-header-inner">
+      <a class="brand" href="../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
+      <a href="../runtime-images/index.html">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html" aria-current="page">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
+      <a href="../contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="faq" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
+    <p class="gx-side-nav-title">Engine</p>
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
+      <a href="../runtime-images/index.html">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html" aria-current="page">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
+      <a href="../contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Engine FAQ</p>
+              <h1>Questions about Bus Engine and Bus Engine OS.</h1>
+              <p class="hero-copy">
+                Short answers for evaluators comparing Bus Engine with ordinary Linux virtual
+                machines, conventional administration, hosted or local AI, and source-access
+                commercial software.
+              </p>
+
+              <div class="product-section">
+                <h2>Product</h2>
+                <h3>What is Bus Engine?</h3>
+                <p>Bus Engine provides the blueprints, AI-powered engineering tools, deterministic build operations, isolated execution environments, validation workflows, and lifecycle tooling needed to create and maintain custom Linux systems.</p>
+                <h3>What is Bus Engine OS?</h3>
+                <p>Bus Engine OS is the rolling Linux distribution being built and maintained through Bus Engine. It is under active development and is not yet a complete production-ready distribution.</p>
+                <h3>What does “Linux distribution” mean here?</h3>
+                <p>It means the complete versioned collection of blueprints, kernel configurations, source inputs, patches, package definitions, compiled packages, boot files, filesystem and image definitions, services, update and recovery mechanisms, validation tests, and release artifacts needed to produce and maintain a runnable Linux operating system.</p>
+                <h3>Why not just install an ordinary Linux distribution in a virtual machine?</h3>
+                <p>You can, and that is the right choice for many general-purpose systems.</p>
+                <p>Bus Engine is intended for cases where installing Linux is only the beginning. It maintains a complete system blueprint covering the kernel, packages, services, boot process, image construction, tests, and lifecycle policy. Its integrated agent can investigate requirements, create and revise that blueprint, build the resulting system, diagnose failures, and maintain it as the workload and upstream components change.</p>
+                <p>The virtualization layer provides the machine. Bus Engine provides the operating-system engineering lifecycle.</p>
+                <h3>Is Bus Engine only a package manager?</h3>
+                <p>No. Package construction and dependency work are part of the lifecycle, but Bus Engine also covers requirements, kernel configuration, boot, services, filesystem and image shape, validation, diagnosis, and maintenance.</p>
+                <h3>Does Bus Engine only configure the kernel?</h3>
+                <p>No. Kernel configuration is one important area. The blueprint also covers userspace packages, services, boot, storage, networking, image outputs, validation, and lifecycle policy.</p>
+              </div>
+
+              <div class="product-section">
+                <h2>Status and releases</h2>
+                <h3>Is Bus Engine OS complete today?</h3>
+                <p>No. Bus Engine OS is under active development. Today evaluators can use the documented <code>bus engine status</code>, <code>start</code>, <code>stop</code>, and <code>ssh</code> control path with the current local API, Events, artifact, VM, and QEMU runtime pieces. Native Bus Engine OS images, update, recovery, rollback, and complete release workflow remain in development.</p>
+                <h3>What happens on 1 July 2026?</h3>
+                <p>The public development preview is scheduled to begin on 1 July 2026. Founding customers will receive rolling pre-production development builds as the operating system and tooling evolve.</p>
+                <h3>How do rolling releases work?</h3>
+                <p>The development channel receives continuously updated builds and evidence as the blueprint, package set, kernel work, build pipeline, validation, and maintenance workflows change. The first preview is not a version 1.0 release.</p>
+                <h3>Is the development preview production-ready?</h3>
+                <p>No. Organizations needing a production-ready general-purpose Linux system today should use an established distribution. The founding development preview is for evaluators who want to participate in developing and testing the AI-maintained operating-system model.</p>
+              </div>
+
+              <div class="product-section">
+                <h2>AI and Codex</h2>
+                <h3>How does AI participate?</h3>
+                <p>AI performs adaptable engineering work: understanding requirements, interpreting evidence, selecting a configuration strategy, diagnosing failures, and updating the blueprint. Deterministic tools compile, package, build images, calculate checksums, boot, and test.</p>
+                <h3>What is Codex App Server?</h3>
+                <p>Codex App Server is a separate open-source Codex agent-runtime component. Bus Engine integrates it with Linux-specific tools, policies, blueprints, build environments, target information, and validation workflows.</p>
+                <h3>Does Bus Engine use a REST API to communicate with Codex App Server?</h3>
+                <p>No. Codex App Server uses bidirectional JSON-RPC 2.0. Bus Engine may expose its own HTTP APIs, but those APIs are Bus Engine APIs rather than the native Codex App Server protocol.</p>
+                <h3>Is Codex included?</h3>
+                <p>Bus Engine integrates Codex App Server as a separately licensed open-source runtime component. AI model access and hosted model service fees are configured separately.</p>
+                <h3>Are AI model fees included?</h3>
+                <p>Third-party hosted-model usage and AI service fees are not included unless a plan explicitly says otherwise.</p>
+                <h3>Can customers use local models?</h3>
+                <p>Customers may use a supported hosted provider or operate a compatible model within their own infrastructure where the deployed Bus model API and local-model integrations, policies, and network controls support that deployment.</p>
+                <h3>Is the entire AI stack open source?</h3>
+                <p>No. Codex App Server is an open-source runtime component, but selected hosted model services may be proprietary and separately billed. Local inference runtimes and models have their own licenses.</p>
+              </div>
+
+              <div class="product-section">
+                <h2>Targets, source, and storage</h2>
+                <h3>Can Bus Engine target physical hardware?</h3>
+                <p>Virtualized targets are the initial supported environment. Customer-defined bare-metal servers, appliances, boards, and embedded systems can be configured by customers or enabled through paid hardware engineering.</p>
+                <h3>Is arbitrary hardware certified?</h3>
+                <p>No. Bus Engine enables hardware configuration; it does not automatically certify arbitrary hardware.</p>
+                <h3>Which source code is included?</h3>
+                <p>Source access is limited to the components and licenses included in the applicable release or agreement. Open-source components remain under their own licenses. Bus-owned source-access modules may use the Functional Source License (FSL) or another published source-access license.</p>
+                <h3>Which BusDK components remain binary-only?</h3>
+                <p>Higher-level BusDK products and general proprietary userspace modules may remain binary-only where legally permitted by their own licenses and by the licenses of components they combine with.</p>
+                <h3>Does a Bus Engine license include the full BusDK binary catalog?</h3>
+                <p>The intended commercial model is to provide access to the complete BusDK binary release catalog while each Bus Engine OS blueprint installs only selected modules. Final checkout and license terms must confirm that entitlement before it is treated as a contractual deliverable.</p>
+                <h3>Are all BusDK modules installed in every system?</h3>
+                <p>No. Available means the entitlement permits access, installed means the binary is present in a specific image, and enabled means a service, listener, scheduled operation, or integration is active.</p>
+                <h3>What does the 1 TB founder storage benefit include?</h3>
+                <p>Founding Bus Engine customers receive a 1 TB Bus Engine Persistent Storage allocation for supported BusDK-hosted virtualized systems, subject to the applicable commercial and service terms. The detailed storage terms are finalized in the agreement.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
+    </div>
+    <script src="../../site-chrome.js"></script>
+  </body>
+</html>

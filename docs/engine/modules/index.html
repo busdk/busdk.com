@@ -6,7 +6,7 @@
     <title>Bus Engine Capabilities | BusDK</title>
     <meta
       name="description"
-      content="Capabilities behind Bus Engine: source-configurable Linux systems, AI Linux engineering, discovery, builds, validation, diagnosis, repair, and lifecycle maintenance."
+      content="Capabilities behind Bus Engine: target discovery, system blueprints, kernel configuration, package and image builds, validation, diagnosis, rolling maintenance, and AI provider integration."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -20,9 +20,12 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
       <a href="../index.html">Overview</a>
-      <a href="../modules/index.html" aria-current="page">Modules</a>
+      <a href="../modules/index.html" aria-current="page">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
       <a href="../runtime-images/index.html">Images</a>
       <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
       <a href="../contact/index.html">Contact</a>
       </nav>
     </div>
@@ -33,50 +36,89 @@
                 <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="modules" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
     <p class="gx-side-nav-title">Engine</p>
       <a href="../index.html">Overview</a>
-      <a href="../modules/index.html" aria-current="page">Modules</a>
+      <a href="../modules/index.html" aria-current="page">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
       <a href="../runtime-images/index.html">Images</a>
       <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
       <a href="../contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Engine</p>
               <h1>Capabilities behind Bus Engine.</h1>
               <p class="hero-copy">
-                Bus Engine combines product software, AI-assisted engineering workflows, and
-                integration modules for source-configurable Linux systems. Its capabilities cover
-                discovery, configuration, building, validation, diagnosis, and lifecycle
-                maintenance so technical evaluators can see how custom kernels, packages, services,
-                images, and tests move from requirements into a maintained system blueprint.
+                Bus Engine is being built around a Linux system-engineering lifecycle. Individual
+                tools and modules support discovery, configuration, building, validation,
+                diagnosis, and maintenance, and the status labels below show what is available
+                today versus what remains development work.
               </p>
 
               <div class="product-section">
-                <h2>Capability groups</h2>
-                <ul>
-                  <li>discover requirements, workload evidence, and target constraints</li>
-                  <li>create and resolve system blueprints</li>
-                  <li>configure kernels, packages, services, storage, boot, and images</li>
-                  <li>build, boot, test, diagnose, repair, and maintain generated systems</li>
-                </ul>
+                <h2>Engineering areas</h2>
+                <div class="tutorial-grid">
+                  <article class="tutorial-card">
+                    <h3>Target discovery and Linux inventory</h3>
+                    <p>Collect declared requirements, system profiles, runtime observations, logs, and target constraints.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Workload and source analysis</h3>
+                    <p>Connect application source, build systems, runtime dependencies, and acceptance tests to the operating system underneath them.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>System blueprint creation</h3>
+                    <p>Create a versioned blueprint covering kernel, packages, services, boot, filesystem, network, security, outputs, and tests.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Kernel configuration</h3>
+                    <p>Determine required features, modules, drivers, virtualization support, filesystem support, and boot diagnostics.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Package and dependency engineering</h3>
+                    <p>Maintain source inputs, patches, package definitions, dependency metadata, package archives, and notices.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Boot, storage, filesystem, service, and network configuration</h3>
+                    <p>Assemble the system shape that makes a generated image bootable, inspectable, and maintainable.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Kernel, package, and image builds</h3>
+                    <p>Run controlled build tools, calculate checksums, and produce artifacts from the resolved blueprint.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Virtualized boot and workload testing</h3>
+                    <p>Boot generated systems in isolated environments and run platform and workload tests before promoting changes.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Diagnosis, repair, and rolling maintenance</h3>
+                    <p>Analyze failed builds, boot failures, kernel problems, service failures, and regressions, then update the blueprint.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>AI provider and isolated execution integration</h3>
+                    <p>Connect the Bus Engine orchestration layer to a Codex App Server agent runtime, a configured hosted or local model backend, and controlled build environments.</p>
+                  </article>
+                </div>
               </div>
 
               <div class="product-section">
                 <h2>Implementation map</h2>
-                <p>
-                  Customers use Bus Engine through supported CLI, API, artifact, and runtime
-                  surfaces. These shipped Bus components define the main implementation boundaries.
-                </p>
                 <table class="tutorial-table">
                   <thead>
-                    <tr><th>Module</th><th>Role</th></tr>
+                    <tr><th>Module</th><th>Status</th><th>Role</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>bus-engine</code></td><td>CLI and client surface for Engine runtime lifecycle commands.</td></tr>
-                    <tr><td><code>bus-api-provider-engine</code></td><td>API controller for hosted Engine actions.</td></tr>
-                    <tr><td><code>bus-integration-engine</code></td><td>Starts, tracks, and validates Engine runtime environments through Bus Events.</td></tr>
-                    <tr><td><code>bus-engine-os</code></td><td>Operating-system blueprint, package, kernel, image, and boot-test work.</td></tr>
-                    <tr><td><code>bus-artifacts</code></td><td>Artifact catalogs, downloads, checksum verification, mirrors, and updates.</td></tr>
-                    <tr><td><code>bus-integration-vm</code> / <code>bus-integration-qemu</code></td><td>Provider-neutral VM behavior and local QEMU execution.</td></tr>
-                    <tr><td><code>bus-api-provider-llm</code> / <code>bus-integration-codex</code> / <code>bus-integration-ollama</code></td><td>AI access paths for OpenAI Codex, OpenAI-compatible APIs, and Ollama-backed local models.</td></tr>
+                    <tr><td><code>bus-engine</code></td><td>Available</td><td>CLI/client for Engine runtime status, start, stop, and SSH session commands.</td></tr>
+                    <tr><td><code>bus-api-provider-engine</code></td><td>Available</td><td>Authenticated REST boundary for Engine actions; delegates work through Bus Events.</td></tr>
+                    <tr><td><code>bus-integration-engine</code></td><td>Available</td><td>Events worker coordinating Engine profile, artifact, VM, and SSH-session requests.</td></tr>
+                    <tr><td><code>bus-artifacts</code></td><td>Available</td><td>Generic artifact catalog/client behavior for binary records, digests, imports, and updates.</td></tr>
+                    <tr><td><code>bus-api-provider-artifacts</code></td><td>Available</td><td>Authenticated artifact API for list, inspect, fetch, verify, import, update, and mirror operations.</td></tr>
+                    <tr><td><code>bus-integration-artifacts</code></td><td>Available</td><td>Events worker for atomic download, verification, import, update, mirror, and cache behavior.</td></tr>
+                    <tr><td><code>bus-integration-vm</code></td><td>Available</td><td>Provider-neutral VM lifecycle worker routing VM requests to provider integrations.</td></tr>
+                    <tr><td><code>bus-integration-qemu</code></td><td>Available</td><td>Local QEMU VM provider for Engine runtime evaluation and development targets.</td></tr>
+                    <tr><td><code>bus-engine-os</code></td><td>In development</td><td>Source-built Bus Engine OS package, kernel, rootfs, image, and boot-test pipeline.</td></tr>
+                    <tr><td><code>bus-api-provider-llm</code></td><td>Available</td><td>OpenAI-compatible Bus model API with Bus auth, usage, and runtime wake-up hooks.</td></tr>
+                    <tr><td><code>bus-integration-codex</code></td><td>Available</td><td>Codex App Server backed Bus Events worker for provider-neutral LLM execution requests.</td></tr>
+                    <tr><td><code>bus-integration-ollama</code></td><td>Available</td><td>Local model provider integration for configured Ollama-backed inference paths.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -84,16 +126,18 @@
               <div class="product-section">
                 <h2>Documentation links</h2>
                 <p>
-                  Start with the <a href="../index.html">overview</a>, then inspect module
-                  documentation for command behavior, API boundaries, runtime integration,
-                  artifact handling, and provider behavior.
+                  Start with the <a href="../index.html">product overview</a>, then inspect the
+                  public documentation for configuration behavior, build inputs, target boundaries,
+                  generated outputs, validation evidence, and module-specific command behavior.
                 </p>
                 <ul>
+                  <li><a href="https://docs.busdk.com/engine/">Bus Engine documentation</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-engine">bus-engine</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-api-provider-engine">bus-api-provider-engine</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-engine">bus-integration-engine</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-engine-os">bus-engine-os</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-artifacts">bus-artifacts</a></li>
+                  <li><a href="https://docs.busdk.com/modules/bus-api-provider-artifacts">bus-api-provider-artifacts</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-artifacts">bus-integration-artifacts</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-vm">bus-integration-vm</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-qemu">bus-integration-qemu</a></li>

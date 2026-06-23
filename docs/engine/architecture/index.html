@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine Architecture | BusDK</title>
+    <meta
+      name="description"
+      content="How Bus Engine combines UI, CLI, API, orchestration, Codex App Server, customer-selected models, Linux tools, build environments, validation, blueprints, and evidence."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine" data-busdk-top-nav-base="../" data-busdk-current="architecture">
+    <div class="site-header-inner">
+      <a class="brand" href="../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html" aria-current="page">Architecture</a>
+      <a href="../runtime-images/index.html">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
+      <a href="../contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="architecture" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
+    <p class="gx-side-nav-title">Engine</p>
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html" aria-current="page">Architecture</a>
+      <a href="../runtime-images/index.html">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
+      <a href="../contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Engine Architecture</p>
+              <h1>AI participates in a controlled Linux engineering loop.</h1>
+              <p class="hero-copy">
+                Bus Engine integrates Codex App Server, a separate open-source Codex agent
+                runtime, with Linux-specific tools, blueprints, policies, isolated build
+                environments, boot tests, logs, and evidence. The model handles reasoning;
+                deterministic tools build and verify the system.
+              </p>
+
+              <div class="product-section">
+                <h2>Architecture flow</h2>
+                <figure aria-labelledby="engine-architecture-title">
+                  <svg role="img" aria-labelledby="engine-architecture-title engine-architecture-desc" viewBox="0 0 820 520" width="100%" height="auto">
+                    <title id="engine-architecture-title">Bus Engine architecture flow</title>
+                    <desc id="engine-architecture-desc">Operator requests flow through Bus Engine UI, CLI, or API, then orchestration and policy, then Codex App Server, then a selected hosted or local model. Bus Engine Linux tools use isolated build and validation environments and write blueprints and evidence.</desc>
+                    <rect x="20" y="20" width="780" height="480" rx="10" fill="none" stroke="currentColor" opacity="0.24" />
+                    <g fill="currentColor" font-family="Plus Jakarta Sans, sans-serif" font-size="17">
+                      <rect x="70" y="50" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="92" y="85">Operator</text>
+                      <rect x="70" y="135" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="92" y="170">Bus Engine UI / CLI / API</text>
+                      <rect x="70" y="220" width="210" height="72" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="92" y="252">Orchestration, policy,</text>
+                      <text x="92" y="274">approval, and audit</text>
+                      <rect x="335" y="135" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="357" y="170">Codex App Server</text>
+                      <rect x="600" y="135" width="150" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="622" y="160">Hosted or local</text>
+                      <text x="622" y="182">model provider</text>
+                      <rect x="335" y="245" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="357" y="280">Linux tools</text>
+                      <rect x="70" y="360" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="92" y="395">System blueprint</text>
+                      <rect x="335" y="360" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="357" y="395">Build environment</text>
+                      <rect x="600" y="360" width="150" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
+                      <text x="622" y="384">Boot tests</text>
+                      <text x="622" y="406">and evidence</text>
+                    </g>
+                    <g stroke="currentColor" stroke-width="2" opacity="0.52" fill="none" marker-end="url(#arrow)">
+                      <defs>
+                        <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                          <path d="M0,0 L8,4 L0,8 Z" fill="currentColor" />
+                        </marker>
+                      </defs>
+                      <path d="M175 108 L175 134" />
+                      <path d="M175 193 L175 219" />
+                      <path d="M281 256 L334 170" />
+                      <path d="M545 164 L599 164" />
+                      <path d="M440 194 L440 244" />
+                      <path d="M335 274 L281 389" />
+                      <path d="M440 303 L440 359" />
+                      <path d="M545 389 L599 389" />
+                    </g>
+                  </svg>
+                </figure>
+              </div>
+
+              <div class="product-section">
+                <h2>Codex App Server boundary</h2>
+                <p>
+                  Bus Engine integrates the open-source Codex App Server as a separate agent-runtime
+                  component. Bus Engine supplies Linux-specific tools, blueprints, policies, build
+                  environments, target information, and validation workflows. Codex App Server
+                  coordinates the agent loop and connects it to a customer-selected AI model.
+                </p>
+                <p>
+                  Codex App Server uses bidirectional JSON-RPC 2.0. Its normal local transport may
+                  use standard input/output, and other supported transports depend on the deployed
+                  Codex version. The current Engine control surface includes Bus Engine HTTP APIs
+                  for status, start, stop, and SSH session requests through
+                  <code>bus-api-provider-engine</code>; those APIs are not the native Codex App
+                  Server protocol.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Lifecycle loop</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Stage</th><th>What happens</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Discover</td><td>Collect declared requirements and available evidence from target profiles, Linux systems, inventories, workloads, source repositories, build systems, logs, and acceptance tests.</td></tr>
+                    <tr><td>Infer</td><td>Determine required capabilities, dependencies, kernel features, packages, services, boot components, filesystems, policies, and validation requirements.</td></tr>
+                    <tr><td>Configure</td><td>Create or update the versioned blueprint for kernel, userspace, services, boot, filesystems, networking, security, targets, outputs, and tests.</td></tr>
+                    <tr><td>Build</td><td>Compile kernels and packages, resolve dependencies, construct filesystems and images, calculate checksums, and produce repeatable artifacts.</td></tr>
+                    <tr><td>Verify</td><td>Boot the generated system in an isolated environment, run platform and workload tests, inspect logs and failures, and compare the result with declared requirements.</td></tr>
+                    <tr><td>Diagnose and repair</td><td>Analyze build, boot, dependency, kernel, service, and test failures, then revise the blueprint or source inputs and repeat the controlled process.</td></tr>
+                    <tr><td>Maintain</td><td>Update the system as workloads, source code, kernels, packages, toolchains, policies, and upstream projects change.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>Permissions and approvals</h2>
+                <p>
+                  The agent may inspect, decide, modify, build, diagnose, and repair within the
+                  permissions and policies configured for the project. High-impact operations can
+                  require explicit approval, while lower-risk workflows may be automated according
+                  to customer policy. Privileged work should run inside controlled build and target
+                  environments with logs and validation evidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
+    </div>
+    <script src="../../site-chrome.js"></script>
+  </body>
+</html>

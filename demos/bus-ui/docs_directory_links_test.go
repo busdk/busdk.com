@@ -53,8 +53,11 @@ func TestBusEngineGeneratedNavBasesUsePageRelativePaths(t *testing.T) {
 	}{
 		{rel: "docs/engine/index.html", base: "./"},
 		{rel: "docs/engine/modules/index.html", base: "../"},
+		{rel: "docs/engine/architecture/index.html", base: "../"},
 		{rel: "docs/engine/runtime-images/index.html", base: "../"},
 		{rel: "docs/engine/pricing/index.html", base: "../"},
+		{rel: "docs/engine/faq/index.html", base: "../"},
+		{rel: "docs/engine/licensing/index.html", base: "../"},
 		{rel: "docs/engine/contact/index.html", base: "../"},
 	} {
 		body, err := os.ReadFile(filepath.Join(repoRoot, tt.rel))

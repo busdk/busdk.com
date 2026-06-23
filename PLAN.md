@@ -2,6 +2,9 @@
 
 # Current work
 
+- [x] Rewrite the Bus Engine commercial pages around the Founding Development Preview, Bus Engine OS as the rolling Linux distribution, Codex App Server architecture, separate AI/model fees, current implementation status, target support boundaries, and customer-only source/compliance wording.
+- [x] Add focused Bus Engine architecture, FAQ, and licensing pages without turning the product site into implementation notes.
+- [x] Update Bus Engine navigation, homepage copy, metadata, and generated product nav data so all new pages are reachable and no Engine links lose their product prefix.
 - [x] Use `docs/engine/preview.jpg` as the SEO/social preview image for the `/engine/` overview page.
 - [x] Use plain `0.x.0` version examples for Bus Engine preview releases instead of `-preview.1` suffixes.
 - [x] Remove prescriptive Bus Engine pricing-page workflow copy and keep FSL links in licensing text, not plan headings.

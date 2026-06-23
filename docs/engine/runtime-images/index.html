@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus Engine Runtime Images | BusDK</title>
+    <title>Bus Engine Development Images | BusDK</title>
     <meta
       name="description"
-      content="Runtime image and artifact options for Bus Engine: Bus-built Linux distribution images, optional Debian compatibility images, kernels, packages, checksums, and profiles."
+      content="Development image and artifact status for Bus Engine OS, compatibility inputs, kernel packages, checksums, profiles, and release artifacts."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -20,9 +20,12 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
       <a href="../index.html">Overview</a>
-      <a href="../modules/index.html">Modules</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
       <a href="../runtime-images/index.html" aria-current="page">Images</a>
       <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
       <a href="../contact/index.html">Contact</a>
       </nav>
     </div>
@@ -33,101 +36,94 @@
                 <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="runtime-images" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
     <p class="gx-side-nav-title">Engine</p>
       <a href="../index.html">Overview</a>
-      <a href="../modules/index.html">Modules</a>
+      <a href="../modules/index.html">Capabilities</a>
+      <a href="../architecture/index.html">Architecture</a>
       <a href="../runtime-images/index.html" aria-current="page">Images</a>
       <a href="../pricing/index.html">Pricing</a>
+      <a href="../faq/index.html">FAQ</a>
+      <a href="../licensing/index.html">Licensing</a>
       <a href="../contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
-              <p class="eyebrow">Bus Engine Images</p>
-              <h1>Bus Engine OS comes first.</h1>
+              <p class="eyebrow">Bus Engine Development Images</p>
+              <h1>Development image work is underway.</h1>
               <p class="hero-copy">
-                Bus Engine OS is the Bus-built Linux distribution for Bus Engine. In the preview,
-                Engine profiles select the Bus-built image, kernel, packages, and signed artifacts
-                for each target. Debian cloud images can also be selected for compatibility checks.
+                The Bus Engine OS image pipeline is under active development. Development runs may
+                use verified compatibility inputs while native package construction, image
+                generation, boot validation, updates, recovery, and lifecycle workflows mature.
               </p>
 
               <div class="product-section">
-                <h2>Bus Engine OS first</h2>
+                <h2>Image terms</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Term</th><th>Meaning</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Compatibility input</td><td>A verified upstream image used for preview and compatibility work. Debian cloud images are one supported input option for development evaluation.</td></tr>
+                    <tr><td>Development image</td><td>A pre-production image generated or assembled during development to test boot, package, kernel, service, and validation behavior.</td></tr>
+                    <tr><td>Bus Engine OS image</td><td>An image built from the Bus Engine OS blueprint and package pipeline. This path is under active development.</td></tr>
+                    <tr><td>Release artifact</td><td>A published binary, source bundle, manifest, checksum, notice bundle, or related release file made available through the release area.</td></tr>
+                    <tr><td>Production-supported image</td><td>A future supported image with contractual support boundaries, release notes, compatibility expectations, and service terms.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>Artifact flow</h2>
                 <p>
-                  Bus Engine OS is a Bus-controlled Linux distribution: source-managed
-                  packages, patch sets, build definitions, kernel choices, installation images,
-                  update channels, diagnostics, and rollback paths. The preview exposes those
-                  pieces through controlled planning, diffs, approval, validation, and rollback.
+                  Engine profiles refer to image, kernel, package, and bootstrap artifacts by
+                  catalog identity and digest. The artifact service downloads or imports each
+                  file, verifies the expected checksum, stages it atomically, and exposes a stable
+                  content handle for the VM provider.
                 </p>
                 <p>
-                  A runtime image is one artifact in that system. It can be replaced without
-                  changing the customer-facing workflow when a profile selects a different image,
-                  package set, kernel, or validation target.
+                  The current Engine README documents <code>bus artifacts catalog set</code> for
+                  registering local kernel packages and describes automatic default catalog
+                  creation for normal Engine paths. Users should not write
+                  <code>.bus/artifacts/catalog.json</code> by hand.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>Optional Debian compatibility images</h2>
+                <h2>Runtime profile choices</h2>
                 <p>
-                  Debian cloud images are useful preview inputs because they are familiar and
-                  already work in common virtualization paths. They help compare compatibility
-                  behavior while Bus Engine OS installation, updates, recovery, rollback, and
-                  diagnostics mature.
+                  A profile can select Bus Engine OS development images as they become available,
+                  or a verified compatibility image for a development run. Kernel packages are
+                  separate artifacts, so a profile can test a custom Bus kernel package without
+                  redefining the entire operating-system product.
                 </p>
-                <p>
-                  A Bus Engine profile can select a verified Debian cloud image for one test run
-                  and a Bus Engine OS image for another. Both go through the artifact catalog,
-                  checksum verification, profile selection, and boot validation flow.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>Artifact registration</h2>
-                <p>
-                  The artifact catalog records the exact runtime image and kernel package selected
-                  by a profile. Engine start asks the artifact integration to fetch and verify
-                  those artifacts before boot.
-                </p>
-                <pre><code>DEBIAN_IMAGE=./debian-12-genericcloud-amd64.qcow2
-DEBIAN_DIGEST="sha256:&lt;digest&gt;"
-
-bus artifacts catalog set debian-cloud-generic-amd64 \
-  --handle "$DEBIAN_IMAGE" \
-  --digest "$DEBIAN_DIGEST"
-
-KERNEL_DEB=./linux-image-7.1.0_6_amd64.deb
-KERNEL_DIGEST="sha256:&lt;digest&gt;"
-
-bus artifacts catalog set bus-engine-kernel-amd64 \
-  --handle "$KERNEL_DEB" \
-  --digest "$KERNEL_DIGEST"</code></pre>
-                <p>
-                  Successful registration records the artifact handle and digest in the catalog, so
-                  Engine profiles can select the exact image and kernel package for a boot target.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>What profiles pin</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Profile piece</th><th>What it controls</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Runtime image</td><td>Bus Engine OS image or optional compatibility image used for the boot target.</td></tr>
-                    <tr><td>Kernel package</td><td>Selected Bus kernel package and boot metadata.</td></tr>
-                    <tr><td>Package set</td><td>Bus-built package artifacts, source revisions, patches, and license notices.</td></tr>
-                    <tr><td>Validation</td><td>Boot checks, service checks, diagnostics, update tests, and rollback evidence.</td></tr>
+                    <tr><td>Image artifact</td><td>The boot target used for a development or compatibility run.</td></tr>
+                    <tr><td>Kernel package</td><td>The selected Bus kernel package and boot metadata.</td></tr>
+                    <tr><td>Package set</td><td>Bus-built package artifacts, source revisions, patches, manifests, and notices.</td></tr>
+                    <tr><td>Validation policy</td><td>Boot checks, service checks, diagnostics, workload tests, and acceptance evidence.</td></tr>
                   </tbody>
                 </table>
               </div>
 
+              <div class="product-section">
+                <h2>Current boundary</h2>
+                <p>
+                  Do not treat a compatibility input as a Bus Engine OS release. The first public
+                  development preview is a rolling pre-production channel, and the native Bus
+                  Engine OS image pipeline remains under active development.
+                </p>
+              </div>
+
               <div class="gx-section gx-reference-strip">
                 <div>
-                  <h2>Choose Bus Engine OS for the main preview path.</h2>
+                  <h2>Review the capability status.</h2>
                   <p>
-                    Compatibility images help with preview testing. The main path is the
-                    Bus-managed Linux distribution, source tree, update channel, validation
-                    workflow, and rollback model.
+                    The capabilities page lists the Engine, artifact, VM, QEMU, Codex, local model,
+                    and Bus Engine OS modules that support this image work.
                   </p>
                 </div>
-                <a class="button button-primary" href="../pricing/index.html">View pricing</a>
+                <a class="button button-primary" href="../modules/index.html">Open capabilities</a>
               </div>
             </div>
           </div>
