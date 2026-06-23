@@ -9,6 +9,7 @@
       content="Bus Engine pricing uses a Named Operator License: one named operator, unlimited systems, monthly or one-time options, updates, documentation, and support."
     />
     <link rel="stylesheet" href="../../index.css" />
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
   </head>
   <body>
     <div class="site-shell">
@@ -46,8 +47,16 @@
                 be used on unlimited systems for personal or commercial purposes.
               </p>
               <div class="product-links">
-                <a class="button button-primary" href="../contact/index.html">Discuss Bus Engine</a>
+                <a class="button button-primary" href="#bus-engine-checkout">Choose a plan</a>
                 <a class="button button-secondary" href="../modules/index.html">Review capabilities</a>
+              </div>
+
+              <div id="bus-engine-checkout" class="gx-pricing-checkout" aria-label="Bus Engine checkout">
+                <stripe-pricing-table
+                  pricing-table-id="prctbl_1TlX1KDTIhYU3CtMGFq2sA9x"
+                  publishable-key="pk_live_hfdl5u8Hs2HzGPQVmJaFQSLj00O8oIMvW0"
+                >
+                </stripe-pricing-table>
               </div>
 
               <div class="product-section">
@@ -70,37 +79,36 @@
               <div class="product-section">
                 <h2>Pricing options</h2>
                 <p>
-                  Prices shown here are public named-operator reference prices for Bus Engine.
-                  Final commercial terms, taxes, currency handling, and any active introductory
-                  offer are confirmed in the purchase flow or a written sales quote.
+                  The live checkout shows the current public named-operator prices for Bus
+                  Engine. VAT is added at checkout where applicable. Final custom terms, currency
+                  handling, and invoice questions can be confirmed through a written sales quote.
                 </p>
-                <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Option</th><th>Price per named operator</th><th>What it includes</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Monthly</td>
-                      <td><strong>€24/month</strong></td>
-                      <td>Unlimited systems for one named operator, with current releases, updates, documentation, and best-effort technical support while subscribed.</td>
-                    </tr>
-                    <tr>
-                      <td>One-time</td>
-                      <td><strong>€249</strong></td>
-                      <td>Perpetual use of Bus Engine releases made available to the named operator account during the first 12 months, on unlimited systems. Includes 12 months of updates and best-effort technical support.</td>
-                    </tr>
-                    <tr>
-                      <td>Optional renewal</td>
-                      <td><strong>€119/year</strong></td>
-                      <td>Continued updates and best-effort technical support after the first 12 months of a one-time license.</td>
-                    </tr>
-                    <tr>
-                      <td>Founding prices</td>
-                      <td><strong>€19/month</strong> or <strong>€199 one-time</strong></td>
-                      <td>Limited introductory named-operator pricing for early Bus Engine customers, available only when shown in the active purchase flow or confirmed in a written sales quote.</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="gx-concept-grid gx-pricing-notes">
+                  <article class="tutorial-card">
+                    <h3>Bus Runtime</h3>
+                    <p>
+                      Official Bus components delivered as binaries, with signed updates,
+                      documentation, and runtime support. Third-party source remains available
+                      according to each component's license.
+                    </p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3><a href="https://fsl.software/">Bus Engine Source</a></h3>
+                    <p>
+                      Everything in Runtime, plus current Bus Engine, BusDK, and included
+                      Engine-module source repositories under FSL, with repository access,
+                      version-matched build materials, and source-level support while active.
+                    </p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Bus Engine One-Time</h3>
+                    <p>
+                      Everything in Bus Engine Source for 12 months. Versions received during
+                      that period remain licensed under their included terms and can be used
+                      indefinitely.
+                    </p>
+                  </article>
+                </div>
               </div>
 
               <div class="product-section">

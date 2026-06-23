@@ -14,6 +14,7 @@
 - [x] Balance the frontpage card copy lengths for Bus Agentic Development, Bus AI Platform, and Bus Engine without changing other product cards.
 - [x] Compact the Bus Engine product site into shorter focused pages while preserving pricing, target support boundaries, and contact paths.
 - [x] Clarify on the Bus Engine site that AI credits are not included and model access can use supported customer-provided ChatGPT subscriptions or other configured providers.
+- [x] Embed the live Bus Engine Stripe pricing table on the product pricing page and remove stale static price rows.
 
 # Current evidence
 
@@ -58,3 +59,7 @@ classified as non-element runtime, DTO, infrastructure, test, or tooling API.
 The BusDK downstream adopter audit reports UI/GX adopters, fails on forbidden
 production `pkg/uikit` use, and currently reports zero local UI candidate files
 after moving the last generic DOM helper behavior into shared `bus-ui`.
+
+Bus Engine pricing now embeds the live Stripe pricing table on
+`docs/engine/pricing/index.html` and no longer repeats stale static renewal or
+founding-price rows outside the purchase flow.
