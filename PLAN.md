@@ -18,6 +18,9 @@ Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site
 and hosting remain unchanged.
 
+Bus Engine product pages now foreground the story that the product provides a
+source-configurable Linux system operated by an AI Linux engineer.
+
 The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
 deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every
 implemented catalog entry has a GX/UI reference page, and every implemented

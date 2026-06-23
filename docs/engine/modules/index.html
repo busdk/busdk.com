@@ -6,7 +6,7 @@
     <title>Bus Engine Capabilities | BusDK</title>
     <meta
       name="description"
-      content="Capabilities behind Bus Engine: discovery, configuration, Linux builds, validation, diagnosis, repair, and lifecycle maintenance."
+      content="Capabilities behind Bus Engine: source-configurable Linux systems, AI Linux engineering, discovery, builds, validation, diagnosis, repair, and lifecycle maintenance."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -40,10 +40,11 @@
               <p class="eyebrow">Bus Engine</p>
               <h1>Capabilities behind Bus Engine.</h1>
               <p class="hero-copy">
-                The public product is the complete Linux system-engineering lifecycle. Individual
-                tools and modules support discovery, configuration, building, validation,
-                diagnosis, and maintenance; they are evidence for technical evaluators rather than
-                separate marketing products.
+                The public product is the complete Linux system-engineering lifecycle: a
+                source-configurable Linux system operated by an AI Linux engineer. Individual tools
+                and modules support discovery, configuration, building, validation, diagnosis, and
+                maintenance; they are evidence for technical evaluators rather than separate
+                marketing products.
               </p>
 
               <div class="product-section">
@@ -52,6 +53,7 @@
                   <li>Target discovery and Linux system inventory</li>
                   <li>Workload and source-code analysis</li>
                   <li>System blueprint creation and resolution</li>
+                  <li>Source configuration for kernels, packages, services, and images</li>
                   <li>Linux kernel configuration</li>
                   <li>Boot, storage, filesystem, and service configuration</li>
                   <li>Package recipe and dependency engineering</li>
@@ -97,12 +99,13 @@
               <div class="product-section">
                 <h2>Why the split matters</h2>
                 <p>
-                  Bus Engine is the product line, not one module. The operating-system builder
-                  should not become the runtime controller, and the runtime controller should not
-                  become a package manager. Keeping these boundaries clear makes the product easier
-                  to test: package archives can be validated without starting a VM, virtualized
-                  boot tests can exercise an image without knowing how every package was built, and
-                  artifact mirrors can verify checksums without knowing the workload.
+                  Bus Engine is the product line, not one module. The AI Linux engineer needs
+                  source-level configuration, build tools, artifact handling, and runtime testing,
+                  but those responsibilities stay in inspectable boundaries. Keeping the split clear
+                  makes the product easier to test: package archives can be validated without
+                  starting a VM, virtualized boot tests can exercise an image without knowing how
+                  every package was built, and artifact mirrors can verify checksums without
+                  knowing the workload.
                 </p>
               </div>
             </div>
