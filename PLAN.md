@@ -6,11 +6,12 @@ No open website product-line work is currently tracked here.
 
 # Current evidence
 
-The Bus Engine OS product line now has an independent published site under
-`docs/engine-os/`, with overview, getting started, modules, and contact pages.
-The product index links to the new line, the shared BusDK nav data includes the
-`engine-os` product id, the nav regression test covers the product links, and
-the Bus UI demo WASM navigation asset has been rebuilt.
+The Bus Engine product line now has a published site under `docs/engine/`, with
+overview, Engine OS, modules, and contact pages. The product index links to Bus
+Engine as one line, the shared BusDK nav data includes the `engine` product id,
+the nav regression test covers the product links, and the Bus UI demo WASM
+navigation asset has been rebuilt. Engine OS is documented as part of Bus
+Engine, not as a separate product line.
 
 The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
 deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every

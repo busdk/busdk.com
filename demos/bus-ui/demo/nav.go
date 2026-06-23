@@ -62,12 +62,12 @@ var busDKTopHeaders = map[string]topHeaderConfig{
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},
-	"engine-os": {
+	"engine": {
 		BrandHref: "../index.html",
 		LogoHref:  "../busdk-logo.png",
 		Links: []topHeaderLink{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
-			{ID: "getting-started", Href: "getting-started/index.html", Label: "Getting started"},
+			{ID: "os", Href: "os/index.html", Label: "Engine OS"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
@@ -158,11 +158,11 @@ var busDKProductSideNavs = map[string]struct {
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},
-	"engine-os": {
-		Title: "Engine OS",
+	"engine": {
+		Title: "Engine",
 		Entries: []navEntry{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
-			{ID: "getting-started", Href: "getting-started/index.html", Label: "Getting started"},
+			{ID: "os", Href: "os/index.html", Label: "Engine OS"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},

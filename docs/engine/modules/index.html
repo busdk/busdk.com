@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bus Engine OS Modules | BusDK</title>
+    <title>Bus Engine Modules | BusDK</title>
     <meta
       name="description"
-      content="The module map behind Bus Engine OS: OS building, artifacts, Engine runtime, VM providers, and update infrastructure."
+      content="The module map behind Bus Engine: runtime control, Engine OS image building, artifacts, VM providers, and update infrastructure."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
   <body>
     <div class="site-shell">
-        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine-os" data-busdk-top-nav-base="../" data-busdk-current="modules">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine" data-busdk-top-nav-base="../" data-busdk-current="modules">
     <div class="site-header-inner">
       <a class="brand" href="../../index.html" aria-label="BusDK home">
         <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
@@ -20,7 +20,7 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
       <a href="../index.html">Overview</a>
-      <a href="../getting-started/index.html">Getting started</a>
+      <a href="../os/index.html">Engine OS</a>
       <a href="../modules/index.html" aria-current="page">Modules</a>
       <a href="../contact/index.html">Contact</a>
       </nav>
@@ -29,27 +29,41 @@
       <main>
         <section class="product-page">
           <div class="section-inner product-doc-layout">
-                <aside class="gx-side-nav" data-busdk-side-nav="engine-os" data-busdk-current="modules" data-busdk-side-nav-base="../" aria-label="Bus Engine OS navigation">
-    <p class="gx-side-nav-title">Engine OS</p>
+                <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="modules" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
+    <p class="gx-side-nav-title">Engine</p>
       <a href="../index.html">Overview</a>
-      <a href="../getting-started/index.html">Getting started</a>
+      <a href="../os/index.html">Engine OS</a>
       <a href="../modules/index.html" aria-current="page">Modules</a>
       <a href="../contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
-              <p class="eyebrow">Bus Engine OS</p>
-              <h1>The modules behind the OS product line.</h1>
+              <p class="eyebrow">Bus Engine</p>
+              <h1>The modules behind the Engine product line.</h1>
               <p class="hero-copy">
-                Bus Engine OS is one product outcome, but the implementation should keep OS
-                composition, artifact storage, API control, runtime execution, and provider-specific
-                virtualization in separate ownership boundaries.
+                Bus Engine is one product line for Linux runtime environments. The implementation
+                keeps runtime control, Engine OS composition, artifact storage, API access, and
+                provider-specific virtualization in separate ownership boundaries.
               </p>
 
               <div class="product-section">
-                <h2>Core product modules</h2>
+                <h2>Runtime modules</h2>
                 <table class="tutorial-table">
                   <thead>
                     <tr><th>Module</th><th>Role</th><th>What users see</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>bus-engine</code></td><td>CLI and client surface for Linux-backed runtime environments.</td><td><code>bus engine status</code>, <code>start</code>, <code>stop</code>, and operator SSH access.</td></tr>
+                    <tr><td><code>bus-api-provider-engine</code></td><td>API controller for Engine runtime actions.</td><td>Hosted Engine requests enter through a Bus API boundary.</td></tr>
+                    <tr><td><code>bus-integration-engine</code></td><td>Engine runtime business logic.</td><td>Coordinates VM-backed runtime lifecycle and shared Engine behavior.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>Engine OS and artifact modules</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Module</th><th>Role</th><th>Boundary</th></tr>
                   </thead>
                   <tbody>
                     <tr><td><code>bus-engine-os</code></td><td>Operating-system build pipeline.</td><td>Source manifests, package recipes, kernel profiles, root filesystem assembly, image builds, and boot-test evidence.</td></tr>
@@ -67,9 +81,6 @@
                     <tr><th>Module</th><th>Role</th><th>Boundary</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td><code>bus-engine</code></td><td>CLI and client surface for Linux-backed runtime environments.</td><td>Consumes OS images; does not own OS composition.</td></tr>
-                    <tr><td><code>bus-api-provider-engine</code></td><td>API controller for Engine runtime actions.</td><td>Accepts API requests and delegates through Events.</td></tr>
-                    <tr><td><code>bus-integration-engine</code></td><td>Engine runtime business logic.</td><td>Coordinates VM-backed runtime lifecycle and shared Engine behavior.</td></tr>
                     <tr><td><code>bus-integration-vm</code></td><td>Generic VM lifecycle integration.</td><td>Keeps provider-neutral VM behavior above QEMU, cloud, or future providers.</td></tr>
                     <tr><td><code>bus-integration-qemu</code></td><td>Local QEMU provider.</td><td>Boots and tests images locally, including non-accelerated fallback when hardware virtualization is unavailable.</td></tr>
                   </tbody>
@@ -89,11 +100,12 @@
               <div class="product-section">
                 <h2>Why the split matters</h2>
                 <p>
-                  The OS builder should not become the runtime controller, and the runtime
-                  controller should not become a package manager. Keeping these boundaries clear
-                  makes the product easier to test: package archives can be validated without
-                  starting a VM, QEMU can boot-test an image without knowing how every package was
-                  built, and artifact mirrors can verify checksums without knowing the workload.
+                  Engine is the product line, not one module. The OS builder should not become the
+                  runtime controller, and the runtime controller should not become a package
+                  manager. Keeping these boundaries clear makes the product easier to test: package
+                  archives can be validated without starting a VM, QEMU can boot-test an image
+                  without knowing how every package was built, and artifact mirrors can verify
+                  checksums without knowing the workload.
                 </p>
               </div>
             </div>

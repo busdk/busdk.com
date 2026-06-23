@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine | BusDK</title>
+    <meta
+      name="description"
+      content="Bus Engine provides managed Linux runtime environments, VM-backed execution, artifacts, and Engine OS image building for server and virtualization workloads."
+    />
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine" data-busdk-top-nav-base="./" data-busdk-current="overview">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./os/index.html">Engine OS</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="./contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="overview" data-busdk-side-nav-base="./" aria-label="Bus Engine navigation">
+    <p class="gx-side-nav-title">Engine</p>
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./os/index.html">Engine OS</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="./contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Engine</p>
+              <h1>Linux runtime environments for servers and virtualization.</h1>
+              <p class="hero-copy">
+                Bus Engine gives teams one product line for Linux-backed runtime environments:
+                local and cloud VMs, verified artifacts, runtime lifecycle control, and Engine OS
+                image building when the environment needs a custom operating-system baseline.
+              </p>
+              <div class="product-links">
+                <a class="button button-primary" href="os/index.html">Review Engine OS</a>
+                <a class="button button-secondary" href="modules/index.html">View modules</a>
+                <a class="button button-secondary" href="contact/index.html">Discuss deployment</a>
+              </div>
+
+              <div class="product-section">
+                <h2>What it is</h2>
+                <p>
+                  Bus Engine is the product line for running Bus-controlled Linux environments.
+                  Its first surfaces are intentionally small: start the default Engine VM, stop it,
+                  inspect health, and open SSH access when an operator needs to debug the runtime.
+                </p>
+                <p>
+                  Engine OS belongs inside this line. It is the custom Linux distribution builder
+                  and update workflow for teams that need tighter control over the image, kernel,
+                  packages, diagnostics, and artifact provenance used by Engine runtimes.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>What it is for</h2>
+                <div class="tutorial-grid">
+                  <article class="tutorial-card">
+                    <h3>Local Linux runtime</h3>
+                    <p>Run a Linux VM through QEMU on developer machines and constrained virtualization hosts.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Cloud VM abstraction</h3>
+                    <p>Keep runtime lifecycle behavior above provider-specific VM integrations.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Verified artifacts</h3>
+                    <p>Download, mirror, verify, and reuse large images and kernel packages without storing them in Git.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Custom Engine OS</h3>
+                    <p>Build and update minimal Linux environments for server and virtualized workloads.</p>
+                  </article>
+                </div>
+              </div>
+
+              <div class="product-section">
+                <h2>How it fits with Bus Engine</h2>
+                <p>
+                  Bus Engine owns the runtime product. Engine OS is the operating-system build and
+                  update capability inside that product. This keeps the user-facing line simple:
+                  teams choose Bus Engine when they need a controlled Linux environment, then use
+                  the default image or an Engine OS image depending on how much OS control they
+                  need.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>The everyday workflow</h2>
+                <pre><code>bus engine status
+bus engine start
+bus engine ssh
+bus engine stop</code></pre>
+                <p>
+                  The default Engine path starts with an existing verified image and a small
+                  runtime lifecycle. Engine OS extends that product line when the team needs to own
+                  the Linux build itself: source manifests, staged packages, root filesystem
+                  assembly, kernel images, boot tests, and update promotion.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Where to go next</h2>
+                <div class="tutorial-grid">
+                  <a class="tutorial-card" href="os/index.html">
+                    <h3>Engine OS</h3>
+                    <p>See how custom Linux image building and updates fit inside the Engine line.</p>
+                  </a>
+                  <a class="tutorial-card" href="modules/index.html">
+                    <h3>Modules</h3>
+                    <p>Understand the boundaries between OS building, artifacts, Engine runtime, and updates.</p>
+                  </a>
+                  <a class="tutorial-card" href="contact/index.html">
+                    <h3>Contact</h3>
+                    <p>Discuss a dedicated OS baseline, update policy, or virtualized runtime environment.</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
+    </div>
+    <script src="../site-chrome.js"></script>
+  </body>
+</html>

@@ -115,35 +115,35 @@ func TestBusDKProductSideNavRendersProductLocalEntries(t *testing.T) {
 	}
 }
 
-func TestBusDKProductNavRendersEngineOSPages(t *testing.T) {
-	headerHTML := renderBusDKTopHeader(t, "engine-os", "https://busdk.com/docs/engine-os/", "getting-started")
+func TestBusDKProductNavRendersEnginePages(t *testing.T) {
+	headerHTML := renderBusDKTopHeader(t, "engine", "https://busdk.com/docs/engine/", "os")
 	for _, want := range []string{
 		`class="brand" href="https://busdk.com/docs/index.html"`,
-		`href="https://busdk.com/docs/engine-os/index.html">Overview</a>`,
-		`aria-current="page" href="https://busdk.com/docs/engine-os/getting-started/index.html">Getting started</a>`,
-		`href="https://busdk.com/docs/engine-os/modules/index.html">Modules</a>`,
-		`href="https://busdk.com/docs/engine-os/contact/index.html">Contact</a>`,
+		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
+		`aria-current="page" href="https://busdk.com/docs/engine/os/index.html">Engine OS</a>`,
+		`href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(headerHTML, want) {
-			t.Fatalf("BusDKTopHeader engine-os HTML missing %q in %s", want, headerHTML)
+			t.Fatalf("BusDKTopHeader engine HTML missing %q in %s", want, headerHTML)
 		}
 	}
 
-	sideNavHTML := renderBusDKProductSideNav(t, "engine-os", "modules", "https://busdk.com/docs/engine-os/")
+	sideNavHTML := renderBusDKProductSideNav(t, "engine", "modules", "https://busdk.com/docs/engine/")
 	for _, want := range []string{
 		`class="gx-side-nav-title"`,
-		`>Engine OS</p>`,
-		`href="https://busdk.com/docs/engine-os/index.html">Overview</a>`,
-		`href="https://busdk.com/docs/engine-os/getting-started/index.html">Getting started</a>`,
-		`aria-current="page" href="https://busdk.com/docs/engine-os/modules/index.html">Modules</a>`,
-		`href="https://busdk.com/docs/engine-os/contact/index.html">Contact</a>`,
+		`>Engine</p>`,
+		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
+		`href="https://busdk.com/docs/engine/os/index.html">Engine OS</a>`,
+		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
 		if !strings.Contains(sideNavHTML, want) {
-			t.Fatalf("BusDKProductSideNav engine-os HTML missing %q in %s", want, sideNavHTML)
+			t.Fatalf("BusDKProductSideNav engine HTML missing %q in %s", want, sideNavHTML)
 		}
 	}
-	if got := BusDKProductSideNavCurrentCount("engine-os", "modules"); got != 1 {
-		t.Fatalf("BusDKProductSideNavCurrentCount(engine-os) = %d, want 1", got)
+	if got := BusDKProductSideNavCurrentCount("engine", "modules"); got != 1 {
+		t.Fatalf("BusDKProductSideNavCurrentCount(engine) = %d, want 1", got)
 	}
 }
 
