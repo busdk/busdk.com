@@ -2,7 +2,7 @@
 
 # Current work
 
-No open website product-line work is currently tracked here.
+- [x] Apply the new `bus-lint` HTML rubric findings to the Bus Engine modules page so its capability overview uses buyer-facing language and links the stated evaluator path.
 
 # Current evidence
 
@@ -23,6 +23,9 @@ source-configurable Linux system operated by an AI Linux engineer.
 
 Bus Engine product pages avoid self-referential product-taxonomy wording and
 use direct buyer-facing sentences instead.
+
+The Bus Engine pages pass the new `bus-lint` HTML public marketing rubric with
+`--agent codex`.
 
 The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
 deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every
