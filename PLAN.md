@@ -4,6 +4,7 @@
 
 - [x] Apply the new `bus-lint` HTML rubric findings to the Bus Engine modules page so its capability overview uses buyer-facing language and links the stated evaluator path.
 - [x] Add Bus Engine pricing information using the Named Operator License model, including unlimited systems, monthly and one-time options, renewal, founding prices, support/account boundaries, and product-local pricing navigation.
+- [x] Balance the frontpage card copy lengths for Bus Agentic Development, Bus AI Platform, and Bus Engine without changing other product cards.
 
 # Current evidence
 
