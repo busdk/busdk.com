@@ -57,158 +57,100 @@
               </div>
 
               <div class="product-section">
-                <h2>Purpose-built Linux without building the entire engineering platform yourself.</h2>
+                <h2>Purpose-built Linux without a full distro team.</h2>
                 <p>
-                  Bus Engine is for organizations that need a Linux system designed around a
-                  specific product, workload, infrastructure environment, or operational policy. It
-                  combines adaptable AI engineering with inspectable build and validation tools,
-                  allowing teams to create virtual-machine images, server systems, appliances,
-                  development environments, and customer-defined hardware targets from maintained
-                  system blueprints.
-                </p>
-                <p>
-                  The product gives teams source-level flexibility without asking every customer to
-                  staff a full Linux distribution team. The AI Linux engineer inspects evidence,
-                  changes blueprints and source configuration, runs controlled build steps, reads
-                  failures, and iterates against the declared requirements and tests that define
-                  acceptance for the project.
+                  Bus Engine turns workload, policy, and target requirements into a maintained
+                  Linux system blueprint. The blueprint describes the kernel, packages, services,
+                  image outputs, tests, and maintenance history behind the generated system.
                 </p>
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
-                    <h3>For business owners</h3>
-                    <p>Turn product and operational requirements into a maintained Linux system without first assembling a large internal distribution-engineering team. Keep the resulting blueprint, source configuration, packages, and build outputs inspectable while choosing self-service, assisted, or hardware-specific engineering support.</p>
+                    <h3>Business owners</h3>
+                    <p>Build a Linux product without first hiring a distribution-engineering team.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>For software developers</h3>
-                    <p>Connect application source code and runtime requirements to the operating system underneath them. Build required packages, configure kernel capabilities, capture dependencies, automate image construction, and maintain the system as application and upstream components evolve.</p>
+                    <h3>Developers</h3>
+                    <p>Connect application requirements to kernels, packages, images, and tests.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>For system administrators</h3>
-                    <p>Create controlled Linux environments for defined workloads. Inspect existing systems, reduce unnecessary components, configure boot and storage paths, manage services and networking, diagnose failures, and validate changes before deploying updated images.</p>
+                    <h3>Administrators</h3>
+                    <p>Operate controlled Linux environments with defined boot, service, and update behavior.</p>
                   </article>
                 </div>
               </div>
 
               <div class="product-section">
-                <h2>From requirements to a maintained operating system.</h2>
+                <h2>How it works</h2>
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
-                    <h3>1. Discover</h3>
-                    <p>Bus Engine collects declared requirements and available evidence from running Linux systems, virtual-machine profiles, customer-provided target information, workloads, source repositories, build systems, logs, and acceptance tests.</p>
+                    <h3>Discover</h3>
+                    <p>Collect declared requirements, workload evidence, source context, logs, and tests.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>2. Configure</h3>
-                    <p>The AI Linux engineer determines the required capabilities and creates a versioned system blueprint covering the kernel, boot process, packages, services, filesystem, networking, security settings, source configuration, and build outputs.</p>
+                    <h3>Configure</h3>
+                    <p>Create a versioned blueprint for kernel, boot, packages, services, and images.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>3. Build</h3>
-                    <p>Controlled build tools compile kernels and packages, construct filesystems and images, and produce repeatable outputs from the resolved blueprint.</p>
+                    <h3>Build and verify</h3>
+                    <p>Run controlled build tools, boot the result, and check the declared acceptance tests.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>4. Verify</h3>
-                    <p>Bus Engine boots and exercises the generated system, runs workload and platform tests, inspects failures, and checks whether the result satisfies the declared requirements.</p>
-                  </article>
-                  <article class="tutorial-card">
-                    <h3>5. Maintain</h3>
-                    <p>When requirements, applications, kernels, packages, or toolchains change, Bus Engine updates the blueprint, rebuilds the system, diagnoses regressions, and records the resulting changes and evidence.</p>
+                    <h3>Maintain</h3>
+                    <p>Update the blueprint when applications, kernels, packages, or requirements change.</p>
                   </article>
                 </div>
               </div>
 
               <div class="product-section">
-                <h2>An AI Linux engineer with inspectable execution.</h2>
+                <h2>AI engineering, deterministic execution</h2>
                 <p>
-                  Linux system engineering contains both predictable operations and incomplete,
-                  changing problems. Bus Engine uses deterministic tools for dependency resolution,
-                  configuration evaluation, compilation, image construction, testing, and artifact
-                  comparison. The AI Linux engineer handles the adaptable work: understanding
-                  requirements, interpreting system evidence, selecting a configuration strategy,
-                  diagnosing failures, maintaining package definitions, changing source
-                  configuration, and repairing the system when fixed rules are not enough.
+                  AI handles the adaptable Linux engineering work: interpreting evidence, choosing
+                  configuration strategy, editing blueprints, diagnosing failures, and repairing
+                  mismatches. Deterministic tools handle dependency resolution, Kconfig evaluation,
+                  compilation, image construction, hashing, and tests.
                 </p>
-                <div class="gx-section gx-reference-strip">
-                  <div>
-                    <h3>AI operates the engineering loop. Deterministic tools build and test.</h3>
-                    <p>
-                      The AI may inspect, decide, modify, build, diagnose, and repair within the
-                      permissions and policies selected for the project. Configuration changes,
-                      build results, logs, test evidence, and relevant decisions remain available
-                      for inspection.
-                    </p>
-                  </div>
-                </div>
+                <p>
+                  AI model usage is not included in Bus Engine pricing. Customers bring AI access
+                  separately. Bus Engine supports configured ChatGPT subscription-based access where
+                  that integration is enabled, and can also use other configured model providers.
+                </p>
               </div>
 
               <div class="product-section">
-                <h2>One blueprint for the complete Linux system.</h2>
+                <h2>What the blueprint can cover</h2>
                 <p>
-                  Bus Engine can configure the system from source based on available requirements,
-                  evidence, tests, and target access. It does not assume every capability is
-                  automatic for every target.
+                  Configuration depends on available requirements, target access, and tests. A
+                  blueprint can cover:
                 </p>
                 <ul>
-                  <li>Linux kernel features, drivers, modules, and configuration</li>
-                  <li>Bootloader and initramfs configuration</li>
-                  <li>Filesystem, partition, storage, and image layout</li>
-                  <li>System packages, dependencies, patches, and build recipes</li>
-                  <li>Application packages and private package outputs</li>
-                  <li>Source configuration for kernels, packages, services, and images</li>
-                  <li>Services, users, networking, and runtime configuration</li>
-                  <li>Security and operational policies</li>
-                  <li>Virtual-machine and customer-defined target profiles</li>
-                  <li>Build, boot, integration, and acceptance tests</li>
-                  <li>Upgrade and long-term maintenance workflows</li>
+                  <li>kernel, boot, filesystem, storage, and image settings</li>
+                  <li>packages, services, users, networking, and security policy</li>
+                  <li>build recipes, generated outputs, validation evidence, and maintenance history</li>
                 </ul>
               </div>
 
               <div class="product-section">
-                <h2>The blueprint is the maintained product.</h2>
+                <h2>Supported targets</h2>
                 <p>
-                  A generated image is one output. The durable asset is the Bus Engine system
-                  blueprint: a versioned description of what the system must do, how it is
-                  configured, what it contains, how it is built, and how it is tested.
-                </p>
-                <div class="tutorial-grid">
-                  <article class="tutorial-card"><h3>Requirements</h3><p>Target and workload requirements, generated configuration changes, and maintenance history.</p></article>
-                  <article class="tutorial-card"><h3>System design</h3><p>Kernel and boot configuration, package and service selections, filesystem layout, and image configuration.</p></article>
-                  <article class="tutorial-card"><h3>Build evidence</h3><p>Package build definitions, test and validation definitions, build logs, and validation evidence.</p></article>
-                </div>
-              </div>
-
-              <div class="product-section">
-                <h2>Virtualized targets today. Customer-defined hardware when needed.</h2>
-                <p>
-                  Bus Engine currently provides its supported product experience for virtualized
-                  environments available through the BusDK platform. These environments provide a
-                  controlled foundation for building, running, testing, and maintaining custom
-                  Linux systems.
-                </p>
-                <p>
-                  Customers can also use Bus Engine to create configurations for bare-metal
-                  servers, appliances, development boards, and embedded systems. These are
-                  customer-defined targets unless they are covered by a separate Bus Engine support
-                  or platform-validation agreement.
+                  Virtualized targets through the BusDK platform are supported out of the box.
+                  Bare-metal servers, boards, appliances, and embedded devices are
+                  customer-defined targets unless covered by a separate support or validation
+                  agreement.
                 </p>
                 <div class="tutorial-grid">
                   <article class="tutorial-card">
-                    <h3>Supported virtual targets</h3>
-                    <p>Virtualized environments and target profiles provided through the BusDK platform, with supported build and validation workflows.</p>
+                    <h3>Included</h3>
+                    <p>Supported virtualized targets, build workflows, boot checks, and validation evidence.</p>
                   </article>
                   <article class="tutorial-card">
-                    <h3>Customer-defined targets</h3>
-                    <p>Bare-metal and embedded targets configured by the customer using Bus Engine's AI-powered discovery, configuration, build, and diagnostic tools.</p>
+                    <h3>Customer-defined</h3>
+                    <p>Hardware targets configured by the customer with available evidence and access.</p>
                   </article>
                   <article class="tutorial-card">
                     <h3>Paid hardware engineering</h3>
-                    <p>Dedicated assistance for hardware enablement, board support packages, firmware, drivers, boot integration, target testing, validation, and ongoing platform maintenance.</p>
+                    <p>Driver, firmware, boot, BSP, device-tree, testing, and platform-maintenance work.</p>
                   </article>
                 </div>
-                <p>
-                  Virtualized targets are supported out of the box. Customer-specific hardware can
-                  be configured with Bus Engine or enabled through paid engineering support. Bus
-                  Engine enables hardware configuration; it does not automatically certify
-                  arbitrary hardware.
-                </p>
               </div>
 
               <div class="product-section">
