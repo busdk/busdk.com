@@ -2,6 +2,7 @@
 
 # Current work
 
+- [x] Link every published product-page FSL mention to `https://fsl.software/`.
 - [x] Rewrite the Bus Engine overview to explain that it is a Linux distribution for virtualized Bus workloads, show `bus engine` runtime examples, and describe artifact/profile-based base image, Bus Engine OS, kernel, and component version selection.
 - [x] Fix shared WASM-rendered BusDK product navigation so relative top and side nav bases resolve against the current page URL, covering `/engine/`, `/services/`, and other product pages.
 - [x] Remove the separate Bus Engine Documentation nav item and fold documentation links into the Modules page.
