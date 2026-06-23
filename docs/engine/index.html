@@ -97,13 +97,13 @@ bus engine stop</code></pre>
               </div>
 
               <div class="product-section">
-                <h2>Choose the operating-system pieces</h2>
+                <h2>Build the Bus Linux distribution</h2>
                 <p>
-                  Engine profiles resolve their operating-system pieces through the artifacts
-                  service. The default profile uses a Debian 12 generic cloud image and a
-                  <code>bus-engine-kernel-amd64</code> kernel package. The same artifact boundary is
-                  used for custom kernels and Bus Engine OS images when those profiles are
-                  selected.
+                  Bus Engine OS is the Bus-built Linux distribution managed by AI agents. Its
+                  profiles describe the selected runtime image, kernel package, package artifacts,
+                  patches, build definitions, and validation steps. Debian cloud images are
+                  swappable runtime image artifacts for preview and compatibility work, not the
+                  definition of Bus Engine OS itself.
                 </p>
                 <pre><code>DEBIAN_IMAGE=./debian-12-genericcloud-amd64.qcow2
 DEBIAN_DIGEST="sha256:&lt;digest&gt;"
@@ -119,15 +119,16 @@ bus artifacts catalog set bus-engine-kernel-amd64 \
   --handle "$KERNEL_DEB" \
   --digest "$KERNEL_DIGEST"</code></pre>
                 <p>
-                  The catalog command records the artifact handle and digest in the configured Bus
+                  The catalog command records artifact handles and digests in the configured Bus
                   artifacts catalog. Engine start then asks the artifact integration to fetch and
-                  verify the selected artifacts before VM boot.
+                  verify the selected runtime image, kernel, and package artifacts before boot.
                 </p>
                 <p>
-                  The base system can come from a verified Debian cloud image or from a
-                  Bus Engine OS image artifact. Component versions are represented by the selected
-                  image, kernel package, package artifacts, and profile metadata, so each Engine
-                  profile can be pinned, tested, and updated independently.
+                  A profile can use a verified Debian cloud image while the preview hardens
+                  installation, updates, recovery, and rollback. The same profile model also
+                  selects Bus Engine OS images and Bus-built package sets, so the distribution can
+                  move from an interchangeable runtime image toward a fully Bus-controlled Linux
+                  release without changing the customer-facing workflow.
                 </p>
               </div>
 
