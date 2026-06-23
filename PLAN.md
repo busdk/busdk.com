@@ -2,6 +2,8 @@
 
 # Current work
 
+- [x] Use plain `0.x.0` version examples for Bus Engine preview releases instead of `-preview.1` suffixes.
+- [x] Remove prescriptive Bus Engine pricing-page workflow copy and keep FSL links in licensing text, not plan headings.
 - [x] Correct Bus Engine preview source-access copy so it covers only the limited Bus Engine product line, not all BusDK.
 - [x] Rewrite Bus Engine image wording so Bus Engine OS is the product focus and Debian images are described as an optional compatibility input without contrast-formula copy.
 - [x] Link every published product-page FSL mention to `https://fsl.software/`.
