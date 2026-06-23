@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine Runtime Images | BusDK</title>
+    <meta
+      name="description"
+      content="Runtime image and artifact options for Bus Engine: Bus-built Linux distribution images, optional Debian compatibility images, kernels, packages, checksums, and profiles."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="engine" data-busdk-top-nav-base="../" data-busdk-current="runtime-images">
+    <div class="site-header-inner">
+      <a class="brand" href="../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Modules</a>
+      <a href="../runtime-images/index.html" aria-current="page">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="engine" data-busdk-current="runtime-images" data-busdk-side-nav-base="../" aria-label="Bus Engine navigation">
+    <p class="gx-side-nav-title">Engine</p>
+      <a href="../index.html">Overview</a>
+      <a href="../modules/index.html">Modules</a>
+      <a href="../runtime-images/index.html" aria-current="page">Images</a>
+      <a href="../pricing/index.html">Pricing</a>
+      <a href="../contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Engine Images</p>
+              <h1>Runtime images are profile inputs, not the product identity.</h1>
+              <p class="hero-copy">
+                Bus Engine OS is the Bus-built Linux distribution managed by AI agents. Runtime
+                images are selected by Engine profiles so operators can evaluate the same Bus
+                workflow against Bus-built images, compatibility images, kernels, packages, and
+                signed artifacts.
+              </p>
+
+              <div class="product-section">
+                <h2>Bus-built Linux first</h2>
+                <p>
+                  The product direction is a Bus-controlled Linux distribution: source-managed
+                  packages, patch sets, build definitions, kernel choices, installation images,
+                  update channels, audit history, diagnostics, and rollback. AI agents help
+                  maintain that distribution through explicit planning, diffs, approval, validation,
+                  and rollback.
+                </p>
+                <p>
+                  A runtime image is one artifact in that system. It can be replaced without
+                  changing the customer-facing workflow when a profile selects a different image,
+                  package set, kernel, or validation target.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Debian compatibility images</h2>
+                <p>
+                  Debian cloud images are useful preview inputs because they are familiar,
+                  reproducible enough for compatibility testing, and already work in common
+                  virtualization paths. They are not Bus Engine OS. They are swappable runtime
+                  image artifacts used while the preview hardens installation, updates, recovery,
+                  rollback, and diagnostics.
+                </p>
+                <p>
+                  A Bus Engine profile can select a verified Debian cloud image for one test run
+                  and a Bus Engine OS image for another. Both go through the artifact catalog,
+                  checksum verification, profile selection, and boot validation flow.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Artifact registration</h2>
+                <p>
+                  The artifact catalog records the exact runtime image and kernel package selected
+                  by a profile. Engine start asks the artifact integration to fetch and verify
+                  those artifacts before boot.
+                </p>
+                <pre><code>DEBIAN_IMAGE=./debian-12-genericcloud-amd64.qcow2
+DEBIAN_DIGEST="sha256:&lt;digest&gt;"
+
+bus artifacts catalog set debian-cloud-generic-amd64 \
+  --handle "$DEBIAN_IMAGE" \
+  --digest "$DEBIAN_DIGEST"
+
+KERNEL_DEB=./linux-image-7.1.0_6_amd64.deb
+KERNEL_DIGEST="sha256:&lt;digest&gt;"
+
+bus artifacts catalog set bus-engine-kernel-amd64 \
+  --handle "$KERNEL_DEB" \
+  --digest "$KERNEL_DIGEST"</code></pre>
+              </div>
+
+              <div class="product-section">
+                <h2>What profiles pin</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Profile piece</th><th>What it controls</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Runtime image</td><td>Bus Engine OS image or optional compatibility image used for the boot target.</td></tr>
+                    <tr><td>Kernel package</td><td>Selected Bus kernel package and boot metadata.</td></tr>
+                    <tr><td>Package set</td><td>Bus-built package artifacts, source revisions, patches, and license notices.</td></tr>
+                    <tr><td>Validation</td><td>Boot checks, service checks, diagnostics, update tests, and rollback evidence.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="gx-section gx-reference-strip">
+                <div>
+                  <h2>Keep image choice separate from release identity.</h2>
+                  <p>
+                    The preview can use compatibility images while Bus Engine OS matures. The
+                    product promise remains the Bus-managed Linux distribution, source tree, update
+                    channel, validation workflow, and rollback model.
+                  </p>
+                </div>
+                <a class="button button-primary" href="../pricing/index.html">Join the preview</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer>
+    </div>
+    <script src="../../site-chrome.js"></script>
+  </body>
+</html>

@@ -21,6 +21,7 @@
       <nav class="site-nav" aria-label="Primary">
       <a href="./index.html" aria-current="page">Overview</a>
       <a href="./modules/index.html">Modules</a>
+      <a href="./runtime-images/index.html">Images</a>
       <a href="./pricing/index.html">Pricing</a>
       <a href="./contact/index.html">Contact</a>
       </nav>
@@ -33,6 +34,7 @@
     <p class="gx-side-nav-title">Engine</p>
       <a href="./index.html" aria-current="page">Overview</a>
       <a href="./modules/index.html">Modules</a>
+      <a href="./runtime-images/index.html">Images</a>
       <a href="./pricing/index.html">Pricing</a>
       <a href="./contact/index.html">Contact</a>
   </aside>
@@ -105,31 +107,12 @@ bus engine stop</code></pre>
                   swappable runtime image artifacts for preview and compatibility work, not the
                   definition of Bus Engine OS itself.
                 </p>
-                <pre><code>DEBIAN_IMAGE=./debian-12-genericcloud-amd64.qcow2
-DEBIAN_DIGEST="sha256:&lt;digest&gt;"
-
-bus artifacts catalog set debian-cloud-generic-amd64 \
-  --handle "$DEBIAN_IMAGE" \
-  --digest "$DEBIAN_DIGEST"
-
-KERNEL_DEB=./linux-image-7.1.0_6_amd64.deb
-KERNEL_DIGEST="sha256:&lt;digest&gt;"
-
-bus artifacts catalog set bus-engine-kernel-amd64 \
-  --handle "$KERNEL_DEB" \
-  --digest "$KERNEL_DIGEST"</code></pre>
                 <p>
-                  The catalog command records artifact handles and digests in the configured Bus
-                  artifacts catalog. Engine start then asks the artifact integration to fetch and
-                  verify the selected runtime image, kernel, and package artifacts before boot.
+                  The overview keeps that product boundary short. Runtime image choices, Debian
+                  compatibility images, kernel packages, artifact checksums, and profile examples
+                  live on the dedicated images page.
                 </p>
-                <p>
-                  A profile can use a verified Debian cloud image while the preview hardens
-                  installation, updates, recovery, and rollback. The same profile model also
-                  selects Bus Engine OS images and Bus-built package sets, so the distribution can
-                  move from an interchangeable runtime image toward a fully Bus-controlled Linux
-                  release without changing the customer-facing workflow.
-                </p>
+                <p><a href="runtime-images/index.html">Review runtime images and artifacts</a></p>
               </div>
 
               <div class="product-section">

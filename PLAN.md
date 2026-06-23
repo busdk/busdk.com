@@ -17,6 +17,7 @@
 - [x] Embed the live Bus Engine Stripe pricing table on the product pricing page and remove stale static price rows.
 - [x] Reposition Bus Engine pricing and product copy around the limited Founding Technical Preview and defer the binary-only Runtime plan until Public Beta.
 - [x] Clarify that Bus Engine OS is the Bus-built Linux distribution and Debian cloud images are optional swappable runtime artifacts, not the product identity.
+- [x] Split Bus Engine runtime-image and Debian compatibility details from the overview into a dedicated feature subpage.
 
 # Current evidence
 
@@ -74,3 +75,7 @@ The Bus Engine overview now describes Bus Engine OS as the Bus-built Linux
 distribution managed by AI agents. Debian cloud images are described as
 optional swappable runtime image artifacts for preview and compatibility work,
 not as the definition of Bus Engine OS.
+
+Bus Engine runtime image and Debian compatibility details now live on a
+dedicated Images page linked from the Engine overview, top navigation, side
+navigation, and generated Bus UI navigation data.

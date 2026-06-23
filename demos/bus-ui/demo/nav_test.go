@@ -121,6 +121,7 @@ func TestBusDKProductNavRendersEnginePages(t *testing.T) {
 		`class="brand" href="https://busdk.com/docs/index.html"`,
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
 		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine/runtime-images/index.html">Images</a>`,
 		`href="https://busdk.com/docs/engine/pricing/index.html">Pricing</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {
@@ -138,6 +139,7 @@ func TestBusDKProductNavRendersEnginePages(t *testing.T) {
 		`>Engine</p>`,
 		`href="https://busdk.com/docs/engine/index.html">Overview</a>`,
 		`aria-current="page" href="https://busdk.com/docs/engine/modules/index.html">Modules</a>`,
+		`href="https://busdk.com/docs/engine/runtime-images/index.html">Images</a>`,
 		`href="https://busdk.com/docs/engine/pricing/index.html">Pricing</a>`,
 		`href="https://busdk.com/docs/engine/contact/index.html">Contact</a>`,
 	} {

@@ -68,6 +68,7 @@ var busDKTopHeaders = map[string]topHeaderConfig{
 		Links: []topHeaderLink{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "runtime-images", Href: "runtime-images/index.html", Label: "Images"},
 			{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
@@ -163,6 +164,7 @@ var busDKProductSideNavs = map[string]struct {
 		Entries: []navEntry{
 			{ID: "overview", Href: "index.html", Label: "Overview"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "runtime-images", Href: "runtime-images/index.html", Label: "Images"},
 			{ID: "pricing", Href: "pricing/index.html", Label: "Pricing"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
