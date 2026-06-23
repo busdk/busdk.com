@@ -3,6 +3,7 @@
 # Current work
 
 - [x] Apply the new `bus-lint` HTML rubric findings to the Bus Engine modules page so its capability overview uses buyer-facing language and links the stated evaluator path.
+- [x] Add Bus Engine pricing information using the Named Operator License model, including unlimited systems, monthly and one-time options, renewal, founding prices, support/account boundaries, and product-local pricing navigation.
 
 # Current evidence
 
@@ -26,6 +27,12 @@ use direct buyer-facing sentences instead.
 
 The Bus Engine pages pass the new `bus-lint` HTML public marketing rubric with
 `--agent codex`.
+
+Bus Engine pricing now uses a product-local Named Operator License page: one
+named operator, unlimited systems, monthly and one-time options, optional
+renewal, founding pricing, account/support boundaries, no shared accounts, and
+clear separation between commercial account entitlements and software license
+terms.
 
 The module-owned Bus UI catalog now drives `docs/gx-ui/` coverage. The
 deterministic `scripts/check-gx-ui-component-pages.sh` check verifies every
