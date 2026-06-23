@@ -2,6 +2,7 @@
 
 # Current work
 
+- [x] Use `docs/engine/preview.jpg` as the SEO/social preview image for the `/engine/` overview page.
 - [x] Use plain `0.x.0` version examples for Bus Engine preview releases instead of `-preview.1` suffixes.
 - [x] Remove prescriptive Bus Engine pricing-page workflow copy and keep FSL links in licensing text, not plan headings.
 - [x] Correct Bus Engine preview source-access copy so it covers only the limited Bus Engine product line, not all BusDK.
