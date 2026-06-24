@@ -2,6 +2,7 @@
 
 # Current work
 
+- [x] Tighten Bus Engine copy around the concrete problem it solves, how it differs from ordinary distributions/platforms, and one example workflow.
 - [x] Remove internal legal-process meta commentary from Bus Engine licensing pages while preserving customer-facing source-delivery boundaries.
 - [x] Remove README-referential Bus Engine runtime-image copy and make the public artifact-flow documentation direct.
 - [x] Reduce Bus Engine marketing-page Codex mentions so the product story says the agent coordinates and Codex remains a linked technical runtime detail.
