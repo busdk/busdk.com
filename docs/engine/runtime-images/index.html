@@ -63,7 +63,7 @@
                     <tr><td>Compatibility input</td><td>A verified upstream image used for preview and compatibility work. Debian cloud images are one supported input option for development evaluation.</td></tr>
                     <tr><td>Development image</td><td>A pre-production image generated or assembled during development to test boot, package, kernel, service, and validation behavior.</td></tr>
                     <tr><td>Bus Engine OS image</td><td>An image built from the Bus Engine OS blueprint and package pipeline. This path is under active development.</td></tr>
-                    <tr><td>Release artifact</td><td>A published binary, source bundle, manifest, checksum, notice bundle, or related release file made available through the release area.</td></tr>
+                    <tr><td>Release artifact</td><td>A published binary, source bundle, manifest, checksum, notice bundle, or related release file for a specific release.</td></tr>
                     <tr><td>Production-supported image</td><td>A future supported image with contractual support boundaries, release notes, compatibility expectations, and service terms.</td></tr>
                   </tbody>
                 </table>
@@ -78,11 +78,14 @@
                   content handle for the VM provider.
                 </p>
                 <p>
-                  The current Engine README documents <code>bus artifacts catalog set</code> for
-                  registering local kernel packages and describes automatic default catalog
-                  creation for normal Engine paths. Users should not write
-                  <code>.bus/artifacts/catalog.json</code> by hand.
+                  Bus Engine creates the default artifact catalog when the default Engine profile
+                  starts and requests its configured image artifacts. Use
+                  <code>bus artifacts catalog set</code> when adding a local kernel package or
+                  another artifact that is outside that profile.
                 </p>
+                <pre><code>bus artifacts catalog set bus-engine-kernel-amd64 \
+  --handle /path/to/linux-image-7.1.0_6_amd64.deb \
+  --digest sha256:&lt;expected-digest&gt;</code></pre>
               </div>
 
               <div class="product-section">
@@ -119,8 +122,8 @@
                 <div>
                   <h2>Review the capability status.</h2>
                   <p>
-                    The capabilities page lists the Engine, artifact, VM, QEMU, Codex, local model,
-                    and Bus Engine OS modules that support this image work.
+                    The capabilities page lists the Engine, artifact, VM, QEMU, AI integration,
+                    local model, and Bus Engine OS modules that support this image work.
                   </p>
                 </div>
                 <a class="button button-primary" href="../modules/index.html">Open capabilities</a>

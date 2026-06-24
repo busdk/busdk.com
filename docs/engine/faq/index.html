@@ -6,7 +6,7 @@
     <title>Bus Engine FAQ | BusDK</title>
     <meta
       name="description"
-      content="Frequently asked questions about Bus Engine, Bus Engine OS, development preview status, Codex App Server, AI model fees, hardware targets, source access, and persistent storage."
+      content="Frequently asked questions about Bus Engine, Bus Engine OS, development preview status, agent runtime, AI model fees, hardware targets, source access, and persistent storage."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -73,8 +73,8 @@
 
               <div class="product-section">
                 <h2>Status and releases</h2>
-                <h3>Is Bus Engine OS complete today?</h3>
-                <p>No. Bus Engine OS is under active development. Today evaluators can use the documented <code>bus engine status</code>, <code>start</code>, <code>stop</code>, and <code>ssh</code> control path with the current local API, Events, artifact, VM, and QEMU runtime pieces. Native Bus Engine OS images, update, recovery, rollback, and complete release workflow remain in development.</p>
+                <h3>Is Bus Engine OS complete in the June 2026 development state?</h3>
+                <p>No. Bus Engine OS is under active development. In the June 2026 development state, evaluators can use the documented <code>bus engine status</code>, <code>start</code>, <code>stop</code>, and <code>ssh</code> control path with the current local API, Events, artifact, VM, and QEMU runtime pieces. Native Bus Engine OS images, update, recovery, rollback, and complete release workflow remain in development.</p>
                 <h3>What happens on 1 July 2026?</h3>
                 <p>The public development preview is scheduled to begin on 1 July 2026. Founding customers will receive rolling pre-production development builds as the operating system and tooling evolve.</p>
                 <h3>How do rolling releases work?</h3>
@@ -84,21 +84,21 @@
               </div>
 
               <div class="product-section">
-                <h2>AI and Codex</h2>
+                <h2>AI and agent runtime</h2>
                 <h3>How does AI participate?</h3>
                 <p>AI performs adaptable engineering work: understanding requirements, interpreting evidence, selecting a configuration strategy, diagnosing failures, and updating the blueprint. Deterministic tools compile, package, build images, calculate checksums, boot, and test.</p>
-                <h3>What is Codex App Server?</h3>
-                <p>Codex App Server is a separate open-source Codex agent-runtime component. Bus Engine integrates it with Linux-specific tools, policies, blueprints, build environments, target information, and validation workflows.</p>
-                <h3>Does Bus Engine use a REST API to communicate with Codex App Server?</h3>
-                <p>No. Codex App Server uses bidirectional JSON-RPC 2.0. Bus Engine may expose its own HTTP APIs, but those APIs are Bus Engine APIs rather than the native Codex App Server protocol.</p>
-                <h3>Is Codex included?</h3>
-                <p>Bus Engine integrates Codex App Server as a separately licensed open-source runtime component. AI model access and hosted model service fees are configured separately.</p>
+                <h3>What is the agent runtime?</h3>
+                <p>Bus Engine currently integrates <a href="https://github.com/openai/codex">Codex App Server</a> as a separate open-source agent-runtime component, then combines it with Linux-specific tools, policies, blueprints, build environments, target information, and validation workflows.</p>
+                <h3>Does Bus Engine use a REST API to communicate with the agent runtime?</h3>
+                <p>No. <a href="https://github.com/openai/codex">Codex App Server</a> uses bidirectional JSON-RPC 2.0. Bus Engine may expose its own HTTP APIs, but those APIs are Bus Engine APIs rather than the native App Server protocol.</p>
+                <h3>Is the agent runtime included?</h3>
+                <p>Bus Engine integrates <a href="https://github.com/openai/codex">Codex App Server</a> as a separately licensed open-source runtime component. AI model access and hosted model service fees are configured separately.</p>
                 <h3>Are AI model fees included?</h3>
                 <p>Third-party hosted-model usage and AI service fees are not included unless a plan explicitly says otherwise.</p>
                 <h3>Can customers use local models?</h3>
-                <p>Customers may use a supported hosted provider or operate a compatible model within their own infrastructure where the deployed Bus model API and local-model integrations, policies, and network controls support that deployment.</p>
+                <p>Customers may use a supported hosted provider or operate a compatible model within their own infrastructure where the deployed Bus AI integration modules, local-model integrations, policies, and network controls support that deployment.</p>
                 <h3>Is the entire AI stack open source?</h3>
-                <p>No. Codex App Server is an open-source runtime component, but selected hosted model services may be proprietary and separately billed. Local inference runtimes and models have their own licenses.</p>
+                <p>No. <a href="https://github.com/openai/codex">Codex App Server</a> is an open-source runtime component, but selected hosted model services may be proprietary and separately billed. Local inference runtimes and models have their own licenses.</p>
               </div>
 
               <div class="product-section">

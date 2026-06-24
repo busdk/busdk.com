@@ -66,28 +66,11 @@
                 </stripe-pricing-table>
               </div>
               <p>
-                If the checkout table is blocked by browser settings, contact
-                <a href="../contact/index.html">Bus Engine sales</a> for current founding-preview pricing.
+                Stripe checkout is the source for current plan options, prices, tax handling, and
+                purchase terms. If the checkout table is blocked by browser settings, contact
+                <a href="../contact/index.html">Bus Engine sales</a> to review the available
+                options.
               </p>
-
-              <div class="product-section">
-                <h2>Named-operator prices</h2>
-                <table class="tutorial-table">
-                  <thead>
-                    <tr><th>Option</th><th>Price per named operator</th><th>Summary</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Monthly</td><td>€24/month</td><td>Unlimited systems for one named operator, with current releases, updates, and best-effort technical support while subscribed. Existing installations continue working after cancellation.</td></tr>
-                    <tr><td>One-time</td><td>€249</td><td>Perpetual use of eligible releases received during the first 12 months, on unlimited systems. Includes 12 months of updates and best-effort technical support.</td></tr>
-                    <tr><td>Optional renewal</td><td>€119/year</td><td>Continued updates and support after the first included support period for a one-time purchase.</td></tr>
-                    <tr><td>Founding prices</td><td>€19/month or €199 one-time</td><td>Limited founding development-preview pricing shown in the checkout when available.</td></tr>
-                  </tbody>
-                </table>
-                <p>
-                  VAT may be added at checkout where applicable. The checkout and written
-                  agreement control the final purchase, tax, renewal, and support terms.
-                </p>
-              </div>
 
               <div class="product-section">
                 <h2>Named Operator License — unlimited systems</h2>
@@ -111,7 +94,7 @@
                 <h2>Immediately after purchase</h2>
                 <ul>
                   <li>Founding customer account and checkout enrollment.</li>
-                  <li>Current Bus Engine CLI, API, artifact, VM, QEMU, Codex, and local-model integration documentation.</li>
+                  <li>Current Bus Engine CLI, API, artifact, VM, QEMU, agent-runtime, and local-model integration documentation.</li>
                   <li>Access to the development-preview communication and support path.</li>
                 </ul>
               </div>
@@ -137,11 +120,11 @@
               <div class="product-section">
                 <h2>AI access and support boundary</h2>
                 <p>
-                  AI model access is configured separately. Third-party hosted-model usage,
-                  OpenAI Codex access, and other AI service fees are not included unless a plan
-                  explicitly says otherwise. Customers must provide their own OpenAI Codex access
-                  or another model backend supported by the deployed Bus model API and integration
-                  modules. Unsupported providers require integration work before they can be used.
+                  AI model access is configured separately. Third-party hosted-model usage, hosted
+                  agent access, local inference infrastructure, and other AI service fees are not
+                  included unless a plan explicitly says otherwise. Customers must provide a model
+                  backend supported by the deployed Bus AI integration modules.
+                  Unsupported providers require integration work before they can be used.
                 </p>
                 <p>
                   Support is best effort during the development preview. There is no production
@@ -172,18 +155,17 @@
               <div class="product-section">
                 <h2>Founder persistent storage</h2>
                 <p>
-                  The intended founder offer includes a 1 TB Bus Engine Persistent Storage
-                  allocation for supported BusDK-hosted virtualized systems, subject to the
-                  applicable commercial and service terms. The allocation is meant to remain
-                  associated with the customer independently of individual development virtual
-                  machine rebuilds and attach through Bus Engine-managed workflows.
+                  Founding preview plans include a Bus Engine Persistent Storage allocation when
+                  that entitlement is shown in checkout or the written agreement. The allocation
+                  is for supported BusDK-hosted virtualized systems and is managed independently
+                  of individual development virtual machine rebuilds.
                 </p>
                 <p>
-                  Storage is not advertised as lifetime, perpetual, backed up, replicated, or
-                  performance-guaranteed on this page. Details such as decimal TB versus TiB,
-                  duration, snapshot policy, backup policy, data location, retention after
-                  cancellation, export period, transfer limits, and additional-capacity pricing
-                  must be confirmed in the applicable agreement before purchase.
+                  The checkout or written agreement defines the included capacity, duration,
+                  retention, export, backup, transfer, data-location, and additional-capacity
+                  terms. This page does not advertise lifetime hosted storage, perpetual hosted
+                  storage, high availability, backups, replication, transfer limits, throughput,
+                  IOPS, or zero data-loss guarantees.
                 </p>
               </div>
 

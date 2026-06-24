@@ -6,7 +6,7 @@
     <title>Bus Engine Architecture | BusDK</title>
     <meta
       name="description"
-      content="How Bus Engine combines UI, CLI, API, orchestration, Codex App Server, customer-selected models, Linux tools, build environments, validation, blueprints, and evidence."
+      content="How Bus Engine combines UI, CLI, API, orchestration, an agent runtime, customer-selected models, Linux tools, build environments, validation, blueprints, and evidence."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -48,10 +48,11 @@
               <p class="eyebrow">Bus Engine Architecture</p>
               <h1>AI participates in a controlled Linux engineering loop.</h1>
               <p class="hero-copy">
-                Bus Engine integrates Codex App Server, a separate open-source Codex agent
-                runtime, with Linux-specific tools, blueprints, policies, isolated build
-                environments, boot tests, logs, and evidence. The model handles reasoning;
-                deterministic tools build and verify the system.
+                Bus Engine integrates <a href="https://github.com/openai/codex">Codex App Server</a>,
+                a separate open-source agent runtime from that project, with Linux-specific
+                tools, blueprints, policies, isolated build environments, boot tests, logs, and
+                evidence. The model handles reasoning; deterministic tools build and verify the
+                system.
               </p>
 
               <div class="product-section">
@@ -59,7 +60,7 @@
                 <figure aria-labelledby="engine-architecture-title">
                   <svg role="img" aria-labelledby="engine-architecture-title engine-architecture-desc" viewBox="0 0 820 520" width="100%" height="auto">
                     <title id="engine-architecture-title">Bus Engine architecture flow</title>
-                    <desc id="engine-architecture-desc">Operator requests flow through Bus Engine UI, CLI, or API, then orchestration and policy, then Codex App Server, then a selected hosted or local model. Bus Engine Linux tools use isolated build and validation environments and write blueprints and evidence.</desc>
+                    <desc id="engine-architecture-desc">Operator requests flow through Bus Engine UI, CLI, or API, then orchestration and policy, then an agent runtime, then a selected hosted or local model. Bus Engine Linux tools use isolated build and validation environments and write blueprints and evidence.</desc>
                     <rect x="20" y="20" width="780" height="480" rx="10" fill="none" stroke="currentColor" opacity="0.24" />
                     <g fill="currentColor" font-family="Plus Jakarta Sans, sans-serif" font-size="17">
                       <rect x="70" y="50" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
@@ -70,7 +71,7 @@
                       <text x="92" y="252">Orchestration, policy,</text>
                       <text x="92" y="274">approval, and audit</text>
                       <rect x="335" y="135" width="210" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
-                      <text x="357" y="170">Codex App Server</text>
+                      <text x="357" y="170">Agent runtime</text>
                       <rect x="600" y="135" width="150" height="58" rx="8" fill="none" stroke="currentColor" opacity="0.45" />
                       <text x="622" y="160">Hosted or local</text>
                       <text x="622" y="182">model provider</text>
@@ -104,20 +105,20 @@
               </div>
 
               <div class="product-section">
-                <h2>Codex App Server boundary</h2>
+                <h2>Agent runtime boundary</h2>
                 <p>
-                  Bus Engine integrates the open-source Codex App Server as a separate agent-runtime
-                  component. Bus Engine supplies Linux-specific tools, blueprints, policies, build
-                  environments, target information, and validation workflows. Codex App Server
-                  coordinates the agent loop and connects it to a customer-selected AI model.
+                  Bus Engine integrates the open-source
+                  <a href="https://github.com/openai/codex">Codex App Server</a> as a separate
+                  agent-runtime component. Bus Engine supplies Linux-specific tools, blueprints,
+                  policies, build environments, target information, and validation workflows.
+                  It coordinates the agent loop and connects it to a customer-selected AI model.
                 </p>
                 <p>
-                  Codex App Server uses bidirectional JSON-RPC 2.0. Its normal local transport may
-                  use standard input/output, and other supported transports depend on the deployed
-                  Codex version. The current Engine control surface includes Bus Engine HTTP APIs
-                  for status, start, stop, and SSH session requests through
-                  <code>bus-api-provider-engine</code>; those APIs are not the native Codex App
-                  Server protocol.
+                  <a href="https://github.com/openai/codex">Codex App Server</a> uses bidirectional
+                  JSON-RPC 2.0. Its normal local transport may use standard input/output, and other
+                  supported transports depend on the deployed version. The current Engine control
+                  surface includes Bus Engine HTTP APIs for status, start, stop, and SSH session
+                  requests; those APIs are not the native App Server protocol.
                 </p>
               </div>
 

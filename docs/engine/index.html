@@ -86,7 +86,7 @@
                   evaluation, testing, and feedback. It does not include a production uptime SLA.
                 </p>
                 <div class="tutorial-callout">
-                  <h3>The model reasons. Codex coordinates. Bus Engine executes. Tests verify.</h3>
+                  <h3>The model reasons. Agent coordinates. Bus Engine executes. Tests verify.</h3>
                   <p>
                     AI performs the adaptable engineering. Deterministic tools perform and verify
                     repeatable operations such as dependency resolution, configuration checks,
@@ -292,7 +292,7 @@
                   </thead>
                   <tbody>
                     <tr><td>Available now</td><td>Documented and tested CLI, API, and Events paths can request status, start, stop, and SSH sessions for the managed Engine runtime. Artifact catalog and verification flows plus local QEMU provider integration support the current development VM path.</td></tr>
-                    <tr><td>In active development</td><td>Bus Engine OS source-built package pipeline, native OS image assembly, kernel packaging, Codex-driven system maintenance workflows, update, recovery, rollback, and persistent storage workflows.</td></tr>
+                    <tr><td>In active development</td><td>Bus Engine OS source-built package pipeline, native OS image assembly, kernel packaging, agent-driven system maintenance workflows, update, recovery, rollback, and persistent storage workflows.</td></tr>
                     <tr><td>Planned for the public development preview</td><td>Rolling development builds, clearer target profiles, improved validation evidence, and customer feedback loops beginning 1 July 2026.</td></tr>
                     <tr><td>Planned later</td><td>Production support channel, broader hardware validation, complete update and recovery guarantees, and any production SLA.</td></tr>
                   </tbody>
@@ -302,17 +302,19 @@
               <div class="product-section">
                 <h2>AI and model access</h2>
                 <p>
-                  Bus Engine integrates Codex App Server as a separate open-source agent-runtime
-                  component. Bus Engine supplies the Linux-specific tools, policies, blueprints,
-                  build environments, target information, logs, and validation workflows. Codex
-                  coordinates the agent loop and connects it to a customer-selected hosted or
+                  Bus Engine integrates a separate agent-runtime component with Linux-specific
+                  tools, policies, blueprints, build environments, target information, logs, and
+                  validation workflows. The agent loop connects to a customer-selected hosted or
                   local model provider.
                 </p>
                 <p>
                   Third-party hosted-model usage and AI service fees are not included unless a
-                  plan explicitly says otherwise. Customers may use supported hosted providers,
-                  OpenAI Codex access, or compatible local model infrastructure where the
-                  deployment and policies support that model.
+                  plan explicitly says otherwise. Customers may use supported hosted providers or
+                  compatible local model infrastructure where the deployment and policies support
+                  that model.
+                  The <a href="architecture/index.html">architecture page</a> describes the Bus
+                  Engine agent-runtime boundary. The current runtime integration uses
+                  <a href="https://github.com/openai/codex">Codex App Server</a>.
                 </p>
               </div>
 
