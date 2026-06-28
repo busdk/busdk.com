@@ -84,7 +84,7 @@
                 <h3>Which host platforms are supported now?</h3>
                 <p>The documented build flow currently supports macOS arm64 and Linux 64-bit operator hosts. macOS uses Docker for the Linux build environment. Linux uses the local build host when preflight passes and can fall back to Docker when Docker is available.</p>
                 <h3>Which image profiles exist now?</h3>
-                <p><code>virtual-server</code> is the accepted minimal QEMU/KVM server profile. <code>gui-wayfire</code> is an additive GUI profile under development and must not be treated as the accepted server image.</p>
+                <p><code>virtual-server</code> is the accepted minimal QEMU/KVM server profile. <code>virtual-gui</code> is an additive GUI profile under development and must not be treated as the accepted server image.</p>
                 <h3>How do I build and run the accepted profile?</h3>
                 <p>Use the default image build, promote the accepted artifacts into the local Engine catalog, start the runtime, check status, and then open SSH.</p>
                 <pre><code>bus engine os build image

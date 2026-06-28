@@ -100,5 +100,5 @@ navigation, and generated Bus UI navigation data.
 
 Bus Engine public pages now remove the 1 July 2026 preview-start language,
 describe the accepted `virtual-server` Bus Engine OS profile, name macOS arm64
-and Linux 64-bit operator host paths, call out `gui-wayfire` as an in-progress
+and Linux 64-bit operator host paths, call out `virtual-gui` as an in-progress
 GUI profile, and show the normal build/promote/start/status/SSH command flow.
