@@ -37,6 +37,7 @@
 - [x] Reposition Bus Engine pricing and product copy around the limited Founding Technical Preview and defer the binary-only Runtime plan until Public Beta.
 - [x] Clarify that Bus Engine OS is the Bus-built Linux distribution and Debian cloud images are optional compatibility inputs.
 - [x] Split Bus Engine runtime-image and Debian compatibility details from the overview into a dedicated feature subpage.
+- [x] Update Bus Engine OS promote examples so `--workspace <workspace>` is no longer shown as required.
 
 # Current evidence
 
@@ -102,3 +103,5 @@ Bus Engine public pages now remove the 1 July 2026 preview-start language,
 describe the accepted `virtual-server` Bus Engine OS profile, name macOS arm64
 and Linux 64-bit operator host paths, call out `virtual-gui` as an in-progress
 GUI profile, and show the normal build/promote/start/status/SSH command flow.
+The promote examples now use `bus engine os artifact promote-engine` as the
+default command, with workspace selection treated as optional.

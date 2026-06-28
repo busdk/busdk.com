@@ -88,7 +88,7 @@
                 <h3>How do I build and run the accepted profile?</h3>
                 <p>Use the default image build, promote the accepted artifacts into the local Engine catalog, start the runtime, check status, and then open SSH.</p>
                 <pre><code>bus engine os build image
-bus engine os artifact promote-engine --workspace &lt;workspace&gt;
+bus engine os artifact promote-engine
 bus services up
 bus engine start
 bus engine status
