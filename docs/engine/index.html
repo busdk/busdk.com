@@ -6,7 +6,7 @@
     <title>Bus Engine Development Preview | AI-engineered Linux systems</title>
     <meta
       name="description"
-      content="Bus Engine is developing a rolling Linux distribution and integrated AI engineering system for virtual machines, servers, packages, kernels, testing, and lifecycle maintenance."
+      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths and GUI profile work in development."
     />
     <link rel="canonical" href="https://busdk.com/engine/" />
     <meta property="og:type" content="website" />
@@ -68,9 +68,10 @@
               <p class="hero-copy">
                 Bus Engine OS is a flexible Linux distribution under active development for
                 desktop-hosted virtual machines, virtualized servers, and customer-defined
-                systems. It is for teams that need the operating system itself engineered
-                around a workload: kernel choices, package definitions, services, boot files,
-                images, tests, and rolling maintenance captured in a versioned blueprint.
+                systems. The current accepted profile is <code>virtual-server</code>: a
+                source-built Linux server image assembled from validated Bus packages and
+                boot-tested in QEMU. The GUI profile is being built as a separate development
+                profile.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="pricing/index.html">Join the founding preview</a>
@@ -79,11 +80,12 @@
               </div>
 
               <div class="product-section">
-                <h2>Public development preview scheduled to begin on 1 July 2026.</h2>
+                <h2>Development preview access is open for technical evaluation.</h2>
                 <p>
-                  Bus Engine OS is not yet a complete or production-ready Linux distribution. The
-                  first preview is a continuously updated development channel for technical
-                  evaluation, testing, and feedback. It does not include a production uptime SLA.
+                  Bus Engine OS now has an accepted virtual-server image profile for technical
+                  evaluation. The first preview is still a continuously updated development
+                  channel, not a production support channel, and it does not include a production
+                  uptime SLA.
                 </p>
                 <div class="tutorial-callout">
                   <h3>The model reasons. Agent coordinates. Bus Engine executes. Tests verify.</h3>
@@ -109,6 +111,39 @@
                   A disk image is one output. The durable asset is the versioned system blueprint
                   that records what the system must do, how it is configured, how it is built, and
                   how it is tested.
+                </p>
+                <div class="tutorial-callout">
+                  <h3>What you get today</h3>
+                  <p>
+                    The accepted <code>virtual-server</code> path builds a minimal QEMU/KVM server
+                    image from verified source inputs, validated <code>.buspkg.tar.gz</code>
+                    package archives, a packaged Linux kernel, root filesystem assembly, QEMU
+                    artifacts, checksums, build provenance, boot evidence, and local Engine
+                    promotion commands.
+                  </p>
+                </div>
+              </div>
+
+              <div class="product-section">
+                <h2>How you use it</h2>
+                <p>
+                  The normal path is command-driven. Build the default server image, promote the
+                  accepted artifacts into the local Engine catalog, start the runtime, check its
+                  status, and open SSH into the guest.
+                </p>
+                <pre><code>bus engine os build image
+bus engine os artifact promote-engine --workspace &lt;workspace&gt;
+bus services up
+bus engine start
+bus engine status
+bus engine ssh</code></pre>
+                <p>
+                  The build command detects the host architecture and CPU count, creates an
+                  isolated build workspace, builds or restores required package archives, assembles
+                  the root filesystem, creates QEMU image artifacts, and runs the image acceptance
+                  path. macOS arm64 hosts use Docker for the Linux build environment. Linux 64-bit
+                  hosts use the local build host when preflight passes and can fall back to Docker
+                  when Docker is available.
                 </p>
               </div>
 
@@ -257,8 +292,8 @@
                     <tr><th>Use case</th><th>What Bus Engine is for</th><th>Status</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Desktop-hosted engineering VM</td><td>Create a Linux development or application environment that runs in desktop virtualization.</td><td>Available now for local Engine runtime evaluation through the current default profile. Native Bus Engine OS development builds begin through the preview channel.</td></tr>
-                    <tr><td>Server workload image</td><td>Turn an application and its operational requirements into a maintained server image.</td><td>In active development.</td></tr>
+                    <tr><td>Desktop-hosted engineering VM</td><td>Create a Linux development or application environment that runs in desktop virtualization.</td><td>Available now through the accepted <code>virtual-server</code> profile and local Engine runtime path.</td></tr>
+                    <tr><td>Server workload image</td><td>Turn an application and its operational requirements into a maintained server image.</td><td>The base virtual-server OS path is accepted; workload-specific packaging and application blueprints remain development work.</td></tr>
                     <tr><td>Minimal workload system</td><td>Analyze a known target and workload, remove unnecessary components conservatively, and prove the result with tests.</td><td>In active development.</td></tr>
                     <tr><td>Customer-defined hardware</td><td>Collect target evidence, infer kernel and system requirements, build a target profile, and diagnose boot failures.</td><td>Customer-managed or paid engineering support.</td></tr>
                   </tbody>
@@ -288,9 +323,10 @@
                 </p>
                 <p>
                   In the June 2026 development state, the Engine runtime control path, artifact
-                  catalog, local VM provider path, and QEMU integration are available. Native Bus
-                  Engine OS packaging, image generation, update, recovery, and the complete
-                  source-URL-to-system-build workflow remain active development work.
+                  catalog, local VM provider path, QEMU integration, source-built package
+                  pipeline, virtual-server image generation, boot acceptance, and local artifact
+                  promotion are available. Update, recovery, rollback, GUI profile completion, and
+                  the complete source-URL-to-system-build workflow remain active development work.
                 </p>
               </div>
 
@@ -328,9 +364,10 @@
                     <tr><th>Status</th><th>Capabilities</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>Available now</td><td>Documented and tested CLI, API, and Events paths can request status, start, stop, and SSH sessions for the managed Engine runtime. Artifact catalog and verification flows plus local QEMU provider integration support the current development VM path.</td></tr>
-                    <tr><td>In active development</td><td>Bus Engine OS source-built package pipeline, native OS image assembly, kernel packaging, agent-driven system maintenance workflows, update, recovery, rollback, and persistent storage workflows.</td></tr>
-                    <tr><td>Planned for the public development preview</td><td>Rolling development builds, clearer target profiles, improved validation evidence, and customer feedback loops beginning 1 July 2026.</td></tr>
+                    <tr><td>Available now</td><td>Documented and tested CLI, API, and Events paths can request status, start, stop, and SSH sessions for the managed Engine runtime. Artifact catalog, local QEMU provider integration, source package builds, rootfs assembly, virtual-server image generation, QEMU boot acceptance, and local Engine artifact promotion support the accepted server image path.</td></tr>
+                    <tr><td>Supported host paths</td><td>macOS arm64 and Linux 64-bit hosts are the current supported operator environments for the documented build flow. Use <code>--target-arch</code> only when intentionally building or promoting artifacts for another architecture.</td></tr>
+                    <tr><td>In active development</td><td>Agent-driven source-URL packaging workflows, update, recovery, rollback, persistent storage workflows, production release operations, and the additive <code>gui-wayfire</code> GUI profile.</td></tr>
+                    <tr><td>Preview development channel</td><td>Rolling development builds, clearer target profiles, improved validation evidence, and customer feedback loops as the operating system and tooling evolve.</td></tr>
                     <tr><td>Planned later</td><td>Production support channel, broader hardware validation, complete update and recovery guarantees, and any production SLA.</td></tr>
                   </tbody>
                 </table>

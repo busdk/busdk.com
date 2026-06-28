@@ -6,7 +6,7 @@
     <title>Bus Engine Capabilities | BusDK</title>
     <meta
       name="description"
-      content="Capabilities behind Bus Engine: target discovery, system blueprints, kernel configuration, package and image builds, validation, diagnosis, rolling maintenance, and AI provider integration."
+      content="Capabilities behind Bus Engine: accepted virtual-server image flow, system blueprints, package and image builds, validation, diagnosis, GUI profile work, and AI provider integration."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -51,7 +51,8 @@
                 Bus Engine is being built around a Linux system-engineering lifecycle. Individual
                 tools and modules support discovery, configuration, building, validation,
                 diagnosis, and maintenance, and the status labels below show what is available
-                today versus what remains development work.
+                today versus what remains development work. The accepted slice is the
+                <code>virtual-server</code> Bus Engine OS profile and local Engine runtime path.
               </p>
 
               <div class="product-section">
@@ -119,12 +120,24 @@
                     <tr><td><code>bus-integration-artifacts</code></td><td>Available</td><td>Events worker for atomic download, verification, import, update, mirror, and cache behavior.</td></tr>
                     <tr><td><code>bus-integration-vm</code></td><td>Available</td><td>Provider-neutral VM lifecycle worker routing VM requests to provider integrations.</td></tr>
                     <tr><td><code>bus-integration-qemu</code></td><td>Available</td><td>Local QEMU VM provider for Engine runtime evaluation and development targets.</td></tr>
-                    <tr><td><code>bus-engine-os</code></td><td>In development</td><td>Source-built Bus Engine OS package, kernel, rootfs, image, and boot-test pipeline.</td></tr>
+                    <tr><td><code>bus-engine-os</code></td><td>Available for <code>virtual-server</code>; GUI in development</td><td>Source-built Bus Engine OS package, kernel, rootfs, image, and boot-test pipeline. The accepted profile is the minimal QEMU/KVM server image; the <code>gui-wayfire</code> profile remains additive development work.</td></tr>
                     <tr><td><code>bus-api-provider-llm</code></td><td>Available</td><td>OpenAI-compatible Bus model API with Bus auth, usage, and runtime wake-up hooks.</td></tr>
                     <tr><td><code>bus-integration-codex</code></td><td>Available</td><td><a href="https://github.com/openai/codex">Codex App Server</a> backed Bus Events worker for provider-neutral agent execution requests.</td></tr>
                     <tr><td><code>bus-integration-ollama</code></td><td>Available</td><td>Local model provider integration for configured Ollama-backed inference paths.</td></tr>
                   </tbody>
                 </table>
+              </div>
+
+              <div class="product-section">
+                <h2>Operator environment</h2>
+                <p>
+                  Current documented Bus Engine OS builds support macOS arm64 and Linux 64-bit
+                  operator hosts. The image command detects the host architecture and CPU count,
+                  uses Docker for the Linux build environment on macOS, and uses the local Linux
+                  host when preflight passes. The package and profile commands expose architecture
+                  filters such as <code>x86_64</code> and target selection for intentional
+                  cross-architecture work.
+                </p>
               </div>
 
               <div class="product-section">

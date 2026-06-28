@@ -6,7 +6,7 @@
     <title>Bus Engine FAQ | BusDK</title>
     <meta
       name="description"
-      content="Frequently asked questions about Bus Engine, Bus Engine OS, development preview status, agent runtime, AI model fees, hardware targets, source access, and persistent storage."
+      content="Frequently asked questions about Bus Engine OS virtual-server status, supported macOS and Linux host paths, GUI profile development, usage commands, agent runtime, source access, and storage."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -58,7 +58,7 @@
                 <h3>What is Bus Engine?</h3>
                 <p>Bus Engine provides the blueprints, AI-powered engineering tools, deterministic build operations, isolated execution environments, validation workflows, and lifecycle tooling needed to create and maintain custom Linux systems.</p>
                 <h3>What is Bus Engine OS?</h3>
-                <p>Bus Engine OS is the rolling Linux distribution being built and maintained through Bus Engine. It is under active development and is not yet a complete production-ready distribution.</p>
+                <p>Bus Engine OS is the rolling Linux distribution being built and maintained through Bus Engine. Its accepted current profile is <code>virtual-server</code>, a minimal QEMU/KVM server image built from verified source inputs, assembled from validated Bus package archives, and boot-tested in QEMU. It is still a development-preview operating system, not a production-supported general-purpose distribution.</p>
                 <h3>What does “Linux distribution” mean here?</h3>
                 <p>It means the complete versioned collection of blueprints, kernel configurations, source inputs, patches, package definitions, compiled packages, boot files, filesystem and image definitions, services, update and recovery mechanisms, validation tests, and release artifacts needed to produce and maintain a runnable Linux operating system.</p>
                 <h3>Why not just install an ordinary Linux distribution in a virtual machine?</h3>
@@ -67,7 +67,7 @@
                 <p>Its integrated agent can investigate requirements, create and revise the blueprint, build the resulting system, diagnose failures, and maintain it as the workload and upstream components change. The virtualization layer provides the machine. Bus Engine provides the operating-system engineering lifecycle.</p>
                 <h3>Can Bus Engine package software from a source URL?</h3>
                 <p>That is a core workflow Bus Engine is being built to support. The intended flow is to provide a source URL, target profile, and acceptance tests. The agent inspects the source and build files, determines package, service, and kernel requirements, updates the system blueprint, creates or changes package definitions, and asks deterministic tools to build the package, assemble the image, boot it, and run tests.</p>
-                <p>In the June 2026 development state, the Engine runtime control path, artifact catalog, local VM provider path, and QEMU integration are available. Native Bus Engine OS packaging, image generation, update, recovery, and the complete source-URL-to-system-build workflow remain active development work.</p>
+                <p>In the June 2026 development state, the Engine runtime control path, artifact catalog, local VM provider path, QEMU integration, source-built package pipeline, virtual-server image generation, boot acceptance, and local artifact promotion are available. The complete source-URL-to-system-build workflow remains active development work.</p>
                 <h3>How does Bus Engine help with component fixes?</h3>
                 <p>When a component can legally be patched by the customer, Bus Engine is designed to carry that change in the system blueprint, rebuild the affected package or image, and validate it through the same boot and test evidence. That can let a team move on its own maintenance schedule while a fix is proposed upstream or carried as a customer-specific patch.</p>
                 <h3>Is Bus Engine only a package manager?</h3>
@@ -79,9 +79,24 @@
               <div class="product-section">
                 <h2>Status and releases</h2>
                 <h3>Is Bus Engine OS complete in the June 2026 development state?</h3>
-                <p>No. Bus Engine OS is under active development. In the June 2026 development state, evaluators can use the documented <code>bus engine status</code>, <code>start</code>, <code>stop</code>, and <code>ssh</code> control path with the current local API, Events, artifact, VM, and QEMU runtime pieces. Native Bus Engine OS images, update, recovery, rollback, and complete release workflow remain in development.</p>
-                <h3>What happens on 1 July 2026?</h3>
-                <p>The public development preview is scheduled to begin on 1 July 2026. Founding customers will receive rolling pre-production development builds as the operating system and tooling evolve.</p>
+                <p>It is complete enough for the accepted <code>virtual-server</code> development profile: the source-built package pipeline, package-built root filesystem, Linux kernel artifact, QEMU image artifacts, boot acceptance, OpenSSH startup, and local Engine SSH proof exist for that profile.</p>
+                <p>It is not complete as a production operating-system product. Update, recovery, rollback, production release operations, production support guarantees, broader hardware validation, and the GUI profile remain development work.</p>
+                <h3>Which host platforms are supported now?</h3>
+                <p>The documented build flow currently supports macOS arm64 and Linux 64-bit operator hosts. macOS uses Docker for the Linux build environment. Linux uses the local build host when preflight passes and can fall back to Docker when Docker is available.</p>
+                <h3>Which image profiles exist now?</h3>
+                <p><code>virtual-server</code> is the accepted minimal QEMU/KVM server profile. <code>gui-wayfire</code> is an additive GUI profile under development and must not be treated as the accepted server image.</p>
+                <h3>How do I build and run the accepted profile?</h3>
+                <p>Use the default image build, promote the accepted artifacts into the local Engine catalog, start the runtime, check status, and then open SSH.</p>
+                <pre><code>bus engine os build image
+bus engine os artifact promote-engine --workspace &lt;workspace&gt;
+bus services up
+bus engine start
+bus engine status
+bus engine ssh</code></pre>
+                <h3>What artifacts does the build produce?</h3>
+                <p>The accepted image workspace contains the assembled root disk, architecture-specific kernel image, rootfs tarball, QEMU artifact metadata, build provenance, image acceptance evidence, checksums, and validated package archives. Promotion copies stable local handles and updates the Bus artifact catalog records used by the Engine runtime.</p>
+                <h3>How does preview access work?</h3>
+                <p>Preview users receive rolling pre-production development builds as the operating system and tooling evolve. The preview binary lets evaluators use the Bus Engine OS tooling, while complete tested Linux distribution source access is limited to paid users under the applicable source-access terms.</p>
                 <h3>How do rolling releases work?</h3>
                 <p>The development channel receives continuously updated builds and evidence as the blueprint, package set, kernel work, build pipeline, validation, and maintenance workflows change. The first preview is not a version 1.0 release.</p>
                 <h3>Is the development preview production-ready?</h3>

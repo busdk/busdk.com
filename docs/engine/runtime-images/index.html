@@ -6,7 +6,7 @@
     <title>Bus Engine Development Images | BusDK</title>
     <meta
       name="description"
-      content="Development image and artifact status for Bus Engine OS, compatibility inputs, kernel packages, checksums, profiles, and release artifacts."
+      content="Accepted virtual-server image, GUI profile development status, artifact flow, checksums, profiles, and release boundaries for Bus Engine OS."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -46,12 +46,72 @@
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Engine Development Images</p>
-              <h1>Development image work is underway.</h1>
+              <h1>The virtual-server image path is accepted.</h1>
               <p class="hero-copy">
-                The Bus Engine OS image pipeline is under active development. Development runs may
-                use verified compatibility inputs while native package construction, image
-                generation, boot validation, updates, recovery, and lifecycle workflows mature.
+                Bus Engine OS now has an accepted <code>virtual-server</code> profile for a
+                source-built QEMU/KVM server image. The additive <code>gui-wayfire</code> profile
+                is still in development, and production release, update, and recovery guarantees
+                remain outside the current development preview.
               </p>
+
+              <div class="product-section">
+                <h2>Current image profiles</h2>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Profile</th><th>Status</th><th>Purpose</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>virtual-server</code></td><td>Accepted</td><td>Minimal QEMU/KVM server image for Bus Engine runtime use.</td></tr>
+                    <tr><td><code>gui-wayfire</code></td><td>In development</td><td>Additive GUI profile for Wayfire-based graphical runtime work. It is not the accepted server image.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>What the accepted image contains</h2>
+                <p>
+                  The accepted virtual-server proof builds a package-built root filesystem from
+                  validated package archives, extracts the packaged Linux kernel image, creates
+                  QEMU artifacts, records build provenance and checksums, boots in QEMU, reaches
+                  Systemd multi-user readiness, starts OpenSSH, and proves Engine SSH access.
+                </p>
+                <table class="tutorial-table">
+                  <thead>
+                    <tr><th>Component</th><th>Current accepted version</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Linux kernel</td><td>6.18.36</td></tr>
+                    <tr><td>Systemd</td><td>261.1</td></tr>
+                    <tr><td>OpenSSL</td><td>3.5.7</td></tr>
+                    <tr><td>OpenSSH</td><td>10.3p1</td></tr>
+                    <tr><td>Iproute2</td><td>7.1.0</td></tr>
+                    <tr><td>Util-linux</td><td>2.42.2</td></tr>
+                    <tr><td>SQLite</td><td>3.53.3</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="product-section">
+                <h2>How to build and run one</h2>
+                <p>
+                  The default build profile is <code>virtual-server</code>. Name it only when you
+                  want to be explicit; use <code>--target-arch</code> only for an intentional
+                  cross-architecture build or promotion.
+                </p>
+                <pre><code>bus engine os build image
+bus engine os build image --profile virtual-server
+bus engine os artifact promote-engine --workspace &lt;workspace&gt;
+bus services up
+bus engine start
+bus engine status
+bus engine ssh</code></pre>
+                <p>
+                  macOS arm64 and Linux 64-bit hosts are the current supported operator
+                  environments for the documented build flow. macOS uses Docker for the Linux
+                  build environment. Linux uses the local build host when preflight passes and can
+                  fall back to Docker when Docker is available.
+                </p>
+              </div>
 
               <div class="product-section">
                 <h2>Image terms</h2>
@@ -62,7 +122,7 @@
                   <tbody>
                     <tr><td>Compatibility input</td><td>A verified upstream image used for preview and compatibility work. Debian cloud images are one supported input option for development evaluation.</td></tr>
                     <tr><td>Development image</td><td>A pre-production image generated or assembled during development to test boot, package, kernel, service, and validation behavior.</td></tr>
-                    <tr><td>Bus Engine OS image</td><td>An image built from the Bus Engine OS blueprint and package pipeline. This path is under active development.</td></tr>
+                    <tr><td>Bus Engine OS image</td><td>An image built from the Bus Engine OS blueprint and package pipeline. The virtual-server image path is accepted; GUI and production release profiles remain development work.</td></tr>
                     <tr><td>Release artifact</td><td>A published binary, source bundle, manifest, checksum, notice bundle, or related release file for a specific release.</td></tr>
                     <tr><td>Production-supported image</td><td>A future supported image with contractual support boundaries, release notes, compatibility expectations, and service terms.</td></tr>
                   </tbody>
@@ -91,10 +151,11 @@
               <div class="product-section">
                 <h2>Runtime profile choices</h2>
                 <p>
-                  A profile can select Bus Engine OS development images as they become available,
-                  or a verified compatibility image for a development run. Kernel packages are
-                  separate artifacts, so a profile can test a custom Bus kernel package without
-                  redefining the entire operating-system product.
+                  A profile selects the target architecture, build profile, kernel package and
+                  configuration, rootfs package groups, runtime configuration packages, service
+                  expectations, boot expectations, and acceptance policy. The accepted server
+                  profile is separate from GUI development work, so GUI package iteration cannot
+                  masquerade as accepted server image artifacts.
                 </p>
                 <table class="tutorial-table">
                   <thead>
@@ -112,9 +173,11 @@
               <div class="product-section">
                 <h2>Current boundary</h2>
                 <p>
-                  Do not treat a compatibility input as a Bus Engine OS release. The first public
-                  development preview is a rolling pre-production channel, and the native Bus
-                  Engine OS image pipeline remains under active development.
+                  Do not treat a compatibility input as a Bus Engine OS release. Also do not treat
+                  the accepted virtual-server profile as a production SLA. The first public
+                  development preview is a rolling pre-production channel for technical
+                  evaluation, and update, recovery, rollback, GUI completion, and production
+                  release operations remain active development work.
                 </p>
               </div>
 

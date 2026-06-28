@@ -2,6 +2,10 @@
 
 # Current work
 
+- [x] Update Bus Engine product pages for the accepted Bus Engine OS
+      virtual-server profile, supported macOS arm64 and Linux 64-bit host
+      paths, GUI profile development status, and clearer technical usage
+      guidance for evaluators.
 - [x] Tighten Bus Engine copy around the concrete problem it solves, how it differs from ordinary distributions/platforms, and one example workflow.
 - [x] Remove internal legal-process meta commentary from Bus Engine licensing pages while preserving customer-facing source-delivery boundaries.
 - [x] Remove README-referential Bus Engine runtime-image copy and make the public artifact-flow documentation direct.
@@ -93,3 +97,8 @@ optional compatibility input for preview workflows.
 Bus Engine runtime image and Debian compatibility details now live on a
 dedicated Images page linked from the Engine overview, top navigation, side
 navigation, and generated Bus UI navigation data.
+
+Bus Engine public pages now remove the 1 July 2026 preview-start language,
+describe the accepted `virtual-server` Bus Engine OS profile, name macOS arm64
+and Linux 64-bit operator host paths, call out `gui-wayfire` as an in-progress
+GUI profile, and show the normal build/promote/start/status/SSH command flow.
