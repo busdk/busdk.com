@@ -38,6 +38,7 @@
 - [x] Clarify that Bus Engine OS is the Bus-built Linux distribution and Debian cloud images are optional compatibility inputs.
 - [x] Split Bus Engine runtime-image and Debian compatibility details from the overview into a dedicated feature subpage.
 - [x] Update Bus Engine OS promote examples so `--workspace <workspace>` is no longer shown as required.
+- [x] Refresh the Bus Engine server workload status so workload package and service blueprints are no longer described as future-only work.
 
 # Current evidence
 
@@ -105,3 +106,6 @@ and Linux 64-bit operator host paths, call out `virtual-gui` as an in-progress
 GUI profile, and show the normal build/promote/start/status/SSH command flow.
 The promote examples now use `bus engine os artifact promote-engine` as the
 default command, with workspace selection treated as optional.
+The server workload image row now describes package, service, boot-expectation,
+and test configuration as part of the current accepted `virtual-server`
+blueprint workflow.
