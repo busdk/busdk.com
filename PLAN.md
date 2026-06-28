@@ -39,6 +39,7 @@
 - [x] Split Bus Engine runtime-image and Debian compatibility details from the overview into a dedicated feature subpage.
 - [x] Update Bus Engine OS promote examples so `--workspace <workspace>` is no longer shown as required.
 - [x] Refresh the Bus Engine server workload status so workload package and service blueprints are no longer described as future-only work.
+- [x] Make Bus Engine source-delivery copy direct: covered customer-release source is provided, not merely expected.
 
 # Current evidence
 
@@ -109,3 +110,6 @@ default command, with workspace selection treated as optional.
 The server workload image row now describes package, service, boot-expectation,
 and test configuration as part of the current accepted `virtual-server`
 blueprint workflow.
+The Bus Engine overview now says corresponding source for covered customer
+release binaries is provided through the customer release area at no extra
+charge.
