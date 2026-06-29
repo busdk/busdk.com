@@ -41,7 +41,7 @@
 - [x] Refresh the Bus Engine server workload status so workload package and service blueprints are no longer described as future-only work.
 - [x] Make Bus Engine source-delivery copy direct: covered customer-release source is provided, not merely expected.
 - [x] Clarify that customers can buy commercial support to harden Bus Engine OS toward production readiness for specific use cases.
-- [x] Align Bus Engine Stripe and product-page license copy: monthly FSL source converting to MIT after two years, one-time current codebase under MIT plus one year of FSL updates, and third-party software retaining its own licenses.
+- [x] Align Bus Engine Stripe and product-page license copy: monthly FSL source converting to MIT or Apache 2.0 after two years, one-time current codebase under MIT or Apache 2.0 plus one year of FSL updates, and third-party software retaining its own licenses.
 
 # Current evidence
 
@@ -121,7 +121,7 @@ maintain Bus Engine OS for a specific customer use case.
 
 Bus Engine Stripe Products and product pages now describe the license split:
 monthly access includes the Bus Engine product-line codebase under FSL with
-MIT conversion after two years; the one-time option includes the current Bus
-Engine product-line codebase under MIT at purchase plus one year of
-FSL-licensed updates; third-party software keeps its own licenses; and FSL
-applies only to Bus-related code licensed by us.
+MIT or Apache 2.0 conversion after two years; the one-time option includes the
+current Bus Engine product-line codebase under MIT or Apache 2.0 at purchase
+plus one year of FSL-licensed updates; third-party software keeps its own
+licenses; and FSL applies only to Bus-related code licensed by us.
