@@ -6,7 +6,7 @@
     <title>Bus Engine Development Preview | AI-engineered Linux systems</title>
     <meta
       name="description"
-      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths and GUI profile work in development."
+      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths plus GUI and WASM targets in development."
     />
     <link rel="canonical" href="https://busdk.com/engine/" />
     <meta property="og:type" content="website" />
@@ -71,7 +71,8 @@
                 systems. The current accepted profile is <code>virtual-server</code>: a
                 source-built Linux server image assembled from validated Bus packages and
                 boot-tested in QEMU. The GUI profile is being built as a separate development
-                profile.
+                profile, and a WASM version is also in development for browser-hosted evaluation
+                and distribution experiments.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="pricing/index.html">Join the founding preview</a>
@@ -214,7 +215,9 @@ bus engine ssh</code></pre>
                 <p>
                   It is also useful when AI-assisted maintenance and diagnosis provide value,
                   virtualized and customer-defined target profiles must be maintained, or hosted
-                  and locally operated AI models must both be supported by policy.
+                  and locally operated AI models must both be supported by policy. Bus Engine OS
+                  is also being explored as a WASM-delivered target for browser-hosted evaluation
+                  workflows where a full VM is not the right first surface.
                 </p>
               </div>
 
@@ -344,6 +347,10 @@ bus engine ssh</code></pre>
                   <article class="tutorial-card">
                     <h3>Supported virtualized targets</h3>
                     <p>Virtualized environments and target profiles supplied through the BusDK platform, with documented build and validation workflows.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>WASM target development</h3>
+                    <p>A browser-hosted WASM version of Bus Engine OS is in development for evaluation, demos, and distribution experiments.</p>
                   </article>
                   <article class="tutorial-card">
                     <h3>Customer-defined targets</h3>

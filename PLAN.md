@@ -2,6 +2,7 @@
 
 # Current work
 
+- [x] Add public Bus Engine OS WASM development messaging to the production website.
 - [x] Update Bus Engine product pages for the accepted Bus Engine OS
       virtual-server profile, supported macOS arm64 and Linux 64-bit host
       paths, GUI profile development status, and clearer technical usage
@@ -125,3 +126,8 @@ MIT or Apache 2.0 conversion after two years; the one-time option includes the
 current Bus Engine product-line codebase under MIT or Apache 2.0 at purchase
 plus one year of FSL-licensed updates; third-party software keeps its own
 licenses; and FSL applies only to Bus-related code licensed by us.
+
+Bus Engine public pages now state that a browser-hosted WASM version of Bus
+Engine OS is in development for evaluation, demos, and distribution
+experiments. The copy keeps `virtual-server` as the accepted current profile
+and treats GUI and WASM targets as development work.
