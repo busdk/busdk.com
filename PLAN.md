@@ -2,7 +2,13 @@
 
 # Current work
 
-- [ ] Embed Bus Engine OS on the Bus Engine product website as a live
+- [x] Build a publishable Bus Engine browser-lab static bundle with one command
+      that accepts an output directory, writes the iframe page, CSS, boot
+      script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
+      artifacts, firmware, and license/compliance notice into that directory,
+      and keeps the product overview iframe integration independent of local
+      artifact staging.
+- [x] Embed Bus Engine OS on the Bus Engine product website as a live
       screenshot-like QEMU/WASM preview: use the proven 64-bit QEMU WASM
       runtime and Bus Engine OS guest artifacts or a documented artifact
       reference, add a static-site component under `docs/engine/` that boots in
@@ -60,6 +66,14 @@ includes the `engine` product id, the nav regression test covers the product
 links, and the Bus UI demo WASM navigation asset has been rebuilt. The overview
 positions Bus Engine as the BusDK product for AI-powered Linux system
 engineering.
+
+The Bus Engine WASM OS preview now has one maintained static-bundle command:
+`make engine-wasm-os-static`, backed by
+`scripts/write-engine-wasm-os-static.sh OUTPUT_DIR`. It writes the iframe page,
+CSS, boot script, manifest, preview image, QEMU/WASM runtime, guest artifacts,
+firmware, `README.txt`, and an `iframe.html` embed snippet into the requested
+directory. The generated iframe path defaults to `/engine/browser-lab/` and can
+be set with `BUS_ENGINE_WASM_OS_PUBLIC_PATH`.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site
