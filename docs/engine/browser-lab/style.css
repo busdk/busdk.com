@@ -134,6 +134,26 @@ button:not(:disabled):hover {
   width: 100%;
 }
 
+.vm-display {
+  background: #000;
+  border: 0;
+  display: block;
+  image-rendering: pixelated;
+  min-height: 18rem;
+  outline: 2px solid transparent;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.vm-display:focus {
+  outline-color: var(--terminal-accent);
+}
+
+.vm-display[hidden] {
+  display: none;
+}
+
 .terminal-output {
   background: linear-gradient(180deg, rgba(7, 11, 18, 0.86), rgba(7, 11, 18, 0.96));
   color: var(--terminal-text);
@@ -146,6 +166,13 @@ button:not(:disabled):hover {
   padding: 1rem;
   position: relative;
   white-space: pre-wrap;
+  z-index: 2;
+}
+
+.vm-display:not([hidden]) + .terminal-output {
+  border-top: 1px solid var(--terminal-border);
+  max-height: 12rem;
+  min-height: 12rem;
 }
 
 .terminal-actions {
@@ -185,5 +212,14 @@ button:not(:disabled):hover {
   .terminal-stage,
   .terminal-output {
     min-height: 18rem;
+  }
+
+  .vm-display {
+    min-height: 14rem;
+  }
+
+  .vm-display:not([hidden]) + .terminal-output {
+    max-height: 10rem;
+    min-height: 10rem;
   }
 }

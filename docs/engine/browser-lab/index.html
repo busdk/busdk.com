@@ -41,11 +41,21 @@
             src="../preview.png"
             alt="Captured Bus Engine OS terminal boot preview"
           />
+          <canvas
+            id="display"
+            class="vm-display"
+            width="800"
+            height="600"
+            tabindex="0"
+            hidden
+            aria-label="Bus Engine OS graphical display"
+          ></canvas>
           <pre id="terminal" class="terminal-output" aria-live="polite" aria-atomic="false">Bus Engine OS browser lab
 
-This frame can boot Bus Engine OS inside your browser. It needs the QEMU
-WebAssembly files, the Bus Engine OS image, and the required browser security
-headers. If any part is unavailable, the captured boot preview remains visible.</pre>
+This frame can boot Bus Engine OS inside your browser. It needs QEMU
+WebAssembly files, a Bus Engine OS image, and browser security headers. When
+graphical artifacts are available, the display above becomes interactive and
+accepts keyboard input while this terminal keeps serial diagnostics visible.</pre>
         </div>
         <div class="terminal-actions">
           <p id="status" class="terminal-status">Checking browser support...</p>

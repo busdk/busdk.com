@@ -2,6 +2,14 @@
 
 # Current work
 
+- [ ] Update the Bus Engine browser-lab iframe from terminal-only boot output
+      to an interactive graphics surface: use the QEMU/WASM SDL display path,
+      keep serial diagnostics visible, focus a canvas for keyboard input, pass
+      the display device and resolution from the manifest, and keep the
+      screenshot fallback for unsupported browsers or artifacts.
+- [ ] Add a browser-lab manifest shape that can describe `virtual-server` and
+      `virtual-desktop` profiles separately enough for the iframe to choose a
+      graphical or console-oriented runtime without hard-coding the page.
 - [x] Build a publishable Bus Engine browser-lab static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest

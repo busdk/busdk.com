@@ -1,6 +1,7 @@
 const terminal = document.getElementById("terminal");
 const statusEl = document.getElementById("status");
 const bootButton = document.getElementById("boot-button");
+const display = document.getElementById("display");
 const FIRMWARE_MOUNTS = new Map([
   ["firmware-qboot", "/firmware/qboot.rom"],
   ["firmware-linuxboot", "/firmware/linuxboot_dma.bin"],
@@ -33,6 +34,12 @@ function artifact(role) {
 
 function artifactUrl(role) {
   return new URL(artifact(role).path, window.location.href).href;
+}
+
+function runtimeValue(name, fallback) {
+  return manifest.runtime && manifest.runtime[name] !== undefined
+    ? manifest.runtime[name]
+    : fallback;
 }
 
 async function fetchBytes(role) {
@@ -78,7 +85,9 @@ function mountFile(module, path, data) {
 }
 
 function qemuArgs() {
-  return [
+  const displayMode = runtimeValue("display", "none");
+  const displayDevice = runtimeValue("displayDevice", "default");
+  const args = [
     "-M",
     manifest.runtime.machine,
     "-cpu",
@@ -87,7 +96,22 @@ function qemuArgs() {
     manifest.runtime.memory,
     "-accel",
     "tcg,thread=single",
-    "-nographic",
+  ];
+  if (displayMode === "sdl") {
+    args.push("-display", "sdl,gl=off");
+    if (displayDevice === "stdvga") {
+      args.push("-vga", "std");
+    } else if (displayDevice === "virtio-vga") {
+      args.push("-vga", "virtio");
+    } else if (displayDevice === "virtio-gpu-pci") {
+      args.push("-vga", "none", "-device", "virtio-gpu-pci");
+    } else if (displayDevice === "none") {
+      args.push("-vga", "none");
+    }
+  } else {
+    args.push("-nographic");
+  }
+  args.push(
     "-no-reboot",
     "-serial",
     "mon:stdio",
@@ -103,7 +127,8 @@ function qemuArgs() {
     "none",
     "-L",
     "/firmware",
-  ];
+  );
+  return args;
 }
 
 function browserProblem() {
@@ -152,6 +177,7 @@ async function boot() {
   booting = true;
   bootButton.disabled = true;
   terminal.textContent = "";
+  configureDisplay();
   setStatus("Loading QEMU/WASM and Bus Engine OS artifacts...");
 
   writeLine("bus-engine-browser-lab: loading kernel");
@@ -188,6 +214,7 @@ async function boot() {
   setStatus("Starting QEMU/WASM...");
   await moduleFactory({
     arguments: qemuArgs(),
+    canvas: display,
     locateFile(path) {
       if (path === "qemu-system-x86_64.wasm") {
         return qemuWasm;
@@ -208,6 +235,28 @@ async function boot() {
     printErr: emit,
   });
 }
+
+function configureDisplay() {
+  const displayMode = runtimeValue("display", "none");
+  const resolution = runtimeValue("resolution", null);
+  if (resolution && Number.isInteger(resolution.width) && Number.isInteger(resolution.height)) {
+    display.width = resolution.width;
+    display.height = resolution.height;
+  }
+  if (displayMode === "sdl") {
+    display.hidden = false;
+    display.setAttribute("aria-hidden", "false");
+    display.focus();
+    writeLine("bus-engine-browser-lab: graphics enabled; click the display to focus keyboard input");
+  } else {
+    display.hidden = true;
+    display.setAttribute("aria-hidden", "true");
+  }
+}
+
+display.addEventListener("pointerdown", () => {
+  display.focus();
+});
 
 async function init() {
   try {

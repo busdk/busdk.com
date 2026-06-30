@@ -56,14 +56,19 @@ engine_os() {
     "$BUS_ENGINE_WASM_OS_ENGINE_OS_BIN" "$@"
     return
   fi
+  if [ -d "$ENGINE_OS_DIR/cmd/bus-engine-os" ]; then
+    (
+      cd "$ENGINE_OS_DIR"
+      go run -mod=readonly -tags netgo,osusergo ./cmd/bus-engine-os "$@"
+    )
+    return
+  fi
   if command -v bus-engine-os >/dev/null 2>&1; then
     bus-engine-os "$@"
     return
   fi
-  (
-    cd "$ENGINE_OS_DIR"
-    go run -mod=readonly -tags netgo,osusergo ./cmd/bus-engine-os "$@"
-  )
+  error "bus-engine-os source checkout or binary is required"
+  exit 2
 }
 
 if [ "$#" -eq 1 ] && { [ "$1" = "--help" ] || [ "$1" = "-h" ]; }; then
@@ -181,6 +186,8 @@ copy_checked \
 engine_os packages \
   --profile "$ENGINE_OS_PROFILE" \
   --arch "$ENGINE_OS_TARGET_ARCH" \
+  --profiles-dir "$ENGINE_OS_DIR/config/profiles" \
+  --recipes "$ENGINE_OS_DIR/packages" \
   --format json |
   python3 -c '
 import json
@@ -210,7 +217,10 @@ fi
 
 while IFS= read -r manifest_path; do
   [ -n "$manifest_path" ] || continue
-  set -- "$@" --package-manifest "$ENGINE_OS_DIR/$manifest_path"
+  case "$manifest_path" in
+    /*) set -- "$@" --package-manifest "$manifest_path" ;;
+    *) set -- "$@" --package-manifest "$ENGINE_OS_DIR/$manifest_path" ;;
+  esac
 done < "$PACKAGE_MANIFEST_LIST"
 
 rm -f "$PACKAGE_MANIFEST_LIST"
@@ -241,7 +251,7 @@ esac
 cat > "$OUT/iframe.html" <<NOTE
 <iframe
   src="$iframe_src"
-  title="Live Bus Engine OS QEMU WebAssembly terminal preview"
+  title="Live Bus Engine OS QEMU WebAssembly preview"
   loading="lazy"
 ></iframe>
 NOTE
