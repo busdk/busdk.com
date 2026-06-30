@@ -5,6 +5,11 @@ ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 QEMU_ARTIFACTS=${BUS_ENGINE_WASM_OS_QEMU_ARTIFACTS:-${BUS_ENGINE_BROWSER_LAB_QEMU_ARTIFACTS:-/tmp/qemu-wasm64-tci-artifacts-pipe2-final}}
 GUEST_ARTIFACTS=${BUS_ENGINE_WASM_OS_GUEST_ARTIFACTS:-${BUS_ENGINE_BROWSER_LAB_GUEST_ARTIFACTS:-/tmp/bus-engine-os-wasm-proof}}
 QEMU_SOURCE=${BUS_ENGINE_WASM_OS_QEMU_SOURCE:-${BUS_ENGINE_BROWSER_LAB_QEMU_SOURCE:-"$ROOT/../../qemu"}}
+ENGINE_OS_DIR=${BUS_ENGINE_WASM_OS_ENGINE_OS_DIR:-"$ROOT/../bus-engine-os"}
+ENGINE_OS_PROFILE=${BUS_ENGINE_WASM_OS_PROFILE:-virtual-server}
+ENGINE_OS_TARGET_ARCH=${BUS_ENGINE_WASM_OS_TARGET_ARCH:-x86_64}
+ENGINE_OS_SOURCES_CACHE=${BUS_ENGINE_WASM_OS_SOURCES_CACHE:-"$ENGINE_OS_DIR/build/sources"}
+ALLOW_PENDING_LICENSES=${BUS_ENGINE_WASM_OS_ALLOW_PENDING_LICENSES:-0}
 PUBLIC_PATH=${BUS_ENGINE_WASM_OS_PUBLIC_PATH:-/engine/browser-lab/}
 VERBOSE=${BUS_ENGINE_WASM_OS_VERBOSE:-0}
 
@@ -19,6 +24,12 @@ Optional inputs:
   BUS_ENGINE_WASM_OS_QEMU_ARTIFACTS   directory containing qemu-system-x86_64.js/.wasm
   BUS_ENGINE_WASM_OS_GUEST_ARTIFACTS  directory containing bzImage and rootfs.raw
   BUS_ENGINE_WASM_OS_QEMU_SOURCE      QEMU source tree with pc-bios firmware files
+  BUS_ENGINE_WASM_OS_ENGINE_OS_DIR    bus-engine-os checkout used for package metadata
+  BUS_ENGINE_WASM_OS_PROFILE          image profile for shipped package manifests
+  BUS_ENGINE_WASM_OS_TARGET_ARCH      target architecture for shipped package manifests
+  BUS_ENGINE_WASM_OS_SOURCES_CACHE    verified source cache for source-material files
+  BUS_ENGINE_WASM_OS_ALLOW_PENDING_LICENSES=1
+                                      allow development-preview output with pending review
   BUS_ENGINE_WASM_OS_PUBLIC_PATH      public URL path used in generated iframe.html
   BUS_ENGINE_WASM_OS_VERBOSE=1        print every copied file
 
@@ -40,6 +51,21 @@ error() {
   echo "write-engine-wasm-os-static: error: $*" >&2
 }
 
+engine_os() {
+  if [ -n "${BUS_ENGINE_WASM_OS_ENGINE_OS_BIN:-}" ]; then
+    "$BUS_ENGINE_WASM_OS_ENGINE_OS_BIN" "$@"
+    return
+  fi
+  if command -v bus-engine-os >/dev/null 2>&1; then
+    bus-engine-os "$@"
+    return
+  fi
+  (
+    cd "$ENGINE_OS_DIR"
+    go run -mod=readonly -tags netgo,osusergo ./cmd/bus-engine-os "$@"
+  )
+}
+
 if [ "$#" -eq 1 ] && { [ "$1" = "--help" ] || [ "$1" = "-h" ]; }; then
   usage
   exit 0
@@ -53,6 +79,7 @@ fi
 OUT=$1
 APP_SRC="$ROOT/docs/engine/browser-lab"
 ARTIFACT_OUT="$OUT/artifacts"
+PACKAGE_MANIFEST_LIST="$OUT/.bus-engine-os-package-manifests.txt"
 
 case "$OUT" in
   ""|"/"|".")
@@ -151,6 +178,45 @@ copy_checked \
   "$ARTIFACT_OUT/efi-virtio.rom" \
   "26be36901db7f8181c306cc62bd74891d8646528965a78e40cceadba5dd7c8e7"
 
+engine_os packages \
+  --profile "$ENGINE_OS_PROFILE" \
+  --arch "$ENGINE_OS_TARGET_ARCH" \
+  --format json |
+  python3 -c '
+import json
+import sys
+
+packages = json.load(sys.stdin)
+paths = []
+for package in packages:
+    if not package.get("runtime"):
+        continue
+    path = package.get("path", "")
+    if path:
+        paths.append(path)
+for path in sorted(set(paths)):
+    print(path)
+' > "$PACKAGE_MANIFEST_LIST"
+
+set -- artifact license-bundle \
+  --out "$OUT" \
+  --release-name "Bus Engine OS Browser Lab" \
+  --sources-cache "$ENGINE_OS_SOURCES_CACHE" \
+  --qemu-source-dir "$QEMU_SOURCE"
+
+if [ "$ALLOW_PENDING_LICENSES" = "1" ]; then
+  set -- "$@" --allow-pending
+fi
+
+while IFS= read -r manifest_path; do
+  [ -n "$manifest_path" ] || continue
+  set -- "$@" --package-manifest "$ENGINE_OS_DIR/$manifest_path"
+done < "$PACKAGE_MANIFEST_LIST"
+
+rm -f "$PACKAGE_MANIFEST_LIST"
+
+engine_os "$@"
+
 cat > "$OUT/README.txt" <<'NOTE'
 This directory is a complete static Bus Engine WASM OS bundle.
 
@@ -161,8 +227,10 @@ Cross-Origin-Embedder-Policy: require-corp
 Cross-Origin-Resource-Policy: same-origin
 
 Publishing this directory distributes QEMU WebAssembly and Bus Engine OS guest
-artifacts. The deployment must provide the corresponding source, build scripts,
-license texts, and notices required by the included components' licenses.
+artifacts. This directory includes generated license indexes, notices, and
+source-material payloads for the shipped artifacts. Source materials are copied
+only for shipped packages and artifacts whose recorded licenses require source
+delivery.
 NOTE
 
 case "$PUBLIC_PATH" in

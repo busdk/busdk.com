@@ -5,9 +5,10 @@
 - [x] Build a publishable Bus Engine browser-lab static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
-      artifacts, firmware, and license/compliance notice into that directory,
-      and keeps the product overview iframe integration independent of local
-      artifact staging.
+      artifacts, firmware, generated license indexes, third-party notices, and
+      source-material payloads for shipped license-obligation packages into
+      that directory, and keeps the product overview iframe integration
+      independent of local artifact staging.
 - [x] Embed Bus Engine OS on the Bus Engine product website as a live
       screenshot-like QEMU/WASM preview: use the proven 64-bit QEMU WASM
       runtime and Bus Engine OS guest artifacts or a documented artifact
