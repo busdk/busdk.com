@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Engine OS live browser preview</title>
+    <meta
+      name="description"
+      content="Boot-preview surface for running Bus Engine OS inside QEMU WebAssembly when browser support and release artifacts are available."
+    />
+    <link rel="canonical" href="https://busdk.com/engine/browser-lab/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://busdk.com/engine/browser-lab/" />
+    <meta property="og:title" content="Bus Engine OS live browser preview" />
+    <meta
+      property="og:description"
+      content="A terminal-style Bus Engine browser lab that can boot Bus Engine OS through QEMU WebAssembly."
+    />
+    <meta property="og:image" content="https://busdk.com/engine/preview.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bus Engine OS live browser preview" />
+    <meta
+      name="twitter:description"
+      content="Run the Bus Engine OS browser lab when QEMU WebAssembly and guest artifacts are available."
+    />
+    <meta name="twitter:image" content="https://busdk.com/engine/preview.jpg" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="browser-lab-shell" aria-label="Bus Engine OS live browser preview">
+      <div class="terminal-frame">
+        <div class="terminal-bar" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1 class="terminal-title">Bus Engine OS live browser preview</h1>
+        <div class="terminal-stage">
+          <img
+            class="fallback-image"
+            src="../preview.png"
+            alt="Captured Bus Engine OS terminal boot preview"
+          />
+          <pre id="terminal" class="terminal-output" aria-live="polite" aria-atomic="false">Bus Engine OS browser lab
+
+This frame can boot Bus Engine OS inside your browser. It needs the QEMU
+WebAssembly files, the Bus Engine OS image, and the required browser security
+headers. If any part is unavailable, the captured boot preview remains visible.</pre>
+        </div>
+        <div class="terminal-actions">
+          <p id="status" class="terminal-status">Checking browser support...</p>
+          <div class="terminal-action-buttons">
+            <a class="terminal-link" href="../index.html" target="_top">Open Engine overview</a>
+            <button id="boot-button" type="button" disabled>Boot Bus Engine OS</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="boot.js"></script>
+  </body>
+</html>

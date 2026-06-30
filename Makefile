@@ -1,4 +1,4 @@
-.PHONY: bus-ui-demo-assets clean quality
+.PHONY: bus-ui-demo-assets clean engine-wasm-os-static quality
 
 # Generated artifacts and local caches for the SDD Jekyll site.
 CLEAN_PATHS := \
@@ -12,6 +12,7 @@ CLEAN_PATHS := \
 
 BUS_UI_DEMO_ASSET_DIR := docs/assets/bus-ui-demo
 BUS_UI_DEMO_GO_CACHE := $(CURDIR)/tmp/go-build-cache
+ENGINE_WASM_OS_STATIC_DIR ?= tmp/engine-wasm-os-static
 
 clean:
 	rm -rf $(CLEAN_PATHS)
@@ -19,6 +20,9 @@ clean:
 quality:
 	./scripts/check-gx-ui-component-pages.sh
 	cd demos/bus-ui && go test ./...
+
+engine-wasm-os-static:
+	./scripts/write-engine-wasm-os-static.sh "$(ENGINE_WASM_OS_STATIC_DIR)"
 
 bus-ui-demo-assets:
 	mkdir -p $(BUS_UI_DEMO_ASSET_DIR)

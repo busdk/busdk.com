@@ -2,7 +2,20 @@
 
 # Current work
 
-- [x] Add public Bus Engine OS WASM development messaging to the production website.
+- [x] Build a publishable Bus Engine browser-lab static bundle with one command
+      that accepts an output directory, writes the iframe page, CSS, boot
+      script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
+      artifacts, firmware, and license/compliance notice into that directory,
+      and keeps the product overview iframe integration independent of local
+      artifact staging.
+- [x] Embed Bus Engine OS on the Bus Engine product website as a live
+      screenshot-like QEMU/WASM preview: use the proven 64-bit QEMU WASM
+      runtime and Bus Engine OS guest artifacts or a documented artifact
+      reference, add a static-site component under `docs/engine/` that boots in
+      browser when supported, keep a screenshot fallback, document required
+      COOP/COEP hosting headers, resolve the public GPL corresponding-source
+      delivery shape for the QEMU runtime, run website and browser smoke
+      checks, and commit the website work.
 - [x] Update Bus Engine product pages for the accepted Bus Engine OS
       virtual-server profile, supported macOS arm64 and Linux 64-bit host
       paths, GUI profile development status, and clearer technical usage
@@ -53,6 +66,14 @@ includes the `engine` product id, the nav regression test covers the product
 links, and the Bus UI demo WASM navigation asset has been rebuilt. The overview
 positions Bus Engine as the BusDK product for AI-powered Linux system
 engineering.
+
+The Bus Engine WASM OS preview now has one maintained static-bundle command:
+`make engine-wasm-os-static`, backed by
+`scripts/write-engine-wasm-os-static.sh OUTPUT_DIR`. It writes the iframe page,
+CSS, boot script, manifest, preview image, QEMU/WASM runtime, guest artifacts,
+firmware, `README.txt`, and an `iframe.html` embed snippet into the requested
+directory. The generated iframe path defaults to `/engine/browser-lab/` and can
+be set with `BUS_ENGINE_WASM_OS_PUBLIC_PATH`.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site
@@ -126,8 +147,3 @@ MIT or Apache 2.0 conversion after two years; the one-time option includes the
 current Bus Engine product-line codebase under MIT or Apache 2.0 at purchase
 plus one year of FSL-licensed updates; third-party software keeps its own
 licenses; and FSL applies only to Bus-related code licensed by us.
-
-Bus Engine public pages now state that a browser-hosted WASM version of Bus
-Engine OS is in development for evaluation, demos, and distribution
-experiments. The copy keeps `virtual-server` as the accepted current profile
-and treats GUI and WASM targets as development work.
