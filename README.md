@@ -23,11 +23,11 @@ directory.
 
 The release license index is scoped to the shipped Bus Engine OS package
 manifests. `source-materials/` is intentionally limited to QEMU source
-materials and shipped package inputs whose recorded licenses require source
-delivery, such as GPL, LGPL, AGPL, MPL, CDDL, EPL, CPL, GFDL, and EUPL style
-obligations. Permissive packages remain listed in the license and notice
-indexes when shipped, but their source archives are not copied unless their
-licenses require that delivery.
+materials and source inputs for shipped package recipes whose recorded
+licenses require source delivery, such as GPL, LGPL, AGPL, MPL, CDDL, EPL,
+CPL, GFDL, and EUPL style obligations. Permissive packages remain listed in
+the license and notice indexes when shipped, but their source archives are not
+copied.
 
 The exporter uses the `virtual-server` `x86_64` Bus Engine OS package manifests
 by default. Set these only when publishing a different proven guest image:
