@@ -1,4 +1,4 @@
-.PHONY: bus-ui-demo-assets clean quality
+.PHONY: browser-lab-artifacts bus-ui-demo-assets clean quality
 
 # Generated artifacts and local caches for the SDD Jekyll site.
 CLEAN_PATHS := \
@@ -19,6 +19,9 @@ clean:
 quality:
 	./scripts/check-gx-ui-component-pages.sh
 	cd demos/bus-ui && go test ./...
+
+browser-lab-artifacts:
+	./scripts/stage-engine-browser-lab-artifacts.sh
 
 bus-ui-demo-assets:
 	mkdir -p $(BUS_UI_DEMO_ASSET_DIR)

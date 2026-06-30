@@ -88,6 +88,10 @@
                     <code>virtual-server</code> image in a browser through QEMU WebAssembly.
                     When the current deployment does not provide the large runtime artifacts or
                     required browser isolation headers, it stays on the captured boot screen.
+                    Live boot requires
+                    <code>Cross-Origin-Opener-Policy: same-origin</code> and
+                    <code>Cross-Origin-Embedder-Policy: require-corp</code> on the browser-lab
+                    page and artifacts.
                   </p>
                 </div>
                 <iframe

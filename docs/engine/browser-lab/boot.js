@@ -1,6 +1,15 @@
 const terminal = document.getElementById("terminal");
 const statusEl = document.getElementById("status");
 const bootButton = document.getElementById("boot-button");
+const FIRMWARE_MOUNTS = new Map([
+  ["firmware-qboot", "/firmware/qboot.rom"],
+  ["firmware-linuxboot", "/firmware/linuxboot_dma.bin"],
+  ["firmware-bios-256k", "/firmware/bios-256k.bin"],
+  ["firmware-kvmvapic", "/firmware/kvmvapic.bin"],
+  ["firmware-vgabios", "/firmware/vgabios.bin"],
+  ["firmware-vgabios-stdvga", "/firmware/vgabios-stdvga.bin"],
+  ["firmware-efi-virtio", "/firmware/efi-virtio.rom"],
+]);
 
 let manifest;
 let booting = false;
@@ -119,18 +128,10 @@ async function checkReady() {
     return;
   }
 
-  const required = [
-    "qemu-js",
-    "qemu-wasm",
-    "kernel",
-    "rootfs",
-    "firmware-qboot",
-    "firmware-linuxboot",
-  ];
   const missing = [];
-  for (const role of required) {
-    if (!(await hasArtifact(role))) {
-      missing.push(role);
+  for (const item of manifest.artifacts) {
+    if (!(await hasArtifact(item.role))) {
+      missing.push(item.role);
     }
   }
   if (missing.length > 0) {
@@ -158,8 +159,10 @@ async function boot() {
   writeLine("bus-engine-browser-lab: loading root filesystem");
   const rootfs = await fetchBytes("rootfs");
   writeLine("bus-engine-browser-lab: loading firmware");
-  const qboot = await fetchBytes("firmware-qboot");
-  const linuxboot = await fetchBytes("firmware-linuxboot");
+  const firmware = [];
+  for (const [role, path] of FIRMWARE_MOUNTS) {
+    firmware.push({ data: await fetchBytes(role), path });
+  }
   writeLine("bus-engine-browser-lab: importing QEMU WebAssembly runtime");
 
   const qemuProgram = artifactUrl("qemu-js");
@@ -196,8 +199,9 @@ async function boot() {
       (module) => {
         mountFile(module, "/kernel", kernel);
         mountFile(module, "/rootfs.raw", rootfs);
-        mountFile(module, "/firmware/qboot.rom", qboot);
-        mountFile(module, "/firmware/linuxboot_dma.bin", linuxboot);
+        for (const file of firmware) {
+          mountFile(module, file.path, file.data);
+        }
       },
     ],
     print: emit,
