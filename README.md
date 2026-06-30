@@ -21,11 +21,13 @@ QEMU/WASM runtime, Bus Engine OS guest artifacts, firmware, generated license
 indexes, third-party notices, and required source-material payloads into that
 directory.
 
-`source-materials/` is intentionally limited to shipped packages and artifacts
-whose recorded licenses require source delivery, such as GPL, LGPL, AGPL, MPL,
-CDDL, EPL, and CPL style obligations. Permissive packages remain listed in the
-license and notice indexes when shipped, but their source archives are not
-copied unless their licenses require that delivery.
+The release license index is scoped to the shipped Bus Engine OS package
+manifests. `source-materials/` is intentionally limited to QEMU source
+materials and shipped package inputs whose recorded licenses require source
+delivery, such as GPL, LGPL, AGPL, MPL, CDDL, EPL, CPL, GFDL, and EUPL style
+obligations. Permissive packages remain listed in the license and notice
+indexes when shipped, but their source archives are not copied unless their
+licenses require that delivery.
 
 The exporter uses the `virtual-server` `x86_64` Bus Engine OS package manifests
 by default. Set these only when publishing a different proven guest image:
