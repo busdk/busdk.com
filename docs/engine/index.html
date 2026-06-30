@@ -79,6 +79,25 @@
                 <a class="button button-secondary" href="runtime-images/index.html">Review images</a>
               </div>
 
+              <div class="engine-live-preview">
+                <div class="engine-live-preview-copy">
+                  <p class="eyebrow">Live browser lab</p>
+                  <h2>Bus Engine OS running inside QEMU/WASM.</h2>
+                  <p>
+                    The preview frame is wired to boot the accepted x86_64
+                    <code>virtual-server</code> image in a browser through QEMU WebAssembly.
+                    When the current deployment does not provide the large runtime artifacts or
+                    required browser isolation headers, it stays on the captured boot screen.
+                  </p>
+                </div>
+                <iframe
+                  class="engine-live-preview-frame"
+                  src="browser-lab/index.html"
+                  title="Live Bus Engine OS QEMU WebAssembly terminal preview"
+                  loading="lazy"
+                ></iframe>
+              </div>
+
               <div class="product-section">
                 <h2>Development preview access is open for technical evaluation.</h2>
                 <p>

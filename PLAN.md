@@ -2,6 +2,14 @@
 
 # Current work
 
+- [ ] Embed Bus Engine OS on the Bus Engine product website as a live
+      screenshot-like QEMU/WASM preview: use the proven 64-bit QEMU WASM
+      runtime and Bus Engine OS guest artifacts or a documented artifact
+      reference, add a static-site component under `docs/engine/` that boots in
+      browser when supported, keep a screenshot fallback, document required
+      COOP/COEP hosting headers, resolve the public GPL corresponding-source
+      delivery shape for the QEMU runtime, run website and browser smoke
+      checks, and commit the website work.
 - [x] Update Bus Engine product pages for the accepted Bus Engine OS
       virtual-server profile, supported macOS arm64 and Linux 64-bit host
       paths, GUI profile development status, and clearer technical usage
