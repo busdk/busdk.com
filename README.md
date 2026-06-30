@@ -2,9 +2,15 @@
 
 Static BusDK commercial website.
 
-## Bus Engine Browser Lab
+## Bus Engine OS In The Browser
 
-Create the publishable Bus Engine OS browser-lab bundle with:
+Target architecture: `busdk.com` embeds a Bus Engine OS virtual server running
+in the browser. The QEMU/WASM runtime, Bus Engine OS guest artifacts, release
+files, isolation headers, and browser boot client should be published from an
+Engine-owned host such as `https://engine.busdk.com/`.
+
+The command below is the current transitional exporter while that Engine-owned
+publishing surface is split out:
 
 ```sh
 make engine-wasm-os-static
@@ -16,10 +22,12 @@ The default output directory is `tmp/engine-wasm-os-static`. Override it with:
 make engine-wasm-os-static ENGINE_WASM_OS_STATIC_DIR=/path/to/output
 ```
 
-The command writes the browser-lab page, iframe snippet, preview asset,
+The command writes the browser-hosted OS page, iframe snippet, preview asset,
 QEMU/WASM runtime, Bus Engine OS guest artifacts, firmware, generated license
 indexes, third-party notices, and required source-material payloads into that
-directory.
+directory. Keep new runtime/client ownership out of this website repository;
+website work should consume the published iframe URL once the Engine-hosted
+bundle exists.
 
 The release license index is scoped to the shipped Bus Engine OS package
 manifests. `source-materials/` is intentionally limited to QEMU source

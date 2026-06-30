@@ -2,15 +2,22 @@
 
 # Current work
 
-- [ ] Update the Bus Engine browser-lab iframe from terminal-only boot output
-      to an interactive graphics surface: use the QEMU/WASM SDL display path,
-      keep serial diagnostics visible, focus a canvas for keyboard input, pass
-      the display device and resolution from the manifest, and keep the
-      screenshot fallback for unsupported browsers or artifacts.
-- [ ] Add a browser-lab manifest shape that can describe `virtual-server` and
-      `virtual-desktop` profiles separately enough for the iframe to choose a
-      graphical or console-oriented runtime without hard-coding the page.
-- [x] Build a publishable Bus Engine browser-lab static bundle with one command
+- [ ] Move browser-hosted Bus Engine OS publishing out of `busdk.com` and onto
+      an Engine-owned host such as `https://engine.busdk.com/`: DoD is a
+      deployable browser client and QEMU/WASM artifact bundle served from the
+      Engine host with required COOP/COEP/CORP headers, release/source material
+      files, manifest, and smoke-tested boot path; `busdk.com` keeps only an
+      iframe embed, preview fallback, and product copy that points at the
+      hosted Bus Engine OS virtual server URL.
+- [ ] Update the Bus Engine OS iframe from terminal-only boot output to an
+      interactive graphics surface: use the QEMU/WASM SDL display path, keep
+      serial diagnostics visible, focus a canvas for keyboard input, pass the
+      display device and resolution from the manifest, and keep the screenshot
+      fallback for unsupported browsers or artifacts.
+- [ ] Add a browser-hosted OS manifest shape that can describe `virtual-server`
+      and `virtual-desktop` profiles separately enough for the iframe to choose
+      a graphical or console-oriented runtime without hard-coding the page.
+- [x] Build a publishable browser-hosted Bus Engine OS static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
       artifacts, firmware, generated license indexes, third-party notices, and
@@ -76,13 +83,18 @@ links, and the Bus UI demo WASM navigation asset has been rebuilt. The overview
 positions Bus Engine as the BusDK product for AI-powered Linux system
 engineering.
 
-The Bus Engine WASM OS preview now has one maintained static-bundle command:
+The browser-hosted Bus Engine OS preview currently has one transitional
+static-bundle command in this website repository:
 `make engine-wasm-os-static`, backed by
 `scripts/write-engine-wasm-os-static.sh OUTPUT_DIR`. It writes the iframe page,
 CSS, boot script, manifest, preview image, QEMU/WASM runtime, guest artifacts,
 firmware, `README.txt`, and an `iframe.html` embed snippet into the requested
 directory. The generated iframe path defaults to `/engine/browser-lab/` and can
-be set with `BUS_ENGINE_WASM_OS_PUBLIC_PATH`.
+be set with `BUS_ENGINE_WASM_OS_PUBLIC_PATH`. The target architecture is an
+Engine-owned host, such as `https://engine.busdk.com/`, with `busdk.com`
+consuming the hosted Bus Engine OS virtual server through an iframe. The
+`/engine/browser-lab/` path is a legacy technical path from the transitional
+website-hosted bundle and should be replaced during the host split.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site
