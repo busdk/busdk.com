@@ -2,6 +2,11 @@
 
 # Current work
 
+- [x] Rename the Bus Engine OS QEMU/WASM virtual-server website surface to
+      `wasm-virtual-server`: the live iframe app, static bundle source path,
+      generated public path default, and current evidence now use the
+      product-shaped name; obsolete lab-era wording is limited to compatibility
+      aliases outside the active website surface.
 - [ ] Move browser-hosted Bus Engine OS publishing out of `busdk.com` and onto
       an Engine-owned host such as `https://engine.busdk.com/`: DoD is a
       deployable browser client and QEMU/WASM artifact bundle served from the
@@ -72,7 +77,9 @@
 - [x] Make Bus Engine source-delivery copy direct: covered customer-release source is provided, not merely expected.
 - [x] Clarify that customers can buy commercial support to harden Bus Engine OS toward production readiness for specific use cases.
 - [x] Align Bus Engine Stripe and product-page license copy: monthly FSL source converting to MIT or Apache 2.0 after two years, one-time current codebase under MIT or Apache 2.0 plus one year of FSL updates, and third-party software retaining its own licenses.
-- [x] Remove old browser-lab wording as visible Bus Engine product wording; use browser-hosted preview wording while the legacy static path remains a transitional technical URL.
+- [x] Remove old lab-era wording as visible Bus Engine product wording; use
+      Bus Engine OS QEMU/WASM virtual-server wording for the active static
+      surface.
 
 # Current evidence
 
@@ -90,14 +97,13 @@ static-bundle command in this website repository:
 `scripts/write-engine-wasm-os-static.sh OUTPUT_DIR`. It writes the iframe page,
 CSS, boot script, manifest, preview image, QEMU/WASM runtime, guest artifacts,
 firmware, `README.txt`, and an `iframe.html` embed snippet into the requested
-directory. The generated iframe path defaults to `/engine/browser-lab/` and can
-be set with `BUS_ENGINE_WASM_OS_PUBLIC_PATH`. The target architecture is an
+directory. The generated iframe path defaults to
+`/engine/wasm-virtual-server/` and can be set with
+`BUS_ENGINE_WASM_OS_PUBLIC_PATH`. The target architecture is an
 Engine-owned host, such as `https://engine.busdk.com/`, with `busdk.com`
 consuming the hosted Bus Engine OS virtual server through an iframe. The
-`/engine/browser-lab/` path is a legacy technical path from the transitional
-website-hosted bundle and should be replaced during the host split; published
-copy should describe this as a browser-hosted preview, not as a separate
-browser-lab product.
+transitional website-hosted bundle should be described as Bus Engine OS running
+as a virtual server on QEMU/WASM.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site

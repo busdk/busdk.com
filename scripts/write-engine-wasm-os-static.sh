@@ -2,15 +2,15 @@
 set -eu
 
 ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
-QEMU_ARTIFACTS=${BUS_ENGINE_WASM_OS_QEMU_ARTIFACTS:-${BUS_ENGINE_BROWSER_LAB_QEMU_ARTIFACTS:-/tmp/qemu-wasm64-tci-artifacts-pipe2-final}}
-GUEST_ARTIFACTS=${BUS_ENGINE_WASM_OS_GUEST_ARTIFACTS:-${BUS_ENGINE_BROWSER_LAB_GUEST_ARTIFACTS:-/tmp/bus-engine-os-wasm-proof}}
-QEMU_SOURCE=${BUS_ENGINE_WASM_OS_QEMU_SOURCE:-${BUS_ENGINE_BROWSER_LAB_QEMU_SOURCE:-"$ROOT/../../qemu"}}
+QEMU_ARTIFACTS=${BUS_ENGINE_WASM_OS_QEMU_ARTIFACTS:-/tmp/qemu-wasm64-tci-artifacts-pipe2-final}
+GUEST_ARTIFACTS=${BUS_ENGINE_WASM_OS_GUEST_ARTIFACTS:-/tmp/bus-engine-os-wasm-proof}
+QEMU_SOURCE=${BUS_ENGINE_WASM_OS_QEMU_SOURCE:-"$ROOT/../../qemu"}
 ENGINE_OS_DIR=${BUS_ENGINE_WASM_OS_ENGINE_OS_DIR:-"$ROOT/../bus-engine-os"}
 ENGINE_OS_PROFILE=${BUS_ENGINE_WASM_OS_PROFILE:-virtual-server}
 ENGINE_OS_TARGET_ARCH=${BUS_ENGINE_WASM_OS_TARGET_ARCH:-x86_64}
 ENGINE_OS_SOURCES_CACHE=${BUS_ENGINE_WASM_OS_SOURCES_CACHE:-"$ENGINE_OS_DIR/build/sources"}
 ALLOW_PENDING_LICENSES=${BUS_ENGINE_WASM_OS_ALLOW_PENDING_LICENSES:-0}
-PUBLIC_PATH=${BUS_ENGINE_WASM_OS_PUBLIC_PATH:-/engine/browser-lab/}
+PUBLIC_PATH=${BUS_ENGINE_WASM_OS_PUBLIC_PATH:-/engine/wasm-virtual-server/}
 VERBOSE=${BUS_ENGINE_WASM_OS_VERBOSE:-0}
 
 usage() {
@@ -32,8 +32,6 @@ Optional inputs:
                                       allow development-preview output with pending review
   BUS_ENGINE_WASM_OS_PUBLIC_PATH      public URL path used in generated iframe.html
   BUS_ENGINE_WASM_OS_VERBOSE=1        print every copied file
-
-Legacy BUS_ENGINE_BROWSER_LAB_* input variables are still accepted.
 USAGE
 }
 
@@ -82,7 +80,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 OUT=$1
-APP_SRC="$ROOT/docs/engine/browser-lab"
+APP_SRC="$ROOT/docs/engine/wasm-virtual-server"
 ARTIFACT_OUT="$OUT/artifacts"
 PACKAGE_MANIFEST_LIST="$OUT/.bus-engine-os-package-manifests.txt"
 

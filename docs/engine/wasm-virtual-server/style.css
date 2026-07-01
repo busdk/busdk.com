@@ -65,7 +65,7 @@ button:not(:disabled):hover {
   background: rgba(137, 240, 178, 0.1);
 }
 
-.browser-lab-shell {
+.wasm-virtual-server-shell {
   min-height: 100vh;
   padding: 0;
 }
