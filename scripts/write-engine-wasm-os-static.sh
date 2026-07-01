@@ -207,7 +207,7 @@ for path in sorted(set(paths)):
 
 set -- artifact license-bundle \
   --out "$OUT" \
-  --release-name "Bus Engine OS Browser Lab" \
+  --release-name "Bus Engine OS browser-hosted preview" \
   --sources-cache "$ENGINE_OS_SOURCES_CACHE" \
   --qemu-source-dir "$QEMU_SOURCE"
 

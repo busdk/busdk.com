@@ -1,5 +1,5 @@
 {
-  "format": "bus-engine-browser-lab-v1",
+  "format": "bus-engine-os-qemu-wasm-preview-v1",
   "status": "artifact-reference",
   "guest": {
     "name": "Bus Engine OS",
@@ -34,7 +34,7 @@
       "display": "sdl",
       "displayDevice": "stdvga",
       "keyboard": true,
-      "notes": "The current browser-lab artifact is the virtual-server profile. Serial diagnostics stay visible while the graphical display path is enabled when the QEMU/WASM runtime supports it."
+      "notes": "The current browser-hosted artifact is the virtual-server profile. Serial diagnostics stay visible while the graphical display path is enabled when the QEMU/WASM runtime supports it."
     },
     {
       "name": "virtual-desktop",

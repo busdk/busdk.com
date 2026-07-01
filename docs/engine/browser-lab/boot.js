@@ -180,16 +180,16 @@ async function boot() {
   configureDisplay();
   setStatus("Loading QEMU/WASM and Bus Engine OS artifacts...");
 
-  writeLine("bus-engine-browser-lab: loading kernel");
+  writeLine("bus-engine-os-preview: loading kernel");
   const kernel = await fetchBytes("kernel");
-  writeLine("bus-engine-browser-lab: loading root filesystem");
+  writeLine("bus-engine-os-preview: loading root filesystem");
   const rootfs = await fetchBytes("rootfs");
-  writeLine("bus-engine-browser-lab: loading firmware");
+  writeLine("bus-engine-os-preview: loading firmware");
   const firmware = [];
   for (const [role, path] of FIRMWARE_MOUNTS) {
     firmware.push({ data: await fetchBytes(role), path });
   }
-  writeLine("bus-engine-browser-lab: importing QEMU WebAssembly runtime");
+  writeLine("bus-engine-os-preview: importing QEMU WebAssembly runtime");
 
   const qemuProgram = artifactUrl("qemu-js");
   const qemuWasm = artifactUrl("qemu-wasm");
@@ -247,7 +247,7 @@ function configureDisplay() {
     display.hidden = false;
     display.setAttribute("aria-hidden", "false");
     display.focus();
-    writeLine("bus-engine-browser-lab: graphics enabled; click the display to focus keyboard input");
+    writeLine("bus-engine-os-preview: graphics enabled; click the display to focus keyboard input");
   } else {
     display.hidden = true;
     display.setAttribute("aria-hidden", "true");
