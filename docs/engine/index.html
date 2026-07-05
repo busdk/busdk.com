@@ -6,7 +6,7 @@
     <title>Bus Engine Development Preview | AI-engineered Linux systems</title>
     <meta
       name="description"
-      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths plus GUI and WASM targets in development."
+      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths plus a browser-hosted RISC-V 64 QEMU/WASM proof."
     />
     <link rel="canonical" href="https://busdk.com/engine/" />
     <meta property="og:type" content="website" />
@@ -71,8 +71,8 @@
                 systems. The current accepted profile is <code>virtual-server</code>: a
                 source-built Linux server image assembled from validated Bus packages and
                 boot-tested in QEMU. The GUI profile is being built as a separate development
-                profile, and a WASM version is also in development for browser-hosted evaluation
-                and distribution experiments.
+                profile, and the browser-hosted RISC-V 64 QEMU/WASM release is published for
+                evaluation and distribution experiments.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="pricing/index.html">Join the founding preview</a>
@@ -82,25 +82,24 @@
 
               <div class="engine-live-preview">
                 <div class="engine-live-preview-copy">
-                  <p class="eyebrow">Browser-hosted preview</p>
-                  <h2>Bus Engine OS running inside QEMU/WASM.</h2>
+                  <p class="eyebrow">Published browser-hosted release</p>
+                  <h2>Bus Engine OS RISC-V 64 running inside QEMU/WASM.</h2>
                   <p>
-                    The preview frame is wired for Bus Engine OS profiles that run in a
-                    browser through QEMU WebAssembly. The current artifact is the accepted
-                    x86_64 <code>virtual-server</code> image; graphical
-                    <code>virtual-desktop</code> artifacts can use the same display and
-                    keyboard surface when available. When the deployment does not provide the
-                    large runtime artifacts or required browser isolation headers, it stays on
-                    the captured boot screen. Live boot requires
-                    <code>Cross-Origin-Opener-Policy: same-origin</code> and
-                    <code>Cross-Origin-Embedder-Policy: require-corp</code> on the preview
-                    page and artifacts.
+                    The frame loads the published Bus Engine OS <code>virtual-server</code>
+                    release from <a href="https://dev.hg.fi/beos/">dev.hg.fi/beos</a>. The
+                    bundle includes the QEMU WebAssembly runtime, the RISC-V 64 kernel and
+                    root filesystem, release checksums, license notices, and source-material
+                    files for shipped third-party components.
                   </p>
+                  <div class="product-links">
+                    <a class="button button-secondary" href="https://dev.hg.fi/beos/" target="_blank" rel="noopener">Open published release</a>
+                  </div>
                 </div>
                 <iframe
                   class="engine-live-preview-frame"
-                  src="wasm-virtual-server/index.html"
-                  title="Live Bus Engine OS QEMU WebAssembly preview"
+                  src="https://dev.hg.fi/beos/"
+                  title="Published Bus Engine OS RISC-V 64 QEMU WebAssembly release"
+                  allow="fullscreen"
                   loading="lazy"
                 ></iframe>
               </div>

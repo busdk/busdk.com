@@ -5,12 +5,14 @@ Static BusDK commercial website.
 ## Bus Engine OS In The Browser
 
 Target architecture: `busdk.com` embeds a Bus Engine OS virtual server running
-in the browser. The QEMU/WASM runtime, Bus Engine OS guest artifacts, release
-files, isolation headers, and browser boot client should be published from an
-Engine-owned host such as `https://engine.busdk.com/`.
+in the browser. The current development release is published from
+`https://dev.hg.fi/beos/` with the QEMU/WASM runtime, Bus Engine OS guest
+artifacts, release files, isolation headers, and browser boot client outside
+this website repository. A later Engine-owned production host can replace that
+iframe URL without moving runtime artifacts back into `busdk.com`.
 
-The command below is the current transitional exporter while that Engine-owned
-publishing surface is split out:
+The command below is the older transitional exporter for local website-bundle
+experiments:
 
 ```sh
 make engine-wasm-os-static
@@ -26,8 +28,8 @@ The command writes the browser-hosted OS page, iframe snippet, preview asset,
 QEMU/WASM runtime, Bus Engine OS guest artifacts, firmware, generated license
 indexes, third-party notices, and required source-material payloads into that
 directory. Keep new runtime/client ownership out of this website repository;
-website work should consume the published iframe URL once the Engine-hosted
-bundle exists.
+website work should consume the published iframe URL instead of copying those
+runtime artifacts into this repository.
 
 The release license index is scoped to the shipped Bus Engine OS package
 manifests. `source-materials/` is intentionally limited to QEMU source
@@ -39,8 +41,9 @@ license term still creates a source-delivery obligation. Permissive packages
 remain listed in the license and notice indexes when shipped, but their source
 archives are not copied.
 
-The exporter uses the `virtual-server` `x86_64` Bus Engine OS package manifests
-by default. Set these only when publishing a different proven guest image:
+The transitional exporter uses the `virtual-server` `x86_64` Bus Engine OS
+package manifests by default. Set these only for local experiments with a
+different proven guest image:
 
 ```sh
 BUS_ENGINE_WASM_OS_PROFILE=virtual-server \

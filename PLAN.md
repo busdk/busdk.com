@@ -2,13 +2,19 @@
 
 # Current work
 
+- [x] Switch the Bus Engine overview iframe from the transitional repository-local
+      bundle path to the published browser-hosted release at
+      `https://dev.hg.fi/beos/`, keep the copy aligned with the RISC-V 64
+      virtual-server proof, and verify the static site still passes local
+      quality checks.
 - [x] Rename the Bus Engine OS QEMU/WASM virtual-server website surface to
       `wasm-virtual-server`: the live iframe app, static bundle source path,
       generated public path default, and current evidence now use the
       product-shaped name; obsolete lab-era wording is limited to compatibility
       aliases outside the active website surface.
 - [ ] Move browser-hosted Bus Engine OS publishing out of `busdk.com` and onto
-      an Engine-owned host such as `https://engine.busdk.com/`: DoD is a
+      the Engine-owned development host, currently `https://dev.hg.fi/beos/`:
+      DoD is a
       deployable browser client and QEMU/WASM artifact bundle served from the
       Engine host with required COOP/COEP/CORP headers, release/source material
       files, manifest, and smoke-tested boot path; `busdk.com` keeps only an
@@ -104,6 +110,12 @@ Engine-owned host, such as `https://engine.busdk.com/`, with `busdk.com`
 consuming the hosted Bus Engine OS virtual server through an iframe. The
 transitional website-hosted bundle should be described as Bus Engine OS running
 as a virtual server on QEMU/WASM.
+
+The Bus Engine overview page now embeds the published development release at
+`https://dev.hg.fi/beos/` instead of the transitional repository-local
+`wasm-virtual-server` path. The iframe copy names the RISC-V 64 QEMU/WASM
+release and links to the full published release page. Local site verification
+for that change passed with `make quality`.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site
