@@ -2,11 +2,14 @@
 
 # Current work
 
-- [x] Switch the Bus Engine overview iframe from the transitional repository-local
-      bundle path to the published browser-hosted release at
+- [x] Switch the Bus Engine overview release surface from the transitional
+      repository-local bundle path to the published browser-hosted release at
       `https://dev.hg.fi/beos/`, keep the copy aligned with the RISC-V 64
       virtual-server proof, and verify the static site still passes local
       quality checks.
+- [x] Replace the GitHub Pages-hosted live iframe with a direct launch preview
+      after browser proof showed the iframe cannot be cross-origin isolated
+      from the current `busdk.com/engine/` parent page.
 - [x] Rename the Bus Engine OS QEMU/WASM virtual-server website surface to
       `wasm-virtual-server`: the live iframe app, static bundle source path,
       generated public path default, and current evidence now use the
@@ -17,9 +20,10 @@
       DoD is a
       deployable browser client and QEMU/WASM artifact bundle served from the
       Engine host with required COOP/COEP/CORP headers, release/source material
-      files, manifest, and smoke-tested boot path; `busdk.com` keeps only an
-      iframe embed, preview fallback, and product copy that points at the
-      hosted Bus Engine OS virtual server URL.
+      files, manifest, and smoke-tested boot path; `busdk.com` keeps a direct
+      launch preview and product copy that points at the hosted Bus Engine OS
+      virtual server URL until the parent product page can be served with the
+      COOP/COEP headers required for a true live iframe.
 - [ ] Update the Bus Engine OS iframe from terminal-only boot output to an
       interactive graphics surface: use the QEMU/WASM SDL display path, keep
       serial diagnostics visible, focus a canvas for keyboard input, pass the
@@ -106,16 +110,21 @@ firmware, `README.txt`, and an `iframe.html` embed snippet into the requested
 directory. The generated iframe path defaults to
 `/engine/wasm-virtual-server/` and can be set with
 `BUS_ENGINE_WASM_OS_PUBLIC_PATH`. The target architecture is an
-Engine-owned host, such as `https://engine.busdk.com/`, with `busdk.com`
-consuming the hosted Bus Engine OS virtual server through an iframe. The
-transitional website-hosted bundle should be described as Bus Engine OS running
-as a virtual server on QEMU/WASM.
+Engine-owned host, such as `https://engine.busdk.com/`, with a header-capable
+Bus Engine product page consuming the hosted Bus Engine OS virtual server
+through an iframe. The current GitHub Pages-hosted `busdk.com/engine/` page
+uses a direct launch preview until the parent page can send COOP/COEP headers.
+The transitional website-hosted bundle should be described as Bus Engine OS
+running as a virtual server on QEMU/WASM.
 
-The Bus Engine overview page now embeds the published development release at
+The Bus Engine overview page now points at the published development release at
 `https://dev.hg.fi/beos/` instead of the transitional repository-local
-`wasm-virtual-server` path. The iframe copy names the RISC-V 64 QEMU/WASM
-release and links to the full published release page. Local site verification
-for that change passed with `make quality`.
+`wasm-virtual-server` path. A 2026-07-06 public Chrome probe showed the direct
+release is cross-origin isolated with `SharedArrayBuffer`, but the GitHub
+Pages-served `busdk.com/engine/` parent is not cross-origin isolated, and the
+framed release fails with `Error: cross-origin isolation is required for pthread
+WebAssembly`. The overview therefore uses a direct launch preview until the
+parent product page moves behind COOP/COEP-capable hosting or proxying.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site

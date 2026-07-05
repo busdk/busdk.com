@@ -887,13 +887,41 @@ h1 {
   margin: 0;
 }
 
-.engine-live-preview-frame {
+.engine-live-preview-launch {
   aspect-ratio: 16 / 11;
-  border: 0;
+  background: #071012;
   border-radius: 0.7rem;
+  color: white;
+  display: block;
   min-height: 25rem;
   overflow: hidden;
+  position: relative;
+  text-decoration: none;
   width: 100%;
+}
+
+.engine-live-preview-launch img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.engine-live-preview-launch span {
+  background: rgba(6, 17, 19, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.5rem;
+  bottom: 1rem;
+  color: white;
+  font-weight: 700;
+  left: 1rem;
+  padding: 0.65rem 0.9rem;
+  position: absolute;
+}
+
+.engine-live-preview-launch:hover span,
+.engine-live-preview-launch:focus-visible span {
+  background: rgba(13, 92, 86, 0.92);
 }
 
 .tutorial-grid {
@@ -1616,7 +1644,7 @@ a.tutorial-card:focus-visible {
     width: min(var(--max), calc(100% - 1.4rem));
   }
 
-  .engine-live-preview-frame {
+  .engine-live-preview-launch {
     min-height: 22rem;
   }
 
