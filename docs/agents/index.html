@@ -6,7 +6,7 @@
     <title>Bus Agentic Development | BusDK</title>
     <meta
       name="description"
-      content="Semi-autonomous software development with supervisor agents, worker agents, durable tasks, repositories, terminals, notes, reviews, MCP, and local or SSH-accessible work capacity."
+      content="Run Claude and Codex worker agents as a supervised software team: durable tasks, real repositories and terminals, attached review evidence, and development machines added locally or over SSH."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -38,12 +38,12 @@
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Agentic Development</p>
-              <h1>Semi-autonomous software development with autonomous agents.</h1>
+              <h1>AI agents doing real software work that outlasts the session.</h1>
               <p class="hero-copy">
-                Bus Agentic Development gives AI supervisor agents and worker agents durable tasks,
-                repository workspaces, terminals, notes, reviews, MCP capability exposure, local or
-                SSH-accessible development environments, and per-template engine choice across
-                Claude and Codex/GPT workers.
+                Launch Claude or Codex/GPT worker agents into durable tasks with real repository
+                checkouts and real terminals, on your machines or over SSH. Every diff, log, note,
+                and review decision stays attached to the task, so agent work survives restarts,
+                handoffs, and long-running projects instead of vanishing with the chat window.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="https://docs.busdk.com/">Read docs</a>
@@ -52,10 +52,12 @@
               <div class="product-section">
                 <h2>What it is for</h2>
                 <p>
-                  This product is for teams that want AI agents to do real software work in parallel
-                  without losing task state, evidence, terminal output, review decisions, or project
-                  memory. The first public focus is BusDK-style software development, especially
-                  Go-heavy systems and BusDK module work.
+                  This product is for teams that want several AI agents working in parallel the way
+                  a real team does — with task state, evidence, terminal output, review decisions,
+                  and project memory kept instead of lost. Supervisor agents and human approval sit
+                  above the workers, so autonomy scales with the risk you accept. The first public
+                  focus is BusDK-style software development, especially Go-heavy systems and BusDK
+                  module work.
                 </p>
               </div>
               <div class="product-section">
@@ -71,22 +73,37 @@
                 <h2>Worker engine choice</h2>
                 <p>
                   Bus Workers are engine-agnostic. A worker's engine is set by its template, and
-                  BusDK ships worker templates for Claude engines (Fable 5, Opus 4.8, Sonnet 5,
-                  Haiku 4.5) and Codex/GPT engines (GPT 5.5) — you pick one per worker. Creation,
-                  messaging, goal records, logs, and lifecycle controls use the
-                  same Bus worker surface, and each engine integration owns its own
-                  <code>bus.&lt;engine&gt;.*</code> events. Goal-objective execution currently runs on
-                  Codex workers.
+                  the worker templates shipped today cover Claude engines (Fable 5, Opus 4.8,
+                  Sonnet 5, Haiku 4.5) and Codex/GPT engines (GPT 5.5) — you pick one per worker,
+                  and the template set changes as new engines ship. Creation, messaging, goal
+                  records, logs, and lifecycle controls use the same Bus worker surface, and each
+                  engine integration owns its own <code>bus.&lt;engine&gt;.*</code> events.
+                  Goal-objective execution currently runs on Codex workers; with a Claude worker
+                  you direct the same work through messages and task assignments while Claude
+                  goal support is in progress.
                 </p>
               </div>
               <div class="product-section">
                 <h2>Modules behind the product</h2>
                 <p>
-                  The product brings together tasks, workers, Bus Agent Runtime, run/prompt workflows,
-                  Claude and Codex/GPT integrations, chat, development tooling, remotes, repository
-                  workspaces, MCP, notes, and the AI portal surface.
+                  The product brings together task and worker management, the Bus Agent Runtime,
+                  run/prompt workflows, Claude and Codex/GPT integrations, chat, development
+                  tooling, remote machines, repository workspaces, notes, agent tool access
+                  through the Model Context Protocol, and the portal used to follow and direct
+                  agent work.
                 </p>
                 <p><a href="modules/index.html">See the module map for this product.</a></p>
+              </div>
+              <div class="product-section">
+                <h2>Try it on your own repository</h2>
+                <p>
+                  Start with the <a href="https://docs.busdk.com/">documentation</a>, or bring a
+                  repository you want agents working on and see the task, terminal, and review
+                  surfaces live in a demo.
+                </p>
+                <div class="product-links">
+                  <a class="button button-primary" href="mailto:sales@hg.fi">Book a technical demo</a>
+                </div>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@
     <title>Bus Engine Development Preview | AI-engineered Linux systems</title>
     <meta
       name="description"
-      content="Bus Engine OS has an accepted virtual-server profile for source-built Linux runtime images, with macOS arm64 and Linux 64-bit host paths plus a browser-hosted RISC-V 64 QEMU/WASM proof."
+      content="Bus Engine is a rolling Linux distribution built from source and maintained by an integrated AI engineering system: versioned system blueprints, boot-tested virtual-server images, and a published RISC-V 64 release that boots in the browser."
     />
     <link rel="canonical" href="https://busdk.com/engine/" />
     <meta property="og:type" content="website" />
@@ -64,15 +64,18 @@
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Engine — Founding Development Preview</p>
-              <h1>A rolling Linux distribution maintained with an integrated AI engineering system.</h1>
+              <h1>A rolling Linux distribution built from source and maintained by an integrated AI engineering system.</h1>
               <p class="hero-copy">
-                Bus Engine OS is a flexible Linux distribution under active development for
-                desktop-hosted virtual machines, virtualized servers, and customer-defined
-                systems. The current accepted profile is <code>virtual-server</code>: a
-                source-built Linux server image assembled from validated Bus packages and
-                boot-tested in QEMU. The GUI profile is being built as a separate development
-                profile, and the browser-hosted RISC-V 64 QEMU/WASM release is published for
-                evaluation and distribution experiments.
+                When the operating system is part of your product, a general-purpose
+                distribution leaves you patching around decisions you do not control. Bus
+                Engine OS takes a different path, under active development: every kernel
+                option, package definition, and boot test lives in a versioned system
+                blueprint that the integrated AI engineering system can rebuild, boot, and
+                prove on demand — without waiting for an upstream distribution. The current
+                accepted profile is <code>virtual-server</code>, a source-built Linux server
+                image boot-tested in QEMU; a published RISC-V 64 QEMU/WASM release boots the
+                same OS inside a browser tab, and the GUI profile is being built as a
+                separate development profile.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="pricing/index.html">Join the founding preview</a>
@@ -83,14 +86,14 @@
               <div class="engine-live-preview">
                 <div class="engine-live-preview-copy">
                   <p class="eyebrow">Published browser-hosted release</p>
-                  <h2>Bus Engine OS RISC-V 64 running inside QEMU/WASM.</h2>
+                  <h2>A real Linux server booting in a browser tab — no installer, no VM host.</h2>
                   <p>
-                    The published Bus Engine OS <code>virtual-server</code> release is served
-                    from <a href="https://dev.hg.fi/beos/">dev.hg.fi/beos</a> and now boots
-                    to multi-user mode in the public browser smoke. The bundle includes the QEMU
-                    WebAssembly runtime, the RISC-V 64 kernel and root filesystem, release
-                    checksums, license notices, and source-material files for shipped
-                    third-party components.
+                    The published Bus Engine OS <code>virtual-server</code> release runs RISC-V 64
+                    inside QEMU compiled to WebAssembly. It is served from
+                    <a href="https://dev.hg.fi/beos/">dev.hg.fi/beos</a> and boots to multi-user
+                    mode in the public browser smoke. The bundle includes the QEMU WebAssembly
+                    runtime, the RISC-V 64 kernel and root filesystem, release checksums, license
+                    notices, and source-material files for shipped third-party components.
                   </p>
                   <div class="product-links">
                     <a class="button button-secondary" href="https://dev.hg.fi/beos/" target="_blank" rel="noopener">Open published release</a>
@@ -145,7 +148,7 @@
                   uptime SLA.
                 </p>
                 <div class="tutorial-callout">
-                  <h3>The model reasons. Agent coordinates. Bus Engine executes. Tests verify.</h3>
+                  <h3>The model reasons. The agent coordinates. Bus Engine executes. Tests verify.</h3>
                   <p>
                     AI performs the adaptable engineering. Deterministic tools perform and verify
                     repeatable operations such as dependency resolution, configuration checks,
@@ -384,7 +387,7 @@ bus engine ssh</code></pre>
                   is built and verified, plus the generated image and package artifacts.
                 </p>
                 <p>
-                  In the June 2026 development state, the Engine runtime control path, artifact
+                  In the current development state, the Engine runtime control path, artifact
                   catalog, local VM provider path, QEMU integration, source-built package
                   pipeline, virtual-server image generation, boot acceptance, and local artifact
                   promotion are available. Update, recovery, rollback, GUI profile completion, and
@@ -455,8 +458,9 @@ bus engine ssh</code></pre>
                   engines or Codex/GPT engines, while Bus keeps the same worker surface for
                   creation, messaging, goal records, logs, and lifecycle controls.
                   The <a href="architecture/index.html">architecture page</a> describes the Bus
-                  Engine agent-runtime boundary. Goal-objective execution currently runs on Codex
-                  workers backed by <a href="https://github.com/openai/codex">Codex App Server</a>.
+                  Engine agent-runtime boundary. Today, autonomous goal-driven runs are handled
+                  by Codex/GPT workers; Claude workers take direction through messages and task
+                  assignments.
                 </p>
               </div>
 
