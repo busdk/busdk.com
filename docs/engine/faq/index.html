@@ -108,17 +108,17 @@ bus engine ssh</code></pre>
                 <h3>How does AI participate?</h3>
                 <p>AI performs adaptable engineering work: understanding requirements, interpreting evidence, selecting a configuration strategy, diagnosing failures, and updating the blueprint. Deterministic tools compile, package, build images, calculate checksums, boot, and test.</p>
                 <h3>What is the agent runtime?</h3>
-                <p>Bus Engine currently integrates <a href="https://github.com/openai/codex">Codex App Server</a> as a separate open-source agent-runtime component, then combines it with Linux-specific tools, policies, blueprints, build environments, target information, and validation workflows.</p>
+                <p>Bus Engine runs through Bus Workers whose templates can choose Claude engines such as Fable 5, Opus 4.8, Sonnet 5, or Haiku 4.5, or Codex/GPT engines such as GPT 5.5. Bus combines those engine integrations with Linux-specific tools, policies, blueprints, build environments, target information, and validation workflows.</p>
                 <h3>Does Bus Engine use a REST API to communicate with the agent runtime?</h3>
-                <p>No. <a href="https://github.com/openai/codex">Codex App Server</a> uses bidirectional JSON-RPC 2.0. Bus Engine may expose its own HTTP APIs, but those APIs are Bus Engine APIs rather than the native App Server protocol.</p>
+                <p>The Bus worker and Engine APIs are Bus APIs. Each engine integration owns its own runtime boundary and <code>bus.&lt;engine&gt;.*</code> events; Codex workers use <a href="https://github.com/openai/codex">Codex App Server</a>, which uses bidirectional JSON-RPC 2.0 rather than the Bus Engine HTTP API.</p>
                 <h3>Is the agent runtime included?</h3>
-                <p>Bus Engine integrates <a href="https://github.com/openai/codex">Codex App Server</a> as a separately licensed open-source runtime component. AI model access and hosted model service fees are configured separately.</p>
+                <p>Bus Engine integrates supported Claude and Codex/GPT worker engines through separate integration modules. Codex workers use <a href="https://github.com/openai/codex">Codex App Server</a> as a separately licensed open-source runtime component. AI model access and hosted model service fees are configured separately.</p>
                 <h3>Are AI model fees included?</h3>
                 <p>Third-party hosted-model usage and AI service fees are not included unless a plan explicitly says otherwise.</p>
                 <h3>Can customers use local models?</h3>
                 <p>Customers may use a supported hosted provider or operate a compatible model within their own infrastructure where the deployed Bus AI integration modules, local-model integrations, policies, and network controls support that deployment.</p>
                 <h3>Is the entire AI stack open source?</h3>
-                <p>No. <a href="https://github.com/openai/codex">Codex App Server</a> is an open-source runtime component, but selected hosted model services may be proprietary and separately billed. Local inference runtimes and models have their own licenses.</p>
+                <p>No. <a href="https://github.com/openai/codex">Codex App Server</a> is an open-source runtime component, but Claude, selected Codex/GPT hosted model services, and other hosted model services may be proprietary and separately billed. Local inference runtimes and models have their own licenses.</p>
               </div>
 
               <div class="product-section">

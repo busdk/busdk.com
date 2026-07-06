@@ -48,11 +48,12 @@
               <p class="eyebrow">Bus Engine Architecture</p>
               <h1>AI participates in a controlled Linux engineering loop.</h1>
               <p class="hero-copy">
-                Bus Engine integrates <a href="https://github.com/openai/codex">Codex App Server</a>,
-                a separate open-source agent runtime from that project, with Linux-specific
-                tools, blueprints, policies, isolated build environments, boot tests, logs, and
-                evidence. The model handles reasoning; deterministic tools build and verify the
-                system.
+                Bus Engine runs its engineering loop through Bus Workers backed by Claude or
+                Codex/GPT engine integrations, including
+                <a href="https://github.com/openai/codex">Codex App Server</a> for Codex workers.
+                Linux-specific tools, blueprints, policies, isolated build environments, boot
+                tests, logs, and evidence stay on the Bus side. The model handles reasoning;
+                deterministic tools build and verify the system.
               </p>
 
               <div class="product-section">
@@ -107,18 +108,19 @@
               <div class="product-section">
                 <h2>Agent runtime boundary</h2>
                 <p>
-                  Bus Engine integrates the open-source
-                  <a href="https://github.com/openai/codex">Codex App Server</a> as a separate
-                  agent-runtime component. Bus Engine supplies Linux-specific tools, blueprints,
-                  policies, build environments, target information, and validation workflows.
-                  It coordinates the agent loop and connects it to a customer-selected AI model.
+                  Bus Workers are engine-agnostic. Each worker template can select a Claude engine
+                  such as Fable 5, Opus 4.8, Sonnet 5, or Haiku 4.5, or a Codex/GPT engine such as
+                  GPT 5.5. Bus Engine supplies Linux-specific tools, blueprints, policies, build
+                  environments, target information, and validation workflows, while each engine
+                  integration exposes its own <code>bus.&lt;engine&gt;.*</code> Events boundary.
                 </p>
                 <p>
-                  <a href="https://github.com/openai/codex">Codex App Server</a> uses bidirectional
-                  JSON-RPC 2.0. Its normal local transport may use standard input/output, and other
-                  supported transports depend on the deployed version. The current Engine control
-                  surface includes Bus Engine HTTP APIs for status, start, stop, and SSH session
-                  requests; those APIs are not the native App Server protocol.
+                  Codex workers use <a href="https://github.com/openai/codex">Codex App Server</a>
+                  as a separate open-source runtime component. Codex App Server uses bidirectional
+                  JSON-RPC 2.0; its normal local transport may use standard input/output, and other
+                  supported transports depend on the deployed version. Bus Engine HTTP APIs for
+                  status, start, stop, and SSH session requests remain Bus Engine APIs, and the
+                  worker lifecycle surface is shared across Claude and Codex/GPT templates.
                 </p>
               </div>
 

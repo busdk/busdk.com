@@ -41,8 +41,9 @@
               <h1>Semi-autonomous software development with autonomous agents.</h1>
               <p class="hero-copy">
                 Bus Agentic Development gives AI supervisor agents and worker agents durable tasks,
-                repository workspaces, terminals, notes, reviews, MCP capability exposure, and local
-                or SSH-accessible development environments.
+                repository workspaces, terminals, notes, reviews, MCP capability exposure, local or
+                SSH-accessible development environments, and per-template engine choice across
+                Claude and Codex/GPT workers.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="https://docs.busdk.com/">Read docs</a>
@@ -60,18 +61,30 @@
               <div class="product-section">
                 <h2>Core workflows</h2>
                 <ul>
-                  <li>Create durable task threads and launch worker agents.</li>
+                  <li>Create durable task threads and launch Claude or Codex/GPT worker agents.</li>
                   <li>Add local or SSH-accessible machines as development capacity.</li>
                   <li>Keep notes, diffs, logs, terminal state, and review evidence attached to work.</li>
                   <li>Use supervisor agents and human approval where the risk calls for it.</li>
                 </ul>
               </div>
               <div class="product-section">
+                <h2>Worker engine choice</h2>
+                <p>
+                  Bus Workers are engine-agnostic. A worker's engine is set by its template, and
+                  BusDK ships worker templates for Claude engines (Fable 5, Opus 4.8, Sonnet 5,
+                  Haiku 4.5) and Codex/GPT engines (GPT 5.5) — you pick one per worker. Creation,
+                  messaging, goal records, logs, and lifecycle controls use the
+                  same Bus worker surface, and each engine integration owns its own
+                  <code>bus.&lt;engine&gt;.*</code> events. Goal-objective execution currently runs on
+                  Codex workers.
+                </p>
+              </div>
+              <div class="product-section">
                 <h2>Modules behind the product</h2>
                 <p>
                   The product brings together tasks, workers, Bus Agent Runtime, run/prompt workflows,
-                  chat, development tooling, remotes, repository workspaces, MCP, notes, and the AI
-                  portal surface.
+                  Claude and Codex/GPT integrations, chat, development tooling, remotes, repository
+                  workspaces, MCP, notes, and the AI portal surface.
                 </p>
                 <p><a href="modules/index.html">See the module map for this product.</a></p>
               </div>

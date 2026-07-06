@@ -122,7 +122,8 @@
                     <tr><td><code>bus-integration-qemu</code></td><td>Available</td><td>Local QEMU VM provider for Engine runtime evaluation and development targets.</td></tr>
                     <tr><td><code>bus-engine-os</code></td><td>Available for <code>virtual-server</code>; desktop and WASM targets in development</td><td>Source-built Bus Engine OS package, kernel, rootfs, image, and boot-test pipeline. The accepted profile is the minimal QEMU/KVM server image; the <code>virtual-desktop</code> profile and browser-hosted WASM version remain additive development work.</td></tr>
                     <tr><td><code>bus-api-provider-llm</code></td><td>Available</td><td>OpenAI-compatible Bus model API with Bus auth, usage, and runtime wake-up hooks.</td></tr>
-                    <tr><td><code>bus-integration-codex</code></td><td>Available</td><td><a href="https://github.com/openai/codex">Codex App Server</a> backed Bus Events worker for provider-neutral agent execution requests.</td></tr>
+                    <tr><td><code>bus-integration-claude</code></td><td>Available</td><td>Claude-backed Bus Events worker exposing <code>bus.claude.*</code> events for worker templates that choose Claude engines.</td></tr>
+                    <tr><td><code>bus-integration-codex</code></td><td>Available</td><td><a href="https://github.com/openai/codex">Codex App Server</a> backed Bus Events worker exposing <code>bus.codex.*</code> events for worker templates that choose Codex/GPT engines.</td></tr>
                     <tr><td><code>bus-integration-ollama</code></td><td>Available</td><td>Local model provider integration for configured Ollama-backed inference paths.</td></tr>
                   </tbody>
                 </table>
@@ -159,6 +160,7 @@
                   <li><a href="https://docs.busdk.com/modules/bus-integration-vm">bus-integration-vm</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-qemu">bus-integration-qemu</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-api-provider-llm">bus-api-provider-llm</a></li>
+                  <li><a href="https://docs.busdk.com/modules/bus-integration-claude">bus-integration-claude</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-codex">bus-integration-codex</a></li>
                   <li><a href="https://docs.busdk.com/modules/bus-integration-ollama">bus-integration-ollama</a></li>
                 </ul>
