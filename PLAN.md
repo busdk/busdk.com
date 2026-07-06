@@ -2,6 +2,20 @@
 
 # Current work
 
+- [x] Address bus-lint AI-review findings on the buy-appeal pass: soften the
+      absolute durability claim and the engine version list on the agents
+      page, make the Codex-only goal caveat actionable for Claude-worker
+      users, reword the AI Platform operability and module-ownership claims
+      into buyer-facing language, and fix Engine grammar, dated status
+      framing, and goal-execution jargon.
+- [x] Buy-appeal copy pass on product pages (`docs/index.html`,
+      `docs/agents/index.html`, `docs/ai-platform/index.html`,
+      `docs/engine/index.html`, `docs/services/index.html`): lead each page
+      with a concrete buyer value proposition, translate platform jargon such
+      as "MCP capability exposure" and "AI portal surface" into plain
+      outcomes, make the agent-operated full-stack differentiator explicit,
+      keep maturity statements honest, and end each page with a clear next
+      step.
 - [x] Update BusDK public agent and Engine docs so Bus Workers are described as
       engine-agnostic across Claude and Codex/GPT templates, while keeping the
       current Codex-only goal-execution caveat accurate.
