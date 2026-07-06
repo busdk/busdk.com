@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>June 2, 2026 | One command brings up the whole Bus stack</title><meta name="description" content="BusDK services can start from declarative service profiles, with typed profile parameters, a default startup set, an Events relay in the same stack, and a bus services ps view." /><link rel="canonical" href="https://busdk.com/blog/2026-06-02-one-command-bus-stack.html" /><meta property="og:type" content="article" /><meta property="og:url" content="https://busdk.com/blog/2026-06-02-one-command-bus-stack.html" /><meta property="og:title" content="June 2, 2026 | One command brings up the whole Bus stack" /><meta property="og:description" content="Declarative service profiles make the local Bus platform a coherent stack that can be started and inspected from one services surface." /><meta property="og:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="June 2, 2026 | One command brings up the whole Bus stack" /><meta name="twitter:description" content="Typed service profile parameters, default startup, an Events relay, and bus services ps improve early self-hosting operability." /><meta name="twitter:image" content="https://busdk.com/assets/hero/hero2-light.webp" /><link rel="stylesheet" href="blog.css" /></head>
+  <body><div class="site-shell">  <header class="site-header" data-busdk-top-header data-busdk-current="blog">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html#products">Products</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="../blog/index.html" aria-current="page">Blog</a>
+      </nav>
+    </div>
+  </header><main><div class="page-shell">
+    <article class="hero-panel"><div class="hero-panel-inner"><p class="eyebrow">BusDK Update</p><h1>One command brings up the whole Bus stack: declarative service profiles</h1><p class="intro">BusDK services can now be started from declarative service profiles. The early stack describes typed profile parameters, chooses a default startup set, includes an Events relay, and exposes a <code>bus services ps</code> view for inspection.</p><p class="intro">The value is self-hosting operability: the platform behaves more like one coherent stack that an operator can stand up, inspect, and stop from the same services surface.</p><div class="hero-meta"><span class="meta-chip">June 2, 2026</span><span class="meta-chip">services stack</span><span class="meta-chip">service profiles</span><span class="meta-chip">self-hosting</span></div></div></article>
+    <section class="content-panel section-stack tldr-panel"><p class="small-label">In brief</p><h2>TL;DR</h2><ul class="tldr-list"><li>Declarative service profiles describe the Bus services stack as named profiles with typed parameters.</li><li>A default startup set can bring up the core local services together, including the Events relay in the same stack.</li><li><code>bus services ps</code> gives operators a compact view of service state while the stack is running.</li></ul></section>
+    <section class="content-panel section-stack"><p>The services stack work moved BusDK away from treating local services as separate one-off commands. Profiles now give the stack a declarative shape: each profile can describe the service command, required parameters, environment passthrough, path handling, and role grouping that the dispatcher needs in order to launch it consistently.</p><p>That does not make the stack finished or production-hardened. It is still early and experimental, with the usual local-environment sharp edges. The important change is that the control plane has a typed place to describe service startup instead of relying on scattered shell knowledge.</p><p>The default set is meant to make the common local path boring: start the services surface, bring up the expected local components, and include the Events relay alongside them. That matters because Events is part of the platform behavior, not a side channel operators should have to remember to start by hand.</p><pre><code>$ bus services up          # bring up the default stack
+$ bus services ps
+----------------+----------+-----------------+
+| SERVICE        | STATE    | ENDPOINT        |
++----------------+----------+-----------------+
+| events-relay   | running  | localhost:8081  |
+| app-server     | running  | localhost:8080  |
+| worker-manager | starting | localhost:8090  |
++----------------+----------+-----------------+</code></pre><p>The <code>bus services ps</code> view is the operator-facing check that closes the loop. After startup, it shows which services the stack knows about and the state reported for each one. The output is intentionally compact: enough to answer whether the local stack is alive without turning service inspection into a separate debugging session.</p><p>For self-hosting, this is a useful maturity step. A developer or operator can ask the same services surface to start the default stack and then inspect what is running. The design still leaves room for profile-specific configuration, but the everyday path is one stack with one inspection command.</p><p>See <a href="https://docs.busdk.com/">docs.busdk.com</a> for Bus services configuration and operation.</p></section>
+  </div></main><footer class="site-footer" data-busdk-footer>
+  <div class="site-footer-inner">
+    <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+  </div>
+</footer></div><script>const root=document.documentElement;const themeToggle=document.getElementById("theme-toggle");const prefersDark=window.matchMedia("(prefers-color-scheme: dark)");const storedTheme=localStorage.getItem("theme");function applyTheme(theme){root.setAttribute("data-theme",theme);if(!themeToggle)return;const isDark=theme==="dark";themeToggle.textContent=isDark?"Light":"Dark";themeToggle.setAttribute("aria-pressed",String(isDark));themeToggle.setAttribute("aria-label",isDark?"Toggle light theme":"Toggle dark theme");}function resolveInitialTheme(){if(storedTheme==="light"||storedTheme==="dark")return storedTheme;return prefersDark.matches?"dark":"light";}applyTheme(resolveInitialTheme());if(themeToggle){themeToggle.addEventListener("click",()=>{const nextTheme=root.getAttribute("data-theme")==="dark"?"light":"dark";localStorage.setItem("theme",nextTheme);applyTheme(nextTheme);});}prefersDark.addEventListener("change",(event)=>{if(localStorage.getItem("theme"))return;applyTheme(event.matches?"dark":"light");});</script>
+    <script src="../site-chrome.js"></script>
+  </body>
+</html>
