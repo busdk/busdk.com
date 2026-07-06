@@ -86,26 +86,55 @@
                   <h2>Bus Engine OS RISC-V 64 running inside QEMU/WASM.</h2>
                   <p>
                     The published Bus Engine OS <code>virtual-server</code> release is served
-                    from <a href="https://dev.hg.fi/beos/">dev.hg.fi/beos</a>. The bundle
-                    includes the QEMU WebAssembly runtime, the RISC-V 64 kernel and root
-                    filesystem, release checksums, license notices, and source-material files
-                    for shipped third-party components.
+                    from <a href="https://dev.hg.fi/beos/">dev.hg.fi/beos</a> and now boots
+                    to multi-user mode in the public browser smoke. The bundle includes the QEMU
+                    WebAssembly runtime, the RISC-V 64 kernel and root filesystem, release
+                    checksums, license notices, and source-material files for shipped
+                    third-party components.
                   </p>
                   <div class="product-links">
                     <a class="button button-secondary" href="https://dev.hg.fi/beos/" target="_blank" rel="noopener">Open published release</a>
                   </div>
                 </div>
-                <a
-                  class="engine-live-preview-launch"
-                  href="https://dev.hg.fi/beos/"
-                  target="_blank"
-                  rel="noopener"
-                  aria-label="Open the published Bus Engine OS RISC-V 64 QEMU WebAssembly release"
-                >
-                  <img src="preview.jpg" alt="Bus Engine OS browser-hosted release preview" loading="lazy">
-                  <span>Open live QEMU/WASM release</span>
-                </a>
+                <div class="engine-live-preview-frame" data-engine-live-preview>
+                  <iframe
+                    title="Bus Engine OS RISC-V 64 QEMU WebAssembly release"
+                    data-src="https://dev.hg.fi/beos/"
+                    allow="cross-origin-isolated; fullscreen"
+                    referrerpolicy="no-referrer"
+                    loading="lazy"
+                    hidden
+                  ></iframe>
+                  <a
+                    class="engine-live-preview-launch"
+                    href="https://dev.hg.fi/beos/"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Open the published Bus Engine OS RISC-V 64 QEMU WebAssembly release"
+                  >
+                    <img src="preview.jpg" alt="Bus Engine OS browser-hosted release preview" loading="lazy">
+                    <span>Open live QEMU/WASM release</span>
+                  </a>
+                </div>
               </div>
+              <script>
+                (() => {
+                  const preview = document.querySelector("[data-engine-live-preview]");
+                  if (!preview || !window.crossOriginIsolated || typeof SharedArrayBuffer === "undefined") {
+                    return;
+                  }
+                  const frame = preview.querySelector("iframe[data-src]");
+                  const fallback = preview.querySelector(".engine-live-preview-launch");
+                  if (!frame) {
+                    return;
+                  }
+                  frame.src = frame.dataset.src;
+                  frame.hidden = false;
+                  if (fallback) {
+                    fallback.hidden = true;
+                  }
+                })();
+              </script>
 
               <div class="product-section">
                 <h2>Development preview access is open for technical evaluation.</h2>

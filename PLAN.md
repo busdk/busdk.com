@@ -2,6 +2,10 @@
 
 # Current work
 
+- [x] Add a COOP/COEP-aware live iframe slot to the Bus Engine overview that
+      targets the published `https://dev.hg.fi/beos/` release when the parent
+      page is cross-origin isolated, while preserving the direct launch preview
+      fallback on GitHub Pages.
 - [x] Switch the Bus Engine overview release surface from the transitional
       repository-local bundle path to the published browser-hosted release at
       `https://dev.hg.fi/beos/`, keep the copy aligned with the RISC-V 64
@@ -15,7 +19,7 @@
       generated public path default, and current evidence now use the
       product-shaped name; obsolete lab-era wording is limited to compatibility
       aliases outside the active website surface.
-- [ ] Move browser-hosted Bus Engine OS publishing out of `busdk.com` and onto
+- [x] Move browser-hosted Bus Engine OS publishing out of `busdk.com` and onto
       the Engine-owned development host, currently `https://dev.hg.fi/beos/`:
       DoD is a
       deployable browser client and QEMU/WASM artifact bundle served from the
@@ -125,6 +129,13 @@ Pages-served `busdk.com/engine/` parent is not cross-origin isolated, and the
 framed release fails with `Error: cross-origin isolation is required for pthread
 WebAssembly`. The overview therefore uses a direct launch preview until the
 parent product page moves behind COOP/COEP-capable hosting or proxying.
+
+The 2026-07-06 public release at `https://dev.hg.fi/beos/` boots the RISC-V 64
+`virtual-server` profile to `event=ready state=multi-user` in the default
+browser smoke at `420424ms`. The Engine overview now includes an iframe element
+for that published release and assigns its `src` only when the parent page is
+already cross-origin isolated; under GitHub Pages it keeps the direct launch
+preview visible.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site

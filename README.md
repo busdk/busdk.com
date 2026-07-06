@@ -7,11 +7,13 @@ Static BusDK commercial website.
 Target architecture: a header-capable Bus Engine product page embeds a Bus
 Engine OS virtual server running in the browser. The current development
 release is published from `https://dev.hg.fi/beos/` with the QEMU/WASM runtime,
-Bus Engine OS guest artifacts, release files, isolation headers, and browser
-boot client outside this website repository. The current GitHub Pages-hosted
-`busdk.com/engine/` page uses a direct launch preview because GitHub Pages does
-not provide the COOP/COEP response headers required for a working pthread
-WebAssembly iframe.
+Bus Engine OS guest artifacts, release files, isolation headers, source
+material, and browser boot client outside this website repository. The Engine
+overview includes a live iframe slot for that published URL, but only assigns
+the iframe `src` when the parent page is already cross-origin isolated. The
+current GitHub Pages-hosted `busdk.com/engine/` page therefore keeps the direct
+launch preview because GitHub Pages does not provide the COOP/COEP response
+headers required for a working pthread WebAssembly iframe.
 
 The command below is the older transitional exporter for local website-bundle
 experiments:
@@ -31,8 +33,9 @@ QEMU/WASM runtime, Bus Engine OS guest artifacts, firmware, generated license
 indexes, third-party notices, and required source-material payloads into that
 directory. Keep new runtime/client ownership out of this website repository;
 website work should consume the published release URL instead of copying those
-runtime artifacts into this repository. Re-enable a live iframe only from a
-parent page served with COOP/COEP headers.
+runtime artifacts into this repository. The published overview can activate
+its live iframe from a parent page served with COOP/COEP headers; otherwise it
+keeps the launch preview.
 
 The release license index is scoped to the shipped Bus Engine OS package
 manifests. `source-materials/` is intentionally limited to QEMU source
