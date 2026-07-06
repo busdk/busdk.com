@@ -2,6 +2,9 @@
 
 # Current work
 
+- [x] Update BusDK public agent and Engine docs so Bus Workers are described as
+      engine-agnostic across Claude and Codex/GPT templates, while keeping the
+      current Codex-only goal-execution caveat accurate.
 - [x] Add a COOP/COEP-aware live iframe slot to the Bus Engine overview that
       targets the published `https://dev.hg.fi/beos/` release when the parent
       page is cross-origin isolated, while preserving the direct launch preview
