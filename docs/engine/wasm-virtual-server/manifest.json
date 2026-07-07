@@ -29,16 +29,62 @@
   },
   "profiles": [
     {
+      "id": "virtual-server",
       "name": "virtual-server",
+      "label": "Virtual Server",
       "status": "current-artifact",
+      "kind": "server",
+      "guest": {
+        "profile": "virtual-server",
+        "targetArch": "x86_64",
+        "kernelAppend": "console=ttyS0 root=/dev/vda rw",
+        "expectedText": [
+          "bus@bus-engine-os",
+          "systemd 261.1"
+        ]
+      },
+      "runtime": {
+        "display": "sdl",
+        "displayDevice": "stdvga",
+        "resolution": {
+          "width": 800,
+          "height": 600
+        },
+        "keyboard": true,
+        "serialDiagnostics": true,
+        "fallbackImage": "../preview.png"
+      },
       "display": "sdl",
       "displayDevice": "stdvga",
       "keyboard": true,
       "notes": "The current browser-hosted artifact is the virtual-server profile. Serial diagnostics stay visible while the graphical display path is enabled when the QEMU/WASM runtime supports it."
     },
     {
+      "id": "virtual-desktop",
       "name": "virtual-desktop",
+      "label": "Virtual Desktop",
       "status": "planned-artifact",
+      "kind": "desktop",
+      "guest": {
+        "profile": "virtual-desktop",
+        "targetArch": "x86_64",
+        "kernelAppend": "console=ttyS0 root=/dev/vda rw",
+        "expectedText": [
+          "bus@bus-engine-os",
+          "systemd 261.1"
+        ]
+      },
+      "runtime": {
+        "display": "sdl",
+        "displayDevice": "stdvga",
+        "resolution": {
+          "width": 1024,
+          "height": 768
+        },
+        "keyboard": true,
+        "serialDiagnostics": true,
+        "fallbackImage": "../preview.png"
+      },
       "display": "sdl",
       "displayDevice": "stdvga",
       "keyboard": true,

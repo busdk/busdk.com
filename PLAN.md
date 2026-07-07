@@ -2,6 +2,99 @@
 
 # Current work
 
+- [x] Align the `busdk.com` Bus Engine OS iframe/manifest surface with the current
+      browser-hosted release manifest surface from `https://dev.hg.fi/beos/`:
+      keep the GitHub Pages direct-launch fallback, consume profile-specific
+      manifest fields in an explicit live-release check, and record the
+      remaining hosting boundary separately from website code.
+- [x] Extend the `busdk.com` Bus Engine OS live-release supervision check so it
+      validates the profile page and browser runtime advertised by the manifest,
+      not just the top-level release headers and manifest JSON.
+- [x] Add a public `busdk.com/engine/` hosting check that verifies the deployed
+      parent page still advertises the current BEO release URL and reports
+      whether iframe activation is blocked by missing COOP/COEP headers or can
+      proceed under header-capable hosting.
+- [x] Add an opt-in public parent-page gate that fails when a staging or
+      header-capable Bus Engine product page is expected to activate the
+      `/beos` iframe but is still missing COOP/COEP headers.
+- [x] Add an opt-in public parent-page gate that fails when a staging or
+      current deployment is expected to expose the live profile-manifest link
+      but the deployed `busdk.com/engine/` page is still behind local source.
+- [x] Add one named public deployment gate target that requires both the
+      COOP/COEP iframe-eligible parent page and the live profile-manifest link,
+      so staging or future hosting can be validated without remembering both
+      opt-in environment variables.
+- [x] Extend the public deployment gate so it also validates whether the
+      published `/beos` release can be embedded by the parent origin, catching
+      the cross-origin CORP case where parent COOP/COEP alone is not enough.
+- [x] Make the normal public parent-page check report release embeddability as
+      an informational status line, so the next hosting issue remains visible
+      even while the current GitHub Pages parent still fails earlier COOP/COEP
+      activation.
+- [x] Align local goal/status artifacts and the Engine source checker with the
+      updated `iframe, landing, and manifest` ownership wording, including a
+      minimal landing-surface assertion for the Bus Engine product page.
+- [x] Extend the public parent-page check to assert the deployed Engine landing
+      page still exposes the Bus Engine OS browser-hosted release section, while
+      leaving the newer profile-manifest link under the existing publish-drift
+      gate until deployed.
+- [x] Make the public parent-page check print a landing status line after the
+      deployed Engine landing release section and CTA assertions pass, so
+      iframe, landing, and manifest state are all visible in command output.
+- [x] Add a narrow static-host header configuration for the Bus Engine product
+      page plus a local check, so a header-capable deployment has the exact
+      COOP/COEP parent-page policy needed for the published `/beos` iframe
+      without moving Engine-owned artifacts into `busdk.com`.
+- [x] Add a local `wasm-virtual-server` bundle-surface check that verifies the
+      repository static bundle manifest and boot harness still expose the
+      graphical display/profile fields expected by the current browser release
+      supervision lane.
+- [x] Document the Bus Engine OS iframe and manifest supervision targets in
+      `README.md` so operators can distinguish offline website checks, live
+      release-host checks, public parent-page checks, and the transitional
+      static exporter.
+- [x] Add a compact root `STATUS_UPDATE.md` for the current Bus Engine OS
+      browser-release website lane, covering the two open PLAN items, live
+      iframe/header status, hosting-versus-code blockers, and dispatch split
+      without secrets.
+- [x] Add a local check for `STATUS_UPDATE.md` so the manager-facing status
+      artifact stays aligned with the two open PLAN items, current live
+      iframe/header state, manifest-shape status, and dispatch boundary.
+- [x] Add a compact root `GOAL.md` for the current Bus Engine OS browser-release
+      website lane, and include it in the local manager-status consistency
+      check so the goal, status, and two open PLAN items cannot drift apart.
+- [x] Make the networked Bus Engine OS supervision checks configurable for
+      staging or future release hosts without editing checker source.
+- [x] Make the live Bus Engine OS release supervision check report whether the
+      published profile manifest has explicit profile metadata or only the
+      current path-implied `virtual-server` shape, so the remaining
+      manifest-shape blocker is visible in command output.
+- [x] Add one aggregate Bus Engine OS website supervision target that runs the
+      local bundle, local Engine overview, live release-host, and deployed
+      public parent-page checks in the intended order.
+- [x] Expose Makefile variables for Bus Engine OS release URL, profile path,
+      and public Engine parent URL so the aggregate supervision target can run
+      against staging or future hosting without shell-specific environment
+      setup.
+- [x] Make the local Engine overview source checker honor the same Bus Engine
+      OS release URL and profile path variables as the live/public supervision
+      checks.
+- [x] Extend the live release-host supervision check to compare key published
+      artifact response sizes against the browser-hosted manifest without
+      downloading large VM payloads.
+- [x] Extend the live release-host supervision check from required runtime
+      roles to every file listed in the browser-hosted manifest, including
+      license, notice, and source-material surfaces.
+- [x] Add bounded fetch timeouts to the networked Bus Engine OS supervision
+      checks so a stalled release host or parent page fails with a clear
+      diagnostic instead of hanging the aggregate target.
+- [x] Make the repository-local Bus Engine OS iframe harness select runtime
+      display, device, resolution, keyboard, and guest metadata from a named
+      manifest profile instead of only the top-level manifest fields.
+- [x] Add a compact manifest-driven profile selector/status to the
+      repository-local Bus Engine OS iframe harness so profile choice is visible
+      in the UI and planned profiles cannot boot against the current
+      virtual-server artifacts by accident.
 - [x] Add a COOP/COEP-aware live iframe slot to the Bus Engine overview that
       targets the published `https://dev.hg.fi/beos/` release when the parent
       page is cross-origin isolated, while preserving the direct launch preview
@@ -33,9 +126,36 @@
       serial diagnostics visible, focus a canvas for keyboard input, pass the
       display device and resolution from the manifest, and keep the screenshot
       fallback for unsupported browsers or artifacts.
+      - Status: website code now has a guarded iframe slot, direct fallback,
+        local graphical bundle harness, canvas focus path, serial diagnostics,
+        manifest-driven display fields, profile selector/status, optional
+        `docs/_headers`, and checks for the published `display=wasm` /
+        `displayDevice=virtio-gpu-pci` release.
+      - Blocker: the current deployed `https://busdk.com/engine/` parent page
+        still reports `iframe_state=fallback-required` because GitHub Pages
+        does not serve the required COOP/COEP headers. A header-capable host or
+        proxy must publish the parent page, then the staging/public check should
+        run with `BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1`.
+      - Dispatch: website lane owns parent-page markup, fallback behavior,
+        deploy-header config, and supervision checks. Engine/BEO owns the
+        hosted `/beos` release artifacts, runtime, and any guest/runtime fixes
+        needed for graphical keyboard proof.
 - [ ] Add a browser-hosted OS manifest shape that can describe `virtual-server`
       and `virtual-desktop` profiles separately enough for the iframe to choose
       a graphical or console-oriented runtime without hard-coding the page.
+      - Status: the repository-local static bundle manifest has separate
+        `virtual-server` and planned `virtual-desktop` profile blocks, and the
+        local iframe harness reads profile runtime/guest fields from the
+        manifest. The live `/beos/virtual-server/browser-hosted-manifest.json`
+        currently passes website supervision as `profile_path=virtual-server`
+        with `manifest_profile_shape=path-implied`.
+      - Blocker: the published release manifest does not yet expose explicit
+        `virtual-server` / `virtual-desktop` profile metadata. Website checks
+        accept the current release shape but report the path-implied status so
+        the remaining Engine-owned manifest evolution is visible.
+      - Dispatch: website lane owns consuming and checking explicit profile
+        metadata when it appears. Engine/BEO owns publishing explicit profile
+        metadata and future `virtual-desktop` artifacts.
 - [x] Build a publishable browser-hosted Bus Engine OS static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
@@ -107,6 +227,137 @@ browser smoke at `420424ms`. The Engine overview now includes an iframe element
 for that published release and assigns its `src` only when the parent page is
 already cross-origin isolated; under GitHub Pages it keeps the direct launch
 preview visible.
+
+The website repository now has an explicit live-release supervision check:
+`make engine-beos-release-check` runs
+`scripts/check-engine-beos-release.mjs`, validates the public
+`https://dev.hg.fi/beos/` COOP/COEP/CORP headers, reads
+`virtual-server/browser-hosted-manifest.json`, and verifies the current
+browser-hosted manifest shape for `riscv64`, `display=wasm`,
+`displayDevice=virtio-gpu-pci`, QEMU JavaScript/WASM, kernel, rootfs, browser
+runtime, checksums, sizes, and default runtime parameters. On 2026-07-07 the
+check passed against the live release with 14 manifest files. The Bus Engine
+overview links to the profile manifest as part of the public release surface.
+The same check now reports the live profile identity surface separately:
+`profile_path=virtual-server` and, for the current published manifest,
+`manifest_profile_shape=path-implied`. This keeps the active website checks
+green for the current release while making the remaining Engine-owned manifest
+evolution visible when operators ask whether `virtual-server` and
+`virtual-desktop` are explicitly described by the published manifest.
+The check now also fetches `virtual-server/`, verifies the profile page is
+served with isolation headers, confirms the page has the graphical canvas,
+serial diagnostics, serial input, generated `display=wasm` and
+`displayDevice=virtio-gpu-pci` defaults, and verifies the manifest-advertised
+browser runtime is reachable with isolation headers and contains the expected
+runtime hooks for isolation checks, QEMU argument generation, virtio GPU
+display, and serial chardev input.
+The live release check also compares required published artifact sizes against
+the manifest: QEMU JavaScript/WASM, kernel, rootfs, browser runtime, and index
+surface. Large payloads are checked with HEAD `Content-Length`; the profile
+index is checked from the already-fetched body because the current host does
+not send `Content-Length` for `virtual-server/index.html` HEAD.
+The check now walks every file listed in the live browser-hosted manifest,
+including license, notice, and source-material surfaces. Small files whose
+HEAD response omits `Content-Length` are fetched and compared by body size;
+large VM payloads still require manifest-matching HEAD sizes. On 2026-07-07
+the live check passed with `published_files=14`.
+The normal local `make quality` target now starts with
+`scripts/check-engine-wasm-bundle-surface.mjs` and
+`scripts/check-engine-beos-surface.mjs`. The bundle check verifies the
+repository-local `docs/engine/wasm-virtual-server/` manifest keeps the
+`virtual-server` and `virtual-desktop` profiles, graphical SDL display fields,
+800x600 resolution, keyboard-enabled canvas, screenshot fallback, serial
+diagnostics, and browser isolation checks. The Engine overview check verifies
+that the page still has the guarded iframe slot, direct-launch fallback,
+manifest link, cross-origin-isolation permission request, and
+`SharedArrayBuffer` guard for the current release URL before the broader GX/UI
+documentation checks run.
+The repository now includes an optional `docs/_headers` file for static hosts
+that understand Netlify/Cloudflare Pages-style header configuration. It applies
+`Cross-Origin-Opener-Policy: same-origin` and
+`Cross-Origin-Embedder-Policy: require-corp` only to `/engine/` and
+`/engine/*`, leaving the Engine-owned `/beos` release artifacts outside
+`busdk.com`. `scripts/check-engine-hosting-headers-config.mjs` verifies that
+scope and policy, and `make engine-beos-check` now runs it before the live
+release-host and deployed public parent-page checks. This is deployment input
+for a header-capable host or proxy; it does not change GitHub Pages behavior by
+itself.
+The repository-local `docs/engine/wasm-virtual-server/` iframe harness now
+renders a manifest-populated profile selector and selected-profile status. The
+selector reads `manifest.profiles`, reloads the page with `?profile=...`, and
+keeps boot disabled when the selected profile is not `current-artifact`, so the
+planned `virtual-desktop` profile stays visible without booting against the
+current `virtual-server` artifact set. `make engine-wasm-bundle-surface-check`
+now verifies the profile selector, profile status, manifest-driven profile
+population, and planned-profile boot gate.
+The public deployed-page check `make engine-beos-public-page-check` fetches
+`https://busdk.com/engine/`, verifies that the live parent page still targets
+`https://dev.hg.fi/beos/` through the guarded iframe and direct-launch
+fallback, and reports the current parent iframe state. On 2026-07-07 it passed
+with `iframe_state=fallback-required`, meaning the release URL is present but
+the live GitHub Pages parent still lacks the isolation headers required for
+automatic iframe activation. The new profile-manifest link is present in the
+local website source and reports `manifest_link=not-yet-deployed` until the
+website changes are published.
+The public parent-page checker also has an opt-in deployment gate:
+`BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1`. In normal mode it continues to report
+the current GitHub Pages fallback state. In require mode it fails if the parent
+page lacks COOP/COEP; on 2026-07-07 that negative check failed against
+`https://busdk.com/engine/` with the expected diagnostic that the page is not
+iframe-eligible. Use this mode for staging or future header-capable hosting
+where the live iframe is expected to activate.
+The public parent-page checker also has an opt-in publish-drift gate:
+`BUS_ENGINE_REQUIRE_MANIFEST_LINK=1`. In normal mode it continues to report
+`manifest_link=not-yet-deployed` for the current public page. In require mode
+it fails if the parent page does not link the expected profile manifest; on
+2026-07-07 that negative check failed against `https://busdk.com/engine/` with
+the expected diagnostic naming
+`https://dev.hg.fi/beos/virtual-server/browser-hosted-manifest.json`.
+`make engine-beos-public-deploy-gate` combines both parent-page requirements
+for staging or future public hosting by requiring COOP/COEP iframe eligibility
+and the live profile-manifest link. On 2026-07-07 it failed against the current
+`https://busdk.com/engine/` page with the expected COOP/COEP diagnostic.
+The public deploy gate now also fetches the release URL in require-iframe mode
+and checks whether a cross-origin parent can embed it. A one-off local loopback
+probe with an isolated parent on one origin and a release response on another
+origin sending `Cross-Origin-Resource-Policy: same-origin` failed with the
+expected diagnostic: the release needs `CORP: cross-origin` or a same-origin
+parent/proxy path.
+`README.md` now documents the offline `make quality` Engine checks, the
+networked `make engine-beos-release-check` and
+`make engine-beos-public-page-check` supervision targets, the expected
+`fallback-required` GitHub Pages state, and keeps the transitional
+`make engine-wasm-os-static` exporter clearly separate from the published
+release-host path.
+The networked checkers can be pointed at staging or future release hosts with
+`BUS_ENGINE_BEOS_RELEASE_URL`; profile paths default to `virtual-server/` and
+can be changed with `BUS_ENGINE_BEOS_PROFILE_PATH`. The public parent-page
+checker also accepts an optional Engine page URL argument for non-production
+parent pages.
+`make engine-beos-check` is now the aggregate supervision target for this
+surface. It runs the repository-local bundle check, the local Engine overview
+check, the live release-host check, and the deployed public parent-page check
+in that order.
+The aggregate and networked Make targets accept `BUS_ENGINE_BEOS_RELEASE_URL`,
+`BUS_ENGINE_BEOS_PROFILE_PATH`, and `BUS_ENGINE_PUBLIC_PAGE_URL` as Make
+variables, so staging or future host checks can be run with a single
+script-friendly command while keeping the default production values unchanged.
+The local Engine overview source checker now uses the same
+`BUS_ENGINE_BEOS_RELEASE_URL` and `BUS_ENGINE_BEOS_PROFILE_PATH` values as the
+live release and public parent-page checks, so a future host migration can be
+verified through one consistent Make-variable path.
+The networked release and public parent-page checkers now apply a bounded
+per-request timeout controlled by `BUS_ENGINE_CHECK_TIMEOUT_MS`, defaulting to
+30000 ms. Timeout failures report the URL and timeout value instead of letting
+the aggregate supervision target hang indefinitely.
+The repository-local `docs/engine/wasm-virtual-server/manifest.json` now gives
+`virtual-server` and `virtual-desktop` separate profile blocks with guest and
+runtime metadata. The local iframe boot harness selects the active profile from
+`?profile=` or the default guest profile, then reads display mode, display
+device, resolution, keyboard support, expected guest text, and kernel append
+from that profile with top-level compatibility fallbacks. The
+`engine-wasm-bundle-surface-check` target now verifies that profile-aware
+contract.
 
 Buyer-facing source access copy now uses Git access wording instead of naming a
 specific Git hosting provider. Historical blog references to the public site

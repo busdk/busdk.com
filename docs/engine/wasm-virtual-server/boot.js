@@ -2,6 +2,8 @@ const terminal = document.getElementById("terminal");
 const statusEl = document.getElementById("status");
 const bootButton = document.getElementById("boot-button");
 const display = document.getElementById("display");
+const profileSelect = document.getElementById("profile-select");
+const profileStatus = document.getElementById("profile-status");
 const FIRMWARE_MOUNTS = new Map([
   ["firmware-qboot", "/firmware/qboot.rom"],
   ["firmware-linuxboot", "/firmware/linuxboot_dma.bin"],
@@ -13,6 +15,7 @@ const FIRMWARE_MOUNTS = new Map([
 ]);
 
 let manifest;
+let activeProfile;
 let booting = false;
 
 function writeLine(line = "") {
@@ -22,6 +25,10 @@ function writeLine(line = "") {
 
 function setStatus(text) {
   statusEl.textContent = text;
+}
+
+function setProfileStatus(text) {
+  profileStatus.textContent = text;
 }
 
 function artifact(role) {
@@ -37,9 +44,92 @@ function artifactUrl(role) {
 }
 
 function runtimeValue(name, fallback) {
+  if (activeProfile && activeProfile.runtime && activeProfile.runtime[name] !== undefined) {
+    return activeProfile.runtime[name];
+  }
+  if (activeProfile && activeProfile[name] !== undefined) {
+    return activeProfile[name];
+  }
   return manifest.runtime && manifest.runtime[name] !== undefined
     ? manifest.runtime[name]
     : fallback;
+}
+
+function guestValue(name, fallback) {
+  if (activeProfile && activeProfile.guest && activeProfile.guest[name] !== undefined) {
+    return activeProfile.guest[name];
+  }
+  return manifest.guest && manifest.guest[name] !== undefined
+    ? manifest.guest[name]
+    : fallback;
+}
+
+function profileId(profile) {
+  return profile.id || profile.name;
+}
+
+function profileLabel(profile) {
+  return profile.label || profile.name || profile.id || "unnamed profile";
+}
+
+function profileRuntimeSummary(profile) {
+  const runtime = (profile && profile.runtime) || {};
+  const parts = [];
+  if (runtime.display || runtime.displayDevice) {
+    parts.push([runtime.display, runtime.displayDevice].filter(Boolean).join("/"));
+  }
+  if (
+    runtime.resolution &&
+    Number.isInteger(runtime.resolution.width) &&
+    Number.isInteger(runtime.resolution.height)
+  ) {
+    parts.push(`${runtime.resolution.width}x${runtime.resolution.height}`);
+  }
+  if (runtime.serialDiagnostics) {
+    parts.push("serial diagnostics");
+  }
+  return parts.join(" · ");
+}
+
+function updateProfileStatus() {
+  if (!activeProfile) {
+    setProfileStatus("No named profile in manifest.");
+    return;
+  }
+  const summary = profileRuntimeSummary(activeProfile);
+  const status = activeProfile.status || "current-artifact";
+  setProfileStatus([status, summary].filter(Boolean).join(" · "));
+}
+
+function populateProfiles() {
+  const profiles = Array.isArray(manifest.profiles) ? manifest.profiles : [];
+  profileSelect.textContent = "";
+  for (const profile of profiles) {
+    const option = document.createElement("option");
+    option.value = profileId(profile);
+    option.textContent = profileLabel(profile);
+    if (activeProfile && profileId(profile) === profileId(activeProfile)) {
+      option.selected = true;
+    }
+    profileSelect.append(option);
+  }
+  profileSelect.disabled = profiles.length < 2;
+  updateProfileStatus();
+}
+
+function selectProfile() {
+  const profiles = Array.isArray(manifest.profiles) ? manifest.profiles : [];
+  const requested = new URLSearchParams(window.location.search).get("profile") || manifest.guest.profile;
+  const profile = profiles.find((entry) => profileId(entry) === requested);
+  if (!profile) {
+    if (profiles.length > 0) {
+      throw new Error(`manifest is missing selected profile: ${requested}`);
+    }
+    activeProfile = null;
+    return;
+  }
+  activeProfile = profile;
+  writeLine(`bus-engine-os-preview: selected profile ${profileLabel(profile)}`);
 }
 
 async function fetchBytes(role) {
@@ -120,7 +210,7 @@ function qemuArgs() {
     "-kernel",
     "/kernel",
     "-append",
-    manifest.guest.kernelAppend,
+    guestValue("kernelAppend", "console=ttyS0 root=/dev/vda rw"),
     "-drive",
     "file=/rootfs.raw,format=raw,if=virtio",
     "-nic",
@@ -150,6 +240,14 @@ async function checkReady() {
     setStatus(`${problem} Showing the captured boot preview.`);
     writeLine("");
     writeLine(`fallback: ${problem}`);
+    return;
+  }
+
+  if (activeProfile && activeProfile.status !== "current-artifact") {
+    const status = activeProfile.status || "unavailable";
+    setStatus(`The selected ${profileLabel(activeProfile)} profile is ${status}. Showing the captured boot preview.`);
+    writeLine("");
+    writeLine(`fallback: selected profile is ${status}; boot is disabled for this artifact set`);
     return;
   }
 
@@ -195,8 +293,8 @@ async function boot() {
   const qemuWasm = artifactUrl("qemu-wasm");
   const moduleFactory = (await import(qemuProgram)).default;
   const expected = new Map([
-    [manifest.guest.versionMarker, false],
-    ...manifest.guest.expectedText.map((text) => [text, false]),
+    [guestValue("versionMarker", manifest.guest.versionMarker), false],
+    ...guestValue("expectedText", manifest.guest.expectedText || []).map((text) => [text, false]),
   ]);
 
   const emit = (line) => {
@@ -258,6 +356,12 @@ display.addEventListener("pointerdown", () => {
   display.focus();
 });
 
+profileSelect.addEventListener("change", () => {
+  const nextUrl = new URL(window.location.href);
+  nextUrl.searchParams.set("profile", profileSelect.value);
+  window.location.href = nextUrl.href;
+});
+
 async function init() {
   try {
     const response = await fetch("manifest.json", { credentials: "same-origin" });
@@ -265,6 +369,8 @@ async function init() {
       throw new Error(`manifest unavailable: HTTP ${response.status}`);
     }
     manifest = await response.json();
+    selectProfile();
+    populateProfiles();
     await checkReady();
   } catch (error) {
     setStatus("Live preview setup failed. Showing the captured boot preview.");

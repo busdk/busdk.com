@@ -36,6 +36,28 @@ button {
   padding: 0.55rem 0.8rem;
 }
 
+select {
+  appearance: none;
+  background: #121a28;
+  border: 1px solid rgba(159, 176, 194, 0.34);
+  border-radius: 0.45rem;
+  color: var(--terminal-text);
+  font: inherit;
+  font-size: 0.82rem;
+  min-width: 11rem;
+  padding: 0.45rem 2rem 0.45rem 0.65rem;
+}
+
+select:disabled {
+  color: rgba(159, 176, 194, 0.65);
+}
+
+select:not(:disabled):focus,
+select:not(:disabled):hover {
+  border-color: var(--terminal-accent);
+  outline: 0;
+}
+
 button:disabled {
   border-color: rgba(159, 176, 194, 0.26);
   color: rgba(159, 176, 194, 0.65);
@@ -185,6 +207,11 @@ button:not(:disabled):hover {
   padding: 0.85rem;
 }
 
+.terminal-state {
+  display: grid;
+  gap: 0.55rem;
+}
+
 .terminal-action-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -197,6 +224,26 @@ button:not(:disabled):hover {
   font-size: 0.82rem;
   line-height: 1.35;
   margin: 0;
+}
+
+.profile-control {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.65rem;
+}
+
+.profile-control label {
+  color: var(--terminal-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.profile-status {
+  color: rgba(159, 176, 194, 0.78);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 @media (max-width: 640px) {
