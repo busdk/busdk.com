@@ -37,6 +37,10 @@ const REQUIRED_PROFILE_PAGE_SNIPPETS = [
   'id="details-terminal"',
   'id="serial-input"',
 ];
+const REQUIRED_EXPLICIT_PROFILE_PAGE_SNIPPETS = [
+  'id="copy-serial-log"',
+  "qemuWasmSendSerialText",
+];
 const REQUIRED_RUNTIME_SNIPPETS = [
   "crossOriginIsolated",
   'SharedArrayBuffer',
@@ -150,10 +154,18 @@ function checkManifest(manifest, manifestUrl) {
 
 function checkProfileShape(manifest, expectedProfileName, manifestUrl) {
   const explicitProfile = manifest.profile || manifest.name || manifest.id;
+  const profileId = manifest.profile_id || manifest.id || manifest.profile || "";
+  const profileName = manifest.profile_name || manifest.name || "";
   if (explicitProfile) {
     assert(
       explicitProfile === expectedProfileName,
       `${manifestUrl.href} declares profile ${explicitProfile}; expected ${expectedProfileName}`,
+    );
+  }
+  if (profileId) {
+    assert(
+      profileId === expectedProfileName,
+      `${manifestUrl.href} declares profile_id ${profileId}; expected ${expectedProfileName}`,
     );
   }
 
@@ -161,6 +173,9 @@ function checkProfileShape(manifest, expectedProfileName, manifestUrl) {
     return {
       kind: explicitProfile ? "single-explicit" : "path-implied",
       profiles: explicitProfile ? explicitProfile : "",
+      profile: explicitProfile,
+      profileId,
+      profileName,
     };
   }
 
@@ -170,7 +185,7 @@ function checkProfileShape(manifest, expectedProfileName, manifestUrl) {
     profileNames.includes(expectedProfileName),
     `${manifestUrl.href} profiles[] must include ${expectedProfileName}; got ${profileNames.join(",") || "(none)"}`,
   );
-  return { kind: "profiles-array", profiles: profileNames.join(",") };
+  return { kind: "profiles-array", profiles: profileNames.join(","), profile: explicitProfile, profileId, profileName };
 }
 
 function fileByRole(manifest, role) {
@@ -179,9 +194,24 @@ function fileByRole(manifest, role) {
   return file;
 }
 
+function assertExplicitProfileShape(profileShape, manifestUrl, expectedProfileName) {
+  if (profileShape.kind !== "path-implied") {
+    return;
+  }
+  assert(
+    !REQUIRE_EXPLICIT_PROFILE_METADATA,
+    `${manifestUrl.href} must expose explicit profile metadata; got path-implied profile ${expectedProfileName}`,
+  );
+}
+
 function checkProfilePage(html, manifest, profileUrl) {
   for (const snippet of REQUIRED_PROFILE_PAGE_SNIPPETS) {
     assert(html.includes(snippet), `${profileUrl.href} is missing ${snippet}`);
+  }
+  if (REQUIRE_EXPLICIT_PROFILE_METADATA) {
+    for (const snippet of REQUIRED_EXPLICIT_PROFILE_PAGE_SNIPPETS) {
+      assert(html.includes(snippet), `${profileUrl.href} is missing ${snippet}`);
+    }
   }
 
   const browserRuntime = fileByRole(manifest, "browser-runtime");
@@ -275,6 +305,7 @@ async function main() {
   const manifest = await manifestResponse.json();
   checkManifest(manifest, manifestUrl);
   const profileShape = checkProfileShape(manifest, expectedProfileName, manifestUrl);
+  assertExplicitProfileShape(profileShape, manifestUrl, expectedProfileName);
   checkProfilePage(profileHtml, manifest, profileUrl);
   const artifactUrls = new Map();
   for (const role of REQUIRED_FILE_ROLES) {
@@ -312,15 +343,20 @@ async function main() {
   console.log(`ok display=${manifest.default_parameters.display}`);
   console.log(`ok display_device=${manifest.default_parameters.displayDevice}`);
   if (profileShape.kind === "path-implied") {
-    assert(
-      !REQUIRE_EXPLICIT_PROFILE_METADATA,
-      `${manifestUrl.href} must expose explicit profile metadata; got path-implied profile ${expectedProfileName}`,
-    );
     console.log("info manifest_profile_shape=path-implied");
     console.log("info manifest_profile_identity=missing");
   } else {
     console.log(`ok manifest_profile_shape=${profileShape.kind}`);
     console.log("ok manifest_profile_identity=explicit");
+    if (profileShape.profile) {
+      console.log(`ok manifest_profile=${profileShape.profile}`);
+    }
+    if (profileShape.profileId) {
+      console.log(`ok manifest_profile_id=${profileShape.profileId}`);
+    }
+    if (profileShape.profileName) {
+      console.log(`ok manifest_profile_name=${profileShape.profileName}`);
+    }
     console.log(`ok manifest_profiles=${profileShape.profiles}`);
   }
   console.log(`ok files=${manifest.files.length}`);

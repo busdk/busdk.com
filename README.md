@@ -79,8 +79,8 @@ deployed public parent-page check in that order.
 
 `make engine-status-update-check` checks only the local manager-facing goal and
 status artifacts. It fails if `GOAL.md` or `STATUS_UPDATE.md` stops naming the
-two open PLAN items, current live release URL, path-implied manifest status,
-public fallback state, or dispatch boundary.
+two open PLAN items, current live release URL, explicit virtual-server
+manifest status, public fallback state, or dispatch boundary.
 
 `make engine-beos-public-deploy-gate` is the fail-closed parent-page deployment
 gate for staging or future public hosting. It requires both a COOP/COEP
@@ -95,15 +95,15 @@ runtime files, kernel, rootfs, graphical canvas, serial diagnostics, serial
 input, and runtime hooks used by the browser client. The check also prints the
 profile path, generated manifest timestamp, manifest profile-shape status, and
 whether explicit profile identity is present. The current published
-`virtual-server` release is accepted in normal supervision as
-`manifest_profile_shape=path-implied` and `manifest_profile_identity=missing`;
-future release manifests can make that explicit through a top-level profile id
-or a `profiles[]` array without changing the website checker.
+`virtual-server` release reports `manifest_profile_shape=profiles-array`,
+`manifest_profile_identity=explicit`, and `manifest_profiles=virtual-server`.
 
 `make engine-beos-release-profile-gate` is the fail-closed release-host gate
 for a rebuilt/exported `/beos` artifact that is expected to include explicit
 profile metadata. It sets `BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA=1` and
-fails while the live manifest remains path-implied.
+requires the browser-hosted profile page to keep the serial controls used by
+the website release surface:
+`id="serial-input"`, `id="copy-serial-log"`, and `qemuWasmSendSerialText`.
 
 `make engine-beos-public-page-check` fetches the deployed
 `https://busdk.com/engine/` parent page. It verifies that the public page still

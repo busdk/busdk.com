@@ -17,7 +17,7 @@ the current Bus Engine OS browser release.
   fallback-only.
 - Maintain `docs/_headers` for header-capable static hosts or proxies.
 - Maintain local, live-release, public-parent, and manager-status checks.
-- Consume explicit profile metadata when Engine/BEO publishes it.
+- Consume explicit profile metadata from the published virtual-server release.
 
 ## Out Of Scope For This Repository
 
@@ -29,9 +29,8 @@ the current Bus Engine OS browser release.
 
 - `make engine-beos-check` must pass.
 - `make engine-status-update-check` must pass.
-- `make engine-beos-release-profile-gate` is the fail-closed release-host gate
-  once the rebuilt/exported `/beos` artifact is expected to expose explicit
-  profile metadata.
+- `make engine-beos-release-profile-gate` must pass for the published
+  virtual-server release.
 - `make engine-beos-public-page-check` may report
   `iframe_state=fallback-required` for the current GitHub Pages deployment.
 - `make engine-beos-public-page-check BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1`
@@ -48,10 +47,9 @@ the current Bus Engine OS browser release.
   `busdk.com/engine/` deployment passes `BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1`
   and the release is served either from the same origin/proxy path or with
   `Cross-Origin-Resource-Policy: cross-origin`.
-- Published profile metadata is not explicit until the live release check
-  reports an explicit profile shape from a rebuilt/exported `/beos` artifact
-  instead of
-  `manifest_profile_shape=path-implied`.
+- Published virtual-desktop profile metadata is not complete until Engine/BEO
+  publishes a virtual-desktop artifact and the website live checks can verify
+  its explicit profile shape separately from `virtual-server`.
 
 ## Completion Evidence
 

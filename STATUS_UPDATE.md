@@ -16,17 +16,21 @@ secrets, private tokens, or Engine/QEMU implementation notes.
   `https://dev.hg.fi/beos/virtual-server/browser-hosted-manifest.json`
 - Current release check: `make engine-beos-check` passes.
 - Live release manifest status: `profile_path=virtual-server` and
-  `manifest_profile_shape=path-implied`.
-- Live release export status: the fetched manifest is still the older
-  `generated_at=2026-07-06T13:10:16Z` export and does not expose `profile`,
-  `id`, `name`, or `profiles[]` identity fields, so the explicit BEO/BusDK
-  manifest-profile work is not yet visible on the published `/beos` route.
-- Upstream reference: BEO `c44f8830` and BusDK `251826d` have the explicit
-  browser-hosted manifest profile identity/gates; the remaining blocker is
-  rebuild/export and publication to the live route.
-- Explicit-profile release gate: `make engine-beos-release-profile-gate` is
-  expected to fail against the current live route until the rebuilt/exported
-  artifact exposes explicit profile metadata.
+  `manifest_profile_shape=profiles-array`.
+- Live release export status: the fetched manifest is the combined
+  `generated_at=2026-07-07T14:29:04Z` export and exposes
+  `profile=virtual-server`, `profile_id=virtual-server`,
+  `profile_name=Virtual Server`, and `profiles=[virtual-server]`.
+- Upstream reference: BEO `c44f8830` and BusDK `251826d` added explicit
+  browser-hosted manifest profile identity/gates. BEO `c9a173fe`, BusDK
+  `73746c8`, and supervisor `2a2f589` restored and pinned the serial-control
+  surface after the temporary no-input artifact; that no-input artifact is not
+  the current public route. The combined virtual-server artifact is now live.
+- Explicit-profile release gate: `make engine-beos-release-profile-gate`
+  passes against the current live route, proving explicit virtual-server
+  profile metadata plus the profile page controls `id="serial-input"`,
+  `id="copy-serial-log"`, and `qemuWasmSendSerialText`. The
+  virtual-server explicit profile metadata and serial controls are live.
 - Live release display status: `display=wasm` and
   `display_device=virtio-gpu-pci`.
 - Published file status: `files=14` and `published_files=14`.
@@ -77,14 +81,12 @@ secrets, private tokens, or Engine/QEMU implementation notes.
    - Website status: the repository-local bundle manifest has separate
      `virtual-server` and planned `virtual-desktop` profile blocks, and the
      local harness consumes profile runtime and guest fields from the manifest.
-   - Blocker: BEO/BusDK now has explicit browser-hosted manifest profile
-     identity/gates, but the rebuilt/exported artifact is not yet visible at
-     `https://dev.hg.fi/beos/`; the published manifest is still path-implied
-     for the current `virtual-server` release.
-   - Next gate: the rebuilt/exported `/beos` artifact publishes explicit
-     profile metadata; then `make engine-beos-release-profile-gate` should
-     pass and `make engine-beos-release-check` should report an explicit
-     profile shape instead of `manifest_profile_shape=path-implied`.
+   - Blocker: the virtual-server explicit metadata blocker is closed.
+     Remaining published-artifact work is limited to any
+     virtual-desktop-specific surface when that artifact exists.
+   - Next gate: when a published `virtual-desktop` artifact exists, run the
+     live release/profile gates for that profile path and record the profile
+     metadata shape separately from `virtual-server`.
 
 ### Hosting Versus Code
 
@@ -99,8 +101,7 @@ secrets, private tokens, or Engine/QEMU implementation notes.
 - `docs/_headers` is included for header-capable static hosts or proxies. It
   does not change GitHub Pages behavior by itself.
 - Engine/BEO owns the hosted `/beos` artifacts, release manifest, runtime,
-  release-host headers, rebuilding/exporting explicit profile metadata, and
-  future `virtual-desktop` artifacts.
+  release-host headers, and future `virtual-desktop` artifacts.
 
 ### Checks
 
@@ -118,9 +119,9 @@ secrets, private tokens, or Engine/QEMU implementation notes.
   `https://busdk.com/engine/` until both parent-page COOP/COEP headers and the
   profile-manifest link are deployed, and the release is embeddable from the
   parent origin or served through the same origin.
-- `make engine-beos-release-profile-gate`: expected failure against current
-  `https://dev.hg.fi/beos/` until the rebuilt/exported `/beos` artifact
-  exposes explicit profile metadata.
+- `make engine-beos-release-profile-gate`: passing against current
+  `https://dev.hg.fi/beos/`; virtual-server explicit profile metadata and
+  serial controls are live.
 - `make quality`: Engine-specific checks pass first, then the broader target
   fails at the existing missing sibling dependency `../bus-update/go.mod`.
 
@@ -130,15 +131,14 @@ secrets, private tokens, or Engine/QEMU implementation notes.
   - keep parent-page iframe/fallback markup aligned with the published release;
   - keep `docs/_headers`, local checks, live checks, and public-page checks
     current;
-  - consume explicit profile metadata when Engine/BEO publishes it;
+  - consume explicit profile metadata from the current virtual-server release;
   - rerun `BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1` and
     `BUS_ENGINE_REQUIRE_MANIFEST_LINK=1` against any staging or future
     header-capable parent deployment, or use
     `make engine-beos-public-deploy-gate` for the combined check.
 - Engine/BEO lane:
   - keep `https://dev.hg.fi/beos/` artifacts and headers healthy;
-  - rebuild/export the `/beos` artifact so explicit profile metadata for the
-    current and future profiles is visible at the live route and
-    `make engine-beos-release-profile-gate` passes;
+  - keep the current virtual-server artifact healthy and publish future
+    `virtual-desktop` artifacts when ready;
   - own runtime/guest fixes for graphical keyboard proof and future
     `virtual-desktop` readiness.

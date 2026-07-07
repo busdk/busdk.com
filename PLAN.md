@@ -66,9 +66,9 @@
 - [x] Make the networked Bus Engine OS supervision checks configurable for
       staging or future release hosts without editing checker source.
 - [x] Make the live Bus Engine OS release supervision check report whether the
-      published profile manifest has explicit profile metadata or only the
-      current path-implied `virtual-server` shape, so the remaining
-      manifest-shape blocker is visible in command output.
+      published profile manifest has explicit profile metadata or only a
+      path-implied profile shape, so the release-host manifest state is visible
+      in command output.
 - [x] Add one aggregate Bus Engine OS website supervision target that runs the
       local bundle, local Engine overview, live release-host, and deployed
       public parent-page checks in the intended order.
@@ -147,22 +147,20 @@
         `virtual-server` and planned `virtual-desktop` profile blocks, and the
         local iframe harness reads profile runtime/guest fields from the
         manifest. The live `/beos/virtual-server/browser-hosted-manifest.json`
-        currently passes website supervision as `profile_path=virtual-server`
-        with `manifest_profile_shape=path-implied`; the fetched manifest is
-        still the older `generated_at=2026-07-06T13:10:16Z` export and does
-        not expose `profile`, `id`, `name`, or `profiles[]` identity fields.
+        now passes website supervision as `profile_path=virtual-server` with
+        `manifest_profile_shape=profiles-array`,
+        `generated_at=2026-07-07T14:29:04Z`,
+        `profile=virtual-server`, `profile_id=virtual-server`,
+        `profile_name=Virtual Server`, and `profiles=[virtual-server]`.
       - Blocker: BEO/BusDK now has explicit browser-hosted manifest profile
-        identity/gates, but the rebuilt/exported `/beos` artifact is not yet
-        visible at the live route. Website checks accept the current release
-        shape but report the path-implied status so the remaining export and
-        release-host boundary is visible.
-      - Next gate: `make engine-beos-release-profile-gate` must pass once the
-        rebuilt/exported `/beos` artifact is expected to expose explicit
-        profile metadata.
+        identity/gates and restored serial controls. The virtual-server
+        explicit metadata blocker is closed; remaining published-artifact work
+        is any virtual-desktop-specific surface when that artifact exists.
+      - Next gate: run the live release/profile gates for `virtual-desktop`
+        when Engine/BEO publishes that profile.
       - Dispatch: website lane owns consuming and checking explicit profile
-        metadata when it appears. Engine/BEO owns rebuilding/exporting the
-        hosted `/beos` manifest with explicit profile metadata and future
-        `virtual-desktop` artifacts.
+        metadata for published profiles. Engine/BEO owns hosted `/beos`
+        manifest/runtime artifacts and future `virtual-desktop` artifacts.
 - [x] Build a publishable browser-hosted Bus Engine OS static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest
@@ -247,10 +245,12 @@ check passed against the live release with 14 manifest files. The Bus Engine
 overview links to the profile manifest as part of the public release surface.
 The same check now reports the live profile identity surface separately:
 `profile_path=virtual-server` and, for the current published manifest,
-`manifest_profile_shape=path-implied`. This keeps the active website checks
-green for the current release while making the remaining Engine-owned manifest
-evolution visible when operators ask whether `virtual-server` and
-`virtual-desktop` are explicitly described by the published manifest.
+`manifest_profile_shape=profiles-array`, `manifest_profile=virtual-server`,
+`manifest_profile_id=virtual-server`, and
+`manifest_profile_name=Virtual Server`. This keeps the active website checks
+green for the current release while keeping future profile-shape drift visible
+when operators ask whether `virtual-server` and `virtual-desktop` are
+explicitly described by the published manifest.
 The check now also fetches `virtual-server/`, verifies the profile page is
 served with isolation headers, confirms the page has the graphical canvas,
 serial diagnostics, serial input, generated `display=wasm` and
