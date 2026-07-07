@@ -29,6 +29,9 @@ the current Bus Engine OS browser release.
 
 - `make engine-beos-check` must pass.
 - `make engine-status-update-check` must pass.
+- `make engine-beos-release-profile-gate` is the fail-closed release-host gate
+  once the rebuilt/exported `/beos` artifact is expected to expose explicit
+  profile metadata.
 - `make engine-beos-public-page-check` may report
   `iframe_state=fallback-required` for the current GitHub Pages deployment.
 - `make engine-beos-public-page-check BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1`
@@ -46,7 +49,8 @@ the current Bus Engine OS browser release.
   and the release is served either from the same origin/proxy path or with
   `Cross-Origin-Resource-Policy: cross-origin`.
 - Published profile metadata is not explicit until the live release check
-  reports an explicit profile shape instead of
+  reports an explicit profile shape from a rebuilt/exported `/beos` artifact
+  instead of
   `manifest_profile_shape=path-implied`.
 
 ## Completion Evidence

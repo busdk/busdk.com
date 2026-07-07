@@ -148,14 +148,21 @@
         local iframe harness reads profile runtime/guest fields from the
         manifest. The live `/beos/virtual-server/browser-hosted-manifest.json`
         currently passes website supervision as `profile_path=virtual-server`
-        with `manifest_profile_shape=path-implied`.
-      - Blocker: the published release manifest does not yet expose explicit
-        `virtual-server` / `virtual-desktop` profile metadata. Website checks
-        accept the current release shape but report the path-implied status so
-        the remaining Engine-owned manifest evolution is visible.
+        with `manifest_profile_shape=path-implied`; the fetched manifest is
+        still the older `generated_at=2026-07-06T13:10:16Z` export and does
+        not expose `profile`, `id`, `name`, or `profiles[]` identity fields.
+      - Blocker: BEO/BusDK now has explicit browser-hosted manifest profile
+        identity/gates, but the rebuilt/exported `/beos` artifact is not yet
+        visible at the live route. Website checks accept the current release
+        shape but report the path-implied status so the remaining export and
+        release-host boundary is visible.
+      - Next gate: `make engine-beos-release-profile-gate` must pass once the
+        rebuilt/exported `/beos` artifact is expected to expose explicit
+        profile metadata.
       - Dispatch: website lane owns consuming and checking explicit profile
-        metadata when it appears. Engine/BEO owns publishing explicit profile
-        metadata and future `virtual-desktop` artifacts.
+        metadata when it appears. Engine/BEO owns rebuilding/exporting the
+        hosted `/beos` manifest with explicit profile metadata and future
+        `virtual-desktop` artifacts.
 - [x] Build a publishable browser-hosted Bus Engine OS static bundle with one command
       that accepts an output directory, writes the iframe page, CSS, boot
       script, manifest, preview image, QEMU/WASM runtime, Bus Engine OS guest

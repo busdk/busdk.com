@@ -1,4 +1,4 @@
-.PHONY: bus-ui-demo-assets clean engine-beos-check engine-beos-public-deploy-gate engine-beos-public-page-check engine-beos-release-check engine-hosting-headers-check engine-status-update-check engine-wasm-bundle-surface-check engine-wasm-os-static quality
+.PHONY: bus-ui-demo-assets clean engine-beos-check engine-beos-public-deploy-gate engine-beos-public-page-check engine-beos-release-check engine-beos-release-profile-gate engine-hosting-headers-check engine-status-update-check engine-wasm-bundle-surface-check engine-wasm-os-static quality
 
 # Generated artifacts and local caches for the SDD Jekyll site.
 CLEAN_PATHS := \
@@ -17,6 +17,7 @@ BUS_ENGINE_BEOS_RELEASE_URL ?= https://dev.hg.fi/beos/
 BUS_ENGINE_BEOS_PROFILE_PATH ?= virtual-server/
 BUS_ENGINE_PUBLIC_PAGE_URL ?= https://busdk.com/engine/
 BUS_ENGINE_CHECK_TIMEOUT_MS ?= 30000
+BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA ?= 0
 BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE ?= 0
 BUS_ENGINE_REQUIRE_MANIFEST_LINK ?= 0
 
@@ -32,7 +33,10 @@ quality:
 	cd demos/bus-ui && go test ./...
 
 engine-beos-release-check:
-	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" node scripts/check-engine-beos-release.mjs "$(BUS_ENGINE_BEOS_RELEASE_URL)"
+	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA="$(BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA)" node scripts/check-engine-beos-release.mjs "$(BUS_ENGINE_BEOS_RELEASE_URL)"
+
+engine-beos-release-profile-gate:
+	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA="1" node scripts/check-engine-beos-release.mjs "$(BUS_ENGINE_BEOS_RELEASE_URL)"
 
 engine-beos-public-page-check:
 	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE="$(BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE)" BUS_ENGINE_REQUIRE_MANIFEST_LINK="$(BUS_ENGINE_REQUIRE_MANIFEST_LINK)" node scripts/check-engine-public-page.mjs "$(BUS_ENGINE_PUBLIC_PAGE_URL)"
@@ -54,7 +58,7 @@ engine-beos-check:
 	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" node scripts/check-engine-beos-surface.mjs
 	node scripts/check-engine-hosting-headers-config.mjs
 	node scripts/check-engine-status-update.mjs
-	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" node scripts/check-engine-beos-release.mjs "$(BUS_ENGINE_BEOS_RELEASE_URL)"
+	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA="$(BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA)" node scripts/check-engine-beos-release.mjs "$(BUS_ENGINE_BEOS_RELEASE_URL)"
 	BUS_ENGINE_BEOS_RELEASE_URL="$(BUS_ENGINE_BEOS_RELEASE_URL)" BUS_ENGINE_BEOS_PROFILE_PATH="$(BUS_ENGINE_BEOS_PROFILE_PATH)" BUS_ENGINE_CHECK_TIMEOUT_MS="$(BUS_ENGINE_CHECK_TIMEOUT_MS)" BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE="$(BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE)" BUS_ENGINE_REQUIRE_MANIFEST_LINK="$(BUS_ENGINE_REQUIRE_MANIFEST_LINK)" node scripts/check-engine-public-page.mjs "$(BUS_ENGINE_PUBLIC_PAGE_URL)"
 
 engine-wasm-os-static:

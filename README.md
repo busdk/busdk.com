@@ -66,6 +66,7 @@ state:
 ```sh
 make engine-beos-check
 make engine-beos-release-check
+make engine-beos-release-profile-gate
 make engine-beos-public-page-check
 make engine-beos-public-deploy-gate
 make engine-status-update-check
@@ -92,10 +93,17 @@ browser runtime script. It verifies the isolation headers, `riscv64`
 browser-hosted manifest, `display=wasm`, `displayDevice=virtio-gpu-pci`, QEMU
 runtime files, kernel, rootfs, graphical canvas, serial diagnostics, serial
 input, and runtime hooks used by the browser client. The check also prints the
-profile path and manifest profile-shape status. The current published
-`virtual-server` release is accepted as `manifest_profile_shape=path-implied`;
+profile path, generated manifest timestamp, manifest profile-shape status, and
+whether explicit profile identity is present. The current published
+`virtual-server` release is accepted in normal supervision as
+`manifest_profile_shape=path-implied` and `manifest_profile_identity=missing`;
 future release manifests can make that explicit through a top-level profile id
 or a `profiles[]` array without changing the website checker.
+
+`make engine-beos-release-profile-gate` is the fail-closed release-host gate
+for a rebuilt/exported `/beos` artifact that is expected to include explicit
+profile metadata. It sets `BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA=1` and
+fails while the live manifest remains path-implied.
 
 `make engine-beos-public-page-check` fetches the deployed
 `https://busdk.com/engine/` parent page. It verifies that the public page still
@@ -138,6 +146,7 @@ the scripts:
 make engine-beos-check \
   BUS_ENGINE_BEOS_RELEASE_URL=https://example.test/beos/ \
   BUS_ENGINE_BEOS_PROFILE_PATH=virtual-server/ \
+  BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA=1 \
   BUS_ENGINE_PUBLIC_PAGE_URL=https://example.test/engine/ \
   BUS_ENGINE_REQUIRE_IFRAME_ELIGIBLE=1 \
   BUS_ENGINE_REQUIRE_MANIFEST_LINK=1 \

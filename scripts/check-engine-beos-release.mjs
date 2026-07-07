@@ -4,6 +4,7 @@ const FALLBACK_BASE_URL = "https://dev.hg.fi/beos/";
 const DEFAULT_BASE_URL = process.env.BUS_ENGINE_BEOS_RELEASE_URL || FALLBACK_BASE_URL;
 const DEFAULT_PROFILE_PATH = process.env.BUS_ENGINE_BEOS_PROFILE_PATH || "virtual-server/";
 const DEFAULT_FETCH_TIMEOUT_MS = Number(process.env.BUS_ENGINE_CHECK_TIMEOUT_MS || "30000");
+const REQUIRE_EXPLICIT_PROFILE_METADATA = process.env.BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA === "1";
 const REQUIRED_HEADERS = new Map([
   ["cross-origin-opener-policy", "same-origin"],
   ["cross-origin-embedder-policy", "require-corp"],
@@ -54,6 +55,8 @@ function usage() {
   console.error("  BUS_ENGINE_BEOS_RELEASE_URL   release base URL");
   console.error("  BUS_ENGINE_BEOS_PROFILE_PATH  profile path under release base URL");
   console.error("  BUS_ENGINE_CHECK_TIMEOUT_MS   per-request timeout in milliseconds");
+  console.error("  BUS_ENGINE_REQUIRE_EXPLICIT_PROFILE_METADATA");
+  console.error("                                  require top-level profile identity or profiles[]");
 }
 
 function assert(condition, message) {
@@ -300,13 +303,24 @@ async function main() {
   console.log(`ok profile_index=${indexUrl.href}`);
   console.log(`ok browser_runtime=${runtimeUrl.href}`);
   console.log(`ok target_arch=${manifest.target_arch}`);
+  if (typeof manifest.generated_at === "string" && manifest.generated_at.length > 0) {
+    console.log(`ok generated_at=${manifest.generated_at}`);
+  } else {
+    console.log("info generated_at=(missing)");
+  }
   console.log(`ok profile_path=${expectedProfileName}`);
   console.log(`ok display=${manifest.default_parameters.display}`);
   console.log(`ok display_device=${manifest.default_parameters.displayDevice}`);
   if (profileShape.kind === "path-implied") {
+    assert(
+      !REQUIRE_EXPLICIT_PROFILE_METADATA,
+      `${manifestUrl.href} must expose explicit profile metadata; got path-implied profile ${expectedProfileName}`,
+    );
     console.log("info manifest_profile_shape=path-implied");
+    console.log("info manifest_profile_identity=missing");
   } else {
     console.log(`ok manifest_profile_shape=${profileShape.kind}`);
+    console.log("ok manifest_profile_identity=explicit");
     console.log(`ok manifest_profiles=${profileShape.profiles}`);
   }
   console.log(`ok files=${manifest.files.length}`);
