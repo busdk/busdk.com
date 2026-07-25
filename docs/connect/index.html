@@ -6,7 +6,7 @@
     <title>Bus Connect | BusDK</title>
     <meta
       name="description"
-      content="A single-tenant x402-gated messaging daemon: unknown counterparties pay a small fee to open one message thread with you, then hold a bounded free conversation. REST-canonical, self-hostable, with durable settlement recovery."
+      content="A single-tenant x402-gated messaging daemon: someone you have no prior relationship with pays a small fee to open one message thread with you, then holds a bounded free conversation. REST-canonical, self-hostable, with durable settlement recovery."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -40,12 +40,17 @@
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Connect</p>
-              <h1>Let strangers pay to reach you.</h1>
+              <h1>Put a price on the first message.</h1>
               <p class="hero-copy">
-                Bus Connect is a small, self-hostable messaging daemon that puts a price on the
-                first message. An unknown counterparty — a person, or an AI agent acting for one —
-                pays a small fee over the x402 HTTP payment protocol to open exactly one message
-                thread with you. After that, the conversation is free and bounded.
+                Bus Connect is a small, self-hostable messaging daemon. Someone you have no prior
+                relationship with — a person, or an AI agent acting for one — pays a small fee over
+                the x402 HTTP payment protocol to open exactly one message thread with you. After
+                that, the conversation is free and bounded.
+              </p>
+              <p class="hero-copy">
+                No prior relationship is not the same as anonymous. Charging for the first message
+                is a sale, so a real deployment has to know who its customer is well enough to tax,
+                invoice, and record the transaction correctly.
               </p>
               <div class="product-links">
                 <a class="button button-primary" href="tutorial/index.html">Run the POC</a>
@@ -69,9 +74,9 @@
                 <p>
                   Open inboxes are free to send to, so they fill with things nobody chose to
                   receive. Closed inboxes are unreachable, so genuine first contact from someone
-                  you have no relationship with becomes impossible. Bus Connect takes a third
-                  position: reachable to anyone, but the first message costs the sender something
-                  real.
+                  you have no prior relationship with becomes impossible. Bus Connect takes a third
+                  position: reachable without an introduction, but the first message costs the
+                  sender something real.
                 </p>
                 <p>
                   The fee is friction and revenue, not a spam filter and not a guarantee. It is a
@@ -147,6 +152,34 @@
                   their own service provider, keeping their own fees and their own responsibility.
                   Licensing terms for that are covered on the <a href="contact/index.html">contact
                   page</a>.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Knowing who your customer is</h2>
+                <p>
+                  The x402 exchange establishes that a payment was authorized and settled. It
+                  establishes nothing else. A wallet address is not a name, a country, a tax
+                  status, or a contact address, and an operator who has only that cannot issue a
+                  receipt, decide the right VAT treatment, or keep the records a sale requires.
+                </p>
+                <p>
+                  For a Finnish company selling a digital service into the EU, that gap is not a
+                  detail to add later. The initiation flow has to establish whether the buyer is a
+                  business or a consumer, where they are, and how to reach them with a receipt,
+                  before the sale completes. A business buyer needs a VAT number that validates;
+                  a consumer needs a location determination that stands up, VAT charged at their
+                  rate, and correct handling of the withdrawal right that applies to digital
+                  services. All of it has to be retained.
+                </p>
+                <p>
+                  The current build does not do this. It collects a payer wallet address and
+                  nothing more, which is why it is a protocol proof of concept and not a service
+                  you can sell from. Closing that gap is the next piece of product work, and it
+                  reuses the Bus customer, VAT, VIES validation, invoicing, and bookkeeping modules
+                  rather than inventing a second way to record a sale. Treat the specifics as
+                  something to confirm with your own accountant and counsel for your jurisdiction
+                  and turnover.
                 </p>
               </div>
 

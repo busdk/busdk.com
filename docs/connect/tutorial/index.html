@@ -306,7 +306,25 @@ bus-connect create --api-url http://127.0.0.1:8402 \
                   The POC above is complete as a protocol. Hosted paid operation needs more, and
                   none of it is implemented today:
                 </p>
+                <p>
+                  The largest item is not in the protocol at all. The exchange tells you a payment
+                  settled and gives you a wallet address; it does not tell you who your customer
+                  is. Selling a digital service from a Finnish company into the EU means
+                  establishing, before the sale completes, whether the buyer is a business or a
+                  consumer, where they are, and how to reach them with a receipt — then charging
+                  the right VAT, validating a VAT number where one is claimed, honouring the
+                  withdrawal right that applies to consumers buying digital services, and retaining
+                  all of it. A wallet address supports none of that.
+                </p>
+                <p>
+                  Bus already has the modules for this — customers, entities, VAT, VIES validation,
+                  invoices, bookkeeping, and Finnish tax filing — so the work is to route
+                  initiation through them rather than to build a second way of recording a sale.
+                  Confirm the specifics for your jurisdiction and turnover with your accountant and
+                  counsel; nothing here is legal advice.
+                </p>
                 <ul>
+                  <li>Customer identification and tax treatment at the point of sale, as above.</li>
                   <li>Public exposure. The build refuses non-loopback listen and facilitator URLs.</li>
                   <li>A real facilitator path, proven against the payment network with an approved live check. Base USDC is enabled; Base EURC is allowlisted but disabled until its live path is proven.</li>
                   <li>An operator surface. Reading, replying, and closing threads has no interface yet, and the transport for it is an open decision. The public paid endpoint must not move behind platform authentication, because its callers have no account with you by design.</li>
