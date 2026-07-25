@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Connect modules | BusDK</title>
+    <meta
+      name="description"
+      content="The modules behind Bus Connect: the x402-gated messaging daemon, its Bus Events durable storage, and the supporting Bus platform modules."
+    />
+    <link rel="stylesheet" href="../../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="connect" data-busdk-top-nav-base="../" data-busdk-current="modules">
+    <div class="site-header-inner">
+      <a class="brand" href="../../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html">Overview</a>
+      <a href="../tutorial/index.html">Tutorial</a>
+      <a href="../modules/index.html" aria-current="page">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="../contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="connect" data-busdk-current="modules" data-busdk-side-nav-base="../" aria-label="Bus Connect navigation">
+    <p class="gx-side-nav-title">Connect</p>
+      <a href="../index.html">Overview</a>
+      <a href="../tutorial/index.html">Tutorial</a>
+      <a href="../modules/index.html" aria-current="page">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="../contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Connect Modules</p>
+              <h1>What is behind the product.</h1>
+              <p class="hero-copy">
+                Bus Connect is deliberately small. It is one Go module producing one static binary
+                that contains both the daemon and its thin clients, plus the Bus modules it stores
+                conversations through.
+              </p>
+              <div class="product-section">
+                <h2>The product module</h2>
+                <p>
+                  <strong>bus-connect</strong> owns the whole product surface: the x402 challenge
+                  and payment verification, the settlement state machine, capability derivation,
+                  the REST API, and the <code>serve</code>, <code>create</code>, and
+                  <code>get</code> commands. The REST API is canonical; the CLI is an unprivileged
+                  client of it and holds no separate path to storage.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Storage</h2>
+                <p>
+                  <strong>bus-events</strong> supplies the durable authority. Bus Connect owns a
+                  provider-neutral store contract expressed only in its own domain values, so no
+                  SQL, driver handle, or connection string crosses that boundary. It requires four
+                  behaviors — atomic conditional append, deterministic ordered replay, persistence
+                  across a restart, and isolation by authenticated identity — and names no database
+                  vendor.
+                </p>
+                <p>
+                  <strong>bus-api-provider-events</strong> exposes those behaviors over HTTP, and
+                  <strong>bus-api-provider-identities</strong> authorizes the service identity Bus
+                  Connect uses. Bus Connect never selects, operates, migrates, or backs up a
+                  database itself.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Store providers</h2>
+                <p>
+                  Three providers sit behind one contract. <code>events</code> targets a live Bus
+                  Events API and is the deployment choice. <code>file</code> is a durable
+                  single-process append-only log, useful for evaluation and used by the protocol
+                  test gate. <code>memory</code> is test-only and holds nothing across a restart.
+                  All three are exercised by the same conformance suite, so the boundary stays
+                  honest rather than merely declared.
+                </p>
+              </div>
+              <div class="product-section">
+                <h2>Supporting modules</h2>
+                <p>
+                  <strong>bus-help</strong> provides shared help and documentation conventions for
+                  the CLI. Bus Connect has no dependency on other Bus product modules, and adds no
+                  registry, tenancy, webhook, SDK, or platform integration.
+                </p>
+                <p>
+                  Public module documentation is on <a href="https://docs.busdk.com/">the
+                  documentation site</a>. Private implementation design specifications exist for
+                  this module and are not published.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../../site-chrome.js"></script>
+  </body>
+</html>

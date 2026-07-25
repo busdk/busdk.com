@@ -438,3 +438,18 @@ MIT or Apache 2.0 conversion after two years; the one-time option includes the
 current Bus Engine product-line codebase under MIT or Apache 2.0 at purchase
 plus one year of FSL-licensed updates; third-party software keeps its own
 licenses; and FSL applies only to Bus-related code licensed by us.
+
+## Bus Connect product site
+
+- [x] Add a Bus Connect product site under `docs/connect/` with overview,
+      tutorial, modules, and contact pages, following the existing product-site
+      pattern and standing alone in its own navigation.
+- [x] Write a tutorial that sets up a genuine end-to-end Bus Connect POC: real
+      Bus Events durable storage, a dedicated least-privilege service identity,
+      the real daemon and CLI, and the paid-initiation, replay-recovery, and
+      capability-scoped flows.
+- [x] State plainly what the current build does and does not do. It binds
+      loopback only and settles against a local fake facilitator, so the
+      tutorial produces a real protocol POC and not a public money-taking
+      deployment. Name what is still required before hosted paid operation.
+- [x] Add a Bus Connect product card to the docs index.

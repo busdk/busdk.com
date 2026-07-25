@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bus Connect | BusDK</title>
+    <meta
+      name="description"
+      content="A single-tenant x402-gated messaging daemon: unknown counterparties pay a small fee to open one message thread with you, then hold a bounded free conversation. REST-canonical, self-hostable, with durable settlement recovery."
+    />
+    <link rel="stylesheet" href="../index.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+        <header class="site-header" data-busdk-top-header data-busdk-top-nav="connect" data-busdk-top-nav-base="./" data-busdk-current="overview">
+    <div class="site-header-inner">
+      <a class="brand" href="../index.html" aria-label="BusDK home">
+        <img class="brand-logo" src="../busdk-logo.png" alt="BusDK logo" />
+        <span class="brand-wordmark">BusDK</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./tutorial/index.html">Tutorial</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="./contact/index.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+      <main>
+        <section class="product-page">
+          <div class="section-inner product-doc-layout">
+                <aside class="gx-side-nav" data-busdk-side-nav="connect" data-busdk-current="overview" data-busdk-side-nav-base="./" aria-label="Bus Connect navigation">
+    <p class="gx-side-nav-title">Connect</p>
+      <a href="./index.html" aria-current="page">Overview</a>
+      <a href="./tutorial/index.html">Tutorial</a>
+      <a href="./modules/index.html">Modules</a>
+      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="./contact/index.html">Contact</a>
+  </aside>
+            <div class="product-doc-content">
+              <p class="eyebrow">Bus Connect</p>
+              <h1>Let strangers pay to reach you.</h1>
+              <p class="hero-copy">
+                Bus Connect is a small, self-hostable messaging daemon that puts a price on the
+                first message. An unknown counterparty — a person, or an AI agent acting for one —
+                pays a small fee over the x402 HTTP payment protocol to open exactly one message
+                thread with you. After that, the conversation is free and bounded.
+              </p>
+              <div class="product-links">
+                <a class="button button-primary" href="tutorial/index.html">Run the POC</a>
+                <a class="button button-secondary" href="mailto:sales@hg.fi">Talk to us</a>
+              </div>
+
+              <div class="product-section">
+                <h2>Development status</h2>
+                <p>
+                  Bus Connect is an accepted, installed proof of concept, not a released product.
+                  The current build binds loopback only and settles against a local fake
+                  facilitator, so you can run the complete protocol end to end on your own machine
+                  today, but you cannot yet expose it publicly or take real money with it. The
+                  <a href="tutorial/index.html">tutorial</a> is explicit about that line and about
+                  what remains before hosted paid operation.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>What problem it addresses</h2>
+                <p>
+                  Open inboxes are free to send to, so they fill with things nobody chose to
+                  receive. Closed inboxes are unreachable, so genuine first contact from someone
+                  you have no relationship with becomes impossible. Bus Connect takes a third
+                  position: reachable to anyone, but the first message costs the sender something
+                  real.
+                </p>
+                <p>
+                  The fee is friction and revenue, not a spam filter and not a guarantee. It is a
+                  non-refundable initiation fee. It buys delivery and consideration of one message.
+                  It does not promise a reply, and closing a thread for abuse does not refund it.
+                  The product says this in its own advertised terms, so a paying counterparty is
+                  told exactly what it is buying before it pays.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>How it works</h2>
+                <p>
+                  An unpaid request to the public endpoint receives an HTTP <code>402</code>
+                  challenge describing the exact payment required: protocol version, scheme,
+                  network, asset contract, decimals, atomic amount, and destination. A capable
+                  client retries with a signed payment authorization. On successful settlement the
+                  service creates one thread, stores the paid message, and issues one bearer
+                  capability scoped to that thread alone.
+                </p>
+                <p>
+                  The sender then polls and follows up for free within frozen limits, and the
+                  operator reads and replies. One signed authorization creates at most one thread,
+                  no matter how many times it is presented.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>What makes it dependable</h2>
+                <p>
+                  Taking money over HTTP means the interesting failure is not a crash, it is a
+                  crash at the wrong moment. If settlement succeeds and the response is lost, a
+                  naive service either loses a paid thread or creates a second one on retry.
+                  Bus Connect commits the intent to settle before contacting the facilitator, so an
+                  interrupted payment is a durable, reconcilable record rather than an unknown. An
+                  exact replay of the same signed payment and body reconciles into the original
+                  thread and re-derives the same capability.
+                </p>
+                <p>
+                  That path is not an aspiration in the documentation. It is exercised by killing
+                  the daemon mid-settlement, restarting it, and requiring it to converge on the
+                  original conversation with exactly one message.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Storage and boundaries</h2>
+                <p>
+                  Bus Connect stores conversations in Bus Events. It requires four behaviors of
+                  that store — atomic conditional append, deterministic ordered replay, persistence
+                  across a restart, and isolation by authenticated identity — and names no database
+                  vendor. It does not select, run, migrate, or back up a database of its own.
+                </p>
+                <p>
+                  A service instance holds all its state in one identity-scoped aggregate, so
+                  limits that span conversations, such as how many threads may be open at once,
+                  are enforced atomically rather than approximately.
+                </p>
+                <p>
+                  The daemon never holds an outbound payer signer. It receives payments; it cannot
+                  send them. Capabilities are never stored in plaintext, never appear in a URL, and
+                  never reach a log. Only a keyed digest is persisted, so disclosing the store does
+                  not disclose a working capability.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>Who runs it</h2>
+                <p>
+                  One running instance serves exactly one recipient and one payment destination.
+                  There is no registry, no second tenant, and no subscription. The intent is that
+                  anyone who wants their own paid endpoint self-hosts the software and becomes
+                  their own service provider, keeping their own fees and their own responsibility.
+                  Licensing terms for that are covered on the <a href="contact/index.html">contact
+                  page</a>.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>What it is not</h2>
+                <p>
+                  Bus Connect is not a generic x402 client or payment gateway, not a wallet, not a
+                  payment relay, and not a multi-tenant messaging platform. It has no registry,
+                  webhooks, SDK, message search, or cross-thread identity graph, and it will not
+                  pay anyone on your behalf.
+                </p>
+              </div>
+
+              <div class="product-section">
+                <h2>About the payment identity claim</h2>
+                <p>
+                  A settled payment proves that a valid payment authorization was accepted and
+                  that someone controlled the paying wallet, or had delegated signing authority
+                  over it, at the moment of signing. It does not prove wallet ownership, and it
+                  does not identify a human, an AI agent, an organization, or a legal entity.
+                  Anything claimed inside a message body is unverified. The product surfaces are
+                  written to keep that distinction rather than blur it into an identity claim.
+                </p>
+                <p><a href="modules/index.html">See the modules behind this product.</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer" data-busdk-footer>
+        <div class="site-footer-inner">
+          <p>© <a href="https://hg.fi/">Heusala Group Ltd</a>.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="../site-chrome.js"></script>
+  </body>
+</html>
