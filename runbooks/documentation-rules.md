@@ -39,3 +39,29 @@ Detailed rules for `docs/` content outside the blog; expands the root
     Route navigation to product-local pages such as Contact, Pricing, or
     Deployment instead, and reserve `mailto:` links for explicit CTA buttons in
     page content.
+18. `busdk.com` is its own repository, so superproject instruction discovery
+    stops at its `.git` boundary and the BusDK root rules are not loaded
+    automatically. Two of them bind every published page here and are repeated
+    as rules 19 and 20; read the parent `../AGENTS.md`,
+    `../runbooks/public-surface-naming.md`, and
+    `../runbooks/communication-style.md` before a broad product-copy rewrite.
+19. Name public surfaces and documented user workflows for the finished
+    product. Keep milestone and prototype-phase wording such as `proof of
+    concept`, `POC`, `prototype`, `experimental`, or `MVP` out of page copy,
+    headings, meta descriptions, CTA button labels, and workflow names. To
+    describe an unfinished product honestly, state availability and capability
+    directly: what a reader can do with it today, and what is still ahead.
+    Milestone wording stays in `PLAN.md` and evidence notes.
+20. Avoid formulaic contrast sentences in published copy, especially
+    `<thing> is <classification>, not <contrast>` and close variants using
+    `rather than`. Say what is true, what it does, or what to do next. Prefer
+    "Bus Connect has not been released yet; today you can run it locally" over
+    "Bus Connect is a proof of concept, not a released product". Plain
+    behavioral descriptions that happen to use `not` are fine.
+21. Write product pages for the people who buy and use the product. Describe
+    what the product does for them, what it costs them, what they can rely on,
+    and what they must still handle themselves. Keep internal implementation
+    design — storage contracts, aggregates, state machines, module boundaries,
+    provider abstractions — out of published pages; those belong in the owning
+    module's SDD and `AGENTS.md`. Naming the CLI flags, file names, and API
+    paths a user must actually type is product surface, not internal design.
