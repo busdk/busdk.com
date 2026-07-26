@@ -2,6 +2,14 @@
 
 # Current work
 
+- [x] Reposition the Bus Connect product copy around what the product is and
+      what it is worth, not around what the current POC build happens to do:
+      lead with a paid commercial messaging service in the tradition of post
+      and email, reachability for a company or independent professional
+      without spam, and machine-payable contact for AI agents acting for a
+      counterparty; keep x402 as the payment mechanism rather than the product
+      identity; keep the existing development-status and know-your-customer
+      honesty intact.
 - [x] Align the `busdk.com` Bus Engine OS iframe/manifest surface with the current
       browser-hosted release manifest surface from `https://dev.hg.fi/beos/`:
       keep the GitHub Pages direct-launch fallback, consume profile-specific
@@ -453,3 +461,46 @@ licenses; and FSL applies only to Bus-related code licensed by us.
       tutorial produces a real protocol POC and not a public money-taking
       deployment. Name what is still required before hosted paid operation.
 - [x] Add a Bus Connect product card to the docs index.
+- [x] Lead the Bus Connect overview and product card with the root purpose —
+      a commercial front door that keeps any company or professional reachable
+      to customers, partners, and the AI agents acting for them, whatever they
+      sell — and demote x402 to the payment mechanism that makes machine-payable
+      first contact possible. Say plainly that the charge is for carrying the
+      message, like a paid SMS number, and not for the products or services the
+      operator sells. Protocol mechanics, release status, and the
+      know-your-customer gap stay on the page, below the product identity.
+- [x] Rewrite the whole Bus Connect product site for the people who buy and use
+      it: cut the overview from nine sections to seven, drop the storage,
+      settlement-state, and store-provider internals, and reframe the modules
+      page as what a deployment includes. Remove prototype-phase wording
+      (`proof of concept`, `POC`) from copy, headings, meta descriptions, and
+      CTA labels, and remove `X, not Y` contrast sentences, per the
+      superproject public-surface-naming and communication-style runbooks.
+- [x] Add the missing `connect` product entry to the shared BusDK top and side
+      navigation data and rebuild the navigation asset, so the Bus Connect side
+      bar renders instead of coming up empty.
+- [x] Split the Bus Connect site along the audience boundary: move installing,
+      configuring, storage options, payment mechanics, verification steps,
+      limits, and shutdown from the website into the public end-user manual at
+      `docs/docs/modules/bus-connect.md`, and restructure the landing page on
+      the `docs/services/` pattern (what it is, what it is for, how it works,
+      current development status, where to go next). Remove the website
+      tutorial page, fold the modules page into one Books-style module map, and
+      point every Documentation link at
+      `https://docs.busdk.com/modules/bus-connect`.
+- [x] Lead the Bus Connect landing page with agent-to-business reachability:
+      an address AI agents can find, pay, and use, with machine-readable terms
+      and automatic payment over the open x402 standard, and a `How agents find
+      you` section covering the well-known manifest, ordinary links, and the
+      CDP Bazaar. Keep the Bazaar marked as designed-for and dependent on live
+      settlement, since it is unimplemented vendor discovery whose policy the
+      SDD holds as an open decision, and describe the well-known manifest as
+      the community convention it is rather than an official x402 surface.
+- [x] Correct an overclaim introduced during the copy rewrite: the current
+      build has no operator surface, so the website must not say the recipient
+      reads, replies, and closes conversations today. Only paid initiation, an
+      access-scoped read, and bounded free follow-ups exist.
+- [x] Record in `runbooks/documentation-rules.md` that `busdk.com` is a separate
+      repository whose instruction discovery does not reach the superproject
+      rules, and restate the naming, contrast-sentence, and end-user-audience
+      rules that bind published pages here.
