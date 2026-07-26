@@ -6,7 +6,7 @@
     <title>Bus Connect modules | BusDK</title>
     <meta
       name="description"
-      content="The modules behind Bus Connect: the x402-gated messaging daemon, its Bus Events durable storage, and the supporting Bus platform modules."
+      content="What a Bus Connect deployment includes: the messaging service itself, the command-line tools for reading and replying, and the Bus products it needs alongside it."
     />
     <link rel="stylesheet" href="../../index.css" />
   </head>
@@ -20,9 +20,8 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
       <a href="../index.html">Overview</a>
-      <a href="../tutorial/index.html">Tutorial</a>
       <a href="../modules/index.html" aria-current="page">Modules</a>
-      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="https://docs.busdk.com/modules/bus-connect">Documentation</a>
       <a href="../contact/index.html">Contact</a>
       </nav>
     </div>
@@ -33,68 +32,38 @@
                 <aside class="gx-side-nav" data-busdk-side-nav="connect" data-busdk-current="modules" data-busdk-side-nav-base="../" aria-label="Bus Connect navigation">
     <p class="gx-side-nav-title">Connect</p>
       <a href="../index.html">Overview</a>
-      <a href="../tutorial/index.html">Tutorial</a>
       <a href="../modules/index.html" aria-current="page">Modules</a>
-      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="https://docs.busdk.com/modules/bus-connect">Documentation</a>
       <a href="../contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Connect Modules</p>
-              <h1>What is behind the product.</h1>
+              <h1>What a deployment includes.</h1>
               <p class="hero-copy">
-                Bus Connect is deliberately small. It is one Go module producing one static binary
-                that contains both the daemon and its thin clients, plus the Bus modules it stores
-                conversations through.
+                Bus Connect is deliberately small: one program to install and one other Bus product
+                to run alongside it. There is nothing else to license, subscribe to, or wire
+                together.
               </p>
               <div class="product-section">
-                <h2>The product module</h2>
+                <h2>Modules behind the product</h2>
                 <p>
-                  <strong>bus-connect</strong> owns the whole product surface: the x402 challenge
-                  and payment verification, the settlement state machine, capability derivation,
-                  the REST API, and the <code>serve</code>, <code>create</code>, and
-                  <code>get</code> commands. The REST API is canonical; the CLI is an unprivileged
-                  client of it and holds no separate path to storage.
-                </p>
-              </div>
-              <div class="product-section">
-                <h2>Storage</h2>
-                <p>
-                  <strong>bus-events</strong> supplies the durable authority. Bus Connect owns a
-                  provider-neutral store contract expressed only in its own domain values, so no
-                  SQL, driver handle, or connection string crosses that boundary. It requires four
-                  behaviors — atomic conditional append, deterministic ordered replay, persistence
-                  across a restart, and isolation by authenticated identity — and names no database
-                  vendor.
+                  Bus Connect is a single <strong>bus-connect</strong> program that serves your
+                  public address, prices and accepts payments, and keeps each conversation
+                  separate. It stores conversations through <strong>bus-events</strong>, reached
+                  over the Events API provider, under an identity issued by the identities
+                  provider. Shared help conventions come from <strong>bus-help</strong>.
                 </p>
                 <p>
-                  <strong>bus-api-provider-events</strong> exposes those behaviors over HTTP, and
-                  <strong>bus-api-provider-identities</strong> authorizes the service identity Bus
-                  Connect uses. Bus Connect never selects, operates, migrates, or backs up a
-                  database itself.
-                </p>
-              </div>
-              <div class="product-section">
-                <h2>Store providers</h2>
-                <p>
-                  Three providers sit behind one contract. <code>events</code> targets a live Bus
-                  Events API and is the deployment choice. <code>file</code> is a durable
-                  single-process append-only log, useful for evaluation and used by the protocol
-                  test gate. <code>memory</code> is test-only and holds nothing across a restart.
-                  All three are exercised by the same conformance suite, so the boundary stays
-                  honest rather than merely declared.
-                </p>
-              </div>
-              <div class="product-section">
-                <h2>Supporting modules</h2>
-                <p>
-                  <strong>bus-help</strong> provides shared help and documentation conventions for
-                  the CLI. Bus Connect has no dependency on other Bus product modules, and adds no
-                  registry, tenancy, webhook, SDK, or platform integration.
+                  Bus Events is where durability comes from: your conversations survive a restart
+                  of either service and stay unreadable to anything else on the same platform. Bus
+                  Connect brings no database of its own for you to choose, run, or back up, and a
+                  simpler local storage option covers evaluation without any other service running.
                 </p>
                 <p>
-                  Public module documentation is on <a href="https://docs.busdk.com/">the
-                  documentation site</a>. Private implementation design specifications exist for
-                  this module and are not published.
+                  It adds no directory of recipients, tenancy, webhooks, or platform integrations.
+                  See the
+                  <a href="https://docs.busdk.com/modules/bus-connect">module documentation</a> for
+                  configuration, storage options, and operational detail.
                 </p>
               </div>
             </div>

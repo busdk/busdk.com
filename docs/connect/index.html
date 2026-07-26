@@ -6,7 +6,7 @@
     <title>Bus Connect | BusDK</title>
     <meta
       name="description"
-      content="A single-tenant x402-gated messaging daemon: someone you have no prior relationship with pays a small fee to open one message thread with you, then holds a bounded free conversation. REST-canonical, self-hostable, with durable settlement recovery."
+      content="A business address AI agents can find, pay, and use. Your terms are published in machine-readable form and paid automatically over x402, an open HTTP payment standard, so an agent acting for a customer can reach you with no account, no card on file, and no contract first — and the charge keeps the door open to strangers without spam. Self-hostable, one recipient per instance."
     />
     <link rel="stylesheet" href="../index.css" />
   </head>
@@ -20,9 +20,8 @@
       </a>
       <nav class="site-nav" aria-label="Primary">
       <a href="./index.html" aria-current="page">Overview</a>
-      <a href="./tutorial/index.html">Tutorial</a>
       <a href="./modules/index.html">Modules</a>
-      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="https://docs.busdk.com/modules/bus-connect">Documentation</a>
       <a href="./contact/index.html">Contact</a>
       </nav>
     </div>
@@ -33,177 +32,159 @@
                 <aside class="gx-side-nav" data-busdk-side-nav="connect" data-busdk-current="overview" data-busdk-side-nav-base="./" aria-label="Bus Connect navigation">
     <p class="gx-side-nav-title">Connect</p>
       <a href="./index.html" aria-current="page">Overview</a>
-      <a href="./tutorial/index.html">Tutorial</a>
       <a href="./modules/index.html">Modules</a>
-      <a href="https://docs.busdk.com/">Documentation</a>
+      <a href="https://docs.busdk.com/modules/bus-connect">Documentation</a>
       <a href="./contact/index.html">Contact</a>
   </aside>
             <div class="product-doc-content">
               <p class="eyebrow">Bus Connect</p>
-              <h1>Put a price on the first message.</h1>
+              <h1>An address AI agents can find, pay, and use.</h1>
               <p class="hero-copy">
-                Bus Connect is a small, self-hostable messaging daemon. Someone you have no prior
-                relationship with — a person, or an AI agent acting for one — pays a small fee over
-                the x402 HTTP payment protocol to open exactly one message thread with you. After
-                that, the conversation is free and bounded.
+                Software is starting to do business on people's behalf: sourcing products, chasing
+                quotes, checking availability, opening support cases. When one of those agents
+                tries to reach a company, it hits a contact form, a signup wall, or an inbox that
+                filters it out. Bus Connect gives your business an address built for that traffic.
+                An agent asks what contact costs, gets a machine-readable price back, pays it
+                automatically, and its message arrives in a conversation with you.
               </p>
               <p class="hero-copy">
-                No prior relationship is not the same as anonymous. Charging for the first message
-                is a sale, so a real deployment has to know who its customer is well enough to tax,
-                invoice, and record the transaction correctly.
+                Nothing is arranged in advance. Payment rides on x402, an open HTTP payment
+                standard, and your address publishes its own terms in machine-readable form, so any
+                agent that speaks the protocol can read the price and pay it without an account, a
+                card on file, or a contract signed first. People can use the same door, and because
+                reaching you costs something, it stays open to strangers instead of filling with
+                mail nobody asked for.
               </p>
               <div class="product-links">
-                <a class="button button-primary" href="tutorial/index.html">Run the POC</a>
-                <a class="button button-secondary" href="mailto:sales@hg.fi">Talk to us</a>
+                <a class="button button-primary" href="mailto:sales@hg.fi">Talk to us</a>
+                <a class="button button-secondary" href="https://docs.busdk.com/modules/bus-connect">Read the documentation</a>
               </div>
 
               <div class="product-section">
-                <h2>Development status</h2>
+                <h2>Why this is different</h2>
                 <p>
-                  Bus Connect is an accepted, installed proof of concept, not a released product.
-                  The current build binds loopback only and settles against a local fake
-                  facilitator, so you can run the complete protocol end to end on your own machine
-                  today, but you cannot yet expose it publicly or take real money with it. The
-                  <a href="tutorial/index.html">tutorial</a> is explicit about that line and about
-                  what remains before hosted paid operation.
+                  Every other way of being reachable assumes a human on the other end. A form
+                  expects someone to fill it in, a signup wall expects an account, and an invoice
+                  expects a relationship that already exists. Agents have none of that, so they
+                  either fail to reach you or arrive as traffic you cannot tell apart from spam.
+                </p>
+                <p>
+                  Here the whole exchange is machine-readable and self-serve. Your address answers
+                  an unpaid request with the exact terms — the price, the currency, where it goes,
+                  and what the charge does and does not buy — so an agent can decide, pay, and send
+                  in one pass with no human in the loop on either side. It runs on an open
+                  standard, so an agent needs to know nothing about your business beforehand and
+                  you are not asking anyone to integrate against an API of ours.
+                </p>
+                <p>
+                  What you sell here is the messaging itself. Whatever the conversation leads to —
+                  an order, a quote, a booking, a support case resolved — stays your own business,
+                  priced and invoiced however you already do it.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>What problem it addresses</h2>
+                <h2>How agents find you</h2>
                 <p>
-                  Open inboxes are free to send to, so they fill with things nobody chose to
-                  receive. Closed inboxes are unreachable, so genuine first contact from someone
-                  you have no prior relationship with becomes impossible. Bus Connect takes a third
-                  position: reachable without an introduction, but the first message costs the
-                  sender something real.
+                  Your address publishes its own terms — the price, the currency, the destination,
+                  and what the charge buys — at a well-known location, following the community
+                  convention that has grown up around x402. An agent that has your address needs
+                  nothing else from you: it reads the terms and pays. The realistic first route to
+                  you is the ordinary one, through links you already control, so put the address
+                  wherever agent operators already look — your website, your documentation, a
+                  repository README, an <code>llms.txt</code>.
                 </p>
                 <p>
-                  The fee is friction and revenue, not a spam filter and not a guarantee. It is a
-                  non-refundable initiation fee. It buys delivery and consideration of one message.
-                  It does not promise a reply, and closing a thread for abuse does not refund it.
-                  The product says this in its own advertised terms, so a paying counterparty is
-                  told exactly what it is buying before it pays.
+                  The protocol goes further than that. x402 carries an optional extension for
+                  advertising a paid endpoint as discoverable, and the Bazaar is the catalog where
+                  agents go looking for services worth paying. Bus Connect is designed to opt in,
+                  which would put your address in front of agents that have never seen your site
+                  and never will. Listing is earned by real settled payments, so it arrives
+                  together with paid operation. Appearing in a catalog and being chosen by an agent
+                  are separate things, and we would rather report what we observe than promise
+                  reach.
                 </p>
+              </div>
+
+              <div class="product-section">
+                <h2>What it is for</h2>
+                <div class="tutorial-grid">
+                  <article class="tutorial-card">
+                    <h3>Agent-driven purchasing</h3>
+                    <p>Be reachable when an agent is sourcing a product, comparing suppliers, or collecting quotes for the person it works for.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Questions only you can answer</h3>
+                    <p>Sell access to expertise an agent cannot look up: specifications, availability, compatibility, lead times, pricing for a specific case.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>A machine-usable front door</h3>
+                    <p>Publish one address that software can pay its way into, instead of a signup wall or contact form no agent can pass.</p>
+                  </article>
+                  <article class="tutorial-card">
+                    <h3>Open contact without spam</h3>
+                    <p>Stay reachable to people and software you do not know yet, where the price decides what is worth sending.</p>
+                  </article>
+                </div>
               </div>
 
               <div class="product-section">
                 <h2>How it works</h2>
                 <p>
-                  An unpaid request to the public endpoint receives an HTTP <code>402</code>
-                  challenge describing the exact payment required: protocol version, scheme,
-                  network, asset contract, decimals, atomic amount, and destination. A capable
-                  client retries with a signed payment authorization. On successful settlement the
-                  service creates one thread, stores the paid message, and issues one bearer
-                  capability scoped to that thread alone.
+                  You publish an address and set the price of reaching you. Anyone who asks that
+                  address what contact costs — a person reading your site, or an agent requesting
+                  it directly — gets the same answer in a form software can act on. The first
+                  message arrives with payment attached and opens one private conversation. Inside
+                  it the sender can follow up and read replies without paying again, within limits
+                  you set, so nobody is metered by the sentence once you are already talking. Each
+                  sender sees only their own conversation.
                 </p>
                 <p>
-                  The sender then polls and follows up for free within frozen limits, and the
-                  operator reads and replies. One signed authorization creates at most one thread,
-                  no matter how many times it is presented.
+                  What the sender buys is stated plainly before they pay: delivery and
+                  consideration of one message, non-refundable, with no promise of a reply. Money
+                  and messages stay matched even when a connection drops at the worst moment — a
+                  paid message is never lost and never charged twice — and a payment that does not
+                  match your advertised price is turned away before any money moves. You set the
+                  price, the money is paid to you, and no platform sits in between.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>What makes it dependable</h2>
+                <h2>Current development status</h2>
                 <p>
-                  Taking money over HTTP means the interesting failure is not a crash, it is a
-                  crash at the wrong moment. If settlement succeeds and the response is lost, a
-                  naive service either loses a paid thread or creates a second one on retry.
-                  Bus Connect commits the intent to settle before contacting the facilitator, so an
-                  interrupted payment is a durable, reconcilable record rather than an unknown. An
-                  exact replay of the same signed payment and body reconciles into the original
-                  thread and re-derives the same capability.
+                  Bus Connect has not been released yet. The paid message path is complete and
+                  proven: you can install it, run the whole service on your own machine, and send
+                  paid messages through it today, and it already publishes its machine-readable
+                  terms. Publishing it on the open internet and charging real money are still
+                  ahead, the recipient's own inbox — reading, replying, and closing conversations —
+                  has no interface yet, and Bazaar listing waits on live settlement.
                 </p>
                 <p>
-                  That path is not an aspiration in the documentation. It is exercised by killing
-                  the daemon mid-settlement, restarting it, and requiring it to converge on the
-                  original conversation with exactly one message.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>Storage and boundaries</h2>
-                <p>
-                  Bus Connect stores conversations in Bus Events. It requires four behaviors of
-                  that store — atomic conditional append, deterministic ordered replay, persistence
-                  across a restart, and isolation by authenticated identity — and names no database
-                  vendor. It does not select, run, migrate, or back up a database of its own.
-                </p>
-                <p>
-                  A service instance holds all its state in one identity-scoped aggregate, so
-                  limits that span conversations, such as how many threads may be open at once,
-                  are enforced atomically rather than approximately.
-                </p>
-                <p>
-                  The daemon never holds an outbound payer signer. It receives payments; it cannot
-                  send them. Capabilities are never stored in plaintext, never appear in a URL, and
-                  never reach a log. Only a keyed digest is persisted, so disclosing the store does
-                  not disclose a working capability.
+                  Charging real money also means identifying your buyer, issuing receipts, and
+                  handling VAT the way any digital sale requires. That work reuses the Bus
+                  customer, invoicing, and bookkeeping products, so a sale here is recorded like
+                  every other sale in your books. The
+                  <a href="https://docs.busdk.com/modules/bus-connect">documentation</a> lists
+                  precisely what works today and what remains.
                 </p>
               </div>
 
               <div class="product-section">
-                <h2>Who runs it</h2>
-                <p>
-                  One running instance serves exactly one recipient and one payment destination.
-                  There is no registry, no second tenant, and no subscription. The intent is that
-                  anyone who wants their own paid endpoint self-hosts the software and becomes
-                  their own service provider, keeping their own fees and their own responsibility.
-                  Licensing terms for that are covered on the <a href="contact/index.html">contact
-                  page</a>.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>Knowing who your customer is</h2>
-                <p>
-                  The x402 exchange establishes that a payment was authorized and settled. It
-                  establishes nothing else. A wallet address is not a name, a country, a tax
-                  status, or a contact address, and an operator who has only that cannot issue a
-                  receipt, decide the right VAT treatment, or keep the records a sale requires.
-                </p>
-                <p>
-                  For a Finnish company selling a digital service into the EU, that gap is not a
-                  detail to add later. The initiation flow has to establish whether the buyer is a
-                  business or a consumer, where they are, and how to reach them with a receipt,
-                  before the sale completes. A business buyer needs a VAT number that validates;
-                  a consumer needs a location determination that stands up, VAT charged at their
-                  rate, and correct handling of the withdrawal right that applies to digital
-                  services. All of it has to be retained.
-                </p>
-                <p>
-                  The current build does not do this. It collects a payer wallet address and
-                  nothing more, which is why it is a protocol proof of concept and not a service
-                  you can sell from. Closing that gap is the next piece of product work, and it
-                  reuses the Bus customer, VAT, VIES validation, invoicing, and bookkeeping modules
-                  rather than inventing a second way to record a sale. Treat the specifics as
-                  something to confirm with your own accountant and counsel for your jurisdiction
-                  and turnover.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>What it is not</h2>
-                <p>
-                  Bus Connect is not a generic x402 client or payment gateway, not a wallet, not a
-                  payment relay, and not a multi-tenant messaging platform. It has no registry,
-                  webhooks, SDK, message search, or cross-thread identity graph, and it will not
-                  pay anyone on your behalf.
-                </p>
-              </div>
-
-              <div class="product-section">
-                <h2>About the payment identity claim</h2>
-                <p>
-                  A settled payment proves that a valid payment authorization was accepted and
-                  that someone controlled the paying wallet, or had delegated signing authority
-                  over it, at the moment of signing. It does not prove wallet ownership, and it
-                  does not identify a human, an AI agent, an organization, or a legal entity.
-                  Anything claimed inside a message body is unverified. The product surfaces are
-                  written to keep that distinction rather than blur it into an identity claim.
-                </p>
-                <p><a href="modules/index.html">See the modules behind this product.</a></p>
+                <h2>Where to go next</h2>
+                <div class="tutorial-grid">
+                  <a class="tutorial-card" href="https://docs.busdk.com/modules/bus-connect">
+                    <h3>Documentation</h3>
+                    <p>Install it, configure an address and price, run it locally, and see exactly how it behaves.</p>
+                  </a>
+                  <a class="tutorial-card" href="modules/index.html">
+                    <h3>Modules</h3>
+                    <p>See what a deployment includes and what it needs running alongside it.</p>
+                  </a>
+                  <a class="tutorial-card" href="contact/index.html">
+                    <h3>Contact</h3>
+                    <p>Discuss what your own deployment would need, including licensing and self-hosting.</p>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

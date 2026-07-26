@@ -86,6 +86,16 @@ var busDKTopHeaders = map[string]topHeaderConfig{
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},
+	"connect": {
+		BrandHref: "../index.html",
+		LogoHref:  "../busdk-logo.png",
+		Links: []topHeaderLink{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/modules/bus-connect", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
 	"inspection": {
 		BrandHref: "../index.html",
 		LogoHref:  "../busdk-logo.png",
@@ -181,6 +191,15 @@ var busDKProductSideNavs = map[string]struct {
 			{ID: "overview", Href: "index.html", Label: "Overview"},
 			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
 			{ID: "docs", Href: "https://docs.busdk.com/", Label: "Documentation"},
+			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
+		},
+	},
+	"connect": {
+		Title: "Connect",
+		Entries: []navEntry{
+			{ID: "overview", Href: "index.html", Label: "Overview"},
+			{ID: "modules", Href: "modules/index.html", Label: "Modules"},
+			{ID: "docs", Href: "https://docs.busdk.com/modules/bus-connect", Label: "Documentation"},
 			{ID: "contact", Href: "contact/index.html", Label: "Contact"},
 		},
 	},
